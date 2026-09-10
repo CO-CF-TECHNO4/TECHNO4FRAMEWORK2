@@ -1,0 +1,52 @@
+{
+  "name": "techno4-framework2",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Techno4 Framework 2 - Fullstack Reactive Ecosystem for Mobile, Desktop and Hardware Control Systems",
+  "license": "LGPL-3.0-or-later",
+  "author": "CO «CF TECHNO4» <office@techno4.online>",
+  "homepage": "https://techno4.online",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CO-CF-TECHNO4/TECHNO4FRAMEWORK2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CO-CF-TECHNO4/TECHNO4FRAMEWORK2/issues"
+  },
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm --workspace=packages/techno4-framework2-dom64 run build:prod && node ./scripts/build-core.js",
+    "build:core": "node ./scripts/build-core.js",
+    "build:dom64": "npm --workspace=packages/techno4-framework2-dom64 run build:prod",
+    "clean": "node ./scripts/clean.js",
+    "dev": "npm --workspace=apps/boonker run dev",
+    "dev:client": "npm --workspace=apps/boonker run dev:client",
+    "dev:all": "npm --workspace=apps/boonker run dev:all",
+    "test": "npm run test:boonker && npm run test:total && npm run test:threads && npm run test:hardware",
+    "test:boonker": "node ./scripts/test-boonker-components.js",
+    "test:total": "node ./scripts/test-total-integration.js",
+    "test:threads": "node ./scripts/test-threads-integration.js",
+    "test:hardware": "node ./scripts/test-hardware-integration.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "autoprefixer": "^10.4.19",
+    "clean-css": "^5.3.3",
+    "fs-extra": "^11.2.0",
+    "less": "^4.2.0",
+    "postcss": "^8.4.38",
+    "rollup": "^4.18.0",
+    "terser": "^5.31.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

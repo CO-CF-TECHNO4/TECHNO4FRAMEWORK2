@@ -1,0 +1,114 @@
+<div class="page">
+  <div class="navbar">
+    <div class="navbar-bg"></div>
+    <div class="navbar-inner sliding">
+      <div class="left">
+        <a href="#" class="link back">
+          <i class="icon icon-back"></i>
+          <span class="if-not-md">Back</span>
+        </a>
+      </div>
+      <div class="title">Grid / Layout</div>
+    </div>
+  </div>
+  <div class="page-content grid-demo">
+    <div class="block">
+      <p>Techno4 Framework 2 features a modern native CSS Grid layout system (<code>.grid</code>, <code>.grid-cols-X</code>, <code>.grid-gap</code>) providing clean responsive layouts with zero legacy flexbox overhead.</p>
+    </div>
+    <div class="block-title">Columns with gap (.grid.grid-gap)</div>
+    <div class="block">
+      <div class="grid grid-cols-2 grid-gap">
+        <div>50% (.grid-cols-2)</div>
+        <div>50% (.grid-cols-2)</div>
+      </div>
+      <div class="grid grid-cols-4 grid-gap">
+        <div>25% (.grid-cols-4)</div>
+        <div>25% (.grid-cols-4)</div>
+        <div>25% (.grid-cols-4)</div>
+        <div>25% (.grid-cols-4)</div>
+      </div>
+      <div class="grid grid-cols-3 grid-gap">
+        <div>33.3% (.grid-cols-3)</div>
+        <div>33.3% (.grid-cols-3)</div>
+        <div>33.3% (.grid-cols-3)</div>
+      </div>
+      <div class="grid grid-cols-5 grid-gap">
+        <div>20% (.grid-cols-5)</div>
+        <div>20% (.grid-cols-5)</div>
+        <div>20% (.grid-cols-5)</div>
+        <div>20% (.grid-cols-5)</div>
+        <div>20% (.grid-cols-5)</div>
+      </div>
+    </div>
+
+    <div class="block-title">No gap between columns (.grid)</div>
+    <div class="block">
+      <div class="grid grid-cols-2">
+        <div>50% (.grid-cols-2)</div>
+        <div>50% (.grid-cols-2)</div>
+      </div>
+      <div class="grid grid-cols-4">
+        <div>25% (.grid-cols-4)</div>
+        <div>25% (.grid-cols-4)</div>
+        <div>25% (.grid-cols-4)</div>
+        <div>25% (.grid-cols-4)</div>
+      </div>
+      <div class="grid grid-cols-3">
+        <div>33.3% (.grid-cols-3)</div>
+        <div>33.3% (.grid-cols-3)</div>
+        <div>33.3% (.grid-cols-3)</div>
+      </div>
+      <div class="grid grid-cols-5">
+        <div>20% (.grid-cols-5)</div>
+        <div>20% (.grid-cols-5)</div>
+        <div>20% (.grid-cols-5)</div>
+        <div>20% (.grid-cols-5)</div>
+        <div>20% (.grid-cols-5)</div>
+      </div>
+    </div>
+
+    <div class="block-title">Nested Grid</div>
+    <div class="block">
+      <div class="grid grid-cols-2 grid-gap">
+        <div>
+          50%
+          <div class="grid grid-cols-2 grid-gap">
+            <div>50%</div>
+            <div>50%</div>
+          </div>
+        </div>
+        <div>
+          50%
+          <div class="grid grid-cols-3 grid-gap">
+            <div>33%</div>
+            <div>33%</div>
+            <div>33%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-title">Responsive Grid</div>
+    <div class="block">
+      <p>Grid columns adjust dynamically based on screen width breakpoints (e.g. <code>.grid-cols-1.medium-grid-cols-2</code>)</p>
+      <div class="grid grid-cols-1 medium-grid-cols-2 grid-gap">
+        <div>.grid-cols-1 .medium-grid-cols-2</div>
+        <div>.grid-cols-1 .medium-grid-cols-2</div>
+      </div>
+      <div class="grid grid-cols-2 medium-grid-cols-4 grid-gap">
+        <div>.grid-cols-2 .medium-grid-cols-4</div>
+        <div>.grid-cols-2 .medium-grid-cols-4</div>
+        <div>.grid-cols-2 .medium-grid-cols-4</div>
+        <div>.grid-cols-2 .medium-grid-cols-4</div>
+      </div>
+      <div class="grid grid-cols-1 small-grid-cols-2 medium-grid-cols-3 large-grid-cols-6 grid-gap">
+        <div>Col 1</div>
+        <div>Col 2</div>
+        <div>Col 3</div>
+        <div>Col 4</div>
+        <div>Col 5</div>
+        <div>Col 6</div>
+      </div>
+    </div>
+  </div>
+</div>

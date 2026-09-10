@@ -1,0 +1,146 @@
+<template>
+  <div class="page">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Back</span>
+          </a>
+        </div>
+        <div class="title">Dialog</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="block block-strong">
+        <p>There are 1:1 replacements of native Alert, Prompt and Confirm modals. They support callbacks, have very easy
+          api and can be combined with each other. Check these examples:</p>
+        <p class="grid grid-cols-3 grid-gap">
+          <button class="button button-fill" @click=${openAlert}>Alert</button>
+          <button class="button button-fill" @click=${openConfirm}>Confirm</button>
+          <button class="button button-fill" @click=${openPrompt}>Prompt</button>
+        </p>
+        <p class="grid grid-cols-2 grid-gap">
+          <button class="button button-fill" @click=${openLogin}>Login</button>
+          <button class="button button-fill" @click=${openPassword}>Password</button>
+        </p>
+      </div>
+      <div class="block-title">Vertical Buttons</div>
+      <div class="block block-strong">
+        <p>
+          <button class="button button-fill" @click=${openVerticalButtons}>Vertical Buttons</button>
+        </p>
+      </div>
+      <div class="block-title">Preloader Dialog</div>
+      <div class="block block-strong">
+        <p class="grid grid-cols-2 grid-gap">
+          <button class="button button-fill" @click=${openPreloader}>Preloader</button>
+          <button class="button button-fill" @click=${openCustomPreloader}>Custom Text</button>
+        </p>
+      </div>
+      <div class="block-title">Progress Dialog</div>
+      <div class="block block-strong">
+        <p class="grid grid-cols-2 grid-gap">
+          <button class="button button-fill" @click=${openInfiniteProgress}>Infinite</button>
+          <button class="button button-fill" @click=${openDeterminedProgress}>Determined</button>
+        </p>
+      </div>
+      <div class="block-title">Dialogs Stack</div>
+      <div class="block block-strong">
+        <p>This feature doesn't allow to open multiple dialogs at the same time, and will automatically open next dialog
+          when you close the current one. Such behavior is similar to browser native dialogs: </p>
+        <p>
+          <button class="button button-fill" @click=${openAlerts}>Open Multiple Alerts</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  export default (props, { $t4 }) => {
+    const openAlert = () => {
+      $t4.dialog.alert('Hello!');
+    }
+    const openConfirm = () => {
+      $t4.dialog.confirm('Are you feel good today?', function () {
+        $t4.dialog.alert('Great!');
+      });
+    }
+    const openPrompt = () => {
+      $t4.dialog.prompt('What is your name?', function (name) {
+        $t4.dialog.confirm('Are you sure that your name is ' + name + '?', function () {
+          $t4.dialog.alert('Ok, your name is ' + name);
+        });
+      });
+    }
+    const openLogin = () => {
+      $t4.dialog.login('Enter your username and password', function (username, password) {
+        $t4.dialog.alert('Thank you!<br />Username:' + username + '<br />Password:' + password);
+      });
+    }
+    const openPassword = () => {
+      $t4.dialog.password('Enter your password', function (password) {
+        $t4.dialog.alert('Thank you!<br />Password:' + password);
+      });
+    }
+    const openAlerts = () => {
+      $t4.dialog.alert('Alert 1');
+      $t4.dialog.alert('Alert 2');
+      $t4.dialog.alert('Alert 3');
+      $t4.dialog.alert('Alert 4');
+      $t4.dialog.alert('Alert 5');
+    }
+    const openVerticalButtons = () => {
+      $t4.dialog.create({
+        title: 'Vertical Buttons',
+        buttons: [
+          {
+            text: 'Button 1',
+          },
+          {
+            text: 'Button 2',
+          },
+          {
+            text: 'Button 3',
+          },
+        ],
+        verticalButtons: true,
+      }).open();
+    }
+    const openPreloader = () => {
+      $t4.dialog.preloader();
+      setTimeout(function () {
+        $t4.dialog.close();
+      }, 3000);
+    }
+    const openCustomPreloader = () => {
+      $t4.dialog.preloader('My text...');
+      setTimeout(function () {
+        $t4.dialog.close();
+      }, 3000);
+    }
+    const openInfiniteProgress = () => {
+      $t4.dialog.progress();
+      setTimeout(function () {
+        $t4.dialog.close();
+      }, 3000);
+    }
+    const openDeterminedProgress = () => {
+      var progress = 0;
+      var dialog = $t4.dialog.progress('Loading assets', progress);
+      dialog.setText('Image 1 of 10');
+      var interval = setInterval(function () {
+        progress += 10;
+        dialog.setProgress(progress);
+        dialog.setText('Image ' + ((progress) / 10) + ' of 10');
+        if (progress === 100) {
+          clearInterval(interval);
+          dialog.close();
+        }
+      }, 300)
+    }
+
+    return $render;
+  };
+</script>

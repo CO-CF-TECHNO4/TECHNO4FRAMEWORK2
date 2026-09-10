@@ -1,0 +1,1419 @@
+<template>
+  <div class="page page-with-subnavbar hardware-studio-page">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Back</span>
+          </a>
+        </div>
+        <div class="title">Hardware & Sound Studio</div>
+        <div class="right">
+          <span class="badge ${audioRunning ? 'color-green' : 'color-gray'} margin-right-half">
+            ${audioRunning ? 'DSP Active' : 'DSP Idle'}
+          </span>
+        </div>
+        <div class="subnavbar">
+          <div class="subnavbar-inner">
+            <div class="segmented segmented-strong">
+              <button class="button ${activeTab === 'synth' ? 'button-active' : ''}" @click=${() => setTab('synth')}>
+                <i class="icon t4-icons" style="font-size: 16px;">waveform_path</i>
+                <span class="tab-label-text">Audio Synth</span>
+              </button>
+              <button class="button ${activeTab === 'midi' ? 'button-active' : ''}" @click=${() => setTab('midi')}>
+                <i class="icon t4-icons" style="font-size: 16px;">tuningfork</i>
+                <span class="tab-label-text">MIDI Inspector</span>
+              </button>
+              <button class="button ${activeTab === 'serial' ? 'button-active' : ''}" @click=${() => setTab('serial')}>
+                <i class="icon t4-icons" style="font-size: 16px;">cpu</i>
+                <span class="tab-label-text">Serial Terminal</span>
+              </button>
+              <span class="segmented-highlight"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <!-- 1. AUDIO SYNTH & VISUALIZER TAB -->
+      <div class="studio-tab-pane ${activeTab === 'synth' ? 'tab-pane-active' : ''}">
+        <div class="block-title block-title-medium">
+          <i class="icon t4-icons margin-right-half" style="font-size: 18px;">waveform_path</i>
+          Oscilloscope & Sound Waves
+        </div>
+        <div class="block block-strong inset no-margin-bottom">
+          <div class="oscilloscope-wrapper">
+            <canvas id="oscilloscope-canvas" class="oscilloscope-canvas" width="600" height="160"></canvas>
+            <div class="oscilloscope-overlay">
+              <span class="badge color-blue">Wave: ${waveform.toUpperCase()}</span>
+              <span class="badge color-teal">Rate: ${sampleRate} Hz</span>
+              <span class="badge ${activeVoiceCount > 0 ? 'color-green' : 'color-gray'}">Voices: ${activeVoiceCount}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block-title block-title-medium">Synthesizer Controls</div>
+        <div class="block block-strong inset">
+          <div class="margin-bottom">
+            <div class="item-title margin-bottom-half font-bold">Oscillator Waveform:</div>
+            <div class="segmented segmented-raised">
+              <button class="button ${waveform === 'sine' ? 'button-active' : ''}" @click=${() => setWaveform('sine')}>Sine</button>
+              <button class="button ${waveform === 'square' ? 'button-active' : ''}" @click=${() => setWaveform('square')}>Square</button>
+              <button class="button ${waveform === 'sawtooth' ? 'button-active' : ''}" @click=${() => setWaveform('sawtooth')}>Sawtooth</button>
+              <button class="button ${waveform === 'triangle' ? 'button-active' : ''}" @click=${() => setWaveform('triangle')}>Triangle</button>
+            </div>
+          </div>
+
+          <div class="margin-bottom">
+            <div class="display-flex justify-content-space-between margin-bottom-half">
+              <span class="font-bold">Master Volume:</span>
+              <span class="text-color-primary font-bold">${volume}%</span>
+            </div>
+            <div class="range-slider-wrap">
+              <input type="range" min="0" max="100" value=${volume} @input=${handleVolumeChange} class="custom-range-slider" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 grid-gap margin-top">
+            <button class="button button-fill button-raised" @click=${playDemoMelody}>
+              <i class="icon t4-icons margin-right-half" style="font-size: 18px;">${isDemoPlaying ? 'stop_fill' : 'play_fill'}</i>
+              ${isDemoPlaying ? 'Stop Melody' : 'Play Demo Scale'}
+            </button>
+            <button class="button button-outline" @click=${stopAllVoices}>
+              <i class="icon t4-icons margin-right-half" style="font-size: 18px;">stop_fill</i>
+              Panic / All Notes Off
+            </button>
+          </div>
+        </div>
+
+        <div class="block-title block-title-medium">Polyphonic Touch Piano (C4 to C5)</div>
+        <div class="block block-strong inset piano-block-container">
+          <div class="piano-keyboard-wrapper">
+            <div class="piano-keyboard" id="piano-keys-container">
+              <!-- White Keys -->
+              ${whiteKeys.map((k) => $h`
+                <div
+                  class="piano-key white-key ${activeKeys[k.note] ? 'key-pressed' : ''}"
+                  @pointerdown=${(e) => onKeyPointerDown(e, k.note, k.freq)}
+                  @pointerup=${(e) => onKeyPointerUp(e, k.note)}
+                  @pointerleave=${(e) => onKeyPointerLeave(e, k.note)}
+                  @pointercancel=${(e) => onKeyPointerLeave(e, k.note)}
+                >
+                  <div class="key-labels">
+                    <span class="note-name">${k.note}</span>
+                    <span class="key-hint">${k.keyChar}</span>
+                  </div>
+                </div>
+              `)}
+
+              <!-- Black Keys -->
+              ${blackKeys.map((k) => $h`
+                <div
+                  class="piano-key black-key ${activeKeys[k.note] ? 'key-pressed' : ''}"
+                  style="left: ${k.left};"
+                  @pointerdown=${(e) => onKeyPointerDown(e, k.note, k.freq)}
+                  @pointerup=${(e) => onKeyPointerUp(e, k.note)}
+                  @pointerleave=${(e) => onKeyPointerLeave(e, k.note)}
+                  @pointercancel=${(e) => onKeyPointerLeave(e, k.note)}
+                >
+                  <div class="key-labels">
+                    <span class="note-name">${k.note}</span>
+                    <span class="key-hint">${k.keyChar}</span>
+                  </div>
+                </div>
+              `)}
+            </div>
+          </div>
+          <div class="block-footer text-align-center margin-top-half text-color-gray">
+            Touch or click piano keys, or use laptop keyboard keys [A, W, S, E, D, F, T, G, Y, H, U, J, K].
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. MIDI INSPECTOR TAB -->
+      <div class="studio-tab-pane ${activeTab === 'midi' ? 'tab-pane-active' : ''}">
+        <div class="block-title block-title-medium">
+          <i class="icon t4-icons margin-right-half" style="font-size: 18px;">tuningfork</i>
+          Web MIDI Subsystem Status
+        </div>
+        <div class="block block-strong inset">
+          <div class="display-flex justify-content-space-between align-items-center">
+            <div>
+              <div class="font-bold">Web MIDI API State:</div>
+              <div class="text-color-gray" style="font-size: 13px;">
+                ${midiSupported ? 'Hardware MIDI access supported on this device' : 'Web MIDI API not supported directly by this browser engine'}
+              </div>
+            </div>
+            <div>
+              <span class="badge ${midiStatus === 'ready' ? 'color-green' : midiStatus === 'denied' ? 'color-red' : 'color-orange'}">
+                ${midiStatus === 'ready' ? 'Ready' : midiStatus === 'denied' ? 'Permission Denied' : 'Virtual / Emulated'}
+              </span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 grid-gap margin-top">
+            <button class="button button-fill" @click=${rescanMidi}>
+              <i class="icon t4-icons margin-right-half" style="font-size: 16px;">arrow_clockwise</i>
+              Rescan MIDI Ports
+            </button>
+            <button class="button button-outline ${synthAudioEnabled ? 'button-active' : ''}" @click=${toggleSynthMidiRouting}>
+              <i class="icon t4-icons margin-right-half" style="font-size: 16px;">checkmark_alt</i>
+              ${synthAudioEnabled ? 'Synth Routing: ON' : 'Synth Routing: OFF'}
+            </button>
+          </div>
+        </div>
+
+        <div class="block-title block-title-medium">Connected MIDI Devices</div>
+        <div class="block block-strong inset">
+          <div class="margin-bottom-half font-bold text-color-primary">Inputs (${midiInputs.length}):</div>
+          ${midiInputs.length === 0 ? $h`
+            <div class="text-color-gray font-size-13 padding-bottom-half">
+              No physical MIDI inputs connected. Plug a USB/Bluetooth MIDI keyboard or trigger virtual notes below.
+            </div>
+          ` : $h`
+            <div class="list simple-list no-hairlines no-margin">
+              <ul>
+                ${midiInputs.map((d) => $h`
+                  <li>
+                    <span><strong>${d.name || 'Generic MIDI Device'}</strong> <span class="text-color-gray">(${d.manufacturer || 'Standard'})</span></span>
+                    <span class="badge color-green">${d.state || 'connected'}</span>
+                  </li>
+                `)}
+              </ul>
+            </div>
+          `}
+
+          <div class="margin-top margin-bottom-half font-bold text-color-primary">Outputs (${midiOutputs.length}):</div>
+          ${midiOutputs.length === 0 ? $h`
+            <div class="text-color-gray font-size-13">
+              No physical MIDI outputs connected.
+            </div>
+          ` : $h`
+            <div class="list simple-list no-hairlines no-margin">
+              <ul>
+                ${midiOutputs.map((d) => $h`
+                  <li>
+                    <span><strong>${d.name || 'Generic MIDI Output'}</strong> <span class="text-color-gray">(${d.manufacturer || 'Standard'})</span></span>
+                    <span class="badge color-blue">${d.state || 'connected'}</span>
+                  </li>
+                `)}
+              </ul>
+            </div>
+          `}
+        </div>
+
+        <div class="block-title block-title-medium display-flex justify-content-space-between align-items-center">
+          <span>Live MIDI Activity Log (${midiLogs.length})</span>
+          <button class="button button-small button-outline display-inline-block" @click=${clearMidiLogs}>Clear</button>
+        </div>
+        <div class="block block-strong inset no-padding">
+          <div class="terminal-log-box" id="midi-log-scroll-box">
+            ${midiLogs.length === 0 ? $h`
+              <div class="terminal-empty-msg">No MIDI events captured yet. Play a key or trigger a test event below.</div>
+            ` : $h`
+              ${midiLogs.map((log) => $h`
+                <div class="terminal-log-line font-monospace">
+                  <span class="log-time">${log.time}</span>
+                  <span class="log-badge badge ${log.badgeColor}">${log.type}</span>
+                  <span class="log-details">${log.text}</span>
+                  <span class="log-hex">${log.hex}</span>
+                </div>
+              `)}
+            `}
+          </div>
+        </div>
+
+        <div class="block-title block-title-medium">Virtual MIDI Test Triggers</div>
+        <div class="block block-strong inset">
+          <div class="grid grid-cols-2 grid-gap margin-bottom-half">
+            <button class="button button-outline" @click=${() => triggerTestNote('C4', 60, 100)}>
+              Note On C4 (60)
+            </button>
+            <button class="button button-outline" @click=${() => triggerTestNote('E4', 64, 100)}>
+              Note On E4 (64)
+            </button>
+          </div>
+          <div class="grid grid-cols-2 grid-gap margin-bottom-half">
+            <button class="button button-outline" @click=${() => triggerTestNote('G4', 67, 100)}>
+              Note On G4 (67)
+            </button>
+            <button class="button button-fill" @click=${triggerTestChord}>
+              C Maj Chord
+            </button>
+          </div>
+          <div class="grid grid-cols-2 grid-gap">
+            <button class="button button-outline" @click=${() => triggerTestCC(1, 64, 'Modulation')}>
+              CC #1 Mod Wheel
+            </button>
+            <button class="button button-outline" @click=${() => triggerTestCC(64, 127, 'Sustain Pedal')}>
+              CC #64 Sustain
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. SERIAL TERMINAL TAB -->
+      <div class="studio-tab-pane ${activeTab === 'serial' ? 'tab-pane-active' : ''}">
+        <div class="block-title block-title-medium">
+          <i class="icon t4-icons margin-right-half" style="font-size: 18px;">cpu</i>
+          Serial Hardware Interface
+        </div>
+        <div class="block block-strong inset">
+          <div class="display-flex justify-content-space-between align-items-center margin-bottom">
+            <div>
+              <div class="font-bold">Hardware Driver Status:</div>
+              <div class="text-color-gray font-size-13">
+                ${isWebSerialSupported ? 'Web Serial API available (Chrome / Edge / Android)' : 'Web Serial not supported; Total.js / Emulated driver active'}
+              </div>
+            </div>
+            <div>
+              <span class="badge ${serialConnected ? 'color-green' : 'color-orange'}">
+                ${serialConnected ? 'Connected' : 'Disconnected'}
+              </span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 grid-gap margin-bottom">
+            <div>
+              <div class="item-title font-bold margin-bottom-half font-size-13">Baud Rate:</div>
+              <select class="custom-select-box" value=${serialBaudRate} @change=${handleBaudChange}>
+                ${baudRates.map((b) => $h`
+                  <option value=${b} selected=${b === serialBaudRate}>${b} bps</option>
+                `)}
+              </select>
+            </div>
+            <div>
+              <div class="item-title font-bold margin-bottom-half font-size-13">Line Ending:</div>
+              <select class="custom-select-box" value=${serialLineEnding} @change=${handleLineEndingChange}>
+                <option value="CRLF" selected=${serialLineEnding === 'CRLF'}>CRLF (\r\n)</option>
+                <option value="LF" selected=${serialLineEnding === 'LF'}>LF (\n)</option>
+                <option value="CR" selected=${serialLineEnding === 'CR'}>CR (\r)</option>
+                <option value="NONE" selected=${serialLineEnding === 'NONE'}>None</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 grid-gap">
+            ${!serialConnected ? $h`
+              <button class="button button-fill button-raised" @click=${connectSerial}>
+                <i class="icon t4-icons margin-right-half" style="font-size: 16px;">cpu</i>
+                Open Serial Port
+              </button>
+            ` : $h`
+              <button class="button button-fill color-red" @click=${disconnectSerial}>
+                <i class="icon t4-icons margin-right-half" style="font-size: 16px;">stop_fill</i>
+                Disconnect Port
+              </button>
+            `}
+            <button class="button button-outline" @click=${toggleSimulationMode}>
+              <i class="icon t4-icons margin-right-half" style="font-size: 16px;">checkmark_alt</i>
+              ${isSimulatedDevice ? 'Mode: Simulated ESP32' : 'Mode: Physical WebSerial'}
+            </button>
+          </div>
+        </div>
+
+        <div class="block-title block-title-medium display-flex justify-content-space-between align-items-center">
+          <span>Terminal Console (${serialDeviceName})</span>
+          <button class="button button-small button-outline display-inline-block" @click=${clearSerialLogs}>Clear Screen</button>
+        </div>
+
+        <div class="block block-strong inset no-padding">
+          <div class="terminal-screen" id="serial-terminal-scroll-box">
+            ${serialLogs.map((item) => $h`
+              <div class="terminal-line terminal-${item.dir} font-monospace">
+                <span class="terminal-time">[${item.time}]</span>
+                <span class="terminal-prefix font-bold">${item.dir === 'tx' ? 'TX →' : item.dir === 'rx' ? 'RX ←' : 'SYS ⚡'}</span>
+                <span class="terminal-text">${item.msg}</span>
+              </div>
+            `)}
+          </div>
+
+          <div class="terminal-input-bar padding-half display-flex align-items-center">
+            <input
+              type="text"
+              placeholder="Send command to device (e.g. AT, STATUS, PING)..."
+              class="custom-terminal-input"
+              value=${serialInputText}
+              @input=${handleSerialInput}
+              @keydown=${handleSerialKeyDown}
+            />
+            <button class="button button-fill button-small margin-left-half" @click=${sendSerialCommand}>
+              Send
+            </button>
+          </div>
+        </div>
+
+        <div class="block-title block-title-medium">Quick AT / Hardware Presets</div>
+        <div class="block block-strong inset">
+          <div class="display-flex flex-wrap gap-8">
+            <button class="button button-small button-outline" @click=${() => sendQuickCommand('AT')}>AT</button>
+            <button class="button button-small button-outline" @click=${() => sendQuickCommand('AT+GMR')}>AT+GMR</button>
+            <button class="button button-small button-outline" @click=${() => sendQuickCommand('STATUS')}>STATUS</button>
+            <button class="button button-small button-outline" @click=${() => sendQuickCommand('PING')}>PING</button>
+            <button class="button button-small button-outline" @click=${() => sendQuickCommand('SENSORS')}>SENSORS</button>
+            <button class="button button-small button-outline" @click=${() => sendQuickCommand('LED:ON')}>LED:ON</button>
+            <button class="button button-small button-outline" @click=${() => sendQuickCommand('LED:OFF')}>LED:OFF</button>
+            <button class="button button-small button-outline" @click=${() => sendQuickCommand('HELP')}>HELP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+  .hardware-studio-page .margin-right-half {
+    margin-right: 8px;
+  }
+  .hardware-studio-page .margin-left-half {
+    margin-left: 6px;
+  }
+  .hardware-studio-page .margin-bottom-half {
+    margin-bottom: 6px;
+  }
+  .hardware-studio-page .font-size-13 {
+    font-size: 13px;
+  }
+  .hardware-studio-page .tab-pane-active {
+    display: block !important;
+  }
+  .hardware-studio-page .studio-tab-pane {
+    display: none;
+    animation: fadeInPane 0.2s ease-in-out;
+  }
+  @keyframes fadeInPane {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Oscilloscope Canvas */
+  .oscilloscope-wrapper {
+    position: relative;
+    background: #090e17;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+  }
+  .oscilloscope-canvas {
+    display: block;
+    width: 100%;
+    height: 160px;
+  }
+  .oscilloscope-overlay {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 6px;
+  }
+
+  /* Piano Keyboard */
+  .piano-block-container {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .piano-keyboard-wrapper {
+    min-width: 500px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .piano-keyboard {
+    position: relative;
+    display: flex;
+    height: 160px;
+    user-select: none;
+    touch-action: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    background: #111;
+  }
+  .piano-key {
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background 0.08s ease, transform 0.08s ease;
+  }
+  .white-key {
+    flex: 1;
+    background: linear-gradient(180deg, #fbfbfb 0%, #e2e8f0 100%);
+    border: 1px solid #94a3b8;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 8px;
+  }
+  .white-key.key-pressed {
+    background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%) !important;
+    transform: translateY(2px);
+  }
+  .black-key {
+    position: absolute;
+    top: 0;
+    width: 8.2%;
+    height: 60%;
+    background: linear-gradient(180deg, #1e293b 0%, #090d16 100%);
+    border: 1px solid #000;
+    border-radius: 0 0 5px 5px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 6px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+  }
+  .black-key.key-pressed {
+    background: linear-gradient(180deg, #0ea5e9 0%, #0369a1 100%) !important;
+    transform: translateY(2px);
+  }
+  .key-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+  }
+  .white-key .note-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: #1e293b;
+  }
+  .white-key .key-hint {
+    font-size: 10px;
+    color: #64748b;
+  }
+  .white-key.key-pressed .note-name,
+  .white-key.key-pressed .key-hint {
+    color: #ffffff;
+  }
+  .black-key .note-name {
+    font-size: 11px;
+    font-weight: bold;
+    color: #f1f5f9;
+  }
+  .black-key .key-hint {
+    font-size: 9px;
+    color: #94a3b8;
+  }
+
+  /* Range Slider */
+  .range-slider-wrap {
+    width: 100%;
+  }
+  .custom-range-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    accent-color: #0284c7;
+  }
+
+  /* Terminal Log Box */
+  .terminal-log-box {
+    background: #090e17;
+    color: #e2e8f0;
+    height: 180px;
+    overflow-y: auto;
+    padding: 10px 12px;
+  }
+  .terminal-empty-msg {
+    color: #64748b;
+    font-style: italic;
+    font-size: 13px;
+    padding: 12px 0;
+    text-align: center;
+  }
+  .terminal-log-line {
+    font-size: 12px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .log-time {
+    color: #64748b;
+    font-size: 11px;
+  }
+  .log-badge {
+    font-size: 10px;
+    padding: 1px 6px;
+    text-transform: uppercase;
+  }
+  .log-details {
+    flex: 1;
+    color: #f8fafc;
+  }
+  .log-hex {
+    color: #38bdf8;
+    font-size: 11px;
+  }
+
+  /* Serial Screen */
+  .serial-terminal-screen {
+    background: #080c14;
+    color: #10b981;
+    height: 220px;
+    overflow-y: auto;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  .terminal-line {
+    margin-bottom: 4px;
+    word-break: break-all;
+  }
+  .terminal-line.terminal-tx .terminal-prefix {
+    color: #38bdf8;
+  }
+  .terminal-line.terminal-tx .terminal-text {
+    color: #7dd3fc;
+  }
+  .terminal-line.terminal-rx .terminal-prefix {
+    color: #34d399;
+  }
+  .terminal-line.terminal-rx .terminal-text {
+    color: #6ee7b7;
+  }
+  .terminal-line.terminal-sys .terminal-prefix {
+    color: #fbbf24;
+  }
+  .terminal-line.terminal-sys .terminal-text {
+    color: #fde68a;
+  }
+  .terminal-time {
+    color: #64748b;
+    margin-right: 6px;
+    font-size: 11px;
+  }
+  .terminal-input-bar {
+    background: #0e1626;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .custom-terminal-input {
+    flex: 1;
+    background: #090e17;
+    border: 1px solid #334155;
+    border-radius: 4px;
+    color: #f8fafc;
+    padding: 6px 10px;
+    font-size: 13px;
+    outline: none;
+    font-family: monospace;
+  }
+  .custom-terminal-input:focus {
+    border-color: #0284c7;
+  }
+  .custom-select-box {
+    width: 100%;
+    padding: 8px 10px;
+    background: rgba(0,0,0,0.05);
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+  }
+  .gap-8 {
+    gap: 8px;
+  }
+</style>
+
+<script>
+  export default (props, { $, $t4, $on, $update }) => {
+    // Current Active Tab: 'synth' | 'midi' | 'serial'
+    let activeTab = 'synth';
+
+    // ----------------------------------------------------
+    // 1. AUDIO SYNTH & OSCILLOSCOPE STATE
+    // ----------------------------------------------------
+    let audioCtx = null;
+    let masterGain = null;
+    let analyser = null;
+    let audioRunning = false;
+    let sampleRate = 48000;
+    let waveform = 'sawtooth';
+    let volume = 70;
+    let animFrameId = null;
+    let activeVoiceCount = 0;
+    let isDemoPlaying = false;
+    let demoTimerId = null;
+
+    const activeVoices = new Map(); // noteName -> { osc, gain }
+    const activeKeys = {}; // noteName -> boolean
+
+    const whiteKeys = [
+      { note: 'C4', freq: 261.63, keyChar: 'A' },
+      { note: 'D4', freq: 293.66, keyChar: 'S' },
+      { note: 'E4', freq: 329.63, keyChar: 'D' },
+      { note: 'F4', freq: 349.23, keyChar: 'F' },
+      { note: 'G4', freq: 392.00, keyChar: 'G' },
+      { note: 'A4', freq: 440.00, keyChar: 'H' },
+      { note: 'B4', freq: 493.88, keyChar: 'J' },
+      { note: 'C5', freq: 523.25, keyChar: 'K' },
+    ];
+
+    const blackKeys = [
+      { note: 'C#4', freq: 277.18, left: '8.5%', keyChar: 'W' },
+      { note: 'D#4', freq: 311.13, left: '21.0%', keyChar: 'E' },
+      { note: 'F#4', freq: 369.99, left: '46.0%', keyChar: 'T' },
+      { note: 'G#4', freq: 415.30, left: '58.5%', keyChar: 'Y' },
+      { note: 'A#4', freq: 466.16, left: '71.0%', keyChar: 'U' },
+    ];
+
+    const keyCharMap = {
+      KeyA: { note: 'C4', freq: 261.63 },
+      KeyW: { note: 'C#4', freq: 277.18 },
+      KeyS: { note: 'D4', freq: 293.66 },
+      KeyE: { note: 'D#4', freq: 311.13 },
+      KeyD: { note: 'E4', freq: 329.63 },
+      KeyF: { note: 'F4', freq: 349.23 },
+      KeyT: { note: 'F#4', freq: 369.99 },
+      KeyG: { note: 'G4', freq: 392.00 },
+      KeyY: { note: 'G#4', freq: 415.30 },
+      KeyH: { note: 'A4', freq: 440.00 },
+      KeyU: { note: 'A#4', freq: 466.16 },
+      KeyJ: { note: 'B4', freq: 493.88 },
+      KeyK: { note: 'C5', freq: 523.25 },
+    };
+
+    function initAudioContext() {
+      if (audioCtx) return audioCtx;
+      if (typeof window === 'undefined') return null;
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return null;
+
+      try {
+        audioCtx = new AudioContextClass();
+        sampleRate = audioCtx.sampleRate || 48000;
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(volume / 100, audioCtx.currentTime);
+
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 1024;
+        masterGain.connect(analyser);
+        analyser.connect(audioCtx.destination);
+
+        audioRunning = audioCtx.state === 'running';
+        startOscilloscope();
+      } catch (err) {
+        console.error('AudioContext init error:', err);
+      }
+      return audioCtx;
+    }
+
+    function ensureAudioRunning() {
+      const ctx = initAudioContext();
+      if (ctx && ctx.state === 'suspended') {
+        ctx.resume().then(() => {
+          audioRunning = true;
+          $update();
+        });
+      } else if (ctx && ctx.state === 'running') {
+        audioRunning = true;
+      }
+      return ctx;
+    }
+
+    function playNote(noteName, freq) {
+      const ctx = ensureAudioRunning();
+      if (!ctx || !masterGain) return;
+
+      if (activeVoices.has(noteName)) {
+        stopNote(noteName);
+      }
+
+      try {
+        const osc = ctx.createOscillator();
+        const voiceGain = ctx.createGain();
+
+        osc.type = waveform;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+        // Envelope: 12ms attack
+        voiceGain.gain.setValueAtTime(0.0001, ctx.currentTime);
+        voiceGain.gain.linearRampToValueAtTime(0.7, ctx.currentTime + 0.012);
+
+        osc.connect(voiceGain);
+        voiceGain.connect(masterGain);
+        osc.start();
+
+        activeVoices.set(noteName, { osc, gain: voiceGain });
+        activeKeys[noteName] = true;
+        activeVoiceCount = activeVoices.size;
+        $update();
+      } catch (err) {
+        console.error('playNote error:', err);
+      }
+    }
+
+    function stopNote(noteName) {
+      if (!activeVoices.has(noteName)) return;
+      const voice = activeVoices.get(noteName);
+      activeVoices.delete(noteName);
+      delete activeKeys[noteName];
+      activeVoiceCount = activeVoices.size;
+
+      if (audioCtx && voice && voice.gain) {
+        try {
+          const now = audioCtx.currentTime;
+          voice.gain.gain.cancelScheduledValues(now);
+          voice.gain.gain.setValueAtTime(voice.gain.gain.value, now);
+          voice.gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.1);
+          setTimeout(() => {
+            try {
+              voice.osc.stop();
+              voice.osc.disconnect();
+              voice.gain.disconnect();
+            } catch (e) {}
+          }, 110);
+        } catch (e) {}
+      }
+      $update();
+    }
+
+    function stopAllVoices() {
+      if (demoTimerId) {
+        clearInterval(demoTimerId);
+        demoTimerId = null;
+        isDemoPlaying = false;
+      }
+      activeVoices.forEach((voice, name) => {
+        try {
+          voice.osc.stop();
+          voice.osc.disconnect();
+          voice.gain.disconnect();
+        } catch (e) {}
+      });
+      activeVoices.clear();
+      Object.keys(activeKeys).forEach((k) => delete activeKeys[k]);
+      activeVoiceCount = 0;
+      $update();
+    }
+
+    function onKeyPointerDown(e, note, freq) {
+      if (e) e.preventDefault();
+      playNote(note, freq);
+    }
+
+    function onKeyPointerUp(e, note) {
+      if (e) e.preventDefault();
+      stopNote(note);
+    }
+
+    function onKeyPointerLeave(e, note) {
+      stopNote(note);
+    }
+
+    function setWaveform(w) {
+      waveform = w;
+      activeVoices.forEach((voice) => {
+        try {
+          voice.osc.type = w;
+        } catch (e) {}
+      });
+      $update();
+    }
+
+    function handleVolumeChange(e) {
+      volume = parseInt(e.target.value, 10) || 0;
+      if (masterGain && audioCtx) {
+        masterGain.gain.setTargetAtTime(volume / 100, audioCtx.currentTime, 0.02);
+      }
+      $update();
+    }
+
+    function playDemoMelody() {
+      if (isDemoPlaying) {
+        stopAllVoices();
+        return;
+      }
+      ensureAudioRunning();
+      isDemoPlaying = true;
+      const demoMelody = [
+        { note: 'C4', freq: 261.63, dur: 220 },
+        { note: 'E4', freq: 329.63, dur: 220 },
+        { note: 'G4', freq: 392.00, dur: 220 },
+        { note: 'C5', freq: 523.25, dur: 380 },
+        { note: 'B4', freq: 493.88, dur: 220 },
+        { note: 'G4', freq: 392.00, dur: 220 },
+        { note: 'E4', freq: 329.63, dur: 220 },
+        { note: 'C4', freq: 261.63, dur: 450 },
+      ];
+      let step = 0;
+      demoTimerId = setInterval(() => {
+        if (!isDemoPlaying || step >= demoMelody.length) {
+          stopAllVoices();
+          return;
+        }
+        const cur = demoMelody[step];
+        playNote(cur.note, cur.freq);
+        setTimeout(() => stopNote(cur.note), cur.dur - 30);
+        step++;
+      }, 260);
+      $update();
+    }
+
+    function startOscilloscope() {
+      if (animFrameId || typeof window === 'undefined') return;
+
+      const draw = () => {
+        animFrameId = window.requestAnimationFrame(draw);
+        const canvas = document.getElementById('oscilloscope-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const w = canvas.width;
+        const h = canvas.height;
+
+        // Background
+        ctx.fillStyle = '#090e17';
+        ctx.fillRect(0, 0, w, h);
+
+        // Center and grid lines
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.12)';
+        ctx.beginPath();
+        // Horizontals
+        ctx.moveTo(0, h / 2);
+        ctx.lineTo(w, h / 2);
+        ctx.moveTo(0, h / 4);
+        ctx.lineTo(w, h / 4);
+        ctx.moveTo(0, (3 * h) / 4);
+        ctx.lineTo(w, (3 * h) / 4);
+        // Verticals
+        for (let x = 60; x < w; x += 60) {
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, h);
+        }
+        ctx.stroke();
+
+        // Waveform Render
+        if (analyser) {
+          const bufferLength = analyser.frequencyBinCount;
+          const dataArray = new Uint8Array(bufferLength);
+          analyser.getByteTimeDomainData(dataArray);
+
+          ctx.lineWidth = 2.5;
+          ctx.strokeStyle = '#00f0ff';
+          ctx.shadowColor = '#00f0ff';
+          ctx.shadowBlur = 6;
+          ctx.beginPath();
+
+          const sliceWidth = w / bufferLength;
+          let x = 0;
+          for (let i = 0; i < bufferLength; i++) {
+            const v = dataArray[i] / 128.0;
+            const y = (v * h) / 2;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+            x += sliceWidth;
+          }
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+        }
+      };
+
+      draw();
+    }
+
+    // ----------------------------------------------------
+    // 2. MIDI INSPECTOR STATE
+    // ----------------------------------------------------
+    let midiSupported = typeof navigator !== 'undefined' && 'requestMIDIAccess' in navigator;
+    let midiStatus = midiSupported ? 'ready' : 'emulated';
+    let midiAccess = null;
+    let midiInputs = [];
+    let midiOutputs = [];
+    let midiLogs = [];
+    let synthAudioEnabled = true;
+
+    function getFormattedTimestamp() {
+      const d = new Date();
+      const pad = (n, len = 2) => String(n).padStart(len, '0');
+      return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}.${pad(d.getMilliseconds(), 3)}`;
+    }
+
+    function addMidiLog(type, text, hex, badgeColor = 'color-green') {
+      midiLogs.unshift({
+        time: getFormattedTimestamp(),
+        type,
+        text,
+        hex,
+        badgeColor,
+      });
+      if (midiLogs.length > 80) midiLogs.pop();
+      $update();
+    }
+
+    function noteNumberToName(num) {
+      const names = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+      const octave = Math.floor(num / 12) - 1;
+      return `${names[num % 12]}${octave}`;
+    }
+
+    function noteNameToFreq(noteName) {
+      const all = [...whiteKeys, ...blackKeys];
+      const match = all.find((k) => k.note === noteName);
+      if (match) return match.freq;
+      return 440;
+    }
+
+    function handleMidiMessage(event) {
+      if (!event || !event.data) return;
+      const data = event.data;
+      const status = data[0];
+      const cmd = status >> 4;
+      const ch = (status & 0x0f) + 1;
+      const d1 = data[1];
+      const d2 = data[2] || 0;
+
+      const hexStr = `0x${status.toString(16).toUpperCase()} 0x${d1.toString(16).toUpperCase()} 0x${d2.toString(16).toUpperCase()}`;
+
+      if (cmd === 9 && d2 > 0) {
+        // Note On
+        const noteName = noteNumberToName(d1);
+        addMidiLog('NOTE ON', `Ch ${ch} | ${noteName} (${d1}) | Vel ${d2}`, hexStr, 'color-green');
+        if (synthAudioEnabled) {
+          playNote(noteName, 440 * Math.pow(2, (d1 - 69) / 12));
+        }
+      } else if (cmd === 8 || (cmd === 9 && d2 === 0)) {
+        // Note Off
+        const noteName = noteNumberToName(d1);
+        addMidiLog('NOTE OFF', `Ch ${ch} | ${noteName} (${d1}) | Vel ${d2}`, hexStr, 'color-red');
+        if (synthAudioEnabled) {
+          stopNote(noteName);
+        }
+      } else if (cmd === 11) {
+        // Control Change
+        addMidiLog('CC', `Ch ${ch} | Controller #${d1} | Val ${d2}`, hexStr, 'color-orange');
+      } else if (cmd === 14) {
+        // Pitch Bend
+        const bend = (d2 << 7) | d1;
+        addMidiLog('PITCH', `Ch ${ch} | Pitch Bend: ${bend}`, hexStr, 'color-purple');
+      } else {
+        addMidiLog('SYS', `Ch ${ch} | Status: 0x${status.toString(16)}`, hexStr, 'color-blue');
+      }
+    }
+
+    function updateMidiDevices() {
+      if (!midiAccess) return;
+      const inputs = [];
+      const outputs = [];
+
+      for (const input of midiAccess.inputs.values()) {
+        inputs.push({
+          id: input.id,
+          name: input.name,
+          manufacturer: input.manufacturer,
+          state: input.state,
+        });
+        input.onmidimessage = handleMidiMessage;
+      }
+
+      for (const output of midiAccess.outputs.values()) {
+        outputs.push({
+          id: output.id,
+          name: output.name,
+          manufacturer: output.manufacturer,
+          state: output.state,
+        });
+      }
+
+      midiInputs = inputs;
+      midiOutputs = outputs;
+      $update();
+    }
+
+    async function rescanMidi() {
+      if (typeof navigator === 'undefined' || !navigator.requestMIDIAccess) {
+        midiSupported = false;
+        midiStatus = 'emulated';
+        addMidiLog('SYS', 'Probed Web MIDI: API unsupported in this environment. Virtual test mode active.', '0x00', 'color-orange');
+        $update();
+        return;
+      }
+
+      try {
+        midiAccess = await navigator.requestMIDIAccess({ sysex: false });
+        midiSupported = true;
+        midiStatus = 'ready';
+        updateMidiDevices();
+        midiAccess.onstatechange = () => updateMidiDevices();
+        addMidiLog('SYS', `Web MIDI connected. Detected ${midiInputs.length} in, ${midiOutputs.length} out.`, '0x00', 'color-blue');
+      } catch (err) {
+        midiStatus = 'denied';
+        addMidiLog('SYS', `Web MIDI permission rejected: ${err.message}`, '0x00', 'color-red');
+      }
+      $update();
+    }
+
+    function triggerTestNote(noteName, noteNumber, velocity = 100) {
+      const hex = `0x90 0x${noteNumber.toString(16).toUpperCase()} 0x${velocity.toString(16).toUpperCase()}`;
+      addMidiLog('NOTE ON', `Ch 1 | ${noteName} (${noteNumber}) | Vel ${velocity}`, hex, 'color-green');
+
+      // Send to physical MIDI outputs if connected
+      if (midiAccess) {
+        for (const out of midiAccess.outputs.values()) {
+          try {
+            out.send([0x90, noteNumber, velocity]);
+          } catch (e) {}
+        }
+      }
+
+      if (synthAudioEnabled) {
+        playNote(noteName, noteNameToFreq(noteName));
+      }
+
+      setTimeout(() => {
+        const offHex = `0x80 0x${noteNumber.toString(16).toUpperCase()} 0x00`;
+        addMidiLog('NOTE OFF', `Ch 1 | ${noteName} (${noteNumber}) | Vel 0`, offHex, 'color-red');
+        if (midiAccess) {
+          for (const out of midiAccess.outputs.values()) {
+            try {
+              out.send([0x80, noteNumber, 0]);
+            } catch (e) {}
+          }
+        }
+        if (synthAudioEnabled) {
+          stopNote(noteName);
+        }
+      }, 350);
+    }
+
+    function triggerTestChord() {
+      triggerTestNote('C4', 60, 100);
+      setTimeout(() => triggerTestNote('E4', 64, 100), 50);
+      setTimeout(() => triggerTestNote('G4', 67, 100), 100);
+    }
+
+    function triggerTestCC(ccNum, val, name) {
+      const hex = `0xB0 0x${ccNum.toString(16).toUpperCase()} 0x${val.toString(16).toUpperCase()}`;
+      addMidiLog('CC', `Ch 1 | Controller #${ccNum} (${name}) | Val ${val}`, hex, 'color-orange');
+      if (midiAccess) {
+        for (const out of midiAccess.outputs.values()) {
+          try {
+            out.send([0xb0, ccNum, val]);
+          } catch (e) {}
+        }
+      }
+    }
+
+    function toggleSynthMidiRouting() {
+      synthAudioEnabled = !synthAudioEnabled;
+      $update();
+    }
+
+    function clearMidiLogs() {
+      midiLogs = [];
+      $update();
+    }
+
+    // ----------------------------------------------------
+    // 3. SERIAL TERMINAL STATE
+    // ----------------------------------------------------
+    const isWebSerialSupported = typeof navigator !== 'undefined' && 'serial' in navigator;
+    let serialConnected = false;
+    let isSimulatedDevice = true;
+    let serialDeviceName = 'ESP32-S3 Module (Simulated)';
+    let serialBaudRate = 115200;
+    let serialLineEnding = 'CRLF';
+    let serialInputText = '';
+    let serialLogs = [
+      { time: getFormattedTimestamp(), dir: 'sys', msg: 'Techno4 Hardware Serial Subsystem ready.' },
+      { time: getFormattedTimestamp(), dir: 'sys', msg: 'Default baud rate configured at 115200 bps.' },
+    ];
+    let serialPort = null;
+    let serialReader = null;
+
+    const baudRates = [9600, 19200, 38400, 57600, 115200, 230400, 921600];
+
+    function addSerialLog(dir, msg) {
+      serialLogs.push({
+        time: getFormattedTimestamp(),
+        dir,
+        msg,
+      });
+      if (serialLogs.length > 120) serialLogs.shift();
+      $update();
+
+      setTimeout(() => {
+        const box = document.getElementById('serial-terminal-scroll-box');
+        if (box) box.scrollTop = box.scrollHeight;
+      }, 10);
+    }
+
+    function handleBaudChange(e) {
+      serialBaudRate = parseInt(e.target.value, 10) || 115200;
+      addSerialLog('sys', `Baud rate changed to ${serialBaudRate} bps`);
+      $update();
+    }
+
+    function handleLineEndingChange(e) {
+      serialLineEnding = e.target.value;
+      $update();
+    }
+
+    function handleSerialInput(e) {
+      serialInputText = e.target.value;
+    }
+
+    function handleSerialKeyDown(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendSerialCommand();
+      }
+    }
+
+    async function connectSerial() {
+      if (isWebSerialSupported && !isSimulatedDevice) {
+        try {
+          serialPort = await navigator.serial.requestPort();
+          await serialPort.open({ baudRate: serialBaudRate });
+          serialConnected = true;
+          serialDeviceName = 'WebSerial Physical Port';
+          addSerialLog('sys', `Serial port opened at ${serialBaudRate} bps.`);
+          readSerialStream();
+        } catch (err) {
+          addSerialLog('sys', `WebSerial connection failed: ${err.message}. Falling back to simulated driver.`);
+          isSimulatedDevice = true;
+          serialConnected = true;
+          serialDeviceName = 'ESP32-S3 IoT Module (Simulated)';
+        }
+      } else {
+        // Simulated / Total.js Serial Mode
+        serialConnected = true;
+        isSimulatedDevice = true;
+        serialDeviceName = 'ESP32-S3 IoT Module (Simulated)';
+        addSerialLog('sys', `Connected to ${serialDeviceName} at ${serialBaudRate} baud.`);
+        addSerialLog('rx', 'rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)');
+        addSerialLog('rx', 'Techno4 Firmware v2.0.0 (XTENSA-ESP32-S3) ready.');
+      }
+      $update();
+    }
+
+    async function disconnectSerial() {
+      if (serialReader) {
+        try {
+          await serialReader.cancel();
+          serialReader.releaseLock();
+        } catch (e) {}
+        serialReader = null;
+      }
+      if (serialPort) {
+        try {
+          await serialPort.close();
+        } catch (e) {}
+        serialPort = null;
+      }
+      serialConnected = false;
+      addSerialLog('sys', `Serial port disconnected.`);
+      $update();
+    }
+
+    function toggleSimulationMode() {
+      isSimulatedDevice = !isSimulatedDevice;
+      if (isSimulatedDevice) {
+        serialDeviceName = 'ESP32-S3 IoT Module (Simulated)';
+      } else {
+        serialDeviceName = 'Physical WebSerial Port';
+      }
+      addSerialLog('sys', `Switched mode to: ${serialDeviceName}`);
+      $update();
+    }
+
+    async function readSerialStream() {
+      if (!serialPort || !serialPort.readable) return;
+      try {
+        const textDecoder = new TextDecoderStream();
+        const readableStreamClosed = serialPort.readable.pipeTo(textDecoder.writable);
+        serialReader = textDecoder.readable.getReader();
+
+        while (true) {
+          const { value, done } = await serialReader.read();
+          if (done) break;
+          if (value) {
+            addSerialLog('rx', value.trim());
+          }
+        }
+      } catch (err) {
+        console.error('Serial read error:', err);
+      }
+    }
+
+    function sendSerialCommand() {
+      const text = (serialInputText || '').trim();
+      if (!text) return;
+
+      addSerialLog('tx', text);
+      serialInputText = '';
+      const inputEl = document.querySelector('.custom-terminal-input');
+      if (inputEl) inputEl.value = '';
+
+      // Physical WebSerial Write
+      if (serialConnected && serialPort && serialPort.writable && !isSimulatedDevice) {
+        try {
+          const textEncoder = new TextEncoderStream();
+          const writableStreamClosed = textEncoder.readable.pipeTo(serialPort.writable);
+          const writer = textEncoder.writable.getWriter();
+          let lineEnd = '\r\n';
+          if (serialLineEnding === 'LF') lineEnd = '\n';
+          else if (serialLineEnding === 'CR') lineEnd = '\r';
+          else if (serialLineEnding === 'NONE') lineEnd = '';
+
+          writer.write(text + lineEnd);
+          writer.releaseLock();
+        } catch (e) {
+          addSerialLog('sys', `TX Error: ${e.message}`);
+        }
+      }
+
+      // Simulated Hardware Responses
+      if (isSimulatedDevice) {
+        setTimeout(() => {
+          const upper = text.toUpperCase();
+          if (upper === 'AT') {
+            addSerialLog('rx', 'OK');
+          } else if (upper === 'AT+GMR') {
+            addSerialLog('rx', 'AT version:2.4.0.0-techno4(s-4c6eb9e)\nSDK version:v4.4.4\ncompile time:Sep 10 2026\nOK');
+          } else if (upper === 'STATUS') {
+            addSerialLog('rx', '[SYS] Uptime: 4812s | Free Heap: 294816 B | Core: 240MHz | WiFi: CONNECTED (-54dBm)');
+          } else if (upper === 'PING') {
+            addSerialLog('rx', 'PONG (RTT=1.8ms)');
+          } else if (upper === 'SENSORS') {
+            addSerialLog('rx', '[ADC] Temp: 23.8°C | Humidity: 46.5% | Bus Voltage: 3.32V | Current: 74mA');
+          } else if (upper === 'LED:ON') {
+            addSerialLog('rx', '[GPIO] Pin 2 state set to HIGH (LED ON).');
+          } else if (upper === 'LED:OFF') {
+            addSerialLog('rx', '[GPIO] Pin 2 state set to LOW (LED OFF).');
+          } else if (upper === 'HELP') {
+            addSerialLog('rx', 'Supported commands: AT, AT+GMR, STATUS, PING, SENSORS, LED:ON, LED:OFF, CLEAR');
+          } else if (upper === 'CLEAR') {
+            clearSerialLogs();
+          } else {
+            addSerialLog('rx', `ECHO: ${text} [ERR: Unknown command]`);
+          }
+        }, 120);
+      }
+    }
+
+    function sendQuickCommand(cmd) {
+      serialInputText = cmd;
+      sendSerialCommand();
+    }
+
+    function clearSerialLogs() {
+      serialLogs = [];
+      addSerialLog('sys', 'Terminal console cleared.');
+    }
+
+    // ----------------------------------------------------
+    // TAB SWITCHING & LIFECYCLE HOOKS
+    // ----------------------------------------------------
+    function setTab(tab) {
+      activeTab = tab;
+      $update();
+      if (tab === 'synth') {
+        setTimeout(() => startOscilloscope(), 50);
+      }
+    }
+
+    function onKeyDown(e) {
+      if (activeTab !== 'synth') return;
+      if (e.repeat) return;
+      if (keyCharMap[e.code]) {
+        const item = keyCharMap[e.code];
+        playNote(item.note, item.freq);
+      }
+    }
+
+    function onKeyUp(e) {
+      if (activeTab !== 'synth') return;
+      if (keyCharMap[e.code]) {
+        const item = keyCharMap[e.code];
+        stopNote(item.note);
+      }
+    }
+
+    $on('pageInit', () => {
+      if (typeof window !== 'undefined') {
+        window.addEventListener('keydown', onKeyDown);
+        window.addEventListener('keyup', onKeyUp);
+      }
+
+      // Check Total.js Hardware Status
+      if (typeof fetch !== 'undefined') {
+        fetch('/api/hardware/serial')
+          .then((res) => (res.ok ? res.json() : null))
+          .then((data) => {
+            if (data && data.available) {
+              addSerialLog('sys', `Total.js Hardware Bridge detected: ${data.engine || 'Active'}`);
+            }
+          })
+          .catch(() => {});
+      }
+
+      rescanMidi();
+    });
+
+    $on('pageBeforeRemove', () => {
+      // 1. Cancel requestAnimationFrame
+      if (animFrameId && typeof window !== 'undefined') {
+        window.cancelAnimationFrame(animFrameId);
+        animFrameId = null;
+      }
+
+      // 2. Clear Demo Timer
+      if (demoTimerId) {
+        clearInterval(demoTimerId);
+        demoTimerId = null;
+      }
+
+      // 3. Stop and disconnect all audio voices
+      activeVoices.forEach((voice) => {
+        try {
+          voice.osc.stop();
+          voice.osc.disconnect();
+          voice.gain.disconnect();
+        } catch (e) {}
+      });
+      activeVoices.clear();
+
+      // 4. Close Web Audio context
+      if (audioCtx && audioCtx.state !== 'closed') {
+        try {
+          audioCtx.close();
+        } catch (e) {}
+        audioCtx = null;
+      }
+
+      // 5. Close Serial streams & ports
+      if (serialReader) {
+        try {
+          serialReader.cancel();
+          serialReader.releaseLock();
+        } catch (e) {}
+        serialReader = null;
+      }
+      if (serialPort) {
+        try {
+          serialPort.close();
+        } catch (e) {}
+        serialPort = null;
+      }
+
+      // 6. Remove window event listeners
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('keydown', onKeyDown);
+        window.removeEventListener('keyup', onKeyUp);
+      }
+    });
+
+    return $render;
+  };
+</script>

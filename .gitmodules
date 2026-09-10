@@ -1,0 +1,19 @@
+[submodule "packages/techno4-framework2-core"]
+	path = packages/techno4-framework2-core
+	url = git@github.com:CO-CF-TECHNO4/techno4-framework.git
+
+[submodule "packages/techno4-framework2-dom64"]
+	path = packages/techno4-framework2-dom64
+	url = git@github.com:CO-CF-TECHNO4/techno4-framework-dom64.git
+
+[submodule "packages/techno4-framework2-total"]
+	path = packages/techno4-framework2-total
+	url = git@github.com:CO-CF-TECHNO4/techno4-total2.git
+
+[submodule "packages/techno4-framework2-threads"]
+	path = packages/techno4-framework2-threads
+	url = git@github.com:CO-CF-TECHNO4/techno4-threads.git
+
+[submodule "packages/techno4-framework2-rollup"]
+	path = packages/techno4-framework2-rollup
+	url = git@github.com:CO-CF-TECHNO4/techno4-framework-rollup-plugin.git

@@ -1,0 +1,64 @@
+<template>
+  <div class="page no-toolbar login-screen-page">
+    <div class="navbar navbar-transparent">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Back</span>
+          </a>
+        </div>
+        <div class="title">Login Screen</div>
+      </div>
+    </div>
+    <div class="page-content login-screen-content">
+      <div class="login-screen-title">techno4</div>
+      <form>
+        <div class="list">
+          <ul>
+            <li class="item-content item-input item-input-with-value">
+              <div class="item-inner">
+                <div class="item-title item-label">Username</div>
+                <div class="item-input-wrap">
+                  <input type="text" placeholder="Your username" id="demo-username-2" class="input-with-value" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Password</div>
+                <div class="item-input-wrap">
+                  <input type="password" placeholder="Your password" id="demo-password-2" class="" />
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="list">
+          <ul>
+            <li><a href="#" class="list-button" @click=${signIn}>Sign In</a></li>
+          </ul>
+          <div class="block-footer">Some text about login information.<br />Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+<script>
+  export default (props, { $, $t4, $t4router }) => {
+    const signIn = () => {
+      let username = $('input#demo-username-2').val();
+      let password = $('input#demo-password-2').val();
+      $t4.dialog.alert('Username: ' + username + '<br />Password: ' + password, function () {
+        $t4.loginScreen.close();
+        $t4router.back();
+      })
+    }
+
+    return $render;
+  };
+
+</script>

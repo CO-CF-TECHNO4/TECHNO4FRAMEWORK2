@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+*/node_modules/
+*/*/node_modules/
+
+# Production builds
+apps/*/dist/
+*.tgz
+
+# Runtime databases & storage
+databases/
+*/databases/
+*/*/databases/
+*.nosql
+*.nosql-wal
+*.db
+
+# Runtime logs
+logs/
+*/logs/
+*/*/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Threads Studio runtime files
+packages/techno4-framework2-threads/databases/
+packages/techno4-framework2-threads/logs/
+packages/techno4-framework2-threads/flowstream/
+packages/techno4-framework2-threads/index.js.json
+packages/techno4-framework2-threads/index.js.map
+
+# Local isolated site documentation (tracked via separate git repository)
+docs-site/
+.docs/
+
+# Environment & Secret files
+.env
+.env.local
+*.env
+
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE & Editor configurations
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

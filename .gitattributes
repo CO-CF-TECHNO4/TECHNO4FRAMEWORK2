@@ -1,0 +1,14 @@
+﻿# LF line endings enforcement across all platforms
+* text=auto eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.less text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+*.sh text eol=lf
+
+# Windows cmd scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
