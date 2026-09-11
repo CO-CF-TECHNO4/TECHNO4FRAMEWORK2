@@ -9,7 +9,7 @@ const createApp = require(path.join(globalCliPath, 'create/index.js'));
 const exec = require('exec-sh');
 
 const rootDir = path.resolve(__dirname, '..');
-const cliDemosDir = path.join(rootDir, 'cli-demos');
+const cliDemosDir = path.resolve(rootDir, '..', 'cli-demos');
 const docsResDir = path.join(rootDir, 'docs', 'resources', 'cli-demos');
 
 console.log('Target cli-demos dir:', cliDemosDir);
