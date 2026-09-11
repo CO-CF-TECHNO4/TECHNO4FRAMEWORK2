@@ -34,7 +34,8 @@
     "test:boonker": "node ./scripts/test-boonker-components.js",
     "test:total": "node ./scripts/test-total-integration.js",
     "test:threads": "node ./scripts/test-threads-integration.js",
-    "test:hardware": "node ./scripts/test-hardware-integration.js"
+    "test:hardware": "node ./scripts/test-hardware-integration.js",
+    "publish:all": "node ./scripts/publish-all.js"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
