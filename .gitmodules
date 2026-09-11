@@ -14,6 +14,14 @@
 	path = packages/techno4-framework2-threads
 	url = git@github.com:CO-CF-TECHNO4/techno4-threads.git
 
+[submodule "packages/techno4-framework2-threads-components"]
+	path = packages/techno4-framework2-threads-components
+	url = git@github.com:CO-CF-TECHNO4/techno4-theadscomponents.git
+
 [submodule "packages/techno4-framework2-rollup"]
 	path = packages/techno4-framework2-rollup
 	url = git@github.com:CO-CF-TECHNO4/techno4-framework-rollup-plugin.git
+
+[submodule "packages/techno4-framework2-cli"]
+	path = packages/techno4-framework2-cli
+	url = git@github.com:CO-CF-TECHNO4/techno4-framework-cli.git

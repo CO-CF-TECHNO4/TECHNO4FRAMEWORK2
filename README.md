@@ -1,4 +1,4 @@
-# TECHNO4 FRAMEWORK 2
+# TECHNO4 FRAMEWORK2
 
 <div align="center">
 
@@ -12,7 +12,7 @@
 
 ---
 
-### [🇺🇦 Українська](#-techno4-framework-2---українська) &nbsp;|&nbsp; [🇬🇧 English](#-techno4-framework-2---english)
+### [🇺🇦 Українська](#-techno4-framework2---українська) &nbsp;|&nbsp; [🇬🇧 English](#-techno4-framework2---english)
 
 ---
 
@@ -22,12 +22,12 @@
 
 ---
 
-## 🇺🇦 TECHNO4 FRAMEWORK 2 - Українська
+## 🇺🇦 TECHNO4 FRAMEWORK2 - Українська
 
 ### 🎯 Мета проєкту
 > **Вільна ініціатива підтримки сучасних інструментів розробника за підтримки благодійної організації «БЛАГОДІЙНИЙ ФОНД ТЕХНО4» (CO «CF TECHNO4»).**
 
-**TECHNO4 FRAMEWORK 2** — це відкрита, високопродуктивна та незалежна фулстек-платформа, орієнтована на розробку мобільних, десктопних і вбудованих веб-застосунків, а також промислових рішень та апаратних контролерів (Serial, MIDI, Web Audio).
+**TECHNO4 FRAMEWORK2** — це відкрита, високопродуктивна та незалежна фулстек-платформа, орієнтована на розробку мобільних, десктопних і вбудованих веб-застосунків, а також промислових рішень та апаратних контролерів (Serial, MIDI, Web Audio).
 
 ---
 
@@ -39,11 +39,12 @@
 | :--- | :--- | :--- | :--- |
 | **`techno4`** | `packages/techno4-framework2-core` | Реактивне UI-ядро, Snabbdom VDOM, єдина тема Techno4, роутер, Store, Web Components | [techno4-framework](https://github.com/CO-CF-TECHNO4/techno4-framework) |
 | **`dom64`** | `packages/techno4-framework2-dom64` | Швидка, ультралегка бібліотека маніпуляції DOM та вибірок | [techno4-framework-dom64](https://github.com/CO-CF-TECHNO4/techno4-framework-dom64) |
-| **`techno4-total`** | `packages/techno4-framework2-total` | Headless бекенд-рушій Total.js v5, апаратні підсистеми (Serial COM, Rust Web Audio, MIDI), NoSQL, REST/WebSocket | [techno4-total2](https://github.com/CO-CF-TECHNO4/techno4-total2) |
-| **`techno4-threads`** | `packages/techno4-framework2-threads` | Візуальний студійний рушій потоків даних і автоматизації FlowStream | [techno4-threads](https://github.com/CO-CF-TECHNO4/techno4-threads) |
+| **`techno4-total`** | `packages/techno4-framework2-total` | Headless бекенд-рушій для Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT | [techno4-total2](https://github.com/CO-CF-TECHNO4/techno4-total2) |
+| **`techno4-threads`** | `packages/techno4-framework2-threads` | Візуальний редактор для створення та керування сервісами Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT | [techno4-threads](https://github.com/CO-CF-TECHNO4/techno4-threads) |
+| **`techno4-threads-components`** | `packages/techno4-framework2-threads-components` | Бібліотека вузлів та компонентів FlowStream для Threads Studio | [techno4-theadscomponents](https://github.com/CO-CF-TECHNO4/techno4-theadscomponents) |
 | **`rollup-plugin-techno4`** | `packages/techno4-framework2-rollup` | Плагін для Rollup та Vite для компіляції Single-File Components (`.t4.html`, `.t4`) | [techno4-framework-rollup-plugin](https://github.com/CO-CF-TECHNO4/techno4-framework-rollup-plugin) |
-| **`boonker`** | `apps/boonker` | Флагманська студія демонстрації компонентів (111 верифікованих сторінок, Hardware Studio, Threads) | Включено в монорепо |
-| **`techno4-cli`** | Зовнішній інструмент | CLI-утиліта для генерації та скафолдингу проектів з веб-інтерфейсом | [techno4-framework-cli](https://github.com/CO-CF-TECHNO4/techno4-framework-cli) |
+| **`boonker`** | `apps/boonker` | Демонстраційний застоснок для всіх складових TECHNO4 FRAMEWORK2 | Включено в монорепо |
+| **`techno4-cli`** | `packages/techno4-framework2-cli` | Утиліти командного рядка TECHNO4 FRAMEWORK2 | [techno4-framework-cli](https://github.com/CO-CF-TECHNO4/techno4-framework-cli) |
 
 ---
 
@@ -87,7 +88,7 @@ Boonker — це інтерактивне середовище розробки 
 
 ### 🛠 Створення застосунку із шаблону за допомогою CLI
 
-Для швидкого створення нового проекту на базі Techno4 Framework 2 використовуйте **`techno4-cli`**:
+Для швидкого створення нового проекту на базі **TECHNO4 FRAMEWORK2** використовуйте **`techno4-cli`**:
 
 ```bash
 # Швидкий запуск через npx
@@ -125,12 +126,12 @@ t4 create
 
 ---
 
-## 🇬🇧 TECHNO4 FRAMEWORK 2 - English
+## 🇬🇧 TECHNO4 FRAMEWORK2 - English
 
 ### 🎯 Project Mission
 > **A free initiative supporting modern developer tools, supported by the charitable organization "CO «CF TECHNO4»" (благодійна організація «БЛАГОДІЙНИЙ ФОНД ТЕХНО4»).**
 
-**TECHNO4 FRAMEWORK 2** is an open-source, high-performance, independent fullstack ecosystem designed for mobile, desktop, and embedded web applications, as well as industrial control systems and hardware interfacing (Serial COM, MIDI, Web Audio).
+**TECHNO4 FRAMEWORK2** is an open-source, high-performance, independent fullstack ecosystem designed for mobile, desktop, and embedded web applications, as well as industrial control systems and hardware interfacing (Serial COM, MIDI, Web Audio).
 
 ---
 
@@ -142,11 +143,12 @@ The project is architected as a meta-repository using **Git Submodules** and **n
 | :--- | :--- | :--- | :--- |
 | **`techno4`** | `packages/techno4-framework2-core` | Reactive UI core, Snabbdom VDOM, Unified Techno4 theme, router, Store, Web Components | [techno4-framework](https://github.com/CO-CF-TECHNO4/techno4-framework) |
 | **`dom64`** | `packages/techno4-framework2-dom64` | Fast, ultra-lightweight DOM manipulation and selector engine | [techno4-framework-dom64](https://github.com/CO-CF-TECHNO4/techno4-framework-dom64) |
-| **`techno4-total`** | `packages/techno4-framework2-total` | Headless Total.js v5 engine, hardware subsystems (Serial COM, Rust Web Audio, MIDI), NoSQL, REST/WebSocket | [techno4-total2](https://github.com/CO-CF-TECHNO4/techno4-total2) |
-| **`techno4-threads`** | `packages/techno4-framework2-threads` | Visual FlowStream data pipeline and IoT automation studio | [techno4-threads](https://github.com/CO-CF-TECHNO4/techno4-threads) |
+| **`techno4-total`** | `packages/techno4-framework2-total` | Headless backend engine for Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT | [techno4-total2](https://github.com/CO-CF-TECHNO4/techno4-total2) |
+| **`techno4-threads`** | `packages/techno4-framework2-threads` | Visual editor for creating and managing Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT services | [techno4-threads](https://github.com/CO-CF-TECHNO4/techno4-threads) |
+| **`techno4-threads-components`** | `packages/techno4-framework2-threads-components` | FlowStream node and component library for Threads Studio | [techno4-theadscomponents](https://github.com/CO-CF-TECHNO4/techno4-theadscomponents) |
 | **`rollup-plugin-techno4`** | `packages/techno4-framework2-rollup` | Rollup and Vite plugin for compiling Single-File Components (`.t4.html`, `.t4`) | [techno4-framework-rollup-plugin](https://github.com/CO-CF-TECHNO4/techno4-framework-rollup-plugin) |
-| **`boonker`** | `apps/boonker` | Flagship showcase application (111 verified components, Hardware Studio, Threads Studio) | Included in monorepo |
-| **`techno4-cli`** | External tool | Command-line utility for scaffolding new applications with an interactive Web UI | [techno4-framework-cli](https://github.com/CO-CF-TECHNO4/techno4-framework-cli) |
+| **`boonker`** | `apps/boonker` | Showcase application for all components of TECHNO4 FRAMEWORK2 | Included in monorepo |
+| **`techno4-cli`** | `packages/techno4-framework2-cli` | Command-line utilities for TECHNO4 FRAMEWORK2 | [techno4-framework-cli](https://github.com/CO-CF-TECHNO4/techno4-framework-cli) |
 
 ---
 
@@ -213,7 +215,7 @@ Features:
 Visit the official documentation portal:  
 👉 **[https://techno4.online/надбання/фреймворк](https://techno4.online/%D0%BD%D0%B0%D0%B4%D0%B1%D0%B0%D0%BD%D0%BD%D1%8F/%D1%84%D1%80%D0%B5%D0%B9%D0%BC%D0%B2%D0%BE%D1%80%D0%BA)**
 
-> Ukrainian translations from the first version of the framework are actively being adapted and synced with Techno4 Framework 2 architecture. An isolated `docs-site/` directory is prepared for API-based content management.
+> Ukrainian translations from the first version of the framework are actively being adapted and synced with **TECHNO4 FRAMEWORK2** architecture. An isolated `docs-site/` directory is prepared for API-based content management.
 
 ---
 
