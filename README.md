@@ -117,7 +117,8 @@ t4 create
 
 ### ⚖️ Ліцензія та права
 Вихідний код поширюється за ліцензією **LGPL-3.0-or-later**.  
-Підтримується та поширюється **благодійною організацією «БЛАГОДІЙНИЙ ФОНД ТЕХНО4»** (`CO «CF TECHNO4»`, email: `office@techno4.online`).  
+Підтримується та поширюється **благодійною організацією «БЛАГОДІЙНИЙ ФОНД ТЕХНО4»** (`CO «CF TECHNO4»`).  
+Автор: **Mykola Zghurskyi** (`mykola@techno4.online`).  
 Проєкт містить адаптовані компоненти із відкритих проектів ліцензії MIT (Framework7, Total.js, FlowStream).
 
 <br>
@@ -219,5 +220,6 @@ Visit the official documentation portal:
 ### ⚖️ License & Legal Attribution
 
 Distributed under the **LGPL-3.0-or-later** license.  
-Maintained and published by **CO «CF TECHNO4»** (`благодійна організація «БЛАГОДІЙНИЙ ФОНД ТЕХНО4»`, email: `office@techno4.online`).  
+Maintained and published by **CO «CF TECHNO4»** (`благодійна організація «БЛАГОДІЙНИЙ ФОНД ТЕХНО4»`).  
+Author: **Mykola Zghurskyi** (`mykola@techno4.online`).  
 Contains derivative work from open-source MIT projects (Framework7, Total.js, FlowStream).

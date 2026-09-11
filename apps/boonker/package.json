@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "license": "LGPL-3.0-or-later",
-  "author": "CO «CF TECHNO4» <office@techno4.online>",
+  "author": "Mykola Zghurskyi <mykola@techno4.online>",
   "type": "module",
   "scripts": {
     "dev": "vite",
