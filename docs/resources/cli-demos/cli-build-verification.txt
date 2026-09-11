@@ -1,0 +1,31 @@
+================================================================================
+  TECHNO4 FRAMEWORK2 — ПЕРЕВІРКА ЗБІРКИ ПРОЄКТУ (BUILD VERIFICATION)
+================================================================================
+
+$ cd cli-demos
+$ npm run build
+
+> techno4-tabs-cordova-android@1.0.0 build
+> cross-env NODE_ENV=production vite build
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+computing gzip size...
+www/index.html                              1.23 kB │ gzip:   0.69 kB
+www/assets/material-icons-kAwBdRge.woff2  128.35 kB
+www/assets/material-icons-Dr0goTwe.woff   164.91 kB
+www/assets/index-DRgZnHvN.css             520.17 kB │ gzip:  75.00 kB
+www/assets/index-1z1g1sRE.js              840.63 kB │ gzip: 220.50 kB
+
+✓ built in 4.84s
+
+================================================================================
+  ВЕРИФІКАЦІЯ ВИХІДНИХ ФАЙЛІВ У www/
+================================================================================
+- www/index.html                     [OK] Головна HTML сторінка застосунку
+- www/assets/index-DRgZnHvN.css      [OK] CSS-бандл (Techno4 Core + Tabs theme)
+- www/assets/index-1z1g1sRE.js       [OK] JS-бандл (Techno4 Core + VDOM + Router)
+- www/assets/material-icons-*.woff2  [OK] Вбудовані веб-шрифти Material Icons
+- cordova/platforms/android/         [OK] Готовий Cordova Android проєкт з плагінами
