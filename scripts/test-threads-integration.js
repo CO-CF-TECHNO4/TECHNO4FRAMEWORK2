@@ -10,7 +10,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 const THREADS_PKG = path.resolve(ROOT_DIR, 'packages/techno4-framework2-threads');
-const BOONKER_DIR = path.resolve(ROOT_DIR, 'apps/boonker');
+const BOONKER_DIR = fs.existsSync(path.resolve(ROOT_DIR, 'apps/techno4-framework2-boonker'))
+  ? path.resolve(ROOT_DIR, 'apps/techno4-framework2-boonker')
+  : path.resolve(ROOT_DIR, 'apps/boonker');
 
 const ANSI = {
   reset: '\x1b[0m',
@@ -82,7 +84,7 @@ async function runTests() {
   // TEST 2: Boonker App Route & Page Integration
   console.log('\n' + ANSI.bold + '[Test 2] Boonker Page & Route Registration' + ANSI.reset);
   const threadsPagePath = path.join(BOONKER_DIR, 'pages/threads.html');
-  assert(fs.existsSync(threadsPagePath), 'apps/boonker/pages/threads.html exists');
+  assert(fs.existsSync(threadsPagePath), 'threads.html exists');
 
   const threadsPageContent = fs.readFileSync(threadsPagePath, 'utf8');
   assert(threadsPageContent.includes('class="page page-threads"'), 'threads.html has page-threads class');

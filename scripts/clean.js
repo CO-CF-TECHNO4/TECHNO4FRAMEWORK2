@@ -18,7 +18,7 @@ const targetsToRemove = [
   path.join(ROOT_DIR, 'packages/techno4-framework2-dom64/package'),
 
   // Boonker dist
-  path.join(ROOT_DIR, 'apps/boonker/dist'),
+  path.join(ROOT_DIR, 'apps/techno4-framework2-boonker/dist'),
 
   // Root temporary databases and logs
   path.join(ROOT_DIR, 'databases'),

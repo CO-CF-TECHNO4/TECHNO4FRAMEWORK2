@@ -31,7 +31,9 @@ import htm from 'htm';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
-const BOONKER_DIR = path.join(ROOT_DIR, 'apps', 'boonker');
+const BOONKER_DIR = fs.existsSync(path.join(ROOT_DIR, 'apps', 'techno4-framework2-boonker'))
+  ? path.join(ROOT_DIR, 'apps', 'techno4-framework2-boonker')
+  : path.join(ROOT_DIR, 'apps', 'boonker');
 const PAGES_DIR = path.join(BOONKER_DIR, 'pages');
 const ROUTES_FILE = path.join(BOONKER_DIR, 'js', 'routes.js');
 

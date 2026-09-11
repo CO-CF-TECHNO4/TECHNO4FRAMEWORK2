@@ -35,7 +35,7 @@
 
 Проєкт організовано як мета-репозиторій на базі **Git Submodules** та **npm Workspaces**:
 
-| Пакунок | Директорія | Опис | Репозиторій |
+| Пакунок / Застосунок | Директорія | Опис | Репозиторій |
 | :--- | :--- | :--- | :--- |
 | **`techno4`** | `packages/techno4-framework2-core` | Реактивне UI-ядро, Snabbdom VDOM, єдина тема Techno4, роутер, Store, Web Components | [techno4-framework](https://github.com/CO-CF-TECHNO4/techno4-framework) |
 | **`dom64`** | `packages/techno4-framework2-dom64` | Швидка, ультралегка бібліотека маніпуляції DOM та вибірок | [techno4-framework-dom64](https://github.com/CO-CF-TECHNO4/techno4-framework-dom64) |
@@ -43,8 +43,8 @@
 | **`techno4-threads`** | `packages/techno4-framework2-threads` | Візуальний редактор для створення та керування сервісами Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT | [techno4-threads](https://github.com/CO-CF-TECHNO4/techno4-threads) |
 | **`techno4-threads-components`** | `packages/techno4-framework2-threads-components` | Бібліотека вузлів та компонентів FlowStream для Threads Studio | [techno4-theadscomponents](https://github.com/CO-CF-TECHNO4/techno4-theadscomponents) |
 | **`rollup-plugin-techno4`** | `packages/techno4-framework2-rollup` | Плагін для Rollup та Vite для компіляції Single-File Components (`.t4.html`, `.t4`) | [techno4-framework-rollup-plugin](https://github.com/CO-CF-TECHNO4/techno4-framework-rollup-plugin) |
-| **`boonker`** | `apps/boonker` | Демонстраційний застоснок для всіх складових TECHNO4 FRAMEWORK2 | Включено в монорепо |
 | **`techno4-cli`** | `packages/techno4-framework2-cli` | Утиліти командного рядка TECHNO4 FRAMEWORK2 | [techno4-framework-cli](https://github.com/CO-CF-TECHNO4/techno4-framework-cli) |
+| **`boonker`** | `apps/techno4-framework2-boonker` | Демонстраційний застоснок для всіх складових TECHNO4 FRAMEWORK2 | Включено в монорепо |
 
 ---
 
@@ -139,7 +139,7 @@ t4 create
 
 The project is architected as a meta-repository using **Git Submodules** and **npm Workspaces**:
 
-| Package | Path | Description | Repository |
+| Package / Application | Path | Description | Repository |
 | :--- | :--- | :--- | :--- |
 | **`techno4`** | `packages/techno4-framework2-core` | Reactive UI core, Snabbdom VDOM, Unified Techno4 theme, router, Store, Web Components | [techno4-framework](https://github.com/CO-CF-TECHNO4/techno4-framework) |
 | **`dom64`** | `packages/techno4-framework2-dom64` | Fast, ultra-lightweight DOM manipulation and selector engine | [techno4-framework-dom64](https://github.com/CO-CF-TECHNO4/techno4-framework-dom64) |
@@ -147,8 +147,8 @@ The project is architected as a meta-repository using **Git Submodules** and **n
 | **`techno4-threads`** | `packages/techno4-framework2-threads` | Visual editor for creating and managing Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT services | [techno4-threads](https://github.com/CO-CF-TECHNO4/techno4-threads) |
 | **`techno4-threads-components`** | `packages/techno4-framework2-threads-components` | FlowStream node and component library for Threads Studio | [techno4-theadscomponents](https://github.com/CO-CF-TECHNO4/techno4-theadscomponents) |
 | **`rollup-plugin-techno4`** | `packages/techno4-framework2-rollup` | Rollup and Vite plugin for compiling Single-File Components (`.t4.html`, `.t4`) | [techno4-framework-rollup-plugin](https://github.com/CO-CF-TECHNO4/techno4-framework-rollup-plugin) |
-| **`boonker`** | `apps/boonker` | Showcase application for all components of TECHNO4 FRAMEWORK2 | Included in monorepo |
 | **`techno4-cli`** | `packages/techno4-framework2-cli` | Command-line utilities for TECHNO4 FRAMEWORK2 | [techno4-framework-cli](https://github.com/CO-CF-TECHNO4/techno4-framework-cli) |
+| **`boonker`** | `apps/techno4-framework2-boonker` | Showcase application for all components of TECHNO4 FRAMEWORK2 | Included in monorepo |
 
 ---
 

@@ -10,7 +10,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 const TOTAL_PKG = path.resolve(ROOT_DIR, 'packages/techno4-framework2-total');
-const BOONKER_DIR = path.resolve(ROOT_DIR, 'apps/boonker');
+const BOONKER_DIR = fs.existsSync(path.resolve(ROOT_DIR, 'apps/techno4-framework2-boonker'))
+  ? path.resolve(ROOT_DIR, 'apps/techno4-framework2-boonker')
+  : path.resolve(ROOT_DIR, 'apps/boonker');
 
 const ANSI = {
   reset: '\x1b[0m',
