@@ -41,7 +41,7 @@
 | **`dom64`** | `packages/techno4-framework2-dom64` | Швидка, ультралегка бібліотека маніпуляції DOM та вибірок | [techno4-framework-dom64](https://github.com/CO-CF-TECHNO4/techno4-framework-dom64) |
 | **`techno4-total`** | `packages/techno4-framework2-total` | Headless бекенд-рушій для Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT | [techno4-total2](https://github.com/CO-CF-TECHNO4/techno4-total2) |
 | **`techno4-threads`** | `packages/techno4-framework2-threads` | Візуальний редактор для створення та керування сервісами Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT | [techno4-threads](https://github.com/CO-CF-TECHNO4/techno4-threads) |
-| **`techno4-threads-components`** | `packages/techno4-framework2-threads-components` | Бібліотека вузлів та компонентів FlowStream для Threads Studio | [techno4-theadscomponents](https://github.com/CO-CF-TECHNO4/techno4-theadscomponents) |
+| **`techno4-threads-components`** | `packages/techno4-framework2-threads-components` | Бібліотека вузлів та компонентів ThreadsStream для Threads Studio | [techno4-theadscomponents](https://github.com/CO-CF-TECHNO4/techno4-theadscomponents) |
 | **`rollup-plugin-techno4`** | `packages/techno4-framework2-rollup` | Плагін для Rollup та Vite для компіляції Single-File Components (`.t4.html`, `.t4`) | [techno4-framework-rollup-plugin](https://github.com/CO-CF-TECHNO4/techno4-framework-rollup-plugin) |
 | **`techno4-cli`** | `packages/techno4-framework2-cli` | Утиліти командного рядка TECHNO4 FRAMEWORK2 | [techno4-framework-cli](https://github.com/CO-CF-TECHNO4/techno4-framework-cli) |
 | **`boonker`** | `apps/techno4-framework2-boonker` | Демонстраційний застоснок для всіх складових TECHNO4 FRAMEWORK2 | Включено в монорепо |
@@ -50,7 +50,7 @@
 
 ### 🚀 Розгортання Boonker Studio
 
-Boonker — це інтерактивне середовище розробки та демонстрації всіх 111 компонентів фреймворка, апаратних лабораторій та візуальних потоків:
+Boonker — це інтерактивне середовище розробки та демонстрації всіх 111 компонентів фреймворка, апаратних лабораторій та візуальних потоків Threads:
 
 1. **Клонування репозиторію разом із сабмодулями**:
    ```bash
@@ -59,27 +59,63 @@ Boonker — це інтерактивне середовище розробки 
    ```
 
 2. **Встановлення залежностей**:
-   ```bash
-   npm install
-   ```
+   - **Стандартне встановлення (без PM2)**:
+     ```bash
+     npm install
+     ```
+   - **Встановлення з підтримкою менеджера процесів PM2** (рекомендовано для фонового запуску сервера):
+     ```bash
+     npm install
+     npm install -g pm2
+     ```
+     > *Примітка: Менеджер процесів `pm2` встановлюється глобально (`-g`) або може запускатись безпосередньо через скрипти `npm run pm2:*`.*
 
-3. **Запуск у режимі розробки (Fullstack)**:
-   ```bash
-   npm run dev
-   ```
-   *Запускає Vite клієнт на `http://localhost:3000` та бекенд Threads Studio на `http://localhost:8000`.*
+3. **Запуск сервера**:
+   - **Варіант 1: Запуск через PM2 у фоновому режимі (Рекомендовано)**:
+     ```bash
+     # Запуск процесу T4F2
+     npm run pm2:start
+     # або безпосередньо:
+     pm2 start ecosystem.config.cjs
 
-4. **Клієнтський режим (без бекенду)**:
-   ```bash
-   npm run dev:client
-   ```
+     # Перегляд статусу процесів:
+     pm2 list
+     pm2 show T4F2
 
-5. **Збірка всіх бібліотек**:
+     # Перегляд потокових логів:
+     npm run pm2:logs
+     # або:
+     pm2 logs T4F2
+
+     # Перезапуск сервера:
+     npm run pm2:restart
+
+     # Зупинка сервера:
+     npm run pm2:stop
+     ```
+     *Після запуску доступні такі точки входу:*
+     - *Клієнтський інтерфейс (Boonker Studio):* `http://localhost:3000`
+     - *Рушій Threads Studio:* `http://localhost:8008` *(налаштовується змінною `TECHNO4_THREADS_PORT`)*
+     - *Статус підсистеми Threads:* `http://localhost:3000/api/threads/status`
+     - *Апаратний шлюз Serial COM:* `http://localhost:3000/api/hardware/serial`
+
+   - **Варіант 2: Прямий запуск у режимі живої розробки (без PM2)**:
+     ```bash
+     npm run dev
+     ```
+     *Запускає Vite клієнт на `http://localhost:3000` та бекенд Threads Studio у терміналі.*
+
+   - **Варіант 3: Клієнтський режим (без бекенду)**:
+     ```bash
+     npm run dev:client
+     ```
+
+4. **Збірка всіх бібліотек**:
    ```bash
    npm run build
    ```
 
-6. **Запуск автоматизованих тестів (221 тест)**:
+5. **Запуск автоматизованих тестів (221 тест)**:
    ```bash
    npm test
    ```
@@ -120,7 +156,7 @@ t4 create
 Вихідний код поширюється за ліцензією **LGPL-3.0-or-later**.  
 Підтримується та поширюється **благодійною організацією «БЛАГОДІЙНИЙ ФОНД ТЕХНО4»** (`CO «CF TECHNO4»`).  
 Автор: **Mykola Zghurskyi** (`mykola@techno4.online`).  
-Проєкт містить адаптовані компоненти із відкритих проектів ліцензії MIT (Framework7, Total.js, FlowStream).
+Проєкт містить адаптовані компоненти із відкритих проектів ліцензії MIT (Framework7, Total.js, ThreadsStream).
 
 <br>
 
@@ -145,7 +181,7 @@ The project is architected as a meta-repository using **Git Submodules** and **n
 | **`dom64`** | `packages/techno4-framework2-dom64` | Fast, ultra-lightweight DOM manipulation and selector engine | [techno4-framework-dom64](https://github.com/CO-CF-TECHNO4/techno4-framework-dom64) |
 | **`techno4-total`** | `packages/techno4-framework2-total` | Headless backend engine for Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT | [techno4-total2](https://github.com/CO-CF-TECHNO4/techno4-total2) |
 | **`techno4-threads`** | `packages/techno4-framework2-threads` | Visual editor for creating and managing Serial COM, Rust Web Audio, MIDI, NoSQL, REST, WebSocket, MQTT services | [techno4-threads](https://github.com/CO-CF-TECHNO4/techno4-threads) |
-| **`techno4-threads-components`** | `packages/techno4-framework2-threads-components` | FlowStream node and component library for Threads Studio | [techno4-theadscomponents](https://github.com/CO-CF-TECHNO4/techno4-theadscomponents) |
+| **`techno4-threads-components`** | `packages/techno4-framework2-threads-components` | ThreadsStream node and component library for Threads Studio | [techno4-theadscomponents](https://github.com/CO-CF-TECHNO4/techno4-theadscomponents) |
 | **`rollup-plugin-techno4`** | `packages/techno4-framework2-rollup` | Rollup and Vite plugin for compiling Single-File Components (`.t4.html`, `.t4`) | [techno4-framework-rollup-plugin](https://github.com/CO-CF-TECHNO4/techno4-framework-rollup-plugin) |
 | **`techno4-cli`** | `packages/techno4-framework2-cli` | Command-line utilities for TECHNO4 FRAMEWORK2 | [techno4-framework-cli](https://github.com/CO-CF-TECHNO4/techno4-framework-cli) |
 | **`boonker`** | `apps/techno4-framework2-boonker` | Showcase application for all components of TECHNO4 FRAMEWORK2 | Included in monorepo |
@@ -154,7 +190,7 @@ The project is architected as a meta-repository using **Git Submodules** and **n
 
 ### 🚀 Running Boonker Studio
 
-Boonker is an interactive studio and developer sandbox featuring 111 fully tested components, hardware simulators, and visual threads:
+Boonker is an interactive studio and developer sandbox featuring 111 fully tested components, hardware simulators, and visual Threads:
 
 1. **Clone the repository with all submodules**:
    ```bash
@@ -163,27 +199,63 @@ Boonker is an interactive studio and developer sandbox featuring 111 fully teste
    ```
 
 2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+   - **Standard installation (without PM2)**:
+     ```bash
+     npm install
+     ```
+   - **Installation with PM2 process manager** (recommended for persistent background server):
+     ```bash
+     npm install
+     npm install -g pm2
+     ```
+     > *Note: The `pm2` process manager can be installed globally (`-g`) or operated directly via the provided `npm run pm2:*` scripts.*
 
-3. **Start Fullstack Development Environment**:
-   ```bash
-   npm run dev
-   ```
-   *Spawns the Vite client at `http://localhost:3000` and the Threads Studio backend at `http://localhost:8000`.*
+3. **Start the server**:
+   - **Option 1: Run with PM2 in background mode (Recommended)**:
+     ```bash
+     # Launch T4F2 process
+     npm run pm2:start
+     # or directly via PM2:
+     pm2 start ecosystem.config.cjs
 
-4. **Client-Only Development Mode**:
-   ```bash
-   npm run dev:client
-   ```
+     # View process list and status:
+     pm2 list
+     pm2 show T4F2
 
-5. **Build All Distribution Packages**:
+     # Stream process logs:
+     npm run pm2:logs
+     # or:
+     pm2 logs T4F2
+
+     # Restart server:
+     npm run pm2:restart
+
+     # Stop server:
+     npm run pm2:stop
+     ```
+     *Once started, the following endpoints are available:*
+     - *Client UI (Boonker Studio):* `http://localhost:3000`
+     - *Threads Studio Backend:* `http://localhost:8008` *(configurable via `TECHNO4_THREADS_PORT`)*
+     - *Threads Subsystem Status:* `http://localhost:3000/api/threads/status`
+     - *Hardware Serial COM Gateway:* `http://localhost:3000/api/hardware/serial`
+
+   - **Option 2: Live development in terminal (without PM2)**:
+     ```bash
+     npm run dev
+     ```
+     *Launches the Vite client (`http://localhost:3000`) and the Threads Studio backend directly in the terminal.*
+
+   - **Option 3: Client-Only Development Mode**:
+     ```bash
+     npm run dev:client
+     ```
+
+4. **Build All Distribution Packages**:
    ```bash
    npm run build
    ```
 
-6. **Run Full Test Suite (221 passing tests)**:
+5. **Run Full Test Suite (221 passing tests)**:
    ```bash
    npm test
    ```
@@ -224,4 +296,4 @@ Visit the official documentation portal:
 Distributed under the **LGPL-3.0-or-later** license.  
 Maintained and published by **CO «CF TECHNO4»** (`благодійна організація «БЛАГОДІЙНИЙ ФОНД ТЕХНО4»`).  
 Author: **Mykola Zghurskyi** (`mykola@techno4.online`).  
-Contains derivative work from open-source MIT projects (Framework7, Total.js, FlowStream).
+Contains derivative work from open-source MIT projects (Framework7, Total.js, ThreadsStream).

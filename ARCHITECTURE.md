@@ -1,4 +1,4 @@
-﻿# ARCHITECTURE.md - TECHNO4FRAMEWORK2 Architecture Map
+# ARCHITECTURE.md - TECHNO4FRAMEWORK2 Architecture Map
 
 This document serves as the high-level architecture reference for AI agents (Grok, OpenClaw, Antigravity) and developers.
 
@@ -17,7 +17,7 @@ This document serves as the high-level architecture reference for AI agents (Gro
    - Total.js v5 without jComponent or Tangular server UI rendering.
    - Provides Total Actions, Schemas, and high-performance WebSocket/SSE transport.
 3. **Dataflow Engine (`packages/techno4-framework2-threads`)**:
-   - Rebranded and customized Total.js Flow v11 (FlowStream).
+   - Rebranded and customized Total.js Threads v11 (ThreadsStream).
    - Visual node-based event pipelines and IoT signal processing.
    - Transitioning UI rendering from legacy jComponent to Techno4 Core.
 4. **DOM Manipulation (`packages/techno4-framework2-dom64`)**:
@@ -27,9 +27,9 @@ This document serves as the high-level architecture reference for AI agents (Gro
    - Modern Rollup/Vite plugins for `.techno4` single-file components.
 
 ## 3. Applications
-- **Boonker (`apps/boonker`)**:
-  - Main showcase and development application built with Vite.
-  - Hosts **Threads Studio** as an integrated View tab (`apps/boonker/src/views/threads/`).
+- **Boonker (`apps/techno4-framework2-boonker`)**:
+   - Main showcase and development application built with Vite.
+   - Hosts **Threads Studio** as an integrated View tab (`apps/techno4-framework2-boonker/pages/threads.html`).
 
 ## 4. Key Namespaces & Identifiers
 - Global Object: `Techno4` (formerly `Framework7`)

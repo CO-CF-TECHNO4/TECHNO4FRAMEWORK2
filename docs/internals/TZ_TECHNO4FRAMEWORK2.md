@@ -1,4 +1,4 @@
-﻿# ТЕХНІЧНЕ ЗАВДАННЯ: TECHNO4FRAMEWORK2 (v2.0)
+# ТЕХНІЧНЕ ЗАВДАННЯ: TECHNO4FRAMEWORK2 (v2.0)
 
 ## 1. Загальний опис та мета проєкту
 
@@ -10,7 +10,7 @@
 1. **Клієнтське ядро (Techno4 Core)**: на базі імпорту свіжого ядра **Framework7 (v9)** у неймспейсі **`techno4`**, очищене від сторонніх фреймворків (React/Vue/Svelte).
 2. **Збереження та аудит наявних тем (iOS та MD)**: теми iOS та Material **не випилюються поспіхом**, а залишаються в кодовій базі як джерело механік та стилів. Формується поетапний план синтезу власної теми **Techno4 Theme**.
 3. **Серверна частина (Headless Total.js v5 Backend)**: екосистема **Total.js v5** (`techno4-framework2-total`) без власної промальовки UI (jComponent / Tangular). Рендерингом 100% інтерфейсу займається Techno4 Core.
-4. **Візуальний подієвий рушій (Dataflow Engine)**: **`techno4-framework2-threads`** — перейменований та інтегрований рушій **Total.js Flow v11 (FlowStream)**.
+4. **Візуальний подієвий рушій (Dataflow Engine)**: **`techno4-framework2-threads`** — перейменований та інтегрований рушій **Total.js Threads v11 (ThreadsStream)**.
 
 Всі вихідні коди, структура модулів та інструменти розробки нового покоління розміщуються у новому підкаталозі кореня проєкту:  
 📁 `/TECHNO4FRAMEWORK2`
@@ -71,7 +71,7 @@
 ---
 
 ### 2.6. Threads Studio як View всередині Boonker
-* Рушій **`techno4-framework2-threads`** (адаптований Flow v11) інтегрується в головний застосунок `apps/boonker`.
+* Рушій **`techno4-framework2-threads`** (адаптований Threads v11) інтегрується в головний застосунок `apps/techno4-framework2-boonker`.
 * **Threads Studio** реалізується як **окремий View (панель/вкладка)** усередині Boonker.
 * **Перехідний стан**: полотно Threads на першому етапі зберігає поточні елементи, з подальшим поступовим переписуванням нод на рендерер Techno4 Core.
 
@@ -108,12 +108,12 @@ TECHNO4FRAMEWORK2/
 │   ├── techno4-framework2-cli/    # Консольна утиліта t4 (UI повністю на Techno4 Core)
 │   ├── techno4-framework2-rollup/ # Плагін компіляції компонентів для Rollup / Vite
 │   ├── techno4-framework2-total/  # Headless Total.js v5 адаптер (Actions, Schemas, WS)
-│   └── techno4-framework2-threads/# Перейменований рушій Total.js Flow v11 (FlowStream)
+│   └── techno4-framework2-threads/# Перейменований рушій Total.js Threads v11 (ThreadsStream)
 │
 ├── apps/
-│   └── boonker/                   # Головний демонстраційний та робочий застосунок:
-│       ├── src/pages/             # Демо всіх UI-компонентів Techno4 Core
-│       └── src/views/threads/     # Threads Studio, інтегрований як окремий View усередині Boonker
+│   └── techno4-framework2-boonker/# Головний демонстраційний та робочий застосунок:
+│       ├── pages/                 # Демо всіх UI-компонентів Techno4 Core
+│       └── pages/threads.html     # Threads Studio, інтегрований усередині Boonker
 │
 └── scripts/                       # Кросплатформні Node.js скрипти збірки та міграції
     ├── migrate-core.js            # Скрипт автоматичного переносу та неймінгу з Framework7

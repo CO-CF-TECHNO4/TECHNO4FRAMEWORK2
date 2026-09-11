@@ -8,7 +8,7 @@
 Початковий код складових частин системи розроблявся як вільне програмне забезпечення під ліцензією MIT:
 - **Framework7** (клієнтське мобільне та веб-ядро інтерфейсу) — https://github.com/framework7io/framework7
 - **Total.js** (серверний JavaScript рушій, середовище схем та дій) — https://github.com/totaljs/framework5 та https://github.com/totaljs/framework
-- **FlowStream / Flow** (середовище візуального проєктування потоків та IoT) — https://github.com/totaljs/flow
+- **ThreadsStream / Threads** (середовище візуального проєктування потоків та IoT) — https://github.com/totaljs/flow
 
 ### Підтримка та поширення:
 Наразі система підтримуватиметься і поширюватиметься:
