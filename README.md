@@ -145,10 +145,10 @@ t4 create
 
 ### 📚 Офіційна документація
 
-Офіційний розділ документації Techno4 Framework доступний на порталі організації:
-👉 **[https://techno4.online/надбання/фреймворк](https://techno4.online/%D0%BD%D0%B0%D0%B4%D0%B1%D0%B0%D0%BD%D0%BD%D1%8F/%D1%84%D1%80%D0%B5%D0%B9%D0%BC%D0%B2%D0%BE%D1%80%D0%BA)**
+Офіційний розділ повноцінної документації TECHNO4 FRAMEWORK 2.0 доступний на порталі:
+👉 **[https://techno4.online/techno4-framework2](https://techno4.online/techno4-framework2)**
 
-> **Зверніть увагу**: Велика частина документації, що створювалася для першої версії фреймворка, повністю перекладена українською мовою. Наразі триває процес адаптації та синхронізації матеріалів під архітектуру версії 2.0. Для синхронізації статей через API створено локальну секцію `docs-site/`.
+> **Зверніть увагу**: Повна документація з усіма 87+ компонентами, апаратними студіями (Web Audio, MIDI, Serial), рушієм Threads Studio та інструментами компіляції синхронізована та доступна українською мовою. Для автоматизованої взаємодії із сайтом та CMS YOOtheme використовується локальний інструментарій `docs-site/`.
 
 ---
 
@@ -283,11 +283,11 @@ Features:
 ---
 
 ### 📚 Official Documentation
-
+ 
 Visit the official documentation portal:  
-👉 **[https://techno4.online/надбання/фреймворк](https://techno4.online/%D0%BD%D0%B0%D0%B4%D0%B1%D0%B0%D0%BD%D0%BD%D1%8F/%D1%84%D1%80%D0%B5%D0%B9%D0%BC%D0%B2%D0%BE%D1%80%D0%BA)**
+👉 **[https://techno4.online/techno4-framework2](https://techno4.online/techno4-framework2)**
 
-> Ukrainian translations from the first version of the framework are actively being adapted and synced with **TECHNO4 FRAMEWORK2** architecture. An isolated `docs-site/` directory is prepared for API-based content management.
+> Complete Ukrainian documentation covering all 87+ components, hardware integration studios (Web Audio, MIDI, Serial UART), Threads Studio visual workflows, and compiler tools is fully synced and live. The local `docs-site/` package provides automated bidirectional synchronization with YOOtheme Pro CMS.
 
 ---
 
