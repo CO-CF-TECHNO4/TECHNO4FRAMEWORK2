@@ -1,6 +1,6 @@
 {
   "name": "techno4-framework2-boonker",
-  "version": "2.0.0",
+  "version": "2.0.4",
   "private": true,
   "license": "LGPL-3.0-or-later",
   "author": "Mykola Zghurskyi <mykola@techno4.online>",
@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "techno4": "^2.0.0"
+    "techno4": "^2.0.4"
   },
   "devDependencies": {
     "vite": "^5.4.0"
