@@ -12,7 +12,7 @@
 
 ---
 
-### [🇺🇦 Українська](#-techno4-framework2---українська) &nbsp;|&nbsp; [🇬🇧 English](#-techno4-framework2---english)
+### [uk_UA](#uk_ua) &nbsp;|&nbsp; [en_GB](#en_gb)
 
 ---
 
@@ -22,10 +22,10 @@
 
 ---
 
-## 🇺🇦 TECHNO4 FRAMEWORK2 - Українська
+## uk_UA
 
 ### 🎯 Мета проєкту
-> **Вільна ініціатива підтримки сучасних інструментів розробника за підтримки благодійної організації «БЛАГОДІЙНИЙ ФОНД ТЕХНО4» (CO «CF TECHNO4»).**
+> **Вільна ініціатива розвитку сучасних інструментів розробника за підтримки благодійної організації «БЛАГОДІЙНИЙ ФОНД ТЕХНО4» (CO «CF TECHNO4»).**
 
 **TECHNO4 FRAMEWORK2** — це відкрита, високопродуктивна та незалежна фулстек-платформа, орієнтована на розробку мобільних, десктопних і вбудованих веб-застосунків, а також промислових рішень та апаратних контролерів (Serial, MIDI, Web Audio).
 
@@ -162,10 +162,10 @@ t4 create
 
 ---
 
-## 🇬🇧 TECHNO4 FRAMEWORK2 - English
+## en_GB
 
 ### 🎯 Project Mission
-> **A free initiative supporting modern developer tools, supported by the charitable organization "CO «CF TECHNO4»" (благодійна організація «БЛАГОДІЙНИЙ ФОНД ТЕХНО4»).**
+> **A free initiative fostering modern developer tools, supported by the charitable organization "CO «CF TECHNO4»" (благодійна організація «БЛАГОДІЙНИЙ ФОНД ТЕХНО4»).**
 
 **TECHNO4 FRAMEWORK2** is an open-source, high-performance, independent fullstack ecosystem designed for mobile, desktop, and embedded web applications, as well as industrial control systems and hardware interfacing (Serial COM, MIDI, Web Audio).
 
