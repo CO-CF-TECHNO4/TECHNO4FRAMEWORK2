@@ -1,0 +1,305 @@
+<h2>Радіо</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет застосунку Радіо</a>
+
+    </li>
+        <li>
+        
+<div>Радіогрупа/список</div>
+
+<p>Позиція значка радіо</p>
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Макет застосунку Радіо</h3>
+<div>Макет застосунку Радіо досить простий:</div>
+<pre><code>&lt;!-- Елемент радіо --&gt;
+&lt;label class=&quot;radio&quot;&gt;
+  &lt;!-- Поле введення даних радіо --&gt;
+  &lt;input type=&quot;radio&quot; /&gt;
+  &lt;!-- Іконка радіо --&gt;
+  &lt;i class=&quot;icon-radio&quot;&gt;&lt;/i&gt;
+&lt;/label&gt;</code></pre>
+<h3>Радіогрупа/список</h3>
+<div>Щоб створити радіогрупу/список, нам потрібно використовувати <code>List View</code> з кількома доповненнями:
+</div>
+<pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    &lt;!-- Одиночний пункт радіо --&gt;
+    &lt;li&gt;
+      &lt;label class=&quot;item-radio item-content&quot;&gt;
+        &lt;!-- Поле введення даних радіо --&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;my-radio&quot; value=&quot;radio-1&quot; /&gt;
+        &lt;!-- Іконка радіо  --&gt;
+        &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+        &lt;div class=&quot;item-inner&quot;&gt;
+          &lt;!-- Заголовок радіо --&gt;
+          &lt;div class=&quot;item-title&quot;&gt;Books&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/label&gt;
+    &lt;/li&gt;
+    &lt;!-- Інший примірник радіо --&gt;
+    &lt;li&gt;
+      &lt;label class=&quot;item-radio item-content&quot;&gt;
+        &lt;!-- Відмічено за замовчуванням --&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;my-radio&quot; value=&quot;radio-2&quot; checked /&gt;
+        &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+        &lt;div class=&quot;item-inner&quot;&gt;
+          &lt;div class=&quot;item-title&quot;&gt;Music&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/label&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<div><code>item-content</code> має бути <code>&lt;label&gt;</code> елементом із додатковим класом <code>item-radio</code>
+<p>Поле введення даних радіо (<code>&lt;input type="radio" /&gt;</code>) має бути першим дочірнім елементом <code>item-content</code></p>
+<p>Піктограма радіо має бути <b>після</b> поля  введення даних радіо!</p>
+</div>
+<h4>Позиція значка радіо</h4>
+<div>За замовчуванням піктограма елемента списку радіостанцій відображається в кінці елемента списку в темі iOS і на початку елемента списку в темі MD. 
+<p>Також можна змінити цю поведінку, щоб вказати положення піктограми елемента списку радіостанцій - на початку або в кінці елемента списку.
+Для цього нам потрібно додати додатковий <code>item-radio-icon-start</code> або <code>item-radio-icon-end</code> клас до <code>item-radio</code>:</p>
+</div>
+<pre><code>&lt;!-- Додатковий клас «item-radio-icon-start» змусить піктограму радіо відображатися на початку елемента списку для всіх тем --&gt;
+&lt;li&gt;
+  &lt;!-- Додатковий клас &quot;item-radio-icon-start&quot; --&gt;
+  &lt;label class=&quot;item-radio item-radio-icon-start item-content&quot;&gt;
+    &lt;!-- Поле введення даних радіо  --&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;my-radio&quot; value=&quot;radio-1&quot; /&gt;
+    &lt;!-- Іконка радіо --&gt;
+    &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+    &lt;div class=&quot;item-inner&quot;&gt;
+      &lt;!-- Заголовок радіо --&gt;
+      &lt;div class=&quot;item-title&quot;&gt;Books&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/label&gt;
+&lt;/li&gt;
+
+&lt;!-- 
+Додатковий клас «item-radio-icon-end» змусить піктограму радіо відображатися в кінці елемента списку для всіх тем
+ --&gt;
+&lt;li&gt;
+  &lt;!-- Додатковий клас &quot;item-radio-icon-end&quot; --&gt;
+  &lt;label class=&quot;item-radio item-radio-icon-end item-content&quot;&gt;
+    &lt;!-- Поле введення даних радіо --&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;my-radio&quot; value=&quot;radio-1&quot; /&gt;
+    &lt;!-- Іконка радіо --&gt;
+    &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+    &lt;div class=&quot;item-inner&quot;&gt;
+      &lt;!-- Заголовок радіо--&gt;
+      &lt;div class=&quot;item-title&quot;&gt;Books&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/label&gt;
+&lt;/li&gt;</code></pre>
+<h3>Змінні CSS </h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).
+</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  /*
+  --t4-radio-active-color: var(--t4-theme-color);
+  */
+  --t4-radio-border-radius: 50%;
+  --t4-radio-extra-margin: 0px;
+}
+:root .dark,
+:root.dark {
+  --t4-radio-inactive-color: rgba(255, 255, 255, 0.3);
+}
+.ios {
+  --t4-radio-size: 22px;
+  --t4-radio-border-width: 1px;
+  --t4-radio-inactive-color: #c7c7cc;
+}
+.md {
+  --t4-radio-size: 20px;
+  --t4-radio-border-width: 2px;
+  --t4-radio-inactive-color: #6d6d6d;
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+      &lt;div class=&quot;title&quot;&gt;Radio&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;div class=&quot;block-title&quot;&gt;Inline&lt;/div&gt;
+    &lt;div class=&quot;block block-strong-ios block-outline-ios&quot;&gt;
+      &lt;p&gt;Lorem &lt;label class=&quot;radio&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;demo-radio-inline&quot;&gt;&lt;i class=&quot;icon-radio&quot;&gt;&lt;/i&gt;&lt;/label&gt;
+        ipsum dolor sit amet, consectetur adipisicing elit. Alias beatae illo nihil aut eius commodi sint eveniet
+        aliquid eligendi &lt;label class=&quot;radio&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;demo-radio-inline&quot;&gt;&lt;i
+            class=&quot;icon-radio&quot;&gt;&lt;/i&gt;&lt;/label&gt; ad delectus impedit tempore nemo, enim vel praesentium consequatur nulla
+        mollitia!&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-title&quot;&gt;Radio Group&lt;/div&gt;
+    &lt;div class=&quot;list list-strong-ios list-outline-ios list-dividers-ios&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-start item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-radio-start&quot; value=&quot;Books&quot; checked /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title&quot;&gt;Books&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-start item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-radio-start&quot; value=&quot;Movies&quot; /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title&quot;&gt;Movies&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-start item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-radio-start&quot; value=&quot;Food&quot; /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title&quot;&gt;Food&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-start item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-radio-start&quot; value=&quot;Drinks&quot; /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title&quot;&gt;Drinks&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;list list-strong-ios list-outline-ios list-dividers-ios&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-end item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-radio-end&quot; value=&quot;Books&quot; checked /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title&quot;&gt;Books&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-end item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-radio-end&quot; value=&quot;Movies&quot; /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title&quot;&gt;Movies&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-end item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-radio-end&quot; value=&quot;Food&quot; /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title&quot;&gt;Food&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-end item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-radio-end&quot; value=&quot;Drinks&quot; /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title&quot;&gt;Drinks&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-title&quot;&gt;With Media Lists&lt;/div&gt;
+    &lt;div class=&quot;list media-list list-strong-ios list-outline-ios list-dividers-ios&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-start item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-media-radio&quot; value=&quot;1&quot; checked /&gt;
+            &lt;i class=&quot;icon icon-radio&quot; checked&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Facebook&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;17:14&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;New messages from John Doe&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut
+                turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit
+                amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In
+                vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-start item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-media-radio&quot; value=&quot;2&quot; /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;John Doe (via Twitter)&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;17:11&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;John Doe (@_johndoe) mentioned you on Twitter!&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut
+                turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit
+                amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In
+                vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-start item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-media-radio&quot; value=&quot;3&quot; /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Facebook&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;16:48&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;New messages from John Doe&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut
+                turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit
+                amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In
+                vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;label class=&quot;item-radio item-radio-icon-start item-content&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;demo-media-radio&quot; value=&quot;4&quot; /&gt;
+            &lt;i class=&quot;icon icon-radio&quot;&gt;&lt;/i&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;John Doe (via Twitter)&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;15:32&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;John Doe (@_johndoe) mentioned you on Twitter!&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut
+                turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit
+                amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In
+                vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0420\u0430\u0434\u0456\u043e","title_element":"h2","title_style":"heading-small"},"name":"\u0420\u0430\u0434\u0456\u043e"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0420\u0430\u0434\u0456\u043e","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u0420\u0430\u0434\u0456\u043e\u0433\u0440\u0443\u043f\u0430\/\u0441\u043f\u0438\u0441\u043e\u043a","meta":"\u041f\u043e\u0437\u0438\u0446\u0456\u044f \u0437\u043d\u0430\u0447\u043a\u0430 \u0440\u0430\u0434\u0456\u043e"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0420\u0430\u0434\u0456\u043e","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0420\u0430\u0434\u0456\u043e"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u043a\u0435\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0420\u0430\u0434\u0456\u043e \u0434\u043e\u0441\u0438\u0442\u044c \u043f\u0440\u043e\u0441\u0442\u0438\u0439:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0440\u0430\u0434\u0456\u043e -->\n<label class=\"radio\">\n  <!-- \u041f\u043e\u043b\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \u0440\u0430\u0434\u0456\u043e -->\n  <input type=\"radio\" \/>\n  <!-- \u0406\u043a\u043e\u043d\u043a\u0430 \u0440\u0430\u0434\u0456\u043e -->\n  <i class=\"icon-radio\"><\/i>\n<\/label>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0420\u0430\u0434\u0456\u043e\u0433\u0440\u0443\u043f\u0430\/\u0441\u043f\u0438\u0441\u043e\u043a","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0420\u0430\u0434\u0456\u043e\u0433\u0440\u0443\u043f\u0430\/\u0441\u043f\u0438\u0441\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0440\u0430\u0434\u0456\u043e\u0433\u0440\u0443\u043f\u0443\/\u0441\u043f\u0438\u0441\u043e\u043a, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 <code>List View<\/code> \u0437 \u043a\u0456\u043b\u044c\u043a\u043e\u043c\u0430 \u0434\u043e\u043f\u043e\u0432\u043d\u0435\u043d\u043d\u044f\u043c\u0438:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list\">\n  <ul>\n    <!-- \u041e\u0434\u0438\u043d\u043e\u0447\u043d\u0438\u0439 \u043f\u0443\u043d\u043a\u0442 \u0440\u0430\u0434\u0456\u043e -->\n    <li>\n      <label class=\"item-radio item-content\">\n        <!-- \u041f\u043e\u043b\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \u0440\u0430\u0434\u0456\u043e -->\n        <input type=\"radio\" name=\"my-radio\" value=\"radio-1\" \/>\n        <!-- \u0406\u043a\u043e\u043d\u043a\u0430 \u0440\u0430\u0434\u0456\u043e  -->\n        <i class=\"icon icon-radio\"><\/i>\n        <div class=\"item-inner\">\n          <!-- \u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u0430\u0434\u0456\u043e -->\n          <div class=\"item-title\">Books<\/div>\n        <\/div>\n      <\/label>\n    <\/li>\n    <!-- \u0406\u043d\u0448\u0438\u0439 \u043f\u0440\u0438\u043c\u0456\u0440\u043d\u0438\u043a \u0440\u0430\u0434\u0456\u043e -->\n    <li>\n      <label class=\"item-radio item-content\">\n        <!-- \u0412\u0456\u0434\u043c\u0456\u0447\u0435\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c -->\n        <input type=\"radio\" name=\"my-radio\" value=\"radio-2\" checked \/>\n        <i class=\"icon icon-radio\"><\/i>\n        <div class=\"item-inner\">\n          <div class=\"item-title\">Music<\/div>\n        <\/div>\n      <\/label>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>item-content<\/code> \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 <code>&lt;label&gt;<\/code> \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0456\u0437 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u043c \u043a\u043b\u0430\u0441\u043e\u043c <code>item-radio<\/code>\n<p>\u041f\u043e\u043b\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \u0440\u0430\u0434\u0456\u043e (<code>&lt;input type=\"radio\" \/&gt;<\/code>) \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0435\u0440\u0448\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c <code>item-content<\/code><\/p>\n<p>\u041f\u0456\u043a\u0442\u043e\u0433\u0440\u0430\u043c\u0430 \u0440\u0430\u0434\u0456\u043e \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 <b>\u043f\u0456\u0441\u043b\u044f<\/b> \u043f\u043e\u043b\u044f  \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \u0440\u0430\u0434\u0456\u043e!<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0437\u0438\u0446\u0456\u044f \u0437\u043d\u0430\u0447\u043a\u0430 \u0440\u0430\u0434\u0456\u043e","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0437\u0438\u0446\u0456\u044f \u0437\u043d\u0430\u0447\u043a\u0430 \u0440\u0430\u0434\u0456\u043e"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u043f\u0456\u043a\u0442\u043e\u0433\u0440\u0430\u043c\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443 \u0440\u0430\u0434\u0456\u043e\u0441\u0442\u0430\u043d\u0446\u0456\u0439 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f \u0432 \u043a\u0456\u043d\u0446\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443 \u0432 \u0442\u0435\u043c\u0456 iOS \u0456 \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443 \u0432 \u0442\u0435\u043c\u0456 MD. \n<p>\u0422\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u0437\u043c\u0456\u043d\u0438\u0442\u0438 \u0446\u044e \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u0443, \u0449\u043e\u0431 \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u044f \u043f\u0456\u043a\u0442\u043e\u0433\u0440\u0430\u043c\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443 \u0440\u0430\u0434\u0456\u043e\u0441\u0442\u0430\u043d\u0446\u0456\u0439 - \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0430\u0431\u043e \u0432 \u043a\u0456\u043d\u0446\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443.\n\u0414\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 <code>item-radio-icon-start<\/code> \u0430\u0431\u043e <code>item-radio-icon-end<\/code> \u043a\u043b\u0430\u0441 \u0434\u043e <code>item-radio<\/code>:<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u00abitem-radio-icon-start\u00bb \u0437\u043c\u0443\u0441\u0438\u0442\u044c \u043f\u0456\u043a\u0442\u043e\u0433\u0440\u0430\u043c\u0443 \u0440\u0430\u0434\u0456\u043e \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0442\u0438\u0441\u044f \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443 \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0442\u0435\u043c -->\n<li>\n  <!-- \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \"item-radio-icon-start\" -->\n  <label class=\"item-radio item-radio-icon-start item-content\">\n    <!-- \u041f\u043e\u043b\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \u0440\u0430\u0434\u0456\u043e  -->\n    <input type=\"radio\" name=\"my-radio\" value=\"radio-1\" \/>\n    <!-- \u0406\u043a\u043e\u043d\u043a\u0430 \u0440\u0430\u0434\u0456\u043e -->\n    <i class=\"icon icon-radio\"><\/i>\n    <div class=\"item-inner\">\n      <!-- \u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u0430\u0434\u0456\u043e -->\n      <div class=\"item-title\">Books<\/div>\n    <\/div>\n  <\/label>\n<\/li>\n\n<!-- \n\u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u00abitem-radio-icon-end\u00bb \u0437\u043c\u0443\u0441\u0438\u0442\u044c \u043f\u0456\u043a\u0442\u043e\u0433\u0440\u0430\u043c\u0443 \u0440\u0430\u0434\u0456\u043e \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0442\u0438\u0441\u044f \u0432 \u043a\u0456\u043d\u0446\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443 \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0442\u0435\u043c\n -->\n<li>\n  <!-- \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \"item-radio-icon-end\" -->\n  <label class=\"item-radio item-radio-icon-end item-content\">\n    <!-- \u041f\u043e\u043b\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \u0440\u0430\u0434\u0456\u043e -->\n    <input type=\"radio\" name=\"my-radio\" value=\"radio-1\" \/>\n    <!-- \u0406\u043a\u043e\u043d\u043a\u0430 \u0440\u0430\u0434\u0456\u043e -->\n    <i class=\"icon icon-radio\"><\/i>\n    <div class=\"item-inner\">\n      <!-- \u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u0430\u0434\u0456\u043e-->\n      <div class=\"item-title\">Books<\/div>\n    <\/div>\n  <\/label>\n<\/li>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  \/*\n  --t4-radio-active-color: var(--t4-theme-color);\n  *\/\n  --t4-radio-border-radius: 50%;\n  --t4-radio-extra-margin: 0px;\n}\n:root .dark,\n:root.dark {\n  --t4-radio-inactive-color: rgba(255, 255, 255, 0.3);\n}\n.ios {\n  --t4-radio-size: 22px;\n  --t4-radio-border-width: 1px;\n  --t4-radio-inactive-color: #c7c7cc;\n}\n.md {\n  --t4-radio-size: 20px;\n  --t4-radio-border-width: 2px;\n  --t4-radio-inactive-color: #6d6d6d;\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner sliding\">\n      <div class=\"title\">Radio<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"page-content\">\n    <div class=\"block-title\">Inline<\/div>\n    <div class=\"block block-strong-ios block-outline-ios\">\n      <p>Lorem <label class=\"radio\"><input type=\"radio\" name=\"demo-radio-inline\"><i class=\"icon-radio\"><\/i><\/label>\n        ipsum dolor sit amet, consectetur adipisicing elit. Alias beatae illo nihil aut eius commodi sint eveniet\n        aliquid eligendi <label class=\"radio\"><input type=\"radio\" name=\"demo-radio-inline\"><i\n            class=\"icon-radio\"><\/i><\/label> ad delectus impedit tempore nemo, enim vel praesentium consequatur nulla\n        mollitia!<\/p>\n    <\/div>\n    <div class=\"block-title\">Radio Group<\/div>\n    <div class=\"list list-strong-ios list-outline-ios list-dividers-ios\">\n      <ul>\n        <li>\n          <label class=\"item-radio item-radio-icon-start item-content\">\n            <input type=\"radio\" name=\"demo-radio-start\" value=\"Books\" checked \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title\">Books<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n        <li>\n          <label class=\"item-radio item-radio-icon-start item-content\">\n            <input type=\"radio\" name=\"demo-radio-start\" value=\"Movies\" \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title\">Movies<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n        <li>\n          <label class=\"item-radio item-radio-icon-start item-content\">\n            <input type=\"radio\" name=\"demo-radio-start\" value=\"Food\" \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title\">Food<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n        <li>\n          <label class=\"item-radio item-radio-icon-start item-content\">\n            <input type=\"radio\" name=\"demo-radio-start\" value=\"Drinks\" \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title\">Drinks<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n      <\/ul>\n    <\/div>\n    <div class=\"list list-strong-ios list-outline-ios list-dividers-ios\">\n      <ul>\n        <li>\n          <label class=\"item-radio item-radio-icon-end item-content\">\n            <input type=\"radio\" name=\"demo-radio-end\" value=\"Books\" checked \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title\">Books<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n        <li>\n          <label class=\"item-radio item-radio-icon-end item-content\">\n            <input type=\"radio\" name=\"demo-radio-end\" value=\"Movies\" \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title\">Movies<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n        <li>\n          <label class=\"item-radio item-radio-icon-end item-content\">\n            <input type=\"radio\" name=\"demo-radio-end\" value=\"Food\" \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title\">Food<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n        <li>\n          <label class=\"item-radio item-radio-icon-end item-content\">\n            <input type=\"radio\" name=\"demo-radio-end\" value=\"Drinks\" \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title\">Drinks<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n      <\/ul>\n    <\/div>\n    <div class=\"block-title\">With Media Lists<\/div>\n    <div class=\"list media-list list-strong-ios list-outline-ios list-dividers-ios\">\n      <ul>\n        <li>\n          <label class=\"item-radio item-radio-icon-start item-content\">\n            <input type=\"radio\" name=\"demo-media-radio\" value=\"1\" checked \/>\n            <i class=\"icon icon-radio\" checked><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">Facebook<\/div>\n                <div class=\"item-after\">17:14<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">New messages from John Doe<\/div>\n              <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut\n                turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit\n                amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In\n                vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n        <li>\n          <label class=\"item-radio item-radio-icon-start item-content\">\n            <input type=\"radio\" name=\"demo-media-radio\" value=\"2\" \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">John Doe (via Twitter)<\/div>\n                <div class=\"item-after\">17:11<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">John Doe (@_johndoe) mentioned you on Twitter!<\/div>\n              <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut\n                turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit\n                amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In\n                vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n        <li>\n          <label class=\"item-radio item-radio-icon-start item-content\">\n            <input type=\"radio\" name=\"demo-media-radio\" value=\"3\" \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">Facebook<\/div>\n                <div class=\"item-after\">16:48<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">New messages from John Doe<\/div>\n              <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut\n                turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit\n                amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In\n                vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n        <li>\n          <label class=\"item-radio item-radio-icon-start item-content\">\n            <input type=\"radio\" name=\"demo-media-radio\" value=\"4\" \/>\n            <i class=\"icon icon-radio\"><\/i>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">John Doe (via Twitter)<\/div>\n                <div class=\"item-after\">15:32<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">John Doe (@_johndoe) mentioned you on Twitter!<\/div>\n              <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut\n                turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit\n                amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In\n                vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n            <\/div>\n          <\/label>\n        <\/li>\n      <\/ul>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.7","yooessentialsVersion":"2.0.11"} -->

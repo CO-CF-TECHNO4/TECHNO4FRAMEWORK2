@@ -1,0 +1,980 @@
+<h2>Повзунок діапазону</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет повзунка діапазона</a>
+
+<p>Один діапазон <p> Подвійний діапазон</p>
+    </li>
+        <li>
+        
+<div>Кольори повзунка діапазону</div>
+
+    </li>
+        <li>
+        
+<div>Методи застосунку Повзунок діапазону</div>
+
+    </li>
+        <li>
+        
+<div>Параметри  повзунка  діапазону</div>
+
+    </li>
+        <li>
+        
+<div>Методи та властивості повзунка діапазону </div>
+
+    </li>
+        <li>
+        
+<div>Події повзунка діапазану </div>
+
+<p>Події  DOM <p> Події екземплярів застосунку та повзунка діапазону</p>
+    </li>
+        <li>
+        
+<div>Автоматична ініціалізація повзунка діапазону</div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Макет повзунка діапазону</h3>
+<h4>Один діапазон</h4>
+<div>Макет повзунка з одним діапазоном досить простий:</div>
+<pre><code>&lt;!-- Елемент повзунка діапазону --&gt;
+&lt;div class=&quot;range-slider&quot;&gt;
+  &lt;!-- введення діапазону--&gt;
+  &lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;10&quot; /&gt;
+&lt;/div&gt;</code></pre>
+<h4>Подвійний діапазон</h4>
+<div>Повзунок подвійного діапазону є простішим, оскільки він не вимагає елемента введення, оскільки <code>input:range</code> не підтримує подвійний діапазон:</div>
+<pre><code>&lt;!-- Елемент повзунка діапазону --&gt;
+&lt;div class=&quot;range-slider&quot;&gt;&lt;/div&gt;</code></pre>
+<h3>Кольори повзунка діапазону</h3>
+<div>Повзунок діапазону підтримує всі кольори за замовчуванням . Отже, щоб змінити його колір, просто додайте клас <code>color-[color]</code> до елемента повзунка діапазону.</div>
+<pre><code>&lt;!-- червоний повзунок діапазону --&gt;
+&lt;div class=&quot;range-slider color-red&quot;&gt;...&lt;/div&gt;
+
+&lt;!-- оранжевий повзунок діапазону  --&gt;
+&lt;div class=&quot;range-slider color-orange&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<h3>Методи застосунку Повзунок діапазону</h3>
+<div>Давайте розглянемо пов’язані методи роботи застосунку з повзунком діапазону:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app.range.create(<code>parameters</code>)</td>
+
+<td>створити екземпляр повзунка діапазону
+<p>●	<code>parameters - object.</code>  Об'єкт із параметрами повзунка діапазону</p>
+<p><i>Метод повертає створений екземпляр повзунка діапазону</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.range.destroy(<code>el</code>)</td>
+
+<td>знищити екземпляр повзунка діапазону
+<p>●	<code>el - HTMLElement or string (with CSS Selector) or object</code>  Елемент Повзунка діапазону або екземпляр повзунка діапазону для знищення.</p>
+
+</td>
+
+</tr>
+                <tr>
+
+<td>app.range.get(<code>el</code>)</td>
+
+<td>отримати екземпляр повзунка діапазону за елементом HTML
+<p>●	<code>el - HTMLElement or string (with CSS Selector)</code>  Елемент повзунка діапазону.</p>
+<p><i>Метод повертає екземпляр повзунка діапазону</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.range.getValue(<code>el</code>)</td>
+
+<td>отримати значення повзунка діапазону
+<p>●	<code>el - HTMLElement or string (with CSS Selector)</code>  Елемент повзунка діапазону.</p>
+<p><i>Метод повертає значення повзунка діапазону</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.range.setValue(<code>el, value</code>)</td>
+
+<td>встановити нове значення повзунка діапазону
+<p>●	<code>el - HTMLElement or string (with CSS Selector)</code>  Елемент повзунка діапазону.</p>
+<p>●	<code>value - number</code> (у разі одного діапазону) або <code>array</code> - масив значень (у разі подвійного діапазону)
+<p><i>Метод повертає значення повзунка діапазону</i></p>
+</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Параметри повзунка діапазону</h3>
+<div>Тепер давайте подивимося на список доступних параметрів, необхідних для створення повзунка діапазону:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>el</td>
+
+<td>Елемент повзунка діапазону. HTMLElement або рядок із CSS-селектором елемента повзунка діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>inputEl</td>
+
+<td>Елемент введення повзунка діапазону або селектор CSS елемента введення. Якщо не вказано, буде спроба шукати <code>input type="range"</code> всередині елемента повзунка діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>dual</td>
+
+<td>Увімкнути повзунок подвійного діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>1</td>
+
+<td>step</td>
+
+<td>Мінімальний крок між значеннями</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>label</td>
+
+<td>Вмикає додаткову мітку навколо повзунка діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>formatLabel</td>
+
+<td>Метод має повертати форматований текст мітки регулятора діапазону. Як аргумент він отримує значення мітки</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function(value)</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>min</td>
+
+<td>Мінімальна знаечення </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>max</td>
+
+<td>Максимальне значення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>value</td>
+
+<td>Початкове значення. Число у разі одного діапазону та масив значень у разі подвійного діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number<p>array</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>draggableBar</td>
+
+<td>Якщо ввімкнено, також можна взаємодіяти з повзунком діапазону (змінити значення) на панелі діапазону, клацнувши та провівши пальцем</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>vertical</td>
+
+<td>Вмикає вертикальний повзунок діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>verticalReversed</td>
+
+<td>Перевертає повзунок вертикального діапазону ( <code>vertical</code> також має бути ввімкнено)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>scale</td>
+
+<td>Вмикає шкалу повзунка діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>5</td>
+
+<td>scaleSteps</td>
+
+<td>Кількість позначок шкали</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>0</td>
+
+<td>scaleSubSteps</td>
+
+<td>Кількість підетапів шкали (кожен крок буде поділено на це значення)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>formatScaleLabel</td>
+
+<td>Метод має повертати форматоване значення масштабу. Як аргумент він отримує поточне значення кроку масштабу. Цей метод буде викликаний для кожного кроку шкали.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function (value)</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>limitKnobPosition</td>
+
+<td>Обмежує положення регулятора розміром смужки діапазону. За замовчуванням увімкнено у темі iOS</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>on</td>
+
+<td>Об'єкт з обробниками подій. Наприклад:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var range = app.range.create({
+  el: '.range-slider',
+  on: {
+    change: function () {
+      console.log('Range Slider value changed')
+    }
+  }
+})</code></pre>
+<h3>Методи та властивості повзунка діапазону</h3>
+<div>Отже, щоб створити повзунок діапазону, ми повинні викликати:</div>
+<pre><code>var range = app.range.create({ /* parameters */ })</code></pre>
+<div>Після цього у нас є його ініціалізований екземпляр (як <code>range</code> змінна у прикладі вище) з корисними методами та властивостями:</div>
+<h5>Властивості</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>range.app</td>
+
+<td>Посилання на глобальний екземпляр застосунку</td>
+
+</tr>
+                <tr>
+
+<td>range.el</td>
+
+<td>HTML-елемент повзунка діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.$el</td>
+
+<td>Примірник Dom64 із HTML-елементом повзунка діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.inputEl</td>
+
+<td>Вхідний HTML-елемент повзунка діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.$inputEl</td>
+
+<td>Екземпляр Dom64  із вхідним HTML-елементом повзунка діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.rangeWidth</td>
+
+<td>Ширина повзунка діапазону (у пікселях)</td>
+
+</tr>
+                <tr>
+
+<td>range.dual</td>
+
+<td>Логічна властивість, яка вказує, чи є вона подвійною чи ні</td>
+
+</tr>
+                <tr>
+
+<td>range.min</td>
+
+<td>Мінімальне значення діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.max</td>
+
+<td>Максимальне значення діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.value</td>
+
+<td>Значення діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.scale</td>
+
+<td>Логічна властивість, яка вказує, чи <code>scale</code> ввімкнено чи ні</td>
+
+</tr>
+                <tr>
+
+<td>range.scaleSteps</td>
+
+<td>Кількість ступенів шкали</td>
+
+</tr>
+                <tr>
+
+<td>range.scaleSubSteps</td>
+
+<td>Кількість підступень шкали</td>
+
+</tr>
+                <tr>
+
+<td>range.$scaleEl</td>
+
+<td>Екземпляр Dom64  із згенерованим елементом HTML масштабу</td>
+
+</tr>
+                <tr>
+
+<td>range.knobs</td>
+
+<td>Масив, де кожен елемент представляє HTMLElement створеної ручки діапазону (2 ручки у випадку подвійного повзунка)</td>
+
+</tr>
+                <tr>
+
+<td>range.labels</td>
+
+<td>Масив, де кожен елемент представляє HTMLElement створеної мітки регулятора діапазону (2 мітки у випадку подвійного повзунка)</td>
+
+</tr>
+                <tr>
+
+<td>range.vertical</td>
+
+<td>Логічна властивість, яка вказує на те, вертикальна вона чи ні</td>
+
+</tr>
+                <tr>
+
+<td>range.verticalReversed</td>
+
+<td>Логічна властивість, яка вказує, чи є вона вертикальною та перевернутою чи ні</td>
+
+</tr>
+                <tr>
+
+<td>range.params</td>
+
+<td>Параметри повзунка діапазону</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h5>Методи</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>range.getValue()</td>
+
+<td>Повертає значення повзунка діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.setValue(<code>value</code>)</td>
+
+<td>Установіть нове значення повзунка діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.updateScale()</td>
+
+<td>Повторно обчислити та повторно відобразити шкалу повзунка</td>
+
+</tr>
+                <tr>
+
+<td>range.destroy()</td>
+
+<td>Знищує екземпляр повзунка діапазону</td>
+
+</tr>
+                <tr>
+
+<td>range.on(<code>event, handler</code>)</td>
+
+<td>Додати обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>range.once(<code>event, handler</code>)</td>
+
+<td>Додати обробник подій, який буде видалено після запуску</td>
+
+</tr>
+                <tr>
+
+<td>range.off(<code>event, handler</code>)</td>
+
+<td>Видалити обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>range.off(<code>event</code>)</td>
+
+<td>Видалити всі обробники для вказаної події</td>
+
+</tr>
+                <tr>
+
+<td>range.emit(<code>event, ...args</code>)</td>
+
+<td>Запустити подію на примірнику </td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Події повзунка діапазону</h3>
+<div>Повзунок діапазону запускатиме такі події DOM в елементі діапазону та події в екземплярі застосунку та діапазону:</div>
+<h3>Події DOM </h3>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Елемент повзунка діапазона<p> <code>&lt;div class="range-slider"&gt;</code></td>
+
+<td>range:change</td>
+
+<td>Подія буде ініційована, коли значення повзунка діапазону буде змінено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент повзунка діапазона<p> <code>&lt;div class="range-slider"&gt;</code></td>
+
+<td>range:changed</td>
+
+<td>Подія буде ініційована після відпускання повзунка після зміни значення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент повзунка діапазона<p> <code>&lt;div class="range-slider"&gt;</code></td>
+
+<td>range:beforedestroy</td>
+
+<td>Подія буде запущена безпосередньо перед знищенням повзунка діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Події екземплярів застосунку та повзунка діапазону</h3>
+<div>Екземпляр повзунка діапазону запускає події як у себе, так і в екземплярі застосунку. Події екземплярів застосунку мають ті самі назви з префіксом <code>range</code>.</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th>Об'єкт</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>(range, value)</td>
+
+<td>change</td>
+
+<td>Подія буде ініційована, коли значення діапазону буде змінено. Як аргумент обробник події отримує екземпляр діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">range</a>
+    </td>
+</tr>
+                <tr>
+<td>(range, value)</td>
+
+<td>rangeChange</td>
+
+<td>Подія буде ініційована, коли значення діапазону буде змінено. Як аргумент обробник події отримує екземпляр діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(range, value)</td>
+
+<td>changed</td>
+
+<td>Подія буде ініційована після відпускання повзунка після зміни значення. Як аргумент обробник події отримує екземпляр діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">range</a>
+    </td>
+</tr>
+                <tr>
+<td>(range, value)</td>
+
+<td>rangeChanged</td>
+
+<td>Подія буде ініційована після відпускання повзунка після зміни значення. Як аргумент обробник події отримує екземпляр діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(range)</td>
+
+<td>beforeDestroy</td>
+
+<td>Подія буде запущена безпосередньо перед знищенням повзунка діапазону. Як аргумент обробник події отримує екземпляр діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">range</a>
+    </td>
+</tr>
+                <tr>
+<td>(range)</td>
+
+<td>rangeBeforeDestroy</td>
+
+<td>Подія буде запущена безпосередньо перед знищенням повзунка діапазону. Як аргумент обробник події отримує екземпляр діапазону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Автоматична ініціалізація повзунка діапазону</h3>
+<div>Якщо вам не потрібен API повзунка діапазону, а повзунок діапазону знаходиться всередині сторінки та представлений у DOM на момент ініціалізації сторінки, його можна автоматично ініціалізувати, просто додавши додатковий клас <code>range-slider-init</code>:</div>
+<pre><code>&lt;!-- додати клас range-slider-init --&gt;
+&lt;div class=&quot;range-slider range-slider-init&quot;&gt;
+  &lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;10&quot; /&gt;
+&lt;/div&gt;</code></pre>
+<div>У цьому випадку, якщо вам потрібно отримати доступ до створеного екземпляра повзунка діапазону, ви можете скористатися <code>app.range.get</code> методом застосунку:</div>
+<pre><code>var range = app.range.get('.range-slider');
+
+if (range.value &gt; 50) {
+  // щось зробити
+}</code></pre>
+<div>Під час використання автоматичної ініціалізації може знадобитися передати додаткові параметри. Це можна зробити двома способами:
+<p>●	У випадку, якщо ви використовуєте повзунок з одним діапазоном і у вас є <code>input:range</code> всередині, тоді параметри <code>step</code>, <code>min</code>, <code>max</code>, <code>value</code> можна встановити з тих самих атрибутів введення:
+</div>
+<pre><code>&lt;!--Параметри min, max, step, value будуть встановлені для відповідних вхідних атрибутів --&gt;
+&lt;div class=&quot;range-slider range-slider-init&quot;&gt;
+  &lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;10&quot; /&gt;
+	&lt;/div&gt;
+</code></pre>
+<div><p>●	В іншому випадку, якщо у вас немає <code>input:range</code> або ви використовуєте введення подвійного діапазону, ви можете встановити всі доступні параметри за допомогою <code>data-</code>атрибутів елемента повзунка діапазону.</div>
+<pre><code>&lt;!-- параметри встановлені через data- attributes --&gt;
+&lt;div
+  class=&quot;range-slider range-slider-init&quot;
+  data-min=&quot;0&quot;
+  data-max=&quot;100&quot;
+  data-step=&quot;10&quot;
+  data-label=&quot;true&quot;
+  data-value=&quot;50&quot;
+	&gt;&lt;/div&gt;
+</code></pre>
+<div>●	Якщо у вас повзунок із подвійним діапазоном, вам потрібно перейти до значень за допомогою атрибутів <code>data-value-left</code>і <code>data-value-right</code>:</div>
+<pre><code>&lt;!-- параметри  встановлені через data- attributes --&gt;
+&lt;div
+  class=&quot;range-slider range-slider-init&quot;
+  data-dual=&quot;true&quot;
+  data-min=&quot;0&quot;
+  data-max=&quot;100&quot;
+  data-step=&quot;10&quot;
+  data-label=&quot;true&quot;
+  data-value-left=&quot;30&quot;
+  data-value-right=&quot;60&quot;
+&gt;&lt;/div&gt;
+</code></pre>
+<h3>Змінні CSS</h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  /*
+  --t4-range-bar-active-bg-color: var(--t4-theme-color);
+  --t4-range-scale-bg-color: var(--t4-range-bar-bg-color);
+  --t4-range-scale-substep-bg-color: var(--t4-range-bar-bg-color);
+  */
+  --t4-range-scale-step-height: 5px;
+  --t4-range-scale-substep-width: 1px;
+  --t4-range-scale-substep-height: 4px;
+  --t4-range-bar-bg-color: rgba(0, 0, 0, 0.2);
+}
+:root .dark,
+:root.dark {
+  --t4-range-bar-bg-color: rgba(255, 255, 255, 0.2);
+}
+.ios {
+  --t4-range-size: 28px;
+  --t4-range-bar-size: 4px;
+  --t4-range-bar-border-radius: 2px;
+  --t4-range-knob-size: 28px;
+  --t4-range-knob-color: #fff;
+  --t4-range-knob-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --t4-range-label-size: 24px;
+  --t4-range-label-text-color: #000;
+  --t4-range-label-bg-color: #fff;
+  --t4-range-label-font-size: 12px;
+  --t4-range-label-font-weight: 500;
+  --t4-range-label-border-radius: 5px;
+  --t4-range-label-padding: 0px 2px;
+  --t4-range-scale-text-color: #666;
+  --t4-range-scale-step-width: 1px;
+  --t4-range-scale-font-size: 12px;
+  --t4-range-scale-font-weight: 400;
+  --t4-range-scale-label-offset: 4px;
+}
+.md {
+  --t4-range-size: 20px;
+  --t4-range-bar-size: 2px;
+  --t4-range-bar-border-radius: 0px;
+  --t4-range-knob-size: 12px;
+  --t4-range-knob-box-shadow: none;
+  --t4-range-label-size: 26px;
+  --t4-range-label-font-weight: normal;
+  --t4-range-label-font-size: 10px;
+  --t4-range-label-border-radius: 50%;
+  --t4-range-label-padding: 0px;
+  --t4-range-scale-step-width: 2px;
+  --t4-range-scale-font-size: 12px;
+  --t4-range-scale-font-weight: 400;
+  --t4-range-scale-label-offset: 4px;
+}
+.md,
+.md .dark,
+.md [class*='color-'] {
+  --t4-range-knob-color: var(--t4-theme-color);
+  --t4-range-label-text-color: var(--t4-md-on-primary);
+  --t4-range-label-bg-color: var(--t4-theme-color);
+  --t4-range-scale-text-color: var(--t4-md-on-surface-variant);
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>Приклади
+&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Range Slider&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Volume&lt;/div&gt;
+      &lt;div class=&quot;list list-strong-ios list-outline-ios simple-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div&gt;
+              &lt;i class=&quot;icon t4-icons if-not-md&quot; style=&quot;width: 28px&quot;&gt;speaker_fill&lt;/i&gt;
+              &lt;i class=&quot;icon material-icons md-only&quot; style=&quot;width: 24px&quot;&gt;volume_mute&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div style=&quot;width: 100%; margin: 0 16px&quot;&gt;
+              &lt;div class=&quot;range-slider range-slider-init&quot;&gt;
+                &lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;10&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;i class=&quot;icon t4-icons if-not-md&quot; style=&quot;width: 28px&quot;&gt;speaker_3_fill&lt;/i&gt;
+              &lt;i class=&quot;icon material-icons md-only&quot; style=&quot;width: 24px&quot;&gt;volume_up&lt;/i&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Brightness&lt;/div&gt;
+      &lt;div class=&quot;list list-strong-ios list-outline-ios simple-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div&gt;
+              &lt;i class=&quot;icon t4-icons if-not-md&quot; style=&quot;width: 28px&quot;&gt;sun_min&lt;/i&gt;
+              &lt;i class=&quot;icon material-icons md-only&quot; style=&quot;width: 24px&quot;&gt;brightness_low&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div style=&quot;width: 100%; margin: 0 16px&quot;&gt;
+              &lt;div class=&quot;range-slider range-slider-init color-orange&quot; data-label=&quot;true&quot;&gt;
+                &lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; value=&quot;50&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;i class=&quot;icon t4-icons if-not-md&quot; style=&quot;width: 28px&quot;&gt;sun_max_fill&lt;/i&gt;
+              &lt;i class=&quot;icon material-icons md-only&quot; style=&quot;width: 24px&quot;&gt;brightness_high&lt;/i&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title display-flex justify-content-space-between&quot;&gt;
+        Price Filter &lt;span class=&quot;price-value&quot;&gt;$${priceMin} - $${priceMax}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;list list-strong-ios list-outline-ios simple-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-row&quot;&gt;
+            &lt;div&gt;
+              &lt;i class=&quot;icon t4-icons if-not-md&quot; style=&quot;width: 28px&quot;&gt;money_dollar_circle&lt;/i&gt;
+              &lt;i class=&quot;icon material-icons md-only&quot; style=&quot;width: 24px&quot;&gt;attach_money&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div style=&quot;width: 100%; margin: 0 16px&quot;&gt;
+              &lt;div class=&quot;range-slider range-slider-init color-green&quot; @range:change=${onPriceChange} data-label=&quot;true&quot;
+                data-dual=&quot;true&quot; data-min=&quot;0&quot; data-max=&quot;500&quot; data-step=&quot;1&quot; data-value-left=&quot;200&quot; data-value-right=&quot;400&quot;&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;i class=&quot;icon t4-icons if-not-md&quot; style=&quot;width: 28px&quot;&gt;money_dollar_circle_fill&lt;/i&gt;
+              &lt;i class=&quot;icon material-icons md-only&quot; style=&quot;width: 24px&quot;&gt;monetization_on&lt;/i&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;With Scale&lt;/div&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios&quot;&gt;
+        &lt;div class=&quot;range-slider range-slider-init&quot; data-min=&quot;0&quot; data-max=&quot;100&quot; data-label=&quot;true&quot; data-step=&quot;5&quot;
+          data-value=&quot;25&quot; data-scale=&quot;true&quot; data-scale-steps=&quot;5&quot; data-scale-sub-steps=&quot;4&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Vertical&lt;/div&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios display-flex justify-content-center&quot;&gt;
+        &lt;div class=&quot;range-slider range-slider-init margin-right&quot; data-vertical=&quot;true&quot; data-min=&quot;0&quot; data-max=&quot;100&quot;
+          data-label=&quot;true&quot; data-step=&quot;1&quot; data-value=&quot;25&quot; style=&quot;height: 160px&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;range-slider range-slider-init margin-horizontal&quot; data-vertical=&quot;true&quot; data-min=&quot;0&quot; data-max=&quot;100&quot;
+          data-label=&quot;true&quot; data-step=&quot;1&quot; data-value=&quot;50&quot; style=&quot;height: 160px&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;range-slider range-slider-init margin-horizontal&quot; data-vertical=&quot;true&quot; data-min=&quot;0&quot; data-max=&quot;100&quot;
+          data-label=&quot;true&quot; data-step=&quot;1&quot; data-value=&quot;75&quot; style=&quot;height: 160px&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;range-slider range-slider-init margin-left&quot; data-dual=&quot;true&quot; data-vertical=&quot;true&quot; data-min=&quot;0&quot;
+          data-max=&quot;100&quot; data-label=&quot;true&quot; data-step=&quot;1&quot; data-value-left=&quot;25&quot; data-value-right=&quot;75&quot;
+          style=&quot;height: 160px&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Vertical Reversed&lt;/div&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios display-flex justify-content-center&quot;&gt;
+        &lt;div class=&quot;range-slider range-slider-init color-red margin-right&quot; data-vertical=&quot;true&quot;
+          data-vertical-reversed=&quot;true&quot; data-min=&quot;0&quot; data-max=&quot;100&quot; data-label=&quot;true&quot; data-step=&quot;1&quot; data-value=&quot;25&quot;
+          style=&quot;height: 160px&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;range-slider range-slider-init color-red margin-horizontal&quot; data-vertical=&quot;true&quot;
+          data-vertical-reversed=&quot;true&quot; data-min=&quot;0&quot; data-max=&quot;100&quot; data-label=&quot;true&quot; data-step=&quot;1&quot; data-value=&quot;50&quot;
+          style=&quot;height: 160px&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;range-slider range-slider-init color-red margin-horizontal&quot; data-vertical=&quot;true&quot;
+          data-vertical-reversed=&quot;true&quot; data-min=&quot;0&quot; data-max=&quot;100&quot; data-label=&quot;true&quot; data-step=&quot;1&quot; data-value=&quot;75&quot;
+          style=&quot;height: 160px&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;range-slider range-slider-init color-red margin-left&quot; data-dual=&quot;true&quot; data-vertical=&quot;true&quot;
+          data-vertical-reversed=&quot;true&quot; data-min=&quot;0&quot; data-max=&quot;100&quot; data-label=&quot;true&quot; data-step=&quot;1&quot; data-value-left=&quot;25&quot;
+          data-value-right=&quot;75&quot; style=&quot;height: 160px&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, { $t4, $el, $update }) =&gt; {
+    let priceMin = 200;
+    let priceMax = 400;
+
+    const onPriceChange = (e) =&gt; {
+      const range = $t4.range.get(e.target);
+      priceMin = range.value[0];
+      priceMax = range.value[1];
+      $update();
+    };
+
+    return $render;
+  };
+&lt;/script&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u041f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0430","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general","meta":"\u041e\u0434\u0438\u043d \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d <p> \u041f\u043e\u0434\u0432\u0456\u0439\u043d\u0438\u0439 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d"}},{"type":"nav_item","props":{"content":"\u041a\u043e\u043b\u044c\u043e\u0440\u0438 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u041f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438  \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430  \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 "}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u0430\u043d\u0443 ","meta":"\u041f\u043e\u0434\u0456\u0457  DOM <p> \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"}},{"type":"nav_item","props":{"content":"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"},{"type":"headline","props":{"content":"\u041e\u0434\u0438\u043d \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d","title_element":"h4","title_style":"h4"},"name":"\u043f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041e\u0434\u0438\u043d \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0437 \u043e\u0434\u043d\u0438\u043c \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u043e\u043c \u0434\u043e\u0441\u0438\u0442\u044c \u043f\u0440\u043e\u0441\u0442\u0438\u0439:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 -->\n<div class=\"range-slider\">\n  <!-- \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443-->\n  <input type=\"range\" min=\"0\" max=\"100\" step=\"1\" value=\"10\" \/>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0432\u0456\u0439\u043d\u0438\u0439 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d","title_element":"h4","title_style":"h4"},"name":"\u043f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0432\u0456\u0439\u043d\u0438\u0439 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u043e\u0433\u043e \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0454 \u043f\u0440\u043e\u0441\u0442\u0456\u0448\u0438\u043c, \u043e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 \u0432\u0456\u043d \u043d\u0435 \u0432\u0438\u043c\u0430\u0433\u0430\u0454 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f, \u043e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 <code>input:range<\/code> \u043d\u0435 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u0438\u0439 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 -->\n<div class=\"range-slider\"><\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u043e\u043b\u044c\u043e\u0440\u0438 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043e\u043b\u044c\u043e\u0440\u0438 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u0432\u0441\u0456 \u043a\u043e\u043b\u044c\u043e\u0440\u0438 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c . \u041e\u0442\u0436\u0435, \u0449\u043e\u0431 \u0437\u043c\u0456\u043d\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u043a\u043e\u043b\u0456\u0440, \u043f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0439\u0442\u0435 \u043a\u043b\u0430\u0441 <code>color-[color]<\/code> \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0447\u0435\u0440\u0432\u043e\u043d\u0438\u0439 \u043f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 -->\n<div class=\"range-slider color-red\">...<\/div>\n\n<!-- \u043e\u0440\u0430\u043d\u0436\u0435\u0432\u0438\u0439 \u043f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443  -->\n<div class=\"range-slider color-orange\">...<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u041f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u041f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0440\u043e\u0431\u043e\u0442\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0437 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u043e\u043c \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443\n<p>\u25cf\t<code>parameters - object.<\/code>  \u041e\u0431'\u0454\u043a\u0442 \u0456\u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443<\/i><\/p>\n","link_text":"string","meta":"app.range.create(<code>parameters<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0437\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443\n<p>\u25cf\t<code>el - HTMLElement or string (with CSS Selector) or object<\/code>  \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u041f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0430\u0431\u043e \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0434\u043b\u044f \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f.<\/p>\n\n","link_text":"string","meta":"app.range.destroy(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0437\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML\n<p>\u25cf\t<code>el - HTMLElement or string (with CSS Selector)<\/code>  \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443.<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443<\/i><\/p>\n","link_text":"string","meta":"app.range.get(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443\n<p>\u25cf\t<code>el - HTMLElement or string (with CSS Selector)<\/code>  \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443.<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443<\/i><\/p>\n","link_text":"string","meta":"app.range.getValue(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u043d\u043e\u0432\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443\n<p>\u25cf\t<code>el - HTMLElement or string (with CSS Selector)<\/code>  \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443.<\/p>\n<p>\u25cf\t<code>value - number<\/code> (\u0443 \u0440\u0430\u0437\u0456 \u043e\u0434\u043d\u043e\u0433\u043e \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443) \u0430\u0431\u043e <code>array<\/code> - \u043c\u0430\u0441\u0438\u0432 \u0437\u043d\u0430\u0447\u0435\u043d\u044c (\u0443 \u0440\u0430\u0437\u0456 \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u043e\u0433\u043e \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443)\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443<\/i><\/p>\n","link_text":"string","meta":"app.range.setValue(<code>el, value<\/code>)","title":""}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u043b\u044f \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443. HTMLElement \u0430\u0431\u043e \u0440\u044f\u0434\u043e\u043a \u0456\u0437 CSS-\u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u043e\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"el","title":""}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0430\u0431\u043e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f. \u042f\u043a\u0449\u043e \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e, \u0431\u0443\u0434\u0435 \u0441\u043f\u0440\u043e\u0431\u0430 \u0448\u0443\u043a\u0430\u0442\u0438 <code>input type=\"range\"<\/code> \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"inputEl","title":""}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u043e\u0433\u043e \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"dual","title":"false"}},{"type":"table_item","props":{"content":"\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u044c\u043d\u0438\u0439 \u043a\u0440\u043e\u043a \u043c\u0456\u0436 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f\u043c\u0438","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"step","title":"1"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0443 \u043c\u0456\u0442\u043a\u0443 \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"label","title":"false"}},{"type":"table_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u0444\u043e\u0440\u043c\u0430\u0442\u043e\u0432\u0430\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442 \u043c\u0456\u0442\u043a\u0438 \u0440\u0435\u0433\u0443\u043b\u044f\u0442\u043e\u0440\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0432\u0456\u043d \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043c\u0456\u0442\u043a\u0438","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function(value)","meta":"formatLabel","title":""}},{"type":"table_item","props":{"content":"\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u044c\u043d\u0430 \u0437\u043d\u0430\u0435\u0447\u0435\u043d\u043d\u044f ","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"min"}},{"type":"table_item","props":{"content":"\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"max"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f. \u0427\u0438\u0441\u043b\u043e \u0443 \u0440\u0430\u0437\u0456 \u043e\u0434\u043d\u043e\u0433\u043e \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0442\u0430 \u043c\u0430\u0441\u0438\u0432 \u0437\u043d\u0430\u0447\u0435\u043d\u044c \u0443 \u0440\u0430\u0437\u0456 \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u043e\u0433\u043e \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number<p>array","meta":"value"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0442\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u0432\u0437\u0430\u0454\u043c\u043e\u0434\u0456\u044f\u0442\u0438 \u0437 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u043e\u043c \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 (\u0437\u043c\u0456\u043d\u0438\u0442\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f) \u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443, \u043a\u043b\u0430\u0446\u043d\u0443\u0432\u0448\u0438 \u0442\u0430 \u043f\u0440\u043e\u0432\u0456\u0432\u0448\u0438 \u043f\u0430\u043b\u044c\u0446\u0435\u043c","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"draggableBar","title":"true"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u0438\u0439 \u043f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"vertical","title":"false"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0432\u0435\u0440\u0442\u0430\u0454 \u043f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 ( <code>vertical<\/code> \u0442\u0430\u043a\u043e\u0436 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e)","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"verticalReversed","title":"false"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0448\u043a\u0430\u043b\u0443 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"scale","title":"false"}},{"type":"table_item","props":{"content":"\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043f\u043e\u0437\u043d\u0430\u0447\u043e\u043a \u0448\u043a\u0430\u043b\u0438","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"scaleSteps","title":"5"}},{"type":"table_item","props":{"content":"\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043f\u0456\u0434\u0435\u0442\u0430\u043f\u0456\u0432 \u0448\u043a\u0430\u043b\u0438 (\u043a\u043e\u0436\u0435\u043d \u043a\u0440\u043e\u043a \u0431\u0443\u0434\u0435 \u043f\u043e\u0434\u0456\u043b\u0435\u043d\u043e \u043d\u0430 \u0446\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f)","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"scaleSubSteps","title":"0"}},{"type":"table_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u0444\u043e\u0440\u043c\u0430\u0442\u043e\u0432\u0430\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0432\u0456\u043d \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u043f\u043e\u0442\u043e\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043a\u0440\u043e\u043a\u0443 \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0443. \u0426\u0435\u0439 \u043c\u0435\u0442\u043e\u0434 \u0431\u0443\u0434\u0435 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u043d\u0438\u0439 \u0434\u043b\u044f \u043a\u043e\u0436\u043d\u043e\u0433\u043e \u043a\u0440\u043e\u043a\u0443 \u0448\u043a\u0430\u043b\u0438.","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function (value)","meta":"formatScaleLabel"}},{"type":"table_item","props":{"content":"\u041e\u0431\u043c\u0435\u0436\u0443\u0454 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u044f \u0440\u0435\u0433\u0443\u043b\u044f\u0442\u043e\u0440\u0430 \u0440\u043e\u0437\u043c\u0456\u0440\u043e\u043c \u0441\u043c\u0443\u0436\u043a\u0438 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443. \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u0443 \u0442\u0435\u043c\u0456 iOS","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"limitKnobPosition"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"fragment","props":{"margin":"default"},"children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c\u0438 \u043f\u043e\u0434\u0456\u0439. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"on","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var range = app.range.create({\n  el: '.range-slider',\n  on: {\n    change: function () {\n      console.log('Range Slider value changed')\n    }\n  }\n})"}}]}]}]},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0442\u0436\u0435, \u0449\u043e\u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443, \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var range = app.range.create({ \/* parameters *\/ })"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0441\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0443 \u043d\u0430\u0441 \u0454 \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 (\u044f\u043a <code>range<\/code> \u0437\u043c\u0456\u043d\u043d\u0430 \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u0432\u0438\u0449\u0435) \u0437 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c\u0438 \u043c\u0435\u0442\u043e\u0434\u0430\u043c\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456","title_element":"h5","title_style":"h5"},"name":"\u041f\u0443\u043d\u043a\u0442  \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","link_text":"string","meta":"range.app","title":""}},{"type":"table_item","props":{"content":"HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link_text":"string","meta":"range.el","title":""}},{"type":"table_item","props":{"content":"\u041f\u0440\u0438\u043c\u0456\u0440\u043d\u0438\u043a Dom64 \u0456\u0437 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.$el"}},{"type":"table_item","props":{"content":"\u0412\u0445\u0456\u0434\u043d\u0438\u0439 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.inputEl"}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom64  \u0456\u0437 \u0432\u0445\u0456\u0434\u043d\u0438\u043c HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.$inputEl"}},{"type":"table_item","props":{"content":"\u0428\u0438\u0440\u0438\u043d\u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 (\u0443 \u043f\u0456\u043a\u0441\u0435\u043b\u044f\u0445)","meta":"range.rangeWidth"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c, \u044f\u043a\u0430 \u0432\u043a\u0430\u0437\u0443\u0454, \u0447\u0438 \u0454 \u0432\u043e\u043d\u0430 \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u043e\u044e \u0447\u0438 \u043d\u0456","meta":"range.dual"}},{"type":"table_item","props":{"content":"\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u044c\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.min"}},{"type":"table_item","props":{"content":"\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.max"}},{"type":"table_item","props":{"content":"\u0417\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.value"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c, \u044f\u043a\u0430 \u0432\u043a\u0430\u0437\u0443\u0454, \u0447\u0438 <code>scale<\/code> \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u0447\u0438 \u043d\u0456","meta":"range.scale"}},{"type":"table_item","props":{"content":"\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0441\u0442\u0443\u043f\u0435\u043d\u0456\u0432 \u0448\u043a\u0430\u043b\u0438","meta":"range.scaleSteps"}},{"type":"table_item","props":{"content":"\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043f\u0456\u0434\u0441\u0442\u0443\u043f\u0435\u043d\u044c \u0448\u043a\u0430\u043b\u0438","meta":"range.scaleSubSteps"}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom64  \u0456\u0437 \u0437\u0433\u0435\u043d\u0435\u0440\u043e\u0432\u0430\u043d\u0438\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0443","meta":"range.$scaleEl"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432, \u0434\u0435 \u043a\u043e\u0436\u0435\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0454 HTMLElement \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043e\u0457 \u0440\u0443\u0447\u043a\u0438 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 (2 \u0440\u0443\u0447\u043a\u0438 \u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430)","meta":"range.knobs"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432, \u0434\u0435 \u043a\u043e\u0436\u0435\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0454 HTMLElement \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043e\u0457 \u043c\u0456\u0442\u043a\u0438 \u0440\u0435\u0433\u0443\u043b\u044f\u0442\u043e\u0440\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 (2 \u043c\u0456\u0442\u043a\u0438 \u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430)","meta":"range.labels"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c, \u044f\u043a\u0430 \u0432\u043a\u0430\u0437\u0443\u0454 \u043d\u0430 \u0442\u0435, \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u0430 \u0432\u043e\u043d\u0430 \u0447\u0438 \u043d\u0456","meta":"range.vertical"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c, \u044f\u043a\u0430 \u0432\u043a\u0430\u0437\u0443\u0454, \u0447\u0438 \u0454 \u0432\u043e\u043d\u0430 \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u044e \u0442\u0430 \u043f\u0435\u0440\u0435\u0432\u0435\u0440\u043d\u0443\u0442\u043e\u044e \u0447\u0438 \u043d\u0456","meta":"range.verticalReversed"}},{"type":"table_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.params"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438","title_element":"h5","title_style":"h5"},"name":"\u041f\u0443\u043d\u043a\u0442  \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.getValue()"}},{"type":"table_item","props":{"content":"\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u043d\u043e\u0432\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.setValue(<code>value<\/code>)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u043e\u0431\u0447\u0438\u0441\u043b\u0438\u0442\u0438 \u0442\u0430 \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0437\u0438\u0442\u0438 \u0448\u043a\u0430\u043b\u0443 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430","meta":"range.updateScale()"}},{"type":"table_item","props":{"content":"\u0417\u043d\u0438\u0449\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","meta":"range.destroy()"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"range.on(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0443","meta":"range.once(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"range.off(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043f\u043e\u0434\u0456\u0457","meta":"range.off(<code>event<\/code>)"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u043d\u0430 \u043f\u0440\u0438\u043c\u0456\u0440\u043d\u0438\u043a\u0443 ","meta":"range.emit(<code>event, ...args<\/code>)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435 \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 DOM \u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0442\u0430 \u043f\u043e\u0434\u0456\u0457 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 DOM ","title_element":"h3","title_style":"h3"},"name":"\u043f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u041f\u043e\u0434\u0456\u0457 DOM "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0431\u0443\u0434\u0435 \u0437\u043c\u0456\u043d\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"range:change","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0430<p> <code>&lt;div class=\"range-slider\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u0432\u0456\u0434\u043f\u0443\u0441\u043a\u0430\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u043f\u0456\u0441\u043b\u044f \u0437\u043c\u0456\u043d\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"range:changed","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0430<p> <code>&lt;div class=\"range-slider\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f\u043c \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"range:beforedestroy","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0430<p> <code>&lt;div class=\"range-slider\"&gt;<\/code>"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","title_element":"h3","title_style":"h3"},"name":"\u043f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0454 \u043f\u043e\u0434\u0456\u0457 \u044f\u043a \u0443 \u0441\u0435\u0431\u0435, \u0442\u0430\u043a \u0456 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u043c\u0430\u044e\u0442\u044c \u0442\u0456 \u0441\u0430\u043c\u0456 \u043d\u0430\u0437\u0432\u0438 \u0437 \u043f\u0440\u0435\u0444\u0456\u043a\u0441\u043e\u043c <code>range<\/code>.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u041e\u0431'\u0454\u043a\u0442","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0431\u0443\u0434\u0435 \u0437\u043c\u0456\u043d\u0435\u043d\u043e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"range","meta":"change","title":"(range, value)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0431\u0443\u0434\u0435 \u0437\u043c\u0456\u043d\u0435\u043d\u043e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"rangeChange","title":"(range, value)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u0432\u0456\u0434\u043f\u0443\u0441\u043a\u0430\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u043f\u0456\u0441\u043b\u044f \u0437\u043c\u0456\u043d\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"range","meta":"changed","title":"(range, value)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u0432\u0456\u0434\u043f\u0443\u0441\u043a\u0430\u043d\u043d\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u043f\u0456\u0441\u043b\u044f \u0437\u043c\u0456\u043d\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"rangeChanged","title":"(range, value)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f\u043c \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"range","meta":"beforeDestroy","title":"(range)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f\u043c \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"rangeBeforeDestroy","title":"(range)"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(4) \u041f\u043e\u0434\u0456\u044f - \u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 - \u041e\u043f\u0438\u0441 - \u041e\u0431'\u0454\u043a\u0442"},{"type":"headline","props":{"content":"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0432\u0430\u043c \u043d\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d API \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443, \u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443 \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0430 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u0439 \u0443 DOM \u043d\u0430 \u043c\u043e\u043c\u0435\u043d\u0442 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0439\u043e\u0433\u043e \u043c\u043e\u0436\u043d\u0430 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438, \u043f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0432\u0448\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>range-slider-init<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 range-slider-init -->\n<div class=\"range-slider range-slider-init\">\n  <input type=\"range\" min=\"0\" max=\"100\" step=\"1\" value=\"10\" \/>\n<\/div>"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443, \u044f\u043a\u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0434\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043e\u0433\u043e \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0441\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438\u0441\u044f <code>app.range.get<\/code> \u043c\u0435\u0442\u043e\u0434\u043e\u043c \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var range = app.range.get('.range-slider');\n\nif (range.value > 50) {\n  \/\/ \u0449\u043e\u0441\u044c \u0437\u0440\u043e\u0431\u0438\u0442\u0438\n}"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0434 \u0447\u0430\u0441 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e\u0457 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u043c\u043e\u0436\u0435 \u0437\u043d\u0430\u0434\u043e\u0431\u0438\u0442\u0438\u0441\u044f \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438. \u0426\u0435 \u043c\u043e\u0436\u043d\u0430 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0434\u0432\u043e\u043c\u0430 \u0441\u043f\u043e\u0441\u043e\u0431\u0430\u043c\u0438:\n<p>\u25cf\t\u0423 \u0432\u0438\u043f\u0430\u0434\u043a\u0443, \u044f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u043f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0437 \u043e\u0434\u043d\u0438\u043c \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u043e\u043c \u0456 \u0443 \u0432\u0430\u0441 \u0454 <code>input:range<\/code> \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456, \u0442\u043e\u0434\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 <code>step<\/code>, <code>min<\/code>, <code>max<\/code>, <code>value<\/code> \u043c\u043e\u0436\u043d\u0430 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u0437 \u0442\u0438\u0445 \u0441\u0430\u043c\u0438\u0445 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456\u0432 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!--\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 min, max, step, value \u0431\u0443\u0434\u0443\u0442\u044c \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0456 \u0434\u043b\u044f \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0438\u0445 \u0432\u0445\u0456\u0434\u043d\u0438\u0445 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456\u0432 -->\n<div class=\"range-slider range-slider-init\">\n  <input type=\"range\" min=\"0\" max=\"100\" step=\"1\" value=\"10\" \/>\n\t<\/div>\n"}},{"type":"text","props":{"column_breakpoint":"m","content":"<p>\u25cf\t\u0412 \u0456\u043d\u0448\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443, \u044f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u043d\u0435\u043c\u0430\u0454 <code>input:range<\/code> \u0430\u0431\u043e \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u043e\u0433\u043e \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u0432\u0441\u0456 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e <code>data-<\/code>\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456\u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u043e\u0432\u0437\u0443\u043d\u043a\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0456 \u0447\u0435\u0440\u0435\u0437 data- attributes -->\n<div\n  class=\"range-slider range-slider-init\"\n  data-min=\"0\"\n  data-max=\"100\"\n  data-step=\"10\"\n  data-label=\"true\"\n  data-value=\"50\"\n\t><\/div>\n"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u25cf\t\u042f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u043f\u043e\u0432\u0437\u0443\u043d\u043e\u043a \u0456\u0437 \u043f\u043e\u0434\u0432\u0456\u0439\u043d\u0438\u043c \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u043e\u043c, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u044c \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456\u0432 <code>data-value-left<\/code>\u0456 <code>data-value-right<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438  \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0456 \u0447\u0435\u0440\u0435\u0437 data- attributes -->\n<div\n  class=\"range-slider range-slider-init\"\n  data-dual=\"true\"\n  data-min=\"0\"\n  data-max=\"100\"\n  data-step=\"10\"\n  data-label=\"true\"\n  data-value-left=\"30\"\n  data-value-right=\"60\"\n><\/div>\n"}},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  \/*\n  --t4-range-bar-active-bg-color: var(--t4-theme-color);\n  --t4-range-scale-bg-color: var(--t4-range-bar-bg-color);\n  --t4-range-scale-substep-bg-color: var(--t4-range-bar-bg-color);\n  *\/\n  --t4-range-scale-step-height: 5px;\n  --t4-range-scale-substep-width: 1px;\n  --t4-range-scale-substep-height: 4px;\n  --t4-range-bar-bg-color: rgba(0, 0, 0, 0.2);\n}\n:root .dark,\n:root.dark {\n  --t4-range-bar-bg-color: rgba(255, 255, 255, 0.2);\n}\n.ios {\n  --t4-range-size: 28px;\n  --t4-range-bar-size: 4px;\n  --t4-range-bar-border-radius: 2px;\n  --t4-range-knob-size: 28px;\n  --t4-range-knob-color: #fff;\n  --t4-range-knob-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);\n  --t4-range-label-size: 24px;\n  --t4-range-label-text-color: #000;\n  --t4-range-label-bg-color: #fff;\n  --t4-range-label-font-size: 12px;\n  --t4-range-label-font-weight: 500;\n  --t4-range-label-border-radius: 5px;\n  --t4-range-label-padding: 0px 2px;\n  --t4-range-scale-text-color: #666;\n  --t4-range-scale-step-width: 1px;\n  --t4-range-scale-font-size: 12px;\n  --t4-range-scale-font-weight: 400;\n  --t4-range-scale-label-offset: 4px;\n}\n.md {\n  --t4-range-size: 20px;\n  --t4-range-bar-size: 2px;\n  --t4-range-bar-border-radius: 0px;\n  --t4-range-knob-size: 12px;\n  --t4-range-knob-box-shadow: none;\n  --t4-range-label-size: 26px;\n  --t4-range-label-font-weight: normal;\n  --t4-range-label-font-size: 10px;\n  --t4-range-label-border-radius: 50%;\n  --t4-range-label-padding: 0px;\n  --t4-range-scale-step-width: 2px;\n  --t4-range-scale-font-size: 12px;\n  --t4-range-scale-font-weight: 400;\n  --t4-range-scale-label-offset: 4px;\n}\n.md,\n.md .dark,\n.md [class*='color-'] {\n  --t4-range-knob-color: var(--t4-theme-color);\n  --t4-range-label-text-color: var(--t4-md-on-primary);\n  --t4-range-label-bg-color: var(--t4-theme-color);\n  --t4-range-scale-text-color: var(--t4-md-on-surface-variant);\n}"}},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438\n<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"title\">Range Slider<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block-title\">Volume<\/div>\n      <div class=\"list list-strong-ios list-outline-ios simple-list\">\n        <ul>\n          <li>\n            <div>\n              <i class=\"icon t4-icons if-not-md\" style=\"width: 28px\">speaker_fill<\/i>\n              <i class=\"icon material-icons md-only\" style=\"width: 24px\">volume_mute<\/i>\n            <\/div>\n            <div style=\"width: 100%; margin: 0 16px\">\n              <div class=\"range-slider range-slider-init\">\n                <input type=\"range\" min=\"0\" max=\"100\" step=\"1\" value=\"10\" \/>\n              <\/div>\n            <\/div>\n            <div>\n              <i class=\"icon t4-icons if-not-md\" style=\"width: 28px\">speaker_3_fill<\/i>\n              <i class=\"icon material-icons md-only\" style=\"width: 24px\">volume_up<\/i>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Brightness<\/div>\n      <div class=\"list list-strong-ios list-outline-ios simple-list\">\n        <ul>\n          <li>\n            <div>\n              <i class=\"icon t4-icons if-not-md\" style=\"width: 28px\">sun_min<\/i>\n              <i class=\"icon material-icons md-only\" style=\"width: 24px\">brightness_low<\/i>\n            <\/div>\n            <div style=\"width: 100%; margin: 0 16px\">\n              <div class=\"range-slider range-slider-init color-orange\" data-label=\"true\">\n                <input type=\"range\" min=\"0\" max=\"100\" step=\"1\" value=\"50\" \/>\n              <\/div>\n            <\/div>\n            <div>\n              <i class=\"icon t4-icons if-not-md\" style=\"width: 28px\">sun_max_fill<\/i>\n              <i class=\"icon material-icons md-only\" style=\"width: 24px\">brightness_high<\/i>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title display-flex justify-content-space-between\">\n        Price Filter <span class=\"price-value\">$${priceMin} - $${priceMax}<\/span>\n      <\/div>\n      <div class=\"list list-strong-ios list-outline-ios simple-list\">\n        <ul>\n          <li class=\"item-row\">\n            <div>\n              <i class=\"icon t4-icons if-not-md\" style=\"width: 28px\">money_dollar_circle<\/i>\n              <i class=\"icon material-icons md-only\" style=\"width: 24px\">attach_money<\/i>\n            <\/div>\n            <div style=\"width: 100%; margin: 0 16px\">\n              <div class=\"range-slider range-slider-init color-green\" @range:change=${onPriceChange} data-label=\"true\"\n                data-dual=\"true\" data-min=\"0\" data-max=\"500\" data-step=\"1\" data-value-left=\"200\" data-value-right=\"400\">\n              <\/div>\n            <\/div>\n            <div>\n              <i class=\"icon t4-icons if-not-md\" style=\"width: 28px\">money_dollar_circle_fill<\/i>\n              <i class=\"icon material-icons md-only\" style=\"width: 24px\">monetization_on<\/i>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">With Scale<\/div>\n      <div class=\"block block-strong-ios block-outline-ios\">\n        <div class=\"range-slider range-slider-init\" data-min=\"0\" data-max=\"100\" data-label=\"true\" data-step=\"5\"\n          data-value=\"25\" data-scale=\"true\" data-scale-steps=\"5\" data-scale-sub-steps=\"4\"><\/div>\n      <\/div>\n      <div class=\"block-title\">Vertical<\/div>\n      <div class=\"block block-strong-ios block-outline-ios display-flex justify-content-center\">\n        <div class=\"range-slider range-slider-init margin-right\" data-vertical=\"true\" data-min=\"0\" data-max=\"100\"\n          data-label=\"true\" data-step=\"1\" data-value=\"25\" style=\"height: 160px\"><\/div>\n        <div class=\"range-slider range-slider-init margin-horizontal\" data-vertical=\"true\" data-min=\"0\" data-max=\"100\"\n          data-label=\"true\" data-step=\"1\" data-value=\"50\" style=\"height: 160px\"><\/div>\n        <div class=\"range-slider range-slider-init margin-horizontal\" data-vertical=\"true\" data-min=\"0\" data-max=\"100\"\n          data-label=\"true\" data-step=\"1\" data-value=\"75\" style=\"height: 160px\"><\/div>\n        <div class=\"range-slider range-slider-init margin-left\" data-dual=\"true\" data-vertical=\"true\" data-min=\"0\"\n          data-max=\"100\" data-label=\"true\" data-step=\"1\" data-value-left=\"25\" data-value-right=\"75\"\n          style=\"height: 160px\"><\/div>\n      <\/div>\n      <div class=\"block-title\">Vertical Reversed<\/div>\n      <div class=\"block block-strong-ios block-outline-ios display-flex justify-content-center\">\n        <div class=\"range-slider range-slider-init color-red margin-right\" data-vertical=\"true\"\n          data-vertical-reversed=\"true\" data-min=\"0\" data-max=\"100\" data-label=\"true\" data-step=\"1\" data-value=\"25\"\n          style=\"height: 160px\"><\/div>\n        <div class=\"range-slider range-slider-init color-red margin-horizontal\" data-vertical=\"true\"\n          data-vertical-reversed=\"true\" data-min=\"0\" data-max=\"100\" data-label=\"true\" data-step=\"1\" data-value=\"50\"\n          style=\"height: 160px\"><\/div>\n        <div class=\"range-slider range-slider-init color-red margin-horizontal\" data-vertical=\"true\"\n          data-vertical-reversed=\"true\" data-min=\"0\" data-max=\"100\" data-label=\"true\" data-step=\"1\" data-value=\"75\"\n          style=\"height: 160px\"><\/div>\n        <div class=\"range-slider range-slider-init color-red margin-left\" data-dual=\"true\" data-vertical=\"true\"\n          data-vertical-reversed=\"true\" data-min=\"0\" data-max=\"100\" data-label=\"true\" data-step=\"1\" data-value-left=\"25\"\n          data-value-right=\"75\" style=\"height: 160px\"><\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, { $t4, $el, $update }) => {\n    let priceMin = 200;\n    let priceMax = 400;\n\n    const onPriceChange = (e) => {\n      const range = $t4.range.get(e.target);\n      priceMin = range.value[0];\n      priceMax = range.value[1];\n      $update();\n    };\n\n    return $render;\n  };\n<\/script>"}}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.7","yooessentialsVersion":"2.0.11"} -->

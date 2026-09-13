@@ -1,0 +1,794 @@
+<h2>Таблиця даних</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет таблиці даних</a>
+
+    </li>
+        <li>
+        
+<div>Нижній колонтитул сторінки</div>
+
+    </li>
+        <li>
+        
+<div>Вибір рядків</div>
+
+    </li>
+        <li>
+        
+<div>Вхідні дані в заголовку таблиці</div>
+
+    </li>
+        <li>
+        
+<div>Заголовок/заголовок таблиці</div>
+
+<p>Альтернативний заголовок із діями рядків</p>
+    </li>
+        <li>
+        
+<div>Сортування</div>
+
+    </li>
+        <li>
+        
+<div>Таблиці що згортаються </div>
+
+    </li>
+        <li>
+        
+<div>Методи застосунку Таблиці даних</div>
+
+    </li>
+        <li>
+        
+<div>Параметри таблиці даних</div>
+
+    </li>
+        <li>
+        
+<div>Події таблиці даних</div>
+
+<p>Події DOM <p>Події екземплярів застосунку та таблиці даних</p>
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+    </ul>
+<h3>Таблиця данних</h3>
+<div>Таблиці даних відображають набори необроблених даних. Зазвичай вони використовуються в настільних застосунках.</div>
+<h3>Макет таблиці даних</h3>
+<div>Макет таблиці загальних даних можна розглядати так:</div>
+<pre><code>&lt;div class=&quot;data-table&quot;&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th class=&quot;label-cell&quot;&gt;Dessert (100g serving)&lt;/th&gt;
+        &lt;th class=&quot;numeric-cell&quot;&gt;Calories&lt;/th&gt;
+        ...
+        &lt;th class=&quot;medium-only&quot;&gt;Comment&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;label-cell&quot;&gt;Frozen yogurt&lt;/td&gt;
+        &lt;td class=&quot;numeric-cell&quot;&gt;159&lt;/td&gt;
+        ...
+        &lt;td class=&quot;medium-only&quot;&gt;I like it!&lt;/td&gt;
+      &lt;/tr&gt;
+      ...
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+<div>У межах картки:</div>
+<pre><code>&lt;div class=&quot;data-table card&quot;&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+    ...
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    ...
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>data-table</code> - обгортка основної таблиці даних.є обов'язковим</p>
+<p>○	<code>table</code> - власне таблиця. Є обов'язковим 
+<p>■	<code>thead</code> -заголовок таблиці <b>head</b></p> 
+<p>■	<code>tbody</code> - тіло таблиці, є обов'язковим </p>
+<p>■	<code>label-cell</code> - основна клітинка мітки (тільки одна така клітинка на рядок, зазвичай перша клітинка)</p>
+<p>■	<code>numeric-cell</code> - комірка для відображення числових даних (вирівняна за правим краєм)</p>
+<p>■	<code>medium-only</code> - додатковий клас для відображення цієї комірки/стовпця лише тоді, коли ширина програми >= 768 пікселів. Щоб отримати повний набір таких адаптивних класів, перегляньте документи Grid. Вони бувають тільки <code>.xsmall-only, small-only, medium-only, large-only, xlarge-only.</code></p>
+</div>
+<h3>Нижній колонтитул сторінки</h3>
+<pre><code>&lt;div class=&quot;card data-table&quot;&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th class=&quot;label-cell&quot;&gt;Dessert (100g serving)&lt;/th&gt;
+        &lt;th class=&quot;numeric-cell&quot;&gt;Calories&lt;/th&gt;
+        &lt;th class=&quot;numeric-cell&quot;&gt;Fat (g)&lt;/th&gt;
+        &lt;th class=&quot;numeric-cell&quot;&gt;Carbs&lt;/th&gt;
+        &lt;th class=&quot;numeric-cell&quot;&gt;Protein (g)&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;label-cell&quot;&gt;Frozen yogurt&lt;/td&gt;
+        &lt;td class=&quot;numeric-cell&quot;&gt;159&lt;/td&gt;
+        &lt;td class=&quot;numeric-cell&quot;&gt;6.0&lt;/td&gt;
+        &lt;td class=&quot;numeric-cell&quot;&gt;24&lt;/td&gt;
+        &lt;td class=&quot;numeric-cell&quot;&gt;4.0&lt;/td&gt;
+      &lt;/tr&gt;
+      ...
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;div class=&quot;data-table-footer&quot;&gt;
+    &lt;div class=&quot;data-table-rows-select&quot;&gt;
+      Per page:
+      &lt;div class=&quot;input input-dropdown&quot;&gt;
+        &lt;select&gt;
+          &lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;
+          &lt;option value=&quot;10&quot;&gt;10&lt;/option&gt;
+          &lt;option value=&quot;25&quot;&gt;25&lt;/option&gt;
+          &lt;option value=&quot;all&quot;&gt;All&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;data-table-pagination&quot;&gt;
+      &lt;span class=&quot;data-table-pagination-label&quot;&gt;1-5 of 10&lt;/span&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link disabled&quot;&gt;
+        &lt;i class=&quot;icon icon-prev color-gray&quot;&gt;&lt;/i&gt;
+      &lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;
+        &lt;i class=&quot;icon icon-next color-gray&quot;&gt;&lt;/i&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>data-table-footer </code> - основний елемент колонтитула таблиці даних</p>
+<p>○	<code>data-table-rows-select </code> - виберіть контейнер із кількістю рядків </p>
+<p>○	<code>data-table-pagination </code> - контейнер з інформацією про поточну сторінку та кнопками навігації «попередня/наступна».</p> 
+<p>■	<code>data-table-pagination-label </code>  - поточна мітка сторінкового перегляду </p></div>
+<h3>Рядки, які можна вибрати</h3>
+<pre><code>&lt;div class=&quot;data-table data-table-init card&quot;&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th class=&quot;checkbox-cell&quot;&gt;
+          &lt;label class=&quot;checkbox&quot;&gt;
+            &lt;input type=&quot;checkbox&quot;/&gt;
+            &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+          &lt;/label&gt;
+        &lt;/th&gt;
+        &lt;th class=&quot;label-cell&quot;&gt;Dessert (100g serving)&lt;/th&gt;
+        &lt;th class=&quot;numeric-cell&quot;&gt;Calories&lt;/th&gt;
+        ...
+        &lt;th class=&quot;numeric-cell&quot;&gt;Protein (g)&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td class=&quot;checkbox-cell&quot;&gt;
+          &lt;label class=&quot;checkbox&quot;&gt;
+            &lt;input type=&quot;checkbox&quot;/&gt;
+            &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+          &lt;/label&gt;
+        &lt;/td&gt;
+        &lt;td class=&quot;label-cell&quot;&gt;Frozen yogurt&lt;/td&gt;
+        &lt;td class=&quot;numeric-cell&quot;&gt;159&lt;/td&gt;
+        ...
+        &lt;td class=&quot;numeric-cell&quot;&gt;4.0&lt;/td&gt;
+      &lt;/tr&gt;
+      ...
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●<code>data-table-init  </code> - додатковий клас для ввімкнення дії JavaScript, необхідної для вибраних рядків</p>
+<p>●	Комірка прапорця(checkbox). Така комірка в заголовку таблиці вибере/скасує вибір усіх рядків у тілі таблиці:</div>
+<pre><code>&lt;td class=&quot;checkbox-cell&quot;&gt;
+  &lt;label class=&quot;checkbox&quot;&gt;
+    &lt;input type=&quot;checkbox&quot;/&gt;
+    &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+  &lt;/label&gt;
+	&lt;/td&gt;</code></pre>
+<h3>Вхідні дані в заголовку таблиці</h3>
+<div>Такі таблиці широко використовуються в інтерфейсах адміністратора для фільтрації або пошуку даних:</div>
+<pre><code>&lt;div class=&quot;card data-table&quot;&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th class=&quot;input-cell&quot;&gt;
+          &lt;span class=&quot;table-head-label&quot;&gt;ID&lt;/span&gt;
+          &lt;div class=&quot;input&quot; style=&quot;width: 50px&quot;&gt;
+            &lt;input type=&quot;number&quot; placeholder=&quot;Filter&quot; /&gt;
+          &lt;/div&gt;
+        &lt;/th&gt;
+        &lt;th class=&quot;input-cell&quot;&gt;
+          &lt;span class=&quot;table-head-label&quot;&gt;Name&lt;/span&gt;
+          &lt;div class=&quot;input&quot;&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;Filter&quot; /&gt;
+          &lt;/div&gt;
+        &lt;/th&gt;
+        ...
+        &lt;th class=&quot;input-cell&quot;&gt;
+          &lt;span class=&quot;table-head-label&quot;&gt;Gender&lt;/span&gt;
+          &lt;div class=&quot;input input-dropdown&quot;&gt;
+            &lt;select&gt;
+              &lt;option value=&quot;All&quot;&gt;All&lt;/option&gt;
+              &lt;option value=&quot;Male&quot;&gt;Male&lt;/option&gt;
+              &lt;option value=&quot;Female&quot;&gt;Female&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+        &lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;John Doe&lt;/td&gt;
+        &lt;td&gt;john@doe.com&lt;/td&gt;
+        &lt;td&gt;Male&lt;/td&gt;
+      &lt;/tr&gt;
+      ...
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>input-cell  </code> - додатковий клас у комірці таблиці, необхідний для відображення введення</p>
+<p>●	<code>&lt;span class="table-head-label"&gt; </code> - вхідна мітка</p>
+<p>●	<code>●	&lt;div class="input"&gt; </code> - вхідний контейнер</p></div>
+<h3>Заголовок таблиці Header </h3>
+<div>Коли таблиця даних використовується в картці, можна використовувати додатковий заголовок таблиці даних із діями в заголовку картки.</div>
+<h5>З назвою та діями</h5>
+<pre><code>&lt;div class=&quot;data-table data-table-init card&quot;&gt;
+  &lt;!-- Card Header --&gt;
+  &lt;div class=&quot;card-header&quot;&gt;
+    &lt;!-- Table title --&gt;
+    &lt;div class=&quot;data-table-title&quot;&gt;Nutrition&lt;/div&gt;
+    &lt;!-- Table actions --&gt;
+    &lt;div class=&quot;data-table-actions&quot;&gt;
+      &lt;a class=&quot;link icon-only&quot;&gt;
+        &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;line_horizontal_3_decrease&lt;/i&gt;
+        &lt;i class=&quot;icon material-icons md-only&quot;&gt;sort&lt;/i&gt;
+      &lt;/a&gt;
+      &lt;a class=&quot;link icon-only&quot;&gt;
+        &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;ellipsis_vertical_circle&lt;/i&gt;
+        &lt;i class=&quot;icon material-icons md-only&quot;&gt;more_vert&lt;/i&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Card Content --&gt;
+  &lt;div class=&quot;card-content&quot;&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th class=&quot;checkbox-cell&quot;&gt;
+            &lt;label class=&quot;checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; /&gt;
+              &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+            &lt;/label&gt;
+          &lt;/th&gt;
+          &lt;th class=&quot;label-cell&quot;&gt;Dessert (100g serving)&lt;/th&gt;
+          &lt;th class=&quot;numeric-cell&quot;&gt;Calories&lt;/th&gt;
+          ...
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td class=&quot;checkbox-cell&quot;&gt;
+            &lt;label class=&quot;checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; /&gt;
+              &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+            &lt;/label&gt;
+          &lt;/td&gt;
+          &lt;td class=&quot;label-cell&quot;&gt;Frozen yogurt&lt;/td&gt;
+          &lt;td class=&quot;numeric-cell&quot;&gt;159&lt;/td&gt;
+          ...
+        &lt;/tr&gt;
+        ...
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>data-table-title </code> - заголовок таблиці</p>
+<p>●	<code>●	data-table-actions</code> - основні дії таблиці</p></div>
+<h5>Різні дії на вибір</h5>
+<pre><code>&lt;div class=&quot;data-table data-table-init card&quot;&gt;
+  &lt;!-- Card header --&gt;
+  &lt;div class=&quot;card-header&quot;&gt;
+    &lt;!-- Default table header --&gt;
+    &lt;div class=&quot;data-table-header&quot;&gt;
+      &lt;!-- Default table title --&gt;
+      &lt;div class=&quot;data-table-title&quot;&gt;Nutrition&lt;/div&gt;
+      &lt;!-- Default table actions --&gt;
+      &lt;div class=&quot;data-table-actions&quot;&gt;
+        &lt;a class=&quot;link icon-only&quot;&gt;
+          &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;line_horizontal_3_decrease&lt;/i&gt;
+          &lt;i class=&quot;icon material-icons md-only&quot;&gt;sort&lt;/i&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;link icon-only&quot;&gt;
+          &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;ellipsis_vertical_circle&lt;/i&gt;
+          &lt;i class=&quot;icon material-icons md-only&quot;&gt;more_vert&lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Selected table header --&gt;
+    &lt;div class=&quot;data-table-header-selected&quot;&gt;
+      &lt;!-- Selected table title --&gt;
+      &lt;div class=&quot;data-table-title-selected&quot;&gt;&lt;span class=&quot;data-table-selected-count&quot;&gt;&lt;/span&gt; items selected&lt;/div&gt;
+      &lt;!-- Selected table actions --&gt;
+      &lt;div class=&quot;data-table-actions&quot;&gt;
+        &lt;a class=&quot;link icon-only&quot;&gt;
+          &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;trash&lt;/i&gt;
+          &lt;i class=&quot;icon material-icons md-only&quot;&gt;delete&lt;/i&gt;
+        &lt;/a&gt;
+        &lt;a class=&quot;link icon-only&quot;&gt;
+          &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;ellipsis_vertical_circle&lt;/i&gt;
+          &lt;i class=&quot;icon material-icons md-only&quot;&gt;more_vert&lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-content&quot;&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th class=&quot;checkbox-cell&quot;&gt;
+            &lt;label class=&quot;checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; /&gt;
+              &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+            &lt;/label&gt;
+          &lt;/th&gt;
+          &lt;th class=&quot;label-cell&quot;&gt;Dessert (100g serving)&lt;/th&gt;
+          &lt;th class=&quot;numeric-cell&quot;&gt;Calories&lt;/th&gt;
+          ...
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td class=&quot;checkbox-cell&quot;&gt;
+            &lt;label class=&quot;checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; /&gt;
+              &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+            &lt;/label&gt;
+          &lt;/td&gt;
+          &lt;td class=&quot;label-cell&quot;&gt;Frozen yogurt&lt;/td&gt;
+          &lt;td class=&quot;numeric-cell&quot;&gt;159&lt;/td&gt;
+          ...
+        &lt;/tr&gt;
+        ...
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>data-table-header   </code> - заголовок таблиці за замовчуванням. Відображається, якщо немає вибраних рядків</p>
+<p>●	<code>data-table-header-selected</code> - вибраний заголовок таблиці. Видно, коли є вибрані рядки</p>
+<p>●	<code>●	data-table-selected-count</code> - кількість вибраних рядків таблиці. Номер буде розміщено тут за допомогою JavaScript</p></div>
+<h3>Альтернативний заголовок із діями рядків</h3>
+<pre><code>&lt;div class=&quot;data-table data-table-init card&quot;&gt;
+  &lt;div class=&quot;card-header&quot;&gt;
+    &lt;!-- Table links/actions --&gt;
+    &lt;div class=&quot;data-table-links&quot;&gt;
+      &lt;a class=&quot;link&quot;&gt;Add&lt;/a&gt;
+      &lt;a class=&quot;link&quot;&gt;Remove&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;!-- Table actions --&gt;
+    &lt;div class=&quot;data-table-actions&quot;&gt;
+      &lt;a class=&quot;link icon-only&quot;&gt;
+        &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;line_horizontal_3_decrease&lt;/i&gt;
+        &lt;i class=&quot;icon material-icons md-only&quot;&gt;sort&lt;/i&gt;
+      &lt;/a&gt;
+      &lt;a class=&quot;link icon-only&quot;&gt;
+        &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;ellipsis_vertical_circle&lt;/i&gt;
+        &lt;i class=&quot;icon material-icons md-only&quot;&gt;more_vert&lt;/i&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-content&quot;&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th class=&quot;checkbox-cell&quot;&gt;
+            &lt;label class=&quot;checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; /&gt;
+              &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+            &lt;/label&gt;
+          &lt;/th&gt;
+          &lt;th class=&quot;label-cell&quot;&gt;Dessert (100g serving)&lt;/th&gt;
+          &lt;th class=&quot;numeric-cell&quot;&gt;Calories&lt;/th&gt;
+          ...
+          &lt;th&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td class=&quot;checkbox-cell&quot;&gt;
+            &lt;label class=&quot;checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; /&gt;
+              &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+            &lt;/label&gt;
+          &lt;/td&gt;
+          &lt;td class=&quot;label-cell&quot;&gt;Frozen yogurt&lt;/td&gt;
+          &lt;td class=&quot;numeric-cell&quot;&gt;159&lt;/td&gt;
+          ...
+          &lt;td class=&quot;actions-cell&quot;&gt;
+            &lt;a class=&quot;link icon-only&quot;&gt;
+              &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;square_pencil&lt;/i&gt;
+              &lt;i class=&quot;icon material-icons md-only&quot;&gt;edit&lt;/i&gt;
+            &lt;/a&gt;
+            &lt;a class=&quot;link icon-only&quot;&gt;
+              &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;trash&lt;/i&gt;
+              &lt;i class=&quot;icon material-icons md-only&quot;&gt;delete&lt;/i&gt;
+            &lt;/a&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        ...
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>data-table-links</code> - альтернативні/додаткові дії таблиці</p>
+<p>●	<code>actions-cell</code> - клітинка посилань/піктограм дій</p>
+</div>
+<h3>Сортування</h3>
+<pre><code>&lt;div class=&quot;data-table data-table-init card&quot;&gt;
+  &lt;div class=&quot;card-header&quot;&gt;
+    &lt;div class=&quot;data-table-title&quot;&gt;Nutrition&lt;/div&gt;
+    &lt;div class=&quot;data-table-actions&quot;&gt;
+      &lt;a class=&quot;link icon-only&quot;&gt;
+        &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;line_horizontal_3_decrease&lt;/i&gt;
+        &lt;i class=&quot;icon material-icons md-only&quot;&gt;sort&lt;/i&gt;
+      &lt;/a&gt;
+      &lt;a class=&quot;link icon-only&quot;&gt;
+        &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;ellipsis_vertical_circle&lt;/i&gt;
+        &lt;i class=&quot;icon material-icons md-only&quot;&gt;more_vert&lt;/i&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-content&quot;&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th class=&quot;checkbox-cell&quot;&gt;
+            &lt;label class=&quot;checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; /&gt;
+              &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+            &lt;/label&gt;
+          &lt;/th&gt;
+          &lt;th class=&quot;label-cell sortable-cell sortable-cell-active&quot;&gt;Dessert (100g serving)&lt;/th&gt;
+          &lt;th class=&quot;numeric-cell sortable-cell&quot;&gt;Calories&lt;/th&gt;
+          &lt;th class=&quot;numeric-cell sortable-cell&quot;&gt;Fat (g)&lt;/th&gt;
+          &lt;th class=&quot;numeric-cell sortable-cell&quot;&gt;Carbs&lt;/th&gt;
+          &lt;th class=&quot;numeric-cell sortable-cell&quot;&gt;Protein (g)&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td class=&quot;checkbox-cell&quot;&gt;
+            &lt;label class=&quot;checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; /&gt;
+              &lt;i class=&quot;icon-checkbox&quot;&gt;&lt;/i&gt;
+            &lt;/label&gt;
+          &lt;/td&gt;
+          &lt;td class=&quot;label-cell&quot;&gt;Frozen yogurt&lt;/td&gt;
+          &lt;td class=&quot;numeric-cell&quot;&gt;159&lt;/td&gt;
+          &lt;td class=&quot;numeric-cell&quot;&gt;6.0&lt;/td&gt;
+          &lt;td class=&quot;numeric-cell&quot;&gt;24&lt;/td&gt;
+          &lt;td class=&quot;numeric-cell&quot;&gt;4.0&lt;/td&gt;
+        &lt;/tr&gt;
+        ...
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>sortable-cell </code> - додатковий клас для того, щоб клітинка/стовпець була сортованою</p>
+<p>●	<code>sortable-cell-active </code>- додатковий клас для визначення активної/за замовчуванням клітинки/стовпця, які можна сортувати</p>
+<p>●	<code>sortable-asc</code>- додатковий клас для визначення поточного сортування за зростанням (за замовчуванням)</p>
+<p>●	<code>sortable-desc</code>- додатковий клас для вказівки поточного сортування за спаданням</p></div>
+<div>Зауважте, що фреймворк не забезпечує фактичної логіки сортування. Реальна логіка сортування повинна бути реалізована вручну.</div>
+<h3>Таблиця, що згортається </h3>
+<div>Наступну таблицю буде згорнуто до вигляду списку на маленьких екранах:</div>
+<pre><code>&lt;div class=&quot;card data-table data-table-collapsible data-table-init&quot;&gt;
+  &lt;div class=&quot;card-header&quot;&gt;
+    &lt;div class=&quot;data-table-title&quot;&gt;Nutrition&lt;/div&gt;
+    &lt;div class=&quot;data-table-actions&quot;&gt;
+      &lt;a class=&quot;link icon-only&quot;&gt;
+        &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;line_horizontal_3_decrease&lt;/i&gt;
+        &lt;i class=&quot;icon material-icons md-only&quot;&gt;sort&lt;/i&gt;
+      &lt;/a&gt;
+      &lt;a class=&quot;link icon-only&quot;&gt;
+        &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;ellipsis_vertical_circle&lt;/i&gt;
+        &lt;i class=&quot;icon material-icons md-only&quot;&gt;more_vert&lt;/i&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-content&quot;&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th class=&quot;label-cell&quot;&gt;Dessert (100g serving)&lt;/th&gt;
+          &lt;th class=&quot;numeric-cell&quot;&gt;Calories&lt;/th&gt;
+          ...
+          &lt;th class=&quot;numeric-cell&quot;&gt;Protein (g)&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td class=&quot;label-cell&quot; data-collapsible-title=&quot;Dessert (100g serving)&quot;&gt;Frozen yogurt&lt;/td&gt;
+          &lt;td class=&quot;numeric-cell&quot; data-collapsible-title=&quot;Calories&quot;&gt;159&lt;/td&gt;
+          ...
+          &lt;td class=&quot;numeric-cell&quot; data-collapsible-title=&quot;Protein (g)&quot;&gt;4.0&lt;/td&gt;
+        &lt;/tr&gt;
+        ...
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>data-table-collapsible</code> - додатковий клас таблиці для включення логіки, що згортається. Зверніть увагу, що для цього також потрібен клас <code>"data-table-init"</code>.</p>
+
+</div>
+<h3>Методи застосунку таблиці даних</h3>
+<div>Якщо ви додаєте таблицю даних динамічно і вам потрібна така логіка вибору рядків або перемикання заголовків, вам потрібно ініціалізувати це вручну. Давайте розглянемо пов’язані методи роботи програми з таблицею даних:</div>
+<div><code>app.dataTable.create(parameters)</code> - створити екземпляр таблиці даних
+<p>●	<code>parameters - object.</code> Об'єкт з параметрами таблиці даних.</p>
+<p><i>Метод повертає створений екземпляр таблиці даних</i></p>
+</div>
+<div><code>app.dataTable.destroy(el)</code> - знищити екземпляр таблиці даних
+<p>●	<code>el - HTMLElement or string (за допомогою селектора CSS) або об’єкта. </code>. Елемент таблиці даних або екземпляр таблиці даних для знищення.</p>
+</div>
+<div><code>app.dataTable.get(el)</code> - отримати примірник таблиці даних за елементом HTML
+<p>●	<code>el - HTMLElement or string(за допомогою селектора CSS). </code> Елемент таблиці даних.</p>
+<p><i>Метод повертає екземпляр таблиці даних</i></p></div>
+<h3>Параметри таблиці даних</h3>
+<div>Тепер давайте розглянемо список доступних параметрів, необхідних для створення таблиці даних:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>el</td>
+
+<td>Елемент таблиці даних. Може бути корисним, якщо у вашому HTML-коді вже є елемент Data Table і ви хочете створити новий екземпляр за допомогою цього елемента</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Події таблиці даних</h3>
+<div>Таблиця даних запускатиме такі події DOM в елементі таблиці даних і події в екземплярі застосунку та таблиці даних:</div>
+<h4>Події DOM</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Data Table Element <p>&lt;div class="data-table"&gt;</td>
+
+<td>datatable:sort</td>
+
+<td>Подію буде викликано зміною сортування таблиці даних</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Data Table Element <p>&lt;div class="data-table"&gt;</td>
+
+<td>datatable:beforedestroy</td>
+
+<td>Подія буде ініційована безпосередньо перед тим, як екземпляр таблиці даних буде знищено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Події екземплярів застосунку та таблиці даних</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th>Об'єкт</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>dataTable, sort</td>
+
+<td>sort</td>
+
+<td>Подію буде викликано зміною сортування таблиці даних</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">dataTable</a>
+    </td>
+</tr>
+                <tr>
+<td>dataTable, sort</td>
+
+<td>dataTableSort</td>
+
+<td>Подію буде викликано зміною сортування таблиці даних</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>dataTable</td>
+
+<td>beforeDestroy</td>
+
+<td>Подія буде ініційована безпосередньо перед тим, як екземпляр таблиці даних буде знищено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">dataTable</a>
+    </td>
+</tr>
+                <tr>
+<td>dataTable</td>
+
+<td>dataTableBeforeDestroy</td>
+
+<td>Подія буде ініційована безпосередньо перед тим, як екземпляр таблиці даних буде знищено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Змінні CSS </h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень</div>
+<pre><code>:root {
+  --t4-table-head-font-size: 12px;
+  --t4-table-body-font-size: 14px;
+  --t4-table-footer-font-size: 12px;
+  --t4-table-input-height: 24px;
+  --t4-table-input-font-size: 14px;
+  --t4-table-collapsible-cell-padding: 16px;
+  --t4-table-link-icon-only-icon-size: 20px;
+  --t4-table-head-bg-color: transparent;
+  --t4-table-card-header-bg-color: transparent;
+  --t4-table-card-header-height: 64px;
+  --t4-table-cell-padding-vertical: 0px;
+  --t4-table-sortable-icon-color: #000;
+}
+:root .dark,
+:root.dark {
+  --t4-table-cell-border-color: rgba(255, 255, 255, 0.15);
+  --t4-table-sortable-icon-color: #fff;
+  --t4-table-input-text-color: #fff;
+}
+.ios {
+  --t4-table-head-font-weight: 600;
+  --t4-table-head-cell-height: 44px;
+  --t4-table-head-icon-size: 18px;
+  --t4-table-body-cell-height: 44px;
+  --t4-table-cell-padding-horizontal: 16px;
+  --t4-table-edge-cell-padding-horizontal: 16px;
+  --t4-table-label-cell-padding-horizontal: 16px;
+  --t4-table-checkbox-cell-width: 22px;
+  /* --t4-table-actions-cell-link-color: var(--t4-theme-color); */
+  /* --t4-table-actions-link-color: var(--t4-theme-color); */
+  --t4-table-title-font-size: 17px;
+  --t4-table-title-font-weight: 600;
+  --t4-table-footer-height: 44px;
+  --t4-table-head-text-color: rgba(0, 0, 0, 0.45);
+  --t4-table-cell-border-color: rgba(0, 0, 0, 0.22);
+  --t4-table-selected-row-bg-color: rgba(0, 0, 0, 0.03);
+  --t4-table-footer-text-color: rgba(0, 0, 0, 0.45);
+  --t4-table-input-text-color: #000;
+}
+.ios .dark,
+.ios.dark {
+  --t4-table-head-text-color: rgba(255, 255, 255, 0.55);
+  --t4-table-footer-text-color: rgba(255, 255, 255, 0.55);
+  --t4-table-selected-row-bg-color: rgba(255, 255, 255, 0.08);
+}
+.md {
+  --t4-table-head-font-weight: 500;
+  --t4-table-head-cell-height: 56px;
+  --t4-table-head-icon-size: 16px;
+  --t4-table-body-cell-height: 48px;
+  --t4-table-cell-padding-horizontal: 28px;
+  --t4-table-edge-cell-padding-horizontal: 24px;
+  --t4-table-label-cell-padding-horizontal: 24px;
+  --t4-table-checkbox-cell-width: 18px;
+  --t4-table-title-font-size: 20px;
+  --t4-table-title-font-weight: 400;
+  --t4-table-footer-height: 56px;
+  --t4-table-head-text-color: rgba(0, 0, 0, 0.54);
+  --t4-table-cell-border-color: rgba(0, 0, 0, 0.12);
+  --t4-table-actions-cell-link-color: rgba(0, 0, 0, 0.54);
+  --t4-table-selected-row-bg-color: #f5f5f5;
+  --t4-table-actions-link-color: rgba(0, 0, 0, 0.54);
+  --t4-table-footer-text-color: rgba(0, 0, 0, 0.54);
+  --t4-table-input-text-color: #212121;
+}
+.md .dark,
+.md.dark {
+  --t4-table-head-text-color: rgba(255, 255, 255, 0.54);
+  --t4-table-footer-text-color: rgba(255, 255, 255, 0.54);
+  --t4-table-selected-row-bg-color: rgba(255, 255, 255, 0.05);
+  --t4-table-actions-cell-link-color: rgba(255, 255, 255, 0.54);
+  --t4-table-actions-link-color: rgba(255, 255, 255, 0.54);
+}
+.aurora {
+  --t4-table-input-height: 32px;
+  --t4-table-head-font-weight: 600;
+  --t4-table-head-cell-height: 56px;
+  --t4-table-head-icon-size: 18px;
+  --t4-table-body-cell-height: 48px;
+  --t4-table-cell-padding-horizontal: 16px;
+  --t4-table-edge-cell-padding-horizontal: 16px;
+  --t4-table-label-cell-padding-horizontal: 16px;
+  --t4-table-checkbox-cell-width: 22px;
+  /* --t4-table-actions-cell-link-color: var(--t4-theme-color); */
+  /* --t4-table-actions-link-color: var(--t4-theme-color); */
+  --t4-table-title-font-size: 20px;
+  --t4-table-title-font-weight: 600;
+  --t4-table-footer-height: 56px;
+  --t4-table-head-text-color: rgba(0, 0, 0, 0.6);
+  --t4-table-cell-border-color: rgba(0, 0, 0, 0.12);
+  --t4-table-selected-row-bg-color: rgba(0, 0, 0, 0.03);
+  --t4-table-footer-text-color: rgba(0, 0, 0, 0.5);
+  --t4-table-input-text-color: #000;
+  --t4-table-head-bg-color: #f6f6f7;
+  --t4-table-card-header-bg-color: #f6f6f7;
+}
+.aurora .dark,
+.aurora.dark {
+  --t4-table-selected-row-bg-color: rgba(255, 255, 255, 0.03);
+  --t4-table-head-text-color: rgba(255, 255, 255, 0.54);
+  --t4-table-footer-text-color: rgba(255, 255, 255, 0.54);
+  --t4-table-head-bg-color: rgba(255, 255, 255, 0.05);
+  --t4-table-card-header-bg-color: rgba(255, 255, 255, 0.05);
+}</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0434\u0430\u043d\u0438\u0445","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0434\u0430\u043d\u0438\u0445"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438"}},{"type":"nav_item","props":{"content":"\u0412\u0438\u0431\u0456\u0440 \u0440\u044f\u0434\u043a\u0456\u0432"}},{"type":"nav_item","props":{"content":"\u0412\u0445\u0456\u0434\u043d\u0456 \u0434\u0430\u043d\u0456 \u0432 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0443 \u0442\u0430\u0431\u043b\u0438\u0446\u0456"}},{"type":"nav_item","props":{"content":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a\/\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0430\u0431\u043b\u0438\u0446\u0456","meta":"\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0456\u0437 \u0434\u0456\u044f\u043c\u0438 \u0440\u044f\u0434\u043a\u0456\u0432"}},{"type":"nav_item","props":{"content":"\u0421\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f"}},{"type":"nav_item","props":{"content":"\u0422\u0430\u0431\u043b\u0438\u0446\u0456 \u0449\u043e \u0437\u0433\u043e\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f "}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0422\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445"}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","meta":"\u041f\u043e\u0434\u0456\u0457 DOM <p>\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0434\u0430\u043d\u043d\u0438\u0445","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0434\u0430\u043d\u043d\u0438\u0445"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u044e\u0442\u044c \u043d\u0430\u0431\u043e\u0440\u0438 \u043d\u0435\u043e\u0431\u0440\u043e\u0431\u043b\u0435\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445. \u0417\u0430\u0437\u0432\u0438\u0447\u0430\u0439 \u0432\u043e\u043d\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u044e\u0442\u044c\u0441\u044f \u0432 \u043d\u0430\u0441\u0442\u0456\u043b\u044c\u043d\u0438\u0445 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0430\u0445.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u043a\u0435\u0442 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445 \u043c\u043e\u0436\u043d\u0430 \u0440\u043e\u0437\u0433\u043b\u044f\u0434\u0430\u0442\u0438 \u0442\u0430\u043a:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"data-table\">\n  <table>\n    <thead>\n      <tr>\n        <th class=\"label-cell\">Dessert (100g serving)<\/th>\n        <th class=\"numeric-cell\">Calories<\/th>\n        ...\n        <th class=\"medium-only\">Comment<\/th>\n      <\/tr>\n    <\/thead>\n    <tbody>\n      <tr>\n        <td class=\"label-cell\">Frozen yogurt<\/td>\n        <td class=\"numeric-cell\">159<\/td>\n        ...\n        <td class=\"medium-only\">I like it!<\/td>\n      <\/tr>\n      ...\n    <\/tbody>\n  <\/table>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0423 \u043c\u0435\u0436\u0430\u0445 \u043a\u0430\u0440\u0442\u043a\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"data-table card\">\n  <table>\n    <thead>\n    ...\n    <\/thead>\n    <tbody>\n    ...\n    <\/tbody>\n  <\/table>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>data-table<\/code> - \u043e\u0431\u0433\u043e\u0440\u0442\u043a\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0457 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445.\u0454 \u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u043c<\/p>\n<p>\u25cb\t<code>table<\/code> - \u0432\u043b\u0430\u0441\u043d\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044f. \u0404 \u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u043c \n<p>\u25a0\t<code>thead<\/code> -\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0430\u0431\u043b\u0438\u0446\u0456 <b>head<\/b><\/p> \n<p>\u25a0\t<code>tbody<\/code> - \u0442\u0456\u043b\u043e \u0442\u0430\u0431\u043b\u0438\u0446\u0456, \u0454 \u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u043c <\/p>\n<p>\u25a0\t<code>label-cell<\/code> - \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u043a\u043b\u0456\u0442\u0438\u043d\u043a\u0430 \u043c\u0456\u0442\u043a\u0438 (\u0442\u0456\u043b\u044c\u043a\u0438 \u043e\u0434\u043d\u0430 \u0442\u0430\u043a\u0430 \u043a\u043b\u0456\u0442\u0438\u043d\u043a\u0430 \u043d\u0430 \u0440\u044f\u0434\u043e\u043a, \u0437\u0430\u0437\u0432\u0438\u0447\u0430\u0439 \u043f\u0435\u0440\u0448\u0430 \u043a\u043b\u0456\u0442\u0438\u043d\u043a\u0430)<\/p>\n<p>\u25a0\t<code>numeric-cell<\/code> - \u043a\u043e\u043c\u0456\u0440\u043a\u0430 \u0434\u043b\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0447\u0438\u0441\u043b\u043e\u0432\u0438\u0445 \u0434\u0430\u043d\u0438\u0445 (\u0432\u0438\u0440\u0456\u0432\u043d\u044f\u043d\u0430 \u0437\u0430 \u043f\u0440\u0430\u0432\u0438\u043c \u043a\u0440\u0430\u0454\u043c)<\/p>\n<p>\u25a0\t<code>medium-only<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0446\u0456\u0454\u0457 \u043a\u043e\u043c\u0456\u0440\u043a\u0438\/\u0441\u0442\u043e\u0432\u043f\u0446\u044f \u043b\u0438\u0448\u0435 \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0448\u0438\u0440\u0438\u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438 >= 768 \u043f\u0456\u043a\u0441\u0435\u043b\u0456\u0432. \u0429\u043e\u0431 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u043f\u043e\u0432\u043d\u0438\u0439 \u043d\u0430\u0431\u0456\u0440 \u0442\u0430\u043a\u0438\u0445 \u0430\u0434\u0430\u043f\u0442\u0438\u0432\u043d\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432, \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u044c\u0442\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438 Grid. \u0412\u043e\u043d\u0438 \u0431\u0443\u0432\u0430\u044e\u0442\u044c \u0442\u0456\u043b\u044c\u043a\u0438 <code>.xsmall-only, small-only, medium-only, large-only, xlarge-only.<\/code><\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438"},{"type":"code","props":{"content":"<div class=\"card data-table\">\n  <table>\n    <thead>\n      <tr>\n        <th class=\"label-cell\">Dessert (100g serving)<\/th>\n        <th class=\"numeric-cell\">Calories<\/th>\n        <th class=\"numeric-cell\">Fat (g)<\/th>\n        <th class=\"numeric-cell\">Carbs<\/th>\n        <th class=\"numeric-cell\">Protein (g)<\/th>\n      <\/tr>\n    <\/thead>\n    <tbody>\n      <tr>\n        <td class=\"label-cell\">Frozen yogurt<\/td>\n        <td class=\"numeric-cell\">159<\/td>\n        <td class=\"numeric-cell\">6.0<\/td>\n        <td class=\"numeric-cell\">24<\/td>\n        <td class=\"numeric-cell\">4.0<\/td>\n      <\/tr>\n      ...\n    <\/tbody>\n  <\/table>\n  <div class=\"data-table-footer\">\n    <div class=\"data-table-rows-select\">\n      Per page:\n      <div class=\"input input-dropdown\">\n        <select>\n          <option value=\"5\">5<\/option>\n          <option value=\"10\">10<\/option>\n          <option value=\"25\">25<\/option>\n          <option value=\"all\">All<\/option>\n        <\/select>\n      <\/div>\n    <\/div>\n    <div class=\"data-table-pagination\">\n      <span class=\"data-table-pagination-label\">1-5 of 10<\/span>\n      <a href=\"#\" class=\"link disabled\">\n        <i class=\"icon icon-prev color-gray\"><\/i>\n      <\/a>\n      <a href=\"#\" class=\"link\">\n        <i class=\"icon icon-next color-gray\"><\/i>\n      <\/a>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>data-table-footer <\/code> - \u043e\u0441\u043d\u043e\u0432\u043d\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445<\/p>\n<p>\u25cb\t<code>data-table-rows-select <\/code> - \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 \u0456\u0437 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044e \u0440\u044f\u0434\u043a\u0456\u0432 <\/p>\n<p>\u25cb\t<code>data-table-pagination <\/code> - \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 \u0437 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0454\u044e \u043f\u0440\u043e \u043f\u043e\u0442\u043e\u0447\u043d\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0442\u0430 \u043a\u043d\u043e\u043f\u043a\u0430\u043c\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u00ab\u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044f\/\u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0430\u00bb.<\/p> \n<p>\u25a0\t<code>data-table-pagination-label <\/code>  - \u043f\u043e\u0442\u043e\u0447\u043d\u0430 \u043c\u0456\u0442\u043a\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u043e\u0432\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 <\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0420\u044f\u0434\u043a\u0438, \u044f\u043a\u0456 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u0431\u0440\u0430\u0442\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0420\u044f\u0434\u043a\u0438, \u044f\u043a\u0456 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u0431\u0440\u0430\u0442\u0438"},{"type":"code","props":{"content":"<div class=\"data-table data-table-init card\">\n  <table>\n    <thead>\n      <tr>\n        <th class=\"checkbox-cell\">\n          <label class=\"checkbox\">\n            <input type=\"checkbox\"\/>\n            <i class=\"icon-checkbox\"><\/i>\n          <\/label>\n        <\/th>\n        <th class=\"label-cell\">Dessert (100g serving)<\/th>\n        <th class=\"numeric-cell\">Calories<\/th>\n        ...\n        <th class=\"numeric-cell\">Protein (g)<\/th>\n      <\/tr>\n    <\/thead>\n    <tbody>\n      <tr>\n        <td class=\"checkbox-cell\">\n          <label class=\"checkbox\">\n            <input type=\"checkbox\"\/>\n            <i class=\"icon-checkbox\"><\/i>\n          <\/label>\n        <\/td>\n        <td class=\"label-cell\">Frozen yogurt<\/td>\n        <td class=\"numeric-cell\">159<\/td>\n        ...\n        <td class=\"numeric-cell\">4.0<\/td>\n      <\/tr>\n      ...\n    <\/tbody>\n  <\/table>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf<code>data-table-init  <\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043d\u044f \u0434\u0456\u0457 JavaScript, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0434\u043b\u044f \u0432\u0438\u0431\u0440\u0430\u043d\u0438\u0445 \u0440\u044f\u0434\u043a\u0456\u0432<\/p>\n<p>\u25cf\t\u041a\u043e\u043c\u0456\u0440\u043a\u0430 \u043f\u0440\u0430\u043f\u043e\u0440\u0446\u044f(checkbox). \u0422\u0430\u043a\u0430 \u043a\u043e\u043c\u0456\u0440\u043a\u0430 \u0432 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0443 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0432\u0438\u0431\u0435\u0440\u0435\/\u0441\u043a\u0430\u0441\u0443\u0454 \u0432\u0438\u0431\u0456\u0440 \u0443\u0441\u0456\u0445 \u0440\u044f\u0434\u043a\u0456\u0432 \u0443 \u0442\u0456\u043b\u0456 \u0442\u0430\u0431\u043b\u0438\u0446\u0456:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<td class=\"checkbox-cell\">\n  <label class=\"checkbox\">\n    <input type=\"checkbox\"\/>\n    <i class=\"icon-checkbox\"><\/i>\n  <\/label>\n\t<\/td>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0445\u0456\u0434\u043d\u0456 \u0434\u0430\u043d\u0456 \u0432 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0443 \u0442\u0430\u0431\u043b\u0438\u0446\u0456","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0445\u0456\u0434\u043d\u0456 \u0434\u0430\u043d\u0456 \u0432 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0443 \u0442\u0430\u0431\u043b\u0438\u0446\u0456"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u043a\u0456 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0448\u0438\u0440\u043e\u043a\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u044e\u0442\u044c\u0441\u044f \u0432 \u0456\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430\u0445 \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430 \u0434\u043b\u044f \u0444\u0456\u043b\u044c\u0442\u0440\u0430\u0446\u0456\u0457 \u0430\u0431\u043e \u043f\u043e\u0448\u0443\u043a\u0443 \u0434\u0430\u043d\u0438\u0445:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"card data-table\">\n  <table>\n    <thead>\n      <tr>\n        <th class=\"input-cell\">\n          <span class=\"table-head-label\">ID<\/span>\n          <div class=\"input\" style=\"width: 50px\">\n            <input type=\"number\" placeholder=\"Filter\" \/>\n          <\/div>\n        <\/th>\n        <th class=\"input-cell\">\n          <span class=\"table-head-label\">Name<\/span>\n          <div class=\"input\">\n            <input type=\"text\" placeholder=\"Filter\" \/>\n          <\/div>\n        <\/th>\n        ...\n        <th class=\"input-cell\">\n          <span class=\"table-head-label\">Gender<\/span>\n          <div class=\"input input-dropdown\">\n            <select>\n              <option value=\"All\">All<\/option>\n              <option value=\"Male\">Male<\/option>\n              <option value=\"Female\">Female<\/option>\n            <\/select>\n          <\/div>\n        <\/th>\n      <\/tr>\n    <\/thead>\n    <tbody>\n      <tr>\n        <td>1<\/td>\n        <td>John Doe<\/td>\n        <td>john@doe.com<\/td>\n        <td>Male<\/td>\n      <\/tr>\n      ...\n    <\/tbody>\n  <\/table>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>input-cell  <\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0443 \u043a\u043e\u043c\u0456\u0440\u0446\u0456 \u0442\u0430\u0431\u043b\u0438\u0446\u0456, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0434\u043b\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f<\/p>\n<p>\u25cf\t<code>&lt;span class=\"table-head-label\"&gt; <\/code> - \u0432\u0445\u0456\u0434\u043d\u0430 \u043c\u0456\u0442\u043a\u0430<\/p>\n<p>\u25cf\t<code>\u25cf\t&lt;div class=\"input\"&gt; <\/code> - \u0432\u0445\u0456\u0434\u043d\u0438\u0439 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0430\u0431\u043b\u0438\u0446\u0456 Header ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0430\u0431\u043b\u0438\u0446\u0456 Header "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u043e\u043b\u0438 \u0442\u0430\u0431\u043b\u0438\u0446\u044f \u0434\u0430\u043d\u0438\u0445 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0432 \u043a\u0430\u0440\u0442\u0446\u0456, \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445 \u0456\u0437 \u0434\u0456\u044f\u043c\u0438 \u0432 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0443 \u043a\u0430\u0440\u0442\u043a\u0438.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417 \u043d\u0430\u0437\u0432\u043e\u044e \u0442\u0430 \u0434\u0456\u044f\u043c\u0438","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417 \u043d\u0430\u0437\u0432\u043e\u044e \u0442\u0430 \u0434\u0456\u044f\u043c\u0438"},{"type":"code","props":{"content":"<div class=\"data-table data-table-init card\">\n  <!-- Card Header -->\n  <div class=\"card-header\">\n    <!-- Table title -->\n    <div class=\"data-table-title\">Nutrition<\/div>\n    <!-- Table actions -->\n    <div class=\"data-table-actions\">\n      <a class=\"link icon-only\">\n        <i class=\"icon t4-icons if-not-md\">line_horizontal_3_decrease<\/i>\n        <i class=\"icon material-icons md-only\">sort<\/i>\n      <\/a>\n      <a class=\"link icon-only\">\n        <i class=\"icon t4-icons if-not-md\">ellipsis_vertical_circle<\/i>\n        <i class=\"icon material-icons md-only\">more_vert<\/i>\n      <\/a>\n    <\/div>\n  <\/div>\n  <!-- Card Content -->\n  <div class=\"card-content\">\n    <table>\n      <thead>\n        <tr>\n          <th class=\"checkbox-cell\">\n            <label class=\"checkbox\">\n              <input type=\"checkbox\" \/>\n              <i class=\"icon-checkbox\"><\/i>\n            <\/label>\n          <\/th>\n          <th class=\"label-cell\">Dessert (100g serving)<\/th>\n          <th class=\"numeric-cell\">Calories<\/th>\n          ...\n        <\/tr>\n      <\/thead>\n      <tbody>\n        <tr>\n          <td class=\"checkbox-cell\">\n            <label class=\"checkbox\">\n              <input type=\"checkbox\" \/>\n              <i class=\"icon-checkbox\"><\/i>\n            <\/label>\n          <\/td>\n          <td class=\"label-cell\">Frozen yogurt<\/td>\n          <td class=\"numeric-cell\">159<\/td>\n          ...\n        <\/tr>\n        ...\n      <\/tbody>\n    <\/table>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>data-table-title <\/code> - \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0430\u0431\u043b\u0438\u0446\u0456<\/p>\n<p>\u25cf\t<code>\u25cf\tdata-table-actions<\/code> - \u043e\u0441\u043d\u043e\u0432\u043d\u0456 \u0434\u0456\u0457 \u0442\u0430\u0431\u043b\u0438\u0446\u0456<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0420\u0456\u0437\u043d\u0456 \u0434\u0456\u0457 \u043d\u0430 \u0432\u0438\u0431\u0456\u0440","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0420\u0456\u0437\u043d\u0456 \u0434\u0456\u0457 \u043d\u0430 \u0432\u0438\u0431\u0456\u0440"},{"type":"code","props":{"content":"<div class=\"data-table data-table-init card\">\n  <!-- Card header -->\n  <div class=\"card-header\">\n    <!-- Default table header -->\n    <div class=\"data-table-header\">\n      <!-- Default table title -->\n      <div class=\"data-table-title\">Nutrition<\/div>\n      <!-- Default table actions -->\n      <div class=\"data-table-actions\">\n        <a class=\"link icon-only\">\n          <i class=\"icon t4-icons if-not-md\">line_horizontal_3_decrease<\/i>\n          <i class=\"icon material-icons md-only\">sort<\/i>\n        <\/a>\n        <a class=\"link icon-only\">\n          <i class=\"icon t4-icons if-not-md\">ellipsis_vertical_circle<\/i>\n          <i class=\"icon material-icons md-only\">more_vert<\/i>\n        <\/a>\n      <\/div>\n    <\/div>\n    <!-- Selected table header -->\n    <div class=\"data-table-header-selected\">\n      <!-- Selected table title -->\n      <div class=\"data-table-title-selected\"><span class=\"data-table-selected-count\"><\/span> items selected<\/div>\n      <!-- Selected table actions -->\n      <div class=\"data-table-actions\">\n        <a class=\"link icon-only\">\n          <i class=\"icon t4-icons if-not-md\">trash<\/i>\n          <i class=\"icon material-icons md-only\">delete<\/i>\n        <\/a>\n        <a class=\"link icon-only\">\n          <i class=\"icon t4-icons if-not-md\">ellipsis_vertical_circle<\/i>\n          <i class=\"icon material-icons md-only\">more_vert<\/i>\n        <\/a>\n      <\/div>\n    <\/div>\n  <\/div>\n  <div class=\"card-content\">\n    <table>\n      <thead>\n        <tr>\n          <th class=\"checkbox-cell\">\n            <label class=\"checkbox\">\n              <input type=\"checkbox\" \/>\n              <i class=\"icon-checkbox\"><\/i>\n            <\/label>\n          <\/th>\n          <th class=\"label-cell\">Dessert (100g serving)<\/th>\n          <th class=\"numeric-cell\">Calories<\/th>\n          ...\n        <\/tr>\n      <\/thead>\n      <tbody>\n        <tr>\n          <td class=\"checkbox-cell\">\n            <label class=\"checkbox\">\n              <input type=\"checkbox\" \/>\n              <i class=\"icon-checkbox\"><\/i>\n            <\/label>\n          <\/td>\n          <td class=\"label-cell\">Frozen yogurt<\/td>\n          <td class=\"numeric-cell\">159<\/td>\n          ...\n        <\/tr>\n        ...\n      <\/tbody>\n    <\/table>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>data-table-header   <\/code> - \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c. \u0412\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f, \u044f\u043a\u0449\u043e \u043d\u0435\u043c\u0430\u0454 \u0432\u0438\u0431\u0440\u0430\u043d\u0438\u0445 \u0440\u044f\u0434\u043a\u0456\u0432<\/p>\n<p>\u25cf\t<code>data-table-header-selected<\/code> - \u0432\u0438\u0431\u0440\u0430\u043d\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0430\u0431\u043b\u0438\u0446\u0456. \u0412\u0438\u0434\u043d\u043e, \u043a\u043e\u043b\u0438 \u0454 \u0432\u0438\u0431\u0440\u0430\u043d\u0456 \u0440\u044f\u0434\u043a\u0438<\/p>\n<p>\u25cf\t<code>\u25cf\tdata-table-selected-count<\/code> - \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0432\u0438\u0431\u0440\u0430\u043d\u0438\u0445 \u0440\u044f\u0434\u043a\u0456\u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0456. \u041d\u043e\u043c\u0435\u0440 \u0431\u0443\u0434\u0435 \u0440\u043e\u0437\u043c\u0456\u0449\u0435\u043d\u043e \u0442\u0443\u0442 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e JavaScript<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"headline","props":{"content":"\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0456\u0437 \u0434\u0456\u044f\u043c\u0438 \u0440\u044f\u0434\u043a\u0456\u0432","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0456\u0437 \u0434\u0456\u044f\u043c\u0438 \u0440\u044f\u0434\u043a\u0456\u0432"},{"type":"code","props":{"content":"<div class=\"data-table data-table-init card\">\n  <div class=\"card-header\">\n    <!-- Table links\/actions -->\n    <div class=\"data-table-links\">\n      <a class=\"link\">Add<\/a>\n      <a class=\"link\">Remove<\/a>\n    <\/div>\n    <!-- Table actions -->\n    <div class=\"data-table-actions\">\n      <a class=\"link icon-only\">\n        <i class=\"icon t4-icons if-not-md\">line_horizontal_3_decrease<\/i>\n        <i class=\"icon material-icons md-only\">sort<\/i>\n      <\/a>\n      <a class=\"link icon-only\">\n        <i class=\"icon t4-icons if-not-md\">ellipsis_vertical_circle<\/i>\n        <i class=\"icon material-icons md-only\">more_vert<\/i>\n      <\/a>\n    <\/div>\n  <\/div>\n  <div class=\"card-content\">\n    <table>\n      <thead>\n        <tr>\n          <th class=\"checkbox-cell\">\n            <label class=\"checkbox\">\n              <input type=\"checkbox\" \/>\n              <i class=\"icon-checkbox\"><\/i>\n            <\/label>\n          <\/th>\n          <th class=\"label-cell\">Dessert (100g serving)<\/th>\n          <th class=\"numeric-cell\">Calories<\/th>\n          ...\n          <th><\/th>\n        <\/tr>\n      <\/thead>\n      <tbody>\n        <tr>\n          <td class=\"checkbox-cell\">\n            <label class=\"checkbox\">\n              <input type=\"checkbox\" \/>\n              <i class=\"icon-checkbox\"><\/i>\n            <\/label>\n          <\/td>\n          <td class=\"label-cell\">Frozen yogurt<\/td>\n          <td class=\"numeric-cell\">159<\/td>\n          ...\n          <td class=\"actions-cell\">\n            <a class=\"link icon-only\">\n              <i class=\"icon t4-icons if-not-md\">square_pencil<\/i>\n              <i class=\"icon material-icons md-only\">edit<\/i>\n            <\/a>\n            <a class=\"link icon-only\">\n              <i class=\"icon t4-icons if-not-md\">trash<\/i>\n              <i class=\"icon material-icons md-only\">delete<\/i>\n            <\/a>\n          <\/td>\n        <\/tr>\n        ...\n      <\/tbody>\n    <\/table>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>data-table-links<\/code> - \u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u0456\/\u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0434\u0456\u0457 \u0442\u0430\u0431\u043b\u0438\u0446\u0456<\/p>\n<p>\u25cf\t<code>actions-cell<\/code> - \u043a\u043b\u0456\u0442\u0438\u043d\u043a\u0430 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c\/\u043f\u0456\u043a\u0442\u043e\u0433\u0440\u0430\u043c \u0434\u0456\u0439<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"headline","props":{"content":"\u0421\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0421\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f"},{"type":"code","props":{"content":"<div class=\"data-table data-table-init card\">\n  <div class=\"card-header\">\n    <div class=\"data-table-title\">Nutrition<\/div>\n    <div class=\"data-table-actions\">\n      <a class=\"link icon-only\">\n        <i class=\"icon t4-icons if-not-md\">line_horizontal_3_decrease<\/i>\n        <i class=\"icon material-icons md-only\">sort<\/i>\n      <\/a>\n      <a class=\"link icon-only\">\n        <i class=\"icon t4-icons if-not-md\">ellipsis_vertical_circle<\/i>\n        <i class=\"icon material-icons md-only\">more_vert<\/i>\n      <\/a>\n    <\/div>\n  <\/div>\n  <div class=\"card-content\">\n    <table>\n      <thead>\n        <tr>\n          <th class=\"checkbox-cell\">\n            <label class=\"checkbox\">\n              <input type=\"checkbox\" \/>\n              <i class=\"icon-checkbox\"><\/i>\n            <\/label>\n          <\/th>\n          <th class=\"label-cell sortable-cell sortable-cell-active\">Dessert (100g serving)<\/th>\n          <th class=\"numeric-cell sortable-cell\">Calories<\/th>\n          <th class=\"numeric-cell sortable-cell\">Fat (g)<\/th>\n          <th class=\"numeric-cell sortable-cell\">Carbs<\/th>\n          <th class=\"numeric-cell sortable-cell\">Protein (g)<\/th>\n        <\/tr>\n      <\/thead>\n      <tbody>\n        <tr>\n          <td class=\"checkbox-cell\">\n            <label class=\"checkbox\">\n              <input type=\"checkbox\" \/>\n              <i class=\"icon-checkbox\"><\/i>\n            <\/label>\n          <\/td>\n          <td class=\"label-cell\">Frozen yogurt<\/td>\n          <td class=\"numeric-cell\">159<\/td>\n          <td class=\"numeric-cell\">6.0<\/td>\n          <td class=\"numeric-cell\">24<\/td>\n          <td class=\"numeric-cell\">4.0<\/td>\n        <\/tr>\n        ...\n      <\/tbody>\n    <\/table>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>sortable-cell <\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0449\u043e\u0431 \u043a\u043b\u0456\u0442\u0438\u043d\u043a\u0430\/\u0441\u0442\u043e\u0432\u043f\u0435\u0446\u044c \u0431\u0443\u043b\u0430 \u0441\u043e\u0440\u0442\u043e\u0432\u0430\u043d\u043e\u044e<\/p>\n<p>\u25cf\t<code>sortable-cell-active <\/code>- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0457\/\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u043a\u043b\u0456\u0442\u0438\u043d\u043a\u0438\/\u0441\u0442\u043e\u0432\u043f\u0446\u044f, \u044f\u043a\u0456 \u043c\u043e\u0436\u043d\u0430 \u0441\u043e\u0440\u0442\u0443\u0432\u0430\u0442\u0438<\/p>\n<p>\u25cf\t<code>sortable-asc<\/code>- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u0441\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0437\u0430 \u0437\u0440\u043e\u0441\u0442\u0430\u043d\u043d\u044f\u043c (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c)<\/p>\n<p>\u25cf\t<code>sortable-desc<\/code>- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0456\u0432\u043a\u0438 \u043f\u043e\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u0441\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0437\u0430 \u0441\u043f\u0430\u0434\u0430\u043d\u043d\u044f\u043c<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a \u043d\u0435 \u0437\u0430\u0431\u0435\u0437\u043f\u0435\u0447\u0443\u0454 \u0444\u0430\u043a\u0442\u0438\u0447\u043d\u043e\u0457 \u043b\u043e\u0433\u0456\u043a\u0438 \u0441\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f. \u0420\u0435\u0430\u043b\u044c\u043d\u0430 \u043b\u043e\u0433\u0456\u043a\u0430 \u0441\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u043e\u0432\u0438\u043d\u043d\u0430 \u0431\u0443\u0442\u0438 \u0440\u0435\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0430 \u0432\u0440\u0443\u0447\u043d\u0443.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f, \u0449\u043e \u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0422\u0430\u0431\u043b\u0438\u0446\u044f, \u0449\u043e \u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0430\u0441\u0442\u0443\u043f\u043d\u0443 \u0442\u0430\u0431\u043b\u0438\u0446\u044e \u0431\u0443\u0434\u0435 \u0437\u0433\u043e\u0440\u043d\u0443\u0442\u043e \u0434\u043e \u0432\u0438\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443 \u043d\u0430 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0438\u0445 \u0435\u043a\u0440\u0430\u043d\u0430\u0445:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"card data-table data-table-collapsible data-table-init\">\n  <div class=\"card-header\">\n    <div class=\"data-table-title\">Nutrition<\/div>\n    <div class=\"data-table-actions\">\n      <a class=\"link icon-only\">\n        <i class=\"icon t4-icons if-not-md\">line_horizontal_3_decrease<\/i>\n        <i class=\"icon material-icons md-only\">sort<\/i>\n      <\/a>\n      <a class=\"link icon-only\">\n        <i class=\"icon t4-icons if-not-md\">ellipsis_vertical_circle<\/i>\n        <i class=\"icon material-icons md-only\">more_vert<\/i>\n      <\/a>\n    <\/div>\n  <\/div>\n  <div class=\"card-content\">\n    <table>\n      <thead>\n        <tr>\n          <th class=\"label-cell\">Dessert (100g serving)<\/th>\n          <th class=\"numeric-cell\">Calories<\/th>\n          ...\n          <th class=\"numeric-cell\">Protein (g)<\/th>\n        <\/tr>\n      <\/thead>\n      <tbody>\n        <tr>\n          <td class=\"label-cell\" data-collapsible-title=\"Dessert (100g serving)\">Frozen yogurt<\/td>\n          <td class=\"numeric-cell\" data-collapsible-title=\"Calories\">159<\/td>\n          ...\n          <td class=\"numeric-cell\" data-collapsible-title=\"Protein (g)\">4.0<\/td>\n        <\/tr>\n        ...\n      <\/tbody>\n    <\/table>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>data-table-collapsible<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u043b\u044f \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u044f \u043b\u043e\u0433\u0456\u043a\u0438, \u0449\u043e \u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f. \u0417\u0432\u0435\u0440\u043d\u0456\u0442\u044c \u0443\u0432\u0430\u0433\u0443, \u0449\u043e \u0434\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0442\u0430\u043a\u043e\u0436 \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u043a\u043b\u0430\u0441 <code>\"data-table-init\"<\/code>.<\/p>\n\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -  \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443  \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0432\u0438 \u0434\u043e\u0434\u0430\u0454\u0442\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044e \u0434\u0430\u043d\u0438\u0445 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e \u0456 \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0430 \u0442\u0430\u043a\u0430 \u043b\u043e\u0433\u0456\u043a\u0430 \u0432\u0438\u0431\u043e\u0440\u0443 \u0440\u044f\u0434\u043a\u0456\u0432 \u0430\u0431\u043e \u043f\u0435\u0440\u0435\u043c\u0438\u043a\u0430\u043d\u043d\u044f \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0456\u0432, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438 \u0446\u0435 \u0432\u0440\u0443\u0447\u043d\u0443. \u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0440\u043e\u0431\u043e\u0442\u0438 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438 \u0437 \u0442\u0430\u0431\u043b\u0438\u0446\u0435\u044e \u0434\u0430\u043d\u0438\u0445:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.dataTable.create(parameters)<\/code> - \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445\n<p>\u25cf\t<code>parameters - object.<\/code> \u041e\u0431'\u0454\u043a\u0442 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445.<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445<\/i><\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.dataTable.destroy(el)<\/code> - \u0437\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445\n<p>\u25cf\t<code>el - HTMLElement or string (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS) \u0430\u0431\u043e \u043e\u0431\u2019\u0454\u043a\u0442\u0430. <\/code>. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445 \u0430\u0431\u043e \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445 \u0434\u043b\u044f \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f.<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.dataTable.get(el)<\/code> - \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u043f\u0440\u0438\u043c\u0456\u0440\u043d\u0438\u043a \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445 \u0437\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML\n<p>\u25cf\t<code>el - HTMLElement or string(\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS). <\/code> \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445.<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445<\/i><\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -  \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u043b\u044f \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c, \u044f\u043a\u0449\u043e \u0443 \u0432\u0430\u0448\u043e\u043c\u0443 HTML-\u043a\u043e\u0434\u0456 \u0432\u0436\u0435 \u0454 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 Data Table \u0456 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043d\u043e\u0432\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0446\u044c\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"el","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -  \u041f\u043e\u0434\u0456\u0457 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0434\u0430\u043d\u0438\u0445 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435 \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 DOM \u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445 \u0456 \u043f\u043e\u0434\u0456\u0457 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 DOM","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -  \u041f\u043e\u0434\u0456\u0457 DOM"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u043d\u043e \u0437\u043c\u0456\u043d\u043e\u044e \u0441\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"datatable:sort","title":"Data Table Element <p>&lt;div class=\"data-table\"&gt;"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445 \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"datatable:beforedestroy","title":"Data Table Element <p>&lt;div class=\"data-table\"&gt;"}}],"name":"T4 Docs \u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c -\u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442 - \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -  \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u041e\u0431'\u0454\u043a\u0442","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u043d\u043e \u0437\u043c\u0456\u043d\u043e\u044e \u0441\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"dataTable","meta":"sort","title":"dataTable, sort"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u043d\u043e \u0437\u043c\u0456\u043d\u043e\u044e \u0441\u043e\u0440\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"dataTableSort","title":"dataTable, sort"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445 \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"dataTable","meta":"beforeDestroy","title":"dataTable"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0442\u0430\u0431\u043b\u0438\u0446\u0456 \u0434\u0430\u043d\u0438\u0445 \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"dataTableBeforeDestroy","title":"dataTable"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(4) \u041f\u043e\u0434\u0456\u044f - \u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 - \u041e\u043f\u0438\u0441 - \u041e\u0431'\u0454\u043a\u0442"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -  \u0417\u043c\u0456\u043d\u043d\u0456 CSS "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-table-head-font-size: 12px;\n  --t4-table-body-font-size: 14px;\n  --t4-table-footer-font-size: 12px;\n  --t4-table-input-height: 24px;\n  --t4-table-input-font-size: 14px;\n  --t4-table-collapsible-cell-padding: 16px;\n  --t4-table-link-icon-only-icon-size: 20px;\n  --t4-table-head-bg-color: transparent;\n  --t4-table-card-header-bg-color: transparent;\n  --t4-table-card-header-height: 64px;\n  --t4-table-cell-padding-vertical: 0px;\n  --t4-table-sortable-icon-color: #000;\n}\n:root .dark,\n:root.dark {\n  --t4-table-cell-border-color: rgba(255, 255, 255, 0.15);\n  --t4-table-sortable-icon-color: #fff;\n  --t4-table-input-text-color: #fff;\n}\n.ios {\n  --t4-table-head-font-weight: 600;\n  --t4-table-head-cell-height: 44px;\n  --t4-table-head-icon-size: 18px;\n  --t4-table-body-cell-height: 44px;\n  --t4-table-cell-padding-horizontal: 16px;\n  --t4-table-edge-cell-padding-horizontal: 16px;\n  --t4-table-label-cell-padding-horizontal: 16px;\n  --t4-table-checkbox-cell-width: 22px;\n  \/* --t4-table-actions-cell-link-color: var(--t4-theme-color); *\/\n  \/* --t4-table-actions-link-color: var(--t4-theme-color); *\/\n  --t4-table-title-font-size: 17px;\n  --t4-table-title-font-weight: 600;\n  --t4-table-footer-height: 44px;\n  --t4-table-head-text-color: rgba(0, 0, 0, 0.45);\n  --t4-table-cell-border-color: rgba(0, 0, 0, 0.22);\n  --t4-table-selected-row-bg-color: rgba(0, 0, 0, 0.03);\n  --t4-table-footer-text-color: rgba(0, 0, 0, 0.45);\n  --t4-table-input-text-color: #000;\n}\n.ios .dark,\n.ios.dark {\n  --t4-table-head-text-color: rgba(255, 255, 255, 0.55);\n  --t4-table-footer-text-color: rgba(255, 255, 255, 0.55);\n  --t4-table-selected-row-bg-color: rgba(255, 255, 255, 0.08);\n}\n.md {\n  --t4-table-head-font-weight: 500;\n  --t4-table-head-cell-height: 56px;\n  --t4-table-head-icon-size: 16px;\n  --t4-table-body-cell-height: 48px;\n  --t4-table-cell-padding-horizontal: 28px;\n  --t4-table-edge-cell-padding-horizontal: 24px;\n  --t4-table-label-cell-padding-horizontal: 24px;\n  --t4-table-checkbox-cell-width: 18px;\n  --t4-table-title-font-size: 20px;\n  --t4-table-title-font-weight: 400;\n  --t4-table-footer-height: 56px;\n  --t4-table-head-text-color: rgba(0, 0, 0, 0.54);\n  --t4-table-cell-border-color: rgba(0, 0, 0, 0.12);\n  --t4-table-actions-cell-link-color: rgba(0, 0, 0, 0.54);\n  --t4-table-selected-row-bg-color: #f5f5f5;\n  --t4-table-actions-link-color: rgba(0, 0, 0, 0.54);\n  --t4-table-footer-text-color: rgba(0, 0, 0, 0.54);\n  --t4-table-input-text-color: #212121;\n}\n.md .dark,\n.md.dark {\n  --t4-table-head-text-color: rgba(255, 255, 255, 0.54);\n  --t4-table-footer-text-color: rgba(255, 255, 255, 0.54);\n  --t4-table-selected-row-bg-color: rgba(255, 255, 255, 0.05);\n  --t4-table-actions-cell-link-color: rgba(255, 255, 255, 0.54);\n  --t4-table-actions-link-color: rgba(255, 255, 255, 0.54);\n}\n.aurora {\n  --t4-table-input-height: 32px;\n  --t4-table-head-font-weight: 600;\n  --t4-table-head-cell-height: 56px;\n  --t4-table-head-icon-size: 18px;\n  --t4-table-body-cell-height: 48px;\n  --t4-table-cell-padding-horizontal: 16px;\n  --t4-table-edge-cell-padding-horizontal: 16px;\n  --t4-table-label-cell-padding-horizontal: 16px;\n  --t4-table-checkbox-cell-width: 22px;\n  \/* --t4-table-actions-cell-link-color: var(--t4-theme-color); *\/\n  \/* --t4-table-actions-link-color: var(--t4-theme-color); *\/\n  --t4-table-title-font-size: 20px;\n  --t4-table-title-font-weight: 600;\n  --t4-table-footer-height: 56px;\n  --t4-table-head-text-color: rgba(0, 0, 0, 0.6);\n  --t4-table-cell-border-color: rgba(0, 0, 0, 0.12);\n  --t4-table-selected-row-bg-color: rgba(0, 0, 0, 0.03);\n  --t4-table-footer-text-color: rgba(0, 0, 0, 0.5);\n  --t4-table-input-text-color: #000;\n  --t4-table-head-bg-color: #f6f6f7;\n  --t4-table-card-header-bg-color: #f6f6f7;\n}\n.aurora .dark,\n.aurora.dark {\n  --t4-table-selected-row-bg-color: rgba(255, 255, 255, 0.03);\n  --t4-table-head-text-color: rgba(255, 255, 255, 0.54);\n  --t4-table-footer-text-color: rgba(255, 255, 255, 0.54);\n  --t4-table-head-bg-color: rgba(255, 255, 255, 0.05);\n  --t4-table-card-header-bg-color: rgba(255, 255, 255, 0.05);\n}"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

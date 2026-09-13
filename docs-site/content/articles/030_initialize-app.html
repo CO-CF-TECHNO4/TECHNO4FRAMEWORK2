@@ -1,0 +1,83 @@
+<h2>Ініціалізація додатоку</h2>
+<div>Тепер ви можете побачити наш HTML-макет із пов’язаними необхідними файлами CSS і JavaScript. Тепер ми повинні ініціалізувати наш додаток (наприклад, у my-app.js):</div>
+<pre><code>var app = new Techno4();</code></pre>
+<div>У наведеному вище прикладі ми використовуємо змінну програми, де зберігаємо ініціалізований екземпляр Techno4 для легкого доступу в майбутньому. Не обов’язково називати додаток App, вона може бути будь-якою.
+Це було досить просто. Але Techno4 також забезпечує більше налаштувань ініціалізації, передаючи об’єкт із параметрами:
+</div>
+<pre><code>var app = new Techno4({
+  routes: [
+    {
+      name: 'about',
+      path: '/about/',
+      url: './pages/about.html',
+    },
+    {
+      name: 'news',
+      path: '/news/',
+      url: './pages/news.html',
+      options: {
+        animate: false,
+      },
+    },
+    {
+      name: 'users',
+      path: '/users/',
+      componentUrl: './pages/users.html',
+      options: {
+        props: {
+          users: ['Techno Wizard', 'Taras Shtempo'],
+        },
+      },
+      on: {
+        pageAfterIn: function test (e, page) {
+          // do something after page gets into the view
+        },
+        pageInit: function (e, page) {
+          // do something when page initialized
+        },
+      }
+    },
+    // Default route, match to all pages (e.g. 404 page)
+    {
+      path: '(.*)',
+      url: './pages/404.html',
+    },
+  ],
+});
+</code></pre>
+<div>Щоб переглянути список усіх доступних параметрів програми, перегляньте розділ Додаток/ Ядро </div>
+<div>Після ініціалізації програми нам потрібно ініціалізувати представлення (<div class="view view-main">
+</div>
+<pre><code>&lt;div class=&quot;view view-main&quot;&gt;</code></pre>
+<div>у макеті програми). По суті View — це маршрутизатор програми, який відповідає за навігацію:</div>
+<pre><code>var mainView = app.views.create('.view-main');
+</code></pre>
+<div>Отже, ваш остаточний код ініціалізації в my-app.js може виглядати так:
+</div>
+<pre><code>var app = new Techno4({
+  // App root element
+  el: '#app',
+  // App Name
+  name: 'My App',
+  // App id
+  id: 'com.myapp.test',
+  // Enable swipe panel
+  panel: {
+    swipe: true,
+  },
+  // Add default routes
+  routes: [
+    {
+      path: '/about/',
+      url: 'about.html',
+    },
+  ],
+  // ... other parameters
+});
+
+var mainView = app.views.create('.view-main');
+</code></pre>
+<h2>Що далі?</h2>
+<div>Гаразд, тепер ми знаємо, як створювати і запускати програму. Тепер нам потрібно перевірити компонент App / Core, щоб дізнатися більше про його параметри та методи, як працює Router, дізнатися більше про Views, Pages та інші компоненти.
+</div>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0406\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u0434\u043e\u0434\u0430\u0442\u043e\u043a\u0443","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438 \u043d\u0430\u0448 HTML-\u043c\u0430\u043a\u0435\u0442 \u0456\u0437 \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u043c\u0438 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u043c\u0438 \u0444\u0430\u0439\u043b\u0430\u043c\u0438 CSS \u0456 JavaScript. \u0422\u0435\u043f\u0435\u0440 \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438 \u043d\u0430\u0448 \u0434\u043e\u0434\u0430\u0442\u043e\u043a (\u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0443 my-app.js):","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4();"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0423 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e\u043c\u0443 \u0432\u0438\u0449\u0435 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u043c\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u043c\u043e \u0437\u043c\u0456\u043d\u043d\u0443 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438, \u0434\u0435 \u0437\u0431\u0435\u0440\u0456\u0433\u0430\u0454\u043c\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Techno4 \u0434\u043b\u044f \u043b\u0435\u0433\u043a\u043e\u0433\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0443 \u0432 \u043c\u0430\u0439\u0431\u0443\u0442\u043d\u044c\u043e\u043c\u0443. \u041d\u0435 \u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u043e \u043d\u0430\u0437\u0438\u0432\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043e\u043a App, \u0432\u043e\u043d\u0430 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u044e.\n\u0426\u0435 \u0431\u0443\u043b\u043e \u0434\u043e\u0441\u0438\u0442\u044c \u043f\u0440\u043e\u0441\u0442\u043e. \u0410\u043b\u0435 Techno4 \u0442\u0430\u043a\u043e\u0436 \u0437\u0430\u0431\u0435\u0437\u043f\u0435\u0447\u0443\u0454 \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u044c \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457, \u043f\u0435\u0440\u0435\u0434\u0430\u044e\u0447\u0438 \u043e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  routes: [\n    {\n      name: 'about',\n      path: '\/about\/',\n      url: '.\/pages\/about.html',\n    },\n    {\n      name: 'news',\n      path: '\/news\/',\n      url: '.\/pages\/news.html',\n      options: {\n        animate: false,\n      },\n    },\n    {\n      name: 'users',\n      path: '\/users\/',\n      componentUrl: '.\/pages\/users.html',\n      options: {\n        props: {\n          users: ['Techno Wizard', 'Taras Shtempo'],\n        },\n      },\n      on: {\n        pageAfterIn: function test (e, page) {\n          \/\/ do something after page gets into the view\n        },\n        pageInit: function (e, page) {\n          \/\/ do something when page initialized\n        },\n      }\n    },\n    \/\/ Default route, match to all pages (e.g. 404 page)\n    {\n      path: '(.*)',\n      url: '.\/pages\/404.html',\n    },\n  ],\n});\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u0443\u0442\u0438 \u0441\u043f\u0438\u0441\u043e\u043a \u0443\u0441\u0456\u0445 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438, \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u044c\u0442\u0435 \u0440\u043e\u0437\u0434\u0456\u043b \u0414\u043e\u0434\u0430\u0442\u043e\u043a\/ \u042f\u0434\u0440\u043e ","margin":"default","text_style":"large"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0441\u043b\u044f \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f (<div class=\"view view-main\">\n","margin":"default","text_style":"large"}},{"type":"code","props":{"content":"<div class=\"view view-main\">"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0443 \u043c\u0430\u043a\u0435\u0442\u0456 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438). \u041f\u043e \u0441\u0443\u0442\u0456 View \u2014 \u0446\u0435 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438, \u044f\u043a\u0438\u0439 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0454 \u0437\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044e:","margin":"default"}},{"type":"code","props":{"content":"var mainView = app.views.create('.view-main');\n"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0442\u0436\u0435, \u0432\u0430\u0448 \u043e\u0441\u0442\u0430\u0442\u043e\u0447\u043d\u0438\u0439 \u043a\u043e\u0434 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0432 my-app.js \u043c\u043e\u0436\u0435 \u0432\u0438\u0433\u043b\u044f\u0434\u0430\u0442\u0438 \u0442\u0430\u043a:\n","margin":"default","text_style":"large"}},{"type":"code","props":{"content":"var app = new Techno4({\n  \/\/ App root element\n  el: '#app',\n  \/\/ App Name\n  name: 'My App',\n  \/\/ App id\n  id: 'com.myapp.test',\n  \/\/ Enable swipe panel\n  panel: {\n    swipe: true,\n  },\n  \/\/ Add default routes\n  routes: [\n    {\n      path: '\/about\/',\n      url: 'about.html',\n    },\n  ],\n  \/\/ ... other parameters\n});\n\nvar mainView = app.views.create('.view-main');\n"}},{"type":"headline","props":{"content":"\u0429\u043e \u0434\u0430\u043b\u0456?","title_element":"h2"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0413\u0430\u0440\u0430\u0437\u0434, \u0442\u0435\u043f\u0435\u0440 \u043c\u0438 \u0437\u043d\u0430\u0454\u043c\u043e, \u044f\u043a \u0441\u0442\u0432\u043e\u0440\u044e\u0432\u0430\u0442\u0438 \u0456 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0443. \u0422\u0435\u043f\u0435\u0440 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 App \/ Core, \u0449\u043e\u0431 \u0434\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e \u0439\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0442\u0430 \u043c\u0435\u0442\u043e\u0434\u0438, \u044f\u043a \u043f\u0440\u0430\u0446\u044e\u0454 Router, \u0434\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e Views, Pages \u0442\u0430 \u0456\u043d\u0448\u0456 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0438.\n","margin":"default"}}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

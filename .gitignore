@@ -31,8 +31,7 @@ packages/techno4-framework2-threads/flowstream/
 packages/techno4-framework2-threads/index.js.json
 packages/techno4-framework2-threads/index.js.map
 
-# Local isolated site documentation (tracked via separate git repository)
-docs-site/
+# Local isolated site documentation (tracked via git)
 .docs/
 
 # Environment & Secret files

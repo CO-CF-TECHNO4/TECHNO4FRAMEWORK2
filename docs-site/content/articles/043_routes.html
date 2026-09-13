@@ -1,0 +1,1469 @@
+<h2>Маршрути</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Визначення маршрутів</a>
+
+    </li>
+        <li>
+        
+<div>Властивості маршруту</div>
+
+    </li>
+        <li>
+        
+<div>Шлях маршруту</div>
+
+    </li>
+        <li>
+        
+<div>Параметри маршруту</div>
+
+    </li>
+        <li>
+        
+<div>Контекст зворотного виклику на маршруті</div>
+
+    </li>
+        <li>
+        
+<div>Маршрут асинхронізації</div>
+
+    </li>
+        <li>
+        
+<div>Події маршруту</div>
+
+    </li>
+        <li>
+        
+<div>Вкладені маршрути</div>
+
+    </li>
+        <li>
+        
+<div>Детальні маршрути</div>
+
+    </li>
+        <li>
+        
+<div>Маршрутні вкладки</div>
+
+    </li>
+        <li>
+        
+<div>Маршрутні модалі</div>
+
+    </li>
+        <li>
+        
+<div>Маршрутні панелі</div>
+
+    </li>
+        <li>
+        
+<div>Маршрут перед введенням/відпуском</div>
+
+    </li>
+        <li>
+        
+<div>Перенаправлення та псевдонім</div>
+
+    </li>
+        <li>
+        
+<div>Keep Alive</div>
+
+    </li>
+    </ul>
+<h3>Визначення маршрутів</h3>
+<div>Перш за все, коли ми запускаємо програму Techno4, ми повинні передати маршрути за замовчуванням за допомогою параметра масиву <b>routes</b>:</div>
+<pre><code>var app = new Techno4({
+  routes: [
+    {
+      name: 'about',
+      path: '/about/',
+      url: './pages/about.html',
+    },
+    {
+      name: 'news',
+      path: '/news/',
+      url: './pages/news.html',
+      options: {
+        animate: false,
+      },
+    },
+    {
+      name: 'users',
+      path: '/users/',
+      componentUrl: './pages/users.html',
+      options: {
+        props: {
+          users: ['John Doe', 'Vladimir Kharlampidi', 'Timo Ernst'],
+        },
+      },
+      on: {
+        pageAfterIn: function test (e, page) {
+          // do something after page gets into the view
+        },
+        pageInit: function (e, page) {
+          // do something when page initialized
+        },
+      }
+    },
+    // Default route, match to all pages (e.g. 404 page)
+    {
+      path: '(.*)',
+      url: './pages/404.html',
+    },
+  ],
+});</code></pre>
+<div>Маршрути, визначені під час запуску програми, є маршрутами за замовчуванням, вони будуть доступні для будь-якого перегляду/маршрутизатора в програмі.
+<p>Якщо у вас є програма з декількома представленнями/маршрутизаторами, і ви хочете, щоб певний перегляд/маршрутизатор мав власні строгі маршрути, і не хочете, щоб маршрути за замовчуванням були доступні в цьому перегляді, тоді ви можете вказати той самий параметр <b>routes</b> в View init:</p></div>
+<pre><code>var view1 = app.views.create('.view-1', {
+  routes: [
+    {
+      path: '/users/',
+      url: './pages/users.html',
+    },
+    {
+      path: '/user/',
+      url: './pages/user.html',
+    },
+  ],
+});</code></pre>
+<div>Якщо у вас є програма з кількома представленнями/маршрутизаторами, і ви хочете, щоб деякий View/Router мав додаткові маршрути, і не хочете, щоб ці додаткові маршрути були доступні в інших Views, тоді ви можете вказати параметр <b>routesAdd</b> в View init:</div>
+<pre><code>// This view will support all global routes + own additional routes
+var view2 = app.views.create('.view-2', {
+  // These routes are only available in this view
+  routesAdd: [
+    {
+      path: '/blog/',
+      url: './pages/blog.html',
+    },
+    {
+      path: '/post/',
+      url: './pages/post.html',
+    },
+  ],
+})</code></pre>
+<h3>Властивості маршруту</h3>
+<div>Добре, тепер з'ясуємо, що означає кожна властивість маршруту:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>name</td>
+
+<td>Назва маршруту, напр. HOME</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>path</td>
+
+<td>Шлях маршруту. Означає, що цей маршрут буде завантажено, коли ми натиснемо посилання, яке відповідає цьому шляху, або може бути завантажено цим шляхом за допомогою API</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>options</td>
+
+<td>Об'єкт з додатковими параметрами маршруту (опціонально)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>routes</td>
+
+<td>Масив із вкладеними маршрутами</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+
+<td>viewName</td>
+
+<td>Назва перегляду, де цей маршрут буде примусово завантажуватися</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Master Detail</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>master</td>
+
+<td>Вмикає цей маршрут як головний. Це також може бути метод, який отримує екземпляри програми та маршрутизатора, у цьому методі ви повинні повернути <b>true</b> або <b>false</b>:
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean ; function(app, router)</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>{
+  url: '/some-page/',
+  master(app) {
+    if (app.device.desktop) return true;
+    return false;
+  }
+}</code></pre>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>detailRoutes</td>
+
+<td>Масив з детальними маршрутами</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">array</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Відкладені  модулі</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>modules</td>
+
+<td>Масив із відкладеними  модулями для завантаження перед завантаженням маршруту</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">array</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Властивості, пов’язані з вмістом</h4>
+<div>Наступні властивості маршруту визначають, як (звідки/що) має завантажуватися вміст</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>el</td>
+
+<td>Завантажити сторінку з DOM за допомогою переданого елемента HTML. Можна використовувати лише з увімкненими <b>stackPages</b> у View.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement</a>
+    </td>
+</tr>
+                <tr>
+
+<td>pageName</td>
+
+<td>Завантажити сторінку з DOM, яка має той самий атрибут імені даних. Можна використовувати лише з увімкненими <b>stackPages у View.</b></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>content</td>
+
+<td>Створює динамічну сторінку з указаного рядка вмісту</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>component</td>
+
+<td>Завантажити сторінку з переданого компонента маршрутизатора Techno4</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>componentUrl</td>
+
+<td>завантаження сторінки як компонента через Ajax
+Також підтримує динамічні параметри маршруту зі шляху маршруту за допомогою виразу <b>{{paramName}}</b></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>async</td>
+
+<td>Виконайте необхідні асинхронні маніпуляції та поверніть необхідний вміст і параметри маршруту. Як аргумент він отримує об'єкт контексту зворотного виклику маршруту.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14"> function(context)</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>url</td>
+
+<td>Завантажити вміст сторінки через Ajax.
+<p>Також підтримує динамічні параметри маршруту зі шляху маршруту за допомогою виразу {{paramName}}, наприклад</p></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>{
+  path: '/users/:userId/posts/:postId',
+  url: 'http://myapp.com/posts/{{userId}}/{{postId}}'
+}</code></pre>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td> asyncComponent</td>
+
+<td>Метод має повертати <b>Promise</b>, розв’язане за допомогою компонента або модуля ES із властивістю <b>.default</b>, що містить компонент.
+<p>Здебільшого він розроблений як коротша версія <b>async</b> для динамічного імпорту компонентів. Наприклад:</p>
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">function()</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>{
+  path: '/some-page/',
+  asyncComponent: () =&gt; import('./path/to/some-page.js'),
+}</code></pre>
+<h4>Маршрутизовані вкладки</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>tabs</td>
+
+<td>Масив із вкладками маршрутів</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">array</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Маршрутизовані модалі</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td> actions</td>
+
+<td>Аркуш дій маршруту</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>popup</td>
+
+<td>Спливаючий маршрут</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>loginScreen</td>
+
+<td>Маршрут екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>popover</td>
+
+<td>Маршрут елемента popover </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td> sheet</td>
+
+<td>Листовий маршрут</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Маршрутні панелі</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>panel</td>
+
+<td>Панельний шлях</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Події</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>on</td>
+
+<td>Об'єкт з обробниками подій</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Псевдоніми і перенаправлення</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>alias</td>
+
+<td>Псевдонім маршруту або масив із псевдонімами маршруту. Нам потрібно вказати тут <b>шлях</b> псевдоніма</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">string,  array</a>
+    </td>
+</tr>
+                <tr>
+
+<td>redirect</td>
+
+<td>Перенаправлення маршруту. Нам потрібно вказати тут URL-адресу перенаправлення (а не шлях). Якщо метод, то як аргумент він отримує об’єкт контексту <b>зворотного виклику маршруту</b>.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string, function(context)</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Перед входом/виходом</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>beforeEnter</td>
+
+<td>Функція (або масив функцій), яка буде виконана перед завантаженням/введенням маршруту. Щоб продовжити завантаження маршруту, необхідно викликати <b>дозвіл</b>. У випадку <b>масиву</b>> кожна функція в масиві має бути дозволена для продовження. Якщо метод, то як аргумент він отримує об’єкт контексту <b>зворотного виклику маршруту</b>.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">function(context), array</a>
+    </td>
+</tr>
+                <tr>
+
+<td>beforeLeave</td>
+
+<td>Функція (або масив функцій), яка буде виконана перед вивантаженням/залишенням маршруту. Щоб продовжити навігацію, потрібно викликати <b>дозвіл</b>. У випадку <b>масиву</b> кожна функція в масиві має бути дозволена для продовження. Якщо метод, то як аргумент він отримує об’єкт <b>контексту зворотного виклику маршруту</b>.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">function(context), array</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>keepAlive</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>keepAlive</td>
+
+<td>Вмикає так званий маршрут <b>KeepAlive</b>. Якщо ввімкнено, завантажена сторінка та її компонент (компонент Vue, React або Router) ніколи не будуть знищені. Натомість його буде від’єднано від DOM і повторно використано за потреби.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<div>Ось приклад більшості можливих варіантів:</div>
+<pre><code>routes: [
+  // Load via Ajax
+  {
+    path: '/about/',
+    url: './pages/about.html',
+  },
+  // Dynamic page from content
+  {
+    path: '/news/',
+    content: `
+      &lt;div class=&quot;page&quot;&gt;
+        &lt;div class=&quot;page-content&quot;&gt;
+          &lt;div class=&quot;block&quot;&gt;
+            &lt;p&gt;This page created dynamically&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    `,
+  },
+  // By page name (data-name=&quot;services&quot;) presented in DOM
+  {
+    path: '/services/',
+    pageName: 'services',
+  },
+  // By page HTMLElement
+  {
+    path: '/contacts/',
+    el: document.querySelector('.page[data-name=&quot;contacts&quot;]'),
+  },
+  // By component
+  {
+    path: '/posts/',
+    component: {
+      // look below
+    },
+  },
+  // By component url
+  {
+    path: '/post/:id/',
+    componentUrl: './pages/component.html',
+  },
+  // Async
+  {
+    path: '/something/',
+    async: function ({ app, to, resolve }) {
+      // Requested route
+      console.log(to);
+      // Get external data and return page content
+      app.request.json('http://some-endpoint/').then(function (res) {
+        resolve(
+          // How and what to load
+          {
+            content: `&lt;div class=&quot;page&quot;&gt;${res.data.users}&lt;/div&gt;`
+          },
+        );
+      });
+    }
+  }
+],</code></pre>
+<h3>Шлях маршруту</h3>
+<div>Як зазначено вище, властивість <b>шляху</b> маршруту означає шлях/URL-адресу, яка відображатиметься в адресному рядку вікна веб-переглядача (якщо ввімкнено <b>історію браузера</b>), коли наступний маршрут буде завантажено за допомогою API або клацання посилання з тим самим шляхом.
+<p>Також є підтримка динамічних шляхів. Отже, якщо у вашому маршруті є такий шлях <b>/blog/users/:userId/posts/:postId/</b> і ви натиснете на посилання з <b>/blog/users/12/posts/25</b>, то на завантаженій сторінці ми отримаємо доступ до маршруту <b>route.params</b>, що містить <b>{ userId: 12, postId: 25 }</b></p>
+<p>Зіставлення шляху маршруту обробляється бібліотекою <b>Path To Regexp</b>, тому все, що підтримується там, також підтримується у Techno4. Наприклад, якщо ви хочете додати маршрут за замовчуванням, який відповідає всім шляхам, ми можемо використати регулярний вираз, наприклад:</p></div>
+<pre><code>// Default route, match to all pages (e.g. 404 page)
+{
+  path: '(.*)',
+  url: './pages/404.html',</code></pre>
+<h3>Параметри маршруту</h3>
+<div>Давайте розглянемо додаткові параметри маршруту, які можна передати у властивості <b>options</b>:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>animate</td>
+
+<td>Чи повинна сторінка бути анімованою, чи ні (перезаписує налаштування маршрутизатора за замовчуванням)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+
+<td>history</td>
+
+<td>Чи слід зберігати сторінку в історії маршрутизатора</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+
+<td>browserHistory</td>
+
+<td>Чи слід зберігати сторінку в стані браузера. Якщо ви використовуєте <b>історію браузера</b>, ви можете передати тут <b>false</b>, щоб запобігти потраплянню маршруту в історію браузера</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+
+<td>reloadCurrent</td>
+
+<td>Замінити поточну сторінку новою з маршруту, у цьому випадку анімації не буде</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+
+<td>reloadPrevious</td>
+
+<td>Замінити попередню сторінку в історії на нову з маршруту</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+
+<td>reloadAll</td>
+
+<td>Завантажити нову сторінку та видалити всі попередні сторінки з історії та DOM</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+
+<td>clearPreviousHistory</td>
+
+<td>Історія попередніх сторінок буде очищена після перезавантаження/навігації за вказаним маршрутом</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+
+<td>ignoreCache</td>
+
+<td>Якщо встановлено значення <b>true</b>, тоді він ігноруватиме наявність такої URL-адреси в кеші та знову завантажуватиме його за допомогою XHR</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+
+<td>force</td>
+
+<td>Якщо встановлено значення <b>true</b>, попередня сторінка в історії ігноруватиметься та завантажуватиметься зазначена</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+
+<td>props</td>
+
+<td>Реквізити, які будуть передані як реквізити компонента сторінки Vue/React</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>transition</td>
+
+<td>Ім'я переходу на користувацьку сторінку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>openIn</td>
+
+<td>Дозволяє відкрити маршрут сторінки як модальний або панельний. Таким чином, це може бути одне з наступного: <b>спливаюче вікно, спливне вікно, екран входу, аркуш, панель</b></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Контекст зворотного виклику на маршруті</h3>
+<div>Формат зворотного виклику контексту маршруту, який використовується у властивостях маршруту <b>async, redirect, beforeEnter і beforeLeave:</b></div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app</td>
+
+<td>Посилання на глобальний екземпляр програми</td>
+
+</tr>
+                <tr>
+
+<td>to</td>
+
+<td>Запитуваний маршрут</td>
+
+</tr>
+                <tr>
+
+<td>from</td>
+
+<td>Наразі активний маршрут</td>
+
+</tr>
+                <tr>
+
+<td>router</td>
+
+<td>Поточний екземпляр маршрутизатора</td>
+
+</tr>
+                <tr>
+
+<td>resolve</td>
+
+<td>Метод виклику для вирішення/продовження маршрутизації</td>
+
+</tr>
+                <tr>
+
+<td>reject</td>
+
+<td>Метод виклику для запобігання/відхилення маршрутизації</td>
+
+</tr>
+                <tr>
+
+<td>direction</td>
+
+<td>Напрям навігації, може бути вперед або назад</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Асинхронний маршрут</h3>
+<div><code>async</code> Властивість маршруту є дуже потужним інструментом, призначеним для повернення динамічних властивостей маршруту. Це функція з такими аргументами:
+<p><code>async(context)</code>
+●	context - контекст зворотного виклику маршруту
+</div>
+<div><code>resolve</code> Метод зворотного виклику маршруту має такий формат:
+<p><code>resolve(parameters, options)</code></p>
+●	parameters object - об'єкт із дозволеним вмістом маршруту. Має містити одну з властивостей <b>url, content, component або componentUrl</b>
+<p>●	options object - об'єкт із параметрами маршруту</p>
+</div>
+<div><code>reject</code> функція зворотного виклику не має аргументів:
+<p><code>reject()</code></p></div>
+<div><p>Зауважте, що поки ви не викличете <code>resolve</code> або <code>reject</code> в асинхронному методі, маршрутизація буде заблокована!</p>
+Наприклад:</div>
+<pre><code>routes = [
+  {
+    path: '/foo/',
+    async({ resolve, reject }) {
+      if (userIsLoggedIn) {
+        resolve({ url: 'secured.html' })
+      } else {
+        resolve({ url: 'login.html' })
+      }
+    }
+  }
+]</code></pre>
+<h3>Події маршруту</h3>
+<div>Можна додати всі події сторінки всередині маршруту для цієї сторінки за допомогою властивості <b>on</b> маршруту. Наприклад:</div>
+<pre><code>var app = new Techno4({
+  routes: [
+    // ...
+    {
+      path: '/users/',
+      url: './pages/users.html',
+      on: {
+        pageBeforeIn: function (event, page) {
+          // do something before page gets into the view
+        },
+        pageAfterIn: function (event, page) {
+          // do something after page gets into the view
+        },
+        pageInit: function (event, page) {
+          // do something when page initialized
+        },
+        pageBeforeRemove: function (event, page) {
+          // do something before page gets removed from DOM
+        },
+      }
+    },
+    // ...
+  ],
+});</code></pre>
+<div>Зауважте, що такі події маршруту насправді є подіями DOM, тому кожен такий обробник прийматиме <b>подію</b> як перший аргумент із самою подією та <b>сторінку</b> як другий аргумент із даними сторінки.
+Крім того, контекст такого обробника подій (<b>this</b>) вказуватиме на відповідний <b>екземпляр Router.</b>
+</div>
+<h3>Вкладені маршрути</h3>
+<div>Також можна мати вкладені маршрути (маршрути в маршрутах):</div>
+<pre><code>routes = [
+  {
+    path: '/faq/',
+    url: './pages/faq.html',
+  },
+  {
+    path: '/catalog/',
+    url: './pages/catalog.html',
+    routes: [
+      {
+        path: 'computers/',
+        url: './pages/computers.html',
+      },
+      {
+        path: 'monitors/',
+        url: './pages/monitors.html',
+      },
+      ...
+    ],
+  }
+];</code></pre>
+<div>Що це означає? Для кращого розуміння насправді (під капотом) такі маршрути будуть об’єднані в наступні:</div>
+<pre><code>routes = [
+  {
+    path: '/faq/',
+    url: './pages/faq.html',
+  },
+  {
+    path: '/catalog/',
+    url: './pages/catalog.html',
+  }
+  {
+    path: '/catalog/computers/',
+    url: './pages/computers.html',
+  },
+  {
+    path: '/catalog/monitors/',
+    url: './pages/monitors.html',
+  },
+];</code></pre>
+<div>Отже, припустимо, що ми знаходимося на сторінці <b>/catalog/<b> і маємо такі посилання:</div>
+<div><b>1.&lt;ahref="computers/"&gt;Computers&lt;/a&gt;</b> - працюватиме, як очікувалося. Посилання буде об’єднано з поточним маршрутом <b>(/catalog/ + computers/)</b> і матимемо<b>/catalog/computers/</b> які ми маємо на наших маршрутах.
+<p>2.<b>&lt;a href="./computers/"&gt;Computers&lt;/a&gt;</b> - працюватиме, так само як у випадку 1, оскільки <b>./</b> на початку шляху означає той самий підрівень.
+<p>3.<b>&lt;a href="/catalog/computers/"&gt;Computers&lt;/a&gt;</b> - також працюватиме належним чином, як і випадок 1, оскільки <b>/</b> (коса риска) на початку означає корінь. І ми маємо такий кореневий маршрут у об’єднаних маршрутах.</p>
+4.<b>&lt;a href="/computers/"&gt;Computers&lt;/a&gt;</b> - не працюватиме належним чином, оскільки <b>/<b> (коса риска) на початку означає корінь. І в наших маршрутах немає такого кореневого маршруту /computers/</div>
+<h3>Детальні маршрути</h3>
+<div>Для представлення <b>Master Detail</b> також можна вказати <b>detailRoutes</b> на додаток до <b>master: true</b> для головного маршруту.
+<p>Якщо вказано <b>detailRoutes</b>, перехід до детального маршруту також попередньо завантажить його основний маршрут.
+<p>Але на відміну від вкладених маршрутів (зазначених у <b>параметрах маршрутів</b>), шляхи детальних маршрутів не об’єднуються з <b>основним шляхом</b> маршруту.</p>
+</div>
+<pre><code>routes = [
+  {
+    path: '/blog/',
+    url: './news.html',
+    master: true,
+    detailRoutes: [
+      {
+        /* We need to specify detail route path from root */
+        path: '/blog/:postId/',
+        url: './post.html',
+      },
+    ],
+  },
+  // ...
+]</code></pre>
+<h3>Маршрутизовані вкладки</h3>
+<div>Що означають маршрутизовані вкладки і чому це добре?
+<p>●	По-перше, це надає можливість переходу до вкладок за звичайними посиланнями замість так званих спеціальних вкладок-посилань.</p>
+<p>●	По-друге, під час навігації таким маршрутом ви можете завантажити сторінку з відкритою потрібною вкладкою.</p>
+<p>●	По-третє, якщо ввімкнути історію веб-переглядача, під час переходу назад і вперед в історії відкриватиметься та сама вкладка.</p>
+<p>●	І останнє, але не менш важливе: під час використання маршрутизованих вкладок ви можете завантажувати вміст вкладок тими самими способами, що й для сторінок, тобто за допомогою <b>url, content, component або componentUrl</b></p>
+</div>
+<div>Перш за все нам потрібно вказати маршрути вкладок у маршрутах програми. Припустімо, що у нас є сторінка з маршрутизованими вкладками на маршруті <b>/tabs/</b>:</div>
+<pre><code>routes = [
+  {
+    path: '/about-me/',
+    url: './pages/about-me/index.html',
+    // Pass &quot;tabs&quot; property to route
+    tabs: [
+      // First (default) tab has the same url as the page itself
+      {
+        path: '/',
+        id: 'about',
+        // Fill this tab content from content string
+        content: `
+          &lt;div class=&quot;block&quot;&gt;
+            &lt;h3&gt;About Me&lt;/h3&gt;
+            &lt;p&gt;...&lt;/p&gt;
+          &lt;/div&gt;
+        `
+      },
+      // Second tab
+      {
+        path: '/contacts/',
+        id: 'contacts',
+        // Fill this tab content via Ajax request
+        url: './pages/about-me/contacts.html',
+      },
+      // Third tab
+      {
+        path: '/cv/',
+        id: 'cv',
+        // Load this tab content as a component via Ajax request
+        componentUrl: './pages/about-me/cv.html',
+      },
+    ],
+  }
+]</code></pre>
+<div>Наприклад, на сторінці <b>/about-me/</b> ми можемо мати таку структуру:</div>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+      &lt;div class=&quot;title&quot;&gt;About Me&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;toolbar tabbar toolbar-bottom&quot;&gt;
+    &lt;div class=&quot;toolbar-inner&quot;&gt;
+      &lt;a href=&quot;./&quot; class=&quot;tab-link&quot; data-route-tab-id=&quot;about&quot;&gt;About&lt;/a&gt;
+      &lt;a href=&quot;./contacts/&quot; class=&quot;tab-link&quot; data-route-tab-id=&quot;contacts&quot;&gt;&gt;Contacts&lt;/a&gt;
+      &lt;a href=&quot;./cv/&quot; class=&quot;tab-link&quot; data-route-tab-id=&quot;cv&quot;&gt;&gt;CV&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tabs tabs-routable&quot;&gt;
+    &lt;div class=&quot;tab page-content&quot; id=&quot;about&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;tab page-content&quot; id=&quot;contacts&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;tab page-content&quot; id=&quot;cv&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Майже так само, як і зі звичайними вкладками, але з тією різницею, що більше немає класів <b>tab-link-active і tab-active</b> для посилань і вкладок. Ці класи та вкладки будуть перемикатися маршрутизатором. І є новий атрибут data-route-tab-id, він потрібен для перемикача вкладок, щоб зрозуміти, яке посилання стосується вибраного маршруту.
+<p>Ви можете дізнатися більше про Routable Tabs та їхні додаткові події у відповідних розділах сторінки компонента Tabs.</p></div>
+<h3>Маршрутизовані модалі</h3>
+<div>Модалі також можна маршрутизувати. Тут під модалями ми маємо на увазі наступні компоненти: спливаюче вікно, спливне вікно, аркуш дій, екран входу, модальний аркуш. Ймовірно, Popup і Login Screen мають більше випадків використання тут.</div>
+<div>І ті ж функції, що й для маршрутизованих вкладок і сторінок:
+<p>●	він надає можливість відкривати модали за звичайними посиланнями замість так званих спеціальних посилань або API,</p>
+<p>●	з увімкненою історією веб-переглядача той самий режим відкриватиметься, коли ви оновлюватимете веб-переглядач, переходите назад і вперед в історії,</p>
+<p>●	за допомогою маршрутизованих модалів ви можете завантажувати сам модал та його вміст так само, як і для сторінок, тобто за допомогою <b>url, content, component або componentUrl</b></p>
+</div>
+<div>І ті ж функції, що й для маршрутизованих вкладок і сторінок:
+<p>●	він надає можливість відкривати модали за звичайними посиланнями замість так званих спеціальних посилань або API,</p>
+<p>●	з увімкненою історією веб-переглядача той самий режим відкриватиметься, коли ви оновлюватимете веб-переглядач, переходите назад і вперед в історії,</p>
+<p>●	за допомогою маршрутизованих модалів ви можете завантажувати сам модал та його вміст так само, як і для сторінок, тобто за допомогою <b>url, content, component або componentUrl</b></p>
+</div>
+<pre><code>routes = [
+  ...
+  // Creates popup from passed HTML string
+  {
+    path: '/popup-content/',
+    popup: {
+      content: `
+        &lt;div class=&quot;popup&quot;&gt;
+          &lt;div class=&quot;view&quot;&gt;
+            &lt;div class=&quot;page&quot;&gt;
+              ...
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      `
+    }
+  },
+  // Load Login Screen from file via Ajax
+  {
+    path: '/login-screen-ajax/',
+    loginScreen: {
+      url: './login-screen.html',
+      /* login-screen.html contains:
+        &lt;div class=&quot;login-screen&quot;&gt;
+          &lt;div class=&quot;view&quot;&gt;
+            &lt;div class=&quot;page&quot;&gt;
+              ...
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      */
+    },
+  },
+  // Load Popup from component file
+  {
+    path: '/popup-component/',
+    loginScreen: {
+      componentUrl: './popup-component.html',
+      /* popup-component.html contains:
+        &lt;template&gt;
+          &lt;div class=&quot;popup-screen&quot;&gt;
+            &lt;div class=&quot;view&quot;&gt;
+              &lt;div class=&quot;page&quot;&gt;
+                ...
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/template&gt;
+        &lt;style&gt;...&lt;/style&gt;
+        &lt;script&gt;...&lt;/script&gt;
+      */
+    },
+  },
+  // Use async route to check if the user is logged in:
+  {
+    path: '/secured-content/',
+    async({ resolve }) {
+      if (userIsLoggedIn) {
+        resolve({
+          url: 'secured-page.html',
+        });
+      } else {
+        resolve({
+          loginScreen: {
+            url: 'login-screen.html'
+          } ,
+        });
+      }
+    },
+  }
+]</code></pre>
+<div>Відповідно до прикладу вище:
+<p>●	коли ви натискаєте посилання з атрибутом href /popup-content/ , відкриється спливаюче вікно з указаним вмістом рядка,</p>
+<p>●	коли ви натискаєте посилання з атрибутом href /login-screen-ajax/ , він виконує запит Ajax до файлу login-screen.html і відкриває його як екран входу,</p>
+<p>●	коли ви натискаєте посилання з атрибутом href /popup-component/ , він виконає запит Ajax до файлу popup-component.html, розбере його як компонент маршрутизатора та відкриє як спливаюче вікно,</p>
+<p>●	коли ви натискаєте посилання з атрибутом /secured-content/ href, завантажується сторінка з secured-page.html, якщо користувач увійшов у систему, або відкривається екран входу з файлу login-screen.html, якщо користувач не ввійшов у систему.</p></div>
+<h3>Маршрутизовані панелі</h3>
+<div>Панелі (бічні панелі) також можуть бути маршрутизованими з тими ж функціями, що й для маршрутизованих модалів і сторінок:
+<p>●	надає можливість відкривати Panel за звичайними посиланнями замість так званих спеціальних посилань або API,</p>
+<p>●	з увімкненою історією веб-переглядача та сама панель буде відкрита, коли ви оновите веб-переглядач, переміщуєтеся назад і вперед в історії,</p>
+<p>●	за допомогою маршрутизованих панелей ви можете завантажувати саму панель та її вміст у такий самий спосіб, як і для сторінок і модалів, тобто за допомогою url, content, component  або componentUrl</p></div>
+<pre><code>routes = [
+  ...
+  // Creates Panel from passed HTML string
+  {
+    path: '/left-panel/',
+    panel: {
+      content: `
+        &lt;div class=&quot;panel panel-left panel-cover&quot;&gt;
+          &lt;div class=&quot;view&quot;&gt;
+            &lt;div class=&quot;page&quot;&gt;
+              ...
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      `
+    }
+  },
+  // Load Panel from file via Ajax
+  {
+    path: '/right-panel-ajax/',
+    panel: {
+      url: './right-panel.html',
+      /* right-panel.html contains:
+      &lt;div class=&quot;panel panel-right panel-reveal&quot;&gt;
+        &lt;div class=&quot;view&quot;&gt;
+          &lt;div class=&quot;page&quot;&gt;
+            ...
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      */
+    },
+  },
+  // Load Panel from component file
+  {
+    path: '/panel-component/',
+    panel: {
+      componentUrl: './panel-component.html',
+      /* panel-component.html contains:
+      &lt;template&gt;
+        &lt;div class=&quot;panel panel-left panel-cover&quot;&gt;
+          &lt;div class=&quot;view&quot;&gt;
+            &lt;div class=&quot;page&quot;&gt;
+              ...
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/template&gt;
+      &lt;style&gt;...&lt;/style&gt;
+      &lt;script&gt;...&lt;/script&gt;
+      */
+    },
+  },
+]</code></pre>
+<div>Відповідно до прикладу вище:
+<p>●	коли ви натискаєте посилання з атрибутом /left-panel/ href, відкриється панель із вказаного вмісту рядка,</p>
+<p>●	коли ви натискаєте посилання з атрибутом /right-panel-ajax/ href, він виконає запит Ajax до файлу right-panel.html і відкриє його як праву панель,</p>
+<p>●	коли ви натискаєте посилання з атрибутом /panel-component/ href, він виконає запит Ajax до файлу panel-component.html, розбере його як компонент маршрутизатора та відкриє як панель,</p></div>
+<div>Зауважте, що маршрутизовані панелі не можна змішувати зі статичними панелями. Отже, якщо у програмі є статична ліва панель, то лише праву панель можна завантажити як маршрутизовану панель.</div>
+<h3>Маршрут перед входом/виходом</h3>
+<div>Хуки маршрутів beforeEnter і beforeLeave можуть бути дуже корисними, якщо вам потрібно виконати додаткові перевірки, виконати додаткові дії або завантажити/надіслати щось перед завантаженням маршруту (введення) і вивантаження (виходу). Це може бути один метод або масив методів для виконання. Наприклад:</div>
+<pre><code>routes = [
+  {
+    path: 'profile',
+    url: 'profile.html',
+    beforeEnter: function ({ resolve, reject }) {
+      if (/* some condition to check user is logged in */) {
+        resolve();
+      } else {
+        // don't allow to visit this page for unauthenticated users
+        reject();
+      }
+    },
+
+  },
+  {
+    path: 'profile-edit',
+    url: 'profile-edit.html',
+    beforeLeave: function ({ resolve, reject }) {
+      if (/* user didn't save edited form */) {
+        app.dialog.confirm(
+          'Are you sure you want to leave this page without saving data?',
+          function () {
+            // proceed navigation
+            resolve();
+          },
+          function () {
+            // stay on page
+            reject();
+          }
+        )
+      } else {
+        resolve();
+      }
+    }
+  }
+]</code></pre>
+<div>І, звичайно, підтримуються кілька хуків, які передаються як масив функцій:</div>
+<pre><code>function checkAuth({ to, from, resolve, reject }) {
+  if (/* some condition to check user is logged in */) {
+    resolve();
+  } else {
+    reject();
+  }
+}
+function checkPermission({ to, from, resolve, reject }) {
+  if (/* some condition to check user edit permission */) {
+    resolve();
+  } else {
+    reject();
+  }
+}
+
+routes = [
+  {
+    path: '/profile/',
+    url: 'profile.html',
+    // check if the user is logged in
+    beforeEnter: checkAuth,
+  },
+  {
+    path: '/profile-edit/',
+    url: 'profile-edit.html',
+    // check if the user is logged in and has required permission
+    beforeEnter: [checkAuth, checkPermission],
+  }
+]</code></pre>
+<h3>Перенаправлення та псевдонім</h3>
+<h4>Псевдонім</h4>
+<div>Ми можемо передати псевдонім маршруту за допомогою властивості alias маршруту. Псевдонім у цьому випадку означає, що той самий маршрут може мати декілька шляхів доступу:</div>
+<pre><code>routes = [
+  {
+    path: '/foo/',
+    url: 'somepage.html',
+    alias: '/bar/',
+  },
+  {
+    path: '/foo2/',
+    url: 'anotherpage.html',
+    alias: ['/bar2/', '/baz/', '/baz2/'],
+  }
+]</code></pre>
+<div>Відповідно до прикладу вище:
+<p>●	якщо ми запитуємо сторінку за URL-адресою /foo/ або /bar/, перший маршрут буде відповідати, і ми отримаємо сторінку, завантажену з somepage.html</p>
+<p>●	якщо ми запитуємо сторінку за URL-адресою /foo2/ , /bar2/, /baz/, /baz2/, другий маршрут буде збігатися, і ми завантажуємо сторінку з anotherpage.html</p></div>
+<h4>Перенаправлення</h4>
+<div>Ми можемо передати перенаправлення маршруту за допомогою властивості redirect:
+якщо ми передаємо redirect як string, ми повинні передати тут URL-адресу прямого перенаправлення
+якщо ми передаємо redirect як function , нам потрібно викликати параметр resolve функції з URL-адресою перенаправлення
+<p>Наприклад:</p></div>
+<pre><code>routes = [
+  {
+    path: '/foo/',
+    url: 'somepage.html',
+  },
+  {
+    path: '/bar/',
+    redirect: '/foo/',
+  },
+  {
+    path: '/baz/',
+    redirect: function ({to, resolve, reject}) {
+      // if we have &quot;user&quot; query parameter
+      if (to.query.user) {
+        // redirect to such url
+        resolve('/foo/?user=' + to.query.user);
+      }
+      // otherwise do nothing
+      else reject();
+    }
+  }
+]</code></pre>
+<div>Наведений вище приклад означає:
+<p>●	коли ми запитуємо URL-адресу /bar/, маршрутизатор перенаправлятиме на URL-адресу /foo/, а потім шукатиме маршрут, який відповідає цій новій URL-адресі. У цьому випадку він відповідатиме першому маршруту зі шляхом /foo/ і завантажуватиме сторінку з somepage.html</p>
+<p>●	коли ми запитуємо /baz/?user=john, ми перенаправляємо на URL /foo/?user=john, який відповідатиме першому маршруту</p>
+<p>●	коли ми запитуємо /baz/ (без запиту), нічого не станеться</p></div>
+<div>Зауважте, що під час перенаправлення ми передаємо URL-адресу, а не шлях маршруту, як у псевдонімі</div>
+<h3>Keep Alive</h3>
+<div>Якщо функцію KeepAlive увімкнено, як тільки маршрутизатор завантажить таку сторінку, сторінка та, якщо це можливо, її компонент (компонент Vue, React або Router) ніколи не буде знищено. Натомість його буде від’єднано від DOM і повторно використано за потреби.
+<p>Це може бути корисно ввімкнути для «важких» сторінок, які не надто часто оновлюються. Наприклад, сторінка з картою або з важким полотном чи іншим обчисленням. За звичайною логікою всі ці важкі обчислення відбуватимуться кожного разу, коли відвідуватиме цю сторінку. Але з keepAlive це буде зроблено один раз, і під час усіх наступних відвідувань маршрутизатор повторно використовуватиме вже відрендерений елемент DOM сторінки.</p>
+<p>Це також може бути корисним, якщо вам дійсно потрібно зберегти стан сторінки. Якщо функцію KeepAlive увімкнено, сторінка буде завантажена наступного разу, усі модифікації DOM і стан елементів форми буде збережено.</p></div>
+<div>Але є речі, на які варто звернути увагу:
+<p>●	Він не підтримується для асинхронних маршрутів</p>
+<p>●	Він підтримується лише для сторінок (не для панелей і модальних елементів)</p>
+<p>●	Якщо у вас є динамічний шлях маршруту (наприклад, /some-page/:foo/:bar) або ви покладаєтеся на запит маршруту сторінки (?foo=bar), тоді параметри запиту та маршруту не будуть змінені після початкового завантаження.</p>
+<p>●	page:beforeremove,pageBeforeRemove події сторінки ніколи не запускатимуться для такої сторінки</p>
+<p>●	Якщо ви використовуєте його як компонент Vue, то beforeDestroy знищені хуки ніколи не запускатимуться для такого компонента. created, mounted гаки спрацюють лише один раз.</p>
+<p>●	Якщо ви використовуєте його як компонент React, метод componentWillUnmount ніколи не запускатиметься для такого компонента. Методи componentWillMount, componentDidMount запускатимуться лише один раз.</p>
+<p>●	Якщо ви використовуєте його як компонент T4 Router, то beforeDestroy знищені хуки ніколи не запускатимуться для такого компонента. created, mounted гаки спрацюють лише один раз.</p></div>
+<div>Щоб уникнути пасток із життєвим циклом компонентів і сторінок, рекомендуємо покладатися на такі події сторінки:
+<p>●	page:mounted - буде завжди викликано для сторінки маршруту keepAlive, коли її елемент DOM приєднано або повторно приєднано.</p>
+<p>●	page:beforeunmount - завжди буде викликатися для сторінки маршруту keepAlive, коли її елемент DOM буде від’єднано від DOM.</p>
+<p>Щоб створити маршрут KeepAlive, нам просто потрібно передати його параметрам KeepAlive: true :</p></div>
+<pre><code>import SomPageComponent from './some-page.js';
+
+var routes = [
+  /* Usual route */
+  {
+    path: '/',
+    url: './pages/home.html',
+  },
+  /* Alive route. Will be loaded from file first time, and then will reuse rendered DOM element */
+  {
+    path: '/map/',
+    url: './pages/map.html',
+    keepAlive: true,
+  },
+
+  /* Alive route. Will be created as component, and then will reuse rendered DOM element */
+  {
+    path: '/some-page/',
+    component: SomPageComponent,
+    keepAlive: true,
+  },
+];</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438 "},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u0412\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443"}},{"type":"nav_item","props":{"content":"\u0428\u043b\u044f\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443"}},{"type":"nav_item","props":{"content":"\u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043d\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456"}},{"type":"nav_item","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442 \u0430\u0441\u0438\u043d\u0445\u0440\u043e\u043d\u0456\u0437\u0430\u0446\u0456\u0457"}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443"}},{"type":"nav_item","props":{"content":"\u0412\u043a\u043b\u0430\u0434\u0435\u043d\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438"}},{"type":"nav_item","props":{"content":"\u0414\u0435\u0442\u0430\u043b\u044c\u043d\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438"}},{"type":"nav_item","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u043d\u0456 \u0432\u043a\u043b\u0430\u0434\u043a\u0438"}},{"type":"nav_item","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u043d\u0456 \u043c\u043e\u0434\u0430\u043b\u0456"}},{"type":"nav_item","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456"}},{"type":"nav_item","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442 \u043f\u0435\u0440\u0435\u0434 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f\u043c\/\u0432\u0456\u0434\u043f\u0443\u0441\u043a\u043e\u043c"}},{"type":"nav_item","props":{"content":"\u041f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0442\u0430 \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c"}},{"type":"nav_item","props":{"content":"Keep Alive"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0412\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u0412\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0435\u0440\u0448 \u0437\u0430 \u0432\u0441\u0435, \u043a\u043e\u043b\u0438 \u043c\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0454\u043c\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0443 Techno4, \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 \u043c\u0430\u0441\u0438\u0432\u0443 <b>routes<\/b>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  routes: [\n    {\n      name: 'about',\n      path: '\/about\/',\n      url: '.\/pages\/about.html',\n    },\n    {\n      name: 'news',\n      path: '\/news\/',\n      url: '.\/pages\/news.html',\n      options: {\n        animate: false,\n      },\n    },\n    {\n      name: 'users',\n      path: '\/users\/',\n      componentUrl: '.\/pages\/users.html',\n      options: {\n        props: {\n          users: ['John Doe', 'Vladimir Kharlampidi', 'Timo Ernst'],\n        },\n      },\n      on: {\n        pageAfterIn: function test (e, page) {\n          \/\/ do something after page gets into the view\n        },\n        pageInit: function (e, page) {\n          \/\/ do something when page initialized\n        },\n      }\n    },\n    \/\/ Default route, match to all pages (e.g. 404 page)\n    {\n      path: '(.*)',\n      url: '.\/pages\/404.html',\n    },\n  ],\n});"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438, \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0456 \u043f\u0456\u0434 \u0447\u0430\u0441 \u0437\u0430\u043f\u0443\u0441\u043a\u0443 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438, \u0454 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u043c\u0438 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0432\u043e\u043d\u0438 \u0431\u0443\u0434\u0443\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u0434\u043b\u044f \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443\/\u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430 \u0432 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0456.\n<p>\u042f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u0454 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430 \u0437 \u0434\u0435\u043a\u0456\u043b\u044c\u043a\u043e\u043c\u0430 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f\u043c\u0438\/\u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430\u043c\u0438, \u0456 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435, \u0449\u043e\u0431 \u043f\u0435\u0432\u043d\u0438\u0439 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\/\u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440 \u043c\u0430\u0432 \u0432\u043b\u0430\u0441\u043d\u0456 \u0441\u0442\u0440\u043e\u0433\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438, \u0456 \u043d\u0435 \u0445\u043e\u0447\u0435\u0442\u0435, \u0449\u043e\u0431 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0431\u0443\u043b\u0438 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0456, \u0442\u043e\u0434\u0456 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u0442\u043e\u0439 \u0441\u0430\u043c\u0438\u0439 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 <b>routes<\/b> \u0432 View init:<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var view1 = app.views.create('.view-1', {\n  routes: [\n    {\n      path: '\/users\/',\n      url: '.\/pages\/users.html',\n    },\n    {\n      path: '\/user\/',\n      url: '.\/pages\/user.html',\n    },\n  ],\n});"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u0454 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430 \u0437 \u043a\u0456\u043b\u044c\u043a\u043e\u043c\u0430 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f\u043c\u0438\/\u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430\u043c\u0438, \u0456 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435, \u0449\u043e\u0431 \u0434\u0435\u044f\u043a\u0438\u0439 View\/Router \u043c\u0430\u0432 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438, \u0456 \u043d\u0435 \u0445\u043e\u0447\u0435\u0442\u0435, \u0449\u043e\u0431 \u0446\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438 \u0431\u0443\u043b\u0438 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u0432 \u0456\u043d\u0448\u0438\u0445 Views, \u0442\u043e\u0434\u0456 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 <b>routesAdd<\/b> \u0432 View init:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"\/\/ This view will support all global routes + own additional routes\nvar view2 = app.views.create('.view-2', {\n  \/\/ These routes are only available in this view\n  routesAdd: [\n    {\n      path: '\/blog\/',\n      url: '.\/pages\/blog.html',\n    },\n    {\n      path: '\/post\/',\n      url: '.\/pages\/post.html',\n    },\n  ],\n})"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u043e\u0431\u0440\u0435, \u0442\u0435\u043f\u0435\u0440 \u0437'\u044f\u0441\u0443\u0454\u043c\u043e, \u0449\u043e \u043e\u0437\u043d\u0430\u0447\u0430\u0454 \u043a\u043e\u0436\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041d\u0430\u0437\u0432\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443, \u043d\u0430\u043f\u0440. HOME","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"name","title":""}},{"type":"table_item","props":{"content":"\u0428\u043b\u044f\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u041e\u0437\u043d\u0430\u0447\u0430\u0454, \u0449\u043e \u0446\u0435\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0431\u0443\u0434\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043e, \u043a\u043e\u043b\u0438 \u043c\u0438 \u043d\u0430\u0442\u0438\u0441\u043d\u0435\u043c\u043e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f, \u044f\u043a\u0435 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0454 \u0446\u044c\u043e\u043c\u0443 \u0448\u043b\u044f\u0445\u0443, \u0430\u0431\u043e \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043e \u0446\u0438\u043c \u0448\u043b\u044f\u0445\u043e\u043c \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e API","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"path","title":""}},{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 (\u043e\u043f\u0446\u0456\u043e\u043d\u0430\u043b\u044c\u043d\u043e)","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"options"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u0432\u043a\u043b\u0430\u0434\u0435\u043d\u0438\u043c\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u043c\u0438","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"array","meta":"routes"}},{"type":"table_item","props":{"content":"\u041d\u0430\u0437\u0432\u0430 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443, \u0434\u0435 \u0446\u0435\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0431\u0443\u0434\u0435 \u043f\u0440\u0438\u043c\u0443\u0441\u043e\u0432\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0442\u0438\u0441\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"viewName"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"Master Detail","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- Master Detail"},{"type":"fragment","children":[{"type":"row","props":{"layout":"2-3,1-3"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"2-3"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0446\u0435\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u044f\u043a \u0433\u043e\u043b\u043e\u0432\u043d\u0438\u0439. \u0426\u0435 \u0442\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043c\u0435\u0442\u043e\u0434, \u044f\u043a\u0438\u0439 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0438 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438 \u0442\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430, \u0443 \u0446\u044c\u043e\u043c\u0443 \u043c\u0435\u0442\u043e\u0434\u0456 \u0432\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438 <b>true<\/b> \u0430\u0431\u043e <b>false<\/b>:\n","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean ; function(app, router)","meta":"master","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-3"},"children":[{"type":"code","props":{"content":"{\n  url: '\/some-page\/',\n  master(app) {\n    if (app.device.desktop) return true;\n    return false;\n  }\n}"}}]}]}],"props":{"margin":"default"}},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0437 \u0434\u0435\u0442\u0430\u043b\u044c\u043d\u0438\u043c\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u043c\u0438","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"array","meta":"detailRoutes","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"\u0412\u0456\u0434\u043a\u043b\u0430\u0434\u0435\u043d\u0456  \u043c\u043e\u0434\u0443\u043b\u0456","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u0412\u0456\u0434\u043a\u043b\u0430\u0434\u0435\u043d\u0456  \u043c\u043e\u0434\u0443\u043b\u0456 "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u0432\u0456\u0434\u043a\u043b\u0430\u0434\u0435\u043d\u0438\u043c\u0438  \u043c\u043e\u0434\u0443\u043b\u044f\u043c\u0438 \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u043f\u0435\u0440\u0435\u0434 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"array","meta":"modules","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456, \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u0437 \u0432\u043c\u0456\u0441\u0442\u043e\u043c","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456, \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u0437 \u0432\u043c\u0456\u0441\u0442\u043e\u043c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0430\u0441\u0442\u0443\u043f\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u044c, \u044f\u043a (\u0437\u0432\u0456\u0434\u043a\u0438\/\u0449\u043e) \u043c\u0430\u0454 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0432\u043c\u0456\u0441\u0442","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437 DOM \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 HTML. \u041c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043b\u0438\u0448\u0435 \u0437 \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u0438\u043c\u0438 <b>stackPages<\/b> \u0443 View.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement","meta":"el","title":""}},{"type":"table_item","props":{"content":"\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437 DOM, \u044f\u043a\u0430 \u043c\u0430\u0454 \u0442\u043e\u0439 \u0441\u0430\u043c\u0438\u0439 \u0430\u0442\u0440\u0438\u0431\u0443\u0442 \u0456\u043c\u0435\u043d\u0456 \u0434\u0430\u043d\u0438\u0445. \u041c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043b\u0438\u0448\u0435 \u0437 \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u0438\u043c\u0438 <b>stackPages \u0443 View.<\/b>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"pageName","title":""}},{"type":"table_item","props":{"content":"\u0421\u0442\u0432\u043e\u0440\u044e\u0454 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437 \u0443\u043a\u0430\u0437\u0430\u043d\u043e\u0433\u043e \u0440\u044f\u0434\u043a\u0430 \u0432\u043c\u0456\u0441\u0442\u0443","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"string","meta":"content"}},{"type":"table_item","props":{"content":"\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430 Techno4","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"component"}},{"type":"table_item","props":{"content":"\u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u044f\u043a \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 \u0447\u0435\u0440\u0435\u0437 Ajax\n\u0422\u0430\u043a\u043e\u0436 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0437\u0456 \u0448\u043b\u044f\u0445\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0432\u0438\u0440\u0430\u0437\u0443 <b>{{paramName}}<\/b>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"componentUrl"}},{"type":"table_item","props":{"content":"\u0412\u0438\u043a\u043e\u043d\u0430\u0439\u0442\u0435 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u0430\u0441\u0438\u043d\u0445\u0440\u043e\u043d\u043d\u0456 \u043c\u0430\u043d\u0456\u043f\u0443\u043b\u044f\u0446\u0456\u0457 \u0442\u0430 \u043f\u043e\u0432\u0435\u0440\u043d\u0456\u0442\u044c \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0432\u043c\u0456\u0441\u0442 \u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0432\u0456\u043d \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u043e\u0431'\u0454\u043a\u0442 \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u0443 \u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":" function(context)","meta":"async"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"fragment","children":[{"type":"row","props":{"layout":"2-3,1-3"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"2-3"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0432\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0447\u0435\u0440\u0435\u0437 Ajax.\n<p>\u0422\u0430\u043a\u043e\u0436 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0437\u0456 \u0448\u043b\u044f\u0445\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0432\u0438\u0440\u0430\u0437\u0443 {{paramName}}, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434<\/p>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"url","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-3"},"children":[{"type":"code","props":{"content":"{\n  path: '\/users\/:userId\/posts\/:postId',\n  url: 'http:\/\/myapp.com\/posts\/{{userId}}\/{{postId}}'\n}"}}]}]}],"props":{"margin":"default"}},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"fragment","children":[{"type":"row","props":{"layout":"2-3,1-3"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"2-3"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 <b>Promise<\/b>, \u0440\u043e\u0437\u0432\u2019\u044f\u0437\u0430\u043d\u0435 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 \u0430\u0431\u043e \u043c\u043e\u0434\u0443\u043b\u044f ES \u0456\u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044e <b>.default<\/b>, \u0449\u043e \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442.\n<p>\u0417\u0434\u0435\u0431\u0456\u043b\u044c\u0448\u043e\u0433\u043e \u0432\u0456\u043d \u0440\u043e\u0437\u0440\u043e\u0431\u043b\u0435\u043d\u0438\u0439 \u044f\u043a \u043a\u043e\u0440\u043e\u0442\u0448\u0430 \u0432\u0435\u0440\u0441\u0456\u044f <b>async<\/b> \u0434\u043b\u044f \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e\u0433\u043e \u0456\u043c\u043f\u043e\u0440\u0442\u0443 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:<\/p>\n","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"function()","meta":" asyncComponent","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-3"},"children":[{"type":"code","props":{"content":"{\n  path: '\/some-page\/',\n  asyncComponent: () => import('.\/path\/to\/some-page.js'),\n}"}}]}]}],"props":{"margin":"default"}},{"type":"headline","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u0432\u043a\u043b\u0430\u0434\u043a\u0438","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u0432\u043a\u043b\u0430\u0434\u043a\u0438"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u0432\u043a\u043b\u0430\u0434\u043a\u0430\u043c\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"array","meta":"tabs","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u043c\u043e\u0434\u0430\u043b\u0456","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u043c\u043e\u0434\u0430\u043b\u0456"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0410\u0440\u043a\u0443\u0448 \u0434\u0456\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"object","meta":" actions","title":""}},{"type":"table_item","props":{"content":"\u0421\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"popup","title":""}},{"type":"table_item","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"loginScreen"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 popover ","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"popover"}},{"type":"table_item","props":{"content":"\u041b\u0438\u0441\u0442\u043e\u0432\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":" sheet"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041c\u0430\u0440\u0448\u0440\u0443\u0442\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u0430\u043d\u0435\u043b\u044c\u043d\u0438\u0439 \u0448\u043b\u044f\u0445","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"panel","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041f\u043e\u0434\u0456\u0457"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c\u0438 \u043f\u043e\u0434\u0456\u0439","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"on","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"\u041f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c\u0438 \u0456 \u043f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c\u0438 \u0456 \u043f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0430\u0431\u043e \u043c\u0430\u0441\u0438\u0432 \u0456\u0437 \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c\u0430\u043c\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u041d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u0442\u0443\u0442 <b>\u0448\u043b\u044f\u0445<\/b> \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c\u0430","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"string,  array","meta":"alias","title":""}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u041d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u0442\u0443\u0442 URL-\u0430\u0434\u0440\u0435\u0441\u0443 \u043f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f (\u0430 \u043d\u0435 \u0448\u043b\u044f\u0445). \u042f\u043a\u0449\u043e \u043c\u0435\u0442\u043e\u0434, \u0442\u043e \u044f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0432\u0456\u043d \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u043e\u0431\u2019\u0454\u043a\u0442 \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u0443 <b>\u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/b>.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string, function(context)","meta":"redirect"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"\u041f\u0435\u0440\u0435\u0434 \u0432\u0445\u043e\u0434\u043e\u043c\/\u0432\u0438\u0445\u043e\u0434\u043e\u043c","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041f\u0435\u0440\u0435\u0434 \u0432\u0445\u043e\u0434\u043e\u043c\/\u0432\u0438\u0445\u043e\u0434\u043e\u043c"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f (\u0430\u0431\u043e \u043c\u0430\u0441\u0438\u0432 \u0444\u0443\u043d\u043a\u0446\u0456\u0439), \u044f\u043a\u0430 \u0431\u0443\u0434\u0435 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0430 \u043f\u0435\u0440\u0435\u0434 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f\u043c\/\u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u0429\u043e\u0431 \u043f\u0440\u043e\u0434\u043e\u0432\u0436\u0438\u0442\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438 <b>\u0434\u043e\u0437\u0432\u0456\u043b<\/b>. \u0423 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 <b>\u043c\u0430\u0441\u0438\u0432\u0443<\/b>> \u043a\u043e\u0436\u043d\u0430 \u0444\u0443\u043d\u043a\u0446\u0456\u044f \u0432 \u043c\u0430\u0441\u0438\u0432\u0456 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u0434\u043e\u0437\u0432\u043e\u043b\u0435\u043d\u0430 \u0434\u043b\u044f \u043f\u0440\u043e\u0434\u043e\u0432\u0436\u0435\u043d\u043d\u044f. \u042f\u043a\u0449\u043e \u043c\u0435\u0442\u043e\u0434, \u0442\u043e \u044f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0432\u0456\u043d \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u043e\u0431\u2019\u0454\u043a\u0442 \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u0443 <b>\u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/b>.","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"function(context), array","meta":"beforeEnter","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f (\u0430\u0431\u043e \u043c\u0430\u0441\u0438\u0432 \u0444\u0443\u043d\u043a\u0446\u0456\u0439), \u044f\u043a\u0430 \u0431\u0443\u0434\u0435 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0430 \u043f\u0435\u0440\u0435\u0434 \u0432\u0438\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f\u043c\/\u0437\u0430\u043b\u0438\u0448\u0435\u043d\u043d\u044f\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u0429\u043e\u0431 \u043f\u0440\u043e\u0434\u043e\u0432\u0436\u0438\u0442\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044e, \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438 <b>\u0434\u043e\u0437\u0432\u0456\u043b<\/b>. \u0423 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 <b>\u043c\u0430\u0441\u0438\u0432\u0443<\/b> \u043a\u043e\u0436\u043d\u0430 \u0444\u0443\u043d\u043a\u0446\u0456\u044f \u0432 \u043c\u0430\u0441\u0438\u0432\u0456 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u0434\u043e\u0437\u0432\u043e\u043b\u0435\u043d\u0430 \u0434\u043b\u044f \u043f\u0440\u043e\u0434\u043e\u0432\u0436\u0435\u043d\u043d\u044f. \u042f\u043a\u0449\u043e \u043c\u0435\u0442\u043e\u0434, \u0442\u043e \u044f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0432\u0456\u043d \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u043e\u0431\u2019\u0454\u043a\u0442 <b>\u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u0443 \u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/b>.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"function(context), array","meta":"beforeLeave"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"keepAlive","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443- keepAlive"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0442\u0430\u043a \u0437\u0432\u0430\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 <b>KeepAlive<\/b>. \u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0442\u0430 \u0457\u0457 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 (\u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 Vue, React \u0430\u0431\u043e Router) \u043d\u0456\u043a\u043e\u043b\u0438 \u043d\u0435 \u0431\u0443\u0434\u0443\u0442\u044c \u0437\u043d\u0438\u0449\u0435\u043d\u0456. \u041d\u0430\u0442\u043e\u043c\u0456\u0441\u0442\u044c \u0439\u043e\u0433\u043e \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u2019\u0454\u0434\u043d\u0430\u043d\u043e \u0432\u0456\u0434 DOM \u0456 \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043e \u0437\u0430 \u043f\u043e\u0442\u0440\u0435\u0431\u0438.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"keepAlive","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0441\u044c \u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u0431\u0456\u043b\u044c\u0448\u043e\u0441\u0442\u0456 \u043c\u043e\u0436\u043b\u0438\u0432\u0438\u0445 \u0432\u0430\u0440\u0456\u0430\u043d\u0442\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes: [\n  \/\/ Load via Ajax\n  {\n    path: '\/about\/',\n    url: '.\/pages\/about.html',\n  },\n  \/\/ Dynamic page from content\n  {\n    path: '\/news\/',\n    content: `\n      <div class=\"page\">\n        <div class=\"page-content\">\n          <div class=\"block\">\n            <p>This page created dynamically<\/p>\n          <\/div>\n        <\/div>\n      <\/div>\n    `,\n  },\n  \/\/ By page name (data-name=\"services\") presented in DOM\n  {\n    path: '\/services\/',\n    pageName: 'services',\n  },\n  \/\/ By page HTMLElement\n  {\n    path: '\/contacts\/',\n    el: document.querySelector('.page[data-name=\"contacts\"]'),\n  },\n  \/\/ By component\n  {\n    path: '\/posts\/',\n    component: {\n      \/\/ look below\n    },\n  },\n  \/\/ By component url\n  {\n    path: '\/post\/:id\/',\n    componentUrl: '.\/pages\/component.html',\n  },\n  \/\/ Async\n  {\n    path: '\/something\/',\n    async: function ({ app, to, resolve }) {\n      \/\/ Requested route\n      console.log(to);\n      \/\/ Get external data and return page content\n      app.request.json('http:\/\/some-endpoint\/').then(function (res) {\n        resolve(\n          \/\/ How and what to load\n          {\n            content: `<div class=\"page\">${res.data.users}<\/div>`\n          },\n        );\n      });\n    }\n  }\n],"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0428\u043b\u044f\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u0428\u043b\u044f\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a \u0437\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u043e \u0432\u0438\u0449\u0435, \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c <b>\u0448\u043b\u044f\u0445\u0443<\/b> \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u043e\u0437\u043d\u0430\u0447\u0430\u0454 \u0448\u043b\u044f\u0445\/URL-\u0430\u0434\u0440\u0435\u0441\u0443, \u044f\u043a\u0430 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0432 \u0430\u0434\u0440\u0435\u0441\u043d\u043e\u043c\u0443 \u0440\u044f\u0434\u043a\u0443 \u0432\u0456\u043a\u043d\u0430 \u0432\u0435\u0431-\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0447\u0430 (\u044f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e <b>\u0456\u0441\u0442\u043e\u0440\u0456\u044e \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430<\/b>), \u043a\u043e\u043b\u0438 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0431\u0443\u0434\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e API \u0430\u0431\u043e \u043a\u043b\u0430\u0446\u0430\u043d\u043d\u044f \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0442\u0438\u043c \u0441\u0430\u043c\u0438\u043c \u0448\u043b\u044f\u0445\u043e\u043c.\n<p>\u0422\u0430\u043a\u043e\u0436 \u0454 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0430 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0438\u0445 \u0448\u043b\u044f\u0445\u0456\u0432. \u041e\u0442\u0436\u0435, \u044f\u043a\u0449\u043e \u0443 \u0432\u0430\u0448\u043e\u043c\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456 \u0454 \u0442\u0430\u043a\u0438\u0439 \u0448\u043b\u044f\u0445 <b>\/blog\/users\/:userId\/posts\/:postId\/<\/b> \u0456 \u0432\u0438 \u043d\u0430\u0442\u0438\u0441\u043d\u0435\u0442\u0435 \u043d\u0430 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 <b>\/blog\/users\/12\/posts\/25<\/b>, \u0442\u043e \u043d\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 \u043c\u0438 \u043e\u0442\u0440\u0438\u043c\u0430\u0454\u043c\u043e \u0434\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 <b>route.params<\/b>, \u0449\u043e \u043c\u0456\u0441\u0442\u0438\u0442\u044c <b>{ userId: 12, postId: 25 }<\/b><\/p>\n<p>\u0417\u0456\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0448\u043b\u044f\u0445\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043b\u044f\u0454\u0442\u044c\u0441\u044f \u0431\u0456\u0431\u043b\u0456\u043e\u0442\u0435\u043a\u043e\u044e <b>Path To Regexp<\/b>, \u0442\u043e\u043c\u0443 \u0432\u0441\u0435, \u0449\u043e \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u044c\u0441\u044f \u0442\u0430\u043c, \u0442\u0430\u043a\u043e\u0436 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u044c\u0441\u044f \u0443 Techno4. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u044f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0434\u043e\u0434\u0430\u0442\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u044f\u043a\u0438\u0439 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0454 \u0432\u0441\u0456\u043c \u0448\u043b\u044f\u0445\u0430\u043c, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438 \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u0438\u0439 \u0432\u0438\u0440\u0430\u0437, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"\/\/ Default route, match to all pages (e.g. 404 page)\n{\n  path: '(.*)',\n  url: '.\/pages\/404.html',"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443, \u044f\u043a\u0456 \u043c\u043e\u0436\u043d\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0443 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 <b>options<\/b>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0427\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0431\u0443\u0442\u0438 \u0430\u043d\u0456\u043c\u043e\u0432\u0430\u043d\u043e\u044e, \u0447\u0438 \u043d\u0456 (\u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0438\u0441\u0443\u0454 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c)","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"animate","title":""}},{"type":"table_item","props":{"content":"\u0427\u0438 \u0441\u043b\u0456\u0434 \u0437\u0431\u0435\u0440\u0456\u0433\u0430\u0442\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0432 \u0456\u0441\u0442\u043e\u0440\u0456\u0457 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"history","title":""}},{"type":"table_item","props":{"content":"\u0427\u0438 \u0441\u043b\u0456\u0434 \u0437\u0431\u0435\u0440\u0456\u0433\u0430\u0442\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0432 \u0441\u0442\u0430\u043d\u0456 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430. \u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 <b>\u0456\u0441\u0442\u043e\u0440\u0456\u044e \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430<\/b>, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0442\u0443\u0442 <b>false<\/b>, \u0449\u043e\u0431 \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 \u043f\u043e\u0442\u0440\u0430\u043f\u043b\u044f\u043d\u043d\u044e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0432 \u0456\u0441\u0442\u043e\u0440\u0456\u044e \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"browserHistory"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043c\u0456\u043d\u0438\u0442\u0438 \u043f\u043e\u0442\u043e\u0447\u043d\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u043d\u043e\u0432\u043e\u044e \u0437 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443, \u0443 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u043d\u0435 \u0431\u0443\u0434\u0435","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"reloadCurrent"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043c\u0456\u043d\u0438\u0442\u0438 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0432 \u0456\u0441\u0442\u043e\u0440\u0456\u0457 \u043d\u0430 \u043d\u043e\u0432\u0443 \u0437 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"reloadPrevious"}},{"type":"table_item","props":{"content":"\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u043d\u043e\u0432\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0442\u0430 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0437 \u0456\u0441\u0442\u043e\u0440\u0456\u0457 \u0442\u0430 DOM","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"reloadAll"}},{"type":"table_item","props":{"content":"\u0406\u0441\u0442\u043e\u0440\u0456\u044f \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a \u0431\u0443\u0434\u0435 \u043e\u0447\u0438\u0449\u0435\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u043f\u0435\u0440\u0435\u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f\/\u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0437\u0430 \u0432\u043a\u0430\u0437\u0430\u043d\u0438\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u043e\u043c","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"clearPreviousHistory"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <b>true<\/b>, \u0442\u043e\u0434\u0456 \u0432\u0456\u043d \u0456\u0433\u043d\u043e\u0440\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u043d\u0430\u044f\u0432\u043d\u0456\u0441\u0442\u044c \u0442\u0430\u043a\u043e\u0457 URL-\u0430\u0434\u0440\u0435\u0441\u0438 \u0432 \u043a\u0435\u0448\u0456 \u0442\u0430 \u0437\u043d\u043e\u0432\u0443 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0439\u043e\u0433\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e XHR","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"ignoreCache"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <b>true<\/b>, \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0432 \u0456\u0441\u0442\u043e\u0440\u0456\u0457 \u0456\u0433\u043d\u043e\u0440\u0443\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0442\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0437\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0430","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"force"}},{"type":"table_item","props":{"content":"\u0420\u0435\u043a\u0432\u0456\u0437\u0438\u0442\u0438, \u044f\u043a\u0456 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0456 \u044f\u043a \u0440\u0435\u043a\u0432\u0456\u0437\u0438\u0442\u0438 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 Vue\/React","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"props"}},{"type":"table_item","props":{"content":"\u0406\u043c'\u044f \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u043d\u0430 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0446\u044c\u043a\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"transition"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0437\u0432\u043e\u043b\u044f\u0454 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u044f\u043a \u043c\u043e\u0434\u0430\u043b\u044c\u043d\u0438\u0439 \u0430\u0431\u043e \u043f\u0430\u043d\u0435\u043b\u044c\u043d\u0438\u0439. \u0422\u0430\u043a\u0438\u043c \u0447\u0438\u043d\u043e\u043c, \u0446\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043e\u0434\u043d\u0435 \u0437 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e: <b>\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e, \u0441\u043f\u043b\u0438\u0432\u043d\u0435 \u0432\u0456\u043a\u043d\u043e, \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443, \u0430\u0440\u043a\u0443\u0448, \u043f\u0430\u043d\u0435\u043b\u044c<\/b>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"openIn"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"\u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043d\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043d\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0424\u043e\u0440\u043c\u0430\u0442 \u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443, \u044f\u043a\u0438\u0439 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0443 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 <b>async, redirect, beforeEnter \u0456 beforeLeave:<\/b>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438","link_text":"string","meta":"app","title":""}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0438\u0442\u0443\u0432\u0430\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442","link_text":"string","meta":"to","title":""}},{"type":"table_item","props":{"content":"\u041d\u0430\u0440\u0430\u0437\u0456 \u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442","meta":"from"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0442\u043e\u0447\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430","meta":"router"}},{"type":"table_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434 \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u0434\u043b\u044f \u0432\u0438\u0440\u0456\u0448\u0435\u043d\u043d\u044f\/\u043f\u0440\u043e\u0434\u043e\u0432\u0436\u0435\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0456\u0457","meta":"resolve"}},{"type":"table_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434 \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u0434\u043b\u044f \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0430\u043d\u043d\u044f\/\u0432\u0456\u0434\u0445\u0438\u043b\u0435\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0456\u0457","meta":"reject"}},{"type":"table_item","props":{"content":"\u041d\u0430\u043f\u0440\u044f\u043c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457, \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0432\u043f\u0435\u0440\u0435\u0434 \u0430\u0431\u043e \u043d\u0430\u0437\u0430\u0434","meta":"direction"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u0410\u0441\u0438\u043d\u0445\u0440\u043e\u043d\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u0410\u0441\u0438\u043d\u0445\u0440\u043e\u043d\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>async<\/code> \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0454 \u0434\u0443\u0436\u0435 \u043f\u043e\u0442\u0443\u0436\u043d\u0438\u043c \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u043e\u043c, \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u043c \u0434\u043b\u044f \u043f\u043e\u0432\u0435\u0440\u043d\u0435\u043d\u043d\u044f \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0438\u0445 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0435\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u0426\u0435 \u0444\u0443\u043d\u043a\u0446\u0456\u044f \u0437 \u0442\u0430\u043a\u0438\u043c\u0438 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0430\u043c\u0438:\n<p><code>async(context)<\/code>\n\u25cf\tcontext - \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>resolve<\/code> \u041c\u0435\u0442\u043e\u0434 \u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u043c\u0430\u0454 \u0442\u0430\u043a\u0438\u0439 \u0444\u043e\u0440\u043c\u0430\u0442:\n<p><code>resolve(parameters, options)<\/code><\/p>\n\u25cf\tparameters object - \u043e\u0431'\u0454\u043a\u0442 \u0456\u0437 \u0434\u043e\u0437\u0432\u043e\u043b\u0435\u043d\u0438\u043c \u0432\u043c\u0456\u0441\u0442\u043e\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u041c\u0430\u0454 \u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u043e\u0434\u043d\u0443 \u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0435\u0439 <b>url, content, component \u0430\u0431\u043e componentUrl<\/b>\n<p>\u25cf\toptions object - \u043e\u0431'\u0454\u043a\u0442 \u0456\u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>reject<\/code> \u0444\u0443\u043d\u043a\u0446\u0456\u044f \u0437\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u043d\u0435 \u043c\u0430\u0454 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0456\u0432:\n<p><code>reject()<\/code><\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<p>\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043f\u043e\u043a\u0438 \u0432\u0438 \u043d\u0435 \u0432\u0438\u043a\u043b\u0438\u0447\u0435\u0442\u0435 <code>resolve<\/code> \u0430\u0431\u043e <code>reject<\/code> \u0432 \u0430\u0441\u0438\u043d\u0445\u0440\u043e\u043d\u043d\u043e\u043c\u0443 \u043c\u0435\u0442\u043e\u0434\u0456, \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u0431\u043b\u043e\u043a\u043e\u0432\u0430\u043d\u0430!<\/p>\n\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  {\n    path: '\/foo\/',\n    async({ resolve, reject }) {\n      if (userIsLoggedIn) {\n        resolve({ url: 'secured.html' })\n      } else {\n        resolve({ url: 'login.html' })\n      }\n    }\n  }\n]"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041f\u043e\u0434\u0456\u0457 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u043e\u0436\u043d\u0430 \u0434\u043e\u0434\u0430\u0442\u0438 \u0432\u0441\u0456 \u043f\u043e\u0434\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0434\u043b\u044f \u0446\u0456\u0454\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 <b>on<\/b> \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  routes: [\n    \/\/ ...\n    {\n      path: '\/users\/',\n      url: '.\/pages\/users.html',\n      on: {\n        pageBeforeIn: function (event, page) {\n          \/\/ do something before page gets into the view\n        },\n        pageAfterIn: function (event, page) {\n          \/\/ do something after page gets into the view\n        },\n        pageInit: function (event, page) {\n          \/\/ do something when page initialized\n        },\n        pageBeforeRemove: function (event, page) {\n          \/\/ do something before page gets removed from DOM\n        },\n      }\n    },\n    \/\/ ...\n  ],\n});"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u043d\u0430\u0441\u043f\u0440\u0430\u0432\u0434\u0456 \u0454 \u043f\u043e\u0434\u0456\u044f\u043c\u0438 DOM, \u0442\u043e\u043c\u0443 \u043a\u043e\u0436\u0435\u043d \u0442\u0430\u043a\u0438\u0439 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u0440\u0438\u0439\u043c\u0430\u0442\u0438\u043c\u0435 <b>\u043f\u043e\u0434\u0456\u044e<\/b> \u044f\u043a \u043f\u0435\u0440\u0448\u0438\u0439 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0456\u0437 \u0441\u0430\u043c\u043e\u044e \u043f\u043e\u0434\u0456\u0454\u044e \u0442\u0430 <b>\u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443<\/b> \u044f\u043a \u0434\u0440\u0443\u0433\u0438\u0439 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0456\u0437 \u0434\u0430\u043d\u0438\u043c\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438.\n\u041a\u0440\u0456\u043c \u0442\u043e\u0433\u043e, \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u0442\u0430\u043a\u043e\u0433\u043e \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430 \u043f\u043e\u0434\u0456\u0439 (<b>this<\/b>) \u0432\u043a\u0430\u0437\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u043d\u0430 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0438\u0439 <b>\u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Router.<\/b>\n","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043a\u043b\u0430\u0434\u0435\u043d\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u0412\u043a\u043b\u0430\u0434\u0435\u043d\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u043c\u0430\u0442\u0438 \u0432\u043a\u043b\u0430\u0434\u0435\u043d\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438 (\u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438 \u0432 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u0445):","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  {\n    path: '\/faq\/',\n    url: '.\/pages\/faq.html',\n  },\n  {\n    path: '\/catalog\/',\n    url: '.\/pages\/catalog.html',\n    routes: [\n      {\n        path: 'computers\/',\n        url: '.\/pages\/computers.html',\n      },\n      {\n        path: 'monitors\/',\n        url: '.\/pages\/monitors.html',\n      },\n      ...\n    ],\n  }\n];"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e \u0446\u0435 \u043e\u0437\u043d\u0430\u0447\u0430\u0454? \u0414\u043b\u044f \u043a\u0440\u0430\u0449\u043e\u0433\u043e \u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f \u043d\u0430\u0441\u043f\u0440\u0430\u0432\u0434\u0456 (\u043f\u0456\u0434 \u043a\u0430\u043f\u043e\u0442\u043e\u043c) \u0442\u0430\u043a\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438 \u0431\u0443\u0434\u0443\u0442\u044c \u043e\u0431\u2019\u0454\u0434\u043d\u0430\u043d\u0456 \u0432 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0456:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  {\n    path: '\/faq\/',\n    url: '.\/pages\/faq.html',\n  },\n  {\n    path: '\/catalog\/',\n    url: '.\/pages\/catalog.html',\n  }\n  {\n    path: '\/catalog\/computers\/',\n    url: '.\/pages\/computers.html',\n  },\n  {\n    path: '\/catalog\/monitors\/',\n    url: '.\/pages\/monitors.html',\n  },\n];"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0442\u0436\u0435, \u043f\u0440\u0438\u043f\u0443\u0441\u0442\u0438\u043c\u043e, \u0449\u043e \u043c\u0438 \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 <b>\/catalog\/<b> \u0456 \u043c\u0430\u0454\u043c\u043e \u0442\u0430\u043a\u0456 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<b>1.&lt;ahref=\"computers\/\"&gt;Computers&lt;\/a&gt;<\/b> - \u043f\u0440\u0430\u0446\u044e\u0432\u0430\u0442\u0438\u043c\u0435, \u044f\u043a \u043e\u0447\u0456\u043a\u0443\u0432\u0430\u043b\u043e\u0441\u044f. \u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u043e\u0431\u2019\u0454\u0434\u043d\u0430\u043d\u043e \u0437 \u043f\u043e\u0442\u043e\u0447\u043d\u0438\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u043e\u043c <b>(\/catalog\/ + computers\/)<\/b> \u0456 \u043c\u0430\u0442\u0438\u043c\u0435\u043c\u043e<b>\/catalog\/computers\/<\/b> \u044f\u043a\u0456 \u043c\u0438 \u043c\u0430\u0454\u043c\u043e \u043d\u0430 \u043d\u0430\u0448\u0438\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u0445.\n<p>2.<b>&lt;a href=\".\/computers\/\"&gt;Computers&lt;\/a&gt;<\/b> - \u043f\u0440\u0430\u0446\u044e\u0432\u0430\u0442\u0438\u043c\u0435, \u0442\u0430\u043a \u0441\u0430\u043c\u043e \u044f\u043a \u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 1, \u043e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 <b>.\/<\/b> \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0448\u043b\u044f\u0445\u0443 \u043e\u0437\u043d\u0430\u0447\u0430\u0454 \u0442\u043e\u0439 \u0441\u0430\u043c\u0438\u0439 \u043f\u0456\u0434\u0440\u0456\u0432\u0435\u043d\u044c.\n<p>3.<b>&lt;a href=\"\/catalog\/computers\/\"&gt;Computers&lt;\/a&gt;<\/b> - \u0442\u0430\u043a\u043e\u0436 \u043f\u0440\u0430\u0446\u044e\u0432\u0430\u0442\u0438\u043c\u0435 \u043d\u0430\u043b\u0435\u0436\u043d\u0438\u043c \u0447\u0438\u043d\u043e\u043c, \u044f\u043a \u0456 \u0432\u0438\u043f\u0430\u0434\u043e\u043a 1, \u043e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 <b>\/<\/b> (\u043a\u043e\u0441\u0430 \u0440\u0438\u0441\u043a\u0430) \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u043e\u0437\u043d\u0430\u0447\u0430\u0454 \u043a\u043e\u0440\u0456\u043d\u044c. \u0406 \u043c\u0438 \u043c\u0430\u0454\u043c\u043e \u0442\u0430\u043a\u0438\u0439 \u043a\u043e\u0440\u0435\u043d\u0435\u0432\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0443 \u043e\u0431\u2019\u0454\u0434\u043d\u0430\u043d\u0438\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u0445.<\/p>\n4.<b>&lt;a href=\"\/computers\/\"&gt;Computers&lt;\/a&gt;<\/b> - \u043d\u0435 \u043f\u0440\u0430\u0446\u044e\u0432\u0430\u0442\u0438\u043c\u0435 \u043d\u0430\u043b\u0435\u0436\u043d\u0438\u043c \u0447\u0438\u043d\u043e\u043c, \u043e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 <b>\/<b> (\u043a\u043e\u0441\u0430 \u0440\u0438\u0441\u043a\u0430) \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u043e\u0437\u043d\u0430\u0447\u0430\u0454 \u043a\u043e\u0440\u0456\u043d\u044c. \u0406 \u0432 \u043d\u0430\u0448\u0438\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u0445 \u043d\u0435\u043c\u0430\u0454 \u0442\u0430\u043a\u043e\u0433\u043e \u043a\u043e\u0440\u0435\u043d\u0435\u0432\u043e\u0433\u043e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \/computers\/","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0414\u0435\u0442\u0430\u043b\u044c\u043d\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u0414\u0435\u0442\u0430\u043b\u044c\u043d\u0456 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u043b\u044f \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f <b>Master Detail<\/b> \u0442\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u0432\u043a\u0430\u0437\u0430\u0442\u0438 <b>detailRoutes<\/b> \u043d\u0430 \u0434\u043e\u0434\u0430\u0442\u043e\u043a \u0434\u043e <b>master: true<\/b> \u0434\u043b\u044f \u0433\u043e\u043b\u043e\u0432\u043d\u043e\u0433\u043e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443.\n<p>\u042f\u043a\u0449\u043e \u0432\u043a\u0430\u0437\u0430\u043d\u043e <b>detailRoutes<\/b>, \u043f\u0435\u0440\u0435\u0445\u0456\u0434 \u0434\u043e \u0434\u0435\u0442\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0442\u0430\u043a\u043e\u0436 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u044c \u0439\u043e\u0433\u043e \u043e\u0441\u043d\u043e\u0432\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442.\n<p>\u0410\u043b\u0435 \u043d\u0430 \u0432\u0456\u0434\u043c\u0456\u043d\u0443 \u0432\u0456\u0434 \u0432\u043a\u043b\u0430\u0434\u0435\u043d\u0438\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432 (\u0437\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0445 \u0443 <b>\u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432<\/b>), \u0448\u043b\u044f\u0445\u0438 \u0434\u0435\u0442\u0430\u043b\u044c\u043d\u0438\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432 \u043d\u0435 \u043e\u0431\u2019\u0454\u0434\u043d\u0443\u044e\u0442\u044c\u0441\u044f \u0437 <b>\u043e\u0441\u043d\u043e\u0432\u043d\u0438\u043c \u0448\u043b\u044f\u0445\u043e\u043c<\/b> \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443.<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  {\n    path: '\/blog\/',\n    url: '.\/news.html',\n    master: true,\n    detailRoutes: [\n      {\n        \/* We need to specify detail route path from root *\/\n        path: '\/blog\/:postId\/',\n        url: '.\/post.html',\n      },\n    ],\n  },\n  \/\/ ...\n]"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u0432\u043a\u043b\u0430\u0434\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u0432\u043a\u043b\u0430\u0434\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e \u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442\u044c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u0432\u043a\u043b\u0430\u0434\u043a\u0438 \u0456 \u0447\u043e\u043c\u0443 \u0446\u0435 \u0434\u043e\u0431\u0440\u0435?\n<p>\u25cf\t\u041f\u043e-\u043f\u0435\u0440\u0448\u0435, \u0446\u0435 \u043d\u0430\u0434\u0430\u0454 \u043c\u043e\u0436\u043b\u0438\u0432\u0456\u0441\u0442\u044c \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0434\u043e \u0432\u043a\u043b\u0430\u0434\u043e\u043a \u0437\u0430 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u043c\u0438 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c\u0438 \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u0442\u0430\u043a \u0437\u0432\u0430\u043d\u0438\u0445 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u0445 \u0432\u043a\u043b\u0430\u0434\u043e\u043a-\u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c.<\/p>\n<p>\u25cf\t\u041f\u043e-\u0434\u0440\u0443\u0433\u0435, \u043f\u0456\u0434 \u0447\u0430\u0441 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0442\u0430\u043a\u0438\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u043e\u043c \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e\u044e \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e\u044e \u0432\u043a\u043b\u0430\u0434\u043a\u043e\u044e.<\/p>\n<p>\u25cf\t\u041f\u043e-\u0442\u0440\u0435\u0442\u0454, \u044f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0456\u0441\u0442\u043e\u0440\u0456\u044e \u0432\u0435\u0431-\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0447\u0430, \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u043d\u0430\u0437\u0430\u0434 \u0456 \u0432\u043f\u0435\u0440\u0435\u0434 \u0432 \u0456\u0441\u0442\u043e\u0440\u0456\u0457 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0442\u0430 \u0441\u0430\u043c\u0430 \u0432\u043a\u043b\u0430\u0434\u043a\u0430.<\/p>\n<p>\u25cf\t\u0406 \u043e\u0441\u0442\u0430\u043d\u043d\u0454, \u0430\u043b\u0435 \u043d\u0435 \u043c\u0435\u043d\u0448 \u0432\u0430\u0436\u043b\u0438\u0432\u0435: \u043f\u0456\u0434 \u0447\u0430\u0441 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u0445 \u0432\u043a\u043b\u0430\u0434\u043e\u043a \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0442\u0438 \u0432\u043c\u0456\u0441\u0442 \u0432\u043a\u043b\u0430\u0434\u043e\u043a \u0442\u0438\u043c\u0438 \u0441\u0430\u043c\u0438\u043c\u0438 \u0441\u043f\u043e\u0441\u043e\u0431\u0430\u043c\u0438, \u0449\u043e \u0439 \u0434\u043b\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a, \u0442\u043e\u0431\u0442\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e <b>url, content, component \u0430\u0431\u043e componentUrl<\/b><\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0435\u0440\u0448 \u0437\u0430 \u0432\u0441\u0435 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438 \u0432\u043a\u043b\u0430\u0434\u043e\u043a \u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u0445 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438. \u041f\u0440\u0438\u043f\u0443\u0441\u0442\u0456\u043c\u043e, \u0449\u043e \u0443 \u043d\u0430\u0441 \u0454 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u043c\u0438 \u0432\u043a\u043b\u0430\u0434\u043a\u0430\u043c\u0438 \u043d\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456 <b>\/tabs\/<\/b>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  {\n    path: '\/about-me\/',\n    url: '.\/pages\/about-me\/index.html',\n    \/\/ Pass \"tabs\" property to route\n    tabs: [\n      \/\/ First (default) tab has the same url as the page itself\n      {\n        path: '\/',\n        id: 'about',\n        \/\/ Fill this tab content from content string\n        content: `\n          <div class=\"block\">\n            <h3>About Me<\/h3>\n            <p>...<\/p>\n          <\/div>\n        `\n      },\n      \/\/ Second tab\n      {\n        path: '\/contacts\/',\n        id: 'contacts',\n        \/\/ Fill this tab content via Ajax request\n        url: '.\/pages\/about-me\/contacts.html',\n      },\n      \/\/ Third tab\n      {\n        path: '\/cv\/',\n        id: 'cv',\n        \/\/ Load this tab content as a component via Ajax request\n        componentUrl: '.\/pages\/about-me\/cv.html',\n      },\n    ],\n  }\n]"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 <b>\/about-me\/<\/b> \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u043c\u0430\u0442\u0438 \u0442\u0430\u043a\u0443 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n      <div class=\"title\">About Me<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"toolbar tabbar toolbar-bottom\">\n    <div class=\"toolbar-inner\">\n      <a href=\".\/\" class=\"tab-link\" data-route-tab-id=\"about\">About<\/a>\n      <a href=\".\/contacts\/\" class=\"tab-link\" data-route-tab-id=\"contacts\">>Contacts<\/a>\n      <a href=\".\/cv\/\" class=\"tab-link\" data-route-tab-id=\"cv\">>CV<\/a>\n    <\/div>\n  <\/div>\n  <div class=\"tabs tabs-routable\">\n    <div class=\"tab page-content\" id=\"about\"><\/div>\n    <div class=\"tab page-content\" id=\"contacts\"><\/div>\n    <div class=\"tab page-content\" id=\"cv\"><\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u0439\u0436\u0435 \u0442\u0430\u043a \u0441\u0430\u043c\u043e, \u044f\u043a \u0456 \u0437\u0456 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u043c\u0438 \u0432\u043a\u043b\u0430\u0434\u043a\u0430\u043c\u0438, \u0430\u043b\u0435 \u0437 \u0442\u0456\u0454\u044e \u0440\u0456\u0437\u043d\u0438\u0446\u0435\u044e, \u0449\u043e \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0435\u043c\u0430\u0454 \u043a\u043b\u0430\u0441\u0456\u0432 <b>tab-link-active \u0456 tab-active<\/b> \u0434\u043b\u044f \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c \u0456 \u0432\u043a\u043b\u0430\u0434\u043e\u043a. \u0426\u0456 \u043a\u043b\u0430\u0441\u0438 \u0442\u0430 \u0432\u043a\u043b\u0430\u0434\u043a\u0438 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u0435\u0440\u0435\u043c\u0438\u043a\u0430\u0442\u0438\u0441\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u043e\u043c. \u0406 \u0454 \u043d\u043e\u0432\u0438\u0439 \u0430\u0442\u0440\u0438\u0431\u0443\u0442 data-route-tab-id, \u0432\u0456\u043d \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u043c\u0438\u043a\u0430\u0447\u0430 \u0432\u043a\u043b\u0430\u0434\u043e\u043a, \u0449\u043e\u0431 \u0437\u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438, \u044f\u043a\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0441\u0443\u0454\u0442\u044c\u0441\u044f \u0432\u0438\u0431\u0440\u0430\u043d\u043e\u0433\u043e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443.\n<p>\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e Routable Tabs \u0442\u0430 \u0457\u0445\u043d\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043f\u043e\u0434\u0456\u0457 \u0443 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0438\u0445 \u0440\u043e\u0437\u0434\u0456\u043b\u0430\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 Tabs.<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u043c\u043e\u0434\u0430\u043b\u0456","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u043c\u043e\u0434\u0430\u043b\u0456"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u043e\u0434\u0430\u043b\u0456 \u0442\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0443\u0432\u0430\u0442\u0438. \u0422\u0443\u0442 \u043f\u0456\u0434 \u043c\u043e\u0434\u0430\u043b\u044f\u043c\u0438 \u043c\u0438 \u043c\u0430\u0454\u043c\u043e \u043d\u0430 \u0443\u0432\u0430\u0437\u0456 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0456 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0438: \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e, \u0441\u043f\u043b\u0438\u0432\u043d\u0435 \u0432\u0456\u043a\u043d\u043e, \u0430\u0440\u043a\u0443\u0448 \u0434\u0456\u0439, \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443, \u043c\u043e\u0434\u0430\u043b\u044c\u043d\u0438\u0439 \u0430\u0440\u043a\u0443\u0448. \u0419\u043c\u043e\u0432\u0456\u0440\u043d\u043e, Popup \u0456 Login Screen \u043c\u0430\u044e\u0442\u044c \u0431\u0456\u043b\u044c\u0448\u0435 \u0432\u0438\u043f\u0430\u0434\u043a\u0456\u0432 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0442\u0443\u0442.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0406 \u0442\u0456 \u0436 \u0444\u0443\u043d\u043a\u0446\u0456\u0457, \u0449\u043e \u0439 \u0434\u043b\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u0445 \u0432\u043a\u043b\u0430\u0434\u043e\u043a \u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a:\n<p>\u25cf\t\u0432\u0456\u043d \u043d\u0430\u0434\u0430\u0454 \u043c\u043e\u0436\u043b\u0438\u0432\u0456\u0441\u0442\u044c \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u043c\u043e\u0434\u0430\u043b\u0438 \u0437\u0430 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u043c\u0438 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c\u0438 \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u0442\u0430\u043a \u0437\u0432\u0430\u043d\u0438\u0445 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c \u0430\u0431\u043e API,<\/p>\n<p>\u25cf\t\u0437 \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e\u044e \u0456\u0441\u0442\u043e\u0440\u0456\u0454\u044e \u0432\u0435\u0431-\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0447\u0430 \u0442\u043e\u0439 \u0441\u0430\u043c\u0438\u0439 \u0440\u0435\u0436\u0438\u043c \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f, \u043a\u043e\u043b\u0438 \u0432\u0438 \u043e\u043d\u043e\u0432\u043b\u044e\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u0435 \u0432\u0435\u0431-\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0447, \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0438\u0442\u0435 \u043d\u0430\u0437\u0430\u0434 \u0456 \u0432\u043f\u0435\u0440\u0435\u0434 \u0432 \u0456\u0441\u0442\u043e\u0440\u0456\u0457,<\/p>\n<p>\u25cf\t\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u0445 \u043c\u043e\u0434\u0430\u043b\u0456\u0432 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0442\u0438 \u0441\u0430\u043c \u043c\u043e\u0434\u0430\u043b \u0442\u0430 \u0439\u043e\u0433\u043e \u0432\u043c\u0456\u0441\u0442 \u0442\u0430\u043a \u0441\u0430\u043c\u043e, \u044f\u043a \u0456 \u0434\u043b\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a, \u0442\u043e\u0431\u0442\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e <b>url, content, component \u0430\u0431\u043e componentUrl<\/b><\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0406 \u0442\u0456 \u0436 \u0444\u0443\u043d\u043a\u0446\u0456\u0457, \u0449\u043e \u0439 \u0434\u043b\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u0445 \u0432\u043a\u043b\u0430\u0434\u043e\u043a \u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a:\n<p>\u25cf\t\u0432\u0456\u043d \u043d\u0430\u0434\u0430\u0454 \u043c\u043e\u0436\u043b\u0438\u0432\u0456\u0441\u0442\u044c \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u043c\u043e\u0434\u0430\u043b\u0438 \u0437\u0430 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u043c\u0438 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c\u0438 \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u0442\u0430\u043a \u0437\u0432\u0430\u043d\u0438\u0445 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c \u0430\u0431\u043e API,<\/p>\n<p>\u25cf\t\u0437 \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e\u044e \u0456\u0441\u0442\u043e\u0440\u0456\u0454\u044e \u0432\u0435\u0431-\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0447\u0430 \u0442\u043e\u0439 \u0441\u0430\u043c\u0438\u0439 \u0440\u0435\u0436\u0438\u043c \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f, \u043a\u043e\u043b\u0438 \u0432\u0438 \u043e\u043d\u043e\u0432\u043b\u044e\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u0435 \u0432\u0435\u0431-\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0447, \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0438\u0442\u0435 \u043d\u0430\u0437\u0430\u0434 \u0456 \u0432\u043f\u0435\u0440\u0435\u0434 \u0432 \u0456\u0441\u0442\u043e\u0440\u0456\u0457,<\/p>\n<p>\u25cf\t\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u0445 \u043c\u043e\u0434\u0430\u043b\u0456\u0432 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0442\u0438 \u0441\u0430\u043c \u043c\u043e\u0434\u0430\u043b \u0442\u0430 \u0439\u043e\u0433\u043e \u0432\u043c\u0456\u0441\u0442 \u0442\u0430\u043a \u0441\u0430\u043c\u043e, \u044f\u043a \u0456 \u0434\u043b\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a, \u0442\u043e\u0431\u0442\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e <b>url, content, component \u0430\u0431\u043e componentUrl<\/b><\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  ...\n  \/\/ Creates popup from passed HTML string\n  {\n    path: '\/popup-content\/',\n    popup: {\n      content: `\n        <div class=\"popup\">\n          <div class=\"view\">\n            <div class=\"page\">\n              ...\n            <\/div>\n          <\/div>\n        <\/div>\n      `\n    }\n  },\n  \/\/ Load Login Screen from file via Ajax\n  {\n    path: '\/login-screen-ajax\/',\n    loginScreen: {\n      url: '.\/login-screen.html',\n      \/* login-screen.html contains:\n        <div class=\"login-screen\">\n          <div class=\"view\">\n            <div class=\"page\">\n              ...\n            <\/div>\n          <\/div>\n        <\/div>\n      *\/\n    },\n  },\n  \/\/ Load Popup from component file\n  {\n    path: '\/popup-component\/',\n    loginScreen: {\n      componentUrl: '.\/popup-component.html',\n      \/* popup-component.html contains:\n        <template>\n          <div class=\"popup-screen\">\n            <div class=\"view\">\n              <div class=\"page\">\n                ...\n              <\/div>\n            <\/div>\n          <\/div>\n        <\/template>\n        <style>...<\/style>\n        <script>...<\/script>\n      *\/\n    },\n  },\n  \/\/ Use async route to check if the user is logged in:\n  {\n    path: '\/secured-content\/',\n    async({ resolve }) {\n      if (userIsLoggedIn) {\n        resolve({\n          url: 'secured-page.html',\n        });\n      } else {\n        resolve({\n          loginScreen: {\n            url: 'login-screen.html'\n          } ,\n        });\n      }\n    },\n  }\n]"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0412\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u043e \u0434\u043e \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0443 \u0432\u0438\u0449\u0435:\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u0432\u0438 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u0454\u0442\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043e\u043c href \/popup-content\/ , \u0432\u0456\u0434\u043a\u0440\u0438\u0454\u0442\u044c\u0441\u044f \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e \u0437 \u0443\u043a\u0430\u0437\u0430\u043d\u0438\u043c \u0432\u043c\u0456\u0441\u0442\u043e\u043c \u0440\u044f\u0434\u043a\u0430,<\/p>\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u0432\u0438 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u0454\u0442\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043e\u043c href \/login-screen-ajax\/ , \u0432\u0456\u043d \u0432\u0438\u043a\u043e\u043d\u0443\u0454 \u0437\u0430\u043f\u0438\u0442 Ajax \u0434\u043e \u0444\u0430\u0439\u043b\u0443 login-screen.html \u0456 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0454 \u0439\u043e\u0433\u043e \u044f\u043a \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443,<\/p>\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u0432\u0438 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u0454\u0442\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043e\u043c href \/popup-component\/ , \u0432\u0456\u043d \u0432\u0438\u043a\u043e\u043d\u0430\u0454 \u0437\u0430\u043f\u0438\u0442 Ajax \u0434\u043e \u0444\u0430\u0439\u043b\u0443 popup-component.html, \u0440\u043e\u0437\u0431\u0435\u0440\u0435 \u0439\u043e\u0433\u043e \u044f\u043a \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430 \u0442\u0430 \u0432\u0456\u0434\u043a\u0440\u0438\u0454 \u044f\u043a \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e,<\/p>\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u0432\u0438 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u0454\u0442\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043e\u043c \/secured-content\/ href, \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u0442\u044c\u0441\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437 secured-page.html, \u044f\u043a\u0449\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u0443\u0432\u0456\u0439\u0448\u043e\u0432 \u0443 \u0441\u0438\u0441\u0442\u0435\u043c\u0443, \u0430\u0431\u043e \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0454\u0442\u044c\u0441\u044f \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0437 \u0444\u0430\u0439\u043b\u0443 login-screen.html, \u044f\u043a\u0449\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043d\u0435 \u0432\u0432\u0456\u0439\u0448\u043e\u0432 \u0443 \u0441\u0438\u0441\u0442\u0435\u043c\u0443.<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0430\u043d\u0435\u043b\u0456 (\u0431\u0456\u0447\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456) \u0442\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0443\u0442\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u043c\u0438 \u0437 \u0442\u0438\u043c\u0438 \u0436 \u0444\u0443\u043d\u043a\u0446\u0456\u044f\u043c\u0438, \u0449\u043e \u0439 \u0434\u043b\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u0445 \u043c\u043e\u0434\u0430\u043b\u0456\u0432 \u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a:\n<p>\u25cf\t\u043d\u0430\u0434\u0430\u0454 \u043c\u043e\u0436\u043b\u0438\u0432\u0456\u0441\u0442\u044c \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438 Panel \u0437\u0430 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u043c\u0438 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c\u0438 \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u0442\u0430\u043a \u0437\u0432\u0430\u043d\u0438\u0445 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c \u0430\u0431\u043e API,<\/p>\n<p>\u25cf\t\u0437 \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e\u044e \u0456\u0441\u0442\u043e\u0440\u0456\u0454\u044e \u0432\u0435\u0431-\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0447\u0430 \u0442\u0430 \u0441\u0430\u043c\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0430, \u043a\u043e\u043b\u0438 \u0432\u0438 \u043e\u043d\u043e\u0432\u0438\u0442\u0435 \u0432\u0435\u0431-\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0447, \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0443\u0454\u0442\u0435\u0441\u044f \u043d\u0430\u0437\u0430\u0434 \u0456 \u0432\u043f\u0435\u0440\u0435\u0434 \u0432 \u0456\u0441\u0442\u043e\u0440\u0456\u0457,<\/p>\n<p>\u25cf\t\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u0445 \u043f\u0430\u043d\u0435\u043b\u0435\u0439 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0442\u0438 \u0441\u0430\u043c\u0443 \u043f\u0430\u043d\u0435\u043b\u044c \u0442\u0430 \u0457\u0457 \u0432\u043c\u0456\u0441\u0442 \u0443 \u0442\u0430\u043a\u0438\u0439 \u0441\u0430\u043c\u0438\u0439 \u0441\u043f\u043e\u0441\u0456\u0431, \u044f\u043a \u0456 \u0434\u043b\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a \u0456 \u043c\u043e\u0434\u0430\u043b\u0456\u0432, \u0442\u043e\u0431\u0442\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e url, content, component  \u0430\u0431\u043e componentUrl<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  ...\n  \/\/ Creates Panel from passed HTML string\n  {\n    path: '\/left-panel\/',\n    panel: {\n      content: `\n        <div class=\"panel panel-left panel-cover\">\n          <div class=\"view\">\n            <div class=\"page\">\n              ...\n            <\/div>\n          <\/div>\n        <\/div>\n      `\n    }\n  },\n  \/\/ Load Panel from file via Ajax\n  {\n    path: '\/right-panel-ajax\/',\n    panel: {\n      url: '.\/right-panel.html',\n      \/* right-panel.html contains:\n      <div class=\"panel panel-right panel-reveal\">\n        <div class=\"view\">\n          <div class=\"page\">\n            ...\n          <\/div>\n        <\/div>\n      <\/div>\n      *\/\n    },\n  },\n  \/\/ Load Panel from component file\n  {\n    path: '\/panel-component\/',\n    panel: {\n      componentUrl: '.\/panel-component.html',\n      \/* panel-component.html contains:\n      <template>\n        <div class=\"panel panel-left panel-cover\">\n          <div class=\"view\">\n            <div class=\"page\">\n              ...\n            <\/div>\n          <\/div>\n        <\/div>\n      <\/template>\n      <style>...<\/style>\n      <script>...<\/script>\n      *\/\n    },\n  },\n]"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0412\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u043e \u0434\u043e \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0443 \u0432\u0438\u0449\u0435:\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u0432\u0438 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u0454\u0442\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043e\u043c \/left-panel\/ href, \u0432\u0456\u0434\u043a\u0440\u0438\u0454\u0442\u044c\u0441\u044f \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u0437 \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0433\u043e \u0432\u043c\u0456\u0441\u0442\u0443 \u0440\u044f\u0434\u043a\u0430,<\/p>\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u0432\u0438 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u0454\u0442\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043e\u043c \/right-panel-ajax\/ href, \u0432\u0456\u043d \u0432\u0438\u043a\u043e\u043d\u0430\u0454 \u0437\u0430\u043f\u0438\u0442 Ajax \u0434\u043e \u0444\u0430\u0439\u043b\u0443 right-panel.html \u0456 \u0432\u0456\u0434\u043a\u0440\u0438\u0454 \u0439\u043e\u0433\u043e \u044f\u043a \u043f\u0440\u0430\u0432\u0443 \u043f\u0430\u043d\u0435\u043b\u044c,<\/p>\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u0432\u0438 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u0454\u0442\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043e\u043c \/panel-component\/ href, \u0432\u0456\u043d \u0432\u0438\u043a\u043e\u043d\u0430\u0454 \u0437\u0430\u043f\u0438\u0442 Ajax \u0434\u043e \u0444\u0430\u0439\u043b\u0443 panel-component.html, \u0440\u043e\u0437\u0431\u0435\u0440\u0435 \u0439\u043e\u0433\u043e \u044f\u043a \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430 \u0442\u0430 \u0432\u0456\u0434\u043a\u0440\u0438\u0454 \u044f\u043a \u043f\u0430\u043d\u0435\u043b\u044c,<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0435 \u043c\u043e\u0436\u043d\u0430 \u0437\u043c\u0456\u0448\u0443\u0432\u0430\u0442\u0438 \u0437\u0456 \u0441\u0442\u0430\u0442\u0438\u0447\u043d\u0438\u043c\u0438 \u043f\u0430\u043d\u0435\u043b\u044f\u043c\u0438. \u041e\u0442\u0436\u0435, \u044f\u043a\u0449\u043e \u0443 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0456 \u0454 \u0441\u0442\u0430\u0442\u0438\u0447\u043d\u0430 \u043b\u0456\u0432\u0430 \u043f\u0430\u043d\u0435\u043b\u044c, \u0442\u043e \u043b\u0438\u0448\u0435 \u043f\u0440\u0430\u0432\u0443 \u043f\u0430\u043d\u0435\u043b\u044c \u043c\u043e\u0436\u043d\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u044f\u043a \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442 \u043f\u0435\u0440\u0435\u0434 \u0432\u0445\u043e\u0434\u043e\u043c\/\u0432\u0438\u0445\u043e\u0434\u043e\u043c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041c\u0430\u0440\u0448\u0440\u0443\u0442 \u043f\u0435\u0440\u0435\u0434 \u0432\u0445\u043e\u0434\u043e\u043c\/\u0432\u0438\u0445\u043e\u0434\u043e\u043c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0425\u0443\u043a\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432 beforeEnter \u0456 beforeLeave \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0443\u0442\u0438 \u0434\u0443\u0436\u0435 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c\u0438, \u044f\u043a\u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043e\u043d\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0438, \u0432\u0438\u043a\u043e\u043d\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0434\u0456\u0457 \u0430\u0431\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438\/\u043d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0449\u043e\u0441\u044c \u043f\u0435\u0440\u0435\u0434 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 (\u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f) \u0456 \u0432\u0438\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f (\u0432\u0438\u0445\u043e\u0434\u0443). \u0426\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043e\u0434\u0438\u043d \u043c\u0435\u0442\u043e\u0434 \u0430\u0431\u043e \u043c\u0430\u0441\u0438\u0432 \u043c\u0435\u0442\u043e\u0434\u0456\u0432 \u0434\u043b\u044f \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043d\u044f. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  {\n    path: 'profile',\n    url: 'profile.html',\n    beforeEnter: function ({ resolve, reject }) {\n      if (\/* some condition to check user is logged in *\/) {\n        resolve();\n      } else {\n        \/\/ don't allow to visit this page for unauthenticated users\n        reject();\n      }\n    },\n\n  },\n  {\n    path: 'profile-edit',\n    url: 'profile-edit.html',\n    beforeLeave: function ({ resolve, reject }) {\n      if (\/* user didn't save edited form *\/) {\n        app.dialog.confirm(\n          'Are you sure you want to leave this page without saving data?',\n          function () {\n            \/\/ proceed navigation\n            resolve();\n          },\n          function () {\n            \/\/ stay on page\n            reject();\n          }\n        )\n      } else {\n        resolve();\n      }\n    }\n  }\n]"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0406, \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e, \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u044e\u0442\u044c\u0441\u044f \u043a\u0456\u043b\u044c\u043a\u0430 \u0445\u0443\u043a\u0456\u0432, \u044f\u043a\u0456 \u043f\u0435\u0440\u0435\u0434\u0430\u044e\u0442\u044c\u0441\u044f \u044f\u043a \u043c\u0430\u0441\u0438\u0432 \u0444\u0443\u043d\u043a\u0446\u0456\u0439:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"function checkAuth({ to, from, resolve, reject }) {\n  if (\/* some condition to check user is logged in *\/) {\n    resolve();\n  } else {\n    reject();\n  }\n}\nfunction checkPermission({ to, from, resolve, reject }) {\n  if (\/* some condition to check user edit permission *\/) {\n    resolve();\n  } else {\n    reject();\n  }\n}\n\nroutes = [\n  {\n    path: '\/profile\/',\n    url: 'profile.html',\n    \/\/ check if the user is logged in\n    beforeEnter: checkAuth,\n  },\n  {\n    path: '\/profile-edit\/',\n    url: 'profile-edit.html',\n    \/\/ check if the user is logged in and has required permission\n    beforeEnter: [checkAuth, checkPermission],\n  }\n]"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0442\u0430 \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- \u041f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0442\u0430 \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c"},{"type":"headline","props":{"content":"\u041f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 alias \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u041f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c \u0443 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043e\u0437\u043d\u0430\u0447\u0430\u0454, \u0449\u043e \u0442\u043e\u0439 \u0441\u0430\u043c\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u043c\u043e\u0436\u0435 \u043c\u0430\u0442\u0438 \u0434\u0435\u043a\u0456\u043b\u044c\u043a\u0430 \u0448\u043b\u044f\u0445\u0456\u0432 \u0434\u043e\u0441\u0442\u0443\u043f\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  {\n    path: '\/foo\/',\n    url: 'somepage.html',\n    alias: '\/bar\/',\n  },\n  {\n    path: '\/foo2\/',\n    url: 'anotherpage.html',\n    alias: ['\/bar2\/', '\/baz\/', '\/baz2\/'],\n  }\n]"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0412\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u043e \u0434\u043e \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0443 \u0432\u0438\u0449\u0435:\n<p>\u25cf\t\u044f\u043a\u0449\u043e \u043c\u0438 \u0437\u0430\u043f\u0438\u0442\u0443\u0454\u043c\u043e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437\u0430 URL-\u0430\u0434\u0440\u0435\u0441\u043e\u044e \/foo\/ \u0430\u0431\u043e \/bar\/, \u043f\u0435\u0440\u0448\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0442\u0438, \u0456 \u043c\u0438 \u043e\u0442\u0440\u0438\u043c\u0430\u0454\u043c\u043e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443, \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u0443 \u0437 somepage.html<\/p>\n<p>\u25cf\t\u044f\u043a\u0449\u043e \u043c\u0438 \u0437\u0430\u043f\u0438\u0442\u0443\u0454\u043c\u043e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437\u0430 URL-\u0430\u0434\u0440\u0435\u0441\u043e\u044e \/foo2\/ , \/bar2\/, \/baz\/, \/baz2\/, \u0434\u0440\u0443\u0433\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0431\u0443\u0434\u0435 \u0437\u0431\u0456\u0433\u0430\u0442\u0438\u0441\u044f, \u0456 \u043c\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u043c\u043e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437 anotherpage.html<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u043f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 redirect:\n\u044f\u043a\u0449\u043e \u043c\u0438 \u043f\u0435\u0440\u0435\u0434\u0430\u0454\u043c\u043e redirect \u044f\u043a string, \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0442\u0443\u0442 URL-\u0430\u0434\u0440\u0435\u0441\u0443 \u043f\u0440\u044f\u043c\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f\n\u044f\u043a\u0449\u043e \u043c\u0438 \u043f\u0435\u0440\u0435\u0434\u0430\u0454\u043c\u043e redirect \u044f\u043a function , \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 resolve \u0444\u0443\u043d\u043a\u0446\u0456\u0457 \u0437 URL-\u0430\u0434\u0440\u0435\u0441\u043e\u044e \u043f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f\n<p>\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"routes = [\n  {\n    path: '\/foo\/',\n    url: 'somepage.html',\n  },\n  {\n    path: '\/bar\/',\n    redirect: '\/foo\/',\n  },\n  {\n    path: '\/baz\/',\n    redirect: function ({to, resolve, reject}) {\n      \/\/ if we have \"user\" query parameter\n      if (to.query.user) {\n        \/\/ redirect to such url\n        resolve('\/foo\/?user=' + to.query.user);\n      }\n      \/\/ otherwise do nothing\n      else reject();\n    }\n  }\n]"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0439 \u0432\u0438\u0449\u0435 \u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u043e\u0437\u043d\u0430\u0447\u0430\u0454:\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u043c\u0438 \u0437\u0430\u043f\u0438\u0442\u0443\u0454\u043c\u043e URL-\u0430\u0434\u0440\u0435\u0441\u0443 \/bar\/, \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440 \u043f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u0438\u043c\u0435 \u043d\u0430 URL-\u0430\u0434\u0440\u0435\u0441\u0443 \/foo\/, \u0430 \u043f\u043e\u0442\u0456\u043c \u0448\u0443\u043a\u0430\u0442\u0438\u043c\u0435 \u043c\u0430\u0440\u0448\u0440\u0443\u0442, \u044f\u043a\u0438\u0439 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0454 \u0446\u0456\u0439 \u043d\u043e\u0432\u0456\u0439 URL-\u0430\u0434\u0440\u0435\u0441\u0456. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u0456\u043d \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0442\u0438\u043c\u0435 \u043f\u0435\u0440\u0448\u043e\u043c\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0437\u0456 \u0448\u043b\u044f\u0445\u043e\u043c \/foo\/ \u0456 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437 somepage.html<\/p>\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u043c\u0438 \u0437\u0430\u043f\u0438\u0442\u0443\u0454\u043c\u043e \/baz\/?user=john, \u043c\u0438 \u043f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u044f\u0454\u043c\u043e \u043d\u0430 URL \/foo\/?user=john, \u044f\u043a\u0438\u0439 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0442\u0438\u043c\u0435 \u043f\u0435\u0440\u0448\u043e\u043c\u0443 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/p>\n<p>\u25cf\t\u043a\u043e\u043b\u0438 \u043c\u0438 \u0437\u0430\u043f\u0438\u0442\u0443\u0454\u043c\u043e \/baz\/ (\u0431\u0435\u0437 \u0437\u0430\u043f\u0438\u0442\u0443), \u043d\u0456\u0447\u043e\u0433\u043e \u043d\u0435 \u0441\u0442\u0430\u043d\u0435\u0442\u044c\u0441\u044f<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0435\u0440\u0435\u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u043c\u0438 \u043f\u0435\u0440\u0435\u0434\u0430\u0454\u043c\u043e URL-\u0430\u0434\u0440\u0435\u0441\u0443, \u0430 \u043d\u0435 \u0448\u043b\u044f\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443, \u044f\u043a \u0443 \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c\u0456","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"Keep Alive","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443- Keep Alive"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0444\u0443\u043d\u043a\u0446\u0456\u044e KeepAlive \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u044f\u043a \u0442\u0456\u043b\u044c\u043a\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u044c \u0442\u0430\u043a\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443, \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0442\u0430, \u044f\u043a\u0449\u043e \u0446\u0435 \u043c\u043e\u0436\u043b\u0438\u0432\u043e, \u0457\u0457 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 (\u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 Vue, React \u0430\u0431\u043e Router) \u043d\u0456\u043a\u043e\u043b\u0438 \u043d\u0435 \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e. \u041d\u0430\u0442\u043e\u043c\u0456\u0441\u0442\u044c \u0439\u043e\u0433\u043e \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u2019\u0454\u0434\u043d\u0430\u043d\u043e \u0432\u0456\u0434 DOM \u0456 \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043e \u0437\u0430 \u043f\u043e\u0442\u0440\u0435\u0431\u0438.\n<p>\u0426\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0434\u043b\u044f \u00ab\u0432\u0430\u0436\u043a\u0438\u0445\u00bb \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a, \u044f\u043a\u0456 \u043d\u0435 \u043d\u0430\u0434\u0442\u043e \u0447\u0430\u0441\u0442\u043e \u043e\u043d\u043e\u0432\u043b\u044e\u044e\u0442\u044c\u0441\u044f. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437 \u043a\u0430\u0440\u0442\u043e\u044e \u0430\u0431\u043e \u0437 \u0432\u0430\u0436\u043a\u0438\u043c \u043f\u043e\u043b\u043e\u0442\u043d\u043e\u043c \u0447\u0438 \u0456\u043d\u0448\u0438\u043c \u043e\u0431\u0447\u0438\u0441\u043b\u0435\u043d\u043d\u044f\u043c. \u0417\u0430 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u044e \u043b\u043e\u0433\u0456\u043a\u043e\u044e \u0432\u0441\u0456 \u0446\u0456 \u0432\u0430\u0436\u043a\u0456 \u043e\u0431\u0447\u0438\u0441\u043b\u0435\u043d\u043d\u044f \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u043a\u043e\u0436\u043d\u043e\u0433\u043e \u0440\u0430\u0437\u0443, \u043a\u043e\u043b\u0438 \u0432\u0456\u0434\u0432\u0456\u0434\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0446\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443. \u0410\u043b\u0435 \u0437 keepAlive \u0446\u0435 \u0431\u0443\u0434\u0435 \u0437\u0440\u043e\u0431\u043b\u0435\u043d\u043e \u043e\u0434\u0438\u043d \u0440\u0430\u0437, \u0456 \u043f\u0456\u0434 \u0447\u0430\u0441 \u0443\u0441\u0456\u0445 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u0432\u0456\u0434\u0432\u0456\u0434\u0443\u0432\u0430\u043d\u044c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440 \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0432\u0436\u0435 \u0432\u0456\u0434\u0440\u0435\u043d\u0434\u0435\u0440\u0435\u043d\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 DOM \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438.<\/p>\n<p>\u0426\u0435 \u0442\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c, \u044f\u043a\u0449\u043e \u0432\u0430\u043c \u0434\u0456\u0439\u0441\u043d\u043e \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0431\u0435\u0440\u0435\u0433\u0442\u0438 \u0441\u0442\u0430\u043d \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438. \u042f\u043a\u0449\u043e \u0444\u0443\u043d\u043a\u0446\u0456\u044e KeepAlive \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0431\u0443\u0434\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u0440\u0430\u0437\u0443, \u0443\u0441\u0456 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0446\u0456\u0457 DOM \u0456 \u0441\u0442\u0430\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u0444\u043e\u0440\u043c\u0438 \u0431\u0443\u0434\u0435 \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u043e.<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0410\u043b\u0435 \u0454 \u0440\u0435\u0447\u0456, \u043d\u0430 \u044f\u043a\u0456 \u0432\u0430\u0440\u0442\u043e \u0437\u0432\u0435\u0440\u043d\u0443\u0442\u0438 \u0443\u0432\u0430\u0433\u0443:\n<p>\u25cf\t\u0412\u0456\u043d \u043d\u0435 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u0430\u0441\u0438\u043d\u0445\u0440\u043e\u043d\u043d\u0438\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432<\/p>\n<p>\u25cf\t\u0412\u0456\u043d \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u044c\u0441\u044f \u043b\u0438\u0448\u0435 \u0434\u043b\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a (\u043d\u0435 \u0434\u043b\u044f \u043f\u0430\u043d\u0435\u043b\u0435\u0439 \u0456 \u043c\u043e\u0434\u0430\u043b\u044c\u043d\u0438\u0445 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432)<\/p>\n<p>\u25cf\t\u042f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u0454 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0438\u0439 \u0448\u043b\u044f\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 (\u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \/some-page\/:foo\/:bar) \u0430\u0431\u043e \u0432\u0438 \u043f\u043e\u043a\u043b\u0430\u0434\u0430\u0454\u0442\u0435\u0441\u044f \u043d\u0430 \u0437\u0430\u043f\u0438\u0442 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 (?foo=bar), \u0442\u043e\u0434\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u043f\u0438\u0442\u0443 \u0442\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 \u043d\u0435 \u0431\u0443\u0434\u0443\u0442\u044c \u0437\u043c\u0456\u043d\u0435\u043d\u0456 \u043f\u0456\u0441\u043b\u044f \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f.<\/p>\n<p>\u25cf\tpage:beforeremove,pageBeforeRemove \u043f\u043e\u0434\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u043d\u0456\u043a\u043e\u043b\u0438 \u043d\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u0442\u0430\u043a\u043e\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438<\/p>\n<p>\u25cf\t\u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u0439\u043e\u0433\u043e \u044f\u043a \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 Vue, \u0442\u043e beforeDestroy \u0437\u043d\u0438\u0449\u0435\u043d\u0456 \u0445\u0443\u043a\u0438 \u043d\u0456\u043a\u043e\u043b\u0438 \u043d\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u0442\u0430\u043a\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430. created, mounted \u0433\u0430\u043a\u0438 \u0441\u043f\u0440\u0430\u0446\u044e\u044e\u0442\u044c \u043b\u0438\u0448\u0435 \u043e\u0434\u0438\u043d \u0440\u0430\u0437.<\/p>\n<p>\u25cf\t\u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u0439\u043e\u0433\u043e \u044f\u043a \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 React, \u043c\u0435\u0442\u043e\u0434 componentWillUnmount \u043d\u0456\u043a\u043e\u043b\u0438 \u043d\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u0442\u0430\u043a\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430. \u041c\u0435\u0442\u043e\u0434\u0438 componentWillMount, componentDidMount \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u043b\u0438\u0448\u0435 \u043e\u0434\u0438\u043d \u0440\u0430\u0437.<\/p>\n<p>\u25cf\t\u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u0439\u043e\u0433\u043e \u044f\u043a \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 T4 Router, \u0442\u043e beforeDestroy \u0437\u043d\u0438\u0449\u0435\u043d\u0456 \u0445\u0443\u043a\u0438 \u043d\u0456\u043a\u043e\u043b\u0438 \u043d\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u0442\u0430\u043a\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430. created, mounted \u0433\u0430\u043a\u0438 \u0441\u043f\u0440\u0430\u0446\u044e\u044e\u0442\u044c \u043b\u0438\u0448\u0435 \u043e\u0434\u0438\u043d \u0440\u0430\u0437.<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0443\u043d\u0438\u043a\u043d\u0443\u0442\u0438 \u043f\u0430\u0441\u0442\u043e\u043a \u0456\u0437 \u0436\u0438\u0442\u0442\u0454\u0432\u0438\u043c \u0446\u0438\u043a\u043b\u043e\u043c \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432 \u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a, \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u043c\u043e \u043f\u043e\u043a\u043b\u0430\u0434\u0430\u0442\u0438\u0441\u044f \u043d\u0430 \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438:\n<p>\u25cf\tpage:mounted - \u0431\u0443\u0434\u0435 \u0437\u0430\u0432\u0436\u0434\u0438 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u043d\u043e \u0434\u043b\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 keepAlive, \u043a\u043e\u043b\u0438 \u0457\u0457 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 DOM \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043e \u0430\u0431\u043e \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043e.<\/p>\n<p>\u25cf\tpage:beforeunmount - \u0437\u0430\u0432\u0436\u0434\u0438 \u0431\u0443\u0434\u0435 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438\u0441\u044f \u0434\u043b\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443 keepAlive, \u043a\u043e\u043b\u0438 \u0457\u0457 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 DOM \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u2019\u0454\u0434\u043d\u0430\u043d\u043e \u0432\u0456\u0434 DOM.<\/p>\n<p>\u0429\u043e\u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 KeepAlive, \u043d\u0430\u043c \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c KeepAlive: true :<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"import SomPageComponent from '.\/some-page.js';\n\nvar routes = [\n  \/* Usual route *\/\n  {\n    path: '\/',\n    url: '.\/pages\/home.html',\n  },\n  \/* Alive route. Will be loaded from file first time, and then will reuse rendered DOM element *\/\n  {\n    path: '\/map\/',\n    url: '.\/pages\/map.html',\n    keepAlive: true,\n  },\n\n  \/* Alive route. Will be created as component, and then will reuse rendered DOM element *\/\n  {\n    path: '\/some-page\/',\n    component: SomPageComponent,\n    keepAlive: true,\n  },\n];"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

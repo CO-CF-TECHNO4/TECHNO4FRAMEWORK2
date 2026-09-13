@@ -1,0 +1,291 @@
+<h2>Блок / Блок контенту</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Блок</a>
+
+    </li>
+        <li>
+        
+<div>Заголовок блоку</div>
+
+    </li>
+        <li>
+        
+<div>Верхній / нижній колонтитул блоку</div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Блок</h3>
+<div>Блоки вмісту, призначені (здебільшого) для додавання додаткового форматування та необхідного інтервалу для текстового вмісту:
+<p>Щоб додати елемент блоку вмісту, просто додайте <code>&lt;div&gt;</code> з класом <code>block</code>:</div>
+<pre><code>&lt;div class=&quot;block&quot;&gt;
+  &lt;!-- Вміст блоку --&gt;
+&lt;/div&gt;
+</code></pre>
+<div>Щоб додати додаткове підсвічування елементу <code>block</code>, нам потрібен додатковий клас <code>block-strong</code>:</div>
+<pre><code>&lt;div class=&quot;block block-strong&quot;&gt;
+  &lt;!-- Вміст блоку --&gt;
+&lt;/div&gt;</code></pre>
+<div>Щоб додати контур (межі) навколо блоку, нам потрібен додатковий клас <code>block-outline </code>: </div>
+<pre><code>&lt;div class=&quot;block block-strong block-outline&quot;&gt;
+  &lt;!-- вміст блоку --&gt;
+&lt;/div&gt;</code></pre>
+<div>Щоб зробити вставку блоку, нам потрібен додатковий клас <code>inset</code>: </div>
+<pre><code>&lt;div class=&quot;block block-strong inset&quot;&gt;
+  &lt;!-- inset block content --&gt;
+&lt;/div&gt;</code></pre>
+<div>Щоб видалити тонкі  лінії навколо блоку, нам потрібен додатковий клас <code>no-hairlines</code>:</div>
+<pre><code>&lt;div class=&quot;block block-strong no-hairlines&quot;&gt;
+  &lt;!-- block content --&gt;
+&lt;/div&gt;
+</code></pre>
+<div>Щоб зробити блокову вставку лише на великих екранах, нам потрібно замість цього використовувати клас <code>medium-inset</code> (>= 768px):</div>
+<pre><code>&lt;div class=&quot;block block-strong medium-inset&quot;&gt;
+  &lt;!-- inset block content --&gt;
+&lt;/div&gt;</code></pre>
+<div>Щоб отримати повний набір таких адаптивних класів, перегляньте документи <b>Grid docs</b>. Вони бувають з маленькою вставкою <b>xsmall-inset</b>, малою вставкою <b>small-inset</b>, середньою вставкою <b>medium-inset</b>, великою вставкою <b>large-inset</b>, дуже великою вставкою <b>xlarge-inset</b>.</div>
+<h3>Заголовок блоку </h3>
+<div>Щоб додати назву блоку перед блоком або списком, нам потрібен елемент із класом <code>block-title</code>:</div>
+<pre><code>&lt;div class=&quot;block-title&quot;&gt;Here comes block title&lt;/div&gt;
+&lt;div class=&quot;block&quot;&gt;
+  &lt;!-- block content --&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;block-title&quot;&gt;Here comes the list&lt;/div&gt;
+&lt;div class=&quot;list&quot;&gt;
+  &lt;!-- list content --&gt;
+&lt;/div&gt;
+
+&lt;!-- Medium size Block Title --&gt;
+&lt;div class=&quot;block-title block-title-medium&quot;&gt;Medium Title&lt;/div&gt;
+&lt;div class=&quot;block&quot;&gt;
+  &lt;!-- block content --&gt;
+&lt;/div&gt;
+
+&lt;!-- Large size Block Title --&gt;
+&lt;div class=&quot;block-title block-title-large&quot;&gt;Large Title&lt;/div&gt;
+&lt;div class=&quot;block&quot;&gt;
+  &lt;!-- block content --&gt;
+&lt;/div&gt;</code></pre>
+<h3>Верхній\Нижній колонтитул </h3>
+<div>Якщо нам потрібні додаткові тексти заголовків і нижніх колонтитулів, ми можемо використати елемент <code>Block Header</code>. Його можна використовувати як всередині, так і поза блоковими елементами  (Block, List View)</div>
+<pre><code>&lt;!-- Inside of block --&gt;
+&lt;div class=&quot;block&quot;&gt;
+  &lt;!-- Block header --&gt;
+  &lt;div class=&quot;block-header&quot;&gt;Block Header&lt;/div&gt;
+  ...
+  &lt;!-- Block footer --&gt;
+  &lt;div class=&quot;block-footer&quot;&gt;Block Footer&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Outside of block --&gt;
+&lt;div class=&quot;block-header&quot;&gt;Block Header&lt;/div&gt;
+&lt;div class=&quot;block&quot;&gt;
+  ...
+&lt;/div&gt;
+&lt;div class=&quot;block-footer&quot;&gt;Block Footer&lt;/div&gt;
+
+&lt;!-- After Block Title --&gt;
+&lt;div class=&quot;block-title&quot;&gt;Block Title Here&lt;/div&gt;
+&lt;div class=&quot;block-header&quot;&gt;Block Header&lt;/div&gt;
+&lt;div class=&quot;block&quot;&gt;
+  ...
+&lt;/div&gt;
+&lt;div class=&quot;block-footer&quot;&gt;Block Footer&lt;/div&gt;</code></pre>
+<h3>Змінні CSS</h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<pre><code>:root {
+  --t4-block-padding-horizontal: 16px;
+  --t4-block-padding-vertical: 16px;
+  --t4-block-font-size: inherit;
+  --t4-block-text-color: inherit;
+  --t4-block-header-margin: 10px;
+  --t4-block-footer-margin: 10px;
+  --t4-block-header-font-size: 14px;
+  --t4-block-footer-font-size: 14px;
+  --t4-block-title-text-transform: none;
+  --t4-block-title-white-space: nowrap;
+  --t4-block-title-medium-text-transform: none;
+  --t4-block-title-large-text-transform: none;
+  --t4-block-inset-side-margin: 16px;
+  --t4-block-title-medium-text-color: #000;
+  --t4-block-title-large-text-color: #000;
+  --t4-block-strong-bg-color: #fff;
+}
+:root .dark,
+:root.dark {
+  --t4-block-title-text-color: #fff;
+  --t4-block-strong-border-color: rgba(255, 255, 255, 0.15);
+  --t4-block-title-medium-text-color: #fff;
+  --t4-block-title-large-text-color: #fff;
+  --t4-block-strong-bg-color: #1c1c1d;
+}
+.ios {
+  --t4-block-margin-vertical: 35px;
+  --t4-block-strong-border-color: rgba(0, 0, 0, 0.22);
+  --t4-block-title-text-color: #000;
+  --t4-block-title-font-size: 16px;
+  --t4-block-title-font-weight: 600;
+  --t4-block-title-line-height: 20px;
+  --t4-block-title-margin-bottom: 10px;
+  --t4-block-title-medium-font-size: 22px;
+  --t4-block-title-medium-font-weight: bold;
+  --t4-block-title-medium-line-height: 1.4;
+  --t4-block-title-large-font-size: 30px;
+  --t4-block-title-large-font-weight: bold;
+  --t4-block-title-large-line-height: 1.3;
+  --t4-block-inset-border-radius: 8px;
+  --t4-block-strong-text-color: #000;
+  --t4-block-header-text-color: rgba(0, 0, 0, 0.45);
+  --t4-block-footer-text-color: rgba(0, 0, 0, 0.45);
+}
+.ios .dark,
+.ios.dark {
+  --t4-block-header-text-color: rgba(255, 255, 255, 0.55);
+  --t4-block-footer-text-color: rgba(255, 255, 255, 0.55);
+  --t4-block-strong-text-color: #fff;
+}
+.md {
+  --t4-block-margin-vertical: 32px;
+  --t4-block-strong-text-color: inherit;
+  --t4-block-strong-border-color: rgba(0, 0, 0, 0.12);
+  --t4-block-title-font-size: inherit;
+  --t4-block-title-text-color: rgba(0, 0, 0, 0.54);
+  --t4-block-title-font-weight: 500;
+  --t4-block-title-line-height: 16px;
+  --t4-block-title-margin-bottom: 16px;
+  --t4-block-title-medium-font-size: 24px;
+  --t4-block-title-medium-font-weight: 500;
+  --t4-block-title-medium-line-height: 1.3;
+  --t4-block-title-large-font-size: 34px;
+  --t4-block-title-large-font-weight: 500;
+  --t4-block-title-large-line-height: 1.2;
+  --t4-block-inset-border-radius: 4px;
+  --t4-block-header-text-color: rgba(0, 0, 0, 0.54);
+  --t4-block-footer-text-color: rgba(0, 0, 0, 0.54);
+}
+.md .dark,
+.md.dark {
+  --t4-block-header-text-color: rgba(255, 255, 255, 0.54);
+  --t4-block-footer-text-color: rgba(255, 255, 255, 0.54);
+}
+.aurora {
+  --t4-block-margin-vertical: 32px;
+  --t4-block-strong-border-color: rgba(0, 0, 0, 0.12);
+  --t4-block-title-font-size: 16px;
+  --t4-block-title-text-color: #000;
+  --t4-block-title-font-weight: 600;
+  --t4-block-title-line-height: 1.5;
+  --t4-block-title-margin-bottom: 10px;
+  --t4-block-title-medium-font-size: 22px;
+  --t4-block-title-medium-font-weight: bold;
+  --t4-block-title-medium-line-height: 1.4;
+  --t4-block-title-large-font-size: 28px;
+  --t4-block-title-large-font-weight: bold;
+  --t4-block-title-large-line-height: 1.3;
+  --t4-block-inset-border-radius: 8px;
+  --t4-block-strong-text-color: inherit;
+  --t4-block-header-text-color: rgba(0, 0, 0, 0.6);
+  --t4-block-footer-text-color: rgba(0, 0, 0, 0.6);
+}
+.aurora .dark,
+.aurora.dark {
+  --t4-block-header-text-color: rgba(255, 255, 255, 0.54);
+  --t4-block-footer-text-color: rgba(255, 255, 255, 0.54);
+  --t4-block-strong-text-color: #fff;
+}</code></pre>
+<h3>Приклади </h3>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+      &lt;div class=&quot;title&quot;&gt;Block&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;p&gt;This paragraph is outside of content block. Not cool, but useful for any custom elements with custom
+      styling.&lt;/p&gt;
+    &lt;div class=&quot;block&quot;&gt;
+      &lt;p&gt;Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet
+        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,
+        sagittis felis. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block block-strong&quot;&gt;
+      &lt;p&gt;Here comes another text block with additional &quot;&lt;b&gt;block-strong&lt;/b&gt;&quot; class. Praesent nec imperdiet diam.
+        Maecenas vel lectus porttitor, consectetur magna nec, viverra sem. Aliquam sed risus dolor. Morbi
+        tincidunt ut libero id sodales. Integer blandit varius nisi quis consectetur. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-title&quot;&gt;Block title&lt;/div&gt;
+    &lt;div class=&quot;block&quot;&gt;
+      &lt;p&gt;Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis
+        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-title&quot;&gt;Another ultra long content block title&lt;/div&gt;
+    &lt;div class=&quot;block block-strong&quot;&gt;
+      &lt;p&gt;Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis
+        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-title&quot;&gt;Inset&lt;/div&gt;
+    &lt;div class=&quot;block block-strong inset&quot;&gt;
+      &lt;p&gt;Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis
+        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-title&quot;&gt;Tablet Inset&lt;/div&gt;
+    &lt;div class=&quot;block block-strong medium-inset&quot;&gt;
+      &lt;p&gt;Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis
+        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-title&quot;&gt;With Header &amp; Footer&lt;/div&gt;
+    &lt;div class=&quot;block&quot;&gt;
+      &lt;div class=&quot;block-header&quot;&gt;Block Header&lt;/div&gt;
+      &lt;p&gt;Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet
+        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,
+        sagittis felis. &lt;/p&gt;
+      &lt;div class=&quot;block-footer&quot;&gt;Block Footer&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-header&quot;&gt;Block Header&lt;/div&gt;
+    &lt;div class=&quot;block&quot;&gt;
+      &lt;p&gt;Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet
+        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,
+        sagittis felis. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-footer&quot;&gt;Block Footer&lt;/div&gt;
+    &lt;div class=&quot;block block-strong&quot;&gt;
+      &lt;div class=&quot;block-header&quot;&gt;Block Header&lt;/div&gt;
+      &lt;p&gt;Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet
+        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,
+        sagittis felis. &lt;/p&gt;
+      &lt;div class=&quot;block-footer&quot;&gt;Block Footer&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-header&quot;&gt;Block Header&lt;/div&gt;
+    &lt;div class=&quot;block block-strong&quot;&gt;
+      &lt;p&gt;Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet
+        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,
+        sagittis felis. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-footer&quot;&gt;Block Footer&lt;/div&gt;
+    &lt;div class=&quot;block-title block-title-large&quot;&gt;Block Title Large&lt;/div&gt;
+    &lt;div class=&quot;block block-strong&quot;&gt;
+      &lt;p&gt;Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis
+        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;block-title block-title-medium&quot;&gt;Block Title Medium&lt;/div&gt;
+    &lt;div class=&quot;block block-strong&quot;&gt;
+      &lt;p&gt;Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis
+        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0411\u043b\u043e\u043a \/ \u0411\u043b\u043e\u043a \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u0443","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u0411\u043b\u043e\u043a \/ \u0411\u043b\u043e\u043a \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u0443"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u0411\u043b\u043e\u043a","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0431\u043b\u043e\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u0412\u0435\u0440\u0445\u043d\u0456\u0439 \/ \u043d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b \u0431\u043b\u043e\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0411\u043b\u043e\u043a","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0411\u043b\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0411\u043b\u043e\u043a\u0438 \u0432\u043c\u0456\u0441\u0442\u0443, \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0456 (\u0437\u0434\u0435\u0431\u0456\u043b\u044c\u0448\u043e\u0433\u043e) \u0434\u043b\u044f \u0434\u043e\u0434\u0430\u0432\u0430\u043d\u043d\u044f \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u0433\u043e \u0444\u043e\u0440\u043c\u0430\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0442\u0430 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0456\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u0443 \u0434\u043b\u044f \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u043e\u0433\u043e \u0432\u043c\u0456\u0441\u0442\u0443:\n<p>\u0429\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0431\u043b\u043e\u043a\u0443 \u0432\u043c\u0456\u0441\u0442\u0443, \u043f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0439\u0442\u0435 <code>&lt;div&gt;<\/code> \u0437 \u043a\u043b\u0430\u0441\u043e\u043c <code>block<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"block\">\n  <!-- \u0412\u043c\u0456\u0441\u0442 \u0431\u043b\u043e\u043a\u0443 -->\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0435 \u043f\u0456\u0434\u0441\u0432\u0456\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0443 <code>block<\/code>, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>block-strong<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"block block-strong\">\n  <!-- \u0412\u043c\u0456\u0441\u0442 \u0431\u043b\u043e\u043a\u0443 -->\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043e\u043d\u0442\u0443\u0440 (\u043c\u0435\u0436\u0456) \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u0431\u043b\u043e\u043a\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>block-outline <\/code>: ","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"block block-strong block-outline\">\n  <!-- \u0432\u043c\u0456\u0441\u0442 \u0431\u043b\u043e\u043a\u0443 -->\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0432\u0441\u0442\u0430\u0432\u043a\u0443 \u0431\u043b\u043e\u043a\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>inset<\/code>: ","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"block block-strong inset\">\n  <!-- inset block content -->\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0442\u043e\u043d\u043a\u0456  \u043b\u0456\u043d\u0456\u0457 \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u0431\u043b\u043e\u043a\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>no-hairlines<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"block block-strong no-hairlines\">\n  <!-- block content -->\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0431\u043b\u043e\u043a\u043e\u0432\u0443 \u0432\u0441\u0442\u0430\u0432\u043a\u0443 \u043b\u0438\u0448\u0435 \u043d\u0430 \u0432\u0435\u043b\u0438\u043a\u0438\u0445 \u0435\u043a\u0440\u0430\u043d\u0430\u0445, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u0446\u044c\u043e\u0433\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>medium-inset<\/code> (>= 768px):","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"block block-strong medium-inset\">\n  <!-- inset block content -->\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u043f\u043e\u0432\u043d\u0438\u0439 \u043d\u0430\u0431\u0456\u0440 \u0442\u0430\u043a\u0438\u0445 \u0430\u0434\u0430\u043f\u0442\u0438\u0432\u043d\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432, \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u044c\u0442\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438 <b>Grid docs<\/b>. \u0412\u043e\u043d\u0438 \u0431\u0443\u0432\u0430\u044e\u0442\u044c \u0437 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u044e \u0432\u0441\u0442\u0430\u0432\u043a\u043e\u044e <b>xsmall-inset<\/b>, \u043c\u0430\u043b\u043e\u044e \u0432\u0441\u0442\u0430\u0432\u043a\u043e\u044e <b>small-inset<\/b>, \u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u044e \u0432\u0441\u0442\u0430\u0432\u043a\u043e\u044e <b>medium-inset<\/b>, \u0432\u0435\u043b\u0438\u043a\u043e\u044e \u0432\u0441\u0442\u0430\u0432\u043a\u043e\u044e <b>large-inset<\/b>, \u0434\u0443\u0436\u0435 \u0432\u0435\u043b\u0438\u043a\u043e\u044e \u0432\u0441\u0442\u0430\u0432\u043a\u043e\u044e <b>xlarge-inset<\/b>.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0431\u043b\u043e\u043a\u0443 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0431\u043b\u043e\u043a\u0443 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u0438 \u043d\u0430\u0437\u0432\u0443 \u0431\u043b\u043e\u043a\u0443 \u043f\u0435\u0440\u0435\u0434 \u0431\u043b\u043e\u043a\u043e\u043c \u0430\u0431\u043e \u0441\u043f\u0438\u0441\u043a\u043e\u043c, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0456\u0437 \u043a\u043b\u0430\u0441\u043e\u043c <code>block-title<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"block-title\">Here comes block title<\/div>\n<div class=\"block\">\n  <!-- block content -->\n<\/div>\n\n<div class=\"block-title\">Here comes the list<\/div>\n<div class=\"list\">\n  <!-- list content -->\n<\/div>\n\n<!-- Medium size Block Title -->\n<div class=\"block-title block-title-medium\">Medium Title<\/div>\n<div class=\"block\">\n  <!-- block content -->\n<\/div>\n\n<!-- Large size Block Title -->\n<div class=\"block-title block-title-large\">Large Title<\/div>\n<div class=\"block\">\n  <!-- block content -->\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0435\u0440\u0445\u043d\u0456\u0439\\\u041d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0435\u0440\u0445\u043d\u0456\u0439\\ \u041d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b "},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0442\u0435\u043a\u0441\u0442\u0438 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0456\u0432 \u0456 \u043d\u0438\u0436\u043d\u0456\u0445 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b\u0456\u0432, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 <code>Block Header<\/code>. \u0419\u043e\u0433\u043e \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u044f\u043a \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456, \u0442\u0430\u043a \u0456 \u043f\u043e\u0437\u0430 \u0431\u043b\u043e\u043a\u043e\u0432\u0438\u043c\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430\u043c\u0438  (Block, List View)","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- Inside of block -->\n<div class=\"block\">\n  <!-- Block header -->\n  <div class=\"block-header\">Block Header<\/div>\n  ...\n  <!-- Block footer -->\n  <div class=\"block-footer\">Block Footer<\/div>\n<\/div>\n\n<!-- Outside of block -->\n<div class=\"block-header\">Block Header<\/div>\n<div class=\"block\">\n  ...\n<\/div>\n<div class=\"block-footer\">Block Footer<\/div>\n\n<!-- After Block Title -->\n<div class=\"block-title\">Block Title Here<\/div>\n<div class=\"block-header\">Block Header<\/div>\n<div class=\"block\">\n  ...\n<\/div>\n<div class=\"block-footer\">Block Footer<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-block-padding-horizontal: 16px;\n  --t4-block-padding-vertical: 16px;\n  --t4-block-font-size: inherit;\n  --t4-block-text-color: inherit;\n  --t4-block-header-margin: 10px;\n  --t4-block-footer-margin: 10px;\n  --t4-block-header-font-size: 14px;\n  --t4-block-footer-font-size: 14px;\n  --t4-block-title-text-transform: none;\n  --t4-block-title-white-space: nowrap;\n  --t4-block-title-medium-text-transform: none;\n  --t4-block-title-large-text-transform: none;\n  --t4-block-inset-side-margin: 16px;\n  --t4-block-title-medium-text-color: #000;\n  --t4-block-title-large-text-color: #000;\n  --t4-block-strong-bg-color: #fff;\n}\n:root .dark,\n:root.dark {\n  --t4-block-title-text-color: #fff;\n  --t4-block-strong-border-color: rgba(255, 255, 255, 0.15);\n  --t4-block-title-medium-text-color: #fff;\n  --t4-block-title-large-text-color: #fff;\n  --t4-block-strong-bg-color: #1c1c1d;\n}\n.ios {\n  --t4-block-margin-vertical: 35px;\n  --t4-block-strong-border-color: rgba(0, 0, 0, 0.22);\n  --t4-block-title-text-color: #000;\n  --t4-block-title-font-size: 16px;\n  --t4-block-title-font-weight: 600;\n  --t4-block-title-line-height: 20px;\n  --t4-block-title-margin-bottom: 10px;\n  --t4-block-title-medium-font-size: 22px;\n  --t4-block-title-medium-font-weight: bold;\n  --t4-block-title-medium-line-height: 1.4;\n  --t4-block-title-large-font-size: 30px;\n  --t4-block-title-large-font-weight: bold;\n  --t4-block-title-large-line-height: 1.3;\n  --t4-block-inset-border-radius: 8px;\n  --t4-block-strong-text-color: #000;\n  --t4-block-header-text-color: rgba(0, 0, 0, 0.45);\n  --t4-block-footer-text-color: rgba(0, 0, 0, 0.45);\n}\n.ios .dark,\n.ios.dark {\n  --t4-block-header-text-color: rgba(255, 255, 255, 0.55);\n  --t4-block-footer-text-color: rgba(255, 255, 255, 0.55);\n  --t4-block-strong-text-color: #fff;\n}\n.md {\n  --t4-block-margin-vertical: 32px;\n  --t4-block-strong-text-color: inherit;\n  --t4-block-strong-border-color: rgba(0, 0, 0, 0.12);\n  --t4-block-title-font-size: inherit;\n  --t4-block-title-text-color: rgba(0, 0, 0, 0.54);\n  --t4-block-title-font-weight: 500;\n  --t4-block-title-line-height: 16px;\n  --t4-block-title-margin-bottom: 16px;\n  --t4-block-title-medium-font-size: 24px;\n  --t4-block-title-medium-font-weight: 500;\n  --t4-block-title-medium-line-height: 1.3;\n  --t4-block-title-large-font-size: 34px;\n  --t4-block-title-large-font-weight: 500;\n  --t4-block-title-large-line-height: 1.2;\n  --t4-block-inset-border-radius: 4px;\n  --t4-block-header-text-color: rgba(0, 0, 0, 0.54);\n  --t4-block-footer-text-color: rgba(0, 0, 0, 0.54);\n}\n.md .dark,\n.md.dark {\n  --t4-block-header-text-color: rgba(255, 255, 255, 0.54);\n  --t4-block-footer-text-color: rgba(255, 255, 255, 0.54);\n}\n.aurora {\n  --t4-block-margin-vertical: 32px;\n  --t4-block-strong-border-color: rgba(0, 0, 0, 0.12);\n  --t4-block-title-font-size: 16px;\n  --t4-block-title-text-color: #000;\n  --t4-block-title-font-weight: 600;\n  --t4-block-title-line-height: 1.5;\n  --t4-block-title-margin-bottom: 10px;\n  --t4-block-title-medium-font-size: 22px;\n  --t4-block-title-medium-font-weight: bold;\n  --t4-block-title-medium-line-height: 1.4;\n  --t4-block-title-large-font-size: 28px;\n  --t4-block-title-large-font-weight: bold;\n  --t4-block-title-large-line-height: 1.3;\n  --t4-block-inset-border-radius: 8px;\n  --t4-block-strong-text-color: inherit;\n  --t4-block-header-text-color: rgba(0, 0, 0, 0.6);\n  --t4-block-footer-text-color: rgba(0, 0, 0, 0.6);\n}\n.aurora .dark,\n.aurora.dark {\n  --t4-block-header-text-color: rgba(255, 255, 255, 0.54);\n  --t4-block-footer-text-color: rgba(255, 255, 255, 0.54);\n  --t4-block-strong-text-color: #fff;\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 "},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n      <div class=\"title\">Block<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"page-content\">\n    <p>This paragraph is outside of content block. Not cool, but useful for any custom elements with custom\n      styling.<\/p>\n    <div class=\"block\">\n      <p>Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet\n        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,\n        sagittis felis. <\/p>\n    <\/div>\n    <div class=\"block block-strong\">\n      <p>Here comes another text block with additional \"<b>block-strong<\/b>\" class. Praesent nec imperdiet diam.\n        Maecenas vel lectus porttitor, consectetur magna nec, viverra sem. Aliquam sed risus dolor. Morbi\n        tincidunt ut libero id sodales. Integer blandit varius nisi quis consectetur. <\/p>\n    <\/div>\n    <div class=\"block-title\">Block title<\/div>\n    <div class=\"block\">\n      <p>Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis\n        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. <\/p>\n    <\/div>\n    <div class=\"block-title\">Another ultra long content block title<\/div>\n    <div class=\"block block-strong\">\n      <p>Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis\n        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. <\/p>\n    <\/div>\n    <div class=\"block-title\">Inset<\/div>\n    <div class=\"block block-strong inset\">\n      <p>Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis\n        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. <\/p>\n    <\/div>\n    <div class=\"block-title\">Tablet Inset<\/div>\n    <div class=\"block block-strong medium-inset\">\n      <p>Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis\n        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. <\/p>\n    <\/div>\n    <div class=\"block-title\">With Header & Footer<\/div>\n    <div class=\"block\">\n      <div class=\"block-header\">Block Header<\/div>\n      <p>Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet\n        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,\n        sagittis felis. <\/p>\n      <div class=\"block-footer\">Block Footer<\/div>\n    <\/div>\n    <div class=\"block-header\">Block Header<\/div>\n    <div class=\"block\">\n      <p>Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet\n        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,\n        sagittis felis. <\/p>\n    <\/div>\n    <div class=\"block-footer\">Block Footer<\/div>\n    <div class=\"block block-strong\">\n      <div class=\"block-header\">Block Header<\/div>\n      <p>Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet\n        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,\n        sagittis felis. <\/p>\n      <div class=\"block-footer\">Block Footer<\/div>\n    <\/div>\n    <div class=\"block-header\">Block Header<\/div>\n    <div class=\"block block-strong\">\n      <p>Here comes paragraph within content block. Donec et nulla auctor massa pharetra adipiscing ut sit amet\n        sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel,\n        sagittis felis. <\/p>\n    <\/div>\n    <div class=\"block-footer\">Block Footer<\/div>\n    <div class=\"block-title block-title-large\">Block Title Large<\/div>\n    <div class=\"block block-strong\">\n      <p>Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis\n        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. <\/p>\n    <\/div>\n    <div class=\"block-title block-title-medium\">Block Title Medium<\/div>\n    <div class=\"block block-strong\">\n      <p>Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis\n        tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis. <\/p>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

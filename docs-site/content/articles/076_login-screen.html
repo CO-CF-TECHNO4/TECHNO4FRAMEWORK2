@@ -1,0 +1,772 @@
+<h2>Екран входу</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет екрана входу</a>
+
+    </li>
+        <li>
+        
+<div>Методи додатка екрана входу</div>
+
+    </li>
+        <li>
+        
+<div>Параметри екрана входу</div>
+
+    </li>
+        <li>
+        
+<div>Методи та властивості екрана входу</div>
+
+    </li>
+        <li>
+        
+<div>Керуйте екраном входу за допомогою посилань</div>
+
+    </li>
+        <li>
+        
+<div>Події екрана входу</div>
+
+<p>Події DOM <p>Події екземплярів застосунку та екрана входу</p>
+    </li>
+        <li>
+        
+<div>Вбудований екран входу</div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Екран входу</h3>
+<div>Techno4 поставляється з готовим до використання макетом екрана входу. Його можна використовувати всередині сторінки чи екрана входу (вбудованого) або як окремий модальний режим.</div>
+<h3>Макет екрана входу</h3>
+<div>Перш за все, розгляньмо макет окремого екрана входу. Він поводиться майже так само, як екран входу в систему:</div>
+<pre><code>&lt;div class=&quot;login-screen&quot;&gt;
+  &lt;!-- Типовий макет перегляду сторінки--&gt;
+  &lt;div class=&quot;view&quot;&gt;
+    &lt;div class=&quot;page login-screen-page&quot;&gt;
+      &lt;!-- page-content має додатковий вміст екрана входу --&gt;
+      &lt;div class=&quot;page-content login-screen-content&quot;&gt;
+        &lt;div class=&quot;login-screen-title&quot;&gt;My App&lt;/div&gt;
+        &lt;!-- Форма входу--&gt;
+        &lt;form&gt;
+          &lt;div class=&quot;list&quot;&gt;
+            &lt;ul&gt;
+              &lt;li class=&quot;item-content item-input&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title item-label&quot;&gt;Username&lt;/div&gt;
+                  &lt;div class=&quot;item-input-wrap&quot;&gt;
+                    &lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;Username&quot; /&gt;
+                    &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;item-content item-input&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title item-label&quot;&gt;Password&lt;/div&gt;
+                  &lt;div class=&quot;item-input-wrap&quot;&gt;
+                    &lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;Password&quot; /&gt;
+                    &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;list&quot;&gt;
+            &lt;ul&gt;
+              &lt;li&gt;
+                &lt;a href=&quot;#&quot; class=&quot;list-button&quot;&gt;Sign In&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div class=&quot;block-footer&quot;&gt;Some text with login information.&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Зауважте, що всі елементи, які ви бачите всередині <code>&lt;div class="login-screen"&gt;</code>, є необов’язковими, але ви можете використовувати їх як шаблонний макет для своєї форми входу</div>
+<h3>Методи застосунку екрана входу</h3>
+<div>Давайте розглянемо пов’язані методи роботи з екраном входу:</div>
+<div><code>app.loginScreen.create(parameters)</code>- створити екземпляр екрана входу в систему
+<p>●	<code>parameters - object.</code> - Об'єкт з параметрами екрана входу</p>
+<p><i>Метод повертає створений екземпляр екрана входу в систему</i></p></div>
+<div><code>aapp.loginScreen.destroy(el)</code>- знищити екземпляр екрана входу в систему
+<p>●	<code>el - HTMLElement or string (with CSS Selector) or object</code> -Елемент екрана входу або екземпляр екрана входу для знищення.</p>
+</div>
+<div><code>app.loginScreen.get(el)</code>- отримати екземпляр екрана входу за допомогою елемента HTML
+<p>●	<code>el - HTMLElement or string (with CSS Selector).</code> - Елемент екрана входу.</p>
+<p><i>Метод повертає екземпляр екрана входу в систему</i></p></div>
+<div><code>app.loginScreen.open(el, animate)</code>- відкриває екран входу
+<p>●	<code>el - HTMLElement or string (with CSS Selector).</code> - Елемент екрана входу, який потрібно відкрити.</p>
+<p>●	<code>animate - boolean.</code> - Відкрити екран входу з анімацією</p>
+<p><i>Метод повертає екземпляр екрана входу в систему</i></p></div>
+<div><code>app.loginScreen.close(el, animate)</code>- закриває екран входу
+<p>●	<code>el - HTMLElement or string (with CSS Selector).</code> - Елемент екрана входу, який потрібно закрити.</p>
+<p>●	<code>animate - boolean.</code> - Закрити екран входу з анімацією</p>
+<p><i>Метод повертає екземпляр екрана входу в систему</i></p></div>
+<h3>Параметри екрана входу</h3>
+<div>Тепер давайте подивимося на список доступних параметрів, необхідних для створення екрана входу в систему:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>el</td>
+
+<td>Елемент екрана входу. Може бути корисним, якщо у вашому HTML-коді вже є елемент екрана входу в систему та ви хочете створити новий екземпляр за допомогою цього елемента</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>content</td>
+
+<td>Рядок макета HTML повного екрана входу. Може бути корисним, якщо ви хочете динамічно створити елемент екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>animate</td>
+
+<td>Чи відкривати/закривати екран входу з анімацією чи ні. Може бути перезаписано в методах <code>.open()</code> і <code>.close()</code>.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>containerEl</td>
+
+<td>Елемент для модального монтування (за замовчуванням кореневий елемент застосунку)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>on</td>
+
+<td>Об'єкт з обробниками подій. Наприклад:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var loginScreen = app.loginScreen.create({
+  content: '&lt;div class=&quot;login-screen&quot;&gt;...&lt;/div&gt;',
+  on: {
+    opened: function () {
+      console.log('Login Screen opened')
+    }
+  }
+})</code></pre>
+<h3>Методи та властивості екрана входу</h3>
+<div>Отже, щоб створити екран входу, ми повинні викликати:</div>
+<pre><code>var loginScreen = app.loginScreen.create({ /* parameters */ })</code></pre>
+<div>Після цього у нас є його ініціалізований екземпляр (наприклад, змінна <code>loginScreen</code> у прикладі вище) з корисними методами та властивостями:</div>
+<h5>Властивості </h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>loginScreen.app</td>
+
+<td>Посилання на глобальний екземпляр застосунку</td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.el</td>
+
+<td>Елемент HTML екрана входу</td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.$el</td>
+
+<td>Екземпляр Dom7 з HTML-елементом екрана входу</td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.params</td>
+
+<td>Параметри екрана входу</td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.opened</td>
+
+<td>Логічне значення, яке вказує, чи відкрито екран входу чи ні</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h5>Методи</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>loginScreen.open(animate)</td>
+
+<td>Відкрити екран входу. Де
+<p>●	<code>animate - boolean</code> (за замовчуванням <code>true</code>) - визначає, чи слід відкривати його з анімацією</p></td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.close(animate)</td>
+
+<td>Закрити екран входу. Де
+<p>●	<code>animate - boolean</code> (за замовчуванням <code>true</code>) - визначає, чи слід закривати його з анімацією</p></td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.destroy()</td>
+
+<td>Знищити екран входу</td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.on(event, handler)</td>
+
+<td>Додати обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.once(event, handler)</td>
+
+<td>Додати обробник подій, який буде видалено після запуску</td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.off(event, handler)</td>
+
+<td>Видалити обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.off(event)</td>
+
+<td>Видалити всі обробники для вказаної події</td>
+
+</tr>
+                <tr>
+
+<td>loginScreen.emit(event, ...args)</td>
+
+<td>Запустити подію на примірнику</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Керуйте екраном входу за допомогою посилань</h3>
+<div>Відкривати та закривати необхідні екрани входу (якщо вони є в DOM) можна за допомогою спеціальних класів і атрибутів даних за посиланнями:
+<p>●	Щоб відкрити екран входу, нам потрібно додати клас <code>«login-screen-open»</code> до будь-якого елемента HTML (бажано для посилання)</p>
+<p>●	Щоб закрити екран входу, нам потрібно додати клас <code>"login-screen-close"</code> до будь-якого елемента HTML (бажано для посилання)</p>
+<p>●	Якщо у вас більше одного екрана входу в DOM, вам потрібно вказати відповідний екран входу за допомогою додаткового атрибута <code>data-login-screen=".my-login-screen"</code> у цьому елементі HTML</p>
+<p>Відповідно до примітки вище:</p>
+</div>
+<pre><code>&lt;!-- В атрибуті data-login-screen ми вказуємо CSS-селектор екрана входу, який нам потрібно відкрити --&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot; data-login-screen=&quot;.my-login-screen&quot; class=&quot;login-screen-open&quot;&gt;Open Login Screen&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- І десь у DOM--&gt;
+&lt;div class=&quot;login-screen my-login-screen&quot;&gt;
+  &lt;div class=&quot;view&quot;&gt;
+    &lt;div class=&quot;page&quot;&gt;
+      &lt;div class=&quot;navbar&quot;&gt;
+        &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;navbar-inner&quot;&gt;
+          &lt;div class=&quot;title&quot;&gt;Login Screen&lt;/div&gt;
+          &lt;div class=&quot;right&quot;&gt;
+            &lt;!-- Посилання для закриття екрана входу--&gt;
+            &lt;a class=&quot;link login-screen-close&quot;&gt;Close&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/div&gt;</code></pre>
+<h3>Події екрана входу</h3>
+<div>Екран входу запускатиме такі події DOM на елементі екрана входу та події в екземплярі застосунку та екрана входу:</div>
+<h4>Події DOM </h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Елемент екрана входу <p><code>&lt;div class="login-screen"&gt;</code></td>
+
+<td>loginscreen:open</td>
+
+<td>Подія буде запущена, коли на екрані входу почнеться початкова анімація</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент екрана входу <p><code>&lt;div class="login-screen"&gt;</code></td>
+
+<td>loginscreen:opened</td>
+
+<td>Подію буде запущено після завершення анімації відкриття екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент екрана входу <p><code>&lt;div class="login-screen"&gt;</code></td>
+
+<td>loginscreen:close</td>
+
+<td>Подія буде ініційована, коли на екрані входу почнеться анімація закриття</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент екрана входу <p><code>&lt;div class="login-screen"&gt;</code></td>
+
+<td>loginscreen:closed</td>
+
+<td>Подію буде запущено після завершення анімації на екрані входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Події екземплярів застосунку та екрана входу</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th>Об'єкт</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>loginScreen</td>
+
+<td>open</td>
+
+<td>Подія буде запущена, коли на екрані входу почнеться початкова анімація. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">loginScreen</a>
+    </td>
+</tr>
+                <tr>
+<td>loginScreen</td>
+
+<td>loginScreenOpen</td>
+
+<td>Подія буде запущена, коли на екрані входу почнеться початкова анімація. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>loginScreen</td>
+
+<td>opened</td>
+
+<td>Подію буде запущено після завершення анімації відкриття екрана входу. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">loginScreen</a>
+    </td>
+</tr>
+                <tr>
+<td>loginScreen</td>
+
+<td>loginScreenOpened</td>
+
+<td>Подію буде запущено після завершення анімації відкриття екрана входу. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>loginScreen</td>
+
+<td>close</td>
+
+<td>Подія буде ініційована, коли на екрані входу почнеться анімація закриття. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">loginScreen</a>
+    </td>
+</tr>
+                <tr>
+<td>loginScreen</td>
+
+<td>loginScreenClose</td>
+
+<td>Подія буде ініційована, коли на екрані входу почнеться анімація закриття. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>loginScreen</td>
+
+<td>closed</td>
+
+<td>Подію буде запущено після завершення анімації на екрані входу. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">loginScreen</a>
+    </td>
+</tr>
+                <tr>
+<td>loginScreen</td>
+
+<td>loginScreenClosed</td>
+
+<td>Подію буде запущено після завершення анімації на екрані входу. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>loginScreen</td>
+
+<td>beforeDestroy</td>
+
+<td>Подію буде запущено безпосередньо перед тим, як екземпляр екрана входу буде знищено. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">loginScreen</a>
+    </td>
+</tr>
+                <tr>
+<td>loginScreen</td>
+
+<td>loginScreenBeforeDestroy</td>
+
+<td>Подію буде запущено безпосередньо перед тим, як екземпляр екрана входу буде знищено. Як аргумент обробник події отримує екземпляр екрана входу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Вбудований екран входу</h3>
+<div>Також можна вставити екран входу в сторінку або спливаюче вікно. Давайте подивимося на приклад екрану входу всередину сторінки:</div>
+<pre><code>&lt;div class=&quot;page no-navbar no-toolbar no-swipeback login-screen-page&quot;&gt;
+  &lt;div class=&quot;page-content login-screen-content&quot;&gt;
+    &lt;div class=&quot;login-screen-title&quot;&gt;My App&lt;/div&gt;
+    &lt;form&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Username&lt;/div&gt;
+              &lt;div class=&quot;item-input&quot;&gt;
+                &lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;Your username&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Password&lt;/div&gt;
+              &lt;div class=&quot;item-input&quot;&gt;
+                &lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;list-button&quot;&gt;Sign In&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class=&quot;block-footer&quot;&gt;
+          &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+          &lt;p&gt;&lt;a href=&quot;#&quot; class=&quot;close-login-screen&quot;&gt;Close Login Screen&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<div>Зауважте, що на сторінці екрана входу ми маємо додаткові класи <code>«no-navbar»</code>, <code>«no-toolbar»</code> і <code>«no-swipeback»</code>, щоб приховати елемент навігації від користувача</div>
+<h3>Змінні CSS </h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  --t4-login-screen-blocks-max-width: 480px;
+  /*
+   --t4-login-screen-list-button-text-color: var(--t4-theme-color);
+   */
+  --t4-login-screen-title-text-align: center;
+  --t4-login-screen-title-text-color: inherit;
+  --t4-login-screen-title-letter-spacing: 0;
+  --t4-login-screen-title-font-weight: 600;
+  --t4-login-screen-title-font-size: 28px;
+  --t4-login-screen-content-bg-color: #fff;
+  --t4-login-screen-bg-color: #fff;
+}
+:root .dark,
+:root.dark {
+  --t4-login-screen-bg-color: #121212;
+  --t4-login-screen-content-bg-color: #121212;
+}
+.ios {
+  --t4-login-screen-blocks-margin-vertical: 25px;
+}
+.ios .dark,
+.ios.dark {
+  --t4-login-screen-bg-color: #000;
+  --t4-login-screen-content-bg-color: #000;
+}
+.md {
+  --t4-login-screen-blocks-margin-vertical: 24px;
+}
+.aurora {
+  --t4-login-screen-blocks-margin-vertical: 16px;
+}
+</code></pre>
+<h3>Приклади </h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Login Screen&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;p&gt;
+          &lt;!-- Відкрийте на екрані входу, який уже є в DOM--&gt;
+          &lt;a href=&quot;#&quot; class=&quot;button button-fill login-screen-open&quot; data-login-screen=&quot;.login-screen&quot;&gt;Open As
+            Modal&lt;/a&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;!-- Завантажити сторінку з екраном входу (login-screen-page.t4.html)--&gt;
+          &lt;a href=&quot;/login-screen/&quot; class=&quot;button button-fill&quot;&gt;Open As Page&lt;/a&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;login-screen&quot;&gt;
+    &lt;div class=&quot;view&quot;&gt;
+      &lt;div class=&quot;page&quot;&gt;
+        &lt;div class=&quot;page-content login-screen-content&quot;&gt;
+          &lt;div class=&quot;login-screen-title&quot;&gt;My App&lt;/div&gt;
+          &lt;form&gt;
+            &lt;div class=&quot;list&quot;&gt;
+              &lt;ul&gt;
+                &lt;li class=&quot;item-content item-input&quot;&gt;
+                  &lt;div class=&quot;item-inner&quot;&gt;
+                    &lt;div class=&quot;item-title item-label&quot;&gt;Username&lt;/div&gt;
+                    &lt;div class=&quot;item-input-wrap&quot;&gt;
+                      &lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;Your username&quot; /&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;item-content item-input&quot;&gt;
+                  &lt;div class=&quot;item-inner&quot;&gt;
+                    &lt;div class=&quot;item-title item-label&quot;&gt;Password&lt;/div&gt;
+                    &lt;div class=&quot;item-input-wrap&quot;&gt;
+                      &lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;list&quot;&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;a class=&quot;list-button&quot; href=&quot;#&quot;&gt;Sign In&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;div class=&quot;block-footer&quot;&gt;
+                &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+                &lt;p&gt;&lt;a class=&quot;link login-screen-close&quot; href=&quot;#&quot;&gt;Close Login Screen&lt;/a&gt;&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, ctx) =&gt; {
+    const { $ } = ctx;
+    // Екран входу в модальні події DOM
+    $('.login-screen').on('loginscreen:open', function (e) {
+      console.log('Login screen open')
+    });
+    $('.login-screen').on('loginscreen:opened', function (e) {
+      console.log('Login screen opened')
+    });
+    $('.login-screen').on('loginscreen:close', function (e) {
+      console.log('Login screen close')
+    });
+    $('.login-screen').on('loginscreen:closed', function (e) {
+      console.log('Login screen closed')
+    });
+
+    
+
+    return $render;
+  }
+
+&lt;/script&gt;</code></pre>
+<h4>Сторінка екрана входу</h4>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page no-navbar no-toolbar no-swipeback&quot;&gt;
+    &lt;div class=&quot;page-content login-screen-content&quot;&gt;
+      &lt;div class=&quot;login-screen-title&quot;&gt;My App&lt;/div&gt;
+      &lt;form&gt;
+        &lt;div class=&quot;list&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title item-label&quot;&gt;Username&lt;/div&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;Your username&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title item-label&quot;&gt;Password&lt;/div&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;list&quot;&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;list-button&quot;&gt;Sign In&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class=&quot;block-footer&quot;&gt;
+            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+            &lt;p&gt;&lt;a href=&quot;#&quot; class=&quot;link back&quot;&gt;Close Login Screen&lt;/a&gt;&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0415\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u0415\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u0430 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"}},{"type":"nav_item","props":{"content":"\u041a\u0435\u0440\u0443\u0439\u0442\u0435 \u0435\u043a\u0440\u0430\u043d\u043e\u043c \u0432\u0445\u043e\u0434\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c"}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","meta":"\u041f\u043e\u0434\u0456\u0457 DOM <p>\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"}},{"type":"nav_item","props":{"content":"\u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0415\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0415\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"Techno4 \u043f\u043e\u0441\u0442\u0430\u0432\u043b\u044f\u0454\u0442\u044c\u0441\u044f \u0437 \u0433\u043e\u0442\u043e\u0432\u0438\u043c \u0434\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u043c\u0430\u043a\u0435\u0442\u043e\u043c \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443. \u0419\u043e\u0433\u043e \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0447\u0438 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 (\u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u043e\u0433\u043e) \u0430\u0431\u043e \u044f\u043a \u043e\u043a\u0440\u0435\u043c\u0438\u0439 \u043c\u043e\u0434\u0430\u043b\u044c\u043d\u0438\u0439 \u0440\u0435\u0436\u0438\u043c.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0435\u0440\u0448 \u0437\u0430 \u0432\u0441\u0435, \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u044c\u043c\u043e \u043c\u0430\u043a\u0435\u0442 \u043e\u043a\u0440\u0435\u043c\u043e\u0433\u043e \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443. \u0412\u0456\u043d \u043f\u043e\u0432\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u043c\u0430\u0439\u0436\u0435 \u0442\u0430\u043a \u0441\u0430\u043c\u043e, \u044f\u043a \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"login-screen\">\n  <!-- \u0422\u0438\u043f\u043e\u0432\u0438\u0439 \u043c\u0430\u043a\u0435\u0442 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438-->\n  <div class=\"view\">\n    <div class=\"page login-screen-page\">\n      <!-- page-content \u043c\u0430\u0454 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0432\u043c\u0456\u0441\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 -->\n      <div class=\"page-content login-screen-content\">\n        <div class=\"login-screen-title\">My App<\/div>\n        <!-- \u0424\u043e\u0440\u043c\u0430 \u0432\u0445\u043e\u0434\u0443-->\n        <form>\n          <div class=\"list\">\n            <ul>\n              <li class=\"item-content item-input\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title item-label\">Username<\/div>\n                  <div class=\"item-input-wrap\">\n                    <input type=\"text\" name=\"username\" placeholder=\"Username\" \/>\n                    <span class=\"input-clear-button\"><\/span>\n                  <\/div>\n                <\/div>\n              <\/li>\n              <li class=\"item-content item-input\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title item-label\">Password<\/div>\n                  <div class=\"item-input-wrap\">\n                    <input type=\"password\" name=\"password\" placeholder=\"Password\" \/>\n                    <span class=\"input-clear-button\"><\/span>\n                  <\/div>\n                <\/div>\n              <\/li>\n            <\/ul>\n          <\/div>\n          <div class=\"list\">\n            <ul>\n              <li>\n                <a href=\"#\" class=\"list-button\">Sign In<\/a>\n              <\/li>\n            <\/ul>\n            <div class=\"block-footer\">Some text with login information.<\/div>\n          <\/div>\n        <\/form>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u0432\u0441\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438, \u044f\u043a\u0456 \u0432\u0438 \u0431\u0430\u0447\u0438\u0442\u0435 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 <code>&lt;div class=\"login-screen\"&gt;<\/code>, \u0454 \u043d\u0435\u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u0438\u043c\u0438, \u0430\u043b\u0435 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0457\u0445 \u044f\u043a \u0448\u0430\u0431\u043b\u043e\u043d\u043d\u0438\u0439 \u043c\u0430\u043a\u0435\u0442 \u0434\u043b\u044f \u0441\u0432\u043e\u0454\u0457 \u0444\u043e\u0440\u043c\u0438 \u0432\u0445\u043e\u0434\u0443","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0440\u043e\u0431\u043e\u0442\u0438 \u0437 \u0435\u043a\u0440\u0430\u043d\u043e\u043c \u0432\u0445\u043e\u0434\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.loginScreen.create(parameters)<\/code>- \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443\n<p>\u25cf\t<code>parameters - object.<\/code> - \u041e\u0431'\u0454\u043a\u0442 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443<\/i><\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043c\u0435\u0442\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>aapp.loginScreen.destroy(el)<\/code>- \u0437\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443\n<p>\u25cf\t<code>el - HTMLElement or string (with CSS Selector) or object<\/code> -\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0430\u0431\u043e \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0434\u043b\u044f \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f.<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043c\u0435\u0442\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.loginScreen.get(el)<\/code>- \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 HTML\n<p>\u25cf\t<code>el - HTMLElement or string (with CSS Selector).<\/code> - \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443.<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443<\/i><\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043c\u0435\u0442\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.loginScreen.open(el, animate)<\/code>- \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0454 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443\n<p>\u25cf\t<code>el - HTMLElement or string (with CSS Selector).<\/code> - \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443, \u044f\u043a\u0438\u0439 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438.<\/p>\n<p>\u25cf\t<code>animate - boolean.<\/code> - \u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443<\/i><\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043c\u0435\u0442\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.loginScreen.close(el, animate)<\/code>- \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0454 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443\n<p>\u25cf\t<code>el - HTMLElement or string (with CSS Selector).<\/code> - \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443, \u044f\u043a\u0438\u0439 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0430\u043a\u0440\u0438\u0442\u0438.<\/p>\n<p>\u25cf\t<code>animate - boolean.<\/code> - \u0417\u0430\u043a\u0440\u0438\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443<\/i><\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043c\u0435\u0442\u043e\u0434\u0443"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u043b\u044f \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c, \u044f\u043a\u0449\u043e \u0443 \u0432\u0430\u0448\u043e\u043c\u0443 HTML-\u043a\u043e\u0434\u0456 \u0432\u0436\u0435 \u0454 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443 \u0442\u0430 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043d\u043e\u0432\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0446\u044c\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"el","title":""}},{"type":"table_item","props":{"content":"\u0420\u044f\u0434\u043e\u043a \u043c\u0430\u043a\u0435\u0442\u0430 HTML \u043f\u043e\u0432\u043d\u043e\u0433\u043e \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c, \u044f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"content","title":""}},{"type":"table_item","props":{"content":"\u0427\u0438 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438\/\u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e \u0447\u0438 \u043d\u0456. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0438\u0441\u0430\u043d\u043e \u0432 \u043c\u0435\u0442\u043e\u0434\u0430\u0445 <code>.open()<\/code> \u0456 <code>.close()<\/code>.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"animate","title":"true"}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0434\u043b\u044f \u043c\u043e\u0434\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043c\u043e\u043d\u0442\u0443\u0432\u0430\u043d\u043d\u044f (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u043a\u043e\u0440\u0435\u043d\u0435\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443)","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"containerEl","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"fragment","props":{"margin":"default"},"children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c\u0438 \u043f\u043e\u0434\u0456\u0439. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"on","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var loginScreen = app.loginScreen.create({\n  content: '<div class=\"login-screen\">...<\/div>',\n  on: {\n    opened: function () {\n      console.log('Login Screen opened')\n    }\n  }\n})"}}]}]}]},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0442\u0436\u0435, \u0449\u043e\u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443, \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var loginScreen = app.loginScreen.create({ \/* parameters *\/ })"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0441\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0443 \u043d\u0430\u0441 \u0454 \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 (\u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0437\u043c\u0456\u043d\u043d\u0430 <code>loginScreen<\/code> \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u0432\u0438\u0449\u0435) \u0437 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c\u0438 \u043c\u0435\u0442\u043e\u0434\u0430\u043c\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 ","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","link_text":"string","meta":"loginScreen.app","title":""}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link_text":"string","meta":"loginScreen.el","title":""}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom7 \u0437 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","meta":"loginScreen.$el"}},{"type":"table_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","meta":"loginScreen.params"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f, \u044f\u043a\u0435 \u0432\u043a\u0430\u0437\u0443\u0454, \u0447\u0438 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0447\u0438 \u043d\u0456","meta":"loginScreen.opened"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443. \u0414\u0435\n<p>\u25cf\t<code>animate - boolean<\/code> (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c <code>true<\/code>) - \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0454, \u0447\u0438 \u0441\u043b\u0456\u0434 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e<\/p>","link_text":"string","meta":"loginScreen.open(animate)","title":""}},{"type":"table_item","props":{"content":"\u0417\u0430\u043a\u0440\u0438\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443. \u0414\u0435\n<p>\u25cf\t<code>animate - boolean<\/code> (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c <code>true<\/code>) - \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0454, \u0447\u0438 \u0441\u043b\u0456\u0434 \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e<\/p>","link_text":"string","meta":"loginScreen.close(animate)","title":""}},{"type":"table_item","props":{"content":"\u0417\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443","meta":"loginScreen.destroy()"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"loginScreen.on(event, handler)"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0443","meta":"loginScreen.once(event, handler)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"loginScreen.off(event, handler)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043f\u043e\u0434\u0456\u0457","meta":"loginScreen.off(event)"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u043d\u0430 \u043f\u0440\u0438\u043c\u0456\u0440\u043d\u0438\u043a\u0443","meta":"loginScreen.emit(event, ...args)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041a\u0435\u0440\u0443\u0439\u0442\u0435 \u0435\u043a\u0440\u0430\u043d\u043e\u043c \u0432\u0445\u043e\u0434\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u0435\u0440\u0443\u0439\u0442\u0435 \u0435\u043a\u0440\u0430\u043d\u043e\u043c \u0432\u0445\u043e\u0434\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0412\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0442\u0430 \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u0435\u043a\u0440\u0430\u043d\u0438 \u0432\u0445\u043e\u0434\u0443 (\u044f\u043a\u0449\u043e \u0432\u043e\u043d\u0438 \u0454 \u0432 DOM) \u043c\u043e\u0436\u043d\u0430 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432 \u0456 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456\u0432 \u0434\u0430\u043d\u0438\u0445 \u0437\u0430 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c\u0438:\n<p>\u25cf\t\u0429\u043e\u0431 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>\u00ablogin-screen-open\u00bb<\/code> \u0434\u043e \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 HTML (\u0431\u0430\u0436\u0430\u043d\u043e \u0434\u043b\u044f \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f)<\/p>\n<p>\u25cf\t\u0429\u043e\u0431 \u0437\u0430\u043a\u0440\u0438\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>\"login-screen-close\"<\/code> \u0434\u043e \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 HTML (\u0431\u0430\u0436\u0430\u043d\u043e \u0434\u043b\u044f \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f)<\/p>\n<p>\u25cf\t\u042f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u0431\u0456\u043b\u044c\u0448\u0435 \u043e\u0434\u043d\u043e\u0433\u043e \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0432 DOM, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0438\u0439 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u0433\u043e \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430 <code>data-login-screen=\".my-login-screen\"<\/code> \u0443 \u0446\u044c\u043e\u043c\u0443 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 HTML<\/p>\n<p>\u0412\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u043e \u0434\u043e \u043f\u0440\u0438\u043c\u0456\u0442\u043a\u0438 \u0432\u0438\u0449\u0435:<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0412 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456 data-login-screen \u043c\u0438 \u0432\u043a\u0430\u0437\u0443\u0454\u043c\u043e CSS-\u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443, \u044f\u043a\u0438\u0439 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438 -->\n<p><a href=\"#\" data-login-screen=\".my-login-screen\" class=\"login-screen-open\">Open Login Screen<\/a><\/p>\n\n<!-- \u0406 \u0434\u0435\u0441\u044c \u0443 DOM-->\n<div class=\"login-screen my-login-screen\">\n  <div class=\"view\">\n    <div class=\"page\">\n      <div class=\"navbar\">\n        <div class=\"navbar-bg\"><\/div>\n        <div class=\"navbar-inner\">\n          <div class=\"title\">Login Screen<\/div>\n          <div class=\"right\">\n            <!-- \u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0434\u043b\u044f \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443-->\n            <a class=\"link login-screen-close\">Close<\/a>\n          <\/div>\n        <\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      ...\n    <\/div>\n  <\/div>\n  ...\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0415\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435 \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 DOM \u043d\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0442\u0430 \u043f\u043e\u0434\u0456\u0457 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 DOM ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 DOM "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443 \u043f\u043e\u0447\u043d\u0435\u0442\u044c\u0441\u044f \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0430 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"loginscreen:open","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 <p><code>&lt;div class=\"login-screen\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0442\u044f \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"loginscreen:opened","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 <p><code>&lt;div class=\"login-screen\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443 \u043f\u043e\u0447\u043d\u0435\u0442\u044c\u0441\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044f \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"loginscreen:close","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 <p><code>&lt;div class=\"login-screen\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"loginscreen:closed","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 <p><code>&lt;div class=\"login-screen\"&gt;<\/code>"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u041e\u0431'\u0454\u043a\u0442","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443 \u043f\u043e\u0447\u043d\u0435\u0442\u044c\u0441\u044f \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0430 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"loginScreen","meta":"open","title":"loginScreen"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443 \u043f\u043e\u0447\u043d\u0435\u0442\u044c\u0441\u044f \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0430 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"loginScreenOpen","title":"loginScreen"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0442\u044f \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"loginScreen","meta":"opened","title":"loginScreen"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0442\u044f \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"loginScreenOpened","title":"loginScreen"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443 \u043f\u043e\u0447\u043d\u0435\u0442\u044c\u0441\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044f \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"loginScreen","meta":"close","title":"loginScreen"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443 \u043f\u043e\u0447\u043d\u0435\u0442\u044c\u0441\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044f \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"loginScreenClose","title":"loginScreen"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"loginScreen","meta":"closed","title":"loginScreen"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"loginScreenClosed","title":"loginScreen"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"loginScreen","meta":"beforeDestroy","title":"loginScreen"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"loginScreenBeforeDestroy","title":"loginScreen"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(4) \u041f\u043e\u0434\u0456\u044f - \u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 - \u041e\u043f\u0438\u0441 - \u041e\u0431'\u0454\u043a\u0442"},{"type":"headline","props":{"content":"\u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u0432\u0441\u0442\u0430\u0432\u0438\u0442\u0438 \u0435\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0432 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0430\u0431\u043e \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e. \u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u0435\u043a\u0440\u0430\u043d\u0443 \u0432\u0445\u043e\u0434\u0443 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page no-navbar no-toolbar no-swipeback login-screen-page\">\n  <div class=\"page-content login-screen-content\">\n    <div class=\"login-screen-title\">My App<\/div>\n    <form>\n      <div class=\"list\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Username<\/div>\n              <div class=\"item-input\">\n                <input type=\"text\" name=\"username\" placeholder=\"Your username\" \/>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Password<\/div>\n              <div class=\"item-input\">\n                <input type=\"password\" name=\"password\" placeholder=\"Your password\" \/>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"list\">\n        <ul>\n          <li><a href=\"#\" class=\"list-button\">Sign In<\/a><\/li>\n        <\/ul>\n        <div class=\"block-footer\">\n          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<\/p>\n          <p><a href=\"#\" class=\"close-login-screen\">Close Login Screen<\/a><\/p>\n        <\/div>\n      <\/div>\n    <\/form>\n  <\/div>\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443 \u043c\u0438 \u043c\u0430\u0454\u043c\u043e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043a\u043b\u0430\u0441\u0438 <code>\u00abno-navbar\u00bb<\/code>, <code>\u00abno-toolbar\u00bb<\/code> \u0456 <code>\u00abno-swipeback\u00bb<\/code>, \u0449\u043e\u0431 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0432\u0456\u0434 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-login-screen-blocks-max-width: 480px;\n  \/*\n   --t4-login-screen-list-button-text-color: var(--t4-theme-color);\n   *\/\n  --t4-login-screen-title-text-align: center;\n  --t4-login-screen-title-text-color: inherit;\n  --t4-login-screen-title-letter-spacing: 0;\n  --t4-login-screen-title-font-weight: 600;\n  --t4-login-screen-title-font-size: 28px;\n  --t4-login-screen-content-bg-color: #fff;\n  --t4-login-screen-bg-color: #fff;\n}\n:root .dark,\n:root.dark {\n  --t4-login-screen-bg-color: #121212;\n  --t4-login-screen-content-bg-color: #121212;\n}\n.ios {\n  --t4-login-screen-blocks-margin-vertical: 25px;\n}\n.ios .dark,\n.ios.dark {\n  --t4-login-screen-bg-color: #000;\n  --t4-login-screen-content-bg-color: #000;\n}\n.md {\n  --t4-login-screen-blocks-margin-vertical: 24px;\n}\n.aurora {\n  --t4-login-screen-blocks-margin-vertical: 16px;\n}\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 "},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner\">\n        <div class=\"title\">Login Screen<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block block-strong\">\n        <p>\n          <!-- \u0412\u0456\u0434\u043a\u0440\u0438\u0439\u0442\u0435 \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u0432\u0445\u043e\u0434\u0443, \u044f\u043a\u0438\u0439 \u0443\u0436\u0435 \u0454 \u0432 DOM-->\n          <a href=\"#\" class=\"button button-fill login-screen-open\" data-login-screen=\".login-screen\">Open As\n            Modal<\/a>\n        <\/p>\n        <p>\n          <!-- \u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437 \u0435\u043a\u0440\u0430\u043d\u043e\u043c \u0432\u0445\u043e\u0434\u0443 (login-screen-page.t4.html)-->\n          <a href=\"\/login-screen\/\" class=\"button button-fill\">Open As Page<\/a>\n        <\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n\n  <div class=\"login-screen\">\n    <div class=\"view\">\n      <div class=\"page\">\n        <div class=\"page-content login-screen-content\">\n          <div class=\"login-screen-title\">My App<\/div>\n          <form>\n            <div class=\"list\">\n              <ul>\n                <li class=\"item-content item-input\">\n                  <div class=\"item-inner\">\n                    <div class=\"item-title item-label\">Username<\/div>\n                    <div class=\"item-input-wrap\">\n                      <input type=\"text\" name=\"username\" placeholder=\"Your username\" \/>\n                    <\/div>\n                  <\/div>\n                <\/li>\n                <li class=\"item-content item-input\">\n                  <div class=\"item-inner\">\n                    <div class=\"item-title item-label\">Password<\/div>\n                    <div class=\"item-input-wrap\">\n                      <input type=\"password\" name=\"password\" placeholder=\"Your password\" \/>\n                    <\/div>\n                  <\/div>\n                <\/li>\n              <\/ul>\n            <\/div>\n            <div class=\"list\">\n              <ul>\n                <li><a class=\"list-button\" href=\"#\">Sign In<\/a><\/li>\n              <\/ul>\n              <div class=\"block-footer\">\n                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<\/p>\n                <p><a class=\"link login-screen-close\" href=\"#\">Close Login Screen<\/a><\/p>\n              <\/div>\n            <\/div>\n          <\/form>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, ctx) => {\n    const { $ } = ctx;\n    \/\/ \u0415\u043a\u0440\u0430\u043d \u0432\u0445\u043e\u0434\u0443 \u0432 \u043c\u043e\u0434\u0430\u043b\u044c\u043d\u0456 \u043f\u043e\u0434\u0456\u0457 DOM\n    $('.login-screen').on('loginscreen:open', function (e) {\n      console.log('Login screen open')\n    });\n    $('.login-screen').on('loginscreen:opened', function (e) {\n      console.log('Login screen opened')\n    });\n    $('.login-screen').on('loginscreen:close', function (e) {\n      console.log('Login screen close')\n    });\n    $('.login-screen').on('loginscreen:closed', function (e) {\n      console.log('Login screen closed')\n    });\n\n    \n\n    return $render;\n  }\n\n<\/script>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -  \u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0435\u043a\u0440\u0430\u043d\u0430 \u0432\u0445\u043e\u0434\u0443"},{"type":"code","props":{"content":"<template>\n  <div class=\"page no-navbar no-toolbar no-swipeback\">\n    <div class=\"page-content login-screen-content\">\n      <div class=\"login-screen-title\">My App<\/div>\n      <form>\n        <div class=\"list\">\n          <ul>\n            <li class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-title item-label\">Username<\/div>\n                <div class=\"item-input-wrap\">\n                  <input type=\"text\" name=\"username\" placeholder=\"Your username\" \/>\n                <\/div>\n              <\/div>\n            <\/li>\n            <li class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-title item-label\">Password<\/div>\n                <div class=\"item-input-wrap\">\n                  <input type=\"password\" name=\"password\" placeholder=\"Your password\" \/>\n                <\/div>\n              <\/div>\n            <\/li>\n          <\/ul>\n        <\/div>\n        <div class=\"list\">\n          <ul>\n            <li><a href=\"#\" class=\"list-button\">Sign In<\/a><\/li>\n          <\/ul>\n          <div class=\"block-footer\">\n            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<\/p>\n            <p><a href=\"#\" class=\"link back\">Close Login Screen<\/a><\/p>\n          <\/div>\n        <\/div>\n      <\/form>\n    <\/div>\n  <\/div>\n<\/template>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

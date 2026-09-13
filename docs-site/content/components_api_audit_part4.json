@@ -1,0 +1,5270 @@
+{
+  "meta": {
+    "title": "Techno4 Framework 2 UI Components API Audit - Part 4",
+    "version": "2.0.0",
+    "part": 4,
+    "componentsCount": 24,
+    "generatedAt": "2026-09-12T23:45:56.415Z",
+    "componentsList": [
+      "radio",
+      "range",
+      "searchbar",
+      "segmented",
+      "skeleton",
+      "tabs",
+      "swiper",
+      "smart-select",
+      "sortable",
+      "statusbar",
+      "stepper",
+      "subnavbar",
+      "swipeout",
+      "text-editor",
+      "timeline",
+      "toast",
+      "toggle",
+      "toolbar",
+      "tooltip",
+      "touch-ripple",
+      "treeview",
+      "virtual-list",
+      "elevation",
+      "apache-cordova"
+    ],
+    "framework": "Techno4 Framework 2",
+    "standards": {
+      "templateEngine": "$h VDOM templates (${$h`...`})",
+      "domLibrary": "Dom64 ($)",
+      "iconNamespace": "t4-icons (strictly zero f7-icons)",
+      "layoutGrid": "Native CSS Grid (.grid, .grid-cols-X, zero legacy row/col-*)",
+      "typeSystem": "Strict TypeScript definitions (/techno4-framework2/types#[anchor])"
+    }
+  },
+  "components": [
+    {
+      "name": "radio",
+      "title": "Radio",
+      "description": "Radio component provides native radio input controls for single-selection choice lists. Supports inline radio items and list-view integrated item-radio rows with theme-specific styling.",
+      "docLink": "/techno4-framework2/radio",
+      "typesLink": "/techno4-framework2/types#radio",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/radio/radio.d.ts",
+        "packages/techno4-framework2-core/src/components/radio/radio.js",
+        "packages/techno4-framework2-core/src/components/radio/radio.less",
+        "packages/techno4-framework2-core/src/components/radio/radio-vars.less",
+        "packages/techno4-framework2-core/src/components/radio/radio-ios.less",
+        "packages/techno4-framework2-core/src/components/radio/radio-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/radio.html",
+        "description": "Interactive demo demonstrating inline radio buttons and list-view radio groupings with single selection states."
+      },
+      "htmlLayout": {
+        "structure": "<label class=\"radio\">\n  <input type=\"radio\" name=\"my-radio\" value=\"1\" checked />\n  <i class=\"icon-radio\"></i>\n</label>\n\n<div class=\"list\">\n  <ul>\n    <li>\n      <label class=\"item-radio item-radio-icon-start item-content\">\n        <input type=\"radio\" name=\"demo-radio\" value=\"Books\" checked />\n        <i class=\"icon icon-radio\"></i>\n        <div class=\"item-inner\">\n          <div class=\"item-title\">Books</div>\n        </div>\n      </label>\n    </li>\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "radio",
+            "description": "Inline radio input container."
+          },
+          {
+            "class": "icon-radio",
+            "description": "Visual circular indicator element."
+          },
+          {
+            "class": "item-radio",
+            "description": "List item radio container."
+          },
+          {
+            "class": "item-radio-icon-start",
+            "description": "Positions radio indicator on left/start edge."
+          },
+          {
+            "class": "item-radio-icon-end",
+            "description": "Positions radio indicator on right/end edge."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [
+        {
+          "event": "change",
+          "target": "input[type='radio']",
+          "description": "Triggered when user changes the selected radio option."
+        }
+      ],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-radio-border-radius",
+          "theme": "all",
+          "defaultValue": "50%",
+          "description": "Circular border radius of radio button."
+        },
+        {
+          "variable": "--t4-radio-extra-margin",
+          "theme": "all",
+          "defaultValue": "0px",
+          "description": "Extra margin around radio indicator."
+        },
+        {
+          "variable": "--t4-radio-active-color",
+          "theme": "all",
+          "defaultValue": "var(--t4-theme-color)",
+          "description": "Checked indicator color."
+        },
+        {
+          "variable": "--t4-radio-inactive-color",
+          "theme": "dark",
+          "defaultValue": "rgba(255, 255, 255, 0.3)",
+          "description": "Unchecked border/indicator color in dark mode."
+        },
+        {
+          "variable": "--t4-radio-size",
+          "theme": "ios",
+          "defaultValue": "22px",
+          "description": "Diameter of radio button on iOS."
+        },
+        {
+          "variable": "--t4-radio-border-width",
+          "theme": "ios",
+          "defaultValue": "1px",
+          "description": "Border width on iOS."
+        },
+        {
+          "variable": "--t4-radio-inactive-color",
+          "theme": "ios-light",
+          "defaultValue": "#c7c7cc",
+          "description": "Unchecked radio border color on iOS light."
+        },
+        {
+          "variable": "--t4-radio-size",
+          "theme": "md",
+          "defaultValue": "20px",
+          "description": "Diameter of radio button on Material Design."
+        },
+        {
+          "variable": "--t4-radio-border-width",
+          "theme": "md",
+          "defaultValue": "2px",
+          "description": "Border width on Material Design."
+        },
+        {
+          "variable": "--t4-radio-inactive-color",
+          "theme": "md-light",
+          "defaultValue": "#6d6d6d",
+          "description": "Unchecked radio border color on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "range",
+      "title": "Range Slider",
+      "description": "Range Slider provides a touch-friendly numerical value selector with single or dual knobs, optional value bubble labels, discrete stepping, vertical orientations, and tick mark scales.",
+      "docLink": "/techno4-framework2/range",
+      "typesLink": "/techno4-framework2/types#range",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/range/range.d.ts",
+        "packages/techno4-framework2-core/src/components/range/range.js",
+        "packages/techno4-framework2-core/src/components/range/range-class.js",
+        "packages/techno4-framework2-core/src/components/range/range.less",
+        "packages/techno4-framework2-core/src/components/range/range-vars.less",
+        "packages/techno4-framework2-core/src/components/range/range-ios.less",
+        "packages/techno4-framework2-core/src/components/range/range-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/range.html",
+        "description": "Interactive demo demonstrating single/dual sliders, discrete steps, value indicator bubbles, vertical sliders, and scale tick marks."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"range-slider range-slider-init\" data-min=\"0\" data-max=\"100\" data-step=\"1\" data-value=\"50\">\n  <input type=\"range\" min=\"0\" max=\"100\" step=\"1\" value=\"50\" />\n</div>",
+        "modifiers": [
+          {
+            "class": "range-slider",
+            "description": "Main range slider container."
+          },
+          {
+            "class": "range-slider-init",
+            "description": "Auto-initialization marker class."
+          },
+          {
+            "class": "range-slider-horizontal",
+            "description": "Horizontal track orientation."
+          },
+          {
+            "class": "range-slider-vertical",
+            "description": "Vertical track orientation."
+          },
+          {
+            "class": "range-slider-label",
+            "description": "Pill indicator displaying current value above knob."
+          },
+          {
+            "class": "range-bar",
+            "description": "Slider background track element."
+          },
+          {
+            "class": "range-bar-active",
+            "description": "Filled highlighted segment representing active value."
+          },
+          {
+            "class": "range-knob-handle",
+            "description": "Interactive draggable knob handle."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "range",
+            "type": "Range.Parameters",
+            "default": "undefined",
+            "description": "Global Range Slider default parameters."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Range Slider element or CSS selector."
+          },
+          {
+            "name": "inputEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Associated input element."
+          },
+          {
+            "name": "dual",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables dual range slider with 2 knobs."
+          },
+          {
+            "name": "step",
+            "type": "number",
+            "default": "1",
+            "description": "Minimal step increment between values."
+          },
+          {
+            "name": "label",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables floating value bubble above knob."
+          },
+          {
+            "name": "formatLabel",
+            "type": "(value: number) => string",
+            "default": "undefined",
+            "description": "Custom formatter for value label."
+          },
+          {
+            "name": "min",
+            "type": "number",
+            "default": "0",
+            "description": "Minimum allowable value."
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "default": "100",
+            "description": "Maximum allowable value."
+          },
+          {
+            "name": "value",
+            "type": "number | number[]",
+            "default": "undefined",
+            "description": "Initial value (single number or [min, max])."
+          },
+          {
+            "name": "draggableBar",
+            "type": "boolean",
+            "default": "true",
+            "description": "Allows changing value by clicking/dragging the track bar."
+          },
+          {
+            "name": "vertical",
+            "type": "boolean",
+            "default": "false",
+            "description": "Renders vertical slider track."
+          },
+          {
+            "name": "verticalReversed",
+            "type": "boolean",
+            "default": "false",
+            "description": "Reverses vertical axis orientation."
+          },
+          {
+            "name": "scale",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables tick mark scale underneath slider track."
+          },
+          {
+            "name": "scaleSteps",
+            "type": "number",
+            "default": "5",
+            "description": "Number of primary scale steps."
+          },
+          {
+            "name": "scaleSubSteps",
+            "type": "number",
+            "default": "0",
+            "description": "Number of intermediate sub-steps between primary ticks."
+          },
+          {
+            "name": "formatScaleLabel",
+            "type": "(value: number) => string",
+            "default": "undefined",
+            "description": "Custom formatter function for scale tick labels."
+          },
+          {
+            "name": "limitKnobPosition",
+            "type": "boolean",
+            "default": "true",
+            "description": "Confines knob inside track boundaries."
+          },
+          {
+            "name": "limitBarPosition",
+            "type": "boolean",
+            "default": "true (md)",
+            "description": "Confines bar inside knob size."
+          },
+          {
+            "name": "on",
+            "type": "object",
+            "default": "undefined",
+            "description": "Object containing event handlers."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "description": "Link to global app instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "description": "Range slider HTML element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping range slider."
+        },
+        {
+          "name": "inputEl",
+          "type": "HTMLElement",
+          "description": "Input element inside slider."
+        },
+        {
+          "name": "$inputEl",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping input element."
+        },
+        {
+          "name": "rangeWidth",
+          "type": "number",
+          "description": "Current track width in px."
+        },
+        {
+          "name": "rangeHeight",
+          "type": "number",
+          "description": "Current track height in px."
+        },
+        {
+          "name": "dual",
+          "type": "boolean",
+          "description": "Whether dual knob mode is active."
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "description": "Slider minimum value."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "description": "Slider maximum value."
+        },
+        {
+          "name": "value",
+          "type": "number | number[]",
+          "description": "Current slider value."
+        },
+        {
+          "name": "scale",
+          "type": "boolean",
+          "description": "Whether scale is enabled."
+        },
+        {
+          "name": "knobs",
+          "type": "HTMLElement[]",
+          "description": "Array of knob handle elements."
+        },
+        {
+          "name": "labels",
+          "type": "HTMLElement[]",
+          "description": "Array of value label bubble elements."
+        },
+        {
+          "name": "params",
+          "type": "Range.Parameters",
+          "description": "Instance parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "getValue",
+          "signature": "getValue(): number | number[]",
+          "description": "Returns current slider value."
+        },
+        {
+          "name": "setValue",
+          "signature": "setValue(value: number | number[]): Range",
+          "description": "Sets new slider value."
+        },
+        {
+          "name": "destroy",
+          "signature": "destroy(): void",
+          "description": "Destroys Range Slider instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.range.create",
+          "signature": "app.range.create(parameters: Range.Parameters): Range",
+          "description": "Creates a new Range Slider instance."
+        },
+        {
+          "name": "app.range.get",
+          "signature": "app.range.get(el: HTMLElement | CSSSelector | Range): Range",
+          "description": "Retrieves Range Slider instance by element."
+        },
+        {
+          "name": "app.range.getValue",
+          "signature": "app.range.getValue(el: HTMLElement | CSSSelector | Range): number | number[]",
+          "description": "Gets value of specified slider."
+        },
+        {
+          "name": "app.range.setValue",
+          "signature": "app.range.setValue(el: HTMLElement | CSSSelector | Range, value: number | number[]): void",
+          "description": "Sets value on specified slider."
+        },
+        {
+          "name": "app.range.destroy",
+          "signature": "app.range.destroy(el: HTMLElement | CSSSelector | Range): void",
+          "description": "Destroys Range Slider instance."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "range:change",
+          "target": ".range-slider",
+          "description": "Triggered continuously during slider drag."
+        },
+        {
+          "event": "range:changed",
+          "target": ".range-slider",
+          "description": "Triggered upon knob release after value changes."
+        },
+        {
+          "event": "range:beforedestroy",
+          "target": ".range-slider",
+          "description": "Triggered right before instance is destroyed."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "rangeChange",
+          "arguments": "(range: Range)",
+          "description": "Triggered continuously during slider drag."
+        },
+        {
+          "event": "rangeChanged",
+          "arguments": "(range: Range)",
+          "description": "Triggered upon knob release after value change."
+        },
+        {
+          "event": "rangeBeforeDestroy",
+          "arguments": "(range: Range)",
+          "description": "Triggered right before Range Slider is destroyed."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-range-scale-step-height",
+          "theme": "all",
+          "defaultValue": "5px",
+          "description": "Height of scale tick mark lines."
+        },
+        {
+          "variable": "--t4-range-scale-substep-width",
+          "theme": "all",
+          "defaultValue": "1px",
+          "description": "Width of sub-step tick lines."
+        },
+        {
+          "variable": "--t4-range-scale-substep-height",
+          "theme": "all",
+          "defaultValue": "4px",
+          "description": "Height of sub-step tick lines."
+        },
+        {
+          "variable": "--t4-range-size",
+          "theme": "ios",
+          "defaultValue": "28px",
+          "description": "Track touch hit size on iOS."
+        },
+        {
+          "variable": "--t4-range-bar-size",
+          "theme": "ios",
+          "defaultValue": "6px",
+          "description": "Track bar thickness on iOS."
+        },
+        {
+          "variable": "--t4-range-bar-border-radius",
+          "theme": "ios",
+          "defaultValue": "6px",
+          "description": "Track bar corner radius on iOS."
+        },
+        {
+          "variable": "--t4-range-knob-width",
+          "theme": "ios",
+          "defaultValue": "38px",
+          "description": "Knob handle width on iOS."
+        },
+        {
+          "variable": "--t4-range-knob-height",
+          "theme": "ios",
+          "defaultValue": "24px",
+          "description": "Knob handle height on iOS."
+        },
+        {
+          "variable": "--t4-range-knob-color",
+          "theme": "ios",
+          "defaultValue": "#fff",
+          "description": "Knob fill color on iOS."
+        },
+        {
+          "variable": "--t4-range-knob-box-shadow",
+          "theme": "ios",
+          "defaultValue": "0 2px 4px rgba(0,0,0,0.3)",
+          "description": "Knob drop shadow on iOS."
+        },
+        {
+          "variable": "--t4-range-label-size",
+          "theme": "ios",
+          "defaultValue": "24px",
+          "description": "Label bubble size on iOS."
+        },
+        {
+          "variable": "--t4-range-label-bg-color",
+          "theme": "ios",
+          "defaultValue": "#fff",
+          "description": "Label bubble background on iOS."
+        },
+        {
+          "variable": "--t4-range-label-text-color",
+          "theme": "ios",
+          "defaultValue": "#000",
+          "description": "Label bubble text color on iOS."
+        },
+        {
+          "variable": "--t4-range-bar-bg-color",
+          "theme": "ios-light",
+          "defaultValue": "rgba(0, 0, 0, 0.2)",
+          "description": "Track background on iOS light."
+        },
+        {
+          "variable": "--t4-range-bar-bg-color",
+          "theme": "ios-dark",
+          "defaultValue": "rgba(255, 255, 255, 0.2)",
+          "description": "Track background on iOS dark."
+        },
+        {
+          "variable": "--t4-range-size",
+          "theme": "md",
+          "defaultValue": "20px",
+          "description": "Touch target size on Material Design."
+        },
+        {
+          "variable": "--t4-range-bar-size",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Track bar thickness on Material Design."
+        },
+        {
+          "variable": "--t4-range-bar-border-radius",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Track bar corner radius on Material Design."
+        },
+        {
+          "variable": "--t4-range-knob-width",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Knob width on Material Design."
+        },
+        {
+          "variable": "--t4-range-knob-height",
+          "theme": "md",
+          "defaultValue": "44px",
+          "description": "Knob height on Material Design."
+        },
+        {
+          "variable": "--t4-range-bar-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-secondary-container)",
+          "description": "Track background on Material Design."
+        },
+        {
+          "variable": "--t4-range-knob-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-theme-color)",
+          "description": "Knob handle color on Material Design."
+        },
+        {
+          "variable": "--t4-range-label-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-theme-color)",
+          "description": "Label bubble background on Material Design."
+        },
+        {
+          "variable": "--t4-range-label-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-primary)",
+          "description": "Label text color on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "searchbar",
+      "title": "Searchbar",
+      "description": "Searchbar provides a search input element that can filter local list views or trigger custom async search queries. Features clear buttons, disable/cancel controls, expandable mode, and backdrop overlays.",
+      "docLink": "/techno4-framework2/searchbar",
+      "typesLink": "/techno4-framework2/types#searchbar",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/searchbar/searchbar.d.ts",
+        "packages/techno4-framework2-core/src/components/searchbar/searchbar.js",
+        "packages/techno4-framework2-core/src/components/searchbar/searchbar-class.js",
+        "packages/techno4-framework2-core/src/components/searchbar/remove-diacritics.js",
+        "packages/techno4-framework2-core/src/components/searchbar/searchbar.less",
+        "packages/techno4-framework2-core/src/components/searchbar/searchbar-vars.less",
+        "packages/techno4-framework2-core/src/components/searchbar/searchbar-ios.less",
+        "packages/techno4-framework2-core/src/components/searchbar/searchbar-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/searchbar.html",
+        "description": "Interactive demo demonstrating static list filtering, expandable searchbar, and not-found state handling."
+      },
+      "htmlLayout": {
+        "structure": "<form class=\"searchbar\">\n  <div class=\"searchbar-inner\">\n    <div class=\"searchbar-input-wrap\">\n      <input type=\"search\" placeholder=\"Search\" />\n      <i class=\"searchbar-icon\"></i>\n      <span class=\"input-clear-button\"></span>\n    </div>\n    <span class=\"searchbar-disable-button\">Cancel</span>\n  </div>\n</form>\n<div class=\"searchbar-backdrop\"></div>",
+        "modifiers": [
+          {
+            "class": "searchbar",
+            "description": "Searchbar form container."
+          },
+          {
+            "class": "searchbar-enabled",
+            "description": "Active focused search state."
+          },
+          {
+            "class": "searchbar-expandable",
+            "description": "Hidden until toggled by an action link."
+          },
+          {
+            "class": "searchbar-inline",
+            "description": "Placed directly in page-content without subnavbar."
+          },
+          {
+            "class": "searchbar-backdrop",
+            "description": "Dimmed background overlay displayed on focus."
+          },
+          {
+            "class": "searchbar-found",
+            "description": "Element kept visible when matching results exist."
+          },
+          {
+            "class": "searchbar-not-found",
+            "description": "Element displayed when no matches are found."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "searchbar",
+            "type": "Searchbar.Parameters",
+            "default": "undefined",
+            "description": "Global Searchbar default parameters."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Searchbar element or selector."
+          },
+          {
+            "name": "inputEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Target search input element."
+          },
+          {
+            "name": "disableButton",
+            "type": "boolean",
+            "default": "true",
+            "description": "Enables Cancel/disable button."
+          },
+          {
+            "name": "disableButtonEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Disable button element."
+          },
+          {
+            "name": "searchContainer",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "List block element to filter."
+          },
+          {
+            "name": "searchIn",
+            "type": "CSSSelector",
+            "default": "undefined",
+            "description": "Selector of field to search in (e.g. .item-title)."
+          },
+          {
+            "name": "searchItem",
+            "type": "CSSSelector",
+            "default": "'li'",
+            "description": "Selector of list items to filter."
+          },
+          {
+            "name": "searchGroup",
+            "type": "CSSSelector",
+            "default": "'.list-group'",
+            "description": "Selector of group container."
+          },
+          {
+            "name": "searchGroupTitle",
+            "type": "CSSSelector",
+            "default": "'.list-group-title'",
+            "description": "Selector of group title."
+          },
+          {
+            "name": "foundEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "'.searchbar-found'",
+            "description": "Element visible on match."
+          },
+          {
+            "name": "notFoundEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "'.searchbar-not-found'",
+            "description": "Element visible when no match found."
+          },
+          {
+            "name": "hideOnEnableEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "'.searchbar-hide-on-enable'",
+            "description": "Element hidden when searchbar activates."
+          },
+          {
+            "name": "hideOnSearchEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "'.searchbar-hide-on-search'",
+            "description": "Element hidden during typing query."
+          },
+          {
+            "name": "backdrop",
+            "type": "boolean",
+            "default": "true",
+            "description": "Enables backdrop overlay."
+          },
+          {
+            "name": "backdropEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Custom backdrop element."
+          },
+          {
+            "name": "ignore",
+            "type": "CSSSelector",
+            "default": "'.searchbar-ignore'",
+            "description": "Selector of items never filtered out."
+          },
+          {
+            "name": "customSearch",
+            "type": "boolean",
+            "default": "false",
+            "description": "Disables automatic list filtering for external API calls."
+          },
+          {
+            "name": "removeDiacritics",
+            "type": "boolean",
+            "default": "false",
+            "description": "Normalizes accents and diacritics during search."
+          },
+          {
+            "name": "hideGroupTitles",
+            "type": "boolean",
+            "default": "true",
+            "description": "Hides group titles if no matching items exist."
+          },
+          {
+            "name": "hideGroups",
+            "type": "boolean",
+            "default": "true",
+            "description": "Hides empty groups during search."
+          },
+          {
+            "name": "disableOnBackdropClick",
+            "type": "boolean",
+            "default": "true",
+            "description": "Deactivates searchbar on backdrop click."
+          },
+          {
+            "name": "expandable",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables expandable animation mode."
+          },
+          {
+            "name": "inputEvents",
+            "type": "string",
+            "default": "'change input compositionend'",
+            "description": "Events used to track search input."
+          },
+          {
+            "name": "on",
+            "type": "object",
+            "default": "undefined",
+            "description": "Object containing event handlers."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "description": "Searchbar HTML DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping searchbar."
+        },
+        {
+          "name": "inputEl",
+          "type": "HTMLElement",
+          "description": "Search input element."
+        },
+        {
+          "name": "$inputEl",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping search input."
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "description": "Current search input string."
+        },
+        {
+          "name": "previousQuery",
+          "type": "string",
+          "description": "Previous search string before change."
+        },
+        {
+          "name": "searchContainer",
+          "type": "HTMLElement",
+          "description": "List container being filtered."
+        },
+        {
+          "name": "$searchContainer",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping list container."
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether searchbar is active."
+        },
+        {
+          "name": "expandable",
+          "type": "boolean",
+          "description": "Whether expandable mode is active."
+        },
+        {
+          "name": "params",
+          "type": "Searchbar.Parameters",
+          "description": "Instance parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "search",
+          "signature": "search(query: string): Searchbar",
+          "description": "Filters container by given query string."
+        },
+        {
+          "name": "enable",
+          "signature": "enable(): Searchbar",
+          "description": "Activates searchbar."
+        },
+        {
+          "name": "disable",
+          "signature": "disable(): Searchbar",
+          "description": "Deactivates searchbar."
+        },
+        {
+          "name": "toggle",
+          "signature": "toggle(): Searchbar",
+          "description": "Toggles active/inactive state."
+        },
+        {
+          "name": "clear",
+          "signature": "clear(): Searchbar",
+          "description": "Clears search query input."
+        },
+        {
+          "name": "destroy",
+          "signature": "destroy(): void",
+          "description": "Destroys Searchbar instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.searchbar.create",
+          "signature": "app.searchbar.create(parameters: Searchbar.Parameters): Searchbar",
+          "description": "Creates a new Searchbar instance."
+        },
+        {
+          "name": "app.searchbar.get",
+          "signature": "app.searchbar.get(el: HTMLElement | CSSSelector | Searchbar): Searchbar",
+          "description": "Retrieves Searchbar instance by element."
+        },
+        {
+          "name": "app.searchbar.destroy",
+          "signature": "app.searchbar.destroy(el: HTMLElement | CSSSelector | Searchbar): void",
+          "description": "Destroys Searchbar instance."
+        },
+        {
+          "name": "app.searchbar.clear",
+          "signature": "app.searchbar.clear(el: HTMLElement | CSSSelector | Searchbar): Searchbar",
+          "description": "Clears specified searchbar query."
+        },
+        {
+          "name": "app.searchbar.enable",
+          "signature": "app.searchbar.enable(el: HTMLElement | CSSSelector | Searchbar): Searchbar",
+          "description": "Enables specified searchbar."
+        },
+        {
+          "name": "app.searchbar.disable",
+          "signature": "app.searchbar.disable(el: HTMLElement | CSSSelector | Searchbar): Searchbar",
+          "description": "Disables specified searchbar."
+        },
+        {
+          "name": "app.searchbar.toggle",
+          "signature": "app.searchbar.toggle(el: HTMLElement | CSSSelector | Searchbar): Searchbar",
+          "description": "Toggles specified searchbar."
+        },
+        {
+          "name": "app.searchbar.search",
+          "signature": "app.searchbar.search(el: HTMLElement | CSSSelector | Searchbar, query: string): Searchbar",
+          "description": "Executes search query on searchbar."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "searchbar:search",
+          "target": ".searchbar",
+          "description": "Triggered during query change."
+        },
+        {
+          "event": "searchbar:clear",
+          "target": ".searchbar",
+          "description": "Triggered when user clicks clear icon."
+        },
+        {
+          "event": "searchbar:enable",
+          "target": ".searchbar",
+          "description": "Triggered when searchbar activates."
+        },
+        {
+          "event": "searchbar:disable",
+          "target": ".searchbar",
+          "description": "Triggered when searchbar deactivates."
+        },
+        {
+          "event": "searchbar:beforedestroy",
+          "target": ".searchbar",
+          "description": "Triggered right before instance destruction."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "searchbarSearch",
+          "arguments": "(searchbar: Searchbar, query: string, previousQuery: string)",
+          "description": "Triggered during search input."
+        },
+        {
+          "event": "searchbarClear",
+          "arguments": "(searchbar: Searchbar, previousQuery: string)",
+          "description": "Triggered on query clear."
+        },
+        {
+          "event": "searchbarEnable",
+          "arguments": "(searchbar: Searchbar)",
+          "description": "Triggered when searchbar activates."
+        },
+        {
+          "event": "searchbarDisable",
+          "arguments": "(searchbar: Searchbar)",
+          "description": "Triggered when searchbar deactivates."
+        },
+        {
+          "event": "searchbarBeforeDestroy",
+          "arguments": "(searchbar: Searchbar)",
+          "description": "Triggered right before instance destruction."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-searchbar-input-border-width",
+          "theme": "all",
+          "defaultValue": "0px",
+          "description": "Border width around search input field."
+        },
+        {
+          "variable": "--t4-searchbar-input-border-color",
+          "theme": "all",
+          "defaultValue": "transparent",
+          "description": "Border color of search input."
+        },
+        {
+          "variable": "--t4-searchbar-height",
+          "theme": "ios",
+          "defaultValue": "44px",
+          "description": "Height of searchbar container on iOS."
+        },
+        {
+          "variable": "--t4-searchbar-input-font-size",
+          "theme": "ios",
+          "defaultValue": "17px",
+          "description": "Input font size on iOS."
+        },
+        {
+          "variable": "--t4-searchbar-input-border-radius",
+          "theme": "ios",
+          "defaultValue": "44px",
+          "description": "Input pill border radius on iOS."
+        },
+        {
+          "variable": "--t4-searchbar-input-height",
+          "theme": "ios",
+          "defaultValue": "44px",
+          "description": "Input height on iOS."
+        },
+        {
+          "variable": "--t4-searchbar-input-padding-horizontal",
+          "theme": "ios",
+          "defaultValue": "44px",
+          "description": "Horizontal input padding on iOS."
+        },
+        {
+          "variable": "--t4-searchbar-backdrop-bg-color",
+          "theme": "ios",
+          "defaultValue": "rgba(0,0,0,0.4)",
+          "description": "Backdrop background on iOS."
+        },
+        {
+          "variable": "--t4-searchbar-input-bg-color",
+          "theme": "ios",
+          "defaultValue": "var(--t4-glass-bg-color)",
+          "description": "Input background color on iOS."
+        },
+        {
+          "variable": "--t4-searchbar-placeholder-color",
+          "theme": "ios-light",
+          "defaultValue": "rgba(0, 0, 0, 0.4)",
+          "description": "Placeholder color on iOS light."
+        },
+        {
+          "variable": "--t4-searchbar-input-text-color",
+          "theme": "ios-light",
+          "defaultValue": "#000",
+          "description": "Input text color on iOS light."
+        },
+        {
+          "variable": "--t4-searchbar-search-icon-color",
+          "theme": "ios-light",
+          "defaultValue": "rgba(0, 0, 0, 0.4)",
+          "description": "Search icon color on iOS light."
+        },
+        {
+          "variable": "--t4-searchbar-placeholder-color",
+          "theme": "ios-dark",
+          "defaultValue": "rgba(255, 255, 255, 0.4)",
+          "description": "Placeholder color on iOS dark."
+        },
+        {
+          "variable": "--t4-searchbar-input-text-color",
+          "theme": "ios-dark",
+          "defaultValue": "#fff",
+          "description": "Input text color on iOS dark."
+        },
+        {
+          "variable": "--t4-searchbar-height",
+          "theme": "md",
+          "defaultValue": "48px",
+          "description": "Height of searchbar on Material Design."
+        },
+        {
+          "variable": "--t4-searchbar-input-font-size",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Input font size on Material Design."
+        },
+        {
+          "variable": "--t4-searchbar-input-border-radius",
+          "theme": "md",
+          "defaultValue": "24px",
+          "description": "Border radius on Material Design."
+        },
+        {
+          "variable": "--t4-searchbar-input-height",
+          "theme": "md",
+          "defaultValue": "48px",
+          "description": "Input height on Material Design."
+        },
+        {
+          "variable": "--t4-searchbar-backdrop-bg-color",
+          "theme": "md",
+          "defaultValue": "rgba(0,0,0,0.25)",
+          "description": "Backdrop background on Material Design."
+        },
+        {
+          "variable": "--t4-searchbar-input-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-secondary-container)",
+          "description": "Input background on Material Design."
+        },
+        {
+          "variable": "--t4-searchbar-input-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-surface)",
+          "description": "Input text color on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "segmented",
+      "title": "Segmented",
+      "description": "Segmented control is a linear horizontal row of mutually exclusive buttons. Commonly used for tab switching, sub-views, and filter selectors. Supports raised, round, and strong styles with animated sliding highlight indicator.",
+      "docLink": "/techno4-framework2/segmented",
+      "typesLink": "/techno4-framework2/types#segmented",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/button/button.less",
+        "packages/techno4-framework2-core/src/components/button/button-vars.less",
+        "packages/techno4-framework2-core/src/components/button/button-ios.less",
+        "packages/techno4-framework2-core/src/components/button/button-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/buttons.html",
+        "description": "Interactive demo demonstrating segmented button groups, segmented-round, segmented-raised, and segmented-strong with sliding highlight pill."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"segmented segmented-strong\">\n  <button class=\"button button-active\">Tab 1</button>\n  <button class=\"button\">Tab 2</button>\n  <button class=\"button\">Tab 3</button>\n  <span class=\"segmented-highlight\"></span>\n</div>",
+        "modifiers": [
+          {
+            "class": "segmented",
+            "description": "Horizontal container grouping adjacent buttons."
+          },
+          {
+            "class": "segmented-strong",
+            "description": "Encloses segments in rounded pill background with sliding active highlight."
+          },
+          {
+            "class": "segmented-raised",
+            "description": "Elevates segmented buttons with drop shadow."
+          },
+          {
+            "class": "segmented-round",
+            "description": "Renders fully rounded capsule corners."
+          },
+          {
+            "class": "segmented-highlight",
+            "description": "Absolute positioned sliding element behind the active button in strong mode."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [
+        {
+          "event": "click",
+          "target": ".segmented .button",
+          "description": "Triggered when user clicks a segment button."
+        }
+      ],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-segmented-raised-divider-color",
+          "theme": "all",
+          "defaultValue": "rgba(0, 0, 0, 0.1)",
+          "description": "Divider color between raised segments."
+        },
+        {
+          "variable": "--t4-segmented-strong-padding",
+          "theme": "all",
+          "defaultValue": "2px",
+          "description": "Inner padding of segmented-strong container."
+        },
+        {
+          "variable": "--t4-segmented-strong-between-buttons",
+          "theme": "all",
+          "defaultValue": "4px",
+          "description": "Horizontal gap between buttons in strong container."
+        },
+        {
+          "variable": "--t4-segmented-strong-button-font-weight",
+          "theme": "all",
+          "defaultValue": "500",
+          "description": "Font weight of buttons in strong container."
+        },
+        {
+          "variable": "--t4-segmented-strong-button-active-box-shadow",
+          "theme": "all",
+          "defaultValue": "0px 2px 2px rgba(0, 0, 0, 0.25)",
+          "description": "Shadow of active highlighted segment."
+        },
+        {
+          "variable": "--t4-segmented-strong-button-text-color",
+          "theme": "all",
+          "defaultValue": "#000",
+          "description": "Inactive segment button text color."
+        },
+        {
+          "variable": "--t4-segmented-strong-button-hover-bg-color",
+          "theme": "all",
+          "defaultValue": "rgba(0, 0, 0, 0.04)",
+          "description": "Hover background on desktop."
+        },
+        {
+          "variable": "--t4-segmented-strong-button-active-text-color",
+          "theme": "all",
+          "defaultValue": "#000",
+          "description": "Active segment button text color."
+        },
+        {
+          "variable": "--t4-segmented-strong-button-active-bg-color",
+          "theme": "all",
+          "defaultValue": "#fff",
+          "description": "Active segment button background color."
+        },
+        {
+          "variable": "--t4-segmented-strong-bg-color",
+          "theme": "ios",
+          "defaultValue": "rgba(0, 0, 0, 0.07)",
+          "description": "Background of strong container on iOS light."
+        },
+        {
+          "variable": "--t4-segmented-strong-button-active-font-weight",
+          "theme": "ios",
+          "defaultValue": "600",
+          "description": "Active button font weight on iOS."
+        },
+        {
+          "variable": "--t4-segmented-strong-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-variant)",
+          "description": "Background of strong container on Material Design."
+        },
+        {
+          "variable": "--t4-segmented-strong-button-active-font-weight",
+          "theme": "md",
+          "defaultValue": "500",
+          "description": "Active button font weight on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "title": "Skeleton",
+      "description": "Skeleton (placeholder / shimmer) elements render mock UI shapes and wireframe placeholders during asynchronous data loading. Features animated shimmer wave, pulse, and blink effects.",
+      "docLink": "/techno4-framework2/skeleton",
+      "typesLink": "/techno4-framework2/types#skeleton",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/skeleton/skeleton.d.ts",
+        "packages/techno4-framework2-core/src/components/skeleton/skeleton.js",
+        "packages/techno4-framework2-core/src/components/skeleton/skeleton.less",
+        "packages/techno4-framework2-core/src/components/skeleton/skeleton-vars.less",
+        "packages/techno4-framework2-core/src/components/skeleton/skeleton-ios.less",
+        "packages/techno4-framework2-core/src/components/skeleton/skeleton-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/skeleton.html",
+        "description": "Interactive demo demonstrating skeleton cards, text blocks, avatar circles, and animated wave/pulse loading states."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"card skeleton-text skeleton-effect-wave\">\n  <div class=\"card-header\">Card Header</div>\n  <div class=\"card-content card-content-padding\">Text placeholder for loading state</div>\n</div>\n\n<div class=\"skeleton-block skeleton-effect-wave\" style=\"width: 100px; height: 100px\"></div>",
+        "modifiers": [
+          {
+            "class": "skeleton-text",
+            "description": "Transforms text elements inside into skeleton rectangles."
+          },
+          {
+            "class": "skeleton-block",
+            "description": "Generic rectangle wireframe block."
+          },
+          {
+            "class": "skeleton-effect-wave",
+            "description": "Continuous diagonal shimmer gradient wave animation."
+          },
+          {
+            "class": "skeleton-effect-pulse",
+            "description": "Pulsing opacity fade animation."
+          },
+          {
+            "class": "skeleton-effect-blink",
+            "description": "Blinking on/off opacity animation."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--skeleton-color",
+          "theme": "all",
+          "defaultValue": "#ccc",
+          "description": "Base fill color for skeleton placeholder shapes."
+        },
+        {
+          "variable": "--skeleton-icon-color",
+          "theme": "all",
+          "defaultValue": "rgba(0, 0, 0, 0.25)",
+          "description": "Color for skeleton icon placeholders."
+        },
+        {
+          "variable": "--skeleton-color",
+          "theme": "dark",
+          "defaultValue": "#515151",
+          "description": "Base fill color in dark mode."
+        },
+        {
+          "variable": "--skeleton-icon-color",
+          "theme": "dark",
+          "defaultValue": "rgba(255, 255, 255, 0.25)",
+          "description": "Color for skeleton icon placeholders in dark mode."
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "title": "Tabs",
+      "description": "Tabs component provides organized multi-view content segmentation where only one active tab pane is displayed at a time. Supports static tabs, swipeable tabs, animated slider transitions, and routable tabs.",
+      "docLink": "/techno4-framework2/tabs",
+      "typesLink": "/techno4-framework2/types#tabs",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/tabs/tabs.d.ts",
+        "packages/techno4-framework2-core/src/components/tabs/tabs.js",
+        "packages/techno4-framework2-core/src/components/tabs/tabs.less",
+        "packages/techno4-framework2-core/src/components/tabs/tabs-ios.less",
+        "packages/techno4-framework2-core/src/components/tabs/tabs-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/tabs.html",
+        "description": "Interactive demo demonstrating static tabs, animated tabs, swipeable tabs, and routable tabs integration."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"tabs\">\n  <div class=\"tab tab-active\" id=\"tab-1\">\n    <div class=\"block\"><p>Tab 1 content...</p></div>\n  </div>\n  <div class=\"tab\" id=\"tab-2\">\n    <div class=\"block\"><p>Tab 2 content...</p></div>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "tabs",
+            "description": "Container for all tab panes."
+          },
+          {
+            "class": "tabs-animated-wrap",
+            "description": "Wrapper enabling smooth horizontal sliding transitions between tabs."
+          },
+          {
+            "class": "tabs-swipeable-wrap",
+            "description": "Wrapper enabling touch swipe gestures to switch between tabs."
+          },
+          {
+            "class": "tab",
+            "description": "Individual content pane."
+          },
+          {
+            "class": "tab-active",
+            "description": "Currently visible tab pane."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.tab.show",
+          "signature": "app.tab.show(tabEl: HTMLElement | CSSSelector, tabLinkEl?: HTMLElement | CSSSelector, animate?: boolean): Tabs.TabShowResult",
+          "description": "Switches to the specified tab pane with optional animation."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "tab:show",
+          "target": ".tab",
+          "description": "Triggered when tab pane becomes visible/active."
+        },
+        {
+          "event": "tab:hide",
+          "target": ".tab",
+          "description": "Triggered when tab pane becomes hidden/inactive."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "tabShow",
+          "arguments": "(tabEl: HTMLElement)",
+          "description": "Triggered when tab pane becomes visible/active."
+        },
+        {
+          "event": "tabHide",
+          "arguments": "(tabEl: HTMLElement)",
+          "description": "Triggered when tab pane becomes hidden/inactive."
+        }
+      ],
+      "cssVariables": []
+    },
+    {
+      "name": "swiper",
+      "title": "Swiper",
+      "description": "Swiper is the modern mobile touch slider integrated into Techno4 Framework 2. Supports hardware-accelerated transitions, 3D effects (Cube, Coverflow, Flip), pagination, zoom, parallax, and virtual slides.",
+      "docLink": "/techno4-framework2/swiper",
+      "typesLink": "/techno4-framework2/types#swiper",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/swiper/swiper.d.ts",
+        "packages/techno4-framework2-core/src/components/swiper/swiper.js",
+        "packages/techno4-framework2-core/src/components/swiper/swiper.less",
+        "packages/techno4-framework2-core/src/components/swiper/swiper-ios.less",
+        "packages/techno4-framework2-core/src/components/swiper/swiper-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/swiper.html",
+        "description": "Interactive demo demonstrating Swiper horizontal, vertical, 3D cube, coverflow, pagination progress, and parallax slides."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"swiper swiper-init\" data-pagination='{\"el\": \".swiper-pagination\"}'>\n  <div class=\"swiper-wrapper\">\n    <div class=\"swiper-slide\">Slide 1</div>\n    <div class=\"swiper-slide\">Slide 2</div>\n    <div class=\"swiper-slide\">Slide 3</div>\n  </div>\n  <div class=\"swiper-pagination\"></div>\n  <div class=\"swiper-button-prev\"></div>\n  <div class=\"swiper-button-next\"></div>\n</div>",
+        "modifiers": [
+          {
+            "class": "swiper",
+            "description": "Main swiper container."
+          },
+          {
+            "class": "swiper-init",
+            "description": "Auto-initialization marker."
+          },
+          {
+            "class": "swiper-wrapper",
+            "description": "Flex wrapper for slides."
+          },
+          {
+            "class": "swiper-slide",
+            "description": "Individual carousel item slide."
+          },
+          {
+            "class": "swiper-pagination",
+            "description": "Container for pagination bullets/fraction."
+          },
+          {
+            "class": "swiper-button-prev",
+            "description": "Previous navigation arrow."
+          },
+          {
+            "class": "swiper-button-next",
+            "description": "Next navigation arrow."
+          },
+          {
+            "class": "swiper-scrollbar",
+            "description": "Draggable scrollbar track."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.swiper.create",
+          "signature": "app.swiper.create(swiperEl: HTMLElement | CSSSelector, params?: Swiper.Parameters): Swiper",
+          "description": "Initializes Swiper on target element."
+        },
+        {
+          "name": "app.swiper.get",
+          "signature": "app.swiper.get(swiperEl: HTMLElement | CSSSelector): Swiper",
+          "description": "Retrieves Swiper instance by element."
+        },
+        {
+          "name": "app.swiper.destroy",
+          "signature": "app.swiper.destroy(swiperEl: HTMLElement | CSSSelector): void",
+          "description": "Destroys Swiper instance."
+        }
+      ],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": []
+    },
+    {
+      "name": "smart-select",
+      "title": "Smart Select",
+      "description": "Smart Select transforms any ordinary HTML <select> into a dynamic full-page, popup, popover, or sheet modal picker with searchbar filtering, multi-select, custom item icons, and virtual list rendering.",
+      "docLink": "/techno4-framework2/smart-select",
+      "typesLink": "/techno4-framework2/types#smart-select",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/smart-select/smart-select.d.ts",
+        "packages/techno4-framework2-core/src/components/smart-select/smart-select.js",
+        "packages/techno4-framework2-core/src/components/smart-select/smart-select-class.js",
+        "packages/techno4-framework2-core/src/components/smart-select/smart-select.less",
+        "packages/techno4-framework2-core/src/components/smart-select/smart-select-vars.less",
+        "packages/techno4-framework2-core/src/components/smart-select/smart-select-ios.less",
+        "packages/techno4-framework2-core/src/components/smart-select/smart-select-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/smart-select.html",
+        "description": "Interactive demo demonstrating smart select page, popup, popover, and sheet modal presentations with searchbar filtering."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"list\">\n  <ul>\n    <li>\n      <a class=\"item-link smart-select smart-select-init\">\n        <select name=\"fruits\">\n          <option value=\"apple\" selected>Apple</option>\n          <option value=\"banana\">Banana</option>\n          <option value=\"orange\">Orange</option>\n        </select>\n        <div class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Fruit</div>\n            <div class=\"item-after\">Apple</div>\n          </div>\n        </div>\n      </a>\n    </li>\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "smart-select",
+            "description": "Wrapper element around native <select> and item content."
+          },
+          {
+            "class": "smart-select-init",
+            "description": "Auto-initialization marker."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "smartSelect",
+            "type": "SmartSelect.Parameters",
+            "default": "undefined",
+            "description": "Global Smart Select default parameters."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Smart select element or CSS selector."
+          },
+          {
+            "name": "view",
+            "type": "View.View",
+            "default": "undefined",
+            "description": "Target View where smart select will be opened."
+          },
+          {
+            "name": "valueEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "'.item-after'",
+            "description": "Element where selected text is displayed."
+          },
+          {
+            "name": "setValueText",
+            "type": "boolean",
+            "default": "true",
+            "description": "Automatically sets value text into valueEl."
+          },
+          {
+            "name": "formatValueText",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Custom formatter for selected text."
+          },
+          {
+            "name": "openIn",
+            "type": "'page' | 'popup' | 'popover' | 'sheet'",
+            "default": "'page'",
+            "description": "Modal presentation type."
+          },
+          {
+            "name": "popupPush",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables view push effect behind popup."
+          },
+          {
+            "name": "popupSwipeToClose",
+            "type": "boolean",
+            "default": "undefined",
+            "description": "Enables swipe to close on popup."
+          },
+          {
+            "name": "sheetPush",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables view push effect behind sheet."
+          },
+          {
+            "name": "sheetSwipeToClose",
+            "type": "boolean",
+            "default": "undefined",
+            "description": "Enables swipe to close on sheet."
+          },
+          {
+            "name": "sheetBackdrop",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables sheet backdrop."
+          },
+          {
+            "name": "pageTitle",
+            "type": "string",
+            "default": "undefined",
+            "description": "Page title for smart select page."
+          },
+          {
+            "name": "pageBackLinkText",
+            "type": "string",
+            "default": "''",
+            "description": "Back link text on page."
+          },
+          {
+            "name": "popupCloseLinkText",
+            "type": "string",
+            "default": "''",
+            "description": "Close link text on popup."
+          },
+          {
+            "name": "popupTabletFullscreen",
+            "type": "boolean",
+            "default": "false",
+            "description": "Forces fullscreen popup on tablets."
+          },
+          {
+            "name": "sheetCloseLinkText",
+            "type": "string",
+            "default": "''",
+            "description": "Close link text on sheet."
+          },
+          {
+            "name": "searchbar",
+            "type": "boolean | Searchbar.Parameters",
+            "default": "false",
+            "description": "Enables searchbar filtering."
+          },
+          {
+            "name": "searchbarPlaceholder",
+            "type": "string",
+            "default": "'Search'",
+            "description": "Searchbar placeholder text."
+          },
+          {
+            "name": "searchbarDisableText",
+            "type": "string",
+            "default": "''",
+            "description": "Searchbar cancel button text."
+          },
+          {
+            "name": "searchbarDisableButton",
+            "type": "boolean",
+            "default": "true",
+            "description": "Displays searchbar disable button."
+          },
+          {
+            "name": "searchbarSpellcheck",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables spellcheck in search input."
+          },
+          {
+            "name": "appendSearchbarNotFound",
+            "type": "boolean | string | HTMLElement",
+            "default": "false",
+            "description": "Appends not-found block for empty search results."
+          },
+          {
+            "name": "closeOnSelect",
+            "type": "boolean",
+            "default": "false",
+            "description": "Closes modal automatically after single choice selection."
+          },
+          {
+            "name": "virtualList",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables Virtual List for large option sets."
+          },
+          {
+            "name": "virtualListHeight",
+            "type": "number | Function",
+            "default": "undefined",
+            "description": "Row height for virtual list."
+          },
+          {
+            "name": "scrollToSelectedItem",
+            "type": "boolean",
+            "default": "false",
+            "description": "Scrolls to first selected option on open."
+          },
+          {
+            "name": "formColorTheme",
+            "type": "string",
+            "default": "undefined",
+            "description": "Color theme for list."
+          },
+          {
+            "name": "navbarColorTheme",
+            "type": "string",
+            "default": "undefined",
+            "description": "Color theme for navbar."
+          },
+          {
+            "name": "routableModals",
+            "type": "boolean",
+            "default": "false",
+            "description": "Integrates modal with router history."
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "default": "'select/'",
+            "description": "Route URL for routable modal."
+          },
+          {
+            "name": "cssClass",
+            "type": "string",
+            "default": "undefined",
+            "description": "Additional CSS class on container."
+          },
+          {
+            "name": "closeByBackdropClick",
+            "type": "boolean",
+            "default": "true",
+            "description": "Closes modal on backdrop click."
+          },
+          {
+            "name": "optionIcon",
+            "type": "string",
+            "default": "undefined",
+            "description": "Icon class added to options."
+          },
+          {
+            "name": "inputIconPosition",
+            "type": "string",
+            "default": "'start'",
+            "description": "Position of radio/checkbox icon ('start' or 'end')."
+          },
+          {
+            "name": "renderPage",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Custom HTML render for page."
+          },
+          {
+            "name": "renderPopup",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Custom HTML render for popup."
+          },
+          {
+            "name": "renderSheet",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Custom HTML render for sheet."
+          },
+          {
+            "name": "renderPopover",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Custom HTML render for popover."
+          },
+          {
+            "name": "renderItems",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Custom HTML render for items list."
+          },
+          {
+            "name": "renderItem",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Custom HTML render for single option item."
+          },
+          {
+            "name": "renderSearchbar",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Custom HTML render for searchbar."
+          },
+          {
+            "name": "on",
+            "type": "object",
+            "default": "undefined",
+            "description": "Object containing event handlers."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "description": "Link to global app instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "description": "Smart Select HTML DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping smart select."
+        },
+        {
+          "name": "valueEl",
+          "type": "HTMLElement",
+          "description": "Element displaying selected text."
+        },
+        {
+          "name": "$valueEl",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping valueEl."
+        },
+        {
+          "name": "selectEl",
+          "type": "HTMLElement",
+          "description": "Target <select> DOM element."
+        },
+        {
+          "name": "$selectEl",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping selectEl."
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Modal route URL."
+        },
+        {
+          "name": "view",
+          "type": "View.View",
+          "description": "Target View instance."
+        },
+        {
+          "name": "params",
+          "type": "SmartSelect.Parameters",
+          "description": "Instance parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "scrollToSelectedItem",
+          "signature": "scrollToSelectedItem(): SmartSelect",
+          "description": "Scrolls list to active selected item."
+        },
+        {
+          "name": "setValue",
+          "signature": "setValue(value: string | number | any[]): SmartSelect",
+          "description": "Sets selected value(s) programmatically."
+        },
+        {
+          "name": "unsetValue",
+          "signature": "unsetValue(): SmartSelect",
+          "description": "Clears selection."
+        },
+        {
+          "name": "getValue",
+          "signature": "getValue(): string | number | any[]",
+          "description": "Returns selected value(s)."
+        },
+        {
+          "name": "open",
+          "signature": "open(): SmartSelect",
+          "description": "Opens smart select modal."
+        },
+        {
+          "name": "close",
+          "signature": "close(): SmartSelect",
+          "description": "Closes smart select modal."
+        },
+        {
+          "name": "destroy",
+          "signature": "destroy(): void",
+          "description": "Destroys Smart Select instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.smartSelect.create",
+          "signature": "app.smartSelect.create(parameters: SmartSelect.Parameters): SmartSelect",
+          "description": "Creates a new Smart Select instance."
+        },
+        {
+          "name": "app.smartSelect.destroy",
+          "signature": "app.smartSelect.destroy(el: HTMLElement | CSSSelector | SmartSelect): void",
+          "description": "Destroys Smart Select instance."
+        },
+        {
+          "name": "app.smartSelect.get",
+          "signature": "app.smartSelect.get(el: HTMLElement | CSSSelector): SmartSelect",
+          "description": "Retrieves Smart Select instance by element."
+        },
+        {
+          "name": "app.smartSelect.open",
+          "signature": "app.smartSelect.open(el: HTMLElement | CSSSelector): SmartSelect",
+          "description": "Opens specified Smart Select."
+        },
+        {
+          "name": "app.smartSelect.close",
+          "signature": "app.smartSelect.close(el: HTMLElement | CSSSelector): SmartSelect",
+          "description": "Closes specified Smart Select."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "smartselect:beforeopen",
+          "target": ".smart-select",
+          "description": "Triggered before Smart Select modal opens (cancellable via prevent())."
+        },
+        {
+          "event": "smartselect:open",
+          "target": ".smart-select",
+          "description": "Triggered when opening transition starts."
+        },
+        {
+          "event": "smartselect:opened",
+          "target": ".smart-select",
+          "description": "Triggered after opening transition completes."
+        },
+        {
+          "event": "smartselect:close",
+          "target": ".smart-select",
+          "description": "Triggered when closing transition starts."
+        },
+        {
+          "event": "smartselect:closed",
+          "target": ".smart-select",
+          "description": "Triggered after closing transition completes."
+        },
+        {
+          "event": "smartselect:beforedestroy",
+          "target": ".smart-select",
+          "description": "Triggered right before Smart Select is destroyed."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "smartSelectBeforeOpen",
+          "arguments": "(smartSelect: SmartSelect, prevent: () => void)",
+          "description": "Triggered before modal opens."
+        },
+        {
+          "event": "smartSelectOpen",
+          "arguments": "(smartSelect: SmartSelect)",
+          "description": "Triggered when opening starts."
+        },
+        {
+          "event": "smartSelectOpened",
+          "arguments": "(smartSelect: SmartSelect)",
+          "description": "Triggered after opening completes."
+        },
+        {
+          "event": "smartSelectClose",
+          "arguments": "(smartSelect: SmartSelect)",
+          "description": "Triggered when closing starts."
+        },
+        {
+          "event": "smartSelectClosed",
+          "arguments": "(smartSelect: SmartSelect)",
+          "description": "Triggered after closing completes."
+        },
+        {
+          "event": "smartSelectBeforeDestroy",
+          "arguments": "(smartSelect: SmartSelect)",
+          "description": "Triggered right before instance destruction."
+        }
+      ],
+      "cssVariables": []
+    },
+    {
+      "name": "sortable",
+      "title": "Sortable List",
+      "description": "Sortable List extends List View with touch-drag handles allowing users to reorder list items dynamically. Supports programmatic sorting mode toggles, move tracking, and sorted index callbacks.",
+      "docLink": "/techno4-framework2/sortable",
+      "typesLink": "/techno4-framework2/types#sortable",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/sortable/sortable.d.ts",
+        "packages/techno4-framework2-core/src/components/sortable/sortable.js",
+        "packages/techno4-framework2-core/src/components/sortable/sortable.less",
+        "packages/techno4-framework2-core/src/components/sortable/sortable-vars.less",
+        "packages/techno4-framework2-core/src/components/sortable/sortable-ios.less",
+        "packages/techno4-framework2-core/src/components/sortable/sortable-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/sortable.html",
+        "description": "Interactive demo demonstrating reorderable list items with drag handles and mode toggles."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"list sortable\">\n  <ul>\n    <li>\n      <div class=\"item-content\">\n        <div class=\"item-inner\"><div class=\"item-title\">Item 1</div></div>\n      </div>\n      <div class=\"sortable-handler\"></div>\n    </li>\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "sortable",
+            "description": "Enables sortable capability on list container."
+          },
+          {
+            "class": "sortable-enabled",
+            "description": "State applied when sortable mode is actively reordering."
+          },
+          {
+            "class": "sortable-handler",
+            "description": "Visual drag handle icon on the right side of list item."
+          },
+          {
+            "class": "sorting",
+            "description": "Applied to list item currently being dragged."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "sortable.moveElements",
+            "type": "boolean",
+            "default": "true",
+            "description": "Automatically reorders DOM elements on drag release."
+          }
+        ],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.sortable.enable",
+          "signature": "app.sortable.enable(listEl?: HTMLElement | CSSSelector): void",
+          "description": "Enables sorting mode on sortable list."
+        },
+        {
+          "name": "app.sortable.disable",
+          "signature": "app.sortable.disable(listEl?: HTMLElement | CSSSelector): void",
+          "description": "Disables sorting mode on sortable list."
+        },
+        {
+          "name": "app.sortable.toggle",
+          "signature": "app.sortable.toggle(listEl?: HTMLElement | CSSSelector): void",
+          "description": "Toggles sorting mode on sortable list."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "sortable:enable",
+          "target": ".sortable",
+          "description": "Triggered when sorting mode is enabled."
+        },
+        {
+          "event": "sortable:disable",
+          "target": ".sortable",
+          "description": "Triggered when sorting mode is disabled."
+        },
+        {
+          "event": "sortable:sort",
+          "target": ".sortable",
+          "description": "Triggered upon release with { from, to } indexes in event.detail."
+        },
+        {
+          "event": "sortable:move",
+          "target": ".sortable",
+          "description": "Triggered on every list item repositioning during drag."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "sortableEnable",
+          "arguments": "(listEl: HTMLElement)",
+          "description": "Triggered when sorting mode is enabled."
+        },
+        {
+          "event": "sortableDisable",
+          "arguments": "(listEl: HTMLElement)",
+          "description": "Triggered when sorting mode is disabled."
+        },
+        {
+          "event": "sortableSort",
+          "arguments": "(itemEl: HTMLElement, indexes: Sortable.SortIndexes, listEl: HTMLElement)",
+          "description": "Triggered upon item drop in new position."
+        },
+        {
+          "event": "sortableMove",
+          "arguments": "(itemEl: HTMLElement, listEl: HTMLElement)",
+          "description": "Triggered continuously on item move."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-sortable-handler-width",
+          "theme": "ios",
+          "defaultValue": "36px",
+          "description": "Drag handle width on iOS."
+        },
+        {
+          "variable": "--t4-sortable-sorting-item-box-shadow",
+          "theme": "ios",
+          "defaultValue": "0px 2px 8px rgba(0,0,0,0.6)",
+          "description": "Shadow on dragged item on iOS."
+        },
+        {
+          "variable": "--t4-sortable-handler-color",
+          "theme": "ios-light",
+          "defaultValue": "rgba(0,0,0,0.22)",
+          "description": "Drag handle icon color on iOS light."
+        },
+        {
+          "variable": "--t4-sortable-sorting-item-bg-color",
+          "theme": "ios-light",
+          "defaultValue": "rgba(255,255,255,0.8)",
+          "description": "Dragged item background on iOS light."
+        },
+        {
+          "variable": "--t4-sortable-handler-width",
+          "theme": "md",
+          "defaultValue": "42px",
+          "description": "Drag handle width on Material Design."
+        },
+        {
+          "variable": "--t4-sortable-sorting-item-box-shadow",
+          "theme": "md",
+          "defaultValue": "none",
+          "description": "Shadow on dragged item on Material Design."
+        },
+        {
+          "variable": "--t4-sortable-handler-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-surface-variant)",
+          "description": "Drag handle color on Material Design."
+        },
+        {
+          "variable": "--t4-sortable-sorting-item-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-3)",
+          "description": "Dragged item background on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "statusbar",
+      "title": "Statusbar",
+      "description": "Statusbar component manages the mobile device top status bar overlay, safe area padding, text colors, background colors, and scroll-to-top tap handling under web, Cordova, and Capacitor environments.",
+      "docLink": "/techno4-framework2/statusbar",
+      "typesLink": "/techno4-framework2/types#statusbar",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/statusbar/statusbar.d.ts",
+        "packages/techno4-framework2-core/src/components/statusbar/statusbar.js",
+        "packages/techno4-framework2-core/src/components/statusbar/statusbar.less",
+        "packages/techno4-framework2-core/src/components/statusbar/statusbar-ios.less",
+        "packages/techno4-framework2-core/src/components/statusbar/statusbar-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/subnavbar.html",
+        "description": "Statusbar positioning demonstrated alongside navbars and safe areas across device orientations."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"statusbar\"></div>",
+        "modifiers": [
+          {
+            "class": "statusbar",
+            "description": "Fixed element positioned behind mobile statusbar."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "statusbar.enabled",
+            "type": "boolean",
+            "default": "true",
+            "description": "Enables statusbar handling by Techno4."
+          },
+          {
+            "name": "statusbar.scrollTopOnClick",
+            "type": "boolean",
+            "default": "true",
+            "description": "Scrolls active page to top on statusbar click."
+          },
+          {
+            "name": "statusbar.iosBackgroundColor",
+            "type": "string",
+            "default": "undefined",
+            "description": "iOS statusbar background hex color."
+          },
+          {
+            "name": "statusbar.iosOverlaysWebView",
+            "type": "boolean",
+            "default": "true",
+            "description": "Makes statusbar overlay the webview on iOS."
+          },
+          {
+            "name": "statusbar.iosTextColor",
+            "type": "string",
+            "default": "undefined",
+            "description": "Statusbar text color on iOS ('white' or 'black')."
+          },
+          {
+            "name": "statusbar.androidBackgroundColor",
+            "type": "string",
+            "default": "undefined",
+            "description": "Android statusbar background hex color."
+          },
+          {
+            "name": "statusbar.androidOverlaysWebView",
+            "type": "boolean",
+            "default": "false",
+            "description": "Makes statusbar overlay webview on Android."
+          },
+          {
+            "name": "statusbar.androidTextColor",
+            "type": "string",
+            "default": "undefined",
+            "description": "Statusbar text color on Android ('white' or 'black')."
+          }
+        ],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.statusbar.hide",
+          "signature": "app.statusbar.hide(): void",
+          "description": "Hides statusbar overlay (and native statusbar in Cordova/Capacitor)."
+        },
+        {
+          "name": "app.statusbar.show",
+          "signature": "app.statusbar.show(): void",
+          "description": "Shows statusbar overlay."
+        },
+        {
+          "name": "app.statusbar.overlaysWebView",
+          "signature": "app.statusbar.overlaysWebView(overlays: boolean): void",
+          "description": "Sets whether statusbar overlays webview."
+        },
+        {
+          "name": "app.statusbar.setTextColor",
+          "signature": "app.statusbar.setTextColor(color: string): void",
+          "description": "Sets statusbar text color ('white' or 'black')."
+        },
+        {
+          "name": "app.statusbar.setBackgroundColor",
+          "signature": "app.statusbar.setBackgroundColor(hex: string): void",
+          "description": "Sets statusbar background color."
+        },
+        {
+          "name": "app.statusbar.isVisible",
+          "signature": "app.statusbar.isVisible(): Promise<boolean>",
+          "description": "Checks if native statusbar is currently visible."
+        }
+      ],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": []
+    },
+    {
+      "name": "stepper",
+      "title": "Stepper",
+      "description": "Stepper component provides plus/minus stepper buttons to increment or decrement numerical values within given bounds. Supports continuous press-and-hold auto-repeat, step sizing, and manual numeric typing.",
+      "docLink": "/techno4-framework2/stepper",
+      "typesLink": "/techno4-framework2/types#stepper",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/stepper/stepper.d.ts",
+        "packages/techno4-framework2-core/src/components/stepper/stepper.js",
+        "packages/techno4-framework2-core/src/components/stepper/stepper-class.js",
+        "packages/techno4-framework2-core/src/components/stepper/stepper.less",
+        "packages/techno4-framework2-core/src/components/stepper/stepper-vars.less",
+        "packages/techno4-framework2-core/src/components/stepper/stepper-ios.less",
+        "packages/techno4-framework2-core/src/components/stepper/stepper-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/stepper.html",
+        "description": "Interactive demo demonstrating stepper configurations: auto-repeat, discrete steps, manual input, and filled/raised styles."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"stepper stepper-init\" data-min=\"0\" data-max=\"100\" data-step=\"1\" data-value=\"10\">\n  <div class=\"stepper-button-minus\"></div>\n  <div class=\"stepper-value\">10</div>\n  <div class=\"stepper-button-plus\"></div>\n</div>",
+        "modifiers": [
+          {
+            "class": "stepper",
+            "description": "Main stepper container."
+          },
+          {
+            "class": "stepper-init",
+            "description": "Auto-initialization marker."
+          },
+          {
+            "class": "stepper-fill",
+            "description": "Filled button style using theme primary color."
+          },
+          {
+            "class": "stepper-round",
+            "description": "Rounded capsule shape."
+          },
+          {
+            "class": "stepper-small",
+            "description": "Compact smaller stepper variant."
+          },
+          {
+            "class": "stepper-large",
+            "description": "Larger stepper variant."
+          },
+          {
+            "class": "stepper-raised",
+            "description": "Adds elevation drop shadow."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "stepper",
+            "type": "Stepper.Parameters",
+            "default": "undefined",
+            "description": "Global Stepper default parameters."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Stepper element or CSS selector."
+          },
+          {
+            "name": "inputEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Input element inside stepper."
+          },
+          {
+            "name": "step",
+            "type": "number",
+            "default": "1",
+            "description": "Increment/decrement step amount."
+          },
+          {
+            "name": "min",
+            "type": "number",
+            "default": "0",
+            "description": "Minimum allowable value."
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "default": "100",
+            "description": "Maximum allowable value."
+          },
+          {
+            "name": "value",
+            "type": "number",
+            "default": "0",
+            "description": "Initial stepper value."
+          },
+          {
+            "name": "wraps",
+            "type": "boolean",
+            "default": "false",
+            "description": "Wraps around to min/max on boundary overflow."
+          },
+          {
+            "name": "autorepeat",
+            "type": "boolean",
+            "default": "false",
+            "description": "Continuously increments/decrements while button is held down."
+          },
+          {
+            "name": "autorepeatDynamic",
+            "type": "boolean",
+            "default": "false",
+            "description": "Accelerates autorepeat rate the longer button is pressed."
+          },
+          {
+            "name": "valueEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Element displaying current value text."
+          },
+          {
+            "name": "formatValue",
+            "type": "(value: number) => string | number",
+            "default": "undefined",
+            "description": "Custom value formatter function."
+          },
+          {
+            "name": "manualInputMode",
+            "type": "boolean",
+            "default": "false",
+            "description": "Allows direct typing into value input."
+          },
+          {
+            "name": "decimalPoint",
+            "type": "number",
+            "default": "4",
+            "description": "Number of decimal places allowed."
+          },
+          {
+            "name": "buttonsEndInputMode",
+            "type": "boolean",
+            "default": "true",
+            "description": "Ends manual typing when button is tapped."
+          },
+          {
+            "name": "on",
+            "type": "object",
+            "default": "undefined",
+            "description": "Object containing event handlers."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "description": "Link to global app instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "description": "Stepper HTML DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping stepper."
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "description": "Minimum value."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "description": "Maximum value."
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "description": "Current value."
+        },
+        {
+          "name": "inputEl",
+          "type": "HTMLElement",
+          "description": "Input element inside stepper."
+        },
+        {
+          "name": "$inputEl",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping input element."
+        },
+        {
+          "name": "valueEl",
+          "type": "HTMLElement",
+          "description": "Value display container element."
+        },
+        {
+          "name": "params",
+          "type": "Stepper.Parameters",
+          "description": "Instance parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "getValue",
+          "signature": "getValue(): number",
+          "description": "Returns current stepper value."
+        },
+        {
+          "name": "setValue",
+          "signature": "setValue(value: number): Stepper",
+          "description": "Sets new stepper value."
+        },
+        {
+          "name": "plus",
+          "signature": "plus(): Stepper",
+          "description": "Increments value by step."
+        },
+        {
+          "name": "minus",
+          "signature": "minus(): Stepper",
+          "description": "Decrements value by step."
+        },
+        {
+          "name": "destroy",
+          "signature": "destroy(): void",
+          "description": "Destroys Stepper instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.stepper.create",
+          "signature": "app.stepper.create(parameters: Stepper.Parameters): Stepper",
+          "description": "Creates a new Stepper instance."
+        },
+        {
+          "name": "app.stepper.get",
+          "signature": "app.stepper.get(el: HTMLElement | CSSSelector | Stepper): Stepper",
+          "description": "Retrieves Stepper instance by element."
+        },
+        {
+          "name": "app.stepper.getValue",
+          "signature": "app.stepper.getValue(el: HTMLElement | CSSSelector | Stepper): number | number[]",
+          "description": "Gets value of specified stepper."
+        },
+        {
+          "name": "app.stepper.setValue",
+          "signature": "app.stepper.setValue(el: HTMLElement | CSSSelector | Stepper, value: number | number[]): void",
+          "description": "Sets value on specified stepper."
+        },
+        {
+          "name": "app.stepper.destroy",
+          "signature": "app.stepper.destroy(el: HTMLElement | CSSSelector | Stepper): void",
+          "description": "Destroys Stepper instance."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "stepper:change",
+          "target": ".stepper",
+          "description": "Triggered when stepper value changes."
+        },
+        {
+          "event": "stepper:beforedestroy",
+          "target": ".stepper",
+          "description": "Triggered right before Stepper instance is destroyed."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "stepperChange",
+          "arguments": "(stepper: Stepper, value: number)",
+          "description": "Triggered when stepper value changes."
+        },
+        {
+          "event": "stepperBeforeDestroy",
+          "arguments": "(stepper: Stepper)",
+          "description": "Triggered right before Stepper is destroyed."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-stepper-raised-box-shadow",
+          "theme": "all",
+          "defaultValue": "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
+          "description": "Drop shadow for raised stepper."
+        },
+        {
+          "variable": "--t4-stepper-value-font-weight",
+          "theme": "all",
+          "defaultValue": "500",
+          "description": "Font weight of displayed value."
+        },
+        {
+          "variable": "--t4-stepper-height",
+          "theme": "ios",
+          "defaultValue": "34px",
+          "description": "Stepper height on iOS."
+        },
+        {
+          "variable": "--t4-stepper-border-radius",
+          "theme": "ios",
+          "defaultValue": "5px",
+          "description": "Corner radius on iOS."
+        },
+        {
+          "variable": "--t4-stepper-large-height",
+          "theme": "ios",
+          "defaultValue": "48px",
+          "description": "Large stepper height on iOS."
+        },
+        {
+          "variable": "--t4-stepper-small-height",
+          "theme": "ios",
+          "defaultValue": "28px",
+          "description": "Small stepper height on iOS."
+        },
+        {
+          "variable": "--t4-stepper-value-font-size",
+          "theme": "ios",
+          "defaultValue": "17px",
+          "description": "Value font size on iOS."
+        },
+        {
+          "variable": "--t4-stepper-height",
+          "theme": "md",
+          "defaultValue": "40px",
+          "description": "Stepper height on Material Design."
+        },
+        {
+          "variable": "--t4-stepper-border-radius",
+          "theme": "md",
+          "defaultValue": "8px",
+          "description": "Corner radius on Material Design."
+        },
+        {
+          "variable": "--t4-stepper-large-height",
+          "theme": "md",
+          "defaultValue": "48px",
+          "description": "Large stepper height on Material Design."
+        },
+        {
+          "variable": "--t4-stepper-small-height",
+          "theme": "md",
+          "defaultValue": "32px",
+          "description": "Small stepper height on Material Design."
+        },
+        {
+          "variable": "--t4-stepper-value-font-size",
+          "theme": "md",
+          "defaultValue": "14px",
+          "description": "Value font size on Material Design."
+        },
+        {
+          "variable": "--t4-stepper-fill-button-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-primary)",
+          "description": "Text color on filled button on Material Design."
+        },
+        {
+          "variable": "--t4-stepper-border-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-outline)",
+          "description": "Border color on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "subnavbar",
+      "title": "Subnavbar",
+      "description": "Subnavbar is a secondary navigation bar nested directly inside or beneath the Navbar. Typically used to house segmented tab controls, searchbars, or filter button groups.",
+      "docLink": "/techno4-framework2/subnavbar",
+      "typesLink": "/techno4-framework2/types#subnavbar",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/subnavbar/subnavbar.d.ts",
+        "packages/techno4-framework2-core/src/components/subnavbar/subnavbar.js",
+        "packages/techno4-framework2-core/src/components/subnavbar/subnavbar.less",
+        "packages/techno4-framework2-core/src/components/subnavbar/subnavbar-vars.less",
+        "packages/techno4-framework2-core/src/components/subnavbar/subnavbar-ios.less",
+        "packages/techno4-framework2-core/src/components/subnavbar/subnavbar-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/subnavbar.html",
+        "description": "Interactive demo demonstrating subnavbar inside navbar with segmented tabs and searchbar integration."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"navbar\">\n  <div class=\"navbar-bg\"></div>\n  <div class=\"navbar-inner\">\n    <div class=\"title\">Page Title</div>\n    <div class=\"subnavbar\">\n      <div class=\"subnavbar-inner\">\n        <div class=\"segmented segmented-strong\">\n          <button class=\"button button-active\">Tab 1</button>\n          <button class=\"button\">Tab 2</button>\n          <span class=\"segmented-highlight\"></span>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "subnavbar",
+            "description": "Subnavbar bar container."
+          },
+          {
+            "class": "subnavbar-inner",
+            "description": "Inner wrapper containing controls."
+          },
+          {
+            "class": "subnavbar-title",
+            "description": "Title header element inside subnavbar."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-subnavbar-title-line-height",
+          "theme": "all",
+          "defaultValue": "1.2",
+          "description": "Line height of subnavbar title."
+        },
+        {
+          "variable": "--t4-subnavbar-height",
+          "theme": "ios",
+          "defaultValue": "44px",
+          "description": "Subnavbar height on iOS."
+        },
+        {
+          "variable": "--t4-subnavbar-inner-padding-left",
+          "theme": "ios",
+          "defaultValue": "5px",
+          "description": "Inner left padding on iOS."
+        },
+        {
+          "variable": "--t4-subnavbar-inner-padding-right",
+          "theme": "ios",
+          "defaultValue": "5px",
+          "description": "Inner right padding on iOS."
+        },
+        {
+          "variable": "--t4-subnavbar-title-font-size",
+          "theme": "ios",
+          "defaultValue": "24px",
+          "description": "Title font size on iOS."
+        },
+        {
+          "variable": "--t4-subnavbar-title-font-weight",
+          "theme": "ios",
+          "defaultValue": "700",
+          "description": "Title font weight on iOS."
+        },
+        {
+          "variable": "--t4-subnavbar-title-letter-spacing",
+          "theme": "ios",
+          "defaultValue": "-0.03em",
+          "description": "Title letter spacing on iOS."
+        },
+        {
+          "variable": "--t4-subnavbar-bg-color",
+          "theme": "ios",
+          "defaultValue": "var(--t4-glass-bg-color)",
+          "description": "Subnavbar background color on iOS."
+        },
+        {
+          "variable": "--t4-subnavbar-height",
+          "theme": "md",
+          "defaultValue": "64px",
+          "description": "Subnavbar height on Material Design."
+        },
+        {
+          "variable": "--t4-subnavbar-title-font-size",
+          "theme": "md",
+          "defaultValue": "22px",
+          "description": "Title font size on Material Design."
+        },
+        {
+          "variable": "--t4-subnavbar-title-font-weight",
+          "theme": "md",
+          "defaultValue": "400",
+          "description": "Title font weight on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "swipeout",
+      "title": "Swipeout",
+      "description": "Swipeout extends List View items with touch-swiped contextual actions (swipe left or right to reveal action buttons like Edit, Mark, or Delete). Features overswipe full-swipe automated execution.",
+      "docLink": "/techno4-framework2/swipeout",
+      "typesLink": "/techno4-framework2/types#swipeout",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/swipeout/swipeout.d.ts",
+        "packages/techno4-framework2-core/src/components/swipeout/swipeout.js",
+        "packages/techno4-framework2-core/src/components/swipeout/swipeout.less",
+        "packages/techno4-framework2-core/src/components/swipeout/swipeout-vars.less",
+        "packages/techno4-framework2-core/src/components/swipeout/swipeout-ios.less",
+        "packages/techno4-framework2-core/src/components/swipeout/swipeout-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/swipeout.html",
+        "description": "Interactive demo demonstrating left and right swipeout actions, overswipe triggers, and animated delete removals."
+      },
+      "htmlLayout": {
+        "structure": "<li class=\"swipeout\">\n  <div class=\"swipeout-content item-content\">\n    <div class=\"item-inner\"><div class=\"item-title\">Swipe me</div></div>\n  </div>\n  <div class=\"swipeout-actions-right\">\n    <a href=\"#\" class=\"swipeout-delete\">Delete</a>\n  </div>\n</li>",
+        "modifiers": [
+          {
+            "class": "swipeout",
+            "description": "Container applied to <li> item enabling swipeable actions."
+          },
+          {
+            "class": "swipeout-content",
+            "description": "Main visible content layer that moves during swipe."
+          },
+          {
+            "class": "swipeout-actions-left",
+            "description": "Hidden action buttons revealed on swipe right."
+          },
+          {
+            "class": "swipeout-actions-right",
+            "description": "Hidden action buttons revealed on swipe left."
+          },
+          {
+            "class": "swipeout-delete",
+            "description": "Action button that triggers animated item deletion."
+          },
+          {
+            "class": "swipeout-overswipe",
+            "description": "Enables full swipe gesture triggering action automatically."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "swipeout.noFollow",
+            "type": "boolean",
+            "default": "false",
+            "description": "Snaps open on swipe without finger-following."
+          },
+          {
+            "name": "swipeout.removeElements",
+            "type": "boolean",
+            "default": "true",
+            "description": "Removes DOM element upon swipeout-delete."
+          },
+          {
+            "name": "swipeout.removeElementsWithTimeout",
+            "type": "boolean",
+            "default": "false",
+            "description": "Removes DOM element after specified delay."
+          },
+          {
+            "name": "swipeout.removeElementsTimeout",
+            "type": "number",
+            "default": "0",
+            "description": "Delay in ms before removal."
+          },
+          {
+            "name": "swipeout.overswipeRatio",
+            "type": "number",
+            "default": "1.2",
+            "description": "Swipe ratio threshold to trigger overswipe."
+          }
+        ],
+        "instanceParams": []
+      },
+      "instanceProperties": [
+        {
+          "name": "app.swipeout.el",
+          "type": "HTMLElement | undefined",
+          "description": "Currently opened swipeout element."
+        }
+      ],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.swipeout.open",
+          "signature": "app.swipeout.open(el: HTMLElement | CSSSelector, side?: 'left' | 'right', callback?: Function): void",
+          "description": "Opens swipeout actions on specified item."
+        },
+        {
+          "name": "app.swipeout.close",
+          "signature": "app.swipeout.close(el: HTMLElement | CSSSelector, callback?: Function): void",
+          "description": "Closes swipeout actions on specified item."
+        },
+        {
+          "name": "app.swipeout.delete",
+          "signature": "app.swipeout.delete(el: HTMLElement | CSSSelector, callback?: Function): void",
+          "description": "Triggers delete animation and removes item."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "swipeout",
+          "target": ".swipeout",
+          "description": "Triggered continuously during swipe movement with progress percentage."
+        },
+        {
+          "event": "swipeout:open",
+          "target": ".swipeout",
+          "description": "Triggered when opening animation begins."
+        },
+        {
+          "event": "swipeout:opened",
+          "target": ".swipeout",
+          "description": "Triggered after opening animation completes."
+        },
+        {
+          "event": "swipeout:close",
+          "target": ".swipeout",
+          "description": "Triggered when closing animation begins."
+        },
+        {
+          "event": "swipeout:closed",
+          "target": ".swipeout",
+          "description": "Triggered after closing animation completes."
+        },
+        {
+          "event": "swipeout:delete",
+          "target": ".swipeout",
+          "description": "Triggered when delete animation begins."
+        },
+        {
+          "event": "swipeout:deleted",
+          "target": ".swipeout",
+          "description": "Triggered right before deleted item is removed from DOM."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "swipeout",
+          "arguments": "(progress: number)",
+          "description": "Triggered during swipe with progress percentage."
+        },
+        {
+          "event": "swipeoutOpen",
+          "arguments": "(swipeoutEl: HTMLElement)",
+          "description": "Triggered when opening starts."
+        },
+        {
+          "event": "swipeoutOpened",
+          "arguments": "(swipeoutEl: HTMLElement)",
+          "description": "Triggered after opening completes."
+        },
+        {
+          "event": "swipeoutClose",
+          "arguments": "(swipeoutEl: HTMLElement)",
+          "description": "Triggered when closing starts."
+        },
+        {
+          "event": "swipeoutClosed",
+          "arguments": "(swipeoutEl: HTMLElement)",
+          "description": "Triggered after closing completes."
+        },
+        {
+          "event": "swipeoutDelete",
+          "arguments": "(swipeoutEl: HTMLElement)",
+          "description": "Triggered when delete starts."
+        },
+        {
+          "event": "swipeoutDeleted",
+          "arguments": "(swipeoutEl: HTMLElement)",
+          "description": "Triggered before DOM removal."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-swipeout-delete-button-bg-color",
+          "theme": "all",
+          "defaultValue": "#ff3b30",
+          "description": "Delete action button background."
+        },
+        {
+          "variable": "--t4-swipeout-button-text-color",
+          "theme": "all",
+          "defaultValue": "#fff",
+          "description": "Action button text color."
+        },
+        {
+          "variable": "--t4-swipeout-button-border-radius",
+          "theme": "ios",
+          "defaultValue": "48px",
+          "description": "Corner radius of action button on iOS."
+        },
+        {
+          "variable": "--t4-swipeout-button-padding-horizontal",
+          "theme": "ios",
+          "defaultValue": "16px",
+          "description": "Horizontal padding on iOS."
+        },
+        {
+          "variable": "--t4-swipeout-active-border-radius",
+          "theme": "ios",
+          "defaultValue": "16px",
+          "description": "Active item border radius on iOS."
+        },
+        {
+          "variable": "--t4-swipeout-button-padding-horizontal",
+          "theme": "md",
+          "defaultValue": "24px",
+          "description": "Horizontal padding on Material Design."
+        },
+        {
+          "variable": "--t4-swipeout-button-font-size",
+          "theme": "md",
+          "defaultValue": "14px",
+          "description": "Button font size on Material Design."
+        },
+        {
+          "variable": "--t4-swipeout-button-font-weight",
+          "theme": "md",
+          "defaultValue": "500",
+          "description": "Button font weight on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "text-editor",
+      "title": "Text Editor",
+      "description": "Text Editor is a rich WYSIWYG editor supporting text formatting (bold, italic, underline, strike, headings), alignment, ordered/unordered lists, links, images, clear formatting, and keyboard toolbar modes.",
+      "docLink": "/techno4-framework2/text-editor",
+      "typesLink": "/techno4-framework2/types#text-editor",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/text-editor/text-editor.d.ts",
+        "packages/techno4-framework2-core/src/components/text-editor/text-editor.js",
+        "packages/techno4-framework2-core/src/components/text-editor/text-editor-class.js",
+        "packages/techno4-framework2-core/src/components/text-editor/text-editor.less",
+        "packages/techno4-framework2-core/src/components/text-editor/text-editor-vars.less",
+        "packages/techno4-framework2-core/src/components/text-editor/text-editor-ios.less",
+        "packages/techno4-framework2-core/src/components/text-editor/text-editor-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/text-editor.html",
+        "description": "Interactive demo demonstrating rich text WYSIWYG editor with custom toolbars, popover mode, and image/link insertion."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"text-editor text-editor-init\" data-placeholder=\"Enter text...\">\n  <div class=\"text-editor-content\" contenteditable></div>\n  <div class=\"text-editor-toolbar\"></div>\n</div>",
+        "modifiers": [
+          {
+            "class": "text-editor",
+            "description": "Main editor container."
+          },
+          {
+            "class": "text-editor-init",
+            "description": "Auto-initialization marker."
+          },
+          {
+            "class": "text-editor-content",
+            "description": "Contenteditable editing canvas element."
+          },
+          {
+            "class": "text-editor-toolbar",
+            "description": "Formatting button bar."
+          },
+          {
+            "class": "text-editor-keyboard-toolbar",
+            "description": "Fixed mobile keyboard toolbar mode."
+          },
+          {
+            "class": "text-editor-popover",
+            "description": "Selection-anchored floating toolbar mode."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "textEditor",
+            "type": "TextEditor.Parameters",
+            "default": "undefined",
+            "description": "Global Text Editor default parameters."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Editor element or CSS selector."
+          },
+          {
+            "name": "mode",
+            "type": "'toolbar' | 'popover' | 'keyboard-toolbar'",
+            "default": "'toolbar'",
+            "description": "Toolbar presentation mode."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "default": "undefined",
+            "description": "Initial HTML content."
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "default": "null",
+            "description": "Placeholder text when content is empty."
+          },
+          {
+            "name": "buttons",
+            "type": "string[] | Array<string>[]",
+            "default": "undefined",
+            "description": "Array of button names or button groups."
+          },
+          {
+            "name": "customButtons",
+            "type": "object",
+            "default": "undefined",
+            "description": "Custom button definitions."
+          },
+          {
+            "name": "dividers",
+            "type": "boolean",
+            "default": "true",
+            "description": "Adds visual dividers between button groups."
+          },
+          {
+            "name": "imageUrlText",
+            "type": "string",
+            "default": "'Insert image URL'",
+            "description": "Prompt dialog title for image URL."
+          },
+          {
+            "name": "linkUrlText",
+            "type": "string",
+            "default": "'Insert link URL'",
+            "description": "Prompt dialog title for link URL."
+          },
+          {
+            "name": "clearFormattingOnPaste",
+            "type": "boolean",
+            "default": "true",
+            "description": "Strips external formatting when pasting."
+          },
+          {
+            "name": "on",
+            "type": "object",
+            "default": "undefined",
+            "description": "Object containing event handlers."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "description": "Link to global app instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "description": "Editor HTML DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping editor."
+        },
+        {
+          "name": "contentEl",
+          "type": "HTMLElement",
+          "description": "Contenteditable element."
+        },
+        {
+          "name": "$contentEl",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping contenteditable element."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "Current HTML value."
+        },
+        {
+          "name": "params",
+          "type": "TextEditor.Parameters",
+          "description": "Instance parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "getValue",
+          "signature": "getValue(): string",
+          "description": "Returns HTML content of editor."
+        },
+        {
+          "name": "setValue",
+          "signature": "setValue(value: string): TextEditor",
+          "description": "Sets new HTML content."
+        },
+        {
+          "name": "clearValue",
+          "signature": "clearValue(): TextEditor",
+          "description": "Clears editor content."
+        },
+        {
+          "name": "getSelectionRange",
+          "signature": "getSelectionRange(): Range",
+          "description": "Returns current text selection Range."
+        },
+        {
+          "name": "setSelectionRange",
+          "signature": "setSelectionRange(range: Range): void",
+          "description": "Restores selection from Range object."
+        },
+        {
+          "name": "destroy",
+          "signature": "destroy(): void",
+          "description": "Destroys Text Editor instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.textEditor.create",
+          "signature": "app.textEditor.create(parameters: TextEditor.Parameters): TextEditor",
+          "description": "Creates a new Text Editor instance."
+        },
+        {
+          "name": "app.textEditor.get",
+          "signature": "app.textEditor.get(el: HTMLElement | CSSSelector | TextEditor): TextEditor",
+          "description": "Retrieves Text Editor instance by element."
+        },
+        {
+          "name": "app.textEditor.destroy",
+          "signature": "app.textEditor.destroy(el: HTMLElement | CSSSelector | TextEditor): void",
+          "description": "Destroys Text Editor instance."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "texteditor:change",
+          "target": ".text-editor",
+          "description": "Triggered on editor change."
+        },
+        {
+          "event": "texteditor:input",
+          "target": ".text-editor",
+          "description": "Triggered on input event."
+        },
+        {
+          "event": "texteditor:focus",
+          "target": ".text-editor",
+          "description": "Triggered when editor gains focus."
+        },
+        {
+          "event": "texteditor:blur",
+          "target": ".text-editor",
+          "description": "Triggered when editor loses focus."
+        },
+        {
+          "event": "texteditor:buttonclick",
+          "target": ".text-editor",
+          "description": "Triggered on toolbar button click."
+        },
+        {
+          "event": "texteditor:keyboardopen",
+          "target": ".text-editor",
+          "description": "Triggered when keyboard toolbar opens."
+        },
+        {
+          "event": "texteditor:keyboardclose",
+          "target": ".text-editor",
+          "description": "Triggered when keyboard toolbar closes."
+        },
+        {
+          "event": "texteditor:popoveropen",
+          "target": ".text-editor",
+          "description": "Triggered when floating popover opens."
+        },
+        {
+          "event": "texteditor:popoverclose",
+          "target": ".text-editor",
+          "description": "Triggered when floating popover closes."
+        },
+        {
+          "event": "texteditor:init",
+          "target": ".text-editor",
+          "description": "Triggered upon initialization."
+        },
+        {
+          "event": "texteditor:beforedestroy",
+          "target": ".text-editor",
+          "description": "Triggered before destruction."
+        },
+        {
+          "event": "texteditor:insertlink",
+          "target": ".text-editor",
+          "description": "Triggered on link insertion."
+        },
+        {
+          "event": "texteditor:insertimage",
+          "target": ".text-editor",
+          "description": "Triggered on image insertion."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "textEditorChange",
+          "arguments": "(editor: TextEditor, value: string)",
+          "description": "Triggered on content change."
+        },
+        {
+          "event": "textEditorInput",
+          "arguments": "(editor: TextEditor)",
+          "description": "Triggered on input event."
+        },
+        {
+          "event": "textEditorFocus",
+          "arguments": "(editor: TextEditor)",
+          "description": "Triggered on editor focus."
+        },
+        {
+          "event": "textEditorBlur",
+          "arguments": "(editor: TextEditor)",
+          "description": "Triggered on editor blur."
+        },
+        {
+          "event": "textEditorButtonClick",
+          "arguments": "(editor: TextEditor, button: string)",
+          "description": "Triggered on toolbar button tap."
+        },
+        {
+          "event": "textEditorKeyboardOpen",
+          "arguments": "(editor: TextEditor)",
+          "description": "Triggered on keyboard toolbar open."
+        },
+        {
+          "event": "textEditorKeyboardClose",
+          "arguments": "(editor: TextEditor)",
+          "description": "Triggered on keyboard toolbar close."
+        },
+        {
+          "event": "textEditorPopoverOpen",
+          "arguments": "(editor: TextEditor)",
+          "description": "Triggered on popover open."
+        },
+        {
+          "event": "textEditorPopoverClose",
+          "arguments": "(editor: TextEditor)",
+          "description": "Triggered on popover close."
+        },
+        {
+          "event": "textEditorInit",
+          "arguments": "(editor: TextEditor)",
+          "description": "Triggered on editor init."
+        },
+        {
+          "event": "textEditorBeforeDestroy",
+          "arguments": "(editor: TextEditor)",
+          "description": "Triggered before destruction."
+        },
+        {
+          "event": "textEditorInsertLink",
+          "arguments": "(editor: TextEditor, url: string)",
+          "description": "Triggered on link insert."
+        },
+        {
+          "event": "textEditorInsertImage",
+          "arguments": "(editor: TextEditor, url: string)",
+          "description": "Triggered on image insert."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-text-editor-height",
+          "theme": "all",
+          "defaultValue": "250px",
+          "description": "Default editor canvas height."
+        },
+        {
+          "variable": "--t4-text-editor-border-width",
+          "theme": "all",
+          "defaultValue": "1px",
+          "description": "Border width of editor box."
+        },
+        {
+          "variable": "--t4-text-editor-button-size",
+          "theme": "all",
+          "defaultValue": "28px",
+          "description": "Size of toolbar formatting buttons."
+        },
+        {
+          "variable": "--t4-text-editor-text-color",
+          "theme": "all",
+          "defaultValue": "#000 (light) / #fff (dark)",
+          "description": "Editor content text color."
+        },
+        {
+          "variable": "--t4-text-editor-bg-color",
+          "theme": "all",
+          "defaultValue": "#fff (light) / #121212 (dark)",
+          "description": "Editor background color."
+        },
+        {
+          "variable": "--t4-text-editor-toolbar-bg-color",
+          "theme": "ios",
+          "defaultValue": "#fff (light) / #202020 (dark)",
+          "description": "Toolbar background on iOS."
+        },
+        {
+          "variable": "--t4-text-editor-border-color",
+          "theme": "ios",
+          "defaultValue": "rgba(0,0,0,0.1) (light) / rgba(255,255,255,0.1) (dark)",
+          "description": "Border color on iOS."
+        },
+        {
+          "variable": "--t4-text-editor-toolbar-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-1)",
+          "description": "Toolbar background on Material Design."
+        },
+        {
+          "variable": "--t4-text-editor-border-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-outline)",
+          "description": "Border color on Material Design."
+        },
+        {
+          "variable": "--t4-text-editor-button-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-surface)",
+          "description": "Button icon color on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "title": "Timeline",
+      "description": "Timeline component displays sequential events and chronological milestones in vertical, horizontal, or calendar-aligned layout orientations. Features timestamp dates, markers, icons, and event cards.",
+      "docLink": "/techno4-framework2/timeline",
+      "typesLink": "/techno4-framework2/types#timeline",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/timeline/timeline.d.ts",
+        "packages/techno4-framework2-core/src/components/timeline/timeline.js",
+        "packages/techno4-framework2-core/src/components/timeline/timeline.less",
+        "packages/techno4-framework2-core/src/components/timeline/timeline-vars.less",
+        "packages/techno4-framework2-core/src/components/timeline/timeline-ios.less",
+        "packages/techno4-framework2-core/src/components/timeline/timeline-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/timeline.html",
+        "description": "Interactive demo demonstrating vertical timelines, horizontal timelines, and calendar timeline views."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"timeline\">\n  <div class=\"timeline-item\">\n    <div class=\"timeline-item-date\">21 DEC</div>\n    <div class=\"timeline-item-divider\"></div>\n    <div class=\"timeline-item-content\">\n      <div class=\"timeline-item-inner\">\n        <div class=\"timeline-item-time\">12:30</div>\n        <div class=\"timeline-item-title\">Milestone Reached</div>\n        <div class=\"timeline-item-text\">Project release deployed successfully.</div>\n      </div>\n    </div>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "timeline",
+            "description": "Main timeline container (vertical by default)."
+          },
+          {
+            "class": "timeline-horizontal",
+            "description": "Horizontal timeline orientation."
+          },
+          {
+            "class": "timeline-sides",
+            "description": "Alternating items on left and right sides of central divider line."
+          },
+          {
+            "class": "timeline-item",
+            "description": "Single event milestone item."
+          },
+          {
+            "class": "timeline-item-date",
+            "description": "Date header element."
+          },
+          {
+            "class": "timeline-item-divider",
+            "description": "Vertical line with bullet/icon point."
+          },
+          {
+            "class": "timeline-item-content",
+            "description": "Event body wrapper."
+          },
+          {
+            "class": "timeline-item-inner",
+            "description": "Card container for event title/text."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-timeline-divider-margin-horizontal",
+          "theme": "all",
+          "defaultValue": "16px",
+          "description": "Margin around timeline divider line."
+        },
+        {
+          "variable": "--t4-timeline-divider-color",
+          "theme": "ios",
+          "defaultValue": "#bbb",
+          "description": "Divider line color on iOS."
+        },
+        {
+          "variable": "--t4-timeline-item-inner-border-radius",
+          "theme": "ios",
+          "defaultValue": "24px",
+          "description": "Card corner radius on iOS."
+        },
+        {
+          "variable": "--t4-timeline-item-title-font-size",
+          "theme": "ios",
+          "defaultValue": "17px",
+          "description": "Event title font size on iOS."
+        },
+        {
+          "variable": "--t4-timeline-item-inner-bg-color",
+          "theme": "ios-light",
+          "defaultValue": "#fff",
+          "description": "Event card background on iOS light."
+        },
+        {
+          "variable": "--t4-timeline-item-inner-bg-color",
+          "theme": "ios-dark",
+          "defaultValue": "#1c1c1d",
+          "description": "Event card background on iOS dark."
+        },
+        {
+          "variable": "--t4-timeline-divider-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-outline)",
+          "description": "Divider line color on Material Design."
+        },
+        {
+          "variable": "--t4-timeline-item-inner-border-radius",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Card corner radius on Material Design."
+        },
+        {
+          "variable": "--t4-timeline-item-title-font-size",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Event title font size on Material Design."
+        },
+        {
+          "variable": "--t4-timeline-item-inner-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-1)",
+          "description": "Event card background on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "title": "Toast",
+      "description": "Toast component displays temporary subtle feedback messages at the top, center, or bottom of the screen. Supports action buttons, icons, and automatic dismiss timers.",
+      "docLink": "/techno4-framework2/toast",
+      "typesLink": "/techno4-framework2/types#toast",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/toast/toast.d.ts",
+        "packages/techno4-framework2-core/src/components/toast/toast.js",
+        "packages/techno4-framework2-core/src/components/toast/toast-class.js",
+        "packages/techno4-framework2-core/src/components/toast/toast.less",
+        "packages/techno4-framework2-core/src/components/toast/toast-vars.less",
+        "packages/techno4-framework2-core/src/components/toast/toast-ios.less",
+        "packages/techno4-framework2-core/src/components/toast/toast-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/toast.html",
+        "description": "Interactive demo demonstrating top, center, and bottom toasts with action buttons and automatic timeout dismissals."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"toast toast-bottom modal-in\">\n  <div class=\"toast-content\">\n    <div class=\"toast-text\">Connection restored</div>\n    <a class=\"toast-button button\">Close</a>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "toast",
+            "description": "Main toast alert container."
+          },
+          {
+            "class": "toast-top",
+            "description": "Positions toast at the top of the viewport."
+          },
+          {
+            "class": "toast-center",
+            "description": "Positions toast centered in the viewport."
+          },
+          {
+            "class": "toast-bottom",
+            "description": "Positions toast at the bottom of the viewport."
+          },
+          {
+            "class": "toast-content",
+            "description": "Inner content container holding text and action button."
+          },
+          {
+            "class": "toast-button",
+            "description": "Action button to dismiss toast."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "toast",
+            "type": "Toast.Parameters",
+            "default": "undefined",
+            "description": "Global Toast default parameters."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Toast element or CSS selector."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "default": "undefined",
+            "description": "Toast icon HTML string."
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "default": "undefined",
+            "description": "Toast message text."
+          },
+          {
+            "name": "position",
+            "type": "'top' | 'center' | 'bottom'",
+            "default": "'bottom'",
+            "description": "Vertical position on screen."
+          },
+          {
+            "name": "horizontalPosition",
+            "type": "'left' | 'center' | 'right'",
+            "default": "'left'",
+            "description": "Horizontal alignment on wide screens."
+          },
+          {
+            "name": "closeButton",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables close action button."
+          },
+          {
+            "name": "closeButtonColor",
+            "type": "string",
+            "default": "undefined",
+            "description": "Color of close button."
+          },
+          {
+            "name": "closeButtonText",
+            "type": "string",
+            "default": "'Ok'",
+            "description": "Text label of close button."
+          },
+          {
+            "name": "closeTimeout",
+            "type": "number",
+            "default": "undefined",
+            "description": "Timeout delay in ms to auto-close toast."
+          },
+          {
+            "name": "cssClass",
+            "type": "string",
+            "default": "undefined",
+            "description": "Additional CSS class on toast."
+          },
+          {
+            "name": "destroyOnClose",
+            "type": "boolean",
+            "default": "false",
+            "description": "Destroys instance upon close."
+          },
+          {
+            "name": "containerEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "app.el",
+            "description": "Element to mount toast to."
+          },
+          {
+            "name": "render",
+            "type": "() => string",
+            "default": "undefined",
+            "description": "Custom HTML render function."
+          },
+          {
+            "name": "on",
+            "type": "object",
+            "default": "undefined",
+            "description": "Object containing event handlers."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "description": "Link to global app instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "description": "Toast HTML DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping toast."
+        },
+        {
+          "name": "params",
+          "type": "Toast.Parameters",
+          "description": "Instance parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "open",
+          "signature": "open(animate?: boolean): Toast",
+          "description": "Opens toast."
+        },
+        {
+          "name": "close",
+          "signature": "close(animate?: boolean): Toast",
+          "description": "Closes toast."
+        },
+        {
+          "name": "destroy",
+          "signature": "destroy(): void",
+          "description": "Destroys Toast instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.toast.create",
+          "signature": "app.toast.create(parameters: Toast.Parameters): Toast",
+          "description": "Creates a new Toast instance."
+        },
+        {
+          "name": "app.toast.destroy",
+          "signature": "app.toast.destroy(el: HTMLElement | CSSSelector | Toast): void",
+          "description": "Destroys Toast instance."
+        },
+        {
+          "name": "app.toast.get",
+          "signature": "app.toast.get(el: HTMLElement | CSSSelector): Toast",
+          "description": "Retrieves Toast instance by element."
+        },
+        {
+          "name": "app.toast.open",
+          "signature": "app.toast.open(el: HTMLElement | CSSSelector, animate?: boolean): Toast",
+          "description": "Opens specified Toast."
+        },
+        {
+          "name": "app.toast.close",
+          "signature": "app.toast.close(el: HTMLElement | CSSSelector, animate?: boolean): Toast",
+          "description": "Closes specified Toast."
+        },
+        {
+          "name": "app.toast.show",
+          "signature": "app.toast.show(parameters: Toast.Parameters): Toast",
+          "description": "Creates and opens Toast immediately."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "toast:open",
+          "target": ".toast",
+          "description": "Triggered when Toast starts opening."
+        },
+        {
+          "event": "toast:opened",
+          "target": ".toast",
+          "description": "Triggered after Toast completes opening animation."
+        },
+        {
+          "event": "toast:close",
+          "target": ".toast",
+          "description": "Triggered when Toast starts closing."
+        },
+        {
+          "event": "toast:closed",
+          "target": ".toast",
+          "description": "Triggered after Toast completes closing animation."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "toastCloseButtonClick",
+          "arguments": "(toast: Toast)",
+          "description": "Triggered when close button is clicked."
+        },
+        {
+          "event": "toastOpen",
+          "arguments": "(toast: Toast)",
+          "description": "Triggered when Toast starts opening."
+        },
+        {
+          "event": "toastOpened",
+          "arguments": "(toast: Toast)",
+          "description": "Triggered after Toast completes opening."
+        },
+        {
+          "event": "toastClose",
+          "arguments": "(toast: Toast)",
+          "description": "Triggered when Toast starts closing."
+        },
+        {
+          "event": "toastClosed",
+          "arguments": "(toast: Toast)",
+          "description": "Triggered after Toast completes closing."
+        },
+        {
+          "event": "toastBeforeDestroy",
+          "arguments": "(toast: Toast)",
+          "description": "Triggered right before Toast is destroyed."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-toast-font-size",
+          "theme": "all",
+          "defaultValue": "14px",
+          "description": "Toast text font size."
+        },
+        {
+          "variable": "--t4-toast-max-width",
+          "theme": "all",
+          "defaultValue": "568px",
+          "description": "Maximum width of toast banner."
+        },
+        {
+          "variable": "--t4-toast-bg-color",
+          "theme": "ios",
+          "defaultValue": "var(--t4-glass-bg-color)",
+          "description": "Toast background on iOS."
+        },
+        {
+          "variable": "--t4-toast-border-radius",
+          "theme": "ios",
+          "defaultValue": "32px",
+          "description": "Corner radius on iOS."
+        },
+        {
+          "variable": "--t4-toast-padding-horizontal",
+          "theme": "ios",
+          "defaultValue": "16px",
+          "description": "Horizontal padding on iOS."
+        },
+        {
+          "variable": "--t4-toast-padding-vertical",
+          "theme": "ios",
+          "defaultValue": "12px",
+          "description": "Vertical padding on iOS."
+        },
+        {
+          "variable": "--t4-toast-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-5)",
+          "description": "Toast background on Material Design."
+        },
+        {
+          "variable": "--t4-toast-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-surface)",
+          "description": "Text color on Material Design."
+        },
+        {
+          "variable": "--t4-toast-border-radius",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Corner radius on Material Design."
+        },
+        {
+          "variable": "--t4-toast-padding-horizontal",
+          "theme": "md",
+          "defaultValue": "24px",
+          "description": "Horizontal padding on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "title": "Toggle",
+      "description": "Toggle component provides switch controls for toggling boolean on/off preferences. Supports touch dragging, keyboard accessibility, and custom color themes.",
+      "docLink": "/techno4-framework2/toggle",
+      "typesLink": "/techno4-framework2/types#toggle",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/toggle/toggle.d.ts",
+        "packages/techno4-framework2-core/src/components/toggle/toggle.js",
+        "packages/techno4-framework2-core/src/components/toggle/toggle-class.js",
+        "packages/techno4-framework2-core/src/components/toggle/toggle.less",
+        "packages/techno4-framework2-core/src/components/toggle/toggle-vars.less",
+        "packages/techno4-framework2-core/src/components/toggle/toggle-ios.less",
+        "packages/techno4-framework2-core/src/components/toggle/toggle-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/toggle.html",
+        "description": "Interactive demo demonstrating inline toggle switches and list-view toggle rows with theme coloring."
+      },
+      "htmlLayout": {
+        "structure": "<label class=\"toggle toggle-init\">\n  <input type=\"checkbox\" checked />\n  <span class=\"toggle-icon\"></span>\n</label>\n\n<div class=\"list\">\n  <ul>\n    <li class=\"item-content\">\n      <div class=\"item-inner\">\n        <div class=\"item-title\">Wi-Fi</div>\n        <div class=\"item-after\">\n          <label class=\"toggle toggle-init\">\n            <input type=\"checkbox\" checked />\n            <span class=\"toggle-icon\"></span>\n          </label>\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "toggle",
+            "description": "Toggle switch container label."
+          },
+          {
+            "class": "toggle-init",
+            "description": "Auto-initialization marker."
+          },
+          {
+            "class": "toggle-icon",
+            "description": "Visual track and sliding knob handle."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "toggle",
+            "type": "Toggle.Parameters",
+            "default": "undefined",
+            "description": "Global Toggle default parameters."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Toggle element or CSS selector."
+          },
+          {
+            "name": "on",
+            "type": "object",
+            "default": "undefined",
+            "description": "Object containing event handlers."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "description": "Link to global app instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "description": "Toggle HTML DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping toggle."
+        },
+        {
+          "name": "inputEl",
+          "type": "HTMLElement",
+          "description": "Underlying checkbox input element."
+        },
+        {
+          "name": "$inputEl",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping input."
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "description": "Current checked boolean state."
+        },
+        {
+          "name": "params",
+          "type": "Toggle.Parameters",
+          "description": "Instance parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "toggle",
+          "signature": "toggle(): number",
+          "description": "Toggles checked state."
+        },
+        {
+          "name": "destroy",
+          "signature": "destroy(): void",
+          "description": "Destroys Toggle instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.toggle.create",
+          "signature": "app.toggle.create(parameters: Toggle.Parameters): Toggle",
+          "description": "Creates a new Toggle instance."
+        },
+        {
+          "name": "app.toggle.get",
+          "signature": "app.toggle.get(el: HTMLElement | CSSSelector | Toggle): Toggle",
+          "description": "Retrieves Toggle instance by element."
+        },
+        {
+          "name": "app.toggle.destroy",
+          "signature": "app.toggle.destroy(el: HTMLElement | CSSSelector | Toggle): void",
+          "description": "Destroys Toggle instance."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "toggle:change",
+          "target": ".toggle",
+          "description": "Triggered when toggle state changes."
+        },
+        {
+          "event": "toggle:beforedestroy",
+          "target": ".toggle",
+          "description": "Triggered right before Toggle is destroyed."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "toggleChange",
+          "arguments": "(toggle: Toggle)",
+          "description": "Triggered when toggle state changes."
+        },
+        {
+          "event": "toggleBeforeDestroy",
+          "arguments": "(toggle: Toggle)",
+          "description": "Triggered right before Toggle is destroyed."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-toggle-width",
+          "theme": "ios",
+          "defaultValue": "64px",
+          "description": "Width of toggle switch on iOS."
+        },
+        {
+          "variable": "--t4-toggle-height",
+          "theme": "ios",
+          "defaultValue": "28px",
+          "description": "Height of toggle switch on iOS."
+        },
+        {
+          "variable": "--t4-toggle-active-knob-bg-color",
+          "theme": "ios",
+          "defaultValue": "#fff",
+          "description": "Active knob color on iOS."
+        },
+        {
+          "variable": "--t4-toggle-inactive-border-color",
+          "theme": "ios-light",
+          "defaultValue": "#e5e5e5",
+          "description": "Inactive border on iOS light."
+        },
+        {
+          "variable": "--t4-toggle-width",
+          "theme": "md",
+          "defaultValue": "52px",
+          "description": "Width of toggle switch on Material Design."
+        },
+        {
+          "variable": "--t4-toggle-height",
+          "theme": "md",
+          "defaultValue": "32px",
+          "description": "Height of toggle switch on Material Design."
+        },
+        {
+          "variable": "--t4-toggle-inactive-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-variant)",
+          "description": "Inactive track background on Material Design."
+        },
+        {
+          "variable": "--t4-toggle-active-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-theme-color)",
+          "description": "Active track background on Material Design."
+        },
+        {
+          "variable": "--t4-toggle-active-knob-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-primary)",
+          "description": "Active knob color on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "toolbar",
+      "title": "Toolbar & Tabbar",
+      "description": "Toolbar is a bottom or top navigation bar accommodating contextual links, action icons, or Tabbar navigation tabs with labels and badge indicators. Supports scroll-to-hide and animated tab highlights.",
+      "docLink": "/techno4-framework2/toolbar",
+      "typesLink": "/techno4-framework2/types#toolbar",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/toolbar/toolbar.d.ts",
+        "packages/techno4-framework2-core/src/components/toolbar/toolbar.js",
+        "packages/techno4-framework2-core/src/components/toolbar/tabbar-highlight.js",
+        "packages/techno4-framework2-core/src/components/toolbar/toolbar.less",
+        "packages/techno4-framework2-core/src/components/toolbar/toolbar-vars.less",
+        "packages/techno4-framework2-core/src/components/toolbar/toolbar-ios.less",
+        "packages/techno4-framework2-core/src/components/toolbar/toolbar-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/toolbar-tabbar.html",
+        "description": "Interactive demo demonstrating fixed/bottom toolbars, tabbar with icons and labels, scrollable tabbars, and hide-on-scroll."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"toolbar tabbar tabbar-icons toolbar-bottom\">\n  <div class=\"toolbar-inner\">\n    <a href=\"#tab-1\" class=\"tab-link tab-link-active\">\n      <i class=\"icon t4-icons\">house_fill</i>\n      <span class=\"tabbar-label\">Home</span>\n    </a>\n    <a href=\"#tab-2\" class=\"tab-link\">\n      <i class=\"icon t4-icons\">square_list</i>\n      <span class=\"tabbar-label\">Catalog</span>\n    </a>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "toolbar",
+            "description": "Main toolbar container."
+          },
+          {
+            "class": "toolbar-top",
+            "description": "Positions toolbar at the top of the viewport."
+          },
+          {
+            "class": "toolbar-bottom",
+            "description": "Positions toolbar at the bottom of the viewport."
+          },
+          {
+            "class": "tabbar",
+            "description": "Enables tab navigation switching behavior."
+          },
+          {
+            "class": "tabbar-icons",
+            "description": "Accommodates icon + text label tab links."
+          },
+          {
+            "class": "tabbar-scrollable",
+            "description": "Enables horizontal scrolling for large tab counts."
+          },
+          {
+            "class": "tab-link",
+            "description": "Tab link button."
+          },
+          {
+            "class": "tab-link-active",
+            "description": "Active selected tab link."
+          },
+          {
+            "class": "tabbar-highlight",
+            "description": "Animated sliding highlight bar underneath active tab (MD theme)."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "toolbar.hideOnPageScroll",
+            "type": "boolean",
+            "default": "false",
+            "description": "Hides toolbar on page scroll."
+          },
+          {
+            "name": "toolbar.showOnPageScrollEnd",
+            "type": "boolean",
+            "default": "true",
+            "description": "Shows toolbar when scrolling reaches bottom of page."
+          },
+          {
+            "name": "toolbar.showOnPageScrollTop",
+            "type": "boolean",
+            "default": "true",
+            "description": "Shows toolbar when scrolling to top of page."
+          }
+        ],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.toolbar.hide",
+          "signature": "app.toolbar.hide(toolbarEl: HTMLElement | CSSSelector, animate?: boolean): void",
+          "description": "Hides specified toolbar."
+        },
+        {
+          "name": "app.toolbar.show",
+          "signature": "app.toolbar.show(toolbarEl: HTMLElement | CSSSelector, animate?: boolean): void",
+          "description": "Shows specified toolbar."
+        },
+        {
+          "name": "app.toolbar.setHighlight",
+          "signature": "app.toolbar.setHighlight(tabbarEl: HTMLElement | CSSSelector): void",
+          "description": "Recalculates sliding tab highlight position."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "toolbar:hide",
+          "target": ".toolbar",
+          "description": "Triggered when toolbar becomes hidden."
+        },
+        {
+          "event": "toolbar:show",
+          "target": ".toolbar",
+          "description": "Triggered when toolbar becomes visible."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "toolbarShow",
+          "arguments": "(toolbarEl: HTMLElement)",
+          "description": "Triggered when toolbar becomes visible."
+        },
+        {
+          "event": "toolbarHide",
+          "arguments": "(toolbarEl: HTMLElement)",
+          "description": "Triggered when toolbar becomes hidden."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-toolbar-hide-show-transition-duration",
+          "theme": "all",
+          "defaultValue": "400ms",
+          "description": "Toolbar show/hide transition duration."
+        },
+        {
+          "variable": "--t4-toolbar-height",
+          "theme": "ios",
+          "defaultValue": "64px",
+          "description": "Standard toolbar height on iOS."
+        },
+        {
+          "variable": "--t4-tabbar-icons-height",
+          "theme": "ios",
+          "defaultValue": "80px",
+          "description": "Height of tabbar with icons and labels on iOS."
+        },
+        {
+          "variable": "--t4-tabbar-icon-size",
+          "theme": "ios",
+          "defaultValue": "28px",
+          "description": "Icon size in tabbar on iOS."
+        },
+        {
+          "variable": "--t4-tabbar-label-font-size",
+          "theme": "ios",
+          "defaultValue": "12px",
+          "description": "Tabbar label font size on iOS."
+        },
+        {
+          "variable": "--t4-toolbar-height",
+          "theme": "md",
+          "defaultValue": "56px",
+          "description": "Standard toolbar height on Material Design."
+        },
+        {
+          "variable": "--t4-tabbar-icons-height",
+          "theme": "md",
+          "defaultValue": "80px",
+          "description": "Height of tabbar with icons and labels on Material Design."
+        },
+        {
+          "variable": "--t4-tabbar-icon-size",
+          "theme": "md",
+          "defaultValue": "24px",
+          "description": "Icon size in tabbar on Material Design."
+        },
+        {
+          "variable": "--t4-tabbar-label-font-size",
+          "theme": "md",
+          "defaultValue": "12px",
+          "description": "Tabbar label font size on Material Design."
+        },
+        {
+          "variable": "--t4-tabbar-link-active-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-secondary-container)",
+          "description": "Active tab link color on Material Design."
+        },
+        {
+          "variable": "--t4-tabbar-link-inactive-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-surface-variant)",
+          "description": "Inactive tab link color on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "title": "Tooltip",
+      "description": "Tooltip component displays contextual hint callouts when hovering, tapping, or focusing on target UI elements. Supports delegated targeting, custom offsets, and rich HTML text contents.",
+      "docLink": "/techno4-framework2/tooltip",
+      "typesLink": "/techno4-framework2/types#tooltip",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/tooltip/tooltip.d.ts",
+        "packages/techno4-framework2-core/src/components/tooltip/tooltip.js",
+        "packages/techno4-framework2-core/src/components/tooltip/tooltip-class.js",
+        "packages/techno4-framework2-core/src/components/tooltip/tooltip.less",
+        "packages/techno4-framework2-core/src/components/tooltip/tooltip-vars.less",
+        "packages/techno4-framework2-core/src/components/tooltip/tooltip-ios.less",
+        "packages/techno4-framework2-core/src/components/tooltip/tooltip-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/tooltip.html",
+        "description": "Interactive demo demonstrating hover tooltips, click/manual triggers, and delegated tooltip targets."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"tooltip\">\n  <div class=\"tooltip-content\">Informational tooltip text</div>\n</div>",
+        "modifiers": [
+          {
+            "class": "tooltip",
+            "description": "Floating tooltip callout bubble."
+          },
+          {
+            "class": "tooltip-content",
+            "description": "Inner text content container."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "tooltip",
+            "type": "Tooltip.Parameters",
+            "default": "undefined",
+            "description": "Global Tooltip default parameters."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "targetEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Target anchor element where tooltip is attached."
+          },
+          {
+            "name": "delegated",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enables event delegation for multiple matching target selectors."
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "default": "undefined",
+            "description": "Tooltip text or HTML content."
+          },
+          {
+            "name": "cssClass",
+            "type": "string",
+            "default": "undefined",
+            "description": "Additional CSS class on tooltip bubble."
+          },
+          {
+            "name": "offset",
+            "type": "number",
+            "default": "undefined",
+            "description": "Pixel distance offset from target element."
+          },
+          {
+            "name": "trigger",
+            "type": "'hover' | 'click' | 'manual'",
+            "default": "'hover'",
+            "description": "Interaction trigger."
+          },
+          {
+            "name": "containerEl",
+            "type": "HTMLElement | CSSSelector",
+            "default": "app.el",
+            "description": "Container to mount tooltip to."
+          },
+          {
+            "name": "render",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Custom HTML render function."
+          },
+          {
+            "name": "on",
+            "type": "object",
+            "default": "undefined",
+            "description": "Object containing event handlers."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "description": "Link to global app instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "description": "Tooltip HTML DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping tooltip."
+        },
+        {
+          "name": "targetEl",
+          "type": "HTMLElement",
+          "description": "Target anchor element."
+        },
+        {
+          "name": "$targetEl",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping target element."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "description": "Current tooltip text content."
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "description": "Whether tooltip is currently displayed."
+        },
+        {
+          "name": "params",
+          "type": "Tooltip.Parameters",
+          "description": "Instance parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "show",
+          "signature": "show(targetEl?: HTMLElement | CSSSelector): Tooltip",
+          "description": "Shows tooltip around target element."
+        },
+        {
+          "name": "hide",
+          "signature": "hide(): Tooltip",
+          "description": "Hides tooltip."
+        },
+        {
+          "name": "setText",
+          "signature": "setText(text: string): Tooltip",
+          "description": "Updates tooltip text."
+        },
+        {
+          "name": "setTargetEl",
+          "signature": "setTargetEl(targetEl: HTMLElement | CSSSelector): Tooltip",
+          "description": "Changes target anchor element."
+        },
+        {
+          "name": "destroy",
+          "signature": "destroy(): void",
+          "description": "Destroys Tooltip instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.tooltip.create",
+          "signature": "app.tooltip.create(parameters: Tooltip.Parameters): Tooltip",
+          "description": "Creates a new Tooltip instance."
+        },
+        {
+          "name": "app.tooltip.destroy",
+          "signature": "app.tooltip.destroy(targetEl: HTMLElement | CSSSelector): void",
+          "description": "Destroys Tooltip on target element."
+        },
+        {
+          "name": "app.tooltip.get",
+          "signature": "app.tooltip.get(targetEl: HTMLElement | CSSSelector): Tooltip",
+          "description": "Retrieves Tooltip instance for target element."
+        },
+        {
+          "name": "app.tooltip.show",
+          "signature": "app.tooltip.show(targetEl: HTMLElement | CSSSelector): Tooltip",
+          "description": "Shows tooltip on target element."
+        },
+        {
+          "name": "app.tooltip.hide",
+          "signature": "app.tooltip.hide(targetEl: HTMLElement | CSSSelector): Tooltip",
+          "description": "Hides tooltip on target element."
+        },
+        {
+          "name": "app.tooltip.setText",
+          "signature": "app.tooltip.setText(targetEl: HTMLElement | CSSSelector, text: string): Tooltip",
+          "description": "Updates tooltip text."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "tooltip:show",
+          "target": ".tooltip",
+          "description": "Triggered when tooltip becomes visible."
+        },
+        {
+          "event": "tooltip:hide",
+          "target": ".tooltip",
+          "description": "Triggered when tooltip becomes hidden."
+        },
+        {
+          "event": "tooltip:beforedestroy",
+          "target": ".tooltip",
+          "description": "Triggered right before destruction."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "tooltipShow",
+          "arguments": "(tooltip: Tooltip)",
+          "description": "Triggered when tooltip becomes visible."
+        },
+        {
+          "event": "tooltipHide",
+          "arguments": "(tooltip: Tooltip)",
+          "description": "Triggered when tooltip becomes hidden."
+        },
+        {
+          "event": "tooltipBeforeDestroy",
+          "arguments": "(tooltip: Tooltip)",
+          "description": "Triggered before destruction."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-tooltip-padding",
+          "theme": "all",
+          "defaultValue": "8px 16px",
+          "description": "Padding inside tooltip on touch devices."
+        },
+        {
+          "variable": "--t4-tooltip-font-size",
+          "theme": "all",
+          "defaultValue": "14px",
+          "description": "Font size on touch devices."
+        },
+        {
+          "variable": "--t4-tooltip-desktop-padding",
+          "theme": "all",
+          "defaultValue": "6px 8px",
+          "description": "Padding inside tooltip on desktop."
+        },
+        {
+          "variable": "--t4-tooltip-desktop-font-size",
+          "theme": "all",
+          "defaultValue": "12px",
+          "description": "Font size on desktop."
+        },
+        {
+          "variable": "--t4-tooltip-border-radius",
+          "theme": "ios",
+          "defaultValue": "4px",
+          "description": "Corner radius on iOS."
+        },
+        {
+          "variable": "--t4-tooltip-bg-color",
+          "theme": "ios",
+          "defaultValue": "rgba(0, 0, 0, 0.87)",
+          "description": "Background color on iOS."
+        },
+        {
+          "variable": "--t4-tooltip-text-color",
+          "theme": "ios",
+          "defaultValue": "#fff",
+          "description": "Text color on iOS."
+        },
+        {
+          "variable": "--t4-tooltip-border-radius",
+          "theme": "md",
+          "defaultValue": "8px",
+          "description": "Corner radius on Material Design."
+        },
+        {
+          "variable": "--t4-tooltip-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-secondary)",
+          "description": "Background on Material Design."
+        },
+        {
+          "variable": "--t4-tooltip-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-secondary)",
+          "description": "Text color on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "touch-ripple",
+      "title": "Touch Ripple",
+      "description": "Touch Ripple component provides Material Design radial ink ripple click/touch feedback animations across buttons, links, cards, list items, and interactive surfaces.",
+      "docLink": "/techno4-framework2/touch-ripple",
+      "typesLink": "/techno4-framework2/types#touch-ripple",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/touch-ripple/touch-ripple.d.ts",
+        "packages/techno4-framework2-core/src/components/touch-ripple/touch-ripple.js",
+        "packages/techno4-framework2-core/src/components/touch-ripple/touch-ripple-class.js",
+        "packages/techno4-framework2-core/src/components/touch-ripple/touch-ripple.less",
+        "packages/techno4-framework2-core/src/components/touch-ripple/touch-ripple-vars.less",
+        "packages/techno4-framework2-core/src/components/touch-ripple/touch-ripple-ios.less",
+        "packages/techno4-framework2-core/src/components/touch-ripple/touch-ripple-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/buttons.html",
+        "description": "Radial touch ripple effects demonstrated on buttons and list items."
+      },
+      "htmlLayout": {
+        "structure": "<a href=\"#\" class=\"button ripple\">Click for Ripple</a>",
+        "modifiers": [
+          {
+            "class": "ripple",
+            "description": "Enables touch ripple effect on element."
+          },
+          {
+            "class": "no-ripple",
+            "description": "Disables touch ripple on specific element."
+          },
+          {
+            "class": "ripple-wave",
+            "description": "Expanding radial circular ink ripple element."
+          },
+          {
+            "class": "ripple-inset",
+            "description": "Confines ripple to circular boundary."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.touchRipple.create",
+          "signature": "app.touchRipple.create($el: Dom64Array, x: number, y: number): TouchRipple",
+          "description": "Creates an ink ripple wave at (x, y) coordinates."
+        }
+      ],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-touch-ripple-black",
+          "theme": "all",
+          "defaultValue": "rgba(0, 0, 0, 0.1)",
+          "description": "Dark ripple wave color."
+        },
+        {
+          "variable": "--t4-touch-ripple-white",
+          "theme": "all",
+          "defaultValue": "rgba(255, 255, 255, 0.15)",
+          "description": "Light ripple wave color."
+        },
+        {
+          "variable": "--t4-touch-ripple-color",
+          "theme": "all",
+          "defaultValue": "var(--t4-touch-ripple-black)",
+          "description": "Active ripple wave color (switches to white in dark mode)."
+        }
+      ]
+    },
+    {
+      "name": "treeview",
+      "title": "Treeview",
+      "description": "Treeview component presents hierarchical folder/file directory trees with expandable nodes, custom icons, selection highlights, and asynchronous child item loading indicators.",
+      "docLink": "/techno4-framework2/treeview",
+      "typesLink": "/techno4-framework2/types#treeview",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/treeview/treeview.d.ts",
+        "packages/techno4-framework2-core/src/components/treeview/treeview.js",
+        "packages/techno4-framework2-core/src/components/treeview/treeview.less",
+        "packages/techno4-framework2-core/src/components/treeview/treeview-vars.less",
+        "packages/techno4-framework2-core/src/components/treeview/treeview-ios.less",
+        "packages/techno4-framework2-core/src/components/treeview/treeview-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/treeview.html",
+        "description": "Interactive demo demonstrating multi-level collapsible folder structures, selectable tree items, and async child loading."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"treeview\">\n  <div class=\"treeview-item\">\n    <div class=\"treeview-item-root\">\n      <div class=\"treeview-toggle\"></div>\n      <div class=\"treeview-item-content\">\n        <i class=\"icon t4-icons\">folder_fill</i>\n        <div class=\"treeview-item-label\">Documents</div>\n      </div>\n    </div>\n    <div class=\"treeview-item-children\">\n      <div class=\"treeview-item\">\n        <div class=\"treeview-item-root\">\n          <div class=\"treeview-item-content\">\n            <i class=\"icon t4-icons\">doc_text_fill</i>\n            <div class=\"treeview-item-label\">Resume.pdf</div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "treeview",
+            "description": "Root hierarchical tree container."
+          },
+          {
+            "class": "treeview-item",
+            "description": "Individual node in tree hierarchy."
+          },
+          {
+            "class": "treeview-item-opened",
+            "description": "State applied when branch node is expanded."
+          },
+          {
+            "class": "treeview-item-selected",
+            "description": "Applied when node is selected."
+          },
+          {
+            "class": "treeview-toggle",
+            "description": "Chevron arrow toggle button."
+          },
+          {
+            "class": "treeview-load-children",
+            "description": "Enables async child loading with spinner preloader."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.treeview.open",
+          "signature": "app.treeview.open(el: HTMLElement | CSSSelector): void",
+          "description": "Opens specified treeview item."
+        },
+        {
+          "name": "app.treeview.close",
+          "signature": "app.treeview.close(el: HTMLElement | CSSSelector): void",
+          "description": "Closes specified treeview item."
+        },
+        {
+          "name": "app.treeview.toggle",
+          "signature": "app.treeview.toggle(el: HTMLElement | CSSSelector): void",
+          "description": "Toggles specified treeview item."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "treeview:open",
+          "target": ".treeview-item",
+          "description": "Triggered when tree node opens."
+        },
+        {
+          "event": "treeview:close",
+          "target": ".treeview-item",
+          "description": "Triggered when tree node closes."
+        },
+        {
+          "event": "treeview:loadchildren",
+          "target": ".treeview-item",
+          "description": "Triggered on first open of async branch (event.detail contains done callback)."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "treeviewOpen",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered when tree node opens."
+        },
+        {
+          "event": "treeviewClose",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered when tree node closes."
+        },
+        {
+          "event": "treeviewLoadChildren",
+          "arguments": "(el: HTMLElement | CSSSelector, done: () => void)",
+          "description": "Triggered on async branch open to load children."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-treeview-item-height",
+          "theme": "all",
+          "defaultValue": "34px",
+          "description": "Height of each tree node row."
+        },
+        {
+          "variable": "--t4-treeview-item-padding-left",
+          "theme": "all",
+          "defaultValue": "16px",
+          "description": "Left padding of row."
+        },
+        {
+          "variable": "--t4-treeview-toggle-size",
+          "theme": "all",
+          "defaultValue": "24px",
+          "description": "Chevron toggle button size."
+        },
+        {
+          "variable": "--t4-treeview-children-offset",
+          "theme": "all",
+          "defaultValue": "29px",
+          "description": "Indentation offset for nested child nodes."
+        },
+        {
+          "variable": "--t4-treeview-label-font-size",
+          "theme": "ios",
+          "defaultValue": "17px",
+          "description": "Label font size on iOS."
+        },
+        {
+          "variable": "--t4-treeview-label-font-size",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Label font size on Material Design."
+        }
+      ]
+    },
+    {
+      "name": "virtual-list",
+      "title": "Virtual List",
+      "description": "Virtual List efficiently renders massive lists (thousands of items) with high performance by keeping only the visible viewport rows in the DOM. Supports dynamic row heights, search filtering, and DOM caching.",
+      "docLink": "/techno4-framework2/virtual-list",
+      "typesLink": "/techno4-framework2/types#virtual-list",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/virtual-list/virtual-list.d.ts",
+        "packages/techno4-framework2-core/src/components/virtual-list/virtual-list.js",
+        "packages/techno4-framework2-core/src/components/virtual-list/virtual-list-class.js",
+        "packages/techno4-framework2-core/src/components/virtual-list/virtual-list.less",
+        "packages/techno4-framework2-core/src/components/virtual-list/virtual-list-ios.less",
+        "packages/techno4-framework2-core/src/components/virtual-list/virtual-list-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/virtual-list.html",
+        "description": "Interactive demo demonstrating virtual list rendering 10,000 items with searchbar filtering and custom render functions."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"list virtual-list media-list virtual-list-init\">\n  <ul>\n    <!-- Items dynamically rendered by VirtualList -->\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "virtual-list",
+            "description": "Marks List View container as a high-performance virtual scroller."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "virtualList",
+            "type": "VirtualList.Parameters",
+            "default": "undefined",
+            "description": "Global Virtual List default parameters."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Target List Block element."
+          },
+          {
+            "name": "ul",
+            "type": "HTMLElement | CSSSelector",
+            "default": "undefined",
+            "description": "Target <ul> element inside block."
+          },
+          {
+            "name": "createUl",
+            "type": "boolean",
+            "default": "true",
+            "description": "Automatically generates <ul> container if missing."
+          },
+          {
+            "name": "items",
+            "type": "any[]",
+            "default": "[]",
+            "description": "Array of data items to virtualize."
+          },
+          {
+            "name": "rowsBefore",
+            "type": "number",
+            "default": "undefined",
+            "description": "Number of buffer rows rendered before viewport."
+          },
+          {
+            "name": "rowsAfter",
+            "type": "number",
+            "default": "undefined",
+            "description": "Number of buffer rows rendered after viewport."
+          },
+          {
+            "name": "cols",
+            "type": "number",
+            "default": "1",
+            "description": "Number of items per row."
+          },
+          {
+            "name": "height",
+            "type": "number | Function | string",
+            "default": "44 (ios) / 48 (md)",
+            "description": "Fixed row height in px, or calculation function for dynamic row heights."
+          },
+          {
+            "name": "renderItem",
+            "type": "(item: any) => string",
+            "default": "undefined",
+            "description": "Custom HTML render function for each data item."
+          },
+          {
+            "name": "renderExternal",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Passes render loop to external renderer."
+          },
+          {
+            "name": "emptyTemplate",
+            "type": "string",
+            "default": "undefined",
+            "description": "Template rendered when items array is empty."
+          },
+          {
+            "name": "cache",
+            "type": "boolean",
+            "default": "true",
+            "description": "Caches rendered DOM elements for performance."
+          },
+          {
+            "name": "setListHeight",
+            "type": "boolean",
+            "default": "true",
+            "description": "Sets total calculated scroll height on container."
+          },
+          {
+            "name": "searchByItem",
+            "type": "Function",
+            "default": "undefined",
+            "description": "Search filtering predicate function."
+          },
+          {
+            "name": "on",
+            "type": "object",
+            "default": "undefined",
+            "description": "Object containing event handlers."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "items",
+          "type": "any[]",
+          "description": "Array of data items."
+        },
+        {
+          "name": "filteredItems",
+          "type": "any[]",
+          "description": "Array of currently filtered items."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "description": "List block DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "description": "Dom64 collection wrapping list block."
+        },
+        {
+          "name": "currentFromIndex",
+          "type": "number",
+          "description": "Index of currently first rendered row."
+        },
+        {
+          "name": "currentToIndex",
+          "type": "number",
+          "description": "Index of currently last rendered row."
+        },
+        {
+          "name": "reachEnd",
+          "type": "boolean",
+          "description": "True when viewport reaches end of list."
+        },
+        {
+          "name": "params",
+          "type": "VirtualList.Parameters",
+          "description": "Instance parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "filterItems",
+          "signature": "filterItems(indexes: number[]): void",
+          "description": "Filters list showing only specified item indexes."
+        },
+        {
+          "name": "resetFilter",
+          "signature": "resetFilter(): void",
+          "description": "Resets filter and renders all items."
+        },
+        {
+          "name": "appendItem",
+          "signature": "appendItem(item: any): void",
+          "description": "Appends single item to list."
+        },
+        {
+          "name": "appendItems",
+          "signature": "appendItems(items: any[]): void",
+          "description": "Appends array of items to list."
+        },
+        {
+          "name": "prependItem",
+          "signature": "prependItem(item: any): void",
+          "description": "Prepends single item to list."
+        },
+        {
+          "name": "prependItems",
+          "signature": "prependItems(items: any[]): void",
+          "description": "Prepends array of items to list."
+        },
+        {
+          "name": "replaceItem",
+          "signature": "replaceItem(index: number, item: any): void",
+          "description": "Replaces item at index."
+        },
+        {
+          "name": "replaceAllItems",
+          "signature": "replaceAllItems(items: any[]): void",
+          "description": "Replaces all list items with new dataset."
+        },
+        {
+          "name": "moveItem",
+          "signature": "moveItem(oldIndex: number, newIndex: number): void",
+          "description": "Moves item between indexes."
+        },
+        {
+          "name": "insertItemBefore",
+          "signature": "insertItemBefore(index: number, item: any): void",
+          "description": "Inserts item before specified index."
+        },
+        {
+          "name": "deleteItem",
+          "signature": "deleteItem(index: number): void",
+          "description": "Deletes item at index."
+        },
+        {
+          "name": "deleteItems",
+          "signature": "deleteItems(indexes: number[]): void",
+          "description": "Deletes multiple items by indexes."
+        },
+        {
+          "name": "deleteAllItems",
+          "signature": "deleteAllItems(): void",
+          "description": "Removes all items."
+        },
+        {
+          "name": "clearCache",
+          "signature": "clearCache(): void",
+          "description": "Clears cached DOM nodes."
+        },
+        {
+          "name": "update",
+          "signature": "update(): void",
+          "description": "Forces recalculation of sizes and re-renders list."
+        },
+        {
+          "name": "scrollToItem",
+          "signature": "scrollToItem(index: number): void",
+          "description": "Scrolls viewport to item at index."
+        },
+        {
+          "name": "destroy",
+          "signature": "destroy(): void",
+          "description": "Destroys Virtual List instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.virtualList.create",
+          "signature": "app.virtualList.create(parameters: VirtualList.Parameters): VirtualList",
+          "description": "Creates a new Virtual List instance."
+        },
+        {
+          "name": "app.virtualList.destroy",
+          "signature": "app.virtualList.destroy(el: HTMLElement | CSSSelector): void",
+          "description": "Destroys Virtual List instance."
+        },
+        {
+          "name": "app.virtualList.get",
+          "signature": "app.virtualList.get(el: HTMLElement | CSSSelector): VirtualList",
+          "description": "Retrieves Virtual List instance by element."
+        }
+      ],
+      "domEvents": [],
+      "appEvents": [
+        {
+          "event": "vlItemBeforeInsert",
+          "arguments": "(virtualList: VirtualList, itemEl: HTMLElement, item: any)",
+          "description": "Triggered before item node is inserted into DOM."
+        },
+        {
+          "event": "vlItemsBeforeInsert",
+          "arguments": "(virtualList: VirtualList, fragment: DocumentFragment)",
+          "description": "Triggered before batch items fragment is inserted."
+        },
+        {
+          "event": "vlBeforeClear",
+          "arguments": "(virtualList: VirtualList, fragment: DocumentFragment)",
+          "description": "Triggered before list is cleared."
+        },
+        {
+          "event": "vlItemsAfterInsert",
+          "arguments": "(virtualList: VirtualList, fragment: DocumentFragment)",
+          "description": "Triggered after batch items are inserted into DOM."
+        }
+      ],
+      "cssVariables": []
+    },
+    {
+      "name": "elevation",
+      "title": "Elevation",
+      "description": "Elevation utility system provides depth cues and surface separation through Material Design z-space shadows (from elevation-0 to elevation-24), dynamic hover/pressed pseudo-states, and smooth transition classes.",
+      "docLink": "/techno4-framework2/elevation",
+      "typesLink": "/techno4-framework2/types#elevation",
+      "sourceFiles": [
+        "apps/techno4-framework2-boonker/pages/elevation.html",
+        "apps/techno4-framework2-boonker/css/app.css"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/elevation.html",
+        "description": "Interactive demo visualizing 24 depth elevation levels with hover, pressed, and animated transitions."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"elevation-demo elevation-6 elevation-hover-24 elevation-pressed-12 elevation-transition\">\n  Elevation 6 + Hover 24\n</div>",
+        "modifiers": [
+          {
+            "class": "elevation-0",
+            "description": "Flat surface with zero drop shadow."
+          },
+          {
+            "class": "elevation-1",
+            "description": "Level 1 elevation depth shadow."
+          },
+          {
+            "class": "elevation-2",
+            "description": "Level 2 elevation depth shadow."
+          },
+          {
+            "class": "elevation-3",
+            "description": "Level 3 elevation depth shadow."
+          },
+          {
+            "class": "elevation-4",
+            "description": "Level 4 elevation depth shadow."
+          },
+          {
+            "class": "elevation-6",
+            "description": "Level 6 elevation depth shadow (standard cards/menus)."
+          },
+          {
+            "class": "elevation-8",
+            "description": "Level 8 elevation depth shadow (bottom navigation)."
+          },
+          {
+            "class": "elevation-12",
+            "description": "Level 12 elevation depth shadow."
+          },
+          {
+            "class": "elevation-16",
+            "description": "Level 16 elevation depth shadow (side navigation drawers)."
+          },
+          {
+            "class": "elevation-24",
+            "description": "Level 24 elevation depth shadow (modals/dialogs)."
+          },
+          {
+            "class": "elevation-hover-X",
+            "description": "Applies elevation depth X on desktop hover."
+          },
+          {
+            "class": "elevation-pressed-X",
+            "description": "Applies elevation depth X on active/pressed touch."
+          },
+          {
+            "class": "elevation-transition",
+            "description": "Smooth CSS transition on shadow changes."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": []
+    },
+    {
+      "name": "apache-cordova",
+      "title": "Apache Cordova Integration",
+      "description": "Apache Cordova integration module equips Techno4 applications with native hybrid mobile runtime support, handling deviceready lifecycle bindings, native statusbar styling, keyboard accessory management, Android hardware backbutton overrides, and local file:// URL resolution.",
+      "docLink": "/techno4-framework2/cordova",
+      "typesLink": "/techno4-framework2/types#cordova",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/app/app-class.d.ts",
+        "packages/techno4-framework2-core/src/components/app/app-class.js",
+        "packages/techno4-framework2-core/src/components/statusbar/statusbar.d.ts",
+        "packages/techno4-framework2-core/src/components/statusbar/statusbar.js",
+        "packages/techno4-framework2-core/src/modules/device/device.d.ts"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/home.html",
+        "description": "Demonstrates native device detection, cordova deviceready lifecycle initialization, and hardware backbutton routing."
+      },
+      "htmlLayout": {
+        "structure": "<script src=\"cordova.js\"></script>\n<script>\n  const app = new Techno4({\n    initOnDeviceReady: true,\n    statusbar: {\n      iosOverlaysWebView: true,\n      androidOverlaysWebView: false\n    }\n  });\n</script>",
+        "modifiers": [
+          {
+            "class": "device-cordova",
+            "description": "Class added to <html> or <body> when running in Cordova hybrid environment."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "initOnDeviceReady",
+            "type": "boolean",
+            "default": "true",
+            "description": "Initializes Techno4 on Cordova deviceready event instead of immediately."
+          },
+          {
+            "name": "statusbar",
+            "type": "Statusbar.AppParams",
+            "default": "undefined",
+            "description": "Configures native Cordova statusbar plugin parameters."
+          }
+        ],
+        "instanceParams": []
+      },
+      "instanceProperties": [
+        {
+          "name": "device.cordova",
+          "type": "boolean",
+          "description": "True when application is executing within Apache Cordova runtime."
+        }
+      ],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [
+        {
+          "event": "deviceready",
+          "target": "document",
+          "description": "Cordova native runtime initialization event."
+        },
+        {
+          "event": "pause",
+          "target": "document",
+          "description": "Cordova native app paused/backgrounded event."
+        },
+        {
+          "event": "resume",
+          "target": "document",
+          "description": "Cordova native app resumed to foreground event."
+        },
+        {
+          "event": "backbutton",
+          "target": "document",
+          "description": "Android native hardware backbutton event."
+        }
+      ],
+      "appEvents": [],
+      "cssVariables": []
+    }
+  ]
+}

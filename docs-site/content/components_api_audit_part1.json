@@ -1,0 +1,3194 @@
+{
+  "meta": {
+    "title": "Techno4 Framework 2 UI Components API Audit - Part 1",
+    "version": "2.0.0",
+    "part": 1,
+    "componentsCount": 10,
+    "generatedAt": "2026-09-12T23:23:59.870Z",
+    "componentsList": [
+      "accordion",
+      "actions",
+      "autocomplete",
+      "badge",
+      "button",
+      "card",
+      "checkbox",
+      "chip",
+      "dialog",
+      "sheet"
+    ],
+    "framework": "Techno4 Framework 2",
+    "standards": {
+      "templateEngine": "$h VDOM templates (${$h`...`})",
+      "domLibrary": "Dom64 ($)",
+      "iconNamespace": "t4-icons (strictly zero f7-icons)",
+      "layoutGrid": "Native CSS Grid (.grid, .grid-cols-X, zero legacy row/col-*)",
+      "typeSystem": "Strict TypeScript definitions (/techno4-framework2/types#[anchor])"
+    }
+  },
+  "components": [
+    {
+      "name": "accordion",
+      "title": "Accordion / Collapsible",
+      "description": "Accordion / Collapsible component allows toggling visibility of content sections with smooth CSS height animations. Supports standalone collapsibles, list view accordions, opposite side chevrons, and custom toggle elements.",
+      "docLink": "/techno4-framework2/accordion",
+      "typesLink": "/techno4-framework2/types#accordion",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/accordion/accordion.d.ts",
+        "packages/techno4-framework2-core/src/components/accordion/accordion.js",
+        "packages/techno4-framework2-core/src/components/accordion/accordion.less",
+        "packages/techno4-framework2-core/src/components/accordion/accordion-vars.less",
+        "packages/techno4-framework2-core/src/components/accordion/accordion-ios.less",
+        "packages/techno4-framework2-core/src/components/accordion/accordion-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/accordion.html",
+        "description": "Interactive demo demonstrating List View Accordion, Separate Collapsibles, and Custom Accordion with plus/minus icons."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"list accordion-list\">\n  <ul>\n    <li class=\"accordion-item\">\n      <a class=\"item-content item-link\" href=\"#\">\n        <div class=\"item-inner\"><div class=\"item-title\">Item Title</div></div>\n      </a>\n      <div class=\"accordion-item-content\">\n        <div class=\"block\"><p>Accordion content...</p></div>\n      </div>\n    </li>\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "accordion-list",
+            "description": "Accordion items container grouping multiple collapsible items."
+          },
+          {
+            "class": "accordion-item",
+            "description": "Single collapsible element wrapper."
+          },
+          {
+            "class": "accordion-item-toggle",
+            "description": "Direct toggle link/button inside custom accordion items."
+          },
+          {
+            "class": "accordion-item-content",
+            "description": "Collapsible content container (hidden when closed, expands on open)."
+          },
+          {
+            "class": "accordion-item-opened",
+            "description": "State class applied when an accordion item is currently opened."
+          },
+          {
+            "class": "accordion-opposite",
+            "description": "Positions accordion chevron indicator on opposite side (left in LTR)."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.accordion.open",
+          "signature": "app.accordion.open(el: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Accordion item element (<div class=\"accordion-item\">) or its CSS selector."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Opens specified accordion item."
+        },
+        {
+          "name": "app.accordion.close",
+          "signature": "app.accordion.close(el: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Accordion item element (<div class=\"accordion-item\">) or its CSS selector."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Closes specified accordion item."
+        },
+        {
+          "name": "app.accordion.toggle",
+          "signature": "app.accordion.toggle(el: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Accordion item element (<div class=\"accordion-item\">) or its CSS selector."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Toggles specified accordion item open/closed state."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "accordion:beforeopen",
+          "target": ".accordion-item",
+          "detail": "event.detail.prevent: () => void",
+          "description": "Triggered right before accordion content starts its opening animation. event.detail.prevent() can be invoked to abort opening."
+        },
+        {
+          "event": "accordion:open",
+          "target": ".accordion-item",
+          "detail": "none",
+          "description": "Triggered when accordion content starts its opening animation."
+        },
+        {
+          "event": "accordion:opened",
+          "target": ".accordion-item",
+          "detail": "none",
+          "description": "Triggered after accordion content completes its opening animation."
+        },
+        {
+          "event": "accordion:beforeclose",
+          "target": ".accordion-item",
+          "detail": "event.detail.prevent: () => void",
+          "description": "Triggered right before accordion content starts its closing animation. event.detail.prevent() can be invoked to abort closing."
+        },
+        {
+          "event": "accordion:close",
+          "target": ".accordion-item",
+          "detail": "none",
+          "description": "Triggered when accordion content starts its closing animation."
+        },
+        {
+          "event": "accordion:closed",
+          "target": ".accordion-item",
+          "detail": "none",
+          "description": "Triggered after accordion content completes its closing animation."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "accordionBeforeOpen",
+          "arguments": "(el: HTMLElement | CSSSelector, prevent: () => void)",
+          "description": "Triggered before accordion content starts its opening animation."
+        },
+        {
+          "event": "accordionOpen",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered when accordion content starts its opening animation."
+        },
+        {
+          "event": "accordionOpened",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered after accordion content completes its opening animation."
+        },
+        {
+          "event": "accordionBeforeClose",
+          "arguments": "(el: HTMLElement | CSSSelector, prevent: () => void)",
+          "description": "Triggered before accordion content starts its closing animation."
+        },
+        {
+          "event": "accordionClose",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered when accordion content starts its closing animation."
+        },
+        {
+          "event": "accordionClosed",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered after accordion content completes its closing animation."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-accordion-chevron-icon-down",
+          "theme": "root",
+          "defaultValue": "'chevron_down'",
+          "description": "Chevron icon glyph name displayed when accordion item is closed."
+        },
+        {
+          "variable": "--t4-accordion-chevron-icon-up",
+          "theme": "root",
+          "defaultValue": "'chevron_up'",
+          "description": "Chevron icon glyph name displayed when accordion item is opened."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"></div>\n      <div class=\"navbar-inner\">\n        <div class=\"title\">Accordion Demo</div>\n      </div>\n    </div>\n    <div class=\"page-content\">\n      <div class=\"block-title\">System Modules</div>\n      <div class=\"list accordion-list\">\n        <ul>\n          <li class=\"accordion-item\">\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Audio Synthesizer Engine</div>\n              </div>\n            </a>\n            <div class=\"accordion-item-content\">\n              <div class=\"block\">\n                <p>Web Audio API polyphonic oscillator with custom ADSR envelopes and real-time FFT visualizer.</p>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $t4, $on }) => {\n  $on('pageInit', () => {\n    $t4.$('.accordion-item').on('accordion:opened', () => {\n      console.log('Accordion item opened');\n    });\n  });\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "actions",
+      "title": "Action Sheet",
+      "description": "Action Sheet is a slide-up modal dialog presenting a set of two or more choices related to current context. Supports multiple button groups, icons, labels, grid layout, and seamless automatic transformation into a Popover modal on tablets/desktops.",
+      "docLink": "/techno4-framework2/action-sheet",
+      "typesLink": "/techno4-framework2/types#actions",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/actions/actions.d.ts",
+        "packages/techno4-framework2-core/src/components/actions/actions.js",
+        "packages/techno4-framework2-core/src/components/actions/actions-class.js",
+        "packages/techno4-framework2-core/src/components/actions/actions.less",
+        "packages/techno4-framework2-core/src/components/actions/actions-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/action-sheet.html",
+        "description": "Interactive demo demonstrating single group actions, multi-group actions, grid actions with t4-icons, and popover conversion."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"actions-modal\">\n  <div class=\"actions-group\">\n    <div class=\"actions-label\">Choose Option</div>\n    <div class=\"actions-button\"><span>Option 1</span></div>\n    <div class=\"actions-button actions-button-bold\"><span>Option 2</span></div>\n  </div>\n  <div class=\"actions-group\">\n    <div class=\"actions-button color-red\"><span>Cancel</span></div>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "actions-modal",
+            "description": "Main Action Sheet container element."
+          },
+          {
+            "class": "actions-grid",
+            "description": "Applies multi-column grid layout to action buttons."
+          },
+          {
+            "class": "actions-group",
+            "description": "Card-style container grouping related buttons or labels."
+          },
+          {
+            "class": "actions-label",
+            "description": "Header/instruction label inside an actions group."
+          },
+          {
+            "class": "actions-button",
+            "description": "Action button clickable row."
+          },
+          {
+            "class": "actions-button-bold",
+            "description": "Bold / strong styling for emphasis."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "convertToPopover",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "When enabled, action sheet converts to Popover modal on large screen devices."
+          },
+          {
+            "name": "forceToPopover",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "When enabled, action sheet is always converted to Popover regardless of screen width."
+          },
+          {
+            "name": "backdrop",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Enables dark semi-transparent backdrop behind the action sheet."
+          },
+          {
+            "name": "backdropEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Custom backdrop element shared across instances."
+          },
+          {
+            "name": "backdropUnique",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Creates unique backdrop element exclusively for this modal."
+          },
+          {
+            "name": "cssClass",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "null",
+            "description": "Additional custom CSS class added to Action Sheet element."
+          },
+          {
+            "name": "closeByBackdropClick",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Closes action sheet when backdrop is clicked."
+          },
+          {
+            "name": "closeByOutsideClick",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Closes action sheet when clicking anywhere outside of it."
+          },
+          {
+            "name": "closeOnEscape",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Closes action sheet when keyboard ESC key is pressed."
+          },
+          {
+            "name": "containerEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "null",
+            "description": "Element to mount modal to (defaults to app.el)."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Existing Action Sheet DOM element to bind instance to."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "undefined",
+            "description": "Full Action Sheet HTML string for dynamic creation."
+          },
+          {
+            "name": "buttons",
+            "type": "Actions.Button[] | Actions.Button[][]",
+            "typeLink": "/techno4-framework2/types#actions-button",
+            "default": "undefined",
+            "description": "Array of buttons or array of button groups to dynamically generate layout."
+          },
+          {
+            "name": "grid",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Enables grid buttons layout."
+          },
+          {
+            "name": "targetEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Target element to point Popover at when converted."
+          },
+          {
+            "name": "targetX",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "undefined",
+            "description": "Virtual horizontal coordinate for Popover targeting."
+          },
+          {
+            "name": "targetY",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "undefined",
+            "description": "Virtual vertical coordinate for Popover targeting."
+          },
+          {
+            "name": "targetWidth",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "undefined",
+            "description": "Virtual target width for Popover targeting."
+          },
+          {
+            "name": "targetHeight",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "undefined",
+            "description": "Virtual target height for Popover targeting."
+          },
+          {
+            "name": "onClick",
+            "type": "(actions: Actions, e: unknown) => void",
+            "typeLink": "/techno4-framework2/types#function",
+            "default": "undefined",
+            "description": "Global click handler executed after any button is clicked."
+          },
+          {
+            "name": "on",
+            "type": "Actions.Events",
+            "typeLink": "/techno4-framework2/types#actions-events",
+            "default": "{}",
+            "description": "Object containing event listeners."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "typeLink": "/techno4-framework2/types#techno4",
+          "description": "Global app instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Action sheet HTML DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping action sheet element."
+        },
+        {
+          "name": "backdropEl",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Backdrop HTML DOM element."
+        },
+        {
+          "name": "$backdropEl",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping backdrop element."
+        },
+        {
+          "name": "params",
+          "type": "Actions.Parameters",
+          "typeLink": "/techno4-framework2/types#actions-parameters",
+          "description": "Instance initialization parameters."
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "typeLink": "/techno4-framework2/types#boolean",
+          "description": "Indicates whether action sheet is currently opened."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "open",
+          "signature": "actions.open(animate?: boolean): void",
+          "parameters": [
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate opening transition (default true)."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Opens the Action Sheet."
+        },
+        {
+          "name": "close",
+          "signature": "actions.close(animate?: boolean): void",
+          "parameters": [
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate closing transition (default true)."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Closes the Action Sheet."
+        },
+        {
+          "name": "destroy",
+          "signature": "actions.destroy(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys the Action Sheet instance and unbinds event listeners."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.actions.create",
+          "signature": "app.actions.create(parameters: Actions.Parameters): Actions",
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "Actions.Parameters",
+              "typeLink": "/techno4-framework2/types#actions-parameters",
+              "required": true,
+              "description": "Action sheet options."
+            }
+          ],
+          "returnType": "Actions",
+          "returnTypeLink": "/techno4-framework2/types#actions",
+          "description": "Creates and returns a new Action Sheet instance."
+        },
+        {
+          "name": "app.actions.destroy",
+          "signature": "app.actions.destroy(el: HTMLElement | CSSSelector | Actions): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector | Actions",
+              "typeLink": "/techno4-framework2/types#actions",
+              "required": true,
+              "description": "Action Sheet element, selector, or instance to destroy."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys specified Action Sheet instance."
+        },
+        {
+          "name": "app.actions.get",
+          "signature": "app.actions.get(el?: HTMLElement | CSSSelector): Actions",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Action Sheet element or selector."
+            }
+          ],
+          "returnType": "Actions",
+          "returnTypeLink": "/techno4-framework2/types#actions",
+          "description": "Retrieves initialized Action Sheet instance by DOM element."
+        },
+        {
+          "name": "app.actions.open",
+          "signature": "app.actions.open(el?: HTMLElement | CSSSelector, animate?: boolean): Actions",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Action Sheet element or selector."
+            },
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate."
+            }
+          ],
+          "returnType": "Actions",
+          "returnTypeLink": "/techno4-framework2/types#actions",
+          "description": "Opens specified Action Sheet modal."
+        },
+        {
+          "name": "app.actions.close",
+          "signature": "app.actions.close(el?: HTMLElement | CSSSelector, animate?: boolean): Actions",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Action Sheet element or selector."
+            },
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate."
+            }
+          ],
+          "returnType": "Actions",
+          "returnTypeLink": "/techno4-framework2/types#actions",
+          "description": "Closes specified Action Sheet modal."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "actions:open",
+          "target": ".actions-modal",
+          "detail": "actions: Actions",
+          "description": "Triggered when Action Sheet starts opening animation."
+        },
+        {
+          "event": "actions:opened",
+          "target": ".actions-modal",
+          "detail": "actions: Actions",
+          "description": "Triggered after Action Sheet completes opening animation."
+        },
+        {
+          "event": "actions:close",
+          "target": ".actions-modal",
+          "detail": "actions: Actions",
+          "description": "Triggered when Action Sheet starts closing animation."
+        },
+        {
+          "event": "actions:closed",
+          "target": ".actions-modal",
+          "detail": "actions: Actions",
+          "description": "Triggered after Action Sheet completes closing animation."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "actionsOpen",
+          "arguments": "(actions: Actions)",
+          "description": "Triggered when Action Sheet starts opening animation."
+        },
+        {
+          "event": "actionsOpened",
+          "arguments": "(actions: Actions)",
+          "description": "Triggered after Action Sheet completes opening animation."
+        },
+        {
+          "event": "actionsClose",
+          "arguments": "(actions: Actions)",
+          "description": "Triggered when Action Sheet starts closing animation."
+        },
+        {
+          "event": "actionsClosed",
+          "arguments": "(actions: Actions)",
+          "description": "Triggered after Action Sheet completes closing animation."
+        },
+        {
+          "event": "actionsBeforeDestroy",
+          "arguments": "(actions: Actions)",
+          "description": "Triggered right before Action Sheet instance is destroyed."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-actions-grid-button-font-size",
+          "theme": "root",
+          "defaultValue": "12px",
+          "description": "Font size for grid buttons."
+        },
+        {
+          "variable": "--t4-actions-grid-button-icon-size",
+          "theme": "root",
+          "defaultValue": "48px",
+          "description": "Icon dimension for grid buttons."
+        },
+        {
+          "variable": "--t4-actions-border-radius",
+          "theme": "ios",
+          "defaultValue": "32px",
+          "description": "Action sheet modal border radius on iOS theme."
+        },
+        {
+          "variable": "--t4-actions-border-radius",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Action sheet modal border radius on Material Design theme."
+        },
+        {
+          "variable": "--t4-actions-button-height",
+          "theme": "ios",
+          "defaultValue": "56px",
+          "description": "Button height on iOS theme."
+        },
+        {
+          "variable": "--t4-actions-button-height",
+          "theme": "md",
+          "defaultValue": "48px",
+          "description": "Button height on Material Design theme."
+        },
+        {
+          "variable": "--t4-actions-bg-color",
+          "theme": "ios",
+          "defaultValue": "var(--t4-glass-bg-color)",
+          "description": "Action sheet background glass color on iOS."
+        },
+        {
+          "variable": "--t4-actions-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-3)",
+          "description": "Action sheet surface container background on MD."
+        },
+        {
+          "variable": "--t4-actions-button-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-surface)",
+          "description": "Button typography color on MD."
+        },
+        {
+          "variable": "--t4-actions-group-border-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-outline)",
+          "description": "Divider border color between groups on MD."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"></div>\n      <div class=\"navbar-inner\"><div class=\"title\">Action Sheet Demo</div></div>\n    </div>\n    <div class=\"page-content\">\n      <div class=\"block block-strong\">\n        <a href=\"#\" class=\"button button-fill\" @click=\"${openActions}\">Open Hardware Actions</a>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $t4 }) => {\n  const openActions = () => {\n    $t4.actions.create({\n      buttons: [\n        [\n          { text: 'Synthesizer Mode', strong: true, onClick: () => console.log('Synth active') },\n          { text: 'MIDI Controller Mode', onClick: () => console.log('MIDI active') }\n        ],\n        [\n          { text: 'Cancel', color: 'red' }\n        ]\n      ]\n    }).open();\n  };\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "autocomplete",
+      "title": "Autocomplete",
+      "description": "Autocomplete component provides intelligent search suggestions and completions while typing. Supports three presentation modes: standalone Page, modal Popup, or attached inline Dropdown.",
+      "docLink": "/techno4-framework2/autocomplete",
+      "typesLink": "/techno4-framework2/types#autocomplete",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/autocomplete/autocomplete.d.ts",
+        "packages/techno4-framework2-core/src/components/autocomplete/autocomplete.js",
+        "packages/techno4-framework2-core/src/components/autocomplete/autocomplete-class.js",
+        "packages/techno4-framework2-core/src/components/autocomplete/autocomplete.less",
+        "packages/techno4-framework2-core/src/components/autocomplete/autocomplete-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/autocomplete.html",
+        "description": "Interactive demo demonstrating simple dropdown autocomplete, dropdown with ajax data, standalone page autocomplete, and multiple selection popup."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"list\">\n  <ul>\n    <li class=\"item-content item-input inline-label\">\n      <div class=\"item-inner\">\n        <div class=\"item-title item-label\">Device</div>\n        <div class=\"item-input-wrap\">\n          <input id=\"autocomplete-dropdown\" type=\"text\" placeholder=\"Select audio device\" />\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "autocomplete-dropdown",
+            "description": "Dropdown element dynamically rendered under the input."
+          },
+          {
+            "class": "autocomplete-dropdown-inner",
+            "description": "Scrollable inner list container of dropdown suggestions."
+          },
+          {
+            "class": "autocomplete-page",
+            "description": "Standalone full-screen page created when openIn: 'page'."
+          },
+          {
+            "class": "autocomplete-popup",
+            "description": "Modal popup container created when openIn: 'popup'."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "openIn",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'page'",
+            "description": "Defines opening presentation mode: 'page' | 'popup' | 'dropdown'."
+          },
+          {
+            "name": "source",
+            "type": "(query: string, render: (items: any[]) => void) => void",
+            "typeLink": "/techno4-framework2/types#function",
+            "default": "undefined",
+            "description": "Function accepting query string and render callback to return matches."
+          },
+          {
+            "name": "limit",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "undefined",
+            "description": "Maximum number of items to display."
+          },
+          {
+            "name": "preloader",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Displays asynchronous loading indicator inside search field or dropdown."
+          },
+          {
+            "name": "preloaderColor",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "undefined",
+            "description": "Preloader color theme."
+          },
+          {
+            "name": "valueProperty",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'id'",
+            "description": "Property name holding the item value identifier."
+          },
+          {
+            "name": "textProperty",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'text'",
+            "description": "Property name holding the item display label."
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Allows selecting multiple items with checkboxes."
+          },
+          {
+            "name": "closeOnSelect",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Closes autocomplete immediately when an item is selected."
+          },
+          {
+            "name": "highlightMatches",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Highlights matched substring characters with bold weight."
+          },
+          {
+            "name": "typeahead",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Prefills input field with the first matching item."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "openerEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Link or list item element opening standalone autocomplete."
+          },
+          {
+            "name": "inputEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Text input DOM element for dropdown autocomplete."
+          },
+          {
+            "name": "dropdownContainerEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Container DOM element to append dropdown to (defaults to parent page-content)."
+          },
+          {
+            "name": "updateInputValueOnSelect",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Updates related input value when user picks a suggestion."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "typeLink": "/techno4-framework2/types#techno4",
+          "description": "App instance."
+        },
+        {
+          "name": "params",
+          "type": "Autocomplete.Parameters",
+          "typeLink": "/techno4-framework2/types#autocomplete-parameters",
+          "description": "Instance parameters."
+        },
+        {
+          "name": "value",
+          "type": "unknown[]",
+          "typeLink": "/techno4-framework2/types#array",
+          "description": "Array of currently selected item values."
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "typeLink": "/techno4-framework2/types#boolean",
+          "description": "Whether autocomplete is currently opened."
+        },
+        {
+          "name": "$dropdownEl",
+          "type": "Dom64Array | undefined",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 reference to active dropdown container."
+        },
+        {
+          "name": "searchbar",
+          "type": "Searchbar",
+          "typeLink": "/techno4-framework2/types#searchbar",
+          "description": "Searchbar instance attached to standalone page/popup."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "open",
+          "signature": "autocomplete.open(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Opens autocomplete dropdown, page, or popup."
+        },
+        {
+          "name": "close",
+          "signature": "autocomplete.close(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Closes autocomplete."
+        },
+        {
+          "name": "preloaderShow",
+          "signature": "autocomplete.preloaderShow(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Displays asynchronous loading preloader."
+        },
+        {
+          "name": "preloaderHide",
+          "signature": "autocomplete.preloaderHide(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Hides asynchronous loading preloader."
+        },
+        {
+          "name": "destroy",
+          "signature": "autocomplete.destroy(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys instance and detaches all event listeners."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.autocomplete.create",
+          "signature": "app.autocomplete.create(parameters: Autocomplete.Parameters): Autocomplete",
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "Autocomplete.Parameters",
+              "typeLink": "/techno4-framework2/types#autocomplete-parameters",
+              "required": true,
+              "description": "Configuration parameters."
+            }
+          ],
+          "returnType": "Autocomplete",
+          "returnTypeLink": "/techno4-framework2/types#autocomplete",
+          "description": "Creates new Autocomplete instance."
+        },
+        {
+          "name": "app.autocomplete.destroy",
+          "signature": "app.autocomplete.destroy(el: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Autocomplete input or container element."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys Autocomplete instance."
+        },
+        {
+          "name": "app.autocomplete.get",
+          "signature": "app.autocomplete.get(el: HTMLElement | CSSSelector): Autocomplete",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Input or opener element."
+            }
+          ],
+          "returnType": "Autocomplete",
+          "returnTypeLink": "/techno4-framework2/types#autocomplete",
+          "description": "Finds Autocomplete instance by DOM element."
+        }
+      ],
+      "domEvents": [],
+      "appEvents": [
+        {
+          "event": "autocompleteChange",
+          "arguments": "(autocomplete: Autocomplete, value: unknown)",
+          "description": "Triggered when selected autocomplete value changes."
+        },
+        {
+          "event": "autocompleteOpen",
+          "arguments": "(autocomplete: Autocomplete)",
+          "description": "Triggered when autocomplete starts opening."
+        },
+        {
+          "event": "autocompleteOpened",
+          "arguments": "(autocomplete: Autocomplete)",
+          "description": "Triggered after autocomplete completes opening transition."
+        },
+        {
+          "event": "autocompleteClose",
+          "arguments": "(autocomplete: Autocomplete)",
+          "description": "Triggered when autocomplete starts closing."
+        },
+        {
+          "event": "autocompleteClosed",
+          "arguments": "(autocomplete: Autocomplete)",
+          "description": "Triggered after autocomplete completes closing."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-autocomplete-dropdown-placeholder-color",
+          "theme": "root",
+          "defaultValue": "#a9a9a9",
+          "description": "Placeholder text color inside dropdown."
+        },
+        {
+          "variable": "--t4-autocomplete-dropdown-preloader-size",
+          "theme": "root",
+          "defaultValue": "20px",
+          "description": "Preloader spinner dimension in dropdown."
+        },
+        {
+          "variable": "--t4-autocomplete-dropdown-font-size",
+          "theme": "root",
+          "defaultValue": "var(--t4-list-font-size)",
+          "description": "Dropdown items typography size."
+        },
+        {
+          "variable": "--t4-autocomplete-dropdown-bg-color",
+          "theme": "ios-light",
+          "defaultValue": "#fff",
+          "description": "Dropdown background color on iOS light theme."
+        },
+        {
+          "variable": "--t4-autocomplete-dropdown-bg-color",
+          "theme": "ios-dark",
+          "defaultValue": "#1c1c1d",
+          "description": "Dropdown background color on iOS dark theme."
+        },
+        {
+          "variable": "--t4-autocomplete-dropdown-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-2)",
+          "description": "Dropdown container surface background on Material Design."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"></div>\n      <div class=\"navbar-inner\"><div class=\"title\">Autocomplete Demo</div></div>\n    </div>\n    <div class=\"page-content\">\n      <div class=\"list\">\n        <ul>\n          <li class=\"item-content item-input inline-label\">\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Synthesizer</div>\n              <div class=\"item-input-wrap\">\n                <input id=\"synth-picker\" type=\"text\" placeholder=\"Select synth model...\" />\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $t4, $on }) => {\n  let autocompleteInstance;\n  $on('pageInit', () => {\n    const synths = ['Roland Juno-106', 'Moog Minimoog', 'Korg MS-20', 'Yamaha DX7', 'Sequential Prophet-5'];\n    autocompleteInstance = $t4.autocomplete.create({\n      inputEl: '#synth-picker',\n      openIn: 'dropdown',\n      source(query, render) {\n        const results = synths.filter(s => s.toLowerCase().includes(query.toLowerCase()));\n        render(results);\n      }\n    });\n  });\n  $on('pageBeforeRemove', () => {\n    if (autocompleteInstance) autocompleteInstance.destroy();\n  });\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "badge",
+      "title": "Badge",
+      "description": "Badges are compact pill-shaped indicators used to display counts, state markers, or alerts on icons, navbar buttons, list items, and tab links.",
+      "docLink": "/techno4-framework2/badge",
+      "typesLink": "/techno4-framework2/types#badge",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/badge/badge.d.ts",
+        "packages/techno4-framework2-core/src/components/badge/badge.less",
+        "packages/techno4-framework2-core/src/components/badge/badge-vars.less",
+        "packages/techno4-framework2-core/src/components/badge/badge-ios.less",
+        "packages/techno4-framework2-core/src/components/badge/badge-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/badge.html",
+        "description": "Interactive demo demonstrating standalone badges, badges on icons, badges with theme colors, and list item badges."
+      },
+      "htmlLayout": {
+        "structure": "<span class=\"badge\">5</span>\n<span class=\"badge color-red\">NEW</span>\n<i class=\"icon t4-icons\">\n  bell_fill\n  <span class=\"badge color-red\">12</span>\n</i>",
+        "modifiers": [
+          {
+            "class": "badge",
+            "description": "Base badge indicator class."
+          },
+          {
+            "class": "color-[color]",
+            "description": "Applies contextual theme color (e.g., color-red, color-green, color-blue)."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-badge-text-color",
+          "theme": "root",
+          "defaultValue": "#fff",
+          "description": "Badge typography color."
+        },
+        {
+          "variable": "--t4-badge-bg-color",
+          "theme": "root",
+          "defaultValue": "#8e8e93",
+          "description": "Default badge background color."
+        },
+        {
+          "variable": "--t4-badge-in-icon-size",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Badge diameter when positioned inside an icon container."
+        },
+        {
+          "variable": "--t4-badge-in-icon-font-size",
+          "theme": "root",
+          "defaultValue": "10px",
+          "description": "Badge typography font size when inside an icon container."
+        },
+        {
+          "variable": "--t4-badge-font-size",
+          "theme": "root",
+          "defaultValue": "12px",
+          "description": "Standalone badge font size."
+        },
+        {
+          "variable": "--t4-badge-size",
+          "theme": "ios",
+          "defaultValue": "20px",
+          "description": "Badge height and minimum width on iOS."
+        },
+        {
+          "variable": "--t4-badge-size",
+          "theme": "md",
+          "defaultValue": "20px",
+          "description": "Badge height and minimum width on Material Design."
+        },
+        {
+          "variable": "--t4-badge-padding",
+          "theme": "ios",
+          "defaultValue": "0 4px",
+          "description": "Horizontal padding on iOS theme."
+        },
+        {
+          "variable": "--t4-badge-padding",
+          "theme": "md",
+          "defaultValue": "2px 6px",
+          "description": "Padding on Material Design theme."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"></div>\n      <div class=\"navbar-inner\">\n        <div class=\"title\">Badge Demo</div>\n        <div class=\"right\">\n          <a href=\"#\" class=\"link icon-only\">\n            <i class=\"icon t4-icons\">\n              bell_fill\n              <span class=\"badge color-red\">3</span>\n            </i>\n          </a>\n        </div>\n      </div>\n    </div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <p>Active Studio Channels: <span class=\"badge color-blue\">8 Live</span></p>\n      </div>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "button",
+      "title": "Button",
+      "description": "Buttons provide interactive call-to-actions supporting numerous visual styling variations: filled, outline, raised shadow, tonal, rounded pills, small/large scale, segmented pill groups, and active loading preloaders.",
+      "docLink": "/techno4-framework2/button",
+      "typesLink": "/techno4-framework2/types#button",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/button/button.d.ts",
+        "packages/techno4-framework2-core/src/components/button/button.less",
+        "packages/techno4-framework2-core/src/components/button/button-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/buttons.html",
+        "description": "Comprehensive interactive demo showing default buttons, outline, filled, raised, round, large, small, preloader buttons, and segmented pill groups."
+      },
+      "htmlLayout": {
+        "structure": "<button class=\"button button-fill\">Standard Button</button>\n<a href=\"#\" class=\"button button-round button-outline\">Round Outline</a>\n<div class=\"segmented segmented-strong\">\n  <button class=\"button button-active\">Sine</button>\n  <button class=\"button\">Square</button>\n  <button class=\"button\">Sawtooth</button>\n</div>",
+        "modifiers": [
+          {
+            "class": "button",
+            "description": "Base interactive button element."
+          },
+          {
+            "class": "button-fill",
+            "description": "Filled background using active theme color."
+          },
+          {
+            "class": "button-outline",
+            "description": "Bordered button with transparent background."
+          },
+          {
+            "class": "button-round",
+            "description": "Pill shape with fully rounded border radius."
+          },
+          {
+            "class": "button-raised",
+            "description": "Elevated button featuring drop shadow."
+          },
+          {
+            "class": "button-tonal",
+            "description": "Secondary tonal container surface styling."
+          },
+          {
+            "class": "button-small",
+            "description": "Compact button scale (28px iOS, 32px MD)."
+          },
+          {
+            "class": "button-large",
+            "description": "Enlarged button scale (48px height)."
+          },
+          {
+            "class": "button-preloader",
+            "description": "Button with integrated spinner preloader."
+          },
+          {
+            "class": "button-loading",
+            "description": "Active loading state hiding button text while animating preloader."
+          },
+          {
+            "class": "segmented",
+            "description": "Segmented container grouping multiple related buttons."
+          },
+          {
+            "class": "segmented-strong",
+            "description": "Strong segmented control with filled track and active highlighted pill."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [
+        {
+          "event": "click",
+          "target": ".button",
+          "detail": "MouseEvent",
+          "description": "Standard DOM click event emitted when user activates button."
+        }
+      ],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-button-min-width",
+          "theme": "root",
+          "defaultValue": "32px",
+          "description": "Minimum button width."
+        },
+        {
+          "variable": "--t4-button-font-size",
+          "theme": "ios",
+          "defaultValue": "15px",
+          "description": "Standard button typography size on iOS."
+        },
+        {
+          "variable": "--t4-button-font-size",
+          "theme": "md",
+          "defaultValue": "14px",
+          "description": "Standard button typography size on Material Design."
+        },
+        {
+          "variable": "--t4-button-height",
+          "theme": "ios",
+          "defaultValue": "34px",
+          "description": "Standard button height on iOS."
+        },
+        {
+          "variable": "--t4-button-height",
+          "theme": "md",
+          "defaultValue": "40px",
+          "description": "Standard button height on Material Design."
+        },
+        {
+          "variable": "--t4-button-border-radius",
+          "theme": "ios",
+          "defaultValue": "4px",
+          "description": "Standard button corner radius on iOS."
+        },
+        {
+          "variable": "--t4-button-border-radius",
+          "theme": "md",
+          "defaultValue": "8px",
+          "description": "Standard button corner radius on Material Design."
+        },
+        {
+          "variable": "--t4-button-large-height",
+          "theme": "ios",
+          "defaultValue": "48px",
+          "description": "Large button height on iOS."
+        },
+        {
+          "variable": "--t4-button-large-height",
+          "theme": "md",
+          "defaultValue": "48px",
+          "description": "Large button height on Material Design."
+        },
+        {
+          "variable": "--t4-segmented-strong-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-variant)",
+          "description": "Strong segmented control container background."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Buttons</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <div class=\"grid grid-cols-2 grid-gap\">\n          <div><button class=\"button button-fill button-round\" @click=\"${startEngine}\">Start Audio</button></div>\n          <div><button class=\"button button-outline button-round color-red\" @click=\"${stopEngine}\">Stop Audio</button></div>\n        </div>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $t4 }) => {\n  const startEngine = () => $t4.dialog.alert('Audio Engine Started');\n  const stopEngine = () => $t4.dialog.alert('Audio Engine Stopped');\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "card",
+      "title": "Card",
+      "description": "Cards are versatile content containers featuring headers, content sections, and footers. Supports fullscreen Expandable Cards (.card-expandable) with rich morphing transitions, swipe-to-close gestures, custom backdrop overlays, and tablet responsive constraints.",
+      "docLink": "/techno4-framework2/card",
+      "typesLink": "/techno4-framework2/types#card",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/card/card.d.ts",
+        "packages/techno4-framework2-core/src/components/card/card.js",
+        "packages/techno4-framework2-core/src/components/card/card.less",
+        "packages/techno4-framework2-core/src/components/card/card-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/cards.html & cards-expandable.html",
+        "description": "Interactive demos demonstrating classic cards, outline cards, media cards, and full-screen expandable cards with swipe gestures."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"card\">\n  <div class=\"card-header\">Synthesizer Preset #1</div>\n  <div class=\"card-content card-content-padding\">Analog warmth with low-pass 24dB ladder filter.</div>\n  <div class=\"card-footer\"><span>Preset Bank A</span><span>Loaded</span></div>\n</div>\n\n<div class=\"card card-expandable\">\n  <div class=\"card-opened-fade-in card-opened-fade-out\">\n    <a href=\"#\" class=\"link card-close card-opened-fade-in\">\n      <i class=\"icon icon-close\"></i>\n    </a>\n    <div class=\"card-header\">DSP Master Suite</div>\n    <div class=\"card-content\">\n      <div class=\"card-content-padding\"><p>Detailed real-time parameters...</p></div>\n    </div>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "card",
+            "description": "Base card container element."
+          },
+          {
+            "class": "card-outline",
+            "description": "Bordered card with flat background."
+          },
+          {
+            "class": "card-header",
+            "description": "Top header block for title or user info."
+          },
+          {
+            "class": "card-content",
+            "description": "Inner content container."
+          },
+          {
+            "class": "card-content-padding",
+            "description": "Standard padded content area."
+          },
+          {
+            "class": "card-footer",
+            "description": "Bottom footer block for actions or metadata."
+          },
+          {
+            "class": "card-expandable",
+            "description": "Morphing expandable card expanding into fullscreen modal on touch."
+          },
+          {
+            "class": "card-opened",
+            "description": "State class applied when expandable card is fully expanded."
+          },
+          {
+            "class": "card-close",
+            "description": "Element that triggers expandable card close upon click."
+          },
+          {
+            "class": "card-prevent-open",
+            "description": "Prevents expandable card from opening when clicked on elements with this class."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "hideNavbarOnOpen",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Hides main page Navbar when expandable card opens."
+          },
+          {
+            "name": "hideToolbarOnOpen",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Hides page or app Toolbar when expandable card opens."
+          },
+          {
+            "name": "hideStatusbarOnOpen",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Hides device statusbar on open."
+          },
+          {
+            "name": "scrollableEl",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'.card-content'",
+            "description": "CSS selector of inner scrollable container."
+          },
+          {
+            "name": "swipeToClose",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Allows closing expanded card with vertical swipe gesture."
+          },
+          {
+            "name": "backdrop",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Creates backdrop layer behind opened expandable card."
+          },
+          {
+            "name": "closeByBackdropClick",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Closes opened card when clicking on backdrop."
+          }
+        ],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.card.open",
+          "signature": "app.card.open(cardEl: HTMLElement | CSSSelector, animate?: boolean): void",
+          "parameters": [
+            {
+              "name": "cardEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Expandable card DOM element or CSS selector."
+            },
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate opening transition (default true)."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Opens expandable card into fullscreen modal."
+        },
+        {
+          "name": "app.card.close",
+          "signature": "app.card.close(cardEl: HTMLElement | CSSSelector, animate?: boolean): void",
+          "parameters": [
+            {
+              "name": "cardEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Expandable card DOM element or CSS selector."
+            },
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate closing transition (default true)."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Closes opened expandable card."
+        },
+        {
+          "name": "app.card.toggle",
+          "signature": "app.card.toggle(cardEl: HTMLElement | CSSSelector, animate?: boolean): void",
+          "parameters": [
+            {
+              "name": "cardEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Expandable card DOM element or CSS selector."
+            },
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate transition."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Toggles expandable card open/closed state."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "card:beforeopen",
+          "target": ".card-expandable",
+          "detail": "event.detail.prevent: () => void",
+          "description": "Triggered right before opening animation. event.detail.prevent() can abort opening."
+        },
+        {
+          "event": "card:open",
+          "target": ".card-expandable",
+          "detail": "none",
+          "description": "Triggered when expandable card starts opening animation."
+        },
+        {
+          "event": "card:opened",
+          "target": ".card-expandable",
+          "detail": "none",
+          "description": "Triggered after expandable card finishes opening animation."
+        },
+        {
+          "event": "card:close",
+          "target": ".card-expandable",
+          "detail": "none",
+          "description": "Triggered when expandable card starts closing animation."
+        },
+        {
+          "event": "card:closed",
+          "target": ".card-expandable",
+          "detail": "none",
+          "description": "Triggered after expandable card finishes closing animation."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "cardBeforeOpen",
+          "arguments": "(el: HTMLElement | CSSSelector, prevent: () => void)",
+          "description": "Triggered before expandable card opens."
+        },
+        {
+          "event": "cardOpen",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered when expandable card starts opening."
+        },
+        {
+          "event": "cardOpened",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered after expandable card completes opening."
+        },
+        {
+          "event": "cardClose",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered when expandable card starts closing."
+        },
+        {
+          "event": "cardClosed",
+          "arguments": "(el: HTMLElement | CSSSelector)",
+          "description": "Triggered after expandable card completes closing."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-card-margin-horizontal",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Horizontal margin around card."
+        },
+        {
+          "variable": "--t4-card-margin-vertical",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Vertical margin around card."
+        },
+        {
+          "variable": "--t4-card-content-padding-horizontal",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Horizontal padding in card-content-padding."
+        },
+        {
+          "variable": "--t4-card-content-padding-vertical",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Vertical padding in card-content-padding."
+        },
+        {
+          "variable": "--t4-card-border-radius",
+          "theme": "ios",
+          "defaultValue": "24px",
+          "description": "Card corner radius on iOS theme."
+        },
+        {
+          "variable": "--t4-card-border-radius",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Card corner radius on Material Design."
+        },
+        {
+          "variable": "--t4-card-expandable-tablet-width",
+          "theme": "root",
+          "defaultValue": "670px",
+          "description": "Max width of expanded card on tablet screens."
+        },
+        {
+          "variable": "--t4-card-expandable-tablet-height",
+          "theme": "root",
+          "defaultValue": "670px",
+          "description": "Max height of expanded card on tablet screens."
+        },
+        {
+          "variable": "--t4-card-expandable-border-radius",
+          "theme": "ios",
+          "defaultValue": "24px",
+          "description": "Border radius of expandable card on iOS."
+        },
+        {
+          "variable": "--t4-card-expandable-border-radius",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Border radius of expandable card on MD."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Cards Demo</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"card card-outline\">\n        <div class=\"card-header\">Channel 1 - Audio DSP</div>\n        <div class=\"card-content card-content-padding\">\n          <p>Gain: +3.5 dB | Compression: 4:1 | Reverb Decay: 2.4s</p>\n        </div>\n        <div class=\"card-footer\"><span class=\"badge color-green\">Online</span></div>\n      </div>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "checkbox",
+      "title": "Checkbox",
+      "description": "Checkbox component enables selecting one or multiple options from a set. Can be rendered as a standalone icon component or as an interactive list view item with item-checkbox styling.",
+      "docLink": "/techno4-framework2/checkbox",
+      "typesLink": "/techno4-framework2/types#checkbox",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/checkbox/checkbox.d.ts",
+        "packages/techno4-framework2-core/src/components/checkbox/checkbox.less",
+        "packages/techno4-framework2-core/src/components/checkbox/checkbox-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/checkbox.html",
+        "description": "Interactive demo demonstrating inline checkboxes, list view checkboxes, change event handlers, and color themes."
+      },
+      "htmlLayout": {
+        "structure": "<label class=\"checkbox\">\n  <input type=\"checkbox\" name=\"dsp-filter\" checked />\n  <i class=\"icon-checkbox\"></i>\n</label>\n\n<div class=\"list\">\n  <ul>\n    <li>\n      <label class=\"item-checkbox item-content\">\n        <input type=\"checkbox\" name=\"midi-sync\" value=\"sync-clock\" checked />\n        <i class=\"icon icon-checkbox\"></i>\n        <div class=\"item-inner\">\n          <div class=\"item-title\">Enable MIDI Clock Sync</div>\n        </div>\n      </label>\n    </li>\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "checkbox",
+            "description": "Standalone checkbox wrapper label."
+          },
+          {
+            "class": "icon-checkbox",
+            "description": "Checkmark visual indicator rendered via CSS border and font icon."
+          },
+          {
+            "class": "item-checkbox",
+            "description": "List item wrapper enabling full-row touch toggle."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [
+        {
+          "event": "change",
+          "target": "input[type=\"checkbox\"]",
+          "detail": "Event",
+          "description": "Standard DOM change event emitted when checkbox checked state changes."
+        }
+      ],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-checkbox-icon-color",
+          "theme": "root",
+          "defaultValue": "#fff",
+          "description": "Color of the checkmark tick glyph."
+        },
+        {
+          "variable": "--t4-checkbox-extra-margin",
+          "theme": "root",
+          "defaultValue": "0px",
+          "description": "Extra margin around checkbox icon."
+        },
+        {
+          "variable": "--t4-checkbox-size",
+          "theme": "ios",
+          "defaultValue": "22px",
+          "description": "Checkbox width and height on iOS theme."
+        },
+        {
+          "variable": "--t4-checkbox-size",
+          "theme": "md",
+          "defaultValue": "18px",
+          "description": "Checkbox width and height on Material Design."
+        },
+        {
+          "variable": "--t4-checkbox-border-radius",
+          "theme": "ios",
+          "defaultValue": "50%",
+          "description": "Circular checkmark border radius on iOS."
+        },
+        {
+          "variable": "--t4-checkbox-border-radius",
+          "theme": "md",
+          "defaultValue": "2px",
+          "description": "Square checkmark border radius on Material Design."
+        },
+        {
+          "variable": "--t4-checkbox-border-width",
+          "theme": "ios",
+          "defaultValue": "1px",
+          "description": "Border outline width on iOS."
+        },
+        {
+          "variable": "--t4-checkbox-border-width",
+          "theme": "md",
+          "defaultValue": "2px",
+          "description": "Border outline width on Material Design."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Checkbox</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"list\">\n        <ul>\n          <li>\n            <label class=\"item-checkbox item-content\">\n              <input type=\"checkbox\" checked=\"${audioState.reverb}\" @change=\"${onReverbToggle}\" />\n              <i class=\"icon icon-checkbox\"></i>\n              <div class=\"item-inner\"><div class=\"item-title\">Convolution Reverb</div></div>\n            </label>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $state }) => {\n  const audioState = $state({ reverb: true });\n  const onReverbToggle = (e) => {\n    audioState.reverb = e.target.checked;\n  };\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "chip",
+      "title": "Chips / Tags",
+      "description": "Chips (Tags) represent discrete entities, categories, parameters, or contact avatars in compact visual blocks. Supports avatars, media icons, labels, delete buttons, and outline variations.",
+      "docLink": "/techno4-framework2/chip",
+      "typesLink": "/techno4-framework2/types#chip",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/chip/chip.d.ts",
+        "packages/techno4-framework2-core/src/components/chip/chip.less",
+        "packages/techno4-framework2-core/src/components/chip/chip-vars.less",
+        "packages/techno4-framework2-core/src/components/chip/chip-ios.less",
+        "packages/techno4-framework2-core/src/components/chip/chip-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/chips.html",
+        "description": "Interactive demo demonstrating chips with text, media chips with avatars, delete button chips, and outline chips."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"chip\">\n  <div class=\"chip-label\">Polyphonic</div>\n</div>\n\n<div class=\"chip\">\n  <div class=\"chip-media bg-color-blue\">M</div>\n  <div class=\"chip-label\">MIDI In</div>\n  <a href=\"#\" class=\"chip-delete\"></a>\n</div>",
+        "modifiers": [
+          {
+            "class": "chip",
+            "description": "Base chip element wrapper."
+          },
+          {
+            "class": "chip-label",
+            "description": "Text label inside the chip."
+          },
+          {
+            "class": "chip-media",
+            "description": "Media container for avatar image, glyph, or icon."
+          },
+          {
+            "class": "chip-delete",
+            "description": "Clickable delete cross button inside chip."
+          },
+          {
+            "class": "chip-outline",
+            "description": "Bordered chip variation with transparent fill."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [
+        {
+          "event": "click",
+          "target": ".chip-delete",
+          "detail": "MouseEvent",
+          "description": "Emitted when clicking the chip delete button."
+        }
+      ],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-chip-font-size",
+          "theme": "root",
+          "defaultValue": "14px",
+          "description": "Chip typography font size."
+        },
+        {
+          "variable": "--t4-chip-media-font-size",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Font size inside media avatar."
+        },
+        {
+          "variable": "--t4-chip-height",
+          "theme": "ios",
+          "defaultValue": "28px",
+          "description": "Chip height on iOS."
+        },
+        {
+          "variable": "--t4-chip-height",
+          "theme": "md",
+          "defaultValue": "32px",
+          "description": "Chip height on Material Design."
+        },
+        {
+          "variable": "--t4-chip-media-size",
+          "theme": "ios",
+          "defaultValue": "28px",
+          "description": "Media avatar dimension on iOS."
+        },
+        {
+          "variable": "--t4-chip-media-size",
+          "theme": "md",
+          "defaultValue": "24px",
+          "description": "Media avatar dimension on Material Design."
+        },
+        {
+          "variable": "--t4-chip-border-radius",
+          "theme": "ios",
+          "defaultValue": "28px",
+          "description": "Chip rounded border radius on iOS."
+        },
+        {
+          "variable": "--t4-chip-border-radius",
+          "theme": "md",
+          "defaultValue": "8px",
+          "description": "Chip rounded border radius on Material Design."
+        },
+        {
+          "variable": "--t4-chip-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-secondary-container)",
+          "description": "Chip surface color on MD."
+        },
+        {
+          "variable": "--t4-chip-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-secondary-container)",
+          "description": "Chip typography color on MD."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Chips</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <div class=\"chip chip-outline color-blue\">\n          <div class=\"chip-label\">Low-Pass 24dB</div>\n        </div>\n        <div class=\"chip\">\n          <div class=\"chip-media bg-color-green\"><i class=\"icon t4-icons\">waveform_path</i></div>\n          <div class=\"chip-label\">Analog Warmth</div>\n          <a href=\"#\" class=\"chip-delete\" @click=\"${deleteChip}\"></a>\n        </div>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $t4 }) => {\n  const deleteChip = (e) => {\n    $t4.$(e.target).parents('.chip').remove();\n  };\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "dialog",
+      "title": "Dialog",
+      "description": "Dialog is a modal alert component used to display critical notifications, confirm actions, request prompt input, or authenticate users. Features built-in modal shortcuts (alert, confirm, prompt, login, password, preloader, progress) and extensive customization.",
+      "docLink": "/techno4-framework2/dialog",
+      "typesLink": "/techno4-framework2/types#dialog",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/dialog/dialog.d.ts",
+        "packages/techno4-framework2-core/src/components/dialog/dialog.js",
+        "packages/techno4-framework2-core/src/components/dialog/dialog-class.js",
+        "packages/techno4-framework2-core/src/components/dialog/dialog.less",
+        "packages/techno4-framework2-core/src/components/dialog/dialog-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/dialog.html",
+        "description": "Interactive demo demonstrating Alert, Confirm, Prompt, Login, Password, Preloader, Progress, and vertical button dialogs."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"dialog modal-in\">\n  <div class=\"dialog-inner\">\n    <div class=\"dialog-title\">Confirm Preset Overwrite</div>\n    <div class=\"dialog-text\">Are you sure you want to overwrite current synthesizer patch?</div>\n  </div>\n  <div class=\"dialog-buttons\">\n    <span class=\"dialog-button\">Cancel</span>\n    <span class=\"dialog-button dialog-button-bold\">Overwrite</span>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "dialog",
+            "description": "Base Dialog modal container."
+          },
+          {
+            "class": "dialog-inner",
+            "description": "Container holding title, text, and optional input fields."
+          },
+          {
+            "class": "dialog-title",
+            "description": "Dialog headline."
+          },
+          {
+            "class": "dialog-text",
+            "description": "Dialog message description."
+          },
+          {
+            "class": "dialog-buttons",
+            "description": "Container holding action buttons."
+          },
+          {
+            "class": "dialog-buttons-vertical",
+            "description": "Vertical stacking layout for action buttons."
+          },
+          {
+            "class": "dialog-button",
+            "description": "Single dialog action button."
+          },
+          {
+            "class": "dialog-button-bold",
+            "description": "Strong / primary highlighted button."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "title",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "undefined",
+            "description": "Default dialog shortcut title (falls back to app.name)."
+          },
+          {
+            "name": "buttonOk",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'OK'",
+            "description": "Default confirmation button label."
+          },
+          {
+            "name": "buttonCancel",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'Cancel'",
+            "description": "Default cancellation button label."
+          },
+          {
+            "name": "usernamePlaceholder",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'Username'",
+            "description": "Default username input placeholder in Login dialog."
+          },
+          {
+            "name": "passwordPlaceholder",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'Password'",
+            "description": "Default password input placeholder in Login and Password dialogs."
+          },
+          {
+            "name": "preloaderTitle",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'Loading... '",
+            "description": "Default text shown in preloader dialog."
+          },
+          {
+            "name": "progressTitle",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'Loading... '",
+            "description": "Default text shown in progress dialog."
+          },
+          {
+            "name": "backdrop",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Enables dark backdrop behind dialog."
+          },
+          {
+            "name": "closeByBackdropClick",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Closes dialog when clicking on backdrop."
+          },
+          {
+            "name": "destroyPredefinedDialogs",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Automatically destroys shortcut dialogs on close."
+          },
+          {
+            "name": "keyboardActions",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Enables Enter and Esc key shortcuts for OK and Cancel buttons."
+          },
+          {
+            "name": "autoFocus",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Automatically focuses input field on dialog open."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "title",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "undefined",
+            "description": "Dialog title."
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "undefined",
+            "description": "Dialog body text."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "undefined",
+            "description": "Custom HTML content placed below text."
+          },
+          {
+            "name": "buttons",
+            "type": "Dialog.DialogButton[]",
+            "typeLink": "/techno4-framework2/types#dialog-button",
+            "default": "[]",
+            "description": "Array of button objects."
+          },
+          {
+            "name": "verticalButtons",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Renders buttons in a vertical stack."
+          },
+          {
+            "name": "destroyOnClose",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Destroys instance on close."
+          },
+          {
+            "name": "on",
+            "type": "Dialog.Events",
+            "typeLink": "/techno4-framework2/types#dialog-events",
+            "default": "{}",
+            "description": "Event listeners object."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "typeLink": "/techno4-framework2/types#techno4",
+          "description": "App instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Dialog DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping dialog DOM element."
+        },
+        {
+          "name": "params",
+          "type": "Dialog.Parameters",
+          "typeLink": "/techno4-framework2/types#dialog-parameters",
+          "description": "Dialog options."
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "typeLink": "/techno4-framework2/types#boolean",
+          "description": "Whether dialog is opened."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "open",
+          "signature": "dialog.open(animate?: boolean): void",
+          "parameters": [
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate opening."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Opens dialog."
+        },
+        {
+          "name": "close",
+          "signature": "dialog.close(animate?: boolean): void",
+          "parameters": [
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate closing."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Closes dialog."
+        },
+        {
+          "name": "setTitle",
+          "signature": "dialog.setTitle(title: string): void",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "New title string."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Updates dialog title."
+        },
+        {
+          "name": "setText",
+          "signature": "dialog.setText(text: string): void",
+          "parameters": [
+            {
+              "name": "text",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "New text string."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Updates dialog text."
+        },
+        {
+          "name": "setProgress",
+          "signature": "dialog.setProgress(progress: number, duration?: number): void",
+          "parameters": [
+            {
+              "name": "progress",
+              "type": "number",
+              "typeLink": "/techno4-framework2/types#number",
+              "required": true,
+              "description": "Progress percentage (0-100)."
+            },
+            {
+              "name": "duration",
+              "type": "number",
+              "typeLink": "/techno4-framework2/types#number",
+              "required": false,
+              "description": "Transition duration in ms."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Sets progress bar value in progress dialog shortcut."
+        },
+        {
+          "name": "destroy",
+          "signature": "dialog.destroy(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys dialog instance and unbinds event listeners."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.dialog.alert",
+          "signature": "app.dialog.alert(text: string, title?: string, callback?: () => void): Dialog",
+          "parameters": [
+            {
+              "name": "text",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "Alert message."
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Alert title."
+            },
+            {
+              "name": "callback",
+              "type": "() => void",
+              "typeLink": "/techno4-framework2/types#function",
+              "required": false,
+              "description": "OK button callback."
+            }
+          ],
+          "returnType": "Dialog",
+          "returnTypeLink": "/techno4-framework2/types#dialog",
+          "description": "Opens Alert dialog."
+        },
+        {
+          "name": "app.dialog.confirm",
+          "signature": "app.dialog.confirm(text: string, title?: string, callbackOk?: () => void, callbackCancel?: () => void): Dialog",
+          "parameters": [
+            {
+              "name": "text",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "Confirm question."
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Confirm title."
+            },
+            {
+              "name": "callbackOk",
+              "type": "() => void",
+              "typeLink": "/techno4-framework2/types#function",
+              "required": false,
+              "description": "OK callback."
+            },
+            {
+              "name": "callbackCancel",
+              "type": "() => void",
+              "typeLink": "/techno4-framework2/types#function",
+              "required": false,
+              "description": "Cancel callback."
+            }
+          ],
+          "returnType": "Dialog",
+          "returnTypeLink": "/techno4-framework2/types#dialog",
+          "description": "Opens Confirm dialog."
+        },
+        {
+          "name": "app.dialog.prompt",
+          "signature": "app.dialog.prompt(text: string, title?: string, callbackOk?: (value: string) => void, callbackCancel?: (value: string) => void, defaultValue?: string): Dialog",
+          "parameters": [
+            {
+              "name": "text",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "Prompt question."
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Prompt title."
+            },
+            {
+              "name": "callbackOk",
+              "type": "(value: string) => void",
+              "typeLink": "/techno4-framework2/types#function",
+              "required": false,
+              "description": "OK callback receiving input value."
+            },
+            {
+              "name": "callbackCancel",
+              "type": "(value: string) => void",
+              "typeLink": "/techno4-framework2/types#function",
+              "required": false,
+              "description": "Cancel callback."
+            },
+            {
+              "name": "defaultValue",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Initial input value."
+            }
+          ],
+          "returnType": "Dialog",
+          "returnTypeLink": "/techno4-framework2/types#dialog",
+          "description": "Opens Prompt dialog with single text input."
+        },
+        {
+          "name": "app.dialog.login",
+          "signature": "app.dialog.login(text: string, title?: string, callbackOk?: (username: string, password: string) => void, callbackCancel?: () => void): Dialog",
+          "parameters": [
+            {
+              "name": "text",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "Dialog description."
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Dialog title."
+            },
+            {
+              "name": "callbackOk",
+              "type": "(username: string, password: string) => void",
+              "typeLink": "/techno4-framework2/types#function",
+              "required": false,
+              "description": "OK callback."
+            },
+            {
+              "name": "callbackCancel",
+              "type": "() => void",
+              "typeLink": "/techno4-framework2/types#function",
+              "required": false,
+              "description": "Cancel callback."
+            }
+          ],
+          "returnType": "Dialog",
+          "returnTypeLink": "/techno4-framework2/types#dialog",
+          "description": "Opens Login dialog with username and password inputs."
+        },
+        {
+          "name": "app.dialog.password",
+          "signature": "app.dialog.password(text: string, title?: string, callbackOk?: (password: string) => void, callbackCancel?: () => void): Dialog",
+          "parameters": [
+            {
+              "name": "text",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "Dialog description."
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Dialog title."
+            },
+            {
+              "name": "callbackOk",
+              "type": "(password: string) => void",
+              "typeLink": "/techno4-framework2/types#function",
+              "required": false,
+              "description": "OK callback."
+            },
+            {
+              "name": "callbackCancel",
+              "type": "() => void",
+              "typeLink": "/techno4-framework2/types#function",
+              "required": false,
+              "description": "Cancel callback."
+            }
+          ],
+          "returnType": "Dialog",
+          "returnTypeLink": "/techno4-framework2/types#dialog",
+          "description": "Opens Password dialog with single password input."
+        },
+        {
+          "name": "app.dialog.preloader",
+          "signature": "app.dialog.preloader(title?: string, color?: string): Dialog",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Preloader text."
+            },
+            {
+              "name": "color",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Preloader color theme."
+            }
+          ],
+          "returnType": "Dialog",
+          "returnTypeLink": "/techno4-framework2/types#dialog",
+          "description": "Opens loading spinner dialog."
+        },
+        {
+          "name": "app.dialog.progress",
+          "signature": "app.dialog.progress(title?: string, progress?: number, color?: string): Dialog",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Progress title."
+            },
+            {
+              "name": "progress",
+              "type": "number",
+              "typeLink": "/techno4-framework2/types#number",
+              "required": false,
+              "description": "Progress percentage (0-100). If omitted, displays infinite progress."
+            },
+            {
+              "name": "color",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": false,
+              "description": "Progress color."
+            }
+          ],
+          "returnType": "Dialog",
+          "returnTypeLink": "/techno4-framework2/types#dialog",
+          "description": "Opens Progress bar dialog."
+        },
+        {
+          "name": "app.dialog.create",
+          "signature": "app.dialog.create(parameters: Dialog.Parameters): Dialog",
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "Dialog.Parameters",
+              "typeLink": "/techno4-framework2/types#dialog-parameters",
+              "required": true,
+              "description": "Custom dialog parameters."
+            }
+          ],
+          "returnType": "Dialog",
+          "returnTypeLink": "/techno4-framework2/types#dialog",
+          "description": "Creates custom Dialog instance."
+        },
+        {
+          "name": "app.dialog.close",
+          "signature": "app.dialog.close(el?: HTMLElement | CSSSelector, animate?: boolean): Dialog",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Dialog element or selector."
+            },
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate."
+            }
+          ],
+          "returnType": "Dialog",
+          "returnTypeLink": "/techno4-framework2/types#dialog",
+          "description": "Closes opened dialog."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "dialog:open",
+          "target": ".dialog",
+          "detail": "none",
+          "description": "Triggered when Dialog starts opening animation."
+        },
+        {
+          "event": "dialog:opened",
+          "target": ".dialog",
+          "detail": "none",
+          "description": "Triggered after Dialog completes opening animation."
+        },
+        {
+          "event": "dialog:close",
+          "target": ".dialog",
+          "detail": "none",
+          "description": "Triggered when Dialog starts closing animation."
+        },
+        {
+          "event": "dialog:closed",
+          "target": ".dialog",
+          "detail": "none",
+          "description": "Triggered after Dialog completes closing animation."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "dialogOpen",
+          "arguments": "(dialog: Dialog)",
+          "description": "Triggered when Dialog starts opening animation."
+        },
+        {
+          "event": "dialogOpened",
+          "arguments": "(dialog: Dialog)",
+          "description": "Triggered after Dialog completes opening animation."
+        },
+        {
+          "event": "dialogClose",
+          "arguments": "(dialog: Dialog)",
+          "description": "Triggered when Dialog starts closing animation."
+        },
+        {
+          "event": "dialogClosed",
+          "arguments": "(dialog: Dialog)",
+          "description": "Triggered after Dialog completes closing animation."
+        },
+        {
+          "event": "dialogBeforeDestroy",
+          "arguments": "(dialog: Dialog)",
+          "description": "Triggered right before Dialog instance is destroyed."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-dialog-width",
+          "theme": "ios",
+          "defaultValue": "270px",
+          "description": "Dialog modal width on iOS."
+        },
+        {
+          "variable": "--t4-dialog-width",
+          "theme": "md",
+          "defaultValue": "280px",
+          "description": "Dialog modal width on Material Design."
+        },
+        {
+          "variable": "--t4-dialog-border-radius",
+          "theme": "ios",
+          "defaultValue": "32px",
+          "description": "Dialog corner radius on iOS."
+        },
+        {
+          "variable": "--t4-dialog-border-radius",
+          "theme": "md",
+          "defaultValue": "28px",
+          "description": "Dialog corner radius on Material Design."
+        },
+        {
+          "variable": "--t4-dialog-inner-padding",
+          "theme": "ios",
+          "defaultValue": "24px",
+          "description": "Inner content padding on iOS."
+        },
+        {
+          "variable": "--t4-dialog-inner-padding",
+          "theme": "md",
+          "defaultValue": "24px",
+          "description": "Inner content padding on MD."
+        },
+        {
+          "variable": "--t4-dialog-button-height",
+          "theme": "ios",
+          "defaultValue": "44px",
+          "description": "Dialog action button height on iOS."
+        },
+        {
+          "variable": "--t4-dialog-button-height",
+          "theme": "md",
+          "defaultValue": "40px",
+          "description": "Dialog action button height on MD."
+        },
+        {
+          "variable": "--t4-dialog-bg-color",
+          "theme": "ios",
+          "defaultValue": "var(--t4-glass-bg-color)",
+          "description": "Glass backdrop background on iOS."
+        },
+        {
+          "variable": "--t4-dialog-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-3)",
+          "description": "Surface elevation background on MD."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Dialog Demo</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <a href=\"#\" class=\"button button-fill\" @click=\"${savePatch}\">Save Synthesizer Patch</a>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $t4 }) => {\n  const savePatch = () => {\n    $t4.dialog.prompt('Enter patch name:', 'Save Patch', (name) => {\n      const p = $t4.dialog.progress('Saving patch...', 0);\n      let prog = 0;\n      const int = setInterval(() => {\n        prog += 25;\n        p.setProgress(prog);\n        if (prog >= 100) {\n          clearInterval(int);\n          p.close();\n          $t4.dialog.alert(`Patch \"${name}\" saved successfully!`);\n        }\n      }, 300);\n    });\n  };\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "sheet",
+      "title": "Sheet Modal",
+      "description": "Sheet Modal is a slide-up dialog fixed to the bottom or top of the viewport. Supports swipe-to-close gestures, swipe step expansions (.sheet-modal-swipe-step), multi-stop breakpoints, push view behind effect (.sheet-modal-push), and backdrop customization.",
+      "docLink": "/techno4-framework2/sheet-modal",
+      "typesLink": "/techno4-framework2/types#sheet",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/sheet/sheet.d.ts",
+        "packages/techno4-framework2-core/src/components/sheet/sheet.js",
+        "packages/techno4-framework2-core/src/components/sheet/sheet-class.js",
+        "packages/techno4-framework2-core/src/components/sheet/sheet.less",
+        "packages/techno4-framework2-core/src/components/sheet/sheet-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/sheet-modal.html",
+        "description": "Interactive demo demonstrating basic sheet modal, swipe-to-close sheet, swipe-to-step modal with partial expand, and push view effect."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"sheet-modal my-sheet\">\n  <div class=\"toolbar\">\n    <div class=\"toolbar-inner\">\n      <div class=\"left\"><span class=\"title\">Audio Effects Rack</span></div>\n      <div class=\"right\"><a class=\"link sheet-close\" href=\"#\">Done</a></div>\n    </div>\n  </div>\n  <div class=\"sheet-modal-inner\">\n    <div class=\"page-content\">\n      <div class=\"block\"><p>DSP Effect Rack Controls...</p></div>\n    </div>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "sheet-modal",
+            "description": "Base Sheet Modal container element."
+          },
+          {
+            "class": "sheet-modal-top",
+            "description": "Positions Sheet Modal sliding down from the top edge instead of bottom."
+          },
+          {
+            "class": "sheet-modal-push",
+            "description": "Pushes back and scales down the background view when sheet opens."
+          },
+          {
+            "class": "sheet-modal-inner",
+            "description": "Inner container holding scrollable content."
+          },
+          {
+            "class": "sheet-close",
+            "description": "Element that closes the sheet when clicked."
+          },
+          {
+            "class": "swipe-handler",
+            "description": "Specific handle element restricted for swipe gestures."
+          },
+          {
+            "class": "sheet-modal-swipe-step",
+            "description": "Enables partial swipe step expansion."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "push",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Pushes view behind on open when top safe area is present."
+          },
+          {
+            "name": "backdrop",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "undefined",
+            "description": "Enables dark semi-transparent backdrop behind sheet."
+          },
+          {
+            "name": "backdropEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Custom backdrop element to share across instances."
+          },
+          {
+            "name": "backdropUnique",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Creates unique backdrop element exclusively for this sheet."
+          },
+          {
+            "name": "closeByBackdropClick",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Closes sheet on backdrop click."
+          },
+          {
+            "name": "closeByOutsideClick",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Closes sheet when clicking outside of it."
+          },
+          {
+            "name": "closeOnEscape",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Closes sheet on keyboard ESC key."
+          },
+          {
+            "name": "swipeToClose",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Allows closing sheet with swipe gesture."
+          },
+          {
+            "name": "swipeToStep",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Splits sheet into two states: partially opened and fully opened."
+          },
+          {
+            "name": "breakpoints",
+            "type": "number[]",
+            "typeLink": "/techno4-framework2/types#number-array",
+            "default": "[]",
+            "description": "Array of decimal stops between 0 and 1 (e.g., [0.33, 0.66])."
+          },
+          {
+            "name": "backdropBreakpoint",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "0",
+            "description": "Breakpoint threshold at which backdrop becomes visible."
+          },
+          {
+            "name": "pushBreakpoint",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "0",
+            "description": "Breakpoint threshold at which background view is pushed back."
+          },
+          {
+            "name": "swipeHandler",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "null",
+            "description": "Restricts swipe gesture to specified handler element."
+          },
+          {
+            "name": "containerEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "null",
+            "description": "Mount container element (defaults to app.el)."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Existing Sheet Modal element to bind instance to."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "undefined",
+            "description": "Full Sheet Modal HTML layout string for dynamic creation."
+          },
+          {
+            "name": "scrollToEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Target element to scroll page content to upon open."
+          },
+          {
+            "name": "animate",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Whether to animate opening and closing."
+          },
+          {
+            "name": "on",
+            "type": "Sheet.Events",
+            "typeLink": "/techno4-framework2/types#sheet-events",
+            "default": "{}",
+            "description": "Event listeners object."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "typeLink": "/techno4-framework2/types#techno4",
+          "description": "App instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Sheet Modal DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping sheet DOM element."
+        },
+        {
+          "name": "backdropEl",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Backdrop DOM element."
+        },
+        {
+          "name": "$backdropEl",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping backdrop DOM element."
+        },
+        {
+          "name": "params",
+          "type": "Sheet.Parameters",
+          "typeLink": "/techno4-framework2/types#sheet-parameters",
+          "description": "Sheet instance parameters."
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "typeLink": "/techno4-framework2/types#boolean",
+          "description": "Whether sheet is currently opened."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "open",
+          "signature": "sheet.open(animate?: boolean): Sheet",
+          "parameters": [
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Opens sheet modal."
+        },
+        {
+          "name": "close",
+          "signature": "sheet.close(animate?: boolean): Sheet",
+          "parameters": [
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Closes sheet modal."
+        },
+        {
+          "name": "stepOpen",
+          "signature": "sheet.stepOpen(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Expands sheet to swipe step opened state."
+        },
+        {
+          "name": "stepClose",
+          "signature": "sheet.stepClose(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Collapses sheet to swipe step closed state."
+        },
+        {
+          "name": "stepToggle",
+          "signature": "sheet.stepToggle(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Toggles sheet between step opened and step closed states."
+        },
+        {
+          "name": "setSwipeStep",
+          "signature": "sheet.setSwipeStep(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Recalculates swipe step dimensions after dynamic content mutation."
+        },
+        {
+          "name": "setBreakpoint",
+          "signature": "sheet.setBreakpoint(breakpoint: number): Sheet",
+          "parameters": [
+            {
+              "name": "breakpoint",
+              "type": "number",
+              "typeLink": "/techno4-framework2/types#number",
+              "required": true,
+              "description": "Target breakpoint stop (0-1)."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Transitions sheet to specific breakpoint."
+        },
+        {
+          "name": "destroy",
+          "signature": "sheet.destroy(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys sheet modal instance."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.sheet.create",
+          "signature": "app.sheet.create(parameters: Sheet.Parameters): Sheet",
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "Sheet.Parameters",
+              "typeLink": "/techno4-framework2/types#sheet-parameters",
+              "required": true,
+              "description": "Parameters."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Creates new Sheet instance."
+        },
+        {
+          "name": "app.sheet.destroy",
+          "signature": "app.sheet.destroy(el: HTMLElement | CSSSelector | Sheet): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector | Sheet",
+              "typeLink": "/techno4-framework2/types#sheet",
+              "required": true,
+              "description": "Sheet element, selector, or instance."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys Sheet instance."
+        },
+        {
+          "name": "app.sheet.get",
+          "signature": "app.sheet.get(el?: HTMLElement | CSSSelector): Sheet",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Sheet element or selector."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Finds Sheet instance by DOM element."
+        },
+        {
+          "name": "app.sheet.open",
+          "signature": "app.sheet.open(el?: HTMLElement | CSSSelector, animate?: boolean): Sheet",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Sheet element or selector."
+            },
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Opens Sheet Modal."
+        },
+        {
+          "name": "app.sheet.close",
+          "signature": "app.sheet.close(el?: HTMLElement | CSSSelector, animate?: boolean): Sheet",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Sheet element or selector."
+            },
+            {
+              "name": "animate",
+              "type": "boolean",
+              "typeLink": "/techno4-framework2/types#boolean",
+              "required": false,
+              "description": "Whether to animate."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Closes Sheet Modal."
+        },
+        {
+          "name": "app.sheet.stepOpen",
+          "signature": "app.sheet.stepOpen(el?: HTMLElement | CSSSelector): Sheet",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Sheet element or selector."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Expands swipe step."
+        },
+        {
+          "name": "app.sheet.stepClose",
+          "signature": "app.sheet.stepClose(el?: HTMLElement | CSSSelector): Sheet",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Sheet element or selector."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Collapses swipe step."
+        },
+        {
+          "name": "app.sheet.stepToggle",
+          "signature": "app.sheet.stepToggle(el?: HTMLElement | CSSSelector): Sheet",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Sheet element or selector."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Toggles swipe step."
+        },
+        {
+          "name": "app.sheet.setBreakpoint",
+          "signature": "app.sheet.setBreakpoint(el: HTMLElement | CSSSelector, breakpoint: number): Sheet",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Sheet element or selector."
+            },
+            {
+              "name": "breakpoint",
+              "type": "number",
+              "typeLink": "/techno4-framework2/types#number",
+              "required": true,
+              "description": "Breakpoint stop."
+            }
+          ],
+          "returnType": "Sheet",
+          "returnTypeLink": "/techno4-framework2/types#sheet",
+          "description": "Sets breakpoint on specified sheet."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "sheet:open",
+          "target": ".sheet-modal",
+          "detail": "none",
+          "description": "Triggered when Sheet starts opening animation."
+        },
+        {
+          "event": "sheet:opened",
+          "target": ".sheet-modal",
+          "detail": "none",
+          "description": "Triggered after Sheet completes opening animation."
+        },
+        {
+          "event": "sheet:close",
+          "target": ".sheet-modal",
+          "detail": "none",
+          "description": "Triggered when Sheet starts closing animation."
+        },
+        {
+          "event": "sheet:closed",
+          "target": ".sheet-modal",
+          "detail": "none",
+          "description": "Triggered after Sheet completes closing animation."
+        },
+        {
+          "event": "sheet:stepopen",
+          "target": ".sheet-modal",
+          "detail": "none",
+          "description": "Triggered when swipe step expands."
+        },
+        {
+          "event": "sheet:stepclose",
+          "target": ".sheet-modal",
+          "detail": "none",
+          "description": "Triggered when swipe step collapses."
+        },
+        {
+          "event": "sheet:stepprogress",
+          "target": ".sheet-modal",
+          "detail": "event.detail: number (0-1)",
+          "description": "Triggered during swipe step dragging with progress ratio."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "sheetStepOpen",
+          "arguments": "(sheet: Sheet)",
+          "description": "Triggered when swipe step expands."
+        },
+        {
+          "event": "sheetStepClose",
+          "arguments": "(sheet: Sheet)",
+          "description": "Triggered when swipe step collapses."
+        },
+        {
+          "event": "sheetStepProgress",
+          "arguments": "(sheet: Sheet, progress: number)",
+          "description": "Triggered during swipe step dragging."
+        },
+        {
+          "event": "sheetBreakpoint",
+          "arguments": "(sheet: Sheet, breakpoint: number)",
+          "description": "Triggered when breakpoint stop changes."
+        },
+        {
+          "event": "sheetOpen",
+          "arguments": "(sheet: Sheet)",
+          "description": "Triggered when Sheet starts opening."
+        },
+        {
+          "event": "sheetOpened",
+          "arguments": "(sheet: Sheet)",
+          "description": "Triggered after Sheet completes opening."
+        },
+        {
+          "event": "sheetClose",
+          "arguments": "(sheet: Sheet)",
+          "description": "Triggered when Sheet starts closing."
+        },
+        {
+          "event": "sheetClosed",
+          "arguments": "(sheet: Sheet)",
+          "description": "Triggered after Sheet completes closing."
+        },
+        {
+          "event": "sheetBeforeDestroy",
+          "arguments": "(sheet: Sheet)",
+          "description": "Triggered right before Sheet is destroyed."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-sheet-height",
+          "theme": "root",
+          "defaultValue": "260px",
+          "description": "Default sheet height."
+        },
+        {
+          "variable": "--t4-sheet-push-offset",
+          "theme": "root",
+          "defaultValue": "var(--t4-safe-area-top)",
+          "description": "Offset for pushed background view."
+        },
+        {
+          "variable": "--t4-sheet-border-radius",
+          "theme": "ios",
+          "defaultValue": "32px",
+          "description": "Sheet top corner radius on iOS."
+        },
+        {
+          "variable": "--t4-sheet-border-radius",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Sheet top corner radius on Material Design."
+        },
+        {
+          "variable": "--t4-sheet-transition-duration",
+          "theme": "ios",
+          "defaultValue": "300ms",
+          "description": "Animation duration on iOS."
+        },
+        {
+          "variable": "--t4-sheet-transition-duration",
+          "theme": "md",
+          "defaultValue": "400ms",
+          "description": "Animation duration on Material Design."
+        },
+        {
+          "variable": "--t4-sheet-bg-color",
+          "theme": "ios",
+          "defaultValue": "var(--t4-glass-bg-color)",
+          "description": "Glass backdrop background on iOS."
+        },
+        {
+          "variable": "--t4-sheet-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface)",
+          "description": "Surface container background on MD."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Sheet Modal Demo</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <a href=\"#\" class=\"button button-fill sheet-open\" data-sheet=\".demo-sheet-swipe\">Open Swipe-to-Close Sheet</a>\n      </div>\n      <div class=\"sheet-modal demo-sheet-swipe\" style=\"height: auto\">\n        <div class=\"sheet-modal-inner\">\n          <div class=\"page-content\">\n            <div class=\"block-title block-title-large\">Hardware FX Rack</div>\n            <div class=\"block\">\n              <p>Swipe down to close this hardware configuration sheet.</p>\n              <p><a href=\"#\" class=\"button button-fill sheet-close\">Close Sheet</a></p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $t4, $on }) => {\n  let sheetInstance;\n  $on('pageInit', () => {\n    sheetInstance = $t4.sheet.create({\n      el: '.demo-sheet-swipe',\n      swipeToClose: true,\n      backdrop: true\n    });\n  });\n  $on('pageBeforeRemove', () => {\n    if (sheetInstance) sheetInstance.destroy();\n  });\n  return $render;\n};\n</script>"
+    }
+  ]
+}

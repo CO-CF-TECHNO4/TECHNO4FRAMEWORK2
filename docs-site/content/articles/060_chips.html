@@ -1,0 +1,270 @@
+<h2>Теги</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Теги </a>
+
+    </li>
+        <li>
+        
+<div>Макет тегів</div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Теги</h3>
+<div>Чіпи (теги) являть собою складні сутності в невеликих блоках, наприклад контакт. Вони можуть містити фото, коротку назву та коротку інформацію.</div>
+<h3>Макет тегів </h3>
+<div>Подивімось на базову розмітку HTML макету: </div>
+<pre><code>&lt;div class=&quot;chip&quot;&gt;
+  &lt;div class=&quot;chip-media&quot;&gt;
+    &lt;img src=&quot;https://cdn.techno4.io/placeholder/people-100x100-9.jpg&quot; /&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;chip-label&quot;&gt;Jane Doe&lt;/div&gt;
+  &lt;a href=&quot;#&quot; class=&quot;chip-delete&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;chip chip-outline&quot;&gt;
+  &lt;div class=&quot;chip-label&quot;&gt;Outline Chip&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Де, 
+<p><code>&lt;div class="chip"&gt;</code> - контейнер тегу 
+<p><code>&lt;div class="chip-media"&gt;</code> - тег «медіа» елемент, може містити зображення/аватар або значок. Необов'язковий</p>
+<p><code>&lt;div class="chip-label"&gt;</code> - Мітка з текстом тега</p>
+<p><code>&lt;a class="chip-delete"&gt;</code> - Значок-посилання для видалення тега. Необов'язковий</p>
+<p><code>chip-outline</code> - додатковий клас, який можна додати до елемента <code>chip</code>, щоб зробити його контур.</p>
+</div>
+<h3>Змінні CSS </h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).
+</div>
+<pre><code>:root {
+  --t4-chip-font-size: 14px;
+  --t4-chip-font-weight: normal;
+  --t4-chip-media-font-size: 16px;
+  --t4-chip-bg-color: rgba(0, 0, 0, 0.12);
+  --t4-chip-outline-border-color: rgba(0, 0, 0, 0.12);
+  --t4-chip-delete-button-color: #000;
+}
+:root .dark,
+:root.dark {
+  --t4-chip-delete-button-color: #fff;
+  --t4-chip-bg-color: #333;
+  --t4-chip-outline-border-color: rgba(255, 255, 255, 0.12);
+}
+.ios {
+  --t4-chip-height: 28px;
+  --t4-chip-padding-horizontal: 10px;
+  --t4-chip-text-color: #000;
+}
+.ios .dark,
+.ios.dark {
+  --t4-chip-text-color: #fff;
+}
+.md {
+  --t4-chip-height: 32px;
+  --t4-chip-padding-horizontal: 12px;
+  --t4-chip-text-color: rgba(0, 0, 0, 0.87);
+}
+.md .dark,
+.md.dark {
+  --t4-chip-text-color: rgba(255, 255, 255, 0.87);
+}
+.aurora {
+  --t4-chip-height: 32px;
+  --t4-chip-padding-horizontal: 12px;
+  --t4-chip-text-color: #000;
+}
+.aurora .dark,
+.aurora.dark {
+  --t4-chip-text-color: #fff;
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Теги&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Теги з текстом &lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;приклад тегу&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;іншй тег&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;і ще один тег&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;четвертий тег&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;останній &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;тег з обводкою &lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;div class=&quot;chip chip-outline&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;приклад тегу&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip chip-outline&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;ще один тег &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip chip-outline&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;ще один тег &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip chip-outline&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;четвертий тег&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip chip-outline&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;останній тег &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;значок тегу&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media bg-color-blue&quot;&gt;
+            &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;plus_circle&lt;/i&gt;
+            &lt;i class=&quot;icon material-icons md-only&quot;&gt;add_circle&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Додати контакт&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media bg-color-green&quot;&gt;
+            &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;Компас &lt;/i&gt;
+            &lt;i class=&quot;icon material-icons md-only&quot;&gt;location_on&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Лондон&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media bg-color-red&quot;&gt;
+            &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;Персона &lt;/i&gt;
+            &lt;i class=&quot;icon material-icons md-only&quot;&gt;Персона&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;John Doe&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Contact Chips&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/people-64x64-9.jpg&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Jane Doe&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/people-64x64-9.jpg&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;John Doe&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/people-64x64-9.jpg&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Adam Smith&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media bg-color-pink&quot;&gt;J&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Jennifer&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media bg-color-yellow text-color-black&quot;&gt;C&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Chris&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media bg-color-red&quot;&gt;K&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Kate&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Deletable Chips / Tags&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Example Chip&lt;/div&gt;
+          &lt;a href=&quot;#&quot; class=&quot;chip-delete&quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media bg-color-orange text-color-black&quot;&gt;C&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Chris&lt;/div&gt;
+          &lt;a href=&quot;#&quot; class=&quot;chip-delete&quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/people-64x64-9.jpg&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Jane Doe&lt;/div&gt;
+          &lt;a href=&quot;#&quot; class=&quot;chip-delete&quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;One More Chip&lt;/div&gt;
+          &lt;a href=&quot;#&quot; class=&quot;chip-delete&quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media bg-color-pink&quot;&gt;J&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Jennifer&lt;/div&gt;
+          &lt;a href=&quot;#&quot; class=&quot;chip-delete&quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip&quot;&gt;
+          &lt;div class=&quot;chip-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/people-64x64-9.jpg&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Adam Smith&lt;/div&gt;
+          &lt;a href=&quot;#&quot; class=&quot;chip-delete&quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Color Chips&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;div class=&quot;chip color-red&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Red Chip&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip color-green&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Green Chip&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip color-blue&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Blue Chip&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip color-orange&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Orange Chip&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip color-pink&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Pink Chip&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip chip-outline color-red&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Red Chip&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip chip-outline color-green&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Green Chip&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip chip-outline color-blue&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Blue Chip&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip chip-outline color-orange&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Orange Chip&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;chip chip-outline color-pink&quot;&gt;
+          &lt;div class=&quot;chip-label&quot;&gt;Pink Chip&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, { $, $t4, $on }) =&gt; {
+    $on('pageInit', () =&gt; {
+      $('.chip-delete').on('click', function (e) {
+        e.preventDefault();
+        var chip = $(this).parents('.chip');
+        $t4.dialog.confirm('Do you want to delete this tiny demo Chip?', function () {
+          chip.remove();
+        });
+      });
+    })
+
+    return $render;
+  }
+&lt;/script&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0422\u0435\u0433\u0438","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u0422\u0435\u0433\u0438"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u0422\u0435\u0433\u0438 ","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0442\u0435\u0433\u0456\u0432"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0422\u0435\u0433\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0422\u0435\u0433\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0427\u0456\u043f\u0438 (\u0442\u0435\u0433\u0438) \u044f\u0432\u043b\u044f\u0442\u044c \u0441\u043e\u0431\u043e\u044e \u0441\u043a\u043b\u0430\u0434\u043d\u0456 \u0441\u0443\u0442\u043d\u043e\u0441\u0442\u0456 \u0432 \u043d\u0435\u0432\u0435\u043b\u0438\u043a\u0438\u0445 \u0431\u043b\u043e\u043a\u0430\u0445, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u043a\u043e\u043d\u0442\u0430\u043a\u0442. \u0412\u043e\u043d\u0438 \u043c\u043e\u0436\u0443\u0442\u044c \u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0444\u043e\u0442\u043e, \u043a\u043e\u0440\u043e\u0442\u043a\u0443 \u043d\u0430\u0437\u0432\u0443 \u0442\u0430 \u043a\u043e\u0440\u043e\u0442\u043a\u0443 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044e.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0442\u0435\u0433\u0456\u0432 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u0442\u0435\u0433\u0456\u0432 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u043e\u0434\u0438\u0432\u0456\u043c\u043e\u0441\u044c \u043d\u0430 \u0431\u0430\u0437\u043e\u0432\u0443 \u0440\u043e\u0437\u043c\u0456\u0442\u043a\u0443 HTML \u043c\u0430\u043a\u0435\u0442\u0443: ","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"chip\">\n  <div class=\"chip-media\">\n    <img src=\"https:\/\/cdn.techno4.io\/placeholder\/people-100x100-9.jpg\" \/>\n  <\/div>\n  <div class=\"chip-label\">Jane Doe<\/div>\n  <a href=\"#\" class=\"chip-delete\"><\/a>\n<\/div>\n\n<div class=\"chip chip-outline\">\n  <div class=\"chip-label\">Outline Chip<\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435, \n<p><code>&lt;div class=\"chip\"&gt;<\/code> - \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 \u0442\u0435\u0433\u0443 \n<p><code>&lt;div class=\"chip-media\"&gt;<\/code> - \u0442\u0435\u0433 \u00ab\u043c\u0435\u0434\u0456\u0430\u00bb \u0435\u043b\u0435\u043c\u0435\u043d\u0442, \u043c\u043e\u0436\u0435 \u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f\/\u0430\u0432\u0430\u0442\u0430\u0440 \u0430\u0431\u043e \u0437\u043d\u0430\u0447\u043e\u043a. \u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439<\/p>\n<p><code>&lt;div class=\"chip-label\"&gt;<\/code> - \u041c\u0456\u0442\u043a\u0430 \u0437 \u0442\u0435\u043a\u0441\u0442\u043e\u043c \u0442\u0435\u0433\u0430<\/p>\n<p><code>&lt;a class=\"chip-delete\"&gt;<\/code> - \u0417\u043d\u0430\u0447\u043e\u043a-\u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0434\u043b\u044f \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f \u0442\u0435\u0433\u0430. \u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439<\/p>\n<p><code>chip-outline<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441, \u044f\u043a\u0438\u0439 \u043c\u043e\u0436\u043d\u0430 \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 <code>chip<\/code>, \u0449\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u043a\u043e\u043d\u0442\u0443\u0440.<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-chip-font-size: 14px;\n  --t4-chip-font-weight: normal;\n  --t4-chip-media-font-size: 16px;\n  --t4-chip-bg-color: rgba(0, 0, 0, 0.12);\n  --t4-chip-outline-border-color: rgba(0, 0, 0, 0.12);\n  --t4-chip-delete-button-color: #000;\n}\n:root .dark,\n:root.dark {\n  --t4-chip-delete-button-color: #fff;\n  --t4-chip-bg-color: #333;\n  --t4-chip-outline-border-color: rgba(255, 255, 255, 0.12);\n}\n.ios {\n  --t4-chip-height: 28px;\n  --t4-chip-padding-horizontal: 10px;\n  --t4-chip-text-color: #000;\n}\n.ios .dark,\n.ios.dark {\n  --t4-chip-text-color: #fff;\n}\n.md {\n  --t4-chip-height: 32px;\n  --t4-chip-padding-horizontal: 12px;\n  --t4-chip-text-color: rgba(0, 0, 0, 0.87);\n}\n.md .dark,\n.md.dark {\n  --t4-chip-text-color: rgba(255, 255, 255, 0.87);\n}\n.aurora {\n  --t4-chip-height: 32px;\n  --t4-chip-padding-horizontal: 12px;\n  --t4-chip-text-color: #000;\n}\n.aurora .dark,\n.aurora.dark {\n  --t4-chip-text-color: #fff;\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner\">\n        <div class=\"title\">\u0422\u0435\u0433\u0438<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block-title\">\u0422\u0435\u0433\u0438 \u0437 \u0442\u0435\u043a\u0441\u0442\u043e\u043c <\/div>\n      <div class=\"block block-strong\">\n        <div class=\"chip\">\n          <div class=\"chip-label\">\u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u0442\u0435\u0433\u0443<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-label\">\u0456\u043d\u0448\u0439 \u0442\u0435\u0433<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-label\">\u0456 \u0449\u0435 \u043e\u0434\u0438\u043d \u0442\u0435\u0433<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-label\">\u0447\u0435\u0442\u0432\u0435\u0440\u0442\u0438\u0439 \u0442\u0435\u0433<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-label\">\u043e\u0441\u0442\u0430\u043d\u043d\u0456\u0439 <\/div>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">\u0442\u0435\u0433 \u0437 \u043e\u0431\u0432\u043e\u0434\u043a\u043e\u044e <\/div>\n      <div class=\"block block-strong\">\n        <div class=\"chip chip-outline\">\n          <div class=\"chip-label\">\u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u0442\u0435\u0433\u0443<\/div>\n        <\/div>\n        <div class=\"chip chip-outline\">\n          <div class=\"chip-label\">\u0449\u0435 \u043e\u0434\u0438\u043d \u0442\u0435\u0433 <\/div>\n        <\/div>\n        <div class=\"chip chip-outline\">\n          <div class=\"chip-label\">\u0449\u0435 \u043e\u0434\u0438\u043d \u0442\u0435\u0433 <\/div>\n        <\/div>\n        <div class=\"chip chip-outline\">\n          <div class=\"chip-label\">\u0447\u0435\u0442\u0432\u0435\u0440\u0442\u0438\u0439 \u0442\u0435\u0433<\/div>\n        <\/div>\n        <div class=\"chip chip-outline\">\n          <div class=\"chip-label\">\u043e\u0441\u0442\u0430\u043d\u043d\u0456\u0439 \u0442\u0435\u0433 <\/div>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">\u0437\u043d\u0430\u0447\u043e\u043a \u0442\u0435\u0433\u0443<\/div>\n      <div class=\"block block-strong\">\n        <div class=\"chip\">\n          <div class=\"chip-media bg-color-blue\">\n            <i class=\"icon t4-icons if-not-md\">plus_circle<\/i>\n            <i class=\"icon material-icons md-only\">add_circle<\/i>\n          <\/div>\n          <div class=\"chip-label\">\u0414\u043e\u0434\u0430\u0442\u0438 \u043a\u043e\u043d\u0442\u0430\u043a\u0442<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media bg-color-green\">\n            <i class=\"icon t4-icons if-not-md\">\u041a\u043e\u043c\u043f\u0430\u0441 <\/i>\n            <i class=\"icon material-icons md-only\">location_on<\/i>\n          <\/div>\n          <div class=\"chip-label\">\u041b\u043e\u043d\u0434\u043e\u043d<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media bg-color-red\">\n            <i class=\"icon t4-icons if-not-md\">\u041f\u0435\u0440\u0441\u043e\u043d\u0430 <\/i>\n            <i class=\"icon material-icons md-only\">\u041f\u0435\u0440\u0441\u043e\u043d\u0430<\/i>\n          <\/div>\n          <div class=\"chip-label\">John Doe<\/div>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Contact Chips<\/div>\n      <div class=\"block block-strong\">\n        <div class=\"chip\">\n          <div class=\"chip-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/people-64x64-9.jpg\" \/><\/div>\n          <div class=\"chip-label\">Jane Doe<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/people-64x64-9.jpg\" \/><\/div>\n          <div class=\"chip-label\">John Doe<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/people-64x64-9.jpg\" \/><\/div>\n          <div class=\"chip-label\">Adam Smith<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media bg-color-pink\">J<\/div>\n          <div class=\"chip-label\">Jennifer<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media bg-color-yellow text-color-black\">C<\/div>\n          <div class=\"chip-label\">Chris<\/div>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media bg-color-red\">K<\/div>\n          <div class=\"chip-label\">Kate<\/div>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Deletable Chips \/ Tags<\/div>\n      <div class=\"block block-strong\">\n        <div class=\"chip\">\n          <div class=\"chip-label\">Example Chip<\/div>\n          <a href=\"#\" class=\"chip-delete\"><\/a>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media bg-color-orange text-color-black\">C<\/div>\n          <div class=\"chip-label\">Chris<\/div>\n          <a href=\"#\" class=\"chip-delete\"><\/a>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/people-64x64-9.jpg\" \/><\/div>\n          <div class=\"chip-label\">Jane Doe<\/div>\n          <a href=\"#\" class=\"chip-delete\"><\/a>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-label\">One More Chip<\/div>\n          <a href=\"#\" class=\"chip-delete\"><\/a>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media bg-color-pink\">J<\/div>\n          <div class=\"chip-label\">Jennifer<\/div>\n          <a href=\"#\" class=\"chip-delete\"><\/a>\n        <\/div>\n        <div class=\"chip\">\n          <div class=\"chip-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/people-64x64-9.jpg\" \/><\/div>\n          <div class=\"chip-label\">Adam Smith<\/div>\n          <a href=\"#\" class=\"chip-delete\"><\/a>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Color Chips<\/div>\n      <div class=\"block block-strong\">\n        <div class=\"chip color-red\">\n          <div class=\"chip-label\">Red Chip<\/div>\n        <\/div>\n        <div class=\"chip color-green\">\n          <div class=\"chip-label\">Green Chip<\/div>\n        <\/div>\n        <div class=\"chip color-blue\">\n          <div class=\"chip-label\">Blue Chip<\/div>\n        <\/div>\n        <div class=\"chip color-orange\">\n          <div class=\"chip-label\">Orange Chip<\/div>\n        <\/div>\n        <div class=\"chip color-pink\">\n          <div class=\"chip-label\">Pink Chip<\/div>\n        <\/div>\n        <div class=\"chip chip-outline color-red\">\n          <div class=\"chip-label\">Red Chip<\/div>\n        <\/div>\n        <div class=\"chip chip-outline color-green\">\n          <div class=\"chip-label\">Green Chip<\/div>\n        <\/div>\n        <div class=\"chip chip-outline color-blue\">\n          <div class=\"chip-label\">Blue Chip<\/div>\n        <\/div>\n        <div class=\"chip chip-outline color-orange\">\n          <div class=\"chip-label\">Orange Chip<\/div>\n        <\/div>\n        <div class=\"chip chip-outline color-pink\">\n          <div class=\"chip-label\">Pink Chip<\/div>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, { $, $t4, $on }) => {\n    $on('pageInit', () => {\n      $('.chip-delete').on('click', function (e) {\n        e.preventDefault();\n        var chip = $(this).parents('.chip');\n        $t4.dialog.confirm('Do you want to delete this tiny demo Chip?', function () {\n          chip.remove();\n        });\n      });\n    })\n\n    return $render;\n  }\n<\/script>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

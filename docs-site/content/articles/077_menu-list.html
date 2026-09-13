@@ -1,0 +1,181 @@
+<h2>Список меню</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет меню списку</a>
+
+    </li>
+        <li>
+        
+<div>Приклад</div>
+
+    </li>
+    </ul>
+<h3>Список меню</h3>
+<div>Список меню є розширенням перегляду списку. Список меню, на відміну від звичайного списку посилань, призначений для вказівки поточного активного екрана (або розділу) вашого застосунку. Подумайте про це як про Tabbar, але у формі списку.</div>
+<h3>Макет списку меню</h3>
+<div>Подивімось на структуру макета списків меню у ваших переглядах списків:</div>
+<pre><code>&lt;div class=&quot;list menu-list&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;#&quot; class=&quot;item-content item-link item-selected&quot;&gt;
+        &lt;div class=&quot;item-inner&quot;&gt;
+          &lt;div class=&quot;item-title&quot;&gt;Item 1&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;#&quot; class=&quot;item-content item-link&quot;&gt;
+        &lt;div class=&quot;item-inner&quot;&gt;
+          &lt;div class=&quot;item-title&quot;&gt;Item 2&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>menu-list </code> - додатковий клас, який необхідно додати до списку, щоб увімкнути відображення списку меню</p>
+<p>○	<code>item-selected</code> -додатковий клас додав пункт списку меню, щоб вказати, що це наразі активний пункт</p>
+</div>
+<h3>Приклад </h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Menu List&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;p&gt;Список меню, на відміну від звичайного списку посилань, призначений для вказівки поточного активного екрана (або розділу) вашої програми. Подумайте про це як про Tabbar, але у формі списку.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;list menu-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a
+              href=&quot;#&quot;
+              class=&quot;item-content item-link ${selected === 'home' ? 'item-selected' : ''}&quot;
+              @click=${()=&gt; setItem('home')}
+            &gt;
+              &lt;div class=&quot;item-media&quot;&gt;
+                &lt;i class=&quot;icon material-icons if-md&quot;&gt;home&lt;/i&gt;
+                &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;house&lt;/i&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Home&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a
+              href=&quot;#&quot;
+              class=&quot;item-content item-link ${selected === 'profile' ? 'item-selected' : ''}&quot;
+              @click=${()=&gt; setItem('profile')}
+            &gt;
+              &lt;div class=&quot;item-media&quot;&gt;
+                &lt;i class=&quot;icon material-icons if-md&quot;&gt;person&lt;/i&gt;
+                &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;person_fill&lt;/i&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Profile&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a
+              href=&quot;#&quot;
+              class=&quot;item-content item-link ${selected === 'settings' ? 'item-selected' : ''}&quot;
+              @click=${()=&gt; setItem('settings')}
+            &gt;
+              &lt;div class=&quot;item-media&quot;&gt;
+                &lt;i class=&quot;icon material-icons if-md&quot;&gt;settings&lt;/i&gt;
+                &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;gear_alt_fill&lt;/i&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Settings&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;list media-list menu-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a
+              href=&quot;#&quot;
+              class=&quot;item-content item-link ${selectedMedia === 'home' ? 'item-selected' : ''}&quot;
+              @click=${()=&gt; setItemMedia('home')}
+            &gt;
+              &lt;div class=&quot;item-media&quot;&gt;
+                &lt;i class=&quot;icon material-icons if-md&quot;&gt;home&lt;/i&gt;
+                &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;house&lt;/i&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-wrap&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Home&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Home subtitle&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a
+              href=&quot;#&quot;
+              class=&quot;item-content item-link ${selectedMedia === 'profile' ? 'item-selected' : ''}&quot;
+              @click=${()=&gt; setItemMedia('profile')}
+            &gt;
+              &lt;div class=&quot;item-media&quot;&gt;
+                &lt;i class=&quot;icon material-icons if-md&quot;&gt;person&lt;/i&gt;
+                &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;person_fill&lt;/i&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-wrap&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Profile&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Profile subtitle&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a
+              href=&quot;#&quot;
+              class=&quot;item-content item-link ${selectedMedia === 'settings' ? 'item-selected' : ''}&quot;
+              @click=${()=&gt; setItemMedia('settings')}
+            &gt;
+              &lt;div class=&quot;item-media&quot;&gt;
+                &lt;i class=&quot;icon material-icons if-md&quot;&gt;settings&lt;/i&gt;
+                &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;gear_alt_fill&lt;/i&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-wrap&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Settings&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Settings subtitle&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, { $update }) =&gt; {
+    let selected = 'home';
+    let selectedMedia = 'home';
+
+    const setItem = (newItem) =&gt; {
+      selected = newItem;
+      $update();
+    }
+    const setItemMedia = (newItem) =&gt; {
+      selectedMedia = newItem;
+      $update();
+    }
+    return $render;
+  }
+&lt;/script&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0421\u043f\u0438\u0441\u043e\u043a \u043c\u0435\u043d\u044e","title_element":"h2","title_style":"heading-small"},"name":"\u0421\u043f\u0438\u0441\u043e\u043a \u043c\u0435\u043d\u044e"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043c\u0435\u043d\u044e \u0441\u043f\u0438\u0441\u043a\u0443","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0421\u043f\u0438\u0441\u043e\u043a \u043c\u0435\u043d\u044e","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0421\u043f\u0438\u0441\u043e\u043a \u043c\u0435\u043d\u044e"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0421\u043f\u0438\u0441\u043e\u043a \u043c\u0435\u043d\u044e \u0454 \u0440\u043e\u0437\u0448\u0438\u0440\u0435\u043d\u043d\u044f\u043c \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443. \u0421\u043f\u0438\u0441\u043e\u043a \u043c\u0435\u043d\u044e, \u043d\u0430 \u0432\u0456\u0434\u043c\u0456\u043d\u0443 \u0432\u0456\u0434 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0443 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c, \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0456\u0432\u043a\u0438 \u043f\u043e\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0433\u043e \u0435\u043a\u0440\u0430\u043d\u0430 (\u0430\u0431\u043e \u0440\u043e\u0437\u0434\u0456\u043b\u0443) \u0432\u0430\u0448\u043e\u0433\u043e \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041f\u043e\u0434\u0443\u043c\u0430\u0439\u0442\u0435 \u043f\u0440\u043e \u0446\u0435 \u044f\u043a \u043f\u0440\u043e Tabbar, \u0430\u043b\u0435 \u0443 \u0444\u043e\u0440\u043c\u0456 \u0441\u043f\u0438\u0441\u043a\u0443.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0441\u043f\u0438\u0441\u043a\u0443 \u043c\u0435\u043d\u044e","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u0441\u043f\u0438\u0441\u043a\u0443 \u043c\u0435\u043d\u044e"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u043e\u0434\u0438\u0432\u0456\u043c\u043e\u0441\u044c \u043d\u0430 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0443 \u043c\u0430\u043a\u0435\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0456\u0432 \u043c\u0435\u043d\u044e \u0443 \u0432\u0430\u0448\u0438\u0445 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0445 \u0441\u043f\u0438\u0441\u043a\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list menu-list\">\n  <ul>\n    <li>\n      <a href=\"#\" class=\"item-content item-link item-selected\">\n        <div class=\"item-inner\">\n          <div class=\"item-title\">Item 1<\/div>\n        <\/div>\n      <\/a>\n    <\/li>\n    <li>\n      <a href=\"#\" class=\"item-content item-link\">\n        <div class=\"item-inner\">\n          <div class=\"item-title\">Item 2<\/div>\n        <\/div>\n      <\/a>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>menu-list <\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441, \u044f\u043a\u0438\u0439 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e \u0441\u043f\u0438\u0441\u043a\u0443, \u0449\u043e\u0431 \u0443\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0441\u043f\u0438\u0441\u043a\u0443 \u043c\u0435\u043d\u044e<\/p>\n<p>\u25cb\t<code>item-selected<\/code> -\u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043e\u0434\u0430\u0432 \u043f\u0443\u043d\u043a\u0442 \u0441\u043f\u0438\u0441\u043a\u0443 \u043c\u0435\u043d\u044e, \u0449\u043e\u0431 \u0432\u043a\u0430\u0437\u0430\u0442\u0438, \u0449\u043e \u0446\u0435 \u043d\u0430\u0440\u0430\u0437\u0456 \u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u043f\u0443\u043d\u043a\u0442<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434 "},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"title\">Menu List<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block block-strong\">\n        <p>\u0421\u043f\u0438\u0441\u043e\u043a \u043c\u0435\u043d\u044e, \u043d\u0430 \u0432\u0456\u0434\u043c\u0456\u043d\u0443 \u0432\u0456\u0434 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0443 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c, \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0456\u0432\u043a\u0438 \u043f\u043e\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0433\u043e \u0435\u043a\u0440\u0430\u043d\u0430 (\u0430\u0431\u043e \u0440\u043e\u0437\u0434\u0456\u043b\u0443) \u0432\u0430\u0448\u043e\u0457 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438. \u041f\u043e\u0434\u0443\u043c\u0430\u0439\u0442\u0435 \u043f\u0440\u043e \u0446\u0435 \u044f\u043a \u043f\u0440\u043e Tabbar, \u0430\u043b\u0435 \u0443 \u0444\u043e\u0440\u043c\u0456 \u0441\u043f\u0438\u0441\u043a\u0443.<\/p>\n      <\/div>\n      <div class=\"list menu-list\">\n        <ul>\n          <li>\n            <a\n              href=\"#\"\n              class=\"item-content item-link ${selected === 'home' ? 'item-selected' : ''}\"\n              @click=${()=> setItem('home')}\n            >\n              <div class=\"item-media\">\n                <i class=\"icon material-icons if-md\">home<\/i>\n                <i class=\"icon t4-icons if-not-md\">house<\/i>\n              <\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Home<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a\n              href=\"#\"\n              class=\"item-content item-link ${selected === 'profile' ? 'item-selected' : ''}\"\n              @click=${()=> setItem('profile')}\n            >\n              <div class=\"item-media\">\n                <i class=\"icon material-icons if-md\">person<\/i>\n                <i class=\"icon t4-icons if-not-md\">person_fill<\/i>\n              <\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Profile<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a\n              href=\"#\"\n              class=\"item-content item-link ${selected === 'settings' ? 'item-selected' : ''}\"\n              @click=${()=> setItem('settings')}\n            >\n              <div class=\"item-media\">\n                <i class=\"icon material-icons if-md\">settings<\/i>\n                <i class=\"icon t4-icons if-not-md\">gear_alt_fill<\/i>\n              <\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Settings<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"list media-list menu-list\">\n        <ul>\n          <li>\n            <a\n              href=\"#\"\n              class=\"item-content item-link ${selectedMedia === 'home' ? 'item-selected' : ''}\"\n              @click=${()=> setItemMedia('home')}\n            >\n              <div class=\"item-media\">\n                <i class=\"icon material-icons if-md\">home<\/i>\n                <i class=\"icon t4-icons if-not-md\">house<\/i>\n              <\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-wrap\">\n                  <div class=\"item-title\">Home<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Home subtitle<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a\n              href=\"#\"\n              class=\"item-content item-link ${selectedMedia === 'profile' ? 'item-selected' : ''}\"\n              @click=${()=> setItemMedia('profile')}\n            >\n              <div class=\"item-media\">\n                <i class=\"icon material-icons if-md\">person<\/i>\n                <i class=\"icon t4-icons if-not-md\">person_fill<\/i>\n              <\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-wrap\">\n                  <div class=\"item-title\">Profile<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Profile subtitle<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a\n              href=\"#\"\n              class=\"item-content item-link ${selectedMedia === 'settings' ? 'item-selected' : ''}\"\n              @click=${()=> setItemMedia('settings')}\n            >\n              <div class=\"item-media\">\n                <i class=\"icon material-icons if-md\">settings<\/i>\n                <i class=\"icon t4-icons if-not-md\">gear_alt_fill<\/i>\n              <\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-wrap\">\n                  <div class=\"item-title\">Settings<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Settings subtitle<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, { $update }) => {\n    let selected = 'home';\n    let selectedMedia = 'home';\n\n    const setItem = (newItem) => {\n      selected = newItem;\n      $update();\n    }\n    const setItemMedia = (newItem) => {\n      selectedMedia = newItem;\n      $update();\n    }\n    return $render;\n  }\n<\/script>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

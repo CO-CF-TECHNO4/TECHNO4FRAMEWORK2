@@ -1,0 +1,190 @@
+<!-- ===========================================================================
+  TECHNO4 FRAMEWORK 2.0 — LIVE APPLICATION SHOWCASE COMPONENT
+  Ergonomic screenshot showcase replacing heavy/local iframes
+  UIkit 3 / YOOtheme Pro Compatible (<ul class="uk-subnav uk-subnav-pill" uk-switcher>)
+=========================================================================== -->
+
+<div class="t4-app-showcase uk-margin-medium-bottom" id="t4-app-showcase">
+
+  <!-- Картка-контейнер вікна демонстраційного застосунку -->
+  <div class="uk-card uk-card-secondary uk-border-rounded uk-box-shadow-large" style="border: 1px solid rgba(255, 255, 255, 0.12); overflow: hidden; background: #0f172a;">
+
+    <!-- Верхня панель вікна застосунку (Titlebar з кнопками macOS та табами) -->
+    <div class="uk-flex uk-flex-between uk-flex-middle uk-flex-wrap" style="background: #1e293b; padding: 12px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); gap: 12px;">
+      <!-- Кнопки macOS + назва вікна -->
+      <div class="uk-flex uk-flex-middle">
+        <div class="uk-flex uk-flex-middle" style="gap: 8px; margin-right: 16px;">
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56; display: inline-block; box-shadow: 0 0 6px rgba(255,95,86,0.5);"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e; display: inline-block; box-shadow: 0 0 6px rgba(255,189,46,0.5);"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #27c93f; display: inline-block; box-shadow: 0 0 6px rgba(39,201,63,0.5);"></span>
+        </div>
+        <div>
+          <span style="color: #f1f5f9; font-weight: 600; font-size: 14px; letter-spacing: 0.3px;">
+            Techno4 Boonker Studio — Живий інтерфейс
+          </span>
+          <span class="uk-visible@s uk-text-meta" style="color: #94a3b8; font-size: 12px; margin-left: 8px;">
+            (Boonker v2.0.4 • Material 3 / iOS • ESM)
+          </span>
+        </div>
+      </div>
+
+      <!-- Інтерактивні таби UIkit Switcher -->
+      <ul class="uk-subnav uk-subnav-pill uk-margin-remove" uk-switcher="connect: #t4-showcase-panes; animation: uk-animation-fade" style="gap: 6px;">
+        <li class="uk-active">
+          <a href="#" onclick="t4ShowcaseSelectTab(0, event)" style="font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 6px;">
+            🎹 Sound Studio
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="t4ShowcaseSelectTab(1, event)" style="font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 6px;">
+            🧩 Threads Studio
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="t4ShowcaseSelectTab(2, event)" style="font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 6px;">
+            🎨 Color Themes
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Вміст вкладок демонстрації (Зображення + деталі + Lightbox) -->
+    <ul id="t4-showcase-panes" class="uk-switcher uk-margin-remove">
+
+      <!-- ПАНЕЛЬ 1: Sound & Hardware Studio -->
+      <li>
+        <div class="uk-position-relative uk-light">
+          <!-- Зображення робочого екрана застосунку -->
+          <div class="t4-showcase-screen">
+            <img src="https://techno4.online/images/framework/showcase-01-hardware-sound-studio.png" alt="Hardware &amp; Sound Studio" style="width: 100%; height: auto; display: block; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+          </div>
+
+          <!-- Інформаційна смуга під скріншотом -->
+          <div style="padding: 16px 20px; background: #0f172a;">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-expand@m">
+                <h4 class="uk-margin-remove" style="color: #38bdf8; font-size: 16px; font-weight: 600;">
+                  Hardware &amp; Sound Studio (Web Audio, MIDI, Serial)
+                </h4>
+                <p class="uk-margin-remove-bottom uk-margin-xsmall-top uk-text-meta" style="color: #94a3b8; font-size: 13px; line-height: 1.5;">
+                  Студія тестування апаратних API у мобільних і вебзастосунках. Включає синтезатор на базі Web Audio API з поліфонічною клавіатурою (C4–C5), осцилограф реального часу через <code>&lt;canvas&gt;</code> та <code>AnalyserNode</code>, перемикання форм хвиль (sine, square, sawtooth, triangle), перевірку доступу Web MIDI (портів та повідомлень) і термінал Web Serial.
+                </p>
+              </div>
+              <div class="uk-width-auto@m uk-flex uk-flex-wrap" style="gap: 6px;">
+                <span class="uk-badge" style="background: #0284c7; color: #fff; font-size: 11px; padding: 3px 8px;">Web Audio API</span>
+                <span class="uk-badge" style="background: #0d9488; color: #fff; font-size: 11px; padding: 3px 8px;">Canvas Oscilloscope</span>
+                <span class="uk-badge" style="background: #7c3aed; color: #fff; font-size: 11px; padding: 3px 8px;">Web MIDI</span>
+                <span class="uk-badge" style="background: #d97706; color: #fff; font-size: 11px; padding: 3px 8px;">Web Serial</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- ПАНЕЛЬ 2: Threads Studio & Visual Components -->
+      <li>
+        <div class="uk-position-relative uk-light">
+          <!-- Зображення робочого екрана застосунку -->
+          <div class="t4-showcase-screen">
+            <img src="https://techno4.online/images/framework/showcase-02-threads-visual-studio.png" alt="Threads Studio &amp; Visual Components" style="width: 100%; height: auto; display: block; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+          </div>
+
+          <div style="padding: 16px 20px; background: #0f172a;">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-expand@m">
+                <h4 class="uk-margin-remove" style="color: #38bdf8; font-size: 16px; font-weight: 600;">
+                  Threads Studio &amp; Каталог візуальних компонентів
+                </h4>
+                <p class="uk-margin-remove-bottom uk-margin-xsmall-top uk-text-meta" style="color: #94a3b8; font-size: 13px; line-height: 1.5;">
+                  Інтеграція візуального редактора Threads Studio та екосистеми Total.js. Забезпечує миттєвий доступ до модального вікна вибору серед більш ніж 140 UI-компонентів, налаштування серверних обчислювальних ланцюжків та синхронізацію потоків даних між бекендом і клієнтським застосунком.
+                </p>
+              </div>
+              <div class="uk-width-auto@m uk-flex uk-flex-wrap" style="gap: 6px;">
+                <span class="uk-badge" style="background: #6366f1; color: #fff; font-size: 11px; padding: 3px 8px;">140+ UI Blocks</span>
+                <span class="uk-badge" style="background: #059669; color: #fff; font-size: 11px; padding: 3px 8px;">Threads Engine</span>
+                <span class="uk-badge" style="background: #475569; color: #fff; font-size: 11px; padding: 3px 8px;">Total.js Platform</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- ПАНЕЛЬ 3: Color Themes (Dark / Neon) -->
+      <li>
+        <div class="uk-position-relative uk-light">
+          <!-- Зображення робочого екрана застосунку -->
+          <div class="t4-showcase-screen">
+            <img src="https://techno4.online/images/framework/showcase-03-color-themes-dark-neon.png" alt="Dynamic Color Themes" style="width: 100%; height: auto; display: block; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+          </div>
+
+          <div style="padding: 16px 20px; background: #0f172a;">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-expand@m">
+                <h4 class="uk-margin-remove" style="color: #38bdf8; font-size: 16px; font-weight: 600;">
+                  Динамічні колірні теми (Material Design 3 &amp; iOS)
+                </h4>
+                <p class="uk-margin-remove-bottom uk-margin-xsmall-top uk-text-meta" style="color: #94a3b8; font-size: 13px; line-height: 1.5;">
+                  Повна адаптивність візуального стилю. Підтримує 12 офіційних колірних тем фреймворку, перемикання між світлим і глибоким темним режимом (Dark Mode), а також фірмовий неоновий бірюзовий акцент <code>#22ffd8</code>. Зміна кольору здійснюється динамічно через змінні CSS без втрати стану застосунку.
+                </p>
+              </div>
+              <div class="uk-width-auto@m uk-flex uk-flex-wrap" style="gap: 6px;">
+                <span class="uk-badge" style="background: #0f766e; color: #22ffd8; font-size: 11px; padding: 3px 8px; font-weight: bold;">Neon #22ffd8</span>
+                <span class="uk-badge" style="background: #1e293b; color: #f8fafc; font-size: 11px; padding: 3px 8px; border: 1px solid #334155;">Dark Mode</span>
+                <span class="uk-badge" style="background: #8b5cf6; color: #fff; font-size: 11px; padding: 3px 8px;">Material 3</span>
+                <span class="uk-badge" style="background: #3b82f6; color: #fff; font-size: 11px; padding: 3px 8px;">iOS Theme</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+    <!-- Нижня панель статус-бару -->
+    <div class="uk-flex uk-flex-between uk-flex-middle" style="background: #090d16; padding: 8px 18px; border-top: 1px solid rgba(255, 255, 255, 0.06); font-size: 11px; color: #64748b;">
+      <div class="uk-flex uk-flex-middle" style="gap: 8px;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: inline-block;"></span>
+        <span>Демо-середовище активне: <strong>Boonker App v2.0.4</strong></span>
+      </div>
+      <div>
+        <span>⚡ Інтерактивна демонстрація інтерфейсу Boonker Studio</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Fallback JavaScript для перемикання табів без помилок UIkit -->
+  <script>
+    function t4ShowcaseSelectTab(index, event) {
+      if (event) event.preventDefault();
+      try {
+        var switcherUl = document.querySelector('#t4-app-showcase ul.uk-subnav');
+        var switcherPanes = document.getElementById('t4-showcase-panes');
+        if (window.UIkit && UIkit.switcher) {
+          var sw = UIkit.switcher(switcherUl);
+          if (sw && typeof sw.show === 'function') {
+            sw.show(index);
+            return;
+          }
+        }
+        // Fallback manually toggling classes
+        if (switcherUl && switcherPanes) {
+          var tabs = switcherUl.querySelectorAll('li');
+          var panes = switcherPanes.children;
+          for (var i = 0; i < tabs.length; i++) {
+            if (i === index) {
+              tabs[i].classList.add('uk-active');
+              if (panes[i]) panes[i].classList.add('uk-active');
+            } else {
+              tabs[i].classList.remove('uk-active');
+              if (panes[i]) panes[i].classList.remove('uk-active');
+            }
+          }
+        }
+      } catch(err) {
+        console.warn('t4ShowcaseSelectTab fallback:', err);
+      }
+    }
+  </script>
+
+</div>

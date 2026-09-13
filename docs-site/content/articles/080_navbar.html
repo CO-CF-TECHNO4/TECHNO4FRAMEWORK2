@@ -1,0 +1,1136 @@
+<h2>Навігаційна панель</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Навігаційна панель HTML макет </a>
+
+<p>Навігаційна панель із посиланнями <p>Кілька посилань <p>Посилання з іконками + текст<p> Посилання лише з іконками <p>Прозора навігаційна панель <p>Великий заголовок <p>Великий прозорий заголовок <p>Тематичний стиль</p>
+    </li>
+        <li>
+        
+<div>Тип панелі навігації</div>
+
+<p>Тип статичної навігаційної панелі<p> Фіксований тип навігаційної панелі <p>Загальний тип навігаційної панелі</p>
+    </li>
+        <li>
+        
+<div>Динамічна навігаційна панель</div>
+
+<p>Макет динамічної навігаційної панелі</p>
+    </li>
+        <li>
+        
+<div>Методи застосунку Navbar</div>
+
+    </li>
+        <li>
+        
+<div>Параметри застосунку Navbar</div>
+
+    </li>
+        <li>
+        
+<div>Керуйте панеллю навігації за допомогою класів сторінок</div>
+
+    </li>
+        <li>
+        
+<div>Події панелі навігації</div>
+
+<p>Події DOM <p>Події застосунку</p>
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+<p>Статична навігаційна панель <p>Виправлена навігаційна панель <p>Прозора навігаційна панель <p>Великий заголовок <p>Великий прозорий заголовок  <p>API Navbar <p>Сховати під час прокручування</p>
+    </li>
+    </ul>
+<h3>Навігаційна панель </h3>
+<div>Навігаційна панель — це фіксована область у верхній частині екрана, яка містить заголовок сторінки та елементи навігації.
+<p>Навігаційна панель складається з 3 основних частин: ліва, заголовок і права. Кожна частина може містити будь-який вміст HTML, але рекомендується використовувати їх у такий спосіб:</p>
+<p>●	<code>Left</code> Ліва частина призначена для використання з «зворотним посиланням», іконками або одним текстовим посиланням.</p>
+<p>●	<code>Title</code> Частина заголовка використовується для відображення заголовка сторінки або посилань на вкладку (рядок кнопок/сегментований контролер).</p>
+<p>●	<code>Right</code> Права частина така ж, як і ліва.</p>
+</div>
+<h3>Макет HTML панелі навігації</h3>
+<div>Макет навігаційної панелі досить простий і зрозумілий:</div>
+<pre><code>&lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;Left&lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Page Title&lt;/div&gt;
+        &lt;div class=&quot;right&quot;&gt;Right&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Зауважте, що елемент <code>title Navbar</code> має найнижчий пріоритет ширини, і якщо екран вікна не вміщуватиме всі три елементи, частина заголовка буде вирізана.
+Отже, якщо ви використовуєте звичайний текст у частині заголовка <code>Title</code>, він матиме крапочку (...) на кінці, коли його вирізано. Але ви повинні подбати про це, якщо у вас є якісь спеціальні елементи.
+</div>
+<h5>Навігаційна панель із посиланнями</h5>
+<div>Щоб додати посилання в лівій або правій частині, вам просто потрібно додати звичайний тег <code>&lt;a&gt;</code> з додатковим класом посилань <code>link</code>:</div>
+<pre><code>&lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Left Link&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Page Title&lt;/div&gt;
+        &lt;div class=&quot;right&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Right Link&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h5>Множинні посилання</h5>
+<div>Нічого надзвичайного. Просто додайте більше <code>&lt;a class="link"&gt;</code> до необхідної частини:</div>
+<pre><code>&lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Left 1&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Left 2&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Page Title&lt;/div&gt;
+        &lt;div class=&quot;right&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Right 1&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h5>Посилання з іконками + текст</h5>
+<div>Ось невелика різниця. У цьому випадку нам потрібно <b>обернути текст посилання елементом</b> <code>&lt;span&gt;</code>. Це потрібно для правильного інтервалу між значком і словом, а також для анімації:</div>
+<pre><code>&lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;link back&quot;&gt;
+                &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+                &lt;span&gt;Back&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Title&lt;/div&gt;
+        &lt;div class=&quot;right&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;
+                &lt;i class=&quot;icon another-icon&quot;&gt;&lt;/i&gt;
+                &lt;span&gt;Menu&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h5>Посилання лише з іконками</h5>
+<div>Якщо потрібні посилання з іконками та без тексту, нам знадобиться додатковий клас <code>icon-only</code>  до посилань. Це посилання на клас матиме фіксований розмір, тому ми не зможемо пропустити його пальцем:</div>
+<pre><code>&lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;link icon-only&quot;&gt;
+                &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Title&lt;/div&gt;
+        &lt;div class=&quot;right&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;link icon-only&quot;&gt;
+                &lt;i class=&quot;icon another-icon&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h5>Прозора навігаційна панель</h5>
+<div>З’являється прозора панель навігації з прозорим фоном і прозорим заголовком, а під час прокручування сторінки вона стає непрозорою. Щоб увімкнути прозору навігаційну панель, нам потрібно додати клас <code>navbar-transparent</code> до навігаційної панелі <code>navbar</code>:</div>
+<pre><code>&lt;!-- додатковий клас &quot;navbar-transparent&quot;. --&gt;
+&lt;div class=&quot;navbar navbar-transparent&quot;&gt;
+  ...
+&lt;/div&gt;</code></pre>
+<h5>Великий заголовок</h5>
+<div>Панель навігації з великим заголовком має додатковий «рядок» (або «панель») із великим текстом заголовка, який згортається під час прокручування сторінки. Щоб зробити його великим, нам потрібно додати додатковий клас <code>navbar-large</code> до <code>navbar</code> і додати до нього додатковий елемент <code>title-large</code>:</div>
+<pre><code>&lt;!-- додатковий &quot;navbar-large&quot; class --&gt;
+&lt;div class=&quot;navbar navbar-large&quot;&gt;
+  &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;navbar-inner&quot;&gt;
+    &lt;div class=&quot;left&quot;&gt;
+      &lt;!-- ... --&gt;
+    &lt;/div&gt;
+    &lt;!-- звичайний заголовок буде видно, коли більший заголовок згорнутий--&gt;
+    &lt;div class=&quot;title&quot;&gt;My App&lt;/div&gt;
+    &lt;div class=&quot;right&quot;&gt;
+      &lt;!-- ... --&gt;
+    &lt;/div&gt;
+    &lt;!-- великий елемент заголовка --&gt;
+    &lt;div class=&quot;title-large&quot;&gt;
+      &lt;div class=&quot;title-large-text&quot;&gt;My App&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h5>Великий прозорий заголовок</h5>
+<div>Ми також можемо ввімкнути навігаційну панель із великим заголовком, щоб вона була «прозорою». Коли його ввімкнено, фон навігаційної панелі та її головний заголовок приховані, доки сторінка не прокрутиться.
+Щоб зробити великий заголовок прозорим, нам потрібен додатковий клас <code>navbar-transparent</code>:
+</div>
+<pre><code>&lt;!-- додатковий &quot;navbar-transparent&quot; class --&gt;
+&lt;div class=&quot;navbar navbar-large navbar-transparent&quot;&gt;
+  &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;navbar-inner&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h5>Заданий темою стиль</h5>
+<div>У темах ios і aurora Navbar має тонку рамку внизу. Щоб вимкнути цю рамку, вам потрібно додати клас <code>no-hairline</code> до елемента <code>navbar</code>:</div>
+<pre><code>&lt;div class=&quot;navbar no-hairline&quot;&gt;...&lt;/div&gt;</code></pre>
+<div>У темі md Navbar має тінь. Щоб вимкнути цю тінь, вам потрібно додати клас <code>no-shadow</code> до елемента <code>navbar</code>:</div>
+<pre><code>&lt;div class=&quot;navbar no-shadow&quot;&gt;...&lt;/div&gt;</code></pre>
+<h3>Тип панелі навігації</h3>
+<div>Тепер давайте подивимося, де ми можемо розмістити нашу навігаційну панель у DOM. Існує кілька правил розміщення Navbar.
+</div>
+<h4>Тип статичної навігаційної панелі</h4>
+<div>Статична позиція навігаційної панелі є, ймовірно, найбільш рідко використовуваним типом макета. У цьому випадку Navbar є лише частиною вмісту сторінки, що прокручується:</div>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;!-- Прокручуваний вміст сторінки --&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;!-- Статична панель навігації розташована на початку всередині вмісту сторінки --&gt;
+    &lt;div class=&quot;navbar&quot;&gt;...&lt;/div&gt;
+    ...
+
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h4>Фіксований тип панелі навігації</h4>
+<div>Фіксована навігаційна панель також є частиною сторінки, але вона завжди відображається на екрані незалежно від прокручування сторінки. У цьому випадку вона має бути прямим дочірнім елементом сторінки, і якщо сторінка також має фіксовану панель інструментів, вона має бути <b>ПЕРЕД</b> панеллю інструментів:</div>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;!-- Фіксована панель навігації ЗАВЖДИ йде ПЕРШОЮ --&gt;
+  &lt;div class=&quot;navbar&quot;&gt;...&lt;/div&gt;
+  &lt;!-- Фіксована панель інструментів ЗАВЖДИ ПІСЛЯ панелі навігації--&gt;
+  &lt;div class=&quot;toolbar toolbar-bottom&quot;&gt;...&lt;/div&gt;
+
+  &lt;!-- Прокручуваний вміст сторінки --&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Фіксована навігаційна панель завжди має бути прямим дочірнім елементом сторінки та ПЕРЕД панеллю інструментів (якщо на цій сторінці використовується фіксована панель інструментів)</div>
+<h4>Загальний тип навігаційної панелі</h4>
+<div>Якщо нам потрібна лише одна загальна навігаційна панель для всіх сторінок у <code>View</code>, тоді вона має бути прямим дочірнім елементом цього перегляду та знаходитися <b>ПЕРЕД</b> усіма сторінками у <code>View</code>:</div>
+<pre><code>&lt;div class=&quot;view&quot;&gt;
+  &lt;!-- Переглянути загальну навігаційну панель --&gt;
+  &lt;div class=&quot;navbar&quot;&gt;...&lt;/div&gt;
+
+  &lt;!-- сторінки--&gt;
+  &lt;div class=&quot;page&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Якщо нам потрібна лише одна загальна навігаційна панель / навігаційна панель для всіх представлень, тоді вона має бути прямим дочірнім елементом <code>Views</code> і бути <b>ПЕРЕД</b> усіма представленнями.</div>
+<pre><code>&lt;div class=&quot;views tabs&quot;&gt;
+  &lt;!-- Переглядає загальну навігаційну панель --&gt;
+  &lt;div class=&quot;navbar&quot;&gt;...&lt;/div&gt;
+
+  &lt;div class=&quot;view tab tab-active&quot; id=&quot;tab-1&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;view tab&quot; id=&quot;tab-2&quot;&gt;...&lt;/div&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+<div>Common Navbar завжди має бути прямим дочірнім елементом <code>Views/View</code> і <b>ПЕРЕД</b> панеллю інструментів (якщо також використовується загальна панель інструментів)</div>
+<h3>Динамічна навігаційна панель</h3>
+<div>
+
+    
+        <div>! Динамічна панель навігації підтримується лише в темі iOS</div>
+    
+</div>
+<div>Однією з приголомшливих функцій теми iOS є динамічна панель навігації. Елементи панелі навігації ковзатимуть і зникатимуть під час переходу між сторінками та гортатимуть назад, якщо ввімкнено динамічну панель навігації.
+Її увімкнено за замовчуванням, коли ви використовуєте навігаційні панелі з фіксованим розташуванням, коли навігаційна панель є прямим дочірнім елементом сторінки.
+Якщо ви хочете вимкнути її, вам потрібно передати <code>iosDynamicNavbar: false</code> для необхідного представлення під час його ініціалізації або в глобальних параметрах застосунку для всіх представлень. Наприклад:
+</div>
+<pre><code>//Вимкнути глобально
+var app = new Techno4({
+  view: {
+    iosDynamicNavbar: false,
+  },
+});
+
+// Вимкнути лише для перегляду його ініціалізації
+var mainView = app.views.create('.view-main', {
+  iosDynamicNavbar: false,
+});</code></pre>
+<div>Зауважте, що коли динамічну навігаційну панель (<code>iosDynamicNavbar</code>) увімкнено, HTML-елемент Navbar буде від’єднано від сторінки та переміщено в розділ «Перегляд HTML-елемента». У цьому випадку для доступу до пов’язаного зі сторінкою динамічного елемента навігаційної панелі використовуйте метод <code>app.navbar.getElByPage(pageEl)</code></div>
+<h4>Макет динамічної навігаційної панелі</h4>
+<div>Макет динамічної панелі навігації такий самий, як і для звичайної панелі навігації, єдина відмінність полягає в тому, що ви можете додати додаткові класи до частин панелі навігації (ліворуч, заголовок, праворуч), щоб визначити тип ефекту переходу для цієї частини:
+<p>●	За замовчуванням (якщо немає додаткових класів) кожна частина Navbar має ефект переходу <code>"Fade"</code>.</p>
+<p>●	Якщо ви додасте клас ковзання <code>sliding</code>  до будь-якої частини панелі навігації, це матиме ефект «Ковзання».</p>
+<p>●	Якщо ви додасте клас ковзання <code>sliding</code>  до внутрішньої навігаційної панел <code>іnavbar-inner</code> , тоді всі частини навігаційної панелі матимуть ефект «ковзання»</p>
+<p>●	Для кращого вигляду ви повинні зберегти однаковий тип переходу для тих самих частин навігаційної панелі на різних сторінках.</p>
+</div>
+<pre><code>&lt;!-- Жодних додаткових класів, усі елементи матимуть ефект «вицвітання» під час переходу сторінки --&gt;
+&lt;div class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;navbar-inner&quot;&gt;
+    &lt;div class=&quot;left&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Home Left&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;Home&lt;/div&gt;
+    &lt;div class=&quot;right&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Home Right&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Title і Left матимуть ефект «ковзання» під час переходу сторінки --&gt;
+&lt;div class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;navbar-inner&quot;&gt;
+    &lt;!-- Додатковий клас &quot;sliding&quot; --&gt;
+    &lt;div class=&quot;left sliding&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Home Left&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;!-- Додатковий &quot;sliding&quot; class --&gt;
+    &lt;div class=&quot;title sliding&quot;&gt;Home&lt;/div&gt;
+    &lt;div class=&quot;right&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Home Right&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Усі частини матимуть ефект «ковзання» при переході сторінок --&gt;
+&lt;div class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+  &lt;!-- додатковий &quot;sliding&quot; class --&gt;
+  &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+    &lt;div class=&quot;left&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Home Left&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;title&quot;&gt;Home&lt;/div&gt;
+    &lt;div class=&quot;right&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Home Right&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h3>Методи застосунку Navbar</h3>
+<div>Ми можемо використовувати такі методи застосунку, доступні для Navbar:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app.navbar.hide<p>(<code>navbarEl, animate, hideStatusbar</code>)</td>
+
+<td>Сховати панель навігації
+<p>●	<code>navbarEl - HTMLElement or string</code> (with CSS Selector)необхідної панелі навігації. Вимагається.</p>
+<p>●	<code>animate - Boolean</code> - чи слід приховувати його за допомогою анімації чи ні. За замовчуванням — <code>true</code></p>
+<p>●	<code>hideStatusbar - Boolean</code> - якщо <code>false</code> (за замовчуванням), він приховує панель навігації, частково зберігаючи простір, необхідний для покриття області рядка стану. Інакше панель навігації буде повністю прихована.</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.navbar.show<p>(<code>navbarEl, animate</code>)</td>
+
+<td>Показати навігаційну панель
+<p>●	<code>navbarEl - HTMLElement or string</code> (with CSS Selector) необхідної панелі навігації. Вимагається.</p>
+<p>●	<code>animate - Boolean</code> - чи слід показувати його з анімацією чи ні. За замовчуванням — <code>true</code>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.navbar.size<p>(<code>navbarEl</code>)</td>
+
+<td>Перерахуйте позиційні стилі для елементів Navbar. Це може бути корисним після динамічної зміни деяких елементів панелі навігації.
+<p>●	<code>navbarEl - HTMLElement or string</code> (with CSS Selector) необхідної панелі навігації. Вимагається.</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.navbar.getElByPage<p>(<code>pageEl</code>)</td>
+
+<td>Отримати HTML-елемент навігаційної панелі за вказаним елементом сторінки. Корисно, лише якщо ввімкнено динамічну навігаційну панель. У цьому випадку він знаходиться поза контейнером сторінки.
+<P>●	<code>pageEl - HTMLElement or string</code> (with CSS Selector) сторінки, де шукати панель навігації. Вимагається.</P>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.navbar.getPageByEl<p>(<code>navbarEl</code>)</td>
+
+<td>Отримати HTML-елемент сторінки за вказаним елементом навігаційної панелі. Корисно, лише якщо ввімкнено динамічну навігаційну панель. У цьому випадку він знаходиться поза контейнером сторінки.
+<p>●	<code>navbarEl - HTMLElement or string</code> (with CSS Selector) панелі навігації, щоб знайти відносну сторінку. Вимагається.</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.navbar.collapseLargeTitle<p>(<code>navbarEl</code>)</td>
+
+<td>Згорнути великий заголовок панелі навігації
+<p>●	<code>navbarEl - HTMLElement or string</code> (with CSS Selector) панелі навігації, щоб згорнути. Вимагається.</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.navbar.expandLargeTitle<p>(<code>navbarEl</code>)</td>
+
+<td>Розгорнути великий заголовок панелі навігації
+<p>●	<code>navbarEl - HTMLElement or string</code> (with CSS Selector) навігаційної панелі для розширення. Вимагається.</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.navbar.toggleLargeTitle<p>(<code>navbarEl</code>)</td>
+
+<td>Перемкнути великий заголовок панелі навігації
+<p>●	<code>navbarEl - HTMLElement or string</code> (with CSS Selector) навігаційної панелі для перемикання (згортання або розгортання). Вимагається.</p>
+</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Параметри застосунку Navbar</h3>
+<div>Можна керувати певною поведінкою навігаційної панелі за замовчуванням за допомогою глобальних параметрів застосунку, передавши пов’язані з навігаційною панеллю параметри в параметрі навігаційної панелі:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>false</td>
+
+<td>hideOnPageScroll</td>
+
+<td>Приховує навігаційні панелі під час прокручування сторінки</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>showOnPageScrollEnd</td>
+
+<td>Установіть значення <code>true</code>, щоб показувати приховану навігаційну панель, коли прокручування досягає кінця сторінки</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>showOnPageScrollTop</td>
+
+<td>Установіть значення <code>false</code>, і прихована панель навігації не стане видимою, коли ви щоразу прокручуєте сторінку вгору. Вони стануть видимими лише у верхній позиції прокрутки, на початку сторінки</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>scrollTopOnTitleClick</td>
+
+<td>Якщо ввімкнено, кожен клацання елемента заголовка панелі навігації прокручуватиме відповідну сторінку вгору</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>iosCenterTitle</td>
+
+<td>Якщо ввімкнено, він намагатиметься розмістити заголовок у центрі теми iOS. Іноді (з деяким індивідуальним дизайном) це може не знадобитися.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>mdCenterTitle</td>
+
+<td>Якщо ввімкнено, він намагатиметься розмістити заголовок у центрі теми MD. Іноді (з деяким індивідуальним дизайном) це може не знадобитися.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>auroraCenterTitle</td>
+
+<td>Якщо ввімкнено, він намагатиметься розмістити заголовок у центрі теми Aurora. Іноді (з деяким індивідуальним дизайном) це може не знадобитися.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>collapseLargeTitleOnScroll</td>
+
+<td>Якщо ввімкнено, великий заголовок буде згорнутий угорі прокручування сторінки та знову розгорнутий у верхній частині сторінки.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>snapPageScrollToLargeTitle</td>
+
+<td>Якщо ввімкнено, прокручування сторінки прив’язуватиметься до позицій згортання/розгортання великого заголовка, тому залишити прокручування сторінки в середині позиції великого заголовка буде неможливо. Діє лише тоді, коли ввімкнено <code>collapseLargeTitleOnScroll</code>.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>snapPageScrollToTransparentNavbar</td>
+
+<td>Якщо ввімкнено, прокручування сторінки буде прив’язане до розміру прозорої навігаційної панелі, тому неможливо залишити прокручування сторінки в середині прозорої навігаційної панелі..</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<div>Наприклад :</div>
+<pre><code>var app = new Techno4({
+  navbar: {
+    hideOnPageScroll: true,
+    iosCenterTitle: false,
+  },
+});</code></pre>
+<h3>Керуйте панеллю навігації за допомогою класів сторінок</h3>
+<div>Techno4 дозволяє вам приховати/показати панель навігації на певній сторінці або на певній прокрутці сторінки за допомогою додаткових класів.
+Якщо ви хочете приховати навігаційну панель під час прокручування певної сторінки, скористайтеся додатковими класами для елемента <code>&lt;div class="page-content"&gt;</code> цієї сторінки:
+
+<p>●	<code>hide-bars-on-scroll</code> - щоб приховати панель навігації та панель інструментів під час прокручування сторінки</p>
+<p>●	<code>hide-navbar-on-scroll</code> - щоб приховати навігаційну панель під час прокручування сторінки</p>
+Щоб вимкнути цю поведінку на певних сторінках, ви можете використати такі додаткові класи:
+<p>●	<code>keep-bars-on-scroll</code> - щоб навігаційна панель і панель інструментів залишалися під час прокручування сторінки</p>
+<p>●	<code>keep-navbar-on-scroll</code> - щоб навігаційна панель залишалася під час прокручування сторінки</p>
+Наприклад : 
+</div>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    ...
+  &lt;/div&gt;
+  &lt;!-- &quot;hide-navbar-on-scroll&quot; class to hide Navbar --&gt;
+  &lt;div class=&quot;page-content hide-navbar-on-scroll&quot;&gt;
+    &lt;div class=&quot;block&quot;&gt;
+      &lt;p&gt;Scroll page down&lt;/p&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Якщо у вас є спільна панель навігації на всіх сторінках/переглядах вашої застосунку, ви можете автоматично приховати/показати панель навігації для деяких сторінок, де вона вам не потрібна.
+Щоб це запрацювало, усе, що вам потрібно, це додати клас <code>no-navbar</code> до завантаженої сторінки (<code>&lt;div class="page no-navbar"&gt;</code>):
+</div>
+<pre><code>&lt;!-- Page has additional &quot;no-navbar&quot; class --&gt;
+&lt;div class=&quot;page no-navbar&quot;&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+      ...
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h3>Події панелі навігації</h3>
+<div>Navbar запускатиме такі події DOM в елементі Navbar (<code>&lt;div class="navbar"&gt;</code>) і події застосунку в екземплярі застосунку:</div>
+<h4>Події DOM </h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Navbar <p><code>&lt;div class="navbar"&gt;</code></td>
+
+<td>navbar:hide</td>
+
+<td>Подія буде запущена, коли навігаційна панель стане прихованою</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Navbar <p><code>&lt;div class="navbar"&gt;</code></td>
+
+<td>navbar:show</td>
+
+<td>Подія буде запущена, коли навігаційна панель стане видимою</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Navbar <p><code>&lt;div class="navbar"&gt;</code></td>
+
+<td>navbar:collapse</td>
+
+<td>Подія буде ініційована, коли навігаційна панель із великим заголовком згортається (з великої навігаційної панелі на звичайну навігаційну панель)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Navbar <p><code>&lt;div class="navbar"&gt;</code></td>
+
+<td>navbar:expand</td>
+
+<td>Подія буде ініційована, коли навігаційна панель із великим заголовком розгортається (від звичайної навігаційної панелі до великої навігаційної панелі)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Події застосунку</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td><code>(el)</code></td>
+
+<td>navbarHide</td>
+
+<td>Подія буде запущена, коли навігаційна панель стане прихованою</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td><code>(el)</code></td>
+
+<td>navbarShow</td>
+
+<td>Подія буде запущена, коли навігаційна панель стане видимою</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td><code>(el)</code></td>
+
+<td>navbarCollapse</td>
+
+<td>Подія буде ініційована, коли навігаційна панель із великим заголовком згортається (з великої навігаційної панелі на звичайну навігаційну панель)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td><code>(el)</code></td>
+
+<td>navbarExpand</td>
+
+<td>Подія буде ініційована, коли навігаційна панель із великим заголовком розгортається (від звичайної навігаційної панелі до великої навігаційної панелі)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Змінні CSS </h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  /*
+  --t4-navbar-bg-color: var(--t4-bars-bg-color);
+  --t4-navbar-bg-color-rgb: var(--t4-bars-bg-color-rgb);
+  --t4-navbar-bg-image: var(--t4-bars-bg-image);
+  --t4-navbar-border-color: var(--t4-bars-border-color);
+  --t4-navbar-link-color: var(--t4-bars-link-color);
+  --t4-navbar-text-color: var(--t4-bars-text-color);
+  */
+  --t4-navbar-hide-show-transition-duration: 400ms;
+  --t4-navbar-title-line-height: 1.2;
+  --t4-navbar-title-font-size: inherit;
+  --t4-navbar-subtitle-text-align: inherit;
+  --t4-navbar-large-title-line-height: 1.2;
+  --t4-navbar-large-title-text-color: inherit;
+  --t4-navbar-large-title-padding-left: 16px;
+  --t4-navbar-large-title-padding-right: 16px;
+}
+.ios {
+  --t4-navbar-height: 44px;
+  --t4-navbar-tablet-height: 44px;
+  --t4-navbar-font-size: 17px;
+  --t4-navbar-inner-padding-left: 8px;
+  --t4-navbar-inner-padding-right: 8px;
+  --t4-navbar-title-font-weight: 600;
+  --t4-navbar-title-margin-left: 0;
+  --t4-navbar-title-margin-right: 0;
+  --t4-navbar-title-text-align: center;
+  --t4-navbar-subtitle-font-size: 10px;
+  --t4-navbar-subtitle-line-height: 1;
+  --t4-navbar-shadow-image: none;
+  --t4-navbar-large-title-height: 52px;
+  --t4-navbar-large-title-font-size: 34px;
+  --t4-navbar-large-title-font-weight: 700;
+  --t4-navbar-large-title-letter-spacing: -0.03em;
+  --t4-navbar-large-title-padding-vertical: 6px;
+  /*
+  --t4-navbar-link-height: var(--t4-navbar-height);
+  --t4-navbar-link-line-height: var(--t4-navbar-height);
+  */
+  --t4-navbar-subtitle-text-color: rgba(0, 0, 0, 0.55);
+}
+.ios .dark,
+.ios.dark {
+  --t4-navbar-subtitle-text-color: rgba(255, 255, 255, 0.55);
+}
+.md {
+  --t4-navbar-height: 56px;
+  --t4-navbar-tablet-height: 64px;
+  --t4-navbar-font-size: 20px;
+  --t4-navbar-inner-padding-left: 4px;
+  --t4-navbar-inner-padding-right: 4px;
+  --t4-navbar-title-font-weight: 500;
+  --t4-navbar-title-margin-left: 20px;
+  --t4-navbar-title-margin-right: 16px;
+  --t4-navbar-title-text-align: left;
+  --t4-navbar-subtitle-font-size: 14px;
+  --t4-navbar-subtitle-line-height: 1.2;
+  --t4-navbar-shadow-image: var(--t4-bars-shadow-bottom-image);
+  --t4-navbar-large-title-font-size: 34px;
+  --t4-navbar-large-title-height: 56px;
+  --t4-navbar-large-title-font-weight: 500;
+  --t4-navbar-large-title-letter-spacing: 0;
+  --t4-navbar-large-title-padding-vertical: 8px;
+  --t4-navbar-link-height: 48px;
+  --t4-navbar-link-line-height: 48px;
+  --t4-navbar-subtitle-text-color: rgba(0, 0, 0, 0.85);
+}
+.md .dark,
+.md.dark {
+  --t4-navbar-subtitle-text-color: rgba(255, 255, 255, 0.85);
+}
+.aurora {
+  --t4-navbar-height: 56px;
+  --t4-navbar-tablet-height: 56px;
+  --t4-navbar-font-size: 18px;
+  --t4-navbar-inner-padding-left: 16px;
+  --t4-navbar-inner-padding-right: 16px;
+  --t4-navbar-title-font-weight: bold;
+  --t4-navbar-title-margin-left: 0;
+  --t4-navbar-title-margin-right: 0;
+  --t4-navbar-title-text-align: center;
+  --t4-navbar-subtitle-font-size: 14px;
+  --t4-navbar-subtitle-line-height: 1;
+  --t4-navbar-shadow-image: none;
+  --t4-navbar-large-title-height: 48px;
+  --t4-navbar-large-title-font-size: 28px;
+  --t4-navbar-large-title-font-weight: bold;
+  --t4-navbar-large-title-letter-spacing: 0;
+  --t4-navbar-large-title-padding-vertical: 7px;
+  --t4-navbar-link-height: auto;
+  --t4-navbar-link-line-height: inherit;
+  --t4-navbar-subtitle-text-color: rgba(0, 0, 0, 0.6);
+}
+.aurora .dark,
+.aurora.dark {
+  --t4-navbar-subtitle-text-color: rgba(255, 255, 255, 0.5);
+}</code></pre>
+<h3>Приклади </h3>
+<h4>Статична навігаційна панель</h4>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page no-navbar&quot;&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;navbar&quot;&gt;
+        &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;navbar-inner&quot;&gt;
+          &lt;div class=&quot;left&quot;&gt;
+            &lt;a class=&quot;link back&quot;&gt;
+              &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+              &lt;span class=&quot;if-not-md&quot;&gt;Back&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;title&quot;&gt;Static Navbar&lt;/div&gt;
+          &lt;div class=&quot;right&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block&quot;&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<h4>Фіксована навігаційна панель</h4>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+          &lt;a class=&quot;link back&quot;&gt;
+            &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+            &lt;span class=&quot;if-not-md&quot;&gt;Back&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Fixed Navbar&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block&quot;&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<h4>Прозора навігаційна панель</h4>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar navbar-transparent&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+          &lt;a class=&quot;link back&quot;&gt;
+            &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+            &lt;span class=&quot;if-not-md&quot;&gt;Back&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Transparent Navbar&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block&quot;&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<h4>Великий заголовок Navbar</h4>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar navbar-large&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+          &lt;a class=&quot;link back&quot;&gt;
+            &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+            &lt;span class=&quot;if-not-md&quot;&gt;Back&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Large Title&lt;/div&gt;
+        &lt;div class=&quot;title-large&quot;&gt;
+          &lt;div class=&quot;title-large-text&quot;&gt;Large Title&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block&quot;&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<h4>Великий прозорий Navbar</h4>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar navbar-large navbar-transparent&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+          &lt;a class=&quot;link back&quot;&gt;
+            &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+            &lt;span class=&quot;if-not-md&quot;&gt;Back&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Large Transparent&lt;/div&gt;
+        &lt;div class=&quot;title-large&quot;&gt;
+          &lt;div class=&quot;title-large-text&quot;&gt;Large Transparent&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block&quot;&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<h4>API навігаційної панелі</h4>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+          &lt;a class=&quot;link back&quot;&gt;
+            &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+            &lt;span class=&quot;if-not-md&quot;&gt;Back&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Navbar API&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block&quot;&gt;
+        &lt;p&gt;&lt;a class=&quot;button button-raised button-fill&quot; @click=${hideNavbar}&gt;Hide Navbar&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a class=&quot;button button-raised button-fill&quot; @click=${showNavbar}&gt;Show Navbar&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, { $on, $t4 }) =&gt; {
+    let navbarEl;
+    const hideNavbar = () =&gt; {
+      $t4.navbar.hide(navbarEl);
+    }
+    const showNavbar = () =&gt; {
+      $t4.navbar.show(navbarEl);
+    }
+    $on('pageInit', (e, page) =&gt; {
+      navbarEl = $t4.navbar.getElByPage(page);
+    });
+
+    return $render;
+  }
+&lt;/script&gt;</code></pre>
+<h4>Сховати під час прокручування</h4>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;left&quot;&gt;
+          &lt;a class=&quot;link back&quot;&gt;
+            &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+            &lt;span class=&quot;if-not-md&quot;&gt;Back&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;title&quot;&gt;Hide On Scroll&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content hide-navbar-on-scroll&quot;&gt;
+      &lt;div class=&quot;block&quot;&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,
+          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit
+          similique!&lt;/p&gt;
+        &lt;p&gt;Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero
+          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.&lt;/p&gt;
+        &lt;p&gt;Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet
+          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!&lt;/p&gt;
+        &lt;p&gt;Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,
+          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.
+          Sunt, ad aliquam!&lt;/p&gt;
+        &lt;p&gt;Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui
+          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel
+          reprehenderit!&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c HTML \u043c\u0430\u043a\u0435\u0442 ","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general","meta":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u0437 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c\u0438 <p>\u041a\u0456\u043b\u044c\u043a\u0430 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c <p>\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0456\u043a\u043e\u043d\u043a\u0430\u043c\u0438 + \u0442\u0435\u043a\u0441\u0442<p> \u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043b\u0438\u0448\u0435 \u0437 \u0456\u043a\u043e\u043d\u043a\u0430\u043c\u0438 <p>\u041f\u0440\u043e\u0437\u043e\u0440\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c <p>\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a <p>\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a <p>\u0422\u0435\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0439 \u0441\u0442\u0438\u043b\u044c"}},{"type":"nav_item","props":{"content":"\u0422\u0438\u043f \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457","meta":"\u0422\u0438\u043f \u0441\u0442\u0430\u0442\u0438\u0447\u043d\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456<p> \u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0438\u0439 \u0442\u0438\u043f \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 <p>\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0439 \u0442\u0438\u043f \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456"}},{"type":"nav_item","props":{"content":"\u0414\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c","meta":"\u041c\u0430\u043a\u0435\u0442 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Navbar"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Navbar"}},{"type":"nav_item","props":{"content":"\u041a\u0435\u0440\u0443\u0439\u0442\u0435 \u043f\u0430\u043d\u0435\u043b\u043b\u044e \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043a\u043b\u0430\u0441\u0456\u0432 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a"}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457","meta":"\u041f\u043e\u0434\u0456\u0457 DOM <p>\u041f\u043e\u0434\u0456\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","meta":"\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c <p>\u0412\u0438\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c <p>\u041f\u0440\u043e\u0437\u043e\u0440\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c <p>\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a <p>\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a  <p>API Navbar <p>\u0421\u0445\u043e\u0432\u0430\u0442\u0438 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u2014 \u0446\u0435 \u0444\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043e\u0431\u043b\u0430\u0441\u0442\u044c \u0443 \u0432\u0435\u0440\u0445\u043d\u0456\u0439 \u0447\u0430\u0441\u0442\u0438\u043d\u0456 \u0435\u043a\u0440\u0430\u043d\u0430, \u044f\u043a\u0430 \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457.\n<p>\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0441\u043a\u043b\u0430\u0434\u0430\u0454\u0442\u044c\u0441\u044f \u0437 3 \u043e\u0441\u043d\u043e\u0432\u043d\u0438\u0445 \u0447\u0430\u0441\u0442\u0438\u043d: \u043b\u0456\u0432\u0430, \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0456 \u043f\u0440\u0430\u0432\u0430. \u041a\u043e\u0436\u043d\u0430 \u0447\u0430\u0441\u0442\u0438\u043d\u0430 \u043c\u043e\u0436\u0435 \u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0431\u0443\u0434\u044c-\u044f\u043a\u0438\u0439 \u0432\u043c\u0456\u0441\u0442 HTML, \u0430\u043b\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u0442\u044c\u0441\u044f \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0457\u0445 \u0443 \u0442\u0430\u043a\u0438\u0439 \u0441\u043f\u043e\u0441\u0456\u0431:<\/p>\n<p>\u25cf\t<code>Left<\/code> \u041b\u0456\u0432\u0430 \u0447\u0430\u0441\u0442\u0438\u043d\u0430 \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0434\u043b\u044f \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0437 \u00ab\u0437\u0432\u043e\u0440\u043e\u0442\u043d\u0438\u043c \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c\u00bb, \u0456\u043a\u043e\u043d\u043a\u0430\u043c\u0438 \u0430\u0431\u043e \u043e\u0434\u043d\u0438\u043c \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u0438\u043c \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c.<\/p>\n<p>\u25cf\t<code>Title<\/code> \u0427\u0430\u0441\u0442\u0438\u043d\u0430 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0430\u0431\u043e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c \u043d\u0430 \u0432\u043a\u043b\u0430\u0434\u043a\u0443 (\u0440\u044f\u0434\u043e\u043a \u043a\u043d\u043e\u043f\u043e\u043a\/\u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0439 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u0435\u0440).<\/p>\n<p>\u25cf\t<code>Right<\/code> \u041f\u0440\u0430\u0432\u0430 \u0447\u0430\u0441\u0442\u0438\u043d\u0430 \u0442\u0430\u043a\u0430 \u0436, \u044f\u043a \u0456 \u043b\u0456\u0432\u0430.<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 HTML \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 HTML \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u043a\u0435\u0442 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0434\u043e\u0441\u0438\u0442\u044c \u043f\u0440\u043e\u0441\u0442\u0438\u0439 \u0456 \u0437\u0440\u043e\u0437\u0443\u043c\u0456\u043b\u0438\u0439:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n        <div class=\"left\">Left<\/div>\n        <div class=\"title\">Page Title<\/div>\n        <div class=\"right\">Right<\/div>\n    <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442 <code>title Navbar<\/code> \u043c\u0430\u0454 \u043d\u0430\u0439\u043d\u0438\u0436\u0447\u0438\u0439 \u043f\u0440\u0456\u043e\u0440\u0438\u0442\u0435\u0442 \u0448\u0438\u0440\u0438\u043d\u0438, \u0456 \u044f\u043a\u0449\u043e \u0435\u043a\u0440\u0430\u043d \u0432\u0456\u043a\u043d\u0430 \u043d\u0435 \u0432\u043c\u0456\u0449\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0432\u0441\u0456 \u0442\u0440\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438, \u0447\u0430\u0441\u0442\u0438\u043d\u0430 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u0431\u0443\u0434\u0435 \u0432\u0438\u0440\u0456\u0437\u0430\u043d\u0430.\n\u041e\u0442\u0436\u0435, \u044f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442 \u0443 \u0447\u0430\u0441\u0442\u0438\u043d\u0456 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 <code>Title<\/code>, \u0432\u0456\u043d \u043c\u0430\u0442\u0438\u043c\u0435 \u043a\u0440\u0430\u043f\u043e\u0447\u043a\u0443 (...) \u043d\u0430 \u043a\u0456\u043d\u0446\u0456, \u043a\u043e\u043b\u0438 \u0439\u043e\u0433\u043e \u0432\u0438\u0440\u0456\u0437\u0430\u043d\u043e. \u0410\u043b\u0435 \u0432\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u043f\u043e\u0434\u0431\u0430\u0442\u0438 \u043f\u0440\u043e \u0446\u0435, \u044f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u0454 \u044f\u043a\u0456\u0441\u044c \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438.\n","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u0437 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c\u0438","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u0437 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u0438 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0432 \u043b\u0456\u0432\u0456\u0439 \u0430\u0431\u043e \u043f\u0440\u0430\u0432\u0456\u0439 \u0447\u0430\u0441\u0442\u0438\u043d\u0456, \u0432\u0430\u043c \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u0439 \u0442\u0435\u0433 <code>&lt;a&gt;<\/code> \u0437 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u043c \u043a\u043b\u0430\u0441\u043e\u043c \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c <code>link<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n        <div class=\"left\">\n            <a href=\"#\" class=\"link\">Left Link<\/a>\n        <\/div>\n        <div class=\"title\">Page Title<\/div>\n        <div class=\"right\">\n            <a href=\"#\" class=\"link\">Right Link<\/a>\n        <\/div>\n    <\/div>\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u043d\u043e\u0436\u0438\u043d\u043d\u0456 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u043d\u043e\u0436\u0438\u043d\u043d\u0456 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0456\u0447\u043e\u0433\u043e \u043d\u0430\u0434\u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u0433\u043e. \u041f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0439\u0442\u0435 \u0431\u0456\u043b\u044c\u0448\u0435 <code>&lt;a class=\"link\"&gt;<\/code> \u0434\u043e \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0447\u0430\u0441\u0442\u0438\u043d\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n        <div class=\"left\">\n            <a href=\"#\" class=\"link\">Left 1<\/a>\n            <a href=\"#\" class=\"link\">Left 2<\/a>\n        <\/div>\n        <div class=\"title\">Page Title<\/div>\n        <div class=\"right\">\n            <a href=\"#\" class=\"link\">Right 1<\/a>\n        <\/div>\n    <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0456\u043a\u043e\u043d\u043a\u0430\u043c\u0438 + \u0442\u0435\u043a\u0441\u0442","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0456\u043a\u043e\u043d\u043a\u0430\u043c\u0438 + \u0442\u0435\u043a\u0441\u0442"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0441\u044c \u043d\u0435\u0432\u0435\u043b\u0438\u043a\u0430 \u0440\u0456\u0437\u043d\u0438\u0446\u044f. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e <b>\u043e\u0431\u0435\u0440\u043d\u0443\u0442\u0438 \u0442\u0435\u043a\u0441\u0442 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c<\/b> <code>&lt;span&gt;<\/code>. \u0426\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0433\u043e \u0456\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u0443 \u043c\u0456\u0436 \u0437\u043d\u0430\u0447\u043a\u043e\u043c \u0456 \u0441\u043b\u043e\u0432\u043e\u043c, \u0430 \u0442\u0430\u043a\u043e\u0436 \u0434\u043b\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n        <div class=\"left\">\n            <a href=\"#\" class=\"link back\">\n                <i class=\"icon icon-back\"><\/i>\n                <span>Back<\/span>\n            <\/a>\n        <\/div>\n        <div class=\"title\">Title<\/div>\n        <div class=\"right\">\n            <a href=\"#\" class=\"link\">\n                <i class=\"icon another-icon\"><\/i>\n                <span>Menu<\/span>\n            <\/a>\n        <\/div>\n    <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043b\u0438\u0448\u0435 \u0437 \u0456\u043a\u043e\u043d\u043a\u0430\u043c\u0438","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043b\u0438\u0448\u0435 \u0437 \u0456\u043a\u043e\u043d\u043a\u0430\u043c\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0456 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0437 \u0456\u043a\u043e\u043d\u043a\u0430\u043c\u0438 \u0442\u0430 \u0431\u0435\u0437 \u0442\u0435\u043a\u0441\u0442\u0443, \u043d\u0430\u043c \u0437\u043d\u0430\u0434\u043e\u0431\u0438\u0442\u044c\u0441\u044f \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>icon-only<\/code>  \u0434\u043e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c. \u0426\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u043a\u043b\u0430\u0441 \u043c\u0430\u0442\u0438\u043c\u0435 \u0444\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0438\u0439 \u0440\u043e\u0437\u043c\u0456\u0440, \u0442\u043e\u043c\u0443 \u043c\u0438 \u043d\u0435 \u0437\u043c\u043e\u0436\u0435\u043c\u043e \u043f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u043f\u0430\u043b\u044c\u0446\u0435\u043c:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n        <div class=\"left\">\n            <a href=\"#\" class=\"link icon-only\">\n                <i class=\"icon icon-back\"><\/i>\n            <\/a>\n        <\/div>\n        <div class=\"title\">Title<\/div>\n        <div class=\"right\">\n            <a href=\"#\" class=\"link icon-only\">\n                <i class=\"icon another-icon\"><\/i>\n            <\/a>\n        <\/div>\n    <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u043e\u0437\u043e\u0440\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043b\u0438\u0448\u0435 \u0437 \u0456\u043a\u043e\u043d\u043a\u0430\u043c\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u2019\u044f\u0432\u043b\u044f\u0454\u0442\u044c\u0441\u044f \u043f\u0440\u043e\u0437\u043e\u0440\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0437 \u043f\u0440\u043e\u0437\u043e\u0440\u0438\u043c \u0444\u043e\u043d\u043e\u043c \u0456 \u043f\u0440\u043e\u0437\u043e\u0440\u0438\u043c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u043e\u043c, \u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0432\u043e\u043d\u0430 \u0441\u0442\u0430\u0454 \u043d\u0435\u043f\u0440\u043e\u0437\u043e\u0440\u043e\u044e. \u0429\u043e\u0431 \u0443\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u0440\u043e\u0437\u043e\u0440\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>navbar-transparent<\/code> \u0434\u043e \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 <code>navbar<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \"navbar-transparent\". -->\n<div class=\"navbar navbar-transparent\">\n  ...\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0437 \u0432\u0435\u043b\u0438\u043a\u0438\u043c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u043e\u043c \u043c\u0430\u0454 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u00ab\u0440\u044f\u0434\u043e\u043a\u00bb (\u0430\u0431\u043e \u00ab\u043f\u0430\u043d\u0435\u043b\u044c\u00bb) \u0456\u0437 \u0432\u0435\u043b\u0438\u043a\u0438\u043c \u0442\u0435\u043a\u0441\u0442\u043e\u043c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430, \u044f\u043a\u0438\u0439 \u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438. \u0429\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u0432\u0435\u043b\u0438\u043a\u0438\u043c, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>navbar-large<\/code> \u0434\u043e <code>navbar<\/code> \u0456 \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e \u043d\u044c\u043e\u0433\u043e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 <code>title-large<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \"navbar-large\" class -->\n<div class=\"navbar navbar-large\">\n  <div class=\"navbar-bg\"><\/div>\n  <div class=\"navbar-inner\">\n    <div class=\"left\">\n      <!-- ... -->\n    <\/div>\n    <!-- \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u043d\u043e, \u043a\u043e\u043b\u0438 \u0431\u0456\u043b\u044c\u0448\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0437\u0433\u043e\u0440\u043d\u0443\u0442\u0438\u0439-->\n    <div class=\"title\">My App<\/div>\n    <div class=\"right\">\n      <!-- ... -->\n    <\/div>\n    <!-- \u0432\u0435\u043b\u0438\u043a\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 -->\n    <div class=\"title-large\">\n      <div class=\"title-large-text\">My App<\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0438 \u0442\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u0437 \u0432\u0435\u043b\u0438\u043a\u0438\u043c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u043e\u043c, \u0449\u043e\u0431 \u0432\u043e\u043d\u0430 \u0431\u0443\u043b\u0430 \u00ab\u043f\u0440\u043e\u0437\u043e\u0440\u043e\u044e\u00bb. \u041a\u043e\u043b\u0438 \u0439\u043e\u0433\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0444\u043e\u043d \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0442\u0430 \u0457\u0457 \u0433\u043e\u043b\u043e\u0432\u043d\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456, \u0434\u043e\u043a\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u043d\u0435 \u043f\u0440\u043e\u043a\u0440\u0443\u0442\u0438\u0442\u044c\u0441\u044f.\n\u0429\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0432\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043f\u0440\u043e\u0437\u043e\u0440\u0438\u043c, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>navbar-transparent<\/code>:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \"navbar-transparent\" class -->\n<div class=\"navbar navbar-large navbar-transparent\">\n  <div class=\"navbar-bg\"><\/div>\n  <div class=\"navbar-inner\">\n    ...\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0417\u0430\u0434\u0430\u043d\u0438\u0439 \u0442\u0435\u043c\u043e\u044e \u0441\u0442\u0438\u043b\u044c","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u0430\u0434\u0430\u043d\u0438\u0439 \u0442\u0435\u043c\u043e\u044e \u0441\u0442\u0438\u043b\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0423 \u0442\u0435\u043c\u0430\u0445 ios \u0456 aurora Navbar \u043c\u0430\u0454 \u0442\u043e\u043d\u043a\u0443 \u0440\u0430\u043c\u043a\u0443 \u0432\u043d\u0438\u0437\u0443. \u0429\u043e\u0431 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0446\u044e \u0440\u0430\u043c\u043a\u0443, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>no-hairline<\/code> \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 <code>navbar<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"navbar no-hairline\">...<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0423 \u0442\u0435\u043c\u0456 md Navbar \u043c\u0430\u0454 \u0442\u0456\u043d\u044c. \u0429\u043e\u0431 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0446\u044e \u0442\u0456\u043d\u044c, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>no-shadow<\/code> \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 <code>navbar<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"navbar no-shadow\">...<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0422\u0438\u043f \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0422\u0438\u043f \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f, \u0434\u0435 \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u043d\u0430\u0448\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c \u0443 DOM. \u0406\u0441\u043d\u0443\u0454 \u043a\u0456\u043b\u044c\u043a\u0430 \u043f\u0440\u0430\u0432\u0438\u043b \u0440\u043e\u0437\u043c\u0456\u0449\u0435\u043d\u043d\u044f Navbar.\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0422\u0438\u043f \u0441\u0442\u0430\u0442\u0438\u0447\u043d\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0422\u0438\u043f \u0441\u0442\u0430\u0442\u0438\u0447\u043d\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u0430 \u043f\u043e\u0437\u0438\u0446\u0456\u044f \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0454, \u0439\u043c\u043e\u0432\u0456\u0440\u043d\u043e, \u043d\u0430\u0439\u0431\u0456\u043b\u044c\u0448 \u0440\u0456\u0434\u043a\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u043d\u0438\u043c \u0442\u0438\u043f\u043e\u043c \u043c\u0430\u043a\u0435\u0442\u0430. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 Navbar \u0454 \u043b\u0438\u0448\u0435 \u0447\u0430\u0441\u0442\u0438\u043d\u043e\u044e \u0432\u043c\u0456\u0441\u0442\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0449\u043e \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0454\u0442\u044c\u0441\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page\">\n  <!-- \u041f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u0438\u0439 \u0432\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 -->\n  <div class=\"page-content\">\n    <!-- \u0421\u0442\u0430\u0442\u0438\u0447\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0440\u043e\u0437\u0442\u0430\u0448\u043e\u0432\u0430\u043d\u0430 \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0432\u043c\u0456\u0441\u0442\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 -->\n    <div class=\"navbar\">...<\/div>\n    ...\n\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0438\u0439 \u0442\u0438\u043f \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0438\u0439 \u0442\u0438\u043f \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0442\u0430\u043a\u043e\u0436 \u0454 \u0447\u0430\u0441\u0442\u0438\u043d\u043e\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0430\u043b\u0435 \u0432\u043e\u043d\u0430 \u0437\u0430\u0432\u0436\u0434\u0438 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u043d\u0435\u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0430 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0440\u044f\u043c\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0456 \u044f\u043a\u0449\u043e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0442\u0430\u043a\u043e\u0436 \u043c\u0430\u0454 \u0444\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432, \u0432\u043e\u043d\u0430 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 <b>\u041f\u0415\u0420\u0415\u0414<\/b> \u043f\u0430\u043d\u0435\u043b\u043b\u044e \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page\">\n  <!-- \u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0417\u0410\u0412\u0416\u0414\u0418 \u0439\u0434\u0435 \u041f\u0415\u0420\u0428\u041e\u042e -->\n  <div class=\"navbar\">...<\/div>\n  <!-- \u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432 \u0417\u0410\u0412\u0416\u0414\u0418 \u041f\u0406\u0421\u041b\u042f \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457-->\n  <div class=\"toolbar toolbar-bottom\">...<\/div>\n\n  <!-- \u041f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u0438\u0439 \u0432\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 -->\n  <div class=\"page-content\">\n    ...\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0437\u0430\u0432\u0436\u0434\u0438 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0440\u044f\u043c\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0430 \u041f\u0415\u0420\u0415\u0414 \u043f\u0430\u043d\u0435\u043b\u043b\u044e \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432 (\u044f\u043a\u0449\u043e \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0444\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432)","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0439 \u0442\u0438\u043f \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0439 \u0442\u0438\u043f \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0430 \u043b\u0438\u0448\u0435 \u043e\u0434\u043d\u0430 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a \u0443 <code>View<\/code>, \u0442\u043e\u0434\u0456 \u0432\u043e\u043d\u0430 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0440\u044f\u043c\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0446\u044c\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0442\u0430 \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0438\u0441\u044f <b>\u041f\u0415\u0420\u0415\u0414<\/b> \u0443\u0441\u0456\u043c\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430\u043c\u0438 \u0443 <code>View<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"view\">\n  <!-- \u041f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u0443\u0442\u0438 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c -->\n  <div class=\"navbar\">...<\/div>\n\n  <!-- \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438-->\n  <div class=\"page\">...<\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0430 \u043b\u0438\u0448\u0435 \u043e\u0434\u043d\u0430 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \/ \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044c, \u0442\u043e\u0434\u0456 \u0432\u043e\u043d\u0430 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0440\u044f\u043c\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c <code>Views<\/code> \u0456 \u0431\u0443\u0442\u0438 <b>\u041f\u0415\u0420\u0415\u0414<\/b> \u0443\u0441\u0456\u043c\u0430 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f\u043c\u0438.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"views tabs\">\n  <!-- \u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0454 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c -->\n  <div class=\"navbar\">...<\/div>\n\n  <div class=\"view tab tab-active\" id=\"tab-1\">...<\/div>\n  <div class=\"view tab\" id=\"tab-2\">...<\/div>\n  ...\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"Common Navbar \u0437\u0430\u0432\u0436\u0434\u0438 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0440\u044f\u043c\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c <code>Views\/View<\/code> \u0456 <b>\u041f\u0415\u0420\u0415\u0414<\/b> \u043f\u0430\u043d\u0435\u043b\u043b\u044e \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432 (\u044f\u043a\u0449\u043e \u0442\u0430\u043a\u043e\u0436 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432)","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0414\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0414\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c"},{"type":"alert","props":{"content":"! \u0414\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u044c\u0441\u044f \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 iOS","title":"","title_element":"h3"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0434\u043d\u0456\u0454\u044e \u0437 \u043f\u0440\u0438\u0433\u043e\u043b\u043e\u043c\u0448\u043b\u0438\u0432\u0438\u0445 \u0444\u0443\u043d\u043a\u0446\u0456\u0439 \u0442\u0435\u043c\u0438 iOS \u0454 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457. \u0415\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u043a\u043e\u0432\u0437\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u0456 \u0437\u043d\u0438\u043a\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u043c\u0456\u0436 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430\u043c\u0438 \u0442\u0430 \u0433\u043e\u0440\u0442\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u043d\u0430\u0437\u0430\u0434, \u044f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457.\n\u0407\u0457 \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u043a\u043e\u043b\u0438 \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456 \u0437 \u0444\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0438\u043c \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u043a\u043e\u043b\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0454 \u043f\u0440\u044f\u043c\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438.\n\u042f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0457\u0457, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 <code>iosDynamicNavbar: false<\/code> \u0434\u043b\u044f \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0430\u0431\u043e \u0432 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044c. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"\/\/\u0412\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e\nvar app = new Techno4({\n  view: {\n    iosDynamicNavbar: false,\n  },\n});\n\n\/\/ \u0412\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u043b\u0438\u0448\u0435 \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457\nvar mainView = app.views.create('.view-main', {\n  iosDynamicNavbar: false,\n});"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043b\u0438 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c (<code>iosDynamicNavbar<\/code>) \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 Navbar \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u2019\u0454\u0434\u043d\u0430\u043d\u043e \u0432\u0456\u0434 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0430 \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0435\u043d\u043e \u0432 \u0440\u043e\u0437\u0434\u0456\u043b \u00ab\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430\u00bb. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0434\u043b\u044f \u0434\u043e\u0441\u0442\u0443\u043f\u0443 \u0434\u043e \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u043e\u0433\u043e \u0437\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u043e\u044e \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0439\u0442\u0435 \u043c\u0435\u0442\u043e\u0434 <code>app.navbar.getElByPage(pageEl)<\/code>","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u043a\u0435\u0442 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0442\u0430\u043a\u0438\u0439 \u0441\u0430\u043c\u0438\u0439, \u044f\u043a \u0456 \u0434\u043b\u044f \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457, \u0454\u0434\u0438\u043d\u0430 \u0432\u0456\u0434\u043c\u0456\u043d\u043d\u0456\u0441\u0442\u044c \u043f\u043e\u043b\u044f\u0433\u0430\u0454 \u0432 \u0442\u043e\u043c\u0443, \u0449\u043e \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043a\u043b\u0430\u0441\u0438 \u0434\u043e \u0447\u0430\u0441\u0442\u0438\u043d \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 (\u043b\u0456\u0432\u043e\u0440\u0443\u0447, \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a, \u043f\u0440\u0430\u0432\u043e\u0440\u0443\u0447), \u0449\u043e\u0431 \u0432\u0438\u0437\u043d\u0430\u0447\u0438\u0442\u0438 \u0442\u0438\u043f \u0435\u0444\u0435\u043a\u0442\u0443 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0434\u043b\u044f \u0446\u0456\u0454\u0457 \u0447\u0430\u0441\u0442\u0438\u043d\u0438:\n<p>\u25cf\t\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c (\u044f\u043a\u0449\u043e \u043d\u0435\u043c\u0430\u0454 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432) \u043a\u043e\u0436\u043d\u0430 \u0447\u0430\u0441\u0442\u0438\u043d\u0430 Navbar \u043c\u0430\u0454 \u0435\u0444\u0435\u043a\u0442 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 <code>\"Fade\"<\/code>.<\/p>\n<p>\u25cf\t\u042f\u043a\u0449\u043e \u0432\u0438 \u0434\u043e\u0434\u0430\u0441\u0442\u0435 \u043a\u043b\u0430\u0441 \u043a\u043e\u0432\u0437\u0430\u043d\u043d\u044f <code>sliding<\/code>  \u0434\u043e \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0457 \u0447\u0430\u0441\u0442\u0438\u043d\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457, \u0446\u0435 \u043c\u0430\u0442\u0438\u043c\u0435 \u0435\u0444\u0435\u043a\u0442 \u00ab\u041a\u043e\u0432\u0437\u0430\u043d\u043d\u044f\u00bb.<\/p>\n<p>\u25cf\t\u042f\u043a\u0449\u043e \u0432\u0438 \u0434\u043e\u0434\u0430\u0441\u0442\u0435 \u043a\u043b\u0430\u0441 \u043a\u043e\u0432\u0437\u0430\u043d\u043d\u044f <code>sliding<\/code>  \u0434\u043e \u0432\u043d\u0443\u0442\u0440\u0456\u0448\u043d\u044c\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b <code>\u0456navbar-inner<\/code> , \u0442\u043e\u0434\u0456 \u0432\u0441\u0456 \u0447\u0430\u0441\u0442\u0438\u043d\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043c\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u0435\u0444\u0435\u043a\u0442 \u00ab\u043a\u043e\u0432\u0437\u0430\u043d\u043d\u044f\u00bb<\/p>\n<p>\u25cf\t\u0414\u043b\u044f \u043a\u0440\u0430\u0449\u043e\u0433\u043e \u0432\u0438\u0433\u043b\u044f\u0434\u0443 \u0432\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0437\u0431\u0435\u0440\u0435\u0433\u0442\u0438 \u043e\u0434\u043d\u0430\u043a\u043e\u0432\u0438\u0439 \u0442\u0438\u043f \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0434\u043b\u044f \u0442\u0438\u0445 \u0441\u0430\u043c\u0438\u0445 \u0447\u0430\u0441\u0442\u0438\u043d \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430 \u0440\u0456\u0437\u043d\u0438\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430\u0445.<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0416\u043e\u0434\u043d\u0438\u0445 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432, \u0443\u0441\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043c\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u0435\u0444\u0435\u043a\u0442 \u00ab\u0432\u0438\u0446\u0432\u0456\u0442\u0430\u043d\u043d\u044f\u00bb \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 -->\n<div class=\"navbar\">\n  <div class=\"navbar-bg\"><\/div>\n  <div class=\"navbar-inner\">\n    <div class=\"left\">\n      <a href=\"#\" class=\"link\">Home Left<\/a>\n    <\/div>\n    <div class=\"title\">Home<\/div>\n    <div class=\"right\">\n      <a href=\"#\" class=\"link\">Home Right<\/a>\n    <\/div>\n  <\/div>\n<\/div>\n\n<!-- Title \u0456 Left \u043c\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u0435\u0444\u0435\u043a\u0442 \u00ab\u043a\u043e\u0432\u0437\u0430\u043d\u043d\u044f\u00bb \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 -->\n<div class=\"navbar\">\n  <div class=\"navbar-bg\"><\/div>\n  <div class=\"navbar-inner\">\n    <!-- \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \"sliding\" -->\n    <div class=\"left sliding\">\n      <a href=\"#\" class=\"link\">Home Left<\/a>\n    <\/div>\n    <!-- \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \"sliding\" class -->\n    <div class=\"title sliding\">Home<\/div>\n    <div class=\"right\">\n      <a href=\"#\" class=\"link\">Home Right<\/a>\n    <\/div>\n  <\/div>\n<\/div>\n\n<!-- \u0423\u0441\u0456 \u0447\u0430\u0441\u0442\u0438\u043d\u0438 \u043c\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u0435\u0444\u0435\u043a\u0442 \u00ab\u043a\u043e\u0432\u0437\u0430\u043d\u043d\u044f\u00bb \u043f\u0440\u0438 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a -->\n<div class=\"navbar\">\n  <div class=\"navbar-bg\"><\/div>\n  <!-- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \"sliding\" class -->\n  <div class=\"navbar-inner sliding\">\n    <div class=\"left\">\n      <a href=\"#\" class=\"link\">Home Left<\/a>\n    <\/div>\n    <div class=\"title\">Home<\/div>\n    <div class=\"right\">\n      <a href=\"#\" class=\"link\">Home Right<\/a>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Navbar","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Navbar"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0442\u0430\u043a\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u0434\u043b\u044f Navbar:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0421\u0445\u043e\u0432\u0430\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457\n<p>\u25cf\t<code>navbarEl - HTMLElement or string<\/code> (with CSS Selector)\u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/p>\n<p>\u25cf\t<code>animate - Boolean<\/code> - \u0447\u0438 \u0441\u043b\u0456\u0434 \u043f\u0440\u0438\u0445\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0447\u0438 \u043d\u0456. \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u2014 <code>true<\/code><\/p>\n<p>\u25cf\t<code>hideStatusbar - Boolean<\/code> - \u044f\u043a\u0449\u043e <code>false<\/code> (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c), \u0432\u0456\u043d \u043f\u0440\u0438\u0445\u043e\u0432\u0443\u0454 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457, \u0447\u0430\u0441\u0442\u043a\u043e\u0432\u043e \u0437\u0431\u0435\u0440\u0456\u0433\u0430\u044e\u0447\u0438 \u043f\u0440\u043e\u0441\u0442\u0456\u0440, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0434\u043b\u044f \u043f\u043e\u043a\u0440\u0438\u0442\u0442\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u0456 \u0440\u044f\u0434\u043a\u0430 \u0441\u0442\u0430\u043d\u0443. \u0406\u043d\u0430\u043a\u0448\u0435 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0431\u0443\u0434\u0435 \u043f\u043e\u0432\u043d\u0456\u0441\u0442\u044e \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0430.<\/p>\n","link_text":"string","meta":"app.navbar.hide<p>(<code>navbarEl, animate, hideStatusbar<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c\n<p>\u25cf\t<code>navbarEl - HTMLElement or string<\/code> (with CSS Selector) \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/p>\n<p>\u25cf\t<code>animate - Boolean<\/code> - \u0447\u0438 \u0441\u043b\u0456\u0434 \u043f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e \u0447\u0438 \u043d\u0456. \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u2014 <code>true<\/code>\n","link_text":"string","meta":"app.navbar.show<p>(<code>navbarEl, animate<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0440\u0430\u0445\u0443\u0439\u0442\u0435 \u043f\u043e\u0437\u0438\u0446\u0456\u0439\u043d\u0456 \u0441\u0442\u0438\u043b\u0456 \u0434\u043b\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 Navbar. \u0426\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c \u043f\u0456\u0441\u043b\u044f \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e\u0457 \u0437\u043c\u0456\u043d\u0438 \u0434\u0435\u044f\u043a\u0438\u0445 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457.\n<p>\u25cf\t<code>navbarEl - HTMLElement or string<\/code> (with CSS Selector) \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/p>\n","meta":"app.navbar.size<p>(<code>navbarEl<\/code>)"}},{"type":"table_item","props":{"content":"\u041e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0437\u0430 \u0432\u043a\u0430\u0437\u0430\u043d\u0438\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438. \u041a\u043e\u0440\u0438\u0441\u043d\u043e, \u043b\u0438\u0448\u0435 \u044f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u0456\u043d \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u043f\u043e\u0437\u0430 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u043e\u043c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438.\n<P>\u25cf\t<code>pageEl - HTMLElement or string<\/code> (with CSS Selector) \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0434\u0435 \u0448\u0443\u043a\u0430\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/P>\n","meta":"app.navbar.getElByPage<p>(<code>pageEl<\/code>)"}},{"type":"table_item","props":{"content":"\u041e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0437\u0430 \u0432\u043a\u0430\u0437\u0430\u043d\u0438\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456. \u041a\u043e\u0440\u0438\u0441\u043d\u043e, \u043b\u0438\u0448\u0435 \u044f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u0456\u043d \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u043f\u043e\u0437\u0430 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u043e\u043c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438.\n<p>\u25cf\t<code>navbarEl - HTMLElement or string<\/code> (with CSS Selector) \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457, \u0449\u043e\u0431 \u0437\u043d\u0430\u0439\u0442\u0438 \u0432\u0456\u0434\u043d\u043e\u0441\u043d\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/p>\n","meta":"app.navbar.getPageByEl<p>(<code>navbarEl<\/code>)"}},{"type":"table_item","props":{"content":"\u0417\u0433\u043e\u0440\u043d\u0443\u0442\u0438 \u0432\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457\n<p>\u25cf\t<code>navbarEl - HTMLElement or string<\/code> (with CSS Selector) \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457, \u0449\u043e\u0431 \u0437\u0433\u043e\u0440\u043d\u0443\u0442\u0438. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/p>\n","meta":"app.navbar.collapseLargeTitle<p>(<code>navbarEl<\/code>)"}},{"type":"table_item","props":{"content":"\u0420\u043e\u0437\u0433\u043e\u0440\u043d\u0443\u0442\u0438 \u0432\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457\n<p>\u25cf\t<code>navbarEl - HTMLElement or string<\/code> (with CSS Selector) \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0434\u043b\u044f \u0440\u043e\u0437\u0448\u0438\u0440\u0435\u043d\u043d\u044f. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/p>\n","meta":"app.navbar.expandLargeTitle<p>(<code>navbarEl<\/code>)"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u043c\u043a\u043d\u0443\u0442\u0438 \u0432\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457\n<p>\u25cf\t<code>navbarEl - HTMLElement or string<\/code> (with CSS Selector) \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u043c\u0438\u043a\u0430\u043d\u043d\u044f (\u0437\u0433\u043e\u0440\u0442\u0430\u043d\u043d\u044f \u0430\u0431\u043e \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u043d\u043d\u044f). \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/p>\n","meta":"app.navbar.toggleLargeTitle<p>(<code>navbarEl<\/code>)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Navbar","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Navbar"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u043e\u0436\u043d\u0430 \u043a\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u043f\u0435\u0432\u043d\u043e\u044e \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u043e\u044e \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443, \u043f\u0435\u0440\u0435\u0434\u0430\u0432\u0448\u0438 \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u0437 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u044e \u043f\u0430\u043d\u0435\u043b\u043b\u044e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0432 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u0440\u0438\u0445\u043e\u0432\u0443\u0454 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"hideOnPageScroll","title":"false"}},{"type":"table_item","props":{"content":"\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>true<\/code>, \u0449\u043e\u0431 \u043f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u0442\u0438 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c, \u043a\u043e\u043b\u0438 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0434\u043e\u0441\u044f\u0433\u0430\u0454 \u043a\u0456\u043d\u0446\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"showOnPageScrollEnd","title":"true"}},{"type":"table_item","props":{"content":"\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>false<\/code>, \u0456 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u043d\u0435 \u0441\u0442\u0430\u043d\u0435 \u0432\u0438\u0434\u0438\u043c\u043e\u044e, \u043a\u043e\u043b\u0438 \u0432\u0438 \u0449\u043e\u0440\u0430\u0437\u0443 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0454\u0442\u0435 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0432\u0433\u043e\u0440\u0443. \u0412\u043e\u043d\u0438 \u0441\u0442\u0430\u043d\u0443\u0442\u044c \u0432\u0438\u0434\u0438\u043c\u0438\u043c\u0438 \u043b\u0438\u0448\u0435 \u0443 \u0432\u0435\u0440\u0445\u043d\u0456\u0439 \u043f\u043e\u0437\u0438\u0446\u0456\u0457 \u043f\u0440\u043e\u043a\u0440\u0443\u0442\u043a\u0438, \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"showOnPageScrollTop","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u043a\u043e\u0436\u0435\u043d \u043a\u043b\u0430\u0446\u0430\u043d\u043d\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0432\u0433\u043e\u0440\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"scrollTopOnTitleClick","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0432\u0456\u043d \u043d\u0430\u043c\u0430\u0433\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0443 \u0446\u0435\u043d\u0442\u0440\u0456 \u0442\u0435\u043c\u0438 iOS. \u0406\u043d\u043e\u0434\u0456 (\u0437 \u0434\u0435\u044f\u043a\u0438\u043c \u0456\u043d\u0434\u0438\u0432\u0456\u0434\u0443\u0430\u043b\u044c\u043d\u0438\u043c \u0434\u0438\u0437\u0430\u0439\u043d\u043e\u043c) \u0446\u0435 \u043c\u043e\u0436\u0435 \u043d\u0435 \u0437\u043d\u0430\u0434\u043e\u0431\u0438\u0442\u0438\u0441\u044f.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"iosCenterTitle","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0432\u0456\u043d \u043d\u0430\u043c\u0430\u0433\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0443 \u0446\u0435\u043d\u0442\u0440\u0456 \u0442\u0435\u043c\u0438 MD. \u0406\u043d\u043e\u0434\u0456 (\u0437 \u0434\u0435\u044f\u043a\u0438\u043c \u0456\u043d\u0434\u0438\u0432\u0456\u0434\u0443\u0430\u043b\u044c\u043d\u0438\u043c \u0434\u0438\u0437\u0430\u0439\u043d\u043e\u043c) \u0446\u0435 \u043c\u043e\u0436\u0435 \u043d\u0435 \u0437\u043d\u0430\u0434\u043e\u0431\u0438\u0442\u0438\u0441\u044f.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"mdCenterTitle","title":"false"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0432\u0456\u043d \u043d\u0430\u043c\u0430\u0433\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0443 \u0446\u0435\u043d\u0442\u0440\u0456 \u0442\u0435\u043c\u0438 Aurora. \u0406\u043d\u043e\u0434\u0456 (\u0437 \u0434\u0435\u044f\u043a\u0438\u043c \u0456\u043d\u0434\u0438\u0432\u0456\u0434\u0443\u0430\u043b\u044c\u043d\u0438\u043c \u0434\u0438\u0437\u0430\u0439\u043d\u043e\u043c) \u0446\u0435 \u043c\u043e\u0436\u0435 \u043d\u0435 \u0437\u043d\u0430\u0434\u043e\u0431\u0438\u0442\u0438\u0441\u044f.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"auroraCenterTitle","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0432\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0431\u0443\u0434\u0435 \u0437\u0433\u043e\u0440\u043d\u0443\u0442\u0438\u0439 \u0443\u0433\u043e\u0440\u0456 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0430 \u0437\u043d\u043e\u0432\u0443 \u0440\u043e\u0437\u0433\u043e\u0440\u043d\u0443\u0442\u0438\u0439 \u0443 \u0432\u0435\u0440\u0445\u043d\u0456\u0439 \u0447\u0430\u0441\u0442\u0438\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"collapseLargeTitleOnScroll","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u043f\u0440\u0438\u0432\u2019\u044f\u0437\u0443\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0434\u043e \u043f\u043e\u0437\u0438\u0446\u0456\u0439 \u0437\u0433\u043e\u0440\u0442\u0430\u043d\u043d\u044f\/\u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u043d\u043d\u044f \u0432\u0435\u043b\u0438\u043a\u043e\u0433\u043e \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430, \u0442\u043e\u043c\u0443 \u0437\u0430\u043b\u0438\u0448\u0438\u0442\u0438 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0432 \u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u043f\u043e\u0437\u0438\u0446\u0456\u0457 \u0432\u0435\u043b\u0438\u043a\u043e\u0433\u043e \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u0431\u0443\u0434\u0435 \u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e. \u0414\u0456\u0454 \u043b\u0438\u0448\u0435 \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e <code>collapseLargeTitleOnScroll<\/code>.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"snapPageScrollToLargeTitle","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0431\u0443\u0434\u0435 \u043f\u0440\u0438\u0432\u2019\u044f\u0437\u0430\u043d\u0435 \u0434\u043e \u0440\u043e\u0437\u043c\u0456\u0440\u0443 \u043f\u0440\u043e\u0437\u043e\u0440\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456, \u0442\u043e\u043c\u0443 \u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0437\u0430\u043b\u0438\u0448\u0438\u0442\u0438 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0432 \u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u043f\u0440\u043e\u0437\u043e\u0440\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456..","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"snapPageScrollToTransparentNavbar","title":"true"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 :","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  navbar: {\n    hideOnPageScroll: true,\n    iosCenterTitle: false,\n  },\n});"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u0435\u0440\u0443\u0439\u0442\u0435 \u043f\u0430\u043d\u0435\u043b\u043b\u044e \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043a\u043b\u0430\u0441\u0456\u0432 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u0435\u0440\u0443\u0439\u0442\u0435 \u043f\u0430\u043d\u0435\u043b\u043b\u044e \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043a\u043b\u0430\u0441\u0456\u0432 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"Techno4 \u0434\u043e\u0437\u0432\u043e\u043b\u044f\u0454 \u0432\u0430\u043c \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438\/\u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u043d\u0430 \u043f\u0435\u0432\u043d\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 \u0430\u0431\u043e \u043d\u0430 \u043f\u0435\u0432\u043d\u0456\u0439 \u043f\u0440\u043e\u043a\u0440\u0443\u0442\u0446\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432.\n\u042f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0435\u0432\u043d\u043e\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0441\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0439\u0442\u0435\u0441\u044f \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u043c\u0438 \u043a\u043b\u0430\u0441\u0430\u043c\u0438 \u0434\u043b\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 <code>&lt;div class=\"page-content\"&gt;<\/code> \u0446\u0456\u0454\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438:\n\n<p>\u25cf\t<code>hide-bars-on-scroll<\/code> - \u0449\u043e\u0431 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438<\/p>\n<p>\u25cf\t<code>hide-navbar-on-scroll<\/code> - \u0449\u043e\u0431 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438<\/p>\n\u0429\u043e\u0431 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0446\u044e \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u0443 \u043d\u0430 \u043f\u0435\u0432\u043d\u0438\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430\u0445, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438 \u0442\u0430\u043a\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043a\u043b\u0430\u0441\u0438:\n<p>\u25cf\t<code>keep-bars-on-scroll<\/code> - \u0449\u043e\u0431 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432 \u0437\u0430\u043b\u0438\u0448\u0430\u043b\u0438\u0441\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438<\/p>\n<p>\u25cf\t<code>keep-navbar-on-scroll<\/code> - \u0449\u043e\u0431 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0437\u0430\u043b\u0438\u0448\u0430\u043b\u0430\u0441\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438<\/p>\n\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 : \n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">\n    ...\n  <\/div>\n  <!-- \"hide-navbar-on-scroll\" class to hide Navbar -->\n  <div class=\"page-content hide-navbar-on-scroll\">\n    <div class=\"block\">\n      <p>Scroll page down<\/p>\n      ...\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u0454 \u0441\u043f\u0456\u043b\u044c\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u043d\u0430 \u0432\u0441\u0456\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430\u0445\/\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0445 \u0432\u0430\u0448\u043e\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438\/\u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0434\u043b\u044f \u0434\u0435\u044f\u043a\u0438\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a, \u0434\u0435 \u0432\u043e\u043d\u0430 \u0432\u0430\u043c \u043d\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0430.\n\u0429\u043e\u0431 \u0446\u0435 \u0437\u0430\u043f\u0440\u0430\u0446\u044e\u0432\u0430\u043b\u043e, \u0443\u0441\u0435, \u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e, \u0446\u0435 \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>no-navbar<\/code> \u0434\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043e\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 (<code>&lt;div class=\"page no-navbar\"&gt;<\/code>):\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- Page has additional \"no-navbar\" class -->\n<div class=\"page no-navbar\">\n  <div class=\"page-content\">\n      ...\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u041f\u043e\u0434\u0456\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457"},{"type":"text","props":{"column_breakpoint":"m","content":"Navbar \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435 \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 DOM \u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 Navbar (<code>&lt;div class=\"navbar\"&gt;<\/code>) \u0456 \u043f\u043e\u0434\u0456\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 DOM ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 DOM "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0441\u0442\u0430\u043d\u0435 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u043e\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"navbar:hide","title":"Navbar <p><code>&lt;div class=\"navbar\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0441\u0442\u0430\u043d\u0435 \u0432\u0438\u0434\u0438\u043c\u043e\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"navbar:show","title":"Navbar <p><code>&lt;div class=\"navbar\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u0437 \u0432\u0435\u043b\u0438\u043a\u0438\u043c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u043e\u043c \u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f (\u0437 \u0432\u0435\u043b\u0438\u043a\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c)","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"navbar:collapse","title":"Navbar <p><code>&lt;div class=\"navbar\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u0437 \u0432\u0435\u043b\u0438\u043a\u0438\u043c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u043e\u043c \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f (\u0432\u0456\u0434 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0434\u043e \u0432\u0435\u043b\u0438\u043a\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456)","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"navbar:expand","title":"Navbar <p><code>&lt;div class=\"navbar\"&gt;<\/code>"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0441\u0442\u0430\u043d\u0435 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u043e\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"navbarHide","title":"<code>(el)<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0441\u0442\u0430\u043d\u0435 \u0432\u0438\u0434\u0438\u043c\u043e\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"navbarShow","title":"<code>(el)<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u0437 \u0432\u0435\u043b\u0438\u043a\u0438\u043c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u043e\u043c \u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f (\u0437 \u0432\u0435\u043b\u0438\u043a\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0443 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0443 \u043f\u0430\u043d\u0435\u043b\u044c)","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"navbarCollapse","title":"<code>(el)<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u0437 \u0432\u0435\u043b\u0438\u043a\u0438\u043c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u043e\u043c \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f (\u0432\u0456\u0434 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0434\u043e \u0432\u0435\u043b\u0438\u043a\u043e\u0457 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456)","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"navbarExpand","title":"<code>(el)<\/code>"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0417\u043c\u0456\u043d\u043d\u0456 CSS "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  \/*\n  --t4-navbar-bg-color: var(--t4-bars-bg-color);\n  --t4-navbar-bg-color-rgb: var(--t4-bars-bg-color-rgb);\n  --t4-navbar-bg-image: var(--t4-bars-bg-image);\n  --t4-navbar-border-color: var(--t4-bars-border-color);\n  --t4-navbar-link-color: var(--t4-bars-link-color);\n  --t4-navbar-text-color: var(--t4-bars-text-color);\n  *\/\n  --t4-navbar-hide-show-transition-duration: 400ms;\n  --t4-navbar-title-line-height: 1.2;\n  --t4-navbar-title-font-size: inherit;\n  --t4-navbar-subtitle-text-align: inherit;\n  --t4-navbar-large-title-line-height: 1.2;\n  --t4-navbar-large-title-text-color: inherit;\n  --t4-navbar-large-title-padding-left: 16px;\n  --t4-navbar-large-title-padding-right: 16px;\n}\n.ios {\n  --t4-navbar-height: 44px;\n  --t4-navbar-tablet-height: 44px;\n  --t4-navbar-font-size: 17px;\n  --t4-navbar-inner-padding-left: 8px;\n  --t4-navbar-inner-padding-right: 8px;\n  --t4-navbar-title-font-weight: 600;\n  --t4-navbar-title-margin-left: 0;\n  --t4-navbar-title-margin-right: 0;\n  --t4-navbar-title-text-align: center;\n  --t4-navbar-subtitle-font-size: 10px;\n  --t4-navbar-subtitle-line-height: 1;\n  --t4-navbar-shadow-image: none;\n  --t4-navbar-large-title-height: 52px;\n  --t4-navbar-large-title-font-size: 34px;\n  --t4-navbar-large-title-font-weight: 700;\n  --t4-navbar-large-title-letter-spacing: -0.03em;\n  --t4-navbar-large-title-padding-vertical: 6px;\n  \/*\n  --t4-navbar-link-height: var(--t4-navbar-height);\n  --t4-navbar-link-line-height: var(--t4-navbar-height);\n  *\/\n  --t4-navbar-subtitle-text-color: rgba(0, 0, 0, 0.55);\n}\n.ios .dark,\n.ios.dark {\n  --t4-navbar-subtitle-text-color: rgba(255, 255, 255, 0.55);\n}\n.md {\n  --t4-navbar-height: 56px;\n  --t4-navbar-tablet-height: 64px;\n  --t4-navbar-font-size: 20px;\n  --t4-navbar-inner-padding-left: 4px;\n  --t4-navbar-inner-padding-right: 4px;\n  --t4-navbar-title-font-weight: 500;\n  --t4-navbar-title-margin-left: 20px;\n  --t4-navbar-title-margin-right: 16px;\n  --t4-navbar-title-text-align: left;\n  --t4-navbar-subtitle-font-size: 14px;\n  --t4-navbar-subtitle-line-height: 1.2;\n  --t4-navbar-shadow-image: var(--t4-bars-shadow-bottom-image);\n  --t4-navbar-large-title-font-size: 34px;\n  --t4-navbar-large-title-height: 56px;\n  --t4-navbar-large-title-font-weight: 500;\n  --t4-navbar-large-title-letter-spacing: 0;\n  --t4-navbar-large-title-padding-vertical: 8px;\n  --t4-navbar-link-height: 48px;\n  --t4-navbar-link-line-height: 48px;\n  --t4-navbar-subtitle-text-color: rgba(0, 0, 0, 0.85);\n}\n.md .dark,\n.md.dark {\n  --t4-navbar-subtitle-text-color: rgba(255, 255, 255, 0.85);\n}\n.aurora {\n  --t4-navbar-height: 56px;\n  --t4-navbar-tablet-height: 56px;\n  --t4-navbar-font-size: 18px;\n  --t4-navbar-inner-padding-left: 16px;\n  --t4-navbar-inner-padding-right: 16px;\n  --t4-navbar-title-font-weight: bold;\n  --t4-navbar-title-margin-left: 0;\n  --t4-navbar-title-margin-right: 0;\n  --t4-navbar-title-text-align: center;\n  --t4-navbar-subtitle-font-size: 14px;\n  --t4-navbar-subtitle-line-height: 1;\n  --t4-navbar-shadow-image: none;\n  --t4-navbar-large-title-height: 48px;\n  --t4-navbar-large-title-font-size: 28px;\n  --t4-navbar-large-title-font-weight: bold;\n  --t4-navbar-large-title-letter-spacing: 0;\n  --t4-navbar-large-title-padding-vertical: 7px;\n  --t4-navbar-link-height: auto;\n  --t4-navbar-link-line-height: inherit;\n  --t4-navbar-subtitle-text-color: rgba(0, 0, 0, 0.6);\n}\n.aurora .dark,\n.aurora.dark {\n  --t4-navbar-subtitle-text-color: rgba(255, 255, 255, 0.5);\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 "},{"type":"headline","props":{"content":"\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c"},{"type":"code","props":{"content":"<template>\n  <div class=\"page no-navbar\">\n    <div class=\"page-content\">\n      <div class=\"navbar\">\n        <div class=\"navbar-bg\"><\/div>\n        <div class=\"navbar-inner\">\n          <div class=\"left\">\n            <a class=\"link back\">\n              <i class=\"icon icon-back\"><\/i>\n              <span class=\"if-not-md\">Back<\/span>\n            <\/a>\n          <\/div>\n          <div class=\"title\">Static Navbar<\/div>\n          <div class=\"right\"><\/div>\n        <\/div>\n      <\/div>\n      <div class=\"block\">\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"left\">\n          <a class=\"link back\">\n            <i class=\"icon icon-back\"><\/i>\n            <span class=\"if-not-md\">Back<\/span>\n          <\/a>\n        <\/div>\n        <div class=\"title\">Fixed Navbar<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u043e\u0437\u043e\u0440\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u041f\u0440\u043e\u0437\u043e\u0440\u0430 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar navbar-transparent\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"left\">\n          <a class=\"link back\">\n            <i class=\"icon icon-back\"><\/i>\n            <span class=\"if-not-md\">Back<\/span>\n          <\/a>\n        <\/div>\n        <div class=\"title\">Transparent Navbar<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a Navbar","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a Navbar"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar navbar-large\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"left\">\n          <a class=\"link back\">\n            <i class=\"icon icon-back\"><\/i>\n            <span class=\"if-not-md\">Back<\/span>\n          <\/a>\n        <\/div>\n        <div class=\"title\">Large Title<\/div>\n        <div class=\"title-large\">\n          <div class=\"title-large-text\">Large Title<\/div>\n        <\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 Navbar","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0412\u0435\u043b\u0438\u043a\u0438\u0439 \u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 Navbar"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar navbar-large navbar-transparent\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"left\">\n          <a class=\"link back\">\n            <i class=\"icon icon-back\"><\/i>\n            <span class=\"if-not-md\">Back<\/span>\n          <\/a>\n        <\/div>\n        <div class=\"title\">Large Transparent<\/div>\n        <div class=\"title-large\">\n          <div class=\"title-large-text\">Large Transparent<\/div>\n        <\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"API \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - API \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"left\">\n          <a class=\"link back\">\n            <i class=\"icon icon-back\"><\/i>\n            <span class=\"if-not-md\">Back<\/span>\n          <\/a>\n        <\/div>\n        <div class=\"title\">Navbar API<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <p><a class=\"button button-raised button-fill\" @click=${hideNavbar}>Hide Navbar<\/a><\/p>\n        <p><a class=\"button button-raised button-fill\" @click=${showNavbar}>Show Navbar<\/a><\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, { $on, $t4 }) => {\n    let navbarEl;\n    const hideNavbar = () => {\n      $t4.navbar.hide(navbarEl);\n    }\n    const showNavbar = () => {\n      $t4.navbar.show(navbarEl);\n    }\n    $on('pageInit', (e, page) => {\n      navbarEl = $t4.navbar.getElByPage(page);\n    });\n\n    return $render;\n  }\n<\/script>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0421\u0445\u043e\u0432\u0430\u0442\u0438 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u0421\u0445\u043e\u0432\u0430\u0442\u0438 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"left\">\n          <a class=\"link back\">\n            <i class=\"icon icon-back\"><\/i>\n            <span class=\"if-not-md\">Back<\/span>\n          <\/a>\n        <\/div>\n        <div class=\"title\">Hide On Scroll<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content hide-navbar-on-scroll\">\n      <div class=\"block\">\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quos asperiores ut, odio numquam ab, qui,\n          alias adipisci in magni reiciendis reprehenderit. Labore esse quae ut tempore consequatur, reprehenderit\n          similique!<\/p>\n        <p>Quis omnis, quam maiores voluptates vero atque porro? Soluta modi dolore eum dolor iste eos perspiciatis vero\n          porro aliquam officia deleniti, cumque rem, consequatur, ea ipsa temporibus dicta architecto saepe.<\/p>\n        <p>Tempora eius, sit distinctio architecto repellat, rerum quae, eum suscipit aperiam libero beatae ut eveniet\n          ex labore illo! Labore illo harum voluptatum nulla ullam natus beatae iste tempora ut fugiat!<\/p>\n        <p>Veritatis vero quis ipsum explicabo beatae consequatur, deleniti, tenetur assumenda sit quisquam soluta,\n          possimus magnam nostrum animi hic sapiente sed laudantium similique quas labore, voluptatem eius aliquam.\n          Sunt, ad aliquam!<\/p>\n        <p>Animi iste, optio mollitia, sint hic neque sed, quis labore deserunt esse delectus fugit impedit qui\n          consequatur reiciendis quam. Totam tenetur, mollitia. Porro optio similique perspiciatis aliquam ipsam vel\n          reprehenderit!<\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

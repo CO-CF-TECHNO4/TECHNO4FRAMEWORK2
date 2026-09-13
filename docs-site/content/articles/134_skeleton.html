@@ -1,0 +1,295 @@
+<h2>Каркас</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<div>Каркасний блок</div>
+
+    </li>
+        <li>
+        
+<div>Каркасний текст </div>
+
+    </li>
+        <li>
+        
+<div>Ефекти каркаса</div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS </div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Каркас</h3>
+<div>Techno4 Framework постачається з бібліотекою Skeleton Elements (така ж UI Skeletons, Skeleton Screens, Ghost Elements) — UI для покращеної продуктивності.
+<p>Бібліотека Skeleton Elements уже інтегрована у Techno4 Framework, і вам не потрібно встановлювати її окремо. Щоб отримати повну документацію щодо API та інші приклади, перегляньте офіційну документацію Skeleton Elements.</p>
+</div>
+<h3>Каркасний блок</h3>
+<div>Каркасний блок – це звичайний блок-елемент із сірим кольором фону, який може бути будь-якого необхідного розміру.
+<p>Щоб створити скелетний блоковий елемент, нам просто потрібно створити елемент  <code>div</code> із класом <code>skeleton-block</code> , а краще з фіксованою шириною:
+</div>
+<pre><code>...
+&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    &lt;li class=&quot;item-content&quot;&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-title&quot;&gt;
+          &lt;!-- Використовуйте каркасний блок замість заголовка елемента списку --&gt;
+          &lt;div class=&quot;skeleton-block&quot; style=&quot;width: 100px&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+...
+
+</code></pre>
+<h3>Каркасний текст </h3>
+<div>Скелетний текст більш цікавий. Techno4 Framework поставляється зі спеціальним вбудованим шрифтом Skeleton, який відображає кожен символ у вигляді маленького сірого прямокутника. Коли ми застосовуємо клас <code>skeleton-text</code> до будь-якого елемента, він перетворює текст на сірі блоки/лінії. Перевагою <code>skeleton-block</code> є те, що такий “каркасний текст» може бути повністю адаптивним, а його розмір відображатиме фактичний розмір тексту.
+Шрифт скелетного тексту підтримує наступний набір символів (включаючи «пробіл»):
+</div>
+<div>0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z _ -   . , : ; / ! / * & ' " | ( ) { } [ ]
+</div>
+<pre><code>...
+&lt;div class=&quot;list media-list&quot;&gt;
+  &lt;ul&gt;
+    &lt;!-- ми просто додаємо клас &quot;skeleton-text&quot; до елемента списку, і його текст буде відображено у вигляді сірих прямокутників --&gt;
+    &lt;li class=&quot;item-content skeleton-text&quot;&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-title-row&quot;&gt;
+          &lt;div class=&quot;item-title&quot;&gt;Item Title&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item-subtitle&quot;&gt;Item Subtitle&lt;/div&gt;
+        &lt;div class=&quot;item-text&quot;&gt;Item text goes here, and it will be rendered as gray box too.&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;!-- У наступному пункті ми використовуємо символ &quot;_&quot; замість фактичного тексту --&gt;
+    &lt;li class=&quot;item-content skeleton-text&quot;&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-title-row&quot;&gt;
+          &lt;div class=&quot;item-title&quot;&gt;____ _____&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item-subtitle&quot;&gt;____ _______&lt;/div&gt;
+        &lt;div class=&quot;item-text&quot;&gt;____ ____ ____ _____ ___ __ ____ __ ________ __ ____ ___ ____&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+...   
+</code></pre>
+<h3>Ефекти каркаса</h3>
+<div>Каркасні елементи також підтримують три ефекти анімації: <code>Fade</code>,<code>Wave</code> і <code>Pulse</code>.
+<p>Щоб увімкнути спеціальний ефект анімації каркаса, нам може знадобитися додати один із наступних класів до елементів каркаса або до батьківського елемента, що містить елементи каркаса:</p>
+<code>skeleton-effect-fade</code> - щоб додати ефект вицвітання<br>
+<code>skeleton-effect-wave</code>- додати ефект хвилі<br>
+<code>skeleton-effect-pulse</code> - додати пульсовий ефект
+</div>
+<h3>Змінні CSS</h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<pre><code>:root {
+  --skeleton-color: #ccc;
+  --skeleton-icon-color: rgba(0, 0, 0, 0.25);
+}
+.dark {
+  --skeleton-color: #515151;
+  --skeleton-icon-color: rgba(255, 255, 255, 0.25);
+}
+</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Skeleton Elements&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios&quot;&gt;
+        &lt;p&gt;Skeleton (or Ghost) elements designed to improve perceived performance and make app feels faster.&lt;/p&gt;
+        &lt;p&gt;Techno4 Framework comes with two types of such elements: Skeleton Block and Skeleton Text. Skeleton block is a gray
+          box that can be used as placeholder for any element. Skeleton text uses special built-in skeleton font to
+          render each character of such text as gray rectangle. Skeleton text allows to make such elements responsive
+          and feel more natural.&lt;/p&gt;
+        &lt;p&gt;It can be used in any places and with any elements.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;block-title&quot;&gt;Skeleton List&lt;/div&gt;
+      &lt;div class=&quot;list list-strong-ios list-outline-ios list-dividers-ios media-list skeleton-text&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;div class=&quot;skeleton-block&quot; style=&quot;width: 40px; height: 40px; border-radius: 50%&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Title&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;Subtitle&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;
+                Placeholder text line 1&lt;br /&gt;
+                Text line 2
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;div class=&quot;skeleton-block&quot; style=&quot;width: 40px; height: 40px; border-radius: 50%&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Title&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;Subtitle&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;
+                Placeholder text line 1&lt;br /&gt;
+                Text line 2
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;block-title&quot;&gt;Skeleton Card&lt;/div&gt;
+      &lt;div class=&quot;card card-outline skeleton-text&quot;&gt;
+        &lt;div class=&quot;card-header&quot;&gt;Card Header&lt;/div&gt;
+        &lt;div class=&quot;card-content card-content-padding&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+          lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.&lt;/div&gt;
+        &lt;div class=&quot;card-footer&quot;&gt;Card Footer&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;block-title&quot;&gt;Loading Effects&lt;/div&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios&quot;&gt;
+        &lt;p&gt;It supports few loading effects:&lt;/p&gt;
+        &lt;p class=&quot;grid grid-cols-3 grid-gap&quot;&gt;
+          &lt;a class=&quot;button button-fill button-small button-round&quot; @click=${()=&gt; load('fade')}&gt;Fade&lt;/a&gt;
+          &lt;a class=&quot;button button-fill button-small button-round&quot; @click=${()=&gt; load('wave')}&gt;Wave&lt;/a&gt;
+          &lt;a class=&quot;button button-fill button-small button-round&quot; @click=${()=&gt; load('pulse')}&gt;Pulse&lt;/a&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;list list-strong-ios list-outline-ios list-dividers-ios media-list&quot;&gt;
+        &lt;ul&gt;
+          ${loading ? $h`
+          &lt;li class=&quot;item-content skeleton-text skeleton-effect-${effect}&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;div class=&quot;skeleton-block&quot; style=&quot;width: 40px; height: 40px; border-radius: 50%&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Full Name&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;Position&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac
+                interdum. Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac iaculis.
+                Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum, nibh nisi
+                aliquet urna, nec imperdiet felis sapien at enim.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content skeleton-text skeleton-effect-${effect}&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;div class=&quot;skeleton-block&quot; style=&quot;width: 40px; height: 40px; border-radius: 50%&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Full Name&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;Position&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac
+                interdum. Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac iaculis.
+                Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum, nibh nisi
+                aliquet urna, nec imperdiet felis sapien at enim.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content skeleton-text skeleton-effect-${effect}&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;div class=&quot;skeleton-block&quot; style=&quot;width: 40px; height: 40px; border-radius: 50%&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Full Name&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;Position&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac
+                interdum. Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac iaculis.
+                Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum, nibh nisi
+                aliquet urna, nec imperdiet felis sapien at enim.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          ` : $h`
+          &lt;li class=&quot;item-content&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;img src=&quot;https://placeimg.com/80/80/people/1&quot; style=&quot;width: 40px; height: 40px; border-radius: 50%&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;John Doe&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;CEO&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac
+                interdum. Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac iaculis.
+                Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum, nibh nisi
+                aliquet urna, nec imperdiet felis sapien at enim.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;img src=&quot;https://placeimg.com/80/80/people/2&quot; style=&quot;width: 40px; height: 40px; border-radius: 50%&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Jane Doe&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;Marketing&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac
+                iaculis. Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum,
+                nibh nisi aliquet urna, nec imperdiet felis sapien at enim.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;img src=&quot;https://placeimg.com/80/80/people/3&quot; style=&quot;width: 40px; height: 40px; border-radius: 50%&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title-row&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Kate Johnson&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;item-subtitle&quot;&gt;Admin&lt;/div&gt;
+              &lt;div class=&quot;item-text&quot;&gt;Sed tincidunt, lectus eu convallis elementum, nibh nisi aliquet urna, nec imperdiet
+                felis sapien at enim.&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          `}
+
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, { $update }) =&gt; {
+    let loading = false;
+    let effect = null;
+
+    const load = (newEffect) =&gt; {
+      if (loading) return;
+      effect = newEffect;
+      loading = true;
+      $update();
+      setTimeout(function () {
+        loading = false;
+        $update();
+      }, 3000);
+    }
+    return $render;
+  }
+&lt;/script&gt;
+
+</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041a\u0430\u0440\u043a\u0430\u0441","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a -\u041a\u0430\u0440\u043a\u0430\u0441"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041a\u0430\u0440\u043a\u0430\u0441\u043d\u0438\u0439 \u0431\u043b\u043e\u043a"}},{"type":"nav_item","props":{"content":"\u041a\u0430\u0440\u043a\u0430\u0441\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442 "}},{"type":"nav_item","props":{"content":"\u0415\u0444\u0435\u043a\u0442\u0438 \u043a\u0430\u0440\u043a\u0430\u0441\u0430"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS "}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041a\u0430\u0440\u043a\u0430\u0441","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u0430\u0440\u043a\u0430\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"Techno4 Framework \u043f\u043e\u0441\u0442\u0430\u0447\u0430\u0454\u0442\u044c\u0441\u044f \u0437 \u0431\u0456\u0431\u043b\u0456\u043e\u0442\u0435\u043a\u043e\u044e Skeleton Elements (\u0442\u0430\u043a\u0430 \u0436 UI Skeletons, Skeleton Screens, Ghost Elements) \u2014 UI \u0434\u043b\u044f \u043f\u043e\u043a\u0440\u0430\u0449\u0435\u043d\u043e\u0457 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456.\n<p>\u0411\u0456\u0431\u043b\u0456\u043e\u0442\u0435\u043a\u0430 Skeleton Elements \u0443\u0436\u0435 \u0456\u043d\u0442\u0435\u0433\u0440\u043e\u0432\u0430\u043d\u0430 \u0443 Techno4 Framework, \u0456 \u0432\u0430\u043c \u043d\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u044e\u0432\u0430\u0442\u0438 \u0457\u0457 \u043e\u043a\u0440\u0435\u043c\u043e. \u0429\u043e\u0431 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u043f\u043e\u0432\u043d\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u044e \u0449\u043e\u0434\u043e API \u0442\u0430 \u0456\u043d\u0448\u0456 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0438, \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u044c\u0442\u0435 \u043e\u0444\u0456\u0446\u0456\u0439\u043d\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u044e Skeleton Elements.<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041a\u0430\u0440\u043a\u0430\u0441\u043d\u0438\u0439 \u0431\u043b\u043e\u043a","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u041a\u0430\u0440\u043a\u0430\u0441\u043d\u0438\u0439 \u0431\u043b\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u0430\u0440\u043a\u0430\u0441\u043d\u0438\u0439 \u0431\u043b\u043e\u043a \u2013 \u0446\u0435 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u0439 \u0431\u043b\u043e\u043a-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0456\u0437 \u0441\u0456\u0440\u0438\u043c \u043a\u043e\u043b\u044c\u043e\u0440\u043e\u043c \u0444\u043e\u043d\u0443, \u044f\u043a\u0438\u0439 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0433\u043e \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0440\u043e\u0437\u043c\u0456\u0440\u0443.\n<p>\u0429\u043e\u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0441\u043a\u0435\u043b\u0435\u0442\u043d\u0438\u0439 \u0431\u043b\u043e\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442, \u043d\u0430\u043c \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442  <code>div<\/code> \u0456\u0437 \u043a\u043b\u0430\u0441\u043e\u043c <code>skeleton-block<\/code> , \u0430 \u043a\u0440\u0430\u0449\u0435 \u0437 \u0444\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u043e\u044e \u0448\u0438\u0440\u0438\u043d\u043e\u044e:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"...\n<div class=\"list\">\n  <ul>\n    <li class=\"item-content\">\n      <div class=\"item-inner\">\n        <div class=\"item-title\">\n          <!-- \u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0439\u0442\u0435 \u043a\u0430\u0440\u043a\u0430\u0441\u043d\u0438\u0439 \u0431\u043b\u043e\u043a \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443 -->\n          <div class=\"skeleton-block\" style=\"width: 100px\"><\/div>\n        <\/div>\n      <\/div>\n    <\/li>\n  <\/ul>\n<\/div>\n...\n\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u0430\u0440\u043a\u0430\u0441\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u0430\u0440\u043a\u0430\u0441\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u0421\u043a\u0435\u043b\u0435\u0442\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442 \u0431\u0456\u043b\u044c\u0448 \u0446\u0456\u043a\u0430\u0432\u0438\u0439. Techno4 Framework \u043f\u043e\u0441\u0442\u0430\u0432\u043b\u044f\u0454\u0442\u044c\u0441\u044f \u0437\u0456 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u043c \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u043c \u0448\u0440\u0438\u0444\u0442\u043e\u043c Skeleton, \u044f\u043a\u0438\u0439 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454 \u043a\u043e\u0436\u0435\u043d \u0441\u0438\u043c\u0432\u043e\u043b \u0443 \u0432\u0438\u0433\u043b\u044f\u0434\u0456 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u0433\u043e \u0441\u0456\u0440\u043e\u0433\u043e \u043f\u0440\u044f\u043c\u043e\u043a\u0443\u0442\u043d\u0438\u043a\u0430. \u041a\u043e\u043b\u0438 \u043c\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u043e\u0432\u0443\u0454\u043c\u043e \u043a\u043b\u0430\u0441 <code>skeleton-text<\/code> \u0434\u043e \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u0432\u0456\u043d \u043f\u0435\u0440\u0435\u0442\u0432\u043e\u0440\u044e\u0454 \u0442\u0435\u043a\u0441\u0442 \u043d\u0430 \u0441\u0456\u0440\u0456 \u0431\u043b\u043e\u043a\u0438\/\u043b\u0456\u043d\u0456\u0457. \u041f\u0435\u0440\u0435\u0432\u0430\u0433\u043e\u044e <code>skeleton-block<\/code> \u0454 \u0442\u0435, \u0449\u043e \u0442\u0430\u043a\u0438\u0439 \u201c\u043a\u0430\u0440\u043a\u0430\u0441\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442\u00bb \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043f\u043e\u0432\u043d\u0456\u0441\u0442\u044e \u0430\u0434\u0430\u043f\u0442\u0438\u0432\u043d\u0438\u043c, \u0430 \u0439\u043e\u0433\u043e \u0440\u043e\u0437\u043c\u0456\u0440 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0442\u0438\u043c\u0435 \u0444\u0430\u043a\u0442\u0438\u0447\u043d\u0438\u0439 \u0440\u043e\u0437\u043c\u0456\u0440 \u0442\u0435\u043a\u0441\u0442\u0443.\n\u0428\u0440\u0438\u0444\u0442 \u0441\u043a\u0435\u043b\u0435\u0442\u043d\u043e\u0433\u043e \u0442\u0435\u043a\u0441\u0442\u0443 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u043d\u0430\u0431\u0456\u0440 \u0441\u0438\u043c\u0432\u043e\u043b\u0456\u0432 (\u0432\u043a\u043b\u044e\u0447\u0430\u044e\u0447\u0438 \u00ab\u043f\u0440\u043e\u0431\u0456\u043b\u00bb):\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z _ -   . , : ; \/ ! \/ * & ' \" | ( ) { } [ ]\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"...\n<div class=\"list media-list\">\n  <ul>\n    <!-- \u043c\u0438 \u043f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0454\u043c\u043e \u043a\u043b\u0430\u0441 \"skeleton-text\" \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443, \u0456 \u0439\u043e\u0433\u043e \u0442\u0435\u043a\u0441\u0442 \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043e \u0443 \u0432\u0438\u0433\u043b\u044f\u0434\u0456 \u0441\u0456\u0440\u0438\u0445 \u043f\u0440\u044f\u043c\u043e\u043a\u0443\u0442\u043d\u0438\u043a\u0456\u0432 -->\n    <li class=\"item-content skeleton-text\">\n      <div class=\"item-inner\">\n        <div class=\"item-title-row\">\n          <div class=\"item-title\">Item Title<\/div>\n        <\/div>\n        <div class=\"item-subtitle\">Item Subtitle<\/div>\n        <div class=\"item-text\">Item text goes here, and it will be rendered as gray box too.<\/div>\n      <\/div>\n    <\/li>\n    <!-- \u0423 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u043c\u0443 \u043f\u0443\u043d\u043a\u0442\u0456 \u043c\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u043c\u043e \u0441\u0438\u043c\u0432\u043e\u043b \"_\" \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u0444\u0430\u043a\u0442\u0438\u0447\u043d\u043e\u0433\u043e \u0442\u0435\u043a\u0441\u0442\u0443 -->\n    <li class=\"item-content skeleton-text\">\n      <div class=\"item-inner\">\n        <div class=\"item-title-row\">\n          <div class=\"item-title\">____ _____<\/div>\n        <\/div>\n        <div class=\"item-subtitle\">____ _______<\/div>\n        <div class=\"item-text\">____ ____ ____ _____ ___ __ ____ __ ________ __ ____ ___ ____<\/div>\n      <\/div>\n    <\/li>\n  <\/ul>\n<\/div>\n...   \n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0415\u0444\u0435\u043a\u0442\u0438 \u043a\u0430\u0440\u043a\u0430\u0441\u0430","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0415\u0444\u0435\u043a\u0442\u0438 \u043a\u0430\u0440\u043a\u0430\u0441\u0430"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u0430\u0440\u043a\u0430\u0441\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0442\u0430\u043a\u043e\u0436 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u044e\u0442\u044c \u0442\u0440\u0438 \u0435\u0444\u0435\u043a\u0442\u0438 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457: <code>Fade<\/code>,<code>Wave<\/code> \u0456 <code>Pulse<\/code>.\n<p>\u0429\u043e\u0431 \u0443\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u0439 \u0435\u0444\u0435\u043a\u0442 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u043a\u0430\u0440\u043a\u0430\u0441\u0430, \u043d\u0430\u043c \u043c\u043e\u0436\u0435 \u0437\u043d\u0430\u0434\u043e\u0431\u0438\u0442\u0438\u0441\u044f \u0434\u043e\u0434\u0430\u0442\u0438 \u043e\u0434\u0438\u043d \u0456\u0437 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432 \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u043a\u0430\u0440\u043a\u0430\u0441\u0430 \u0430\u0431\u043e \u0434\u043e \u0431\u0430\u0442\u044c\u043a\u0456\u0432\u0441\u044c\u043a\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u0449\u043e \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0430\u0440\u043a\u0430\u0441\u0430:<\/p>\n<code>skeleton-effect-fade<\/code> - \u0449\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u0438 \u0435\u0444\u0435\u043a\u0442 \u0432\u0438\u0446\u0432\u0456\u0442\u0430\u043d\u043d\u044f<br>\n<code>skeleton-effect-wave<\/code>- \u0434\u043e\u0434\u0430\u0442\u0438 \u0435\u0444\u0435\u043a\u0442 \u0445\u0432\u0438\u043b\u0456<br>\n<code>skeleton-effect-pulse<\/code> - \u0434\u043e\u0434\u0430\u0442\u0438 \u043f\u0443\u043b\u044c\u0441\u043e\u0432\u0438\u0439 \u0435\u0444\u0435\u043a\u0442\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --skeleton-color: #ccc;\n  --skeleton-icon-color: rgba(0, 0, 0, 0.25);\n}\n.dark {\n  --skeleton-color: #515151;\n  --skeleton-icon-color: rgba(255, 255, 255, 0.25);\n}\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"title\">Skeleton Elements<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block block-strong-ios block-outline-ios\">\n        <p>Skeleton (or Ghost) elements designed to improve perceived performance and make app feels faster.<\/p>\n        <p>Techno4 Framework comes with two types of such elements: Skeleton Block and Skeleton Text. Skeleton block is a gray\n          box that can be used as placeholder for any element. Skeleton text uses special built-in skeleton font to\n          render each character of such text as gray rectangle. Skeleton text allows to make such elements responsive\n          and feel more natural.<\/p>\n        <p>It can be used in any places and with any elements.<\/p>\n      <\/div>\n\n      <div class=\"block-title\">Skeleton List<\/div>\n      <div class=\"list list-strong-ios list-outline-ios list-dividers-ios media-list skeleton-text\">\n        <ul>\n          <li class=\"item-content\">\n            <div class=\"item-media\">\n              <div class=\"skeleton-block\" style=\"width: 40px; height: 40px; border-radius: 50%\"><\/div>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">Title<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">Subtitle<\/div>\n              <div class=\"item-text\">\n                Placeholder text line 1<br \/>\n                Text line 2\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content\">\n            <div class=\"item-media\">\n              <div class=\"skeleton-block\" style=\"width: 40px; height: 40px; border-radius: 50%\"><\/div>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">Title<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">Subtitle<\/div>\n              <div class=\"item-text\">\n                Placeholder text line 1<br \/>\n                Text line 2\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n\n      <div class=\"block-title\">Skeleton Card<\/div>\n      <div class=\"card card-outline skeleton-text\">\n        <div class=\"card-header\">Card Header<\/div>\n        <div class=\"card-content card-content-padding\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi\n          lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.<\/div>\n        <div class=\"card-footer\">Card Footer<\/div>\n      <\/div>\n\n      <div class=\"block-title\">Loading Effects<\/div>\n      <div class=\"block block-strong-ios block-outline-ios\">\n        <p>It supports few loading effects:<\/p>\n        <p class=\"grid grid-cols-3 grid-gap\">\n          <a class=\"button button-fill button-small button-round\" @click=${()=> load('fade')}>Fade<\/a>\n          <a class=\"button button-fill button-small button-round\" @click=${()=> load('wave')}>Wave<\/a>\n          <a class=\"button button-fill button-small button-round\" @click=${()=> load('pulse')}>Pulse<\/a>\n        <\/p>\n      <\/div>\n      <div class=\"list list-strong-ios list-outline-ios list-dividers-ios media-list\">\n        <ul>\n          ${loading ? $h`\n          <li class=\"item-content skeleton-text skeleton-effect-${effect}\">\n            <div class=\"item-media\">\n              <div class=\"skeleton-block\" style=\"width: 40px; height: 40px; border-radius: 50%\"><\/div>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">Full Name<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">Position<\/div>\n              <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac\n                interdum. Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac iaculis.\n                Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum, nibh nisi\n                aliquet urna, nec imperdiet felis sapien at enim.<\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content skeleton-text skeleton-effect-${effect}\">\n            <div class=\"item-media\">\n              <div class=\"skeleton-block\" style=\"width: 40px; height: 40px; border-radius: 50%\"><\/div>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">Full Name<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">Position<\/div>\n              <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac\n                interdum. Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac iaculis.\n                Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum, nibh nisi\n                aliquet urna, nec imperdiet felis sapien at enim.<\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content skeleton-text skeleton-effect-${effect}\">\n            <div class=\"item-media\">\n              <div class=\"skeleton-block\" style=\"width: 40px; height: 40px; border-radius: 50%\"><\/div>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">Full Name<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">Position<\/div>\n              <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac\n                interdum. Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac iaculis.\n                Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum, nibh nisi\n                aliquet urna, nec imperdiet felis sapien at enim.<\/div>\n            <\/div>\n          <\/li>\n          ` : $h`\n          <li class=\"item-content\">\n            <div class=\"item-media\">\n              <img src=\"https:\/\/placeimg.com\/80\/80\/people\/1\" style=\"width: 40px; height: 40px; border-radius: 50%\" \/>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">John Doe<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">CEO<\/div>\n              <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac\n                interdum. Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac iaculis.\n                Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum, nibh nisi\n                aliquet urna, nec imperdiet felis sapien at enim.<\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content\">\n            <div class=\"item-media\">\n              <img src=\"https:\/\/placeimg.com\/80\/80\/people\/2\" style=\"width: 40px; height: 40px; border-radius: 50%\" \/>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">Jane Doe<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">Marketing<\/div>\n              <div class=\"item-text\">Cras consequat felis at consequat hendrerit. Aliquam vestibulum vitae lorem ac\n                iaculis. Praesent nec pharetra massa, at blandit lectus. Sed tincidunt, lectus eu convallis elementum,\n                nibh nisi aliquet urna, nec imperdiet felis sapien at enim.<\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content\">\n            <div class=\"item-media\">\n              <img src=\"https:\/\/placeimg.com\/80\/80\/people\/3\" style=\"width: 40px; height: 40px; border-radius: 50%\" \/>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title-row\">\n                <div class=\"item-title\">Kate Johnson<\/div>\n              <\/div>\n              <div class=\"item-subtitle\">Admin<\/div>\n              <div class=\"item-text\">Sed tincidunt, lectus eu convallis elementum, nibh nisi aliquet urna, nec imperdiet\n                felis sapien at enim.<\/div>\n            <\/div>\n          <\/li>\n          `}\n\n        <\/ul>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, { $update }) => {\n    let loading = false;\n    let effect = null;\n\n    const load = (newEffect) => {\n      if (loading) return;\n      effect = newEffect;\n      loading = true;\n      $update();\n      setTimeout(function () {\n        loading = false;\n        $update();\n      }, 3000);\n    }\n    return $render;\n  }\n<\/script>\n\n"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 \u0437 \u043c\u0435\u043d\u044e"}],"version":"4.3.5","yooessentialsVersion":"2.2.6"} -->

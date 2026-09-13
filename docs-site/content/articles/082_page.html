@@ -1,0 +1,443 @@
+<h2>Сторінка</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет сторінки </a>
+
+<p>Назва сторінки  	<p>Вміст сторінки </p>
+    </li>
+        <li>
+        
+<div>Події Сторінки </div>
+
+    </li>
+        <li>
+        
+<div>Класи послідовності завантаження сторінки </div>
+
+    </li>
+        <li>
+        
+<div>Дані сторінки </div>
+
+    </li>
+        <li>
+        
+<div>Доступ до даних сторінки </div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS </div>
+
+    </li>
+    </ul>
+<h3>Сторінка</h3>
+<div>Сторінка — це один із основних компонентів (контейнерів), який використовується для відображення вмісту застосунку.</div>
+<h3>Макет сторінки</h3>
+<pre><code>&lt;div class=&quot;page&quot; data-name=&quot;home&quot;&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    ... scrollable page content goes here ...
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h4>Назва сторінки</h4>
+<div>Як ви можете помітити, кожна сторінка має <code>data-name</code> атрибут з унікальною назвою сторінки. Це не обов’язково, але може бути корисним у «подіях сторінки» або «зворотних викликах сторінки». Це може допомогти нам визначити, яка сторінка завантажена та доступна, щоб ви могли виконувати необхідні маніпуляції на сторінці.</div>
+<h4>Вміст сторінки</h4>
+<div>Увесь візуальний вміст (як-от перегляди списків, форми тощо) слід розміщувати всередині, <code>&lt;div class="page-content"&gt;</code>який має бути дочірнім елементом <code>&lt;div class="page"&gt;</code>. Це необхідно для правильного стилю, компонування та прокручування.</div>
+<h3>Події сторінки </h3>
+<div>Тепер давайте розглянемо одну з найважливіших частин навігації сторінкою, «події сторінки». Події сторінок дозволяють нам маніпулювати щойно завантаженими сторінками, виконуючи JavaScript для цих конкретних сторінок:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:mounted</td>
+
+<td>Подія буде ініційована, коли нова сторінка щойно вставлена в DOM. Або коли сторінка з <code>keepAlive</code> маршрутом монтується/приєднується до DOM</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:init</td>
+
+<td>Подія буде запущена після того, як Techno4 ініціалізує необхідні компоненти сторінки та панель навігації <code>navbar</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:reinit</td>
+
+<td>Ця подія буде ініційована у разі переходу на сторінку, яка вже була ініціалізована.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:beforein</td>
+
+<td>Подія буде ініційована, коли все буде ініціалізовано і сторінка буде готова до переходу в режим перегляду (в активне/поточне положення)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:afterin</td>
+
+<td>Подія буде ініційована після переходу сторінки у режим перегляду</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:beforeout</td>
+
+<td>Подія буде ініційована безпосередньо перед тим, як сторінку буде виведено з поля зору</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:afterout</td>
+
+<td>Подія буде ініційована після переходу сторінки з поля зору</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:beforeunmount</td>
+
+<td>Подія буде ініційована, коли сторінку з <code>keepAlive</code> маршрутом буде демонтовано/від’єднано від DOM</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:beforeremove</td>
+
+<td>Подія буде ініційована безпосередньо перед видаленням сторінки з DOM. Ця подія може бути дуже корисною, якщо вам потрібно від'єднати деякі події / знищити деякі плагіни, щоб звільнити пам'ять. Ця подія не буде ініційована для <code>keepAlive</code> маршрутів.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:tabshow</td>
+
+<td>Подія буде ініційована, коли батьківська сторінка <code>View as Tab</code> стане видимою</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сторінки <p><code>&lt;div class="page"&gt;</code></td>
+
+<td>page:tabhide</td>
+
+<td>Подія буде ініційована, коли батьківська сторінка <code>View as Tab</code> стане прихованою
+
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<div>Давайте подивимося, як ми можемо використовувати ці події. Є два способи додати обробники подій сторінки:</div>
+<pre><code>// Варіант 1. Використання одного обробника 'page:init' для всіх сторінок
+$$(document).on('page:init', function (e) {
+  // Зробити щось тут, коли сторінка завантажиться та ініціалізується
+
+})
+
+// Варіант 2. Використання живих обробників подій 'page:init' для кожної сторінки
+$$(document).on('page:init', '.page[data-name=&quot;about&quot;]', function (e) {
+  // Зробити щось тут, коли сторінка з атрибутом data-name=&quot;about&quot; завантажується та ініціалізується
+
+})
+</code></pre>
+<h3>Класи послідовності завантаження сторінки</h3>
+<div>Коли нова сторінка завантажується та переходить у вікно перегляду (основна видима частина програми), вона має різні класи на елементі сторінки.
+Коли ми завантажуємо/відкриваємо нову сторінку, відбувається наступне:
+
+<p>1.	На поточній активній сторінці є клас <code>page-current</code> .</p>
+<p>2.	Якщо сторінку ми завантажуємо не в DOM (наприклад, завантажуємо через Ajax, за допомогою шаблону чи з компонента), вона буде додана до DOM.</p>
+<p>3.	Сторінка, яку ми завантажуємо/відкриваємо, матиме додатковий клас <code>page-next</code> , встановлений на своєму елементі.</p>
+<p>4.	Елемент маршрутизатора (<code>&lt;div class="view"&gt;</code>) матиме додатковий <code>router-transition-forward</code> клас, який виконує наступне:</p>
+<p>○	<code>page with page-next</code> (нова сторінка)переміщується в подання  у  <code>view</code>
+<p>○	<code>page with page-current</code> (поточна сторінка)клас переміщується з перегляду <code>view</code></p> 
+<p>5.	Після завершення переходу нова сторінка, яку ми завантажили, матиме клас <code>page-current</code></p> 
+<p>6.	І сторінка, яка раніше була активною, матиме клас <code>page-previous</code></p> 
+</div>
+<div>Коли ми завантажуємо/відкриваємо попередню сторінку (повертаємося назад), відбувається наступне:
+<p>1.	На поточній активній сторінці є клас <code>page-current</code>.</p> 
+<p>2.	Якщо сторінка, до якої ми повертаємося, не в DOM (наприклад, завантажена через Ajax, за допомогою шаблону чи з компонента), вона буде додана до DOM.</p>
+<p>3.	Сторінка, до якої ми повертаємося, матиме додатковий клас <code>page-previous</code> , встановлений для свого елемента.</p>
+<p>4.	Елемент маршрутизатора ( <code>&lt;div class="view"&gt;</code>) матиме додатковий клас <code>router-transition-backward</code> , який виконує наступне:</p>
+<p>○	<code>page with page-previous</code> (сторінка, на яку ми повертаємось) клас переміщується у  <code>view</code></p>
+<p>○	<code>page with page-current</code> (поточна сторінка) клас переміщується з перегляду</p>
+<p>5.	Після завершення переходу нова сторінка, до якої ми повернулися, матиме клас <code>page-current</code></p> 
+<p>6.	І сторінка, яка раніше була активною, матиме клас <code>page-next</code> . Якщо цю сторінку було додано до DOM динамічно, вона буде видалена з DOM.</p>
+</div>
+<h3>Дані сторінки</h3>
+<div>Як бачите, це досить легко, але як визначити, яка сторінка завантажується, коли ми використовуємо лише один обробник? Для цього випадку ми маємо дані сторінки в деталях події:</div>
+<pre><code>// В подіях сторінки:
+$$(document).on('page:init', function (e) {
+  // Page Data містить всю необхідну інформація про  завантажені  та ініціалізовані сторінки  
+  var page = e.detail;
+</code></pre>
+<div>Або у випадку, якщо обробник події було призначено за допомогою Dom64, як у прикладі вище, тоді він буде переданий у другому аргументі:</div>
+<pre><code>// В подіях сторінки:
+$$(document).on('page:init', function (e, page) {
+  console.log(page);
+})
+</code></pre>
+<div>Тепер у прикладі вище ми маємо дані сторінки в змінній <code>page</code> . Це об’єкт із такими властивостями:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>page.app</td>
+
+<td>Ініціалізований екземпляр застосунку </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.view</td>
+
+<td>Переглянути екземпляр, який містить цю сторінку (якщо це представлення було ініціалізовано)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.router</td>
+
+<td>Примірник маршрутизатора, який містить цю сторінку (якщо це представлення було ініціалізовано). Такий же, як <code>‘page.view.router’</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.name</td>
+
+<td><code>‘data-name’</code> Значення атрибута сторінки</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.el</td>
+
+<td>Елемент сторінки</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.$el</td>
+
+<td>Екземпляр Dom64 з елементом Page</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.from</td>
+
+<td>Позиція сторінки перед переходом або напрямок, звідки походить ця сторінка. Це буде, <code>next</code> якщо ви завантажите нову сторінку, <code>previous</code>- якщо ви повернетесь на цю сторінку, або <code>current</code> якщо ця сторінка замінить поточну активну.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.to</td>
+
+<td>Нова позиція сторінки або місце, куди ця сторінка переходить. Може бути таким же <code>next</code>, <code>previous</code> або <code>current</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.position</td>
+
+<td>Псевдонім для <code>page.from</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.direction</td>
+
+<td>Напрямок переходу сторінки (за наявності). Може бути <code>forward</code> або <code>backward</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.route</td>
+
+<td>Маршрут, пов’язаний із цією сторінкою, об’єкт із поточними даними маршруту, який використовувався для завантаження цієї сторінки. Має такі властивості
+<p>●	<code>url</code>- URL маршруту</p>
+<p>●	<code>path</code>- шлях маршруту</p>
+<p>●	<code>query</code>- об'єкт із запитом маршруту. Якщо URL-адреса є,<code> /page/?id=5&foo=bar</code> вона міститиме наступний об’єкт<code>{id: '5', foo: 'bar'}</code></p>
+<p>●	<code>params</code>- параметри маршруту. Якщо у нас є відповідний маршрут із <code>/page/user/:userId/post/:postId/</code>шляхом і URL-адресою сторінки, то <code>/page/user/55/post/12/</code>це буде наступний об’єкт<code>{userId: '55', postId: '12'}</code></p>
+<p>●	<code>name</code>- назва маршруту</p>
+<p>●	<code>hash</code>- хеш URL-адреси маршруту</p>
+<p>●	<code>route</code>- об'єкт із відповідним маршрутом із доступних маршрутів</p>
+<p>●	<code>context</code>- контекст, який було передано маршруту</p></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+
+<td>page.pageFrom</td>
+
+<td>Дані сторінки, яка була активна до цієї нової сторінки.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Доступ до даних сторінки</h3>
+<div>Якщо ви не використовуєте події/зворотні виклики сторінки та потребуєте доступу до даних сторінки, це можливо через властивість <code>t4Page</code> її HTMLElement:</div>
+<pre><code>var $$ = Dom64;
+
+var page = $$('.page[data-name=&quot;somepage&quot;]')[0].t4Page;
+
+// Зробити щось з даними сторінки
+</code></pre>
+<h3>Змінні CSS </h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  --t4-page-master-width: 320px;
+  --t4-page-master-border-color: rgba(0, 0, 0, 0.1);
+  --t4-page-master-border-width: 1px;
+  --t4-page-swipeback-transition-duration: 300ms;
+  --t4-page-parallax-transition-duration: 500ms;
+  --t4-page-cover-transition-duration: 450ms;
+  --t4-page-dive-transition-duration: 500ms;
+  --t4-page-fade-transition-duration: 500ms;
+  --t4-page-flip-transition-duration: 700ms;
+  --t4-page-push-transition-duration: 500ms;
+  /*
+  --t4-page-content-extra-padding-top: 0px;
+  --t4-page-content-extra-padding-bottom: 0px;
+  */
+  --t4-page-title-line-height: 1.2;
+  --t4-page-title-text-color: inherit;
+  --t4-page-title-padding-left: 16px;
+  --t4-page-title-padding-right: 16px;
+}
+.ios {
+  --t4-page-transition-duration: 400ms;
+  --t4-page-title-font-size: 34px;
+  --t4-page-title-font-weight: 700;
+  --t4-page-title-letter-spacing: -0.03em;
+  --t4-page-title-padding-vertical: 6px;
+  --t4-page-bg-color: #efeff4;
+}
+.ios .dark,
+.ios.dark {
+  --t4-page-bg-color: #000;
+}
+.md {
+  --t4-page-transition-duration: 400ms;
+  --t4-page-title-font-size: 34px;
+  --t4-page-title-font-weight: 500;
+  --t4-page-title-letter-spacing: 0;
+  --t4-page-title-padding-vertical: 8px;
+}
+.md,
+.md .dark,
+.md [class*='color-'] {
+  --t4-page-bg-color: var(--t4-md-surface);
+}
+.dark {
+  --t4-page-master-border-color: rgba(255, 255, 255, 0.2);
+}</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 ","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general","meta":"\u041d\u0430\u0437\u0432\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438  \t<p>\u0412\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 "}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0438 "}},{"type":"nav_item","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u043f\u043e\u0441\u043b\u0456\u0434\u043e\u0432\u043d\u043e\u0441\u0442\u0456 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 "}},{"type":"nav_item","props":{"content":"\u0414\u0430\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 "}},{"type":"nav_item","props":{"content":"\u0414\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u0434\u0430\u043d\u0438\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 "}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS "}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u2014 \u0446\u0435 \u043e\u0434\u0438\u043d \u0456\u0437 \u043e\u0441\u043d\u043e\u0432\u043d\u0438\u0445 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432 (\u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0456\u0432), \u044f\u043a\u0438\u0439 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0432\u043c\u0456\u0441\u0442\u0443 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438"},{"type":"code","props":{"content":"<div class=\"page\" data-name=\"home\">\n  <div class=\"page-content\">\n    ... scrollable page content goes here ...\n  <\/div>\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041d\u0430\u0437\u0432\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041d\u0430\u0437\u0432\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u043c\u0456\u0442\u0438\u0442\u0438, \u043a\u043e\u0436\u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u043c\u0430\u0454 <code>data-name<\/code> \u0430\u0442\u0440\u0438\u0431\u0443\u0442 \u0437 \u0443\u043d\u0456\u043a\u0430\u043b\u044c\u043d\u043e\u044e \u043d\u0430\u0437\u0432\u043e\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438. \u0426\u0435 \u043d\u0435 \u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u043e, \u0430\u043b\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c \u0443 \u00ab\u043f\u043e\u0434\u0456\u044f\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438\u00bb \u0430\u0431\u043e \u00ab\u0437\u0432\u043e\u0440\u043e\u0442\u043d\u0438\u0445 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438\u00bb. \u0426\u0435 \u043c\u043e\u0436\u0435 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0442\u0438 \u043d\u0430\u043c \u0432\u0438\u0437\u043d\u0430\u0447\u0438\u0442\u0438, \u044f\u043a\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u0430 \u0442\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430, \u0449\u043e\u0431 \u0432\u0438 \u043c\u043e\u0433\u043b\u0438 \u0432\u0438\u043a\u043e\u043d\u0443\u0432\u0430\u0442\u0438 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u043c\u0430\u043d\u0456\u043f\u0443\u043b\u044f\u0446\u0456\u0457 \u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0423\u0432\u0435\u0441\u044c \u0432\u0456\u0437\u0443\u0430\u043b\u044c\u043d\u0438\u0439 \u0432\u043c\u0456\u0441\u0442 (\u044f\u043a-\u043e\u0442 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0438 \u0441\u043f\u0438\u0441\u043a\u0456\u0432, \u0444\u043e\u0440\u043c\u0438 \u0442\u043e\u0449\u043e) \u0441\u043b\u0456\u0434 \u0440\u043e\u0437\u043c\u0456\u0449\u0443\u0432\u0430\u0442\u0438 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456, <code>&lt;div class=\"page-content\"&gt;<\/code>\u044f\u043a\u0438\u0439 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c <code>&lt;div class=\"page\"&gt;<\/code>. \u0426\u0435 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0433\u043e \u0441\u0442\u0438\u043b\u044e, \u043a\u043e\u043c\u043f\u043e\u043d\u0443\u0432\u0430\u043d\u043d\u044f \u0442\u0430 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u043e\u0434\u043d\u0443 \u0437 \u043d\u0430\u0439\u0432\u0430\u0436\u043b\u0438\u0432\u0456\u0448\u0438\u0445 \u0447\u0430\u0441\u0442\u0438\u043d \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u043e\u044e, \u00ab\u043f\u043e\u0434\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438\u00bb. \u041f\u043e\u0434\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a \u0434\u043e\u0437\u0432\u043e\u043b\u044f\u044e\u0442\u044c \u043d\u0430\u043c \u043c\u0430\u043d\u0456\u043f\u0443\u043b\u044e\u0432\u0430\u0442\u0438 \u0449\u043e\u0439\u043d\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u0438\u043c\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430\u043c\u0438, \u0432\u0438\u043a\u043e\u043d\u0443\u044e\u0447\u0438 JavaScript \u0434\u043b\u044f \u0446\u0438\u0445 \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u0438\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u043e\u0432\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0449\u043e\u0439\u043d\u043e \u0432\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0430 \u0432 DOM. \u0410\u0431\u043e \u043a\u043e\u043b\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437 <code>keepAlive<\/code> \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u043e\u043c \u043c\u043e\u043d\u0442\u0443\u0454\u0442\u044c\u0441\u044f\/\u043f\u0440\u0438\u0454\u0434\u043d\u0443\u0454\u0442\u044c\u0441\u044f \u0434\u043e DOM","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:mounted","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u0442\u043e\u0433\u043e, \u044f\u043a Techno4 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0454 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 <code>navbar<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:init","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u0426\u044f \u043f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u0443 \u0440\u0430\u0437\u0456 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443, \u044f\u043a\u0430 \u0432\u0436\u0435 \u0431\u0443\u043b\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0430.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:reinit","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0432\u0441\u0435 \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u043e \u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0431\u0443\u0434\u0435 \u0433\u043e\u0442\u043e\u0432\u0430 \u0434\u043e \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0432 \u0440\u0435\u0436\u0438\u043c \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 (\u0432 \u0430\u043a\u0442\u0438\u0432\u043d\u0435\/\u043f\u043e\u0442\u043e\u0447\u043d\u0435 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u044f)","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:beforein","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0443 \u0440\u0435\u0436\u0438\u043c \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:afterin","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0431\u0443\u0434\u0435 \u0432\u0438\u0432\u0435\u0434\u0435\u043d\u043e \u0437 \u043f\u043e\u043b\u044f \u0437\u043e\u0440\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:beforeout","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0437 \u043f\u043e\u043b\u044f \u0437\u043e\u0440\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:afterout","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0437 <code>keepAlive<\/code> \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u043e\u043c \u0431\u0443\u0434\u0435 \u0434\u0435\u043c\u043e\u043d\u0442\u043e\u0432\u0430\u043d\u043e\/\u0432\u0456\u0434\u2019\u0454\u0434\u043d\u0430\u043d\u043e \u0432\u0456\u0434 DOM","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:beforeunmount","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f\u043c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0437 DOM. \u0426\u044f \u043f\u043e\u0434\u0456\u044f \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0434\u0443\u0436\u0435 \u043a\u043e\u0440\u0438\u0441\u043d\u043e\u044e, \u044f\u043a\u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0456\u0434'\u0454\u0434\u043d\u0430\u0442\u0438 \u0434\u0435\u044f\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 \/ \u0437\u043d\u0438\u0449\u0438\u0442\u0438 \u0434\u0435\u044f\u043a\u0456 \u043f\u043b\u0430\u0433\u0456\u043d\u0438, \u0449\u043e\u0431 \u0437\u0432\u0456\u043b\u044c\u043d\u0438\u0442\u0438 \u043f\u0430\u043c'\u044f\u0442\u044c. \u0426\u044f \u043f\u043e\u0434\u0456\u044f \u043d\u0435 \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u0434\u043b\u044f <code>keepAlive<\/code> \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:beforeremove","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0431\u0430\u0442\u044c\u043a\u0456\u0432\u0441\u044c\u043a\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 <code>View as Tab<\/code> \u0441\u0442\u0430\u043d\u0435 \u0432\u0438\u0434\u0438\u043c\u043e\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:tabshow","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0431\u0430\u0442\u044c\u043a\u0456\u0432\u0441\u044c\u043a\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 <code>View as Tab<\/code> \u0441\u0442\u0430\u043d\u0435 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u043e\u044e\n\n","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page:tabhide","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <p><code>&lt;div class=\"page\"&gt;<\/code>"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f, \u044f\u043a \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0446\u0456 \u043f\u043e\u0434\u0456\u0457. \u0404 \u0434\u0432\u0430 \u0441\u043f\u043e\u0441\u043e\u0431\u0438 \u0434\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u043f\u043e\u0434\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"\/\/ \u0412\u0430\u0440\u0456\u0430\u043d\u0442 1. \u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430 'page:init' \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a\n$$(document).on('page:init', function (e) {\n  \/\/ \u0417\u0440\u043e\u0431\u0438\u0442\u0438 \u0449\u043e\u0441\u044c \u0442\u0443\u0442, \u043a\u043e\u043b\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u044c\u0441\u044f \u0442\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0454\u0442\u044c\u0441\u044f\n\n})\n\n\/\/ \u0412\u0430\u0440\u0456\u0430\u043d\u0442 2. \u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0436\u0438\u0432\u0438\u0445 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0456\u0432 \u043f\u043e\u0434\u0456\u0439 'page:init' \u0434\u043b\u044f \u043a\u043e\u0436\u043d\u043e\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438\n$$(document).on('page:init', '.page[data-name=\"about\"]', function (e) {\n  \/\/ \u0417\u0440\u043e\u0431\u0438\u0442\u0438 \u0449\u043e\u0441\u044c \u0442\u0443\u0442, \u043a\u043e\u043b\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u043e\u043c data-name=\"about\" \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u0442\u044c\u0441\u044f \u0442\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0454\u0442\u044c\u0441\u044f\n\n})\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u043f\u043e\u0441\u043b\u0456\u0434\u043e\u0432\u043d\u043e\u0441\u0442\u0456 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043b\u0430\u0441\u0438 \u043f\u043e\u0441\u043b\u0456\u0434\u043e\u0432\u043d\u043e\u0441\u0442\u0456 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u043e\u043b\u0438 \u043d\u043e\u0432\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u0442\u044c\u0441\u044f \u0442\u0430 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0438\u0442\u044c \u0443 \u0432\u0456\u043a\u043d\u043e \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 (\u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0438\u0434\u0438\u043c\u0430 \u0447\u0430\u0441\u0442\u0438\u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438), \u0432\u043e\u043d\u0430 \u043c\u0430\u0454 \u0440\u0456\u0437\u043d\u0456 \u043a\u043b\u0430\u0441\u0438 \u043d\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438.\n\u041a\u043e\u043b\u0438 \u043c\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u043c\u043e\/\u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0454\u043c\u043e \u043d\u043e\u0432\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443, \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0454\u0442\u044c\u0441\u044f \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0435:\n\n<p>1.\t\u041d\u0430 \u043f\u043e\u0442\u043e\u0447\u043d\u0456\u0439 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 \u0454 \u043a\u043b\u0430\u0441 <code>page-current<\/code> .<\/p>\n<p>2.\t\u042f\u043a\u0449\u043e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u043c\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u043c\u043e \u043d\u0435 \u0432 DOM (\u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u043c\u043e \u0447\u0435\u0440\u0435\u0437 Ajax, \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0448\u0430\u0431\u043b\u043e\u043d\u0443 \u0447\u0438 \u0437 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430), \u0432\u043e\u043d\u0430 \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u0430 \u0434\u043e DOM.<\/p>\n<p>3.\t\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430, \u044f\u043a\u0443 \u043c\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u043c\u043e\/\u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0454\u043c\u043e, \u043c\u0430\u0442\u0438\u043c\u0435 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>page-next<\/code> , \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0439 \u043d\u0430 \u0441\u0432\u043e\u0454\u043c\u0443 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456.<\/p>\n<p>4.\t\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430 (<code>&lt;div class=\"view\"&gt;<\/code>) \u043c\u0430\u0442\u0438\u043c\u0435 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 <code>router-transition-forward<\/code> \u043a\u043b\u0430\u0441, \u044f\u043a\u0438\u0439 \u0432\u0438\u043a\u043e\u043d\u0443\u0454 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0435:<\/p>\n<p>\u25cb\t<code>page with page-next<\/code> (\u043d\u043e\u0432\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430)\u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0443\u0454\u0442\u044c\u0441\u044f \u0432 \u043f\u043e\u0434\u0430\u043d\u043d\u044f  \u0443  <code>view<\/code>\n<p>\u25cb\t<code>page with page-current<\/code> (\u043f\u043e\u0442\u043e\u0447\u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430)\u043a\u043b\u0430\u0441 \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0443\u0454\u0442\u044c\u0441\u044f \u0437 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 <code>view<\/code><\/p> \n<p>5.\t\u041f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u043d\u043e\u0432\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430, \u044f\u043a\u0443 \u043c\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u043b\u0438, \u043c\u0430\u0442\u0438\u043c\u0435 \u043a\u043b\u0430\u0441 <code>page-current<\/code><\/p> \n<p>6.\t\u0406 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430, \u044f\u043a\u0430 \u0440\u0430\u043d\u0456\u0448\u0435 \u0431\u0443\u043b\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u044e, \u043c\u0430\u0442\u0438\u043c\u0435 \u043a\u043b\u0430\u0441 <code>page-previous<\/code><\/p> \n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u043e\u043b\u0438 \u043c\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u043c\u043e\/\u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0454\u043c\u043e \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 (\u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454\u043c\u043e\u0441\u044f \u043d\u0430\u0437\u0430\u0434), \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0454\u0442\u044c\u0441\u044f \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0435:\n<p>1.\t\u041d\u0430 \u043f\u043e\u0442\u043e\u0447\u043d\u0456\u0439 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 \u0454 \u043a\u043b\u0430\u0441 <code>page-current<\/code>.<\/p> \n<p>2.\t\u042f\u043a\u0449\u043e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430, \u0434\u043e \u044f\u043a\u043e\u0457 \u043c\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454\u043c\u043e\u0441\u044f, \u043d\u0435 \u0432 DOM (\u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u0430 \u0447\u0435\u0440\u0435\u0437 Ajax, \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0448\u0430\u0431\u043b\u043e\u043d\u0443 \u0447\u0438 \u0437 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430), \u0432\u043e\u043d\u0430 \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u0430 \u0434\u043e DOM.<\/p>\n<p>3.\t\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430, \u0434\u043e \u044f\u043a\u043e\u0457 \u043c\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454\u043c\u043e\u0441\u044f, \u043c\u0430\u0442\u0438\u043c\u0435 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>page-previous<\/code> , \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0439 \u0434\u043b\u044f \u0441\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430.<\/p>\n<p>4.\t\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430 ( <code>&lt;div class=\"view\"&gt;<\/code>) \u043c\u0430\u0442\u0438\u043c\u0435 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>router-transition-backward<\/code> , \u044f\u043a\u0438\u0439 \u0432\u0438\u043a\u043e\u043d\u0443\u0454 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0435:<\/p>\n<p>\u25cb\t<code>page with page-previous<\/code> (\u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430, \u043d\u0430 \u044f\u043a\u0443 \u043c\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454\u043c\u043e\u0441\u044c) \u043a\u043b\u0430\u0441 \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0443\u0454\u0442\u044c\u0441\u044f \u0443  <code>view<\/code><\/p>\n<p>\u25cb\t<code>page with page-current<\/code> (\u043f\u043e\u0442\u043e\u0447\u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430) \u043a\u043b\u0430\u0441 \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0443\u0454\u0442\u044c\u0441\u044f \u0437 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443<\/p>\n<p>5.\t\u041f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u043d\u043e\u0432\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430, \u0434\u043e \u044f\u043a\u043e\u0457 \u043c\u0438 \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u043b\u0438\u0441\u044f, \u043c\u0430\u0442\u0438\u043c\u0435 \u043a\u043b\u0430\u0441 <code>page-current<\/code><\/p> \n<p>6.\t\u0406 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430, \u044f\u043a\u0430 \u0440\u0430\u043d\u0456\u0448\u0435 \u0431\u0443\u043b\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u044e, \u043c\u0430\u0442\u0438\u043c\u0435 \u043a\u043b\u0430\u0441 <code>page-next<\/code> . \u042f\u043a\u0449\u043e \u0446\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0431\u0443\u043b\u043e \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e DOM \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e, \u0432\u043e\u043d\u0430 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u0430 \u0437 DOM.<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0414\u0430\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0414\u0430\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a \u0431\u0430\u0447\u0438\u0442\u0435, \u0446\u0435 \u0434\u043e\u0441\u0438\u0442\u044c \u043b\u0435\u0433\u043a\u043e, \u0430\u043b\u0435 \u044f\u043a \u0432\u0438\u0437\u043d\u0430\u0447\u0438\u0442\u0438, \u044f\u043a\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u0442\u044c\u0441\u044f, \u043a\u043e\u043b\u0438 \u043c\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u043c\u043e \u043b\u0438\u0448\u0435 \u043e\u0434\u0438\u043d \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a? \u0414\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043c\u0438 \u043c\u0430\u0454\u043c\u043e \u0434\u0430\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0432 \u0434\u0435\u0442\u0430\u043b\u044f\u0445 \u043f\u043e\u0434\u0456\u0457:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"\/\/ \u0412 \u043f\u043e\u0434\u0456\u044f\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438:\n$$(document).on('page:init', function (e) {\n  \/\/ Page Data \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u0432\u0441\u044e \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0443 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044f \u043f\u0440\u043e  \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u0456  \u0442\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438  \n  var page = e.detail;\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0410\u0431\u043e \u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443, \u044f\u043a\u0449\u043e \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u0431\u0443\u043b\u043e \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e Dom64, \u044f\u043a \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u0432\u0438\u0449\u0435, \u0442\u043e\u0434\u0456 \u0432\u0456\u043d \u0431\u0443\u0434\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0438\u0439 \u0443 \u0434\u0440\u0443\u0433\u043e\u043c\u0443 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0456:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"\/\/ \u0412 \u043f\u043e\u0434\u0456\u044f\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438:\n$$(document).on('page:init', function (e, page) {\n  console.log(page);\n})\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u0432\u0438\u0449\u0435 \u043c\u0438 \u043c\u0430\u0454\u043c\u043e \u0434\u0430\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0432 \u0437\u043c\u0456\u043d\u043d\u0456\u0439 <code>page<\/code> . \u0426\u0435 \u043e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u0442\u0430\u043a\u0438\u043c\u0438 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0406\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 ","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"page.app","title":""}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u0443\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440, \u044f\u043a\u0438\u0439 \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u0446\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 (\u044f\u043a\u0449\u043e \u0446\u0435 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u043b\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u043e)","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"page.view","title":""}},{"type":"table_item","props":{"content":"\u041f\u0440\u0438\u043c\u0456\u0440\u043d\u0438\u043a \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430, \u044f\u043a\u0438\u0439 \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u0446\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 (\u044f\u043a\u0449\u043e \u0446\u0435 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u043b\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u043e). \u0422\u0430\u043a\u0438\u0439 \u0436\u0435, \u044f\u043a <code>\u2018page.view.router\u2019<\/code>","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"page.router","title":""}},{"type":"table_item","props":{"content":"<code>\u2018data-name\u2019<\/code> \u0417\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page.name"}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement","meta":"page.el"}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom64 \u0437 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c Page","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"page.$el"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0437\u0438\u0446\u0456\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u043f\u0435\u0440\u0435\u0434 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u043e\u043c \u0430\u0431\u043e \u043d\u0430\u043f\u0440\u044f\u043c\u043e\u043a, \u0437\u0432\u0456\u0434\u043a\u0438 \u043f\u043e\u0445\u043e\u0434\u0438\u0442\u044c \u0446\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430. \u0426\u0435 \u0431\u0443\u0434\u0435, <code>next<\/code> \u044f\u043a\u0449\u043e \u0432\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0435 \u043d\u043e\u0432\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443, <code>previous<\/code>- \u044f\u043a\u0449\u043e \u0432\u0438 \u043f\u043e\u0432\u0435\u0440\u043d\u0435\u0442\u0435\u0441\u044c \u043d\u0430 \u0446\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443, \u0430\u0431\u043e <code>current<\/code> \u044f\u043a\u0449\u043e \u0446\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0437\u0430\u043c\u0456\u043d\u0438\u0442\u044c \u043f\u043e\u0442\u043e\u0447\u043d\u0443 \u0430\u043a\u0442\u0438\u0432\u043d\u0443.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page.from"}},{"type":"table_item","props":{"content":"\u041d\u043e\u0432\u0430 \u043f\u043e\u0437\u0438\u0446\u0456\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0430\u0431\u043e \u043c\u0456\u0441\u0446\u0435, \u043a\u0443\u0434\u0438 \u0446\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0438\u0442\u044c. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0442\u0430\u043a\u0438\u043c \u0436\u0435 <code>next<\/code>, <code>previous<\/code> \u0430\u0431\u043e <code>current<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page.to"}},{"type":"table_item","props":{"content":"\u041f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c \u0434\u043b\u044f <code>page.from<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page.position"}},{"type":"table_item","props":{"content":"\u041d\u0430\u043f\u0440\u044f\u043c\u043e\u043a \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 (\u0437\u0430 \u043d\u0430\u044f\u0432\u043d\u043e\u0441\u0442\u0456). \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 <code>forward<\/code> \u0430\u0431\u043e <code>backward<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"page.direction"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442, \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0439 \u0456\u0437 \u0446\u0456\u0454\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u043e\u044e, \u043e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u043f\u043e\u0442\u043e\u0447\u043d\u0438\u043c\u0438 \u0434\u0430\u043d\u0438\u043c\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443, \u044f\u043a\u0438\u0439 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0432\u0441\u044f \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0446\u0456\u0454\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438. \u041c\u0430\u0454 \u0442\u0430\u043a\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456\n<p>\u25cf\t<code>url<\/code>- URL \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/p>\n<p>\u25cf\t<code>path<\/code>- \u0448\u043b\u044f\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/p>\n<p>\u25cf\t<code>query<\/code>- \u043e\u0431'\u0454\u043a\u0442 \u0456\u0437 \u0437\u0430\u043f\u0438\u0442\u043e\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u042f\u043a\u0449\u043e URL-\u0430\u0434\u0440\u0435\u0441\u0430 \u0454,<code> \/page\/?id=5&foo=bar<\/code> \u0432\u043e\u043d\u0430 \u043c\u0456\u0441\u0442\u0438\u0442\u0438\u043c\u0435 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u043e\u0431\u2019\u0454\u043a\u0442<code>{id: '5', foo: 'bar'}<\/code><\/p>\n<p>\u25cf\t<code>params<\/code>- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443. \u042f\u043a\u0449\u043e \u0443 \u043d\u0430\u0441 \u0454 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0456\u0437 <code>\/page\/user\/:userId\/post\/:postId\/<\/code>\u0448\u043b\u044f\u0445\u043e\u043c \u0456 URL-\u0430\u0434\u0440\u0435\u0441\u043e\u044e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0442\u043e <code>\/page\/user\/55\/post\/12\/<\/code>\u0446\u0435 \u0431\u0443\u0434\u0435 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u043e\u0431\u2019\u0454\u043a\u0442<code>{userId: '55', postId: '12'}<\/code><\/p>\n<p>\u25cf\t<code>name<\/code>- \u043d\u0430\u0437\u0432\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/p>\n<p>\u25cf\t<code>hash<\/code>- \u0445\u0435\u0448 URL-\u0430\u0434\u0440\u0435\u0441\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/p>\n<p>\u25cf\t<code>route<\/code>- \u043e\u0431'\u0454\u043a\u0442 \u0456\u0437 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0438\u043c \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u043e\u043c \u0456\u0437 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0456\u0432<\/p>\n<p>\u25cf\t<code>context<\/code>- \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442, \u044f\u043a\u0438\u0439 \u0431\u0443\u043b\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u043e \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443<\/p>","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"page.route"}},{"type":"table_item","props":{"content":"\u0414\u0430\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u044f\u043a\u0430 \u0431\u0443\u043b\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u0430 \u0434\u043e \u0446\u0456\u0454\u0457 \u043d\u043e\u0432\u043e\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438.","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"page.pageFrom"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(3)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440-\u043e\u043f\u0438\u0441-\u0442\u0438\u043f "},{"type":"headline","props":{"content":"\u0414\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u0434\u0430\u043d\u0438\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0414\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u0434\u0430\u043d\u0438\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0432\u0438 \u043d\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u043f\u043e\u0434\u0456\u0457\/\u0437\u0432\u043e\u0440\u043e\u0442\u043d\u0456 \u0432\u0438\u043a\u043b\u0438\u043a\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0430 \u043f\u043e\u0442\u0440\u0435\u0431\u0443\u0454\u0442\u0435 \u0434\u043e\u0441\u0442\u0443\u043f\u0443 \u0434\u043e \u0434\u0430\u043d\u0438\u0445 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0446\u0435 \u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0447\u0435\u0440\u0435\u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c <code>t4Page<\/code> \u0457\u0457 HTMLElement:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var $$ = Dom64;\n\nvar page = $$('.page[data-name=\"somepage\"]')[0].t4Page;\n\n\/\/ \u0417\u0440\u043e\u0431\u0438\u0442\u0438 \u0449\u043e\u0441\u044c \u0437 \u0434\u0430\u043d\u0438\u043c\u0438 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0417\u043c\u0456\u043d\u043d\u0456 CSS "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-page-master-width: 320px;\n  --t4-page-master-border-color: rgba(0, 0, 0, 0.1);\n  --t4-page-master-border-width: 1px;\n  --t4-page-swipeback-transition-duration: 300ms;\n  --t4-page-parallax-transition-duration: 500ms;\n  --t4-page-cover-transition-duration: 450ms;\n  --t4-page-dive-transition-duration: 500ms;\n  --t4-page-fade-transition-duration: 500ms;\n  --t4-page-flip-transition-duration: 700ms;\n  --t4-page-push-transition-duration: 500ms;\n  \/*\n  --t4-page-content-extra-padding-top: 0px;\n  --t4-page-content-extra-padding-bottom: 0px;\n  *\/\n  --t4-page-title-line-height: 1.2;\n  --t4-page-title-text-color: inherit;\n  --t4-page-title-padding-left: 16px;\n  --t4-page-title-padding-right: 16px;\n}\n.ios {\n  --t4-page-transition-duration: 400ms;\n  --t4-page-title-font-size: 34px;\n  --t4-page-title-font-weight: 700;\n  --t4-page-title-letter-spacing: -0.03em;\n  --t4-page-title-padding-vertical: 6px;\n  --t4-page-bg-color: #efeff4;\n}\n.ios .dark,\n.ios.dark {\n  --t4-page-bg-color: #000;\n}\n.md {\n  --t4-page-transition-duration: 400ms;\n  --t4-page-title-font-size: 34px;\n  --t4-page-title-font-weight: 500;\n  --t4-page-title-letter-spacing: 0;\n  --t4-page-title-padding-vertical: 8px;\n}\n.md,\n.md .dark,\n.md [class*='color-'] {\n  --t4-page-bg-color: var(--t4-md-surface);\n}\n.dark {\n  --t4-page-master-border-color: rgba(255, 255, 255, 0.2);\n}"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

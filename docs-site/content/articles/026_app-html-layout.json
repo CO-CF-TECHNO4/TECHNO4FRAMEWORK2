@@ -1,0 +1,66 @@
+{
+  "type": "articles",
+  "id": "26",
+  "attributes": {
+    "id": 26,
+    "asset_id": 158,
+    "title": "App HTML Layout",
+    "alias": "app-html-layout",
+    "state": 1,
+    "access": 1,
+    "created": "2023-02-23 21:53:58",
+    "created_by": 1049,
+    "created_by_alias": "",
+    "modified": "2023-11-19 03:55:45",
+    "featured": 0,
+    "language": "*",
+    "hits": 980,
+    "publish_up": "2023-02-23 21:53:58",
+    "publish_down": null,
+    "note": "",
+    "images": {
+      "image_intro": "",
+      "image_intro_alt": "",
+      "float_intro": "",
+      "image_intro_caption": "",
+      "image_fulltext": "",
+      "image_fulltext_alt": "",
+      "float_fulltext": "",
+      "image_fulltext_caption": ""
+    },
+    "metakey": "",
+    "metadesc": "",
+    "metadata": {
+      "robots": "",
+      "author": "",
+      "rights": ""
+    },
+    "version": 27,
+    "featured_up": null,
+    "featured_down": null,
+    "typeAlias": "com_content.article",
+    "text": "<h2>HTML-верстка додатка</h2>\r\n<div>Перше, що ми повинні зробити для нашої програми, це створити файл <b>index.html</b> зі скелетом програми.<p>Розгляньмо базовий макет програми:</p></div>\r\n<pre><code>\r\n&lt;!DOCTYPE html&gt;\r\n&lt;html&gt;\r\n  &lt;head&gt;\r\n    &lt;!-- Required meta tags--&gt;\r\n    &lt;meta charset=&quot;utf-8&quot;&gt;\r\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover&quot;&gt;\r\n    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;\r\n    &lt;!-- Color theme for statusbar (Android only) --&gt;\r\n    &lt;meta name=&quot;theme-color&quot; content=&quot;#2196f3&quot;&gt;\r\n    &lt;!-- Your app title --&gt;\r\n    &lt;title&gt;My App&lt;/title&gt;\r\n    &lt;!-- Path to Techno4 Library Bundle CSS --&gt;\r\n    &lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/techno4-bundle.min.css&quot;&gt;\r\n    &lt;!-- Path to your custom app styles--&gt;\r\n    &lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/my-app.css&quot;&gt;\r\n  &lt;/head&gt;\r\n  &lt;body&gt;\r\n    &lt;!-- App root element --&gt;\r\n    &lt;div id=&quot;app&quot;&gt;\r\n\r\n      &lt;!-- Your main view, should have &quot;view-main&quot; class --&gt;\r\n      &lt;div class=&quot;view view-main&quot;&gt;\r\n        &lt;!-- Initial Page, &quot;data-name&quot; contains page name --&gt;\r\n        &lt;div data-name=&quot;home&quot; class=&quot;page&quot;&gt;\r\n\r\n          &lt;!-- Top Navbar --&gt;\r\n          &lt;div class=&quot;navbar&quot;&gt;\r\n            &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;\r\n            &lt;div class=&quot;navbar-inner&quot;&gt;\r\n              &lt;div class=&quot;title&quot;&gt;Awesome App&lt;/div&gt;\r\n            &lt;/div&gt;\r\n          &lt;/div&gt;\r\n\r\n          &lt;!-- Bottom Toolbar --&gt;\r\n          &lt;div class=&quot;toolbar toolbar-bottom&quot;&gt;\r\n            &lt;div class=&quot;toolbar-inner&quot;&gt;\r\n              &lt;!-- Toolbar links --&gt;\r\n              &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Link 1&lt;/a&gt;\r\n              &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Link 2&lt;/a&gt;\r\n            &lt;/div&gt;\r\n          &lt;/div&gt;\r\n\r\n          &lt;!-- Scrollable page content --&gt;\r\n          &lt;div class=&quot;page-content&quot;&gt;\r\n            &lt;p&gt;Page content goes here&lt;/p&gt;\r\n            &lt;!-- Link to another page --&gt;\r\n            &lt;a href=&quot;/about/&quot;&gt;About app&lt;/a&gt;\r\n          &lt;/div&gt;\r\n        &lt;/div&gt;\r\n      &lt;/div&gt;\r\n    &lt;/div&gt;\r\n    &lt;!-- Path to Techno4 Library Bundle JS--&gt;\r\n    &lt;script type=&quot;text/javascript&quot; src=&quot;path/to/techno4-bundle.min.js&quot;&gt;&lt;/script&gt;\r\n    &lt;!-- Path to your app js--&gt;\r\n    &lt;script type=&quot;text/javascript&quot; src=&quot;path/to/my-app.js&quot;&gt;&lt;/script&gt;\r\n  &lt;/body&gt;\r\n&lt;/html&gt;\r\n</code></pre>\r\n<div><p> Як бачите, схема досить проста. Головне, що ви повинні зв’язати CSS Techno4 у &lt;head&gt; та файли JS у кінці &lt;body&gt;. </p>\r\n\r\n    <p>Ви можете прочитати більше про накладання панелі стану, перегляди, панель навігації, панель інструментів, сторінки, панелі та інші компоненти у відповідних розділах.<p/>\r\n<p>\r\n\r\n</div>\r\n<h2>Ініціалізація програми\r\n</h2>\r\n<div>    Тепер, коли у нас є базовий шаблон, нам потрібно ініціалізувати нашу програму в <b> my-app.js.</b></div>\r\n <!-- {\"type\":\"layout\",\"children\":[{\"type\":\"section\",\"props\":{\"image_position\":\"center-center\",\"style\":\"primary\",\"title_breakpoint\":\"xl\",\"title_position\":\"top-left\",\"title_rotation\":\"left\",\"vertical_align\":\"middle\",\"width\":\"default\"},\"children\":[{\"type\":\"row\",\"children\":[{\"type\":\"column\",\"props\":{\"image_position\":\"center-center\",\"position_sticky_breakpoint\":\"m\",\"style\":\"tile-muted\"},\"children\":[{\"type\":\"headline\",\"props\":{\"content\":\"HTML-\\u0432\\u0435\\u0440\\u0441\\u0442\\u043a\\u0430 \\u0434\\u043e\\u0434\\u0430\\u0442\\u043a\\u0430\",\"title_element\":\"h2\",\"title_style\":\"heading-small\"},\"name\":\"\\u0417\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a\"}]}]},{\"type\":\"row\",\"children\":[{\"type\":\"column\",\"props\":{\"image_position\":\"center-center\",\"position_sticky_breakpoint\":\"m\",\"style\":\"tile-muted\",\"width_medium\":\"3-4\"},\"children\":[{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"\\u041f\\u0435\\u0440\\u0448\\u0435, \\u0449\\u043e \\u043c\\u0438 \\u043f\\u043e\\u0432\\u0438\\u043d\\u043d\\u0456 \\u0437\\u0440\\u043e\\u0431\\u0438\\u0442\\u0438 \\u0434\\u043b\\u044f \\u043d\\u0430\\u0448\\u043e\\u0457 \\u043f\\u0440\\u043e\\u0433\\u0440\\u0430\\u043c\\u0438, \\u0446\\u0435 \\u0441\\u0442\\u0432\\u043e\\u0440\\u0438\\u0442\\u0438 \\u0444\\u0430\\u0439\\u043b <b>index.html<\\/b> \\u0437\\u0456 \\u0441\\u043a\\u0435\\u043b\\u0435\\u0442\\u043e\\u043c \\u043f\\u0440\\u043e\\u0433\\u0440\\u0430\\u043c\\u0438.<p>\\u0420\\u043e\\u0437\\u0433\\u043b\\u044f\\u043d\\u044c\\u043c\\u043e \\u0431\\u0430\\u0437\\u043e\\u0432\\u0438\\u0439 \\u043c\\u0430\\u043a\\u0435\\u0442 \\u043f\\u0440\\u043e\\u0433\\u0440\\u0430\\u043c\\u0438:<\\/p>\",\"margin\":\"default\",\"text_style\":\"large\"}},{\"type\":\"code\",\"props\":{\"content\":\"\\n<!DOCTYPE html>\\n<html>\\n  <head>\\n    <!-- Required meta tags-->\\n    <meta charset=\\\"utf-8\\\">\\n    <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover\\\">\\n    <meta name=\\\"apple-mobile-web-app-capable\\\" content=\\\"yes\\\">\\n    <!-- Color theme for statusbar (Android only) -->\\n    <meta name=\\\"theme-color\\\" content=\\\"#2196f3\\\">\\n    <!-- Your app title -->\\n    <title>My App<\\/title>\\n    <!-- Path to Techno4 Library Bundle CSS -->\\n    <link rel=\\\"stylesheet\\\" href=\\\"path\\/to\\/techno4-bundle.min.css\\\">\\n    <!-- Path to your custom app styles-->\\n    <link rel=\\\"stylesheet\\\" href=\\\"path\\/to\\/my-app.css\\\">\\n  <\\/head>\\n  <body>\\n    <!-- App root element -->\\n    <div id=\\\"app\\\">\\n\\n      <!-- Your main view, should have \\\"view-main\\\" class -->\\n      <div class=\\\"view view-main\\\">\\n        <!-- Initial Page, \\\"data-name\\\" contains page name -->\\n        <div data-name=\\\"home\\\" class=\\\"page\\\">\\n\\n          <!-- Top Navbar -->\\n          <div class=\\\"navbar\\\">\\n            <div class=\\\"navbar-bg\\\"><\\/div>\\n            <div class=\\\"navbar-inner\\\">\\n              <div class=\\\"title\\\">Awesome App<\\/div>\\n            <\\/div>\\n          <\\/div>\\n\\n          <!-- Bottom Toolbar -->\\n          <div class=\\\"toolbar toolbar-bottom\\\">\\n            <div class=\\\"toolbar-inner\\\">\\n              <!-- Toolbar links -->\\n              <a href=\\\"#\\\" class=\\\"link\\\">Link 1<\\/a>\\n              <a href=\\\"#\\\" class=\\\"link\\\">Link 2<\\/a>\\n            <\\/div>\\n          <\\/div>\\n\\n          <!-- Scrollable page content -->\\n          <div class=\\\"page-content\\\">\\n            <p>Page content goes here<\\/p>\\n            <!-- Link to another page -->\\n            <a href=\\\"\\/about\\/\\\">About app<\\/a>\\n          <\\/div>\\n        <\\/div>\\n      <\\/div>\\n    <\\/div>\\n    <!-- Path to Techno4 Library Bundle JS-->\\n    <script type=\\\"text\\/javascript\\\" src=\\\"path\\/to\\/techno4-bundle.min.js\\\"><\\/script>\\n    <!-- Path to your app js-->\\n    <script type=\\\"text\\/javascript\\\" src=\\\"path\\/to\\/my-app.js\\\"><\\/script>\\n  <\\/body>\\n<\\/html>\\n\"}},{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"<p> \\u042f\\u043a \\u0431\\u0430\\u0447\\u0438\\u0442\\u0435, \\u0441\\u0445\\u0435\\u043c\\u0430 \\u0434\\u043e\\u0441\\u0438\\u0442\\u044c \\u043f\\u0440\\u043e\\u0441\\u0442\\u0430. \\u0413\\u043e\\u043b\\u043e\\u0432\\u043d\\u0435, \\u0449\\u043e \\u0432\\u0438 \\u043f\\u043e\\u0432\\u0438\\u043d\\u043d\\u0456 \\u0437\\u0432\\u2019\\u044f\\u0437\\u0430\\u0442\\u0438 CSS Techno4 \\u0443 &lt;head&gt; \\u0442\\u0430 \\u0444\\u0430\\u0439\\u043b\\u0438 JS \\u0443 \\u043a\\u0456\\u043d\\u0446\\u0456 &lt;body&gt;. <\\/p>\\n\\n    <p>\\u0412\\u0438 \\u043c\\u043e\\u0436\\u0435\\u0442\\u0435 \\u043f\\u0440\\u043e\\u0447\\u0438\\u0442\\u0430\\u0442\\u0438 \\u0431\\u0456\\u043b\\u044c\\u0448\\u0435 \\u043f\\u0440\\u043e \\u043d\\u0430\\u043a\\u043b\\u0430\\u0434\\u0430\\u043d\\u043d\\u044f \\u043f\\u0430\\u043d\\u0435\\u043b\\u0456 \\u0441\\u0442\\u0430\\u043d\\u0443, \\u043f\\u0435\\u0440\\u0435\\u0433\\u043b\\u044f\\u0434\\u0438, \\u043f\\u0430\\u043d\\u0435\\u043b\\u044c \\u043d\\u0430\\u0432\\u0456\\u0433\\u0430\\u0446\\u0456\\u0457, \\u043f\\u0430\\u043d\\u0435\\u043b\\u044c \\u0456\\u043d\\u0441\\u0442\\u0440\\u0443\\u043c\\u0435\\u043d\\u0442\\u0456\\u0432, \\u0441\\u0442\\u043e\\u0440\\u0456\\u043d\\u043a\\u0438, \\u043f\\u0430\\u043d\\u0435\\u043b\\u0456 \\u0442\\u0430 \\u0456\\u043d\\u0448\\u0456 \\u043a\\u043e\\u043c\\u043f\\u043e\\u043d\\u0435\\u043d\\u0442\\u0438 \\u0443 \\u0432\\u0456\\u0434\\u043f\\u043e\\u0432\\u0456\\u0434\\u043d\\u0438\\u0445 \\u0440\\u043e\\u0437\\u0434\\u0456\\u043b\\u0430\\u0445.<p\\/>\\n<p>\\n\\n\",\"margin\":\"default\",\"text_style\":\"large\"}},{\"type\":\"headline\",\"props\":{\"content\":\"\\u0406\\u043d\\u0456\\u0446\\u0456\\u0430\\u043b\\u0456\\u0437\\u0430\\u0446\\u0456\\u044f \\u043f\\u0440\\u043e\\u0433\\u0440\\u0430\\u043c\\u0438\\n\",\"title_element\":\"h2\"}},{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"    \\u0422\\u0435\\u043f\\u0435\\u0440, \\u043a\\u043e\\u043b\\u0438 \\u0443 \\u043d\\u0430\\u0441 \\u0454 \\u0431\\u0430\\u0437\\u043e\\u0432\\u0438\\u0439 \\u0448\\u0430\\u0431\\u043b\\u043e\\u043d, \\u043d\\u0430\\u043c \\u043f\\u043e\\u0442\\u0440\\u0456\\u0431\\u043d\\u043e \\u0456\\u043d\\u0456\\u0446\\u0456\\u0430\\u043b\\u0456\\u0437\\u0443\\u0432\\u0430\\u0442\\u0438 \\u043d\\u0430\\u0448\\u0443 \\u043f\\u0440\\u043e\\u0433\\u0440\\u0430\\u043c\\u0443 \\u0432 <b> my-app.js.<\\/b>\",\"margin\":\"default\"}}]},{\"type\":\"column\",\"props\":{\"image_position\":\"center-center\",\"position_sticky_breakpoint\":\"m\",\"width_medium\":\"1-4\"},\"children\":[{\"type\":\"module\",\"props\":{\"menu_image_align\":\"center\",\"menu_image_margin\":true,\"menu_style\":\"default\",\"menu_type\":\"nav\",\"module\":\"123\",\"type\":\"mod_menu\"}}]}],\"props\":{\"layout\":\"3-4,1-4\"}}],\"name\":\"\\u0412\\u0441\\u0442\\u0443\\u043f\"}],\"version\":\"4.0.3\",\"yooessentialsVersion\":\"2.0.6\"} -->",
+    "артикул": "",
+    "автор": "",
+    "description": "",
+    "projectkeyword": "",
+    "tags": []
+  },
+  "relationships": {
+    "category": {
+      "data": {
+        "type": "categories",
+        "id": "11"
+      }
+    },
+    "created_by": {
+      "data": {
+        "type": "users",
+        "id": "1049"
+      }
+    },
+    "tags": {
+      "data": []
+    }
+  }
+}

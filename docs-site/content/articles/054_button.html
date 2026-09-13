@@ -1,0 +1,670 @@
+<h2>Кнопка</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет кнопок</a>
+
+    </li>
+        <li>
+        
+<div>Класи модифікаторів кнопок</div>
+
+    </li>
+        <li>
+        
+<div>Кнопка попереднього завантаження</div>
+
+    </li>
+        <li>
+        
+<div>Сегментований контроль</div>
+
+<p>Макет сегментованого елемента <p>Класи сегментованих модифікаторів</p>
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Кнопка</h3>
+<div>Techno4 постачається з купою готових до використання кнопок. Все, що вам потрібно зробити, це додати відповідні класи до ваших посилань або submit/button входів:</div>
+<h3>Макет кнопок</h3>
+<div>Макет  кнопок досить простий. Просто додайте клас <code>button</code> до посилань або submit/button входів: </div>
+<pre><code>&lt;!-- посилання як кнопка --&gt;
+&lt;a class=&quot;button&quot;&gt;Button&lt;/a&gt;
+
+&lt;!-- &lt;button&gt; as button --&gt;
+&lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+
+&lt;!-- &lt;input type=&quot;submit&quot;&gt; as button --&gt;
+&lt;input type=&quot;submit&quot; class=&quot;button&quot; value=&quot;Button&quot; /&gt;
+</code></pre>
+<h3>Класи модифікаторів кнопок</h3>
+<div>У Techno4 існує безліч різних кнопок. Різні стилі кнопок, досягнуті додатковими класами модифікаторів та їх комбінаціями:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Клас модифікатор</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>button-fill</td>
+
+<td>Заповнена кнопка</td>
+
+</tr>
+                <tr>
+
+<td>button-fill-ios</td>
+
+<td>Кнопка матиме заповнений стиль лише в темі iOS</td>
+
+</tr>
+                <tr>
+
+<td>button-fill-md</td>
+
+<td>Кнопка матиме заповнений стиль лише в темі MD</td>
+
+</tr>
+                <tr>
+
+<td>button-fill-aurora</td>
+
+<td>Кнопка матиме заповнений стиль лише в темі Aurora</td>
+
+</tr>
+                <tr>
+
+<td>button-round</td>
+
+<td>Заокруглена кнопка</td>
+
+</tr>
+                <tr>
+
+<td>button-round-ios</td>
+
+<td>Кнопка буде округленою лише в темі iOS</td>
+
+</tr>
+                <tr>
+
+<td>button-round-md</td>
+
+<td>Кнопка буде закруглена лише в темі MD</td>
+
+</tr>
+                <tr>
+
+<td>button-round-aurora</td>
+
+<td>Кнопка буде закруглена лише в темі Aurora</td>
+
+</tr>
+                <tr>
+
+<td>button-small</td>
+
+<td>Маленька кнопка</td>
+
+</tr>
+                <tr>
+
+<td>button-small-ios</td>
+
+<td>Кнопка буде маленькою лише в темі iOS</td>
+
+</tr>
+                <tr>
+
+<td>button-small-md</td>
+
+<td>Кнопка буде маленькою лише в темі MD</td>
+
+</tr>
+                <tr>
+
+<td>button-small-aurora</td>
+
+<td>Кнопка буде маленькою лише в темі Aurora</td>
+
+</tr>
+                <tr>
+
+<td>button-large</td>
+
+<td>Велика кнопка</td>
+
+</tr>
+                <tr>
+
+<td>button-large-ios</td>
+
+<td>Кнопка буде великою лише в темі iOS</td>
+
+</tr>
+                <tr>
+
+<td>button-large-md</td>
+
+<td>Кнопка буде великою лише в темі MD</td>
+
+</tr>
+                <tr>
+
+<td>button-large-aurora</td>
+
+<td>Кнопка буде великою лише в темі Aurora</td>
+
+</tr>
+                <tr>
+
+<td>button-raised</td>
+
+<td>Піднята кнопка</td>
+
+</tr>
+                <tr>
+
+<td>button-raised-ios</td>
+
+<td>Піднята кнопка лише в темі iOS</td>
+
+</tr>
+                <tr>
+
+<td>button-raised-md</td>
+
+<td>Піднята кнопка лише в темі MD</td>
+
+</tr>
+                <tr>
+
+<td>button-raised-aurora</td>
+
+<td>Піднята кнопка лише в темі Aurora</td>
+
+</tr>
+                <tr>
+
+<td>button-outline</td>
+
+<td>Контур кнопки </td>
+
+</tr>
+                <tr>
+
+<td>button-outline-ios</td>
+
+<td>Кнопка з контуром лише в темі iOS</td>
+
+</tr>
+                <tr>
+
+<td>button-outline-md</td>
+
+<td>Кнопка з контуром лише в темі MD</td>
+
+</tr>
+                <tr>
+
+<td>button-outline-aurora</td>
+
+<td>Кнопка з контуром лише в темі Aurora</td>
+
+</tr>
+                <tr>
+
+<td>button-active</td>
+
+<td>Активний/вибраний стан кнопки. Для використання всередині Segmented</td>
+
+</tr>
+                <tr>
+
+<td>button-preloader</td>
+
+<td>Потрібно додати до кнопки з попереднім завантажувачем, щоб кнопки завантажувалися</td>
+
+</tr>
+                <tr>
+
+<td>button-loading</td>
+
+<td>Керує станом кнопки, щоб показати/приховати попередній завантажувач і приховати/показати текст кнопки (перевести кнопку в стан завантаження). <code>button-preloader</code> слід також додати до кнопки</td>
+
+</tr>
+                <tr>
+
+<td>color-[color]</td>
+
+<td>Кнопка кольору, де <code>[color]</code> є одним із кольорів за замовчуванням</td>
+
+</tr>
+            </tbody>
+
+</table>
+<div>І, звичайно, ми можемо змішувати ці класи:</div>
+<pre><code>&lt;!-- кругла кнопка --&gt;
+&lt;a class=&quot;button button-round&quot;&gt;Button&lt;/a&gt;
+
+&lt;!--кругла і заповнена кнопка --&gt;
+&lt;a class=&quot;button button-round button-fill&quot;&gt;Button&lt;/a&gt;
+
+&lt;!-- пілнята, кругла , заповнена, велика  кнопка --&gt;
+&lt;a class=&quot;button button-raised button-round button-fill button-large&quot;&gt;Button&lt;/a&gt;
+
+&lt;!-- маленька червона кнопка --&gt;
+&lt;a class=&quot;button button-small color-red&quot;&gt;Button&lt;/a&gt;
+</code></pre>
+<h3>Кнопка попереднього завантаження</h3>
+<div>Є можливість створити динамічну кнопку попереднього завантаження. Така кнопка повинна мати <code>Preloader</code> всередині та текст кнопки, обгорнутий тегом <code>&lt;span&gt;</code>, і додатковий клас <code>button-preloader</code>:</div>
+<pre><code>&lt;button class=&quot;button button-preloader&quot;&gt;
+  &lt;span class=&quot;preloader&quot;&gt;&lt;/span&gt;
+  &lt;span&gt;Load&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+<div>А щоб показати попередній завантажувач, нам потрібно додати додатковий клас <code>button-loading</code> (він покаже внутрішній попередній завантажувач і приховає текст кнопки):</div>
+<pre><code>&lt;button class=&quot;button button-preloader button-loading&quot;&gt;
+  &lt;span class=&quot;preloader&quot;&gt;&lt;/span&gt;
+  &lt;span&gt;Load&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+<h3>Сегментований контроль</h3>
+<div>Сегментований елемент керування — це лінійний набір із двох або більше сегментів (buttons), кожен із яких функціонує як взаємовиключна кнопка. Усередині елемента керування всі кнопки мають однакову ширину. Сегментовані елементи керування часто використовуються для відображення різних переглядів (перемикання вкладок).</div>
+<h4>Макет сегментованого елемента </h4>
+<div>Макет сегментованого елемента керування досить простий, лише <code>&lt;div&gt;</code> із класом <code>segmented</code> навколо кнопок:</div>
+<pre><code>&lt;div class=&quot;segmented&quot;&gt;
+  &lt;a class=&quot;button button-active&quot;&gt;Tab 1&lt;/a&gt;
+  &lt;a class=&quot;button&quot;&gt;Tab 2&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+<div>Segmented <code>"strong"</code> вимагає додаткового елемента для правильного  відображення активного стану:</div>
+<pre><code>&lt;div class=&quot;segmented segmented-strong&quot;&gt;
+  &lt;a class=&quot;button button-active&quot;&gt;Tab 1&lt;/a&gt;
+  &lt;a class=&quot;button&quot;&gt;Tab 2&lt;/a&gt;
+  &lt;!-- Додатковий елемент вимагається в segmented strong --&gt;
+  &lt;span class=&quot;segmented-highlight&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+<h4>Класи сегментованих модифікаторів</h4>
+<div>Окрім кнопок, сегментовані елементи керування також підтримують декілька додаткових класів для стилізації:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Клас модифікатор</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>segmented-round</td>
+
+<td>Округлі сегментовані елементи керування</td>
+
+</tr>
+                <tr>
+
+<td>segmented-round-ios</td>
+
+<td>Округлі сегментовані елементи керування в темі iOS</td>
+
+</tr>
+                <tr>
+
+<td>segmented-round-md</td>
+
+<td>Округлі сегментовані елементи керування в темі  MD </td>
+
+</tr>
+                <tr>
+
+<td>segmented-round-aurora</td>
+
+<td>Округлі сегментовані  елементи керування в темі  Aurora </td>
+
+</tr>
+                <tr>
+
+<td>segmented-raised</td>
+
+<td>Підняті сегментовані елементи керування</td>
+
+</tr>
+                <tr>
+
+<td>segmented-raised-ios</td>
+
+<td>Підняті сегментовані елементи керування в темі iOS </td>
+
+</tr>
+                <tr>
+
+<td>segmented-raised-md</td>
+
+<td>Підняті сегментовані елементи керування в темі MD </td>
+
+</tr>
+                <tr>
+
+<td>segmented-raised-aurora</td>
+
+<td>Підняті сегментовані елементи керування в темі Aurora </td>
+
+</tr>
+                <tr>
+
+<td>segmented-strong</td>
+
+<td>Strong сегментовані елементи керування</td>
+
+</tr>
+                <tr>
+
+<td>segmented-strong-ios</td>
+
+<td>Strong сегментовані елементи керування в темі iOS </td>
+
+</tr>
+                <tr>
+
+<td>segmented-strong-md</td>
+
+<td>Strong сегментовані елементи керування в темі MD </td>
+
+</tr>
+                <tr>
+
+<td>segmented-strong-aurora</td>
+
+<td>Strong сегментовані елементи керування в темі Aurora </td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Змінні CSS </h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  --t4-button-font-size: 14px;
+  --t4-button-min-width: 32px;
+  --t4-button-bg-color: transparent;
+  --t4-button-border-width: 0px;
+  --t4-button-text-transform: uppercase;
+  --t4-button-large-text-transform: uppercase;
+  --t4-button-small-text-transform: uppercase;
+  --t4-button-small-outline-border-width: 2px;
+  /*
+  --t4-button-text-color: var(--t4-theme-color);
+  --t4-button-pressed-bg-color: rgba(var(--t4-theme-color-rgb), .15);
+  --t4-button-pressed-text-color: var(--t4-button-text-color, var(--t4-theme-color));
+  --t4-button-border-color: var(--t4-theme-color);
+  --t4-button-fill-text-color: #fff;
+  --t4-button-fill-bg-color: var(--t4-theme-color);
+  --t4-button-outline-border-color: var(--t4-theme-color);
+  --t4-button-padding-vertical: 0px;
+  */
+  --t4-button-outline-border-width: 2px;
+  --t4-button-raised-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --t4-button-raised-pressed-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
+  --t4-segmented-raised-divider-color: rgba(0, 0, 0, 0.1);
+  --t4-segmented-strong-padding: 2px;
+  --t4-segmented-strong-between-buttons: 4px;
+  --t4-segmented-strong-button-font-weight: 500;
+  --t4-segmented-strong-button-active-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  --t4-segmented-strong-bg-color: rgba(0, 0, 0, 0.07);
+  --t4-segmented-strong-button-text-color: #000;
+  --t4-segmented-strong-button-pressed-bg-color: rgba(0, 0, 0, 0.07);
+  --t4-segmented-strong-button-hover-bg-color: rgba(0, 0, 0, 0.04);
+  --t4-segmented-strong-button-active-text-color: #000;
+  --t4-segmented-strong-button-active-bg-color: #fff;
+}
+:root .dark,
+:root.dark {
+  --t4-segmented-strong-bg-color: rgba(255, 255, 255, 0.1);
+  --t4-segmented-strong-button-pressed-bg-color: rgba(255, 255, 255, 0.04);
+  --t4-segmented-strong-button-hover-bg-color: rgba(255, 255, 255, 0.02);
+  --t4-segmented-strong-button-active-bg-color: rgba(255, 255, 255, 0.14);
+  --t4-segmented-strong-button-text-color: #fff;
+  --t4-segmented-strong-button-active-text-color: #fff;
+}
+.ios {
+  --t4-button-height: 28px;
+  --t4-button-padding-horizontal: 10px;
+  --t4-button-border-radius: 5px;
+  --t4-button-font-weight: 600;
+  --t4-button-letter-spacing: 0;
+  /*
+  --t4-button-fill-pressed-bg-color: var(--t4-theme-color-tint);
+  */
+  --t4-button-large-height: 44px;
+  --t4-button-large-font-size: 17px;
+  --t4-button-large-font-weight: 500;
+  --t4-button-small-height: 26px;
+  --t4-button-small-font-size: 13px;
+  --t4-button-small-font-weight: 600;
+  --t4-segmented-strong-button-text-transform: none;
+  --t4-segmented-strong-button-active-font-weight: 600;
+}
+.md {
+  --t4-button-height: 36px;
+  --t4-button-padding-horizontal: 8px;
+  --t4-button-border-radius: 4px;
+  --t4-button-font-weight: 500;
+  --t4-button-letter-spacing: 0.05em;
+  /*
+  --t4-button-fill-pressed-bg-color: var(--t4-theme-color-shade);
+  */
+  --t4-button-large-height: 48px;
+  --t4-button-large-font-size: 14px;
+  --t4-button-large-font-weight: 500;
+  --t4-button-small-height: 28px;
+  --t4-button-small-font-size: 14px;
+  --t4-button-small-font-weight: 500;
+  --t4-segmented-strong-button-text-transform: uppercase;
+  --t4-segmented-strong-button-active-font-weight: 500;
+}
+.aurora {
+  /*
+  --t4-button-hover-bg-color: rgba(var(--t4-theme-color-rgb), .07);
+  --t4-button-fill-hover-bg-color: var(--t4-theme-color-tint);
+  */
+  --t4-button-height: 36px;
+  --t4-button-min-width: 24px;
+  --t4-button-padding-horizontal: 10px;
+  --t4-button-border-radius: 8px;
+  --t4-button-font-weight: 600;
+  --t4-button-letter-spacing: 0em;
+  /*
+  --t4-button-fill-pressed-bg-color: var(--t4-theme-color-shade);
+  */
+  --t4-button-large-height: 48px;
+  --t4-button-large-font-size: 16px;
+  --t4-button-large-font-weight: 600;
+  --t4-button-small-height: 28px;
+  --t4-button-small-font-size: 14px;
+  --t4-button-small-font-weight: 600;
+  --t4-segmented-strong-button-text-transform: uppercase;
+  --t4-segmented-strong-button-active-font-weight: 600;
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Buttons&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Usual Buttons&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;button class=&quot;button col&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;button col&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;button col button-round&quot;&gt;Round&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Fill Buttons&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-fill&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;col button button-fill&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;col button button-fill button-round&quot;&gt;Round&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Outline Buttons&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-outline&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;col button button-outline&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;col button button-outline button-round&quot;&gt;Round&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Raised Buttons&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-raised&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;col button button-raised button-fill&quot;&gt;Fill&lt;/button&gt;
+          &lt;button class=&quot;col button button-outline button-raised&quot;&gt;Outline&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-raised button-round&quot;&gt;Round&lt;/button&gt;
+          &lt;button class=&quot;col button button-raised button-fill button-round&quot;&gt;Fill&lt;/button&gt;
+          &lt;button class=&quot;col button button-outline button-round button-raised&quot;&gt;Outline&lt;/button&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Segmented&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;p class=&quot;segmented segmented-raised&quot;&gt;
+          &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;button button-active&quot;&gt;Active&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;segmented segmented-strong&quot;&gt;
+          &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;button button-active&quot;&gt;Active&lt;/button&gt;
+          &lt;span class=&quot;segmented-highlight&quot;&gt;&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;segmented&quot;&gt;
+          &lt;button class=&quot;button button-outline&quot;&gt;Outline&lt;/button&gt;
+          &lt;button class=&quot;button button-outline&quot;&gt;Outline&lt;/button&gt;
+          &lt;button class=&quot;button button-outline button-active&quot;&gt;Active&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;segmented segmented-raised segmented-round&quot;&gt;
+          &lt;button class=&quot;button button-round&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;button button-round&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;button button-round button-active&quot;&gt;Active&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;segmented segmented-round&quot;&gt;
+          &lt;button class=&quot;button button-round button-outline&quot;&gt;Outline&lt;/button&gt;
+          &lt;button class=&quot;button button-round button-outline&quot;&gt;Outline&lt;/button&gt;
+          &lt;button class=&quot;button button-round button-outline button-active&quot;&gt;Active&lt;/button&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Large Buttons&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-large&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;col button button-large button-fill&quot;&gt;Fill&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-large button-raised&quot;&gt;Raised&lt;/button&gt;
+          &lt;button class=&quot;col button button-large button-raised button-fill&quot;&gt;Raised Fill&lt;/button&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Small Buttons&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-small&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;col button button-small button-outline&quot;&gt;Outline&lt;/button&gt;
+          &lt;button class=&quot;col button button-small button-fill&quot;&gt;Fill&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-small button-round&quot;&gt;Button&lt;/button&gt;
+          &lt;button class=&quot;col button button-small button-round button-outline&quot;&gt;Outline&lt;/button&gt;
+          &lt;button class=&quot;col button button-small button-round button-fill&quot;&gt;Fill&lt;/button&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Preloader Buttons&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;button class=&quot;button button-large button-fill button-preloader ${isLoading ? 'button-loading' : ''}&quot;
+          @click=${load}&gt;
+          &lt;span class=&quot;preloader&quot;&gt;&lt;/span&gt;
+          &lt;span&gt;Load&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Color Buttons&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button color-red&quot;&gt;Red&lt;/button&gt;
+          &lt;button class=&quot;col button color-green&quot;&gt;Green&lt;/button&gt;
+          &lt;button class=&quot;col button color-blue&quot;&gt;Blue&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button color-pink&quot;&gt;Pink&lt;/button&gt;
+          &lt;button class=&quot;col button color-yellow&quot;&gt;Yellow&lt;/button&gt;
+          &lt;button class=&quot;col button color-orange&quot;&gt;Orange&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button color-gray&quot;&gt;Gray&lt;/button&gt;
+          &lt;button class=&quot;col button color-black&quot;&gt;Black&lt;/button&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Color Fill Buttons&lt;/div&gt;
+      &lt;div class=&quot;block block-strong&quot;&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-fill color-red&quot;&gt;Red&lt;/button&gt;
+          &lt;button class=&quot;col button button-fill color-green&quot;&gt;Green&lt;/button&gt;
+          &lt;button class=&quot;col button button-fill color-blue&quot;&gt;Blue&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-fill color-pink&quot;&gt;Pink&lt;/button&gt;
+          &lt;button class=&quot;col button button-fill color-yellow&quot;&gt;Yellow&lt;/button&gt;
+          &lt;button class=&quot;col button button-fill color-orange&quot;&gt;Orange&lt;/button&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;row&quot;&gt;
+          &lt;button class=&quot;col button button-fill color-gray&quot;&gt;Gray&lt;/button&gt;
+          &lt;button class=&quot;col button button-fill color-black&quot;&gt;Black&lt;/button&gt;
+          &lt;button class=&quot;col button button-fill color-white text-color-black&quot;&gt;White&lt;/button&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, { $update }) =&gt; {
+    let isLoading = false;
+
+    const load = () =&gt; {
+      isLoading = true;
+      $update();
+      setTimeout(() =&gt; {
+        isLoading = false;
+        $update();
+      }, 3000);
+    }
+
+    return $render;
+  }
+&lt;/script&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \t\u041a\u043d\u043e\u043f\u043a\u0430"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043a\u043d\u043e\u043f\u043e\u043a","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440\u0456\u0432 \u043a\u043d\u043e\u043f\u043e\u043a"}},{"type":"nav_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f"}},{"type":"nav_item","props":{"content":"\u0421\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0439 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c","meta":"\u041c\u0430\u043a\u0435\u0442 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 <p>\u041a\u043b\u0430\u0441\u0438 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0445 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440\u0456\u0432"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043d\u043e\u043f\u043a\u0430"},{"type":"text","props":{"column_breakpoint":"m","content":"Techno4 \u043f\u043e\u0441\u0442\u0430\u0447\u0430\u0454\u0442\u044c\u0441\u044f \u0437 \u043a\u0443\u043f\u043e\u044e \u0433\u043e\u0442\u043e\u0432\u0438\u0445 \u0434\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u043a\u043d\u043e\u043f\u043e\u043a. \u0412\u0441\u0435, \u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0440\u043e\u0431\u0438\u0442\u0438, \u0446\u0435 \u0434\u043e\u0434\u0430\u0442\u0438 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0456 \u043a\u043b\u0430\u0441\u0438 \u0434\u043e \u0432\u0430\u0448\u0438\u0445 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c \u0430\u0431\u043e submit\/button \u0432\u0445\u043e\u0434\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043a\u043d\u043e\u043f\u043e\u043a","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u043a\u043d\u043e\u043f\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u043a\u0435\u0442  \u043a\u043d\u043e\u043f\u043e\u043a \u0434\u043e\u0441\u0438\u0442\u044c \u043f\u0440\u043e\u0441\u0442\u0438\u0439. \u041f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0439\u0442\u0435 \u043a\u043b\u0430\u0441 <code>button<\/code> \u0434\u043e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c \u0430\u0431\u043e submit\/button \u0432\u0445\u043e\u0434\u0456\u0432: ","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u044f\u043a \u043a\u043d\u043e\u043f\u043a\u0430 -->\n<a class=\"button\">Button<\/a>\n\n<!-- <button> as button -->\n<button class=\"button\">Button<\/button>\n\n<!-- <input type=\"submit\"> as button -->\n<input type=\"submit\" class=\"button\" value=\"Button\" \/>\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440\u0456\u0432 \u043a\u043d\u043e\u043f\u043e\u043a","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043b\u0430\u0441\u0438 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440\u0456\u0432 \u043a\u043d\u043e\u043f\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0423 Techno4 \u0456\u0441\u043d\u0443\u0454 \u0431\u0435\u0437\u043b\u0456\u0447 \u0440\u0456\u0437\u043d\u0438\u0445 \u043a\u043d\u043e\u043f\u043e\u043a. \u0420\u0456\u0437\u043d\u0456 \u0441\u0442\u0438\u043b\u0456 \u043a\u043d\u043e\u043f\u043e\u043a, \u0434\u043e\u0441\u044f\u0433\u043d\u0443\u0442\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u043c\u0438 \u043a\u043b\u0430\u0441\u0430\u043c\u0438 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440\u0456\u0432 \u0442\u0430 \u0457\u0445 \u043a\u043e\u043c\u0431\u0456\u043d\u0430\u0446\u0456\u044f\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041a\u043b\u0430\u0441 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u043e\u0432\u043d\u0435\u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0430","link_text":"string","meta":"button-fill","title":""}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u043c\u0430\u0442\u0438\u043c\u0435 \u0437\u0430\u043f\u043e\u0432\u043d\u0435\u043d\u0438\u0439 \u0441\u0442\u0438\u043b\u044c \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 iOS","link_text":"string","meta":"button-fill-ios","title":""}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u043c\u0430\u0442\u0438\u043c\u0435 \u0437\u0430\u043f\u043e\u0432\u043d\u0435\u043d\u0438\u0439 \u0441\u0442\u0438\u043b\u044c \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 MD","meta":"button-fill-md"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u043c\u0430\u0442\u0438\u043c\u0435 \u0437\u0430\u043f\u043e\u0432\u043d\u0435\u043d\u0438\u0439 \u0441\u0442\u0438\u043b\u044c \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 Aurora","meta":"button-fill-aurora"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043e\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0430","meta":"button-round"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0431\u0443\u0434\u0435 \u043e\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u043e\u044e \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 iOS","meta":"button-round-ios"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0431\u0443\u0434\u0435 \u0437\u0430\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0430 \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 MD","meta":"button-round-md"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0431\u0443\u0434\u0435 \u0437\u0430\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u0430 \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 Aurora","meta":"button-round-aurora"}},{"type":"table_item","props":{"content":"\u041c\u0430\u043b\u0435\u043d\u044c\u043a\u0430 \u043a\u043d\u043e\u043f\u043a\u0430","meta":"button-small"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0431\u0443\u0434\u0435 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u044e \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 iOS","meta":"button-small-ios"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0431\u0443\u0434\u0435 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u044e \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 MD","meta":"button-small-md"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0431\u0443\u0434\u0435 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u044e \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 Aurora","meta":"button-small-aurora"}},{"type":"table_item","props":{"content":"\u0412\u0435\u043b\u0438\u043a\u0430 \u043a\u043d\u043e\u043f\u043a\u0430","meta":"button-large"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0431\u0443\u0434\u0435 \u0432\u0435\u043b\u0438\u043a\u043e\u044e \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 iOS","meta":"button-large-ios"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0431\u0443\u0434\u0435 \u0432\u0435\u043b\u0438\u043a\u043e\u044e \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 MD","meta":"button-large-md"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0431\u0443\u0434\u0435 \u0432\u0435\u043b\u0438\u043a\u043e\u044e \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 Aurora","meta":"button-large-aurora"}},{"type":"table_item","props":{"content":"\u041f\u0456\u0434\u043d\u044f\u0442\u0430 \u043a\u043d\u043e\u043f\u043a\u0430","meta":"button-raised"}},{"type":"table_item","props":{"content":"\u041f\u0456\u0434\u043d\u044f\u0442\u0430 \u043a\u043d\u043e\u043f\u043a\u0430 \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 iOS","meta":"button-raised-ios"}},{"type":"table_item","props":{"content":"\u041f\u0456\u0434\u043d\u044f\u0442\u0430 \u043a\u043d\u043e\u043f\u043a\u0430 \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 MD","meta":"button-raised-md"}},{"type":"table_item","props":{"content":"\u041f\u0456\u0434\u043d\u044f\u0442\u0430 \u043a\u043d\u043e\u043f\u043a\u0430 \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 Aurora","meta":"button-raised-aurora"}},{"type":"table_item","props":{"content":"\u041a\u043e\u043d\u0442\u0443\u0440 \u043a\u043d\u043e\u043f\u043a\u0438 ","meta":"button-outline"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0437 \u043a\u043e\u043d\u0442\u0443\u0440\u043e\u043c \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 iOS","meta":"button-outline-ios"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0437 \u043a\u043e\u043d\u0442\u0443\u0440\u043e\u043c \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 MD","meta":"button-outline-md"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0437 \u043a\u043e\u043d\u0442\u0443\u0440\u043e\u043c \u043b\u0438\u0448\u0435 \u0432 \u0442\u0435\u043c\u0456 Aurora","meta":"button-outline-aurora"}},{"type":"table_item","props":{"content":"\u0410\u043a\u0442\u0438\u0432\u043d\u0438\u0439\/\u0432\u0438\u0431\u0440\u0430\u043d\u0438\u0439 \u0441\u0442\u0430\u043d \u043a\u043d\u043e\u043f\u043a\u0438. \u0414\u043b\u044f \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 Segmented","meta":"button-active"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e \u043a\u043d\u043e\u043f\u043a\u0438 \u0437 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u043c \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0435\u043c, \u0449\u043e\u0431 \u043a\u043d\u043e\u043f\u043a\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u043b\u0438\u0441\u044f","meta":"button-preloader"}},{"type":"table_item","props":{"content":"\u041a\u0435\u0440\u0443\u0454 \u0441\u0442\u0430\u043d\u043e\u043c \u043a\u043d\u043e\u043f\u043a\u0438, \u0449\u043e\u0431 \u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0438\/\u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447 \u0456 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438\/\u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u0442\u0435\u043a\u0441\u0442 \u043a\u043d\u043e\u043f\u043a\u0438 (\u043f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u0432 \u0441\u0442\u0430\u043d \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f). <code>button-preloader<\/code> \u0441\u043b\u0456\u0434 \u0442\u0430\u043a\u043e\u0436 \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e \u043a\u043d\u043e\u043f\u043a\u0438","meta":"button-loading"}},{"type":"table_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u043a\u043e\u043b\u044c\u043e\u0440\u0443, \u0434\u0435 <code>[color]<\/code> \u0454 \u043e\u0434\u043d\u0438\u043c \u0456\u0437 \u043a\u043e\u043b\u044c\u043e\u0440\u0456\u0432 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","meta":"color-[color]"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0406, \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0437\u043c\u0456\u0448\u0443\u0432\u0430\u0442\u0438 \u0446\u0456 \u043a\u043b\u0430\u0441\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u043a\u0440\u0443\u0433\u043b\u0430 \u043a\u043d\u043e\u043f\u043a\u0430 -->\n<a class=\"button button-round\">Button<\/a>\n\n<!--\u043a\u0440\u0443\u0433\u043b\u0430 \u0456 \u0437\u0430\u043f\u043e\u0432\u043d\u0435\u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0430 -->\n<a class=\"button button-round button-fill\">Button<\/a>\n\n<!-- \u043f\u0456\u043b\u043d\u044f\u0442\u0430, \u043a\u0440\u0443\u0433\u043b\u0430 , \u0437\u0430\u043f\u043e\u0432\u043d\u0435\u043d\u0430, \u0432\u0435\u043b\u0438\u043a\u0430  \u043a\u043d\u043e\u043f\u043a\u0430 -->\n<a class=\"button button-raised button-round button-fill button-large\">Button<\/a>\n\n<!-- \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0430 \u0447\u0435\u0440\u0432\u043e\u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0430 -->\n<a class=\"button button-small color-red\">Button<\/a>\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u041a\u043d\u043e\u043f\u043a\u0430 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0404 \u043c\u043e\u0436\u043b\u0438\u0432\u0456\u0441\u0442\u044c \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u0443 \u043a\u043d\u043e\u043f\u043a\u0443 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f. \u0422\u0430\u043a\u0430 \u043a\u043d\u043e\u043f\u043a\u0430 \u043f\u043e\u0432\u0438\u043d\u043d\u0430 \u043c\u0430\u0442\u0438 <code>Preloader<\/code> \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0442\u0430 \u0442\u0435\u043a\u0441\u0442 \u043a\u043d\u043e\u043f\u043a\u0438, \u043e\u0431\u0433\u043e\u0440\u043d\u0443\u0442\u0438\u0439 \u0442\u0435\u0433\u043e\u043c <code>&lt;span&gt;<\/code>, \u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>button-preloader<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<button class=\"button button-preloader\">\n  <span class=\"preloader\"><\/span>\n  <span>Load<\/span>\n<\/button>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0410 \u0449\u043e\u0431 \u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>button-loading<\/code> (\u0432\u0456\u043d \u043f\u043e\u043a\u0430\u0436\u0435 \u0432\u043d\u0443\u0442\u0440\u0456\u0448\u043d\u0456\u0439 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447 \u0456 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0454 \u0442\u0435\u043a\u0441\u0442 \u043a\u043d\u043e\u043f\u043a\u0438):","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<button class=\"button button-preloader button-loading\">\n  <span class=\"preloader\"><\/span>\n  <span>Load<\/span>\n<\/button>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0421\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0439 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u0421\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0439 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0421\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u2014 \u0446\u0435 \u043b\u0456\u043d\u0456\u0439\u043d\u0438\u0439 \u043d\u0430\u0431\u0456\u0440 \u0456\u0437 \u0434\u0432\u043e\u0445 \u0430\u0431\u043e \u0431\u0456\u043b\u044c\u0448\u0435 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u0456\u0432 (buttons), \u043a\u043e\u0436\u0435\u043d \u0456\u0437 \u044f\u043a\u0438\u0445 \u0444\u0443\u043d\u043a\u0446\u0456\u043e\u043d\u0443\u0454 \u044f\u043a \u0432\u0437\u0430\u0454\u043c\u043e\u0432\u0438\u043a\u043b\u044e\u0447\u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0430. \u0423\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432\u0441\u0456 \u043a\u043d\u043e\u043f\u043a\u0438 \u043c\u0430\u044e\u0442\u044c \u043e\u0434\u043d\u0430\u043a\u043e\u0432\u0443 \u0448\u0438\u0440\u0438\u043d\u0443. \u0421\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0447\u0430\u0441\u0442\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u044e\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0440\u0456\u0437\u043d\u0438\u0445 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0456\u0432 (\u043f\u0435\u0440\u0435\u043c\u0438\u043a\u0430\u043d\u043d\u044f \u0432\u043a\u043b\u0430\u0434\u043e\u043a).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u041c\u0430\u043a\u0435\u0442 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u043a\u0435\u0442 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0434\u043e\u0441\u0438\u0442\u044c \u043f\u0440\u043e\u0441\u0442\u0438\u0439, \u043b\u0438\u0448\u0435 <code>&lt;div&gt;<\/code> \u0456\u0437 \u043a\u043b\u0430\u0441\u043e\u043c <code>segmented<\/code> \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u043a\u043d\u043e\u043f\u043e\u043a:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"segmented\">\n  <a class=\"button button-active\">Tab 1<\/a>\n  <a class=\"button\">Tab 2<\/a>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"Segmented <code>\"strong\"<\/code> \u0432\u0438\u043c\u0430\u0433\u0430\u0454 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0433\u043e  \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0433\u043e \u0441\u0442\u0430\u043d\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"segmented segmented-strong\">\n  <a class=\"button button-active\">Tab 1<\/a>\n  <a class=\"button\">Tab 2<\/a>\n  <!-- \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0432\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f \u0432 segmented strong -->\n  <span class=\"segmented-highlight\"><\/span>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0445 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440\u0456\u0432","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u041a\u043b\u0430\u0441\u0438 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0438\u0445 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440\u0456\u0432"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u043a\u0440\u0456\u043c \u043a\u043d\u043e\u043f\u043e\u043a, \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0442\u0430\u043a\u043e\u0436 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u044e\u0442\u044c \u0434\u0435\u043a\u0456\u043b\u044c\u043a\u0430 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432 \u0434\u043b\u044f \u0441\u0442\u0438\u043b\u0456\u0437\u0430\u0446\u0456\u0457:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041a\u043b\u0430\u0441 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u043a\u0440\u0443\u0433\u043b\u0456 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f","meta":"segmented-round"}},{"type":"table_item","props":{"content":"\u041e\u043a\u0440\u0443\u0433\u043b\u0456 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435\u043c\u0456 iOS","meta":"segmented-round-ios"}},{"type":"table_item","props":{"content":"\u041e\u043a\u0440\u0443\u0433\u043b\u0456 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435\u043c\u0456  MD ","meta":"segmented-round-md"}},{"type":"table_item","props":{"content":"\u041e\u043a\u0440\u0443\u0433\u043b\u0456 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456  \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435\u043c\u0456  Aurora ","meta":"segmented-round-aurora"}},{"type":"table_item","props":{"content":"\u041f\u0456\u0434\u043d\u044f\u0442\u0456 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f","meta":"segmented-raised"}},{"type":"table_item","props":{"content":"\u041f\u0456\u0434\u043d\u044f\u0442\u0456 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435\u043c\u0456 iOS ","meta":"segmented-raised-ios"}},{"type":"table_item","props":{"content":"\u041f\u0456\u0434\u043d\u044f\u0442\u0456 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435\u043c\u0456 MD ","meta":"segmented-raised-md"}},{"type":"table_item","props":{"content":"\u041f\u0456\u0434\u043d\u044f\u0442\u0456 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435\u043c\u0456 Aurora ","meta":"segmented-raised-aurora"}},{"type":"table_item","props":{"content":"Strong \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f","meta":"segmented-strong"}},{"type":"table_item","props":{"content":"Strong \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435\u043c\u0456 iOS ","meta":"segmented-strong-ios"}},{"type":"table_item","props":{"content":"Strong \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435\u043c\u0456 MD ","meta":"segmented-strong-md"}},{"type":"table_item","props":{"content":"Strong \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0442\u0435\u043c\u0456 Aurora ","meta":"segmented-strong-aurora"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u0417\u043c\u0456\u043d\u043d\u0456 CSS "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-button-font-size: 14px;\n  --t4-button-min-width: 32px;\n  --t4-button-bg-color: transparent;\n  --t4-button-border-width: 0px;\n  --t4-button-text-transform: uppercase;\n  --t4-button-large-text-transform: uppercase;\n  --t4-button-small-text-transform: uppercase;\n  --t4-button-small-outline-border-width: 2px;\n  \/*\n  --t4-button-text-color: var(--t4-theme-color);\n  --t4-button-pressed-bg-color: rgba(var(--t4-theme-color-rgb), .15);\n  --t4-button-pressed-text-color: var(--t4-button-text-color, var(--t4-theme-color));\n  --t4-button-border-color: var(--t4-theme-color);\n  --t4-button-fill-text-color: #fff;\n  --t4-button-fill-bg-color: var(--t4-theme-color);\n  --t4-button-outline-border-color: var(--t4-theme-color);\n  --t4-button-padding-vertical: 0px;\n  *\/\n  --t4-button-outline-border-width: 2px;\n  --t4-button-raised-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\n  --t4-button-raised-pressed-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),\n    0 3px 6px rgba(0, 0, 0, 0.23);\n  --t4-segmented-raised-divider-color: rgba(0, 0, 0, 0.1);\n  --t4-segmented-strong-padding: 2px;\n  --t4-segmented-strong-between-buttons: 4px;\n  --t4-segmented-strong-button-font-weight: 500;\n  --t4-segmented-strong-button-active-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);\n  --t4-segmented-strong-bg-color: rgba(0, 0, 0, 0.07);\n  --t4-segmented-strong-button-text-color: #000;\n  --t4-segmented-strong-button-pressed-bg-color: rgba(0, 0, 0, 0.07);\n  --t4-segmented-strong-button-hover-bg-color: rgba(0, 0, 0, 0.04);\n  --t4-segmented-strong-button-active-text-color: #000;\n  --t4-segmented-strong-button-active-bg-color: #fff;\n}\n:root .dark,\n:root.dark {\n  --t4-segmented-strong-bg-color: rgba(255, 255, 255, 0.1);\n  --t4-segmented-strong-button-pressed-bg-color: rgba(255, 255, 255, 0.04);\n  --t4-segmented-strong-button-hover-bg-color: rgba(255, 255, 255, 0.02);\n  --t4-segmented-strong-button-active-bg-color: rgba(255, 255, 255, 0.14);\n  --t4-segmented-strong-button-text-color: #fff;\n  --t4-segmented-strong-button-active-text-color: #fff;\n}\n.ios {\n  --t4-button-height: 28px;\n  --t4-button-padding-horizontal: 10px;\n  --t4-button-border-radius: 5px;\n  --t4-button-font-weight: 600;\n  --t4-button-letter-spacing: 0;\n  \/*\n  --t4-button-fill-pressed-bg-color: var(--t4-theme-color-tint);\n  *\/\n  --t4-button-large-height: 44px;\n  --t4-button-large-font-size: 17px;\n  --t4-button-large-font-weight: 500;\n  --t4-button-small-height: 26px;\n  --t4-button-small-font-size: 13px;\n  --t4-button-small-font-weight: 600;\n  --t4-segmented-strong-button-text-transform: none;\n  --t4-segmented-strong-button-active-font-weight: 600;\n}\n.md {\n  --t4-button-height: 36px;\n  --t4-button-padding-horizontal: 8px;\n  --t4-button-border-radius: 4px;\n  --t4-button-font-weight: 500;\n  --t4-button-letter-spacing: 0.05em;\n  \/*\n  --t4-button-fill-pressed-bg-color: var(--t4-theme-color-shade);\n  *\/\n  --t4-button-large-height: 48px;\n  --t4-button-large-font-size: 14px;\n  --t4-button-large-font-weight: 500;\n  --t4-button-small-height: 28px;\n  --t4-button-small-font-size: 14px;\n  --t4-button-small-font-weight: 500;\n  --t4-segmented-strong-button-text-transform: uppercase;\n  --t4-segmented-strong-button-active-font-weight: 500;\n}\n.aurora {\n  \/*\n  --t4-button-hover-bg-color: rgba(var(--t4-theme-color-rgb), .07);\n  --t4-button-fill-hover-bg-color: var(--t4-theme-color-tint);\n  *\/\n  --t4-button-height: 36px;\n  --t4-button-min-width: 24px;\n  --t4-button-padding-horizontal: 10px;\n  --t4-button-border-radius: 8px;\n  --t4-button-font-weight: 600;\n  --t4-button-letter-spacing: 0em;\n  \/*\n  --t4-button-fill-pressed-bg-color: var(--t4-theme-color-shade);\n  *\/\n  --t4-button-large-height: 48px;\n  --t4-button-large-font-size: 16px;\n  --t4-button-large-font-weight: 600;\n  --t4-button-small-height: 28px;\n  --t4-button-small-font-size: 14px;\n  --t4-button-small-font-weight: 600;\n  --t4-segmented-strong-button-text-transform: uppercase;\n  --t4-segmented-strong-button-active-font-weight: 600;\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner\">\n        <div class=\"title\">Buttons<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block-title\">Usual Buttons<\/div>\n      <div class=\"block block-strong\">\n        <div class=\"row\">\n          <button class=\"button col\">Button<\/button>\n          <button class=\"button col\">Button<\/button>\n          <button class=\"button col button-round\">Round<\/button>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Fill Buttons<\/div>\n      <div class=\"block block-strong\">\n        <div class=\"row\">\n          <button class=\"col button button-fill\">Button<\/button>\n          <button class=\"col button button-fill\">Button<\/button>\n          <button class=\"col button button-fill button-round\">Round<\/button>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Outline Buttons<\/div>\n      <div class=\"block block-strong\">\n        <div class=\"row\">\n          <button class=\"col button button-outline\">Button<\/button>\n          <button class=\"col button button-outline\">Button<\/button>\n          <button class=\"col button button-outline button-round\">Round<\/button>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Raised Buttons<\/div>\n      <div class=\"block block-strong\">\n        <p class=\"row\">\n          <button class=\"col button button-raised\">Button<\/button>\n          <button class=\"col button button-raised button-fill\">Fill<\/button>\n          <button class=\"col button button-outline button-raised\">Outline<\/button>\n        <\/p>\n        <p class=\"row\">\n          <button class=\"col button button-raised button-round\">Round<\/button>\n          <button class=\"col button button-raised button-fill button-round\">Fill<\/button>\n          <button class=\"col button button-outline button-round button-raised\">Outline<\/button>\n        <\/p>\n      <\/div>\n      <div class=\"block-title\">Segmented<\/div>\n      <div class=\"block block-strong\">\n        <p class=\"segmented segmented-raised\">\n          <button class=\"button\">Button<\/button>\n          <button class=\"button\">Button<\/button>\n          <button class=\"button button-active\">Active<\/button>\n        <\/p>\n        <p class=\"segmented segmented-strong\">\n          <button class=\"button\">Button<\/button>\n          <button class=\"button\">Button<\/button>\n          <button class=\"button button-active\">Active<\/button>\n          <span class=\"segmented-highlight\"><\/span>\n        <\/p>\n        <p class=\"segmented\">\n          <button class=\"button button-outline\">Outline<\/button>\n          <button class=\"button button-outline\">Outline<\/button>\n          <button class=\"button button-outline button-active\">Active<\/button>\n        <\/p>\n        <p class=\"segmented segmented-raised segmented-round\">\n          <button class=\"button button-round\">Button<\/button>\n          <button class=\"button button-round\">Button<\/button>\n          <button class=\"button button-round button-active\">Active<\/button>\n        <\/p>\n        <p class=\"segmented segmented-round\">\n          <button class=\"button button-round button-outline\">Outline<\/button>\n          <button class=\"button button-round button-outline\">Outline<\/button>\n          <button class=\"button button-round button-outline button-active\">Active<\/button>\n        <\/p>\n      <\/div>\n      <div class=\"block-title\">Large Buttons<\/div>\n      <div class=\"block block-strong\">\n        <p class=\"row\">\n          <button class=\"col button button-large\">Button<\/button>\n          <button class=\"col button button-large button-fill\">Fill<\/button>\n        <\/p>\n        <p class=\"row\">\n          <button class=\"col button button-large button-raised\">Raised<\/button>\n          <button class=\"col button button-large button-raised button-fill\">Raised Fill<\/button>\n        <\/p>\n      <\/div>\n      <div class=\"block-title\">Small Buttons<\/div>\n      <div class=\"block block-strong\">\n        <p class=\"row\">\n          <button class=\"col button button-small\">Button<\/button>\n          <button class=\"col button button-small button-outline\">Outline<\/button>\n          <button class=\"col button button-small button-fill\">Fill<\/button>\n        <\/p>\n        <p class=\"row\">\n          <button class=\"col button button-small button-round\">Button<\/button>\n          <button class=\"col button button-small button-round button-outline\">Outline<\/button>\n          <button class=\"col button button-small button-round button-fill\">Fill<\/button>\n        <\/p>\n      <\/div>\n      <div class=\"block-title\">Preloader Buttons<\/div>\n      <div class=\"block block-strong\">\n        <button class=\"button button-large button-fill button-preloader ${isLoading ? 'button-loading' : ''}\"\n          @click=${load}>\n          <span class=\"preloader\"><\/span>\n          <span>Load<\/span>\n        <\/button>\n      <\/div>\n      <div class=\"block-title\">Color Buttons<\/div>\n      <div class=\"block block-strong\">\n        <p class=\"row\">\n          <button class=\"col button color-red\">Red<\/button>\n          <button class=\"col button color-green\">Green<\/button>\n          <button class=\"col button color-blue\">Blue<\/button>\n        <\/p>\n        <p class=\"row\">\n          <button class=\"col button color-pink\">Pink<\/button>\n          <button class=\"col button color-yellow\">Yellow<\/button>\n          <button class=\"col button color-orange\">Orange<\/button>\n        <\/p>\n        <p class=\"row\">\n          <button class=\"col button color-gray\">Gray<\/button>\n          <button class=\"col button color-black\">Black<\/button>\n        <\/p>\n      <\/div>\n      <div class=\"block-title\">Color Fill Buttons<\/div>\n      <div class=\"block block-strong\">\n        <p class=\"row\">\n          <button class=\"col button button-fill color-red\">Red<\/button>\n          <button class=\"col button button-fill color-green\">Green<\/button>\n          <button class=\"col button button-fill color-blue\">Blue<\/button>\n        <\/p>\n        <p class=\"row\">\n          <button class=\"col button button-fill color-pink\">Pink<\/button>\n          <button class=\"col button button-fill color-yellow\">Yellow<\/button>\n          <button class=\"col button button-fill color-orange\">Orange<\/button>\n        <\/p>\n        <p class=\"row\">\n          <button class=\"col button button-fill color-gray\">Gray<\/button>\n          <button class=\"col button button-fill color-black\">Black<\/button>\n          <button class=\"col button button-fill color-white text-color-black\">White<\/button>\n        <\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, { $update }) => {\n    let isLoading = false;\n\n    const load = () => {\n      isLoading = true;\n      $update();\n      setTimeout(() => {\n        isLoading = false;\n        $update();\n      }, 3000);\n    }\n\n    return $render;\n  }\n<\/script>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

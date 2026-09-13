@@ -1,0 +1,1301 @@
+<h2>Перегляд списку (Вигляд таблиці)</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Блок перегляду списку</a>
+
+    </li>
+        <li>
+        
+<div>Елемент списку</div>
+
+    </li>
+        <li>
+        
+<div>Верхній/нижній колонтитул елемента списку</div>
+
+    </li>
+        <li>
+        
+<div>Пункт посилання</div>
+
+    </li>
+        <li>
+        
+<div>Кнопка списку</div>
+
+    </li>
+        <li>
+        
+<div>Роздільник списку</div>
+
+    </li>
+        <li>
+        
+<div>Згруповані списки</div>
+
+    </li>
+        <li>
+        
+<div>Простий список</div>
+
+    </li>
+        <li>
+        
+<div>Список посилань</div>
+
+    </li>
+        <li>
+        
+<div>Список носіїв</div>
+
+    </li>
+        <li>
+        
+<div>Користувальницькі табличні елементи</div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Перегляд списку </h3>
+<div>Перегляди списків — це універсальні та потужні компоненти інтерфейсу користувача, які часто зустрічаються в застосунках. Перегляд списку представляє дані у прокручуваному списку з кількох рядків, які можна розділити на розділи/групи.
+Перегляди списку мають багато цілей:
+
+<p>●	Щоб дозволити користувачам переміщатися між ієрархічно структурованими даними</p>
+<p>●	Щоб представити проіндексований список елементів</p>
+<p>●	Для відображення детальної інформації та елементів керування у візуально чітких групах</p>
+<p>●	Щоб представити список опцій для вибору</p>
+</div>
+<h3>Блок перегляду списку</h3>
+<div>Блок списку — це обгортка елементів перегляду списку.
+Отже, перш за все, усі ваші елементи представлення списку мають бути обгорнуті елементом <code>&lt;div class="list"&gt;</code>:
+</div>
+<pre><code>&lt;div class=&quot;list&quot;&gt;
+    &lt;ul&gt;
+        ... Елементи списку тут ...
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<div>Щоб видалити тонкі лінії (тонкі рамки) навколо блоку списку, нам потрібен додатковий клас <code>no-hairlines</code> ліній:</div>
+<pre><code>&lt;div class=&quot;list no-hairlines&quot;&gt;
+    &lt;ul&gt;
+        ... Елементи списку тут...
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+<div>Щоб видалити тонкі лінії (тонкі межі) між елементами списку, нам потрібен додатковий клас <code>no-hairline-between</code>:</div>
+<pre><code>&lt;div class=&quot;list no-hairlines-between&quot;&gt;
+    &lt;ul&gt;
+        ... Елементи списку тут...
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+<div>Щоб зробити вставку блоку списку, нам потрібен додатковий клас вставки <code>inset</code>:</div>
+<pre><code>&lt;div class=&quot;list inset&quot;&gt;
+    &lt;ul&gt;
+        ... Елементи списку тут...
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<div>Щоб зробити блочну вставку лише на великих екранах, нам потрібно замість цього використовувати клас <code>medium-inset (>= 768px)</code>:</div>
+<pre><code>&lt;div class=&quot;list medium-inset&quot;&gt;
+    &lt;ul&gt;
+        ... Елементи списку тут...
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+<div>Щоб отримати повний набір таких адаптивних класів, перегляньте документи <a href ="https://techno4.online/administrator/index.php?option=com_content&task=article.edit&id=71">розділу Grid Layout.</a> Вони бувають <code>xsmall-inset, small-inset, medium-inset, large-inset, xlarge-inset.</code></div>
+<h3>Елемент списку</h3>
+<div>Один елемент списку має досить складний, але гнучкий макет:</div>
+<pre><code>&lt;li&gt;
+    &lt;div class=&quot;item-content&quot;&gt;
+        &lt;div class=&quot;item-media&quot;&gt;
+            &lt;i class=&quot;icon my-icon&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;
+				Заголовок елементу списку
+            &lt;/div&gt;
+            &lt;div class=&quot;item-after&quot;&gt;
+                Якрлик елементу списку
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/li&gt;
+</code></pre>
+<div>Де
+<p>●	<code>item-content  </code> - основна гнучка оболонка для <code>item-media</code> та <code>item-inner</code>. Обов'язковий елемент.</p>
+<p>	○<code>	item-media </code> - контейнер  для медіа-елемента, наприклад піктограми, зображення тощо. Додатковий елемент</p>
+<p>○	<code>item-inner  </code> - основна гнучка оболонка для <code>item-title</code> та <code>item-after</code>. Обов'язковий елемент.</p>
+<p>■		<code>item-title  </code> - однорядкова назва пункту списку. Обов'язковий елемент</p>
+<p>■		<code>item-after  </code> -  мітка елемента списку. Може містити будь-які додаткові елементи HTML, наприклад текст мітки, значок, перемикач/перемикач, кнопку тощо. Необов’язковий елемент.</p></div>
+<div>●	Оскільки <code>.item-content</code> насправді є елементом CSS flex-box, зауважте, що <code>item-media</code> та <code>item-inner</code> мають бути прямими дочірніми елементами <code>item-content</code>!
+<p>●	З тієї ж причини <code>item-title</code> і <code>item-after</code> повинні бути прямими нащадками <code>item-inner</code>!
+</div>
+<div>Також зауважте, що якщо ваш елемент списку не має нічого додаткового, ви можете використовувати клас <code>item-content</code> для елемента <code>&lt;li&gt;</code>:</div>
+<pre><code>&lt;li class=&quot;item-content&quot;&gt;
+    &lt;div class=&quot;item-media&quot;&gt;
+        &lt;i class=&quot;icon my-icon&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-title&quot;&gt;
+            List element title
+        &lt;/div&gt;
+        &lt;div class=&quot;item-after&quot;&gt;
+            List element label
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/li&gt;</code></pre>
+<h3>Верхній/нижній колонтитул елемента списку</h3>
+<div>Якщо нам потрібно додати текст верхнього/нижнього колонтитула елемента списку на додаток до назви елемента, ми можемо використати елементи <code>item-header</code> і <code>item-footer</code>:</div>
+<pre><code>&lt;li&gt;
+  &lt;div class=&quot;item-content&quot;&gt;
+    &lt;div class=&quot;item-media&quot;&gt;
+      &lt;i class=&quot;icon my-icon&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;item-inner&quot;&gt;
+      &lt;div class=&quot;item-title&quot;&gt;
+        &lt;!-- Item header, must be first child of item-title --&gt;
+        &lt;div class=&quot;item-header&quot;&gt;Item header text&lt;/div&gt;
+        List element title
+        &lt;!-- Item footer, must be last child of item-title --&gt;
+        &lt;div class=&quot;item-footer&quot;&gt;Item footer text&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;item-after&quot;&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/li&gt;</code></pre>
+<h3>Пункт посилання</h3>
+<div>Звичайно, у більшості випадків нам потрібно використовувати елементи представлення списку як посилання (<code>&lt;a&gt;</code>) на інші сторінки чи дані. У цьому випадку нам потрібно обернути <code>item-content</code> елементом <code>&lt;a class="item-link"&gt;</code>:</div>
+<pre><code>&lt;li&gt;
+  &lt;a href=&quot;#&quot; class=&quot;item-link&quot;&gt;
+    &lt;div class=&quot;item-content&quot;&gt;
+      &lt;div class=&quot;item-media&quot;&gt;...&lt;/div&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/li&gt;</code></pre>
+<div>Якщо у ваших посиланнях немає нічого, крім <code>«item-content»</code>, ми можемо просто використовувати посилання як <code>«item-content»</code>:</div>
+<pre><code>&lt;li&gt;
+  &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+    &lt;div class=&quot;item-media&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;item-inner&quot;&gt;...&lt;/div&gt;
+  &lt;/a&gt;
+&lt;/li&gt;</code></pre>
+<div>Зауважте, що <code>item-inner</code> має додатковий правий відступ і значок шеврона, коли він знаходиться в <code>item-link</code>.
+Щоб видалити цю піктограму шеврона та зайві відступи, ви можете додати клас <code>no-chevron</code> до елемента посилання або до списку вмісту
+</div>
+<h3>Кнопка списку</h3>
+<div>Кнопка «Список» — це спрощений елемент посилання на список, корисний у випадку, якщо вам потрібно запустити прості дії, які самостійно пояснюються:</div>
+<pre><code>&lt;li&gt;
+  &lt;a class=&quot;list-button&quot;&gt;List Button 1&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+  &lt;a class=&quot;list-button&quot;&gt;List Button 2&lt;/a&gt;
+&lt;/li&gt;</code></pre>
+<h3>Роздільник списку</h3>
+<div>Роздільник списку — це простий елемент списку із заголовком, який візуально відокремлює один пункт списку від іншого:</div>
+<pre><code>&lt;li class=&quot;item-divider&quot;&gt;Divider title here&lt;/li&gt;
+
+&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    &lt;!-- List items --&gt;
+    &lt;li class=&quot;item-content&quot;&gt;...&lt;/li&gt;
+    &lt;li class=&quot;item-content&quot;&gt;...&lt;/li&gt;
+
+    &lt;!-- Divider --&gt;
+    &lt;li class=&quot;item-divider&quot;&gt;Divider title here&lt;/li&gt;
+
+    &lt;!-- Another list items --&gt;
+    &lt;li class=&quot;item-content&quot;&gt;...&lt;/li&gt;
+    &lt;li class=&quot;item-content&quot;&gt;...&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<h3>Згруповані списки</h3>
+<div>Іноді нам потрібно згрупувати елементи перегляду списку всередині одного блоку списку. У цьому випадку нам потрібно додати додаткові елементи списку<code>list-group</code>:</div>
+<pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;!-- First group--&gt;
+  &lt;div class=&quot;list-group&quot;&gt;
+    &lt;ul&gt;
+      &lt;li class=&quot;list-group-title&quot;&gt;First group&lt;/li&gt;
+      &lt;li class=&quot;item-content&quot;&gt;...&lt;/li&gt;
+      &lt;li class=&quot;item-content&quot;&gt;...&lt;/li&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Second group--&gt;
+  &lt;div class=&quot;list-group&quot;&gt;
+    &lt;ul&gt;
+      &lt;li class=&quot;list-group-title&quot;&gt;Second Group&lt;/li&gt;
+      &lt;li class=&quot;item-content&quot;&gt;...&lt;/li&gt;
+      &lt;li class=&quot;item-content&quot;&gt;...&lt;/li&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Ви можете запитати, чим відрізняються від простих роздільників?<i><b>У групах списків заголовки груп мають закріплене положення під час прокручування в одній групі.</b></i></div>
+<h3>Простий список</h3>
+<div>Якщо нам потрібен список із простою структурою елементів, який має лише заголовки, ми можемо використати модифікацію <code>Simple List</code>. У цьому випадку нам потрібен додатковий клас простий список <code>simple-list</code> у блоці списку зі звичайним макетом елементів <code>&lt;li&gt;</code>:</div>
+<pre><code>&lt;div class=&quot;list simple-list&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+    &lt;li&gt;Item 4&lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<h3>Список посилань</h3>
+<div>Якщо нам потрібен список із простою структурою елементів посилань, які мають лише заголовки, ми можемо використати модифікацію списку посилань. У цьому випадку нам потрібен додатковий список посилань <code>links-list</code>  на класу блоці списку зі звичайним макетом елементів <code>&lt;li&gt;&lt;a&gt;...&lt;/a&gt;&lt;/li&gt;</code>:</div>
+<pre><code>&lt;div class=&quot;list links-list&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;#&quot;&gt;Link Item 1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;#&quot;&gt;Link Item 2&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;#&quot;&gt;Link Item 3&lt;/a&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<h3>Список медіафайлів</h3>
+<div>Перегляд списку медіа — це розширений випадок перегляду списку, призначений для відображення складніших даних, таких як продукти, послуги, користувачі тощо. У цьому випадку нам потрібен додатковий клас медіа-списку <code>media-list</code> в блоці списку.
+<p>І, звичайно, він має трохи складніший макет:</p>
+</div>
+<pre><code>&lt;!-- Media list block has additional &quot;media-list&quot; class --&gt;
+&lt;div class=&quot;list media-list&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;div class=&quot;item-content&quot;&gt;
+        &lt;div class=&quot;item-media&quot;&gt;
+          &lt;img src=&quot;path/to/img.jpg&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item-inner&quot;&gt;
+          &lt;div class=&quot;item-title-row&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Element title&lt;/div&gt;
+            &lt;div class=&quot;item-after&quot;&gt;Element label&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;item-subtitle&quot;&gt;Subtitle&lt;/div&gt;
+          &lt;div class=&quot;item-text&quot;&gt;Additional description text&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>item-content  </code> - основна гнучка оболонка для <code>item-media</code> та <code>item-inner</code>. Обов'язковий елемент.</p>
+<p>	○<code>	item-media </code> - контейнер  для медіа-елемента, наприклад піктограми, зображення тощо. Додатковий елемент</p>
+<p>○	<code>item-inner  </code> - Обов'язковий елемент.</p>
+<p>■		<code>item-title-row   </code> - основна гнучка оболонка для для item-title і item-after. Необов'язковий елемент</p>
+<p>■		<code>item-title</code> -  однорядковий заголовок елемента списку. Необов'язковий елемент</p>
+<p>■		<code>item-after</code> -  мітка елемента списку. Може містити будь-які додаткові елементи HTML, наприклад текст мітки, значок, перемикач/перемикач, кнопку тощо. Необов’язковий елемент.</p>
+<p>■		<code>item-subtitle </code> -  додатковий однорядковий заголовок. Необов'язковий елемент.</p>
+<p>■		<code>item-text </code> - додатковий дворядковий контейнер для детального опису. Необов’язковий елемент</p>
+</div>
+<div>Якщо ви використовуєте посилання на елемент (посилання на елемент) у списку медіафайлів, значок шеврона (>) буде відображено на рівні назви елемента <code>item-title</code>. Якщо ви хочете перемістити цей шеврон у центр елемента, вам потрібно додати клас <code>chevron-center</code> до цього елемента або до списку вмісту:
+</div>
+<h3>Користувальницькі табличні елементи</h3>
+<div>Якщо вам потрібен настроюваний макет елементів списку з табличною структурою, ви можете використати додаткові елементи списку <code>item-row</code> і <code>item-cell</code>:</div>
+<pre><code>&lt;li class=&quot;item-content&quot;&gt;
+  &lt;div class=&quot;item-inner item-cell&quot;&gt;
+    &lt;div class=&quot;item-row&quot;&gt;
+      &lt;div class=&quot;item-cell&quot;&gt;Cell 1-1&lt;/div&gt;
+      &lt;div class=&quot;item-cell&quot;&gt;Cell 1-2&lt;/div&gt;
+      &lt;div class=&quot;item-cell&quot;&gt;Cell 1-3&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;item-row&quot;&gt;
+      &lt;div class=&quot;item-cell&quot;&gt;Cell 2-1&lt;/div&gt;
+      &lt;div class=&quot;item-cell&quot;&gt;Cell 2-2&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;item-row&quot;&gt;
+      &lt;div class=&quot;item-cell&quot;&gt;Cell 3-1&lt;/div&gt;
+      &lt;div class=&quot;item-cell&quot;&gt;
+        &lt;div class=&quot;item-row&quot;&gt;
+          Cell 3-2
+        &lt;/div&gt;
+        &lt;div class=&quot;item-row&quot;&gt;
+          Cell 3-3
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/li&gt;</code></pre>
+<h3>Змінні  CSS </h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  --t4-list-inset-side-margin: 16px;
+  --t4-list-item-cell-margin: 16px;
+  --t4-list-item-padding-horizontal: 16px;
+  --t4-list-item-padding-vertical: 8px;
+  --t4-list-media-item-padding-horizontal: 16px;
+  --t4-list-item-text-max-lines: 2;
+  --t4-list-chevron-icon-font-size: 20px;
+  --t4-list-item-media-margin: 16px;
+  --t4-list-item-title-font-size: inherit;
+  --t4-list-item-title-font-weight: 400;
+  --t4-list-item-title-text-color: inherit;
+  --t4-list-item-title-line-height: inherit;
+  --t4-list-item-title-white-space: nowrap;
+  --t4-list-item-subtitle-font-weight: 400;
+  --t4-list-item-subtitle-text-color: inherit;
+  --t4-list-item-subtitle-line-height: inherit;
+  --t4-list-item-text-font-weight: 400;
+  --t4-list-item-after-font-weight: 400;
+  --t4-list-item-after-line-height: inherit;
+  --t4-list-item-header-text-color: inherit;
+  --t4-list-item-header-font-size: 12px;
+  --t4-list-item-header-font-weight: 400;
+  --t4-list-item-header-line-height: 1.2;
+  --t4-list-item-footer-font-size: 12px;
+  --t4-list-item-footer-font-weight: 400;
+  --t4-list-item-footer-line-height: 1.2;
+  /*
+  --t4-list-button-text-color: var(--t4-theme-color);
+  --t4-list-button-pressed-bg-color: rgba(var(--t4-theme-color-rgb), .15);
+  */
+  --t4-list-button-font-size: inherit;
+  --t4-list-button-font-weight: 400;
+  --t4-list-button-text-align: center;
+  --t4-list-item-divider-line-height: inherit;
+  --t4-list-item-divider-font-weight: 400;
+  --t4-list-group-title-line-height: inherit;
+  --t4-menu-list-offset: 8px;
+  --t4-menu-list-border-radius: 8px;
+  --t4-menu-list-font-size: 14px;
+  --t4-menu-list-item-title-font-size: 14px;
+  --t4-menu-list-item-title-font-weight: 500;
+  --t4-menu-list-item-subtitle-font-size: 14px;
+  --t4-menu-list-item-text-font-size: 14px;
+  --t4-menu-list-item-after-font-size: 14px;
+  --t4-list-bg-color: #fff;
+  --t4-list-chevron-icon-color: rgba(0, 0, 0, 0.2);
+  --t4-menu-list-selected-text-color: var(--t4-theme-color);
+  --t4-menu-list-selected-bg-color: rgba(var(--t4-theme-color-rgb), 0.15);
+}
+:root .dark,
+:root.dark {
+  --t4-list-button-border-color: rgba(255, 255, 255, 0.15);
+  --t4-list-bg-color: #1c1c1d;
+  --t4-list-border-color: rgba(255, 255, 255, 0.15);
+  --t4-list-item-border-color: rgba(255, 255, 255, 0.15);
+  --t4-list-item-divider-border-color: rgba(255, 255, 255, 0.15);
+  --t4-list-item-divider-bg-color: #232323;
+  --t4-list-group-title-bg-color: #232323;
+  --t4-list-chevron-icon-color: rgba(255, 255, 255, 0.3);
+  --t4-menu-list-selected-text-color: inherit;
+  --t4-menu-list-selected-bg-color: var(--t4-theme-color);
+}
+.ios {
+  --t4-list-in-list-padding-left: 30px;
+  --t4-list-inset-border-radius: 8px;
+  --t4-list-margin-vertical: 35px;
+  --t4-list-font-size: 17px;
+  --t4-list-chevron-icon-area: 20px;
+  --t4-list-border-color: rgba(0, 0, 0, 0.22);
+  --t4-list-item-border-color: rgba(0, 0, 0, 0.22);
+  --t4-list-link-pressed-bg-color: rgba(0, 0, 0, 0.15);
+  --t4-list-item-subtitle-font-size: 15px;
+  --t4-list-item-text-font-size: 15px;
+  --t4-list-item-text-line-height: 21px;
+  --t4-list-item-after-font-size: inherit;
+  --t4-list-item-after-padding: 5px;
+  --t4-list-item-min-height: 44px;
+  --t4-list-item-media-icons-margin: 5px;
+  --t4-list-media-item-padding-vertical: 10px;
+  --t4-list-media-item-title-font-weight: 600;
+  --t4-list-button-border-color: rgba(0, 0, 0, 0.22);
+  --t4-list-item-divider-height: 31px;
+  --t4-list-item-divider-font-size: inherit;
+  --t4-list-item-divider-bg-color: rgba(0, 0, 0, 0.03);
+  --t4-list-item-divider-border-color: rgba(0, 0, 0, 0.22);
+  --t4-list-group-title-height: 31px;
+  --t4-list-group-title-font-size: inherit;
+  --t4-list-group-title-font-weight: 400;
+  --t4-list-group-title-bg-color: #f7f7f7;
+  --t4-list-item-after-text-color: rgba(0, 0, 0, 0.45);
+  --t4-list-item-footer-text-color: rgba(0, 0, 0, 0.45);
+  --t4-list-item-text-text-color: rgba(0, 0, 0, 0.45);
+  --t4-list-item-divider-text-color: rgba(0, 0, 0, 0.45);
+  --t4-list-group-title-text-color: rgba(0, 0, 0, 0.45);
+}
+.ios .dark,
+.ios.dark {
+  --t4-list-item-after-text-color: rgba(255, 255, 255, 0.55);
+  --t4-list-item-header-text-color: rgba(255, 255, 255, 0.55);
+  --t4-list-item-footer-text-color: rgba(255, 255, 255, 0.55);
+  --t4-list-item-text-text-color: rgba(255, 255, 255, 0.55);
+  --t4-list-item-divider-text-color: rgba(255, 255, 255, 0.55);
+  --t4-list-group-title-text-color: rgba(255, 255, 255, 0.55);
+  --t4-list-link-pressed-bg-color: rgba(255, 255, 255, 0.08);
+}
+.md {
+  --t4-list-in-list-padding-left: 40px;
+  --t4-list-inset-border-radius: 4px;
+  --t4-list-margin-vertical: 32px;
+  --t4-list-font-size: 16px;
+  --t4-list-chevron-icon-area: 26px;
+  --t4-list-border-color: rgba(0, 0, 0, 0.12);
+  --t4-list-item-border-color: rgba(0, 0, 0, 0.12);
+  --t4-list-item-subtitle-font-size: 14px;
+  --t4-list-item-text-font-size: 14px;
+  --t4-list-item-text-line-height: 20px;
+  --t4-list-item-after-font-size: 14px;
+  --t4-list-item-after-padding: 8px;
+  --t4-list-item-min-height: 48px;
+  --t4-list-item-media-icons-margin: 8px;
+  --t4-list-media-item-padding-vertical: 14px;
+  /*
+  --t4-list-media-item-title-font-weight: var(--t4-list-item-title-font-weight);
+  */
+  --t4-list-button-border-color: transparent;
+  --t4-list-item-divider-height: 48px;
+  --t4-list-item-divider-font-size: 14px;
+  --t4-list-item-divider-bg-color: #f4f4f4;
+  --t4-list-item-divider-border-color: transparent;
+  --t4-list-group-title-height: 48px;
+  --t4-list-group-title-font-size: 14px;
+  --t4-list-group-title-font-weight: 400;
+  --t4-list-group-title-bg-color: #f4f4f4;
+  --t4-menu-list-border-radius: 4px;
+  --t4-list-link-pressed-bg-color: rgba(0, 0, 0, 0.1);
+  --t4-list-item-text-text-color: rgba(0, 0, 0, 0.54);
+  --t4-list-item-after-text-color: rgba(0, 0, 0, 0.54);
+  --t4-list-item-footer-text-color: rgba(0, 0, 0, 0.5);
+  --t4-list-item-divider-text-color: rgba(0, 0, 0, 0.54);
+  --t4-list-group-title-text-color: rgba(0, 0, 0, 0.54);
+}
+.md .dark,
+.md.dark {
+  --t4-list-item-divider-text-color: #fff;
+  --t4-list-group-title-text-color: #fff;
+  --t4-list-link-pressed-bg-color: rgba(255, 255, 255, 0.05);
+  --t4-list-item-text-text-color: rgba(255, 255, 255, 0.54);
+  --t4-list-item-after-text-color: rgba(255, 255, 255, 0.54);
+  --t4-list-item-footer-text-color: rgba(255, 255, 255, 0.54);
+}
+.aurora {
+  --t4-list-in-list-padding-left: 16px;
+  --t4-list-inset-border-radius: 8px;
+  --t4-list-margin-vertical: 32px;
+  --t4-list-font-size: 16px;
+  --t4-list-chevron-icon-area: 20px;
+  --t4-list-border-color: rgba(0, 0, 0, 0.12);
+  --t4-list-item-border-color: rgba(0, 0, 0, 0.12);
+  --t4-list-item-subtitle-font-size: 14px;
+  --t4-list-item-text-font-size: 14px;
+  --t4-list-item-text-line-height: 20px;
+  --t4-list-item-after-font-size: 14px;
+  --t4-list-item-after-padding: 8px;
+  --t4-list-item-min-height: 48px;
+  --t4-list-item-media-icons-margin: 8px;
+  --t4-list-media-item-padding-vertical: 16px;
+  --t4-list-media-item-title-font-weight: 600;
+  --t4-list-button-border-color: rgba(0, 0, 0, 0.12);
+  --t4-list-button-font-weight: 500;
+  --t4-list-item-divider-height: 32px;
+  --t4-list-item-divider-font-size: 14px;
+  --t4-list-item-divider-bg-color: rgba(0, 0, 0, 0.03);
+  --t4-list-item-divider-border-color: transparent;
+  --t4-list-group-title-height: 32px;
+  --t4-list-group-title-font-size: 14px;
+  --t4-list-group-title-font-weight: 500;
+  --t4-list-group-title-bg-color: #f7f7f7;
+  --t4-list-link-pressed-bg-color: rgba(0, 0, 0, 0.1);
+  --t4-list-link-hover-bg-color: rgba(0, 0, 0, 0.03);
+  --t4-list-item-text-text-color: rgba(0, 0, 0, 0.6);
+  --t4-list-item-after-text-color: rgba(0, 0, 0, 0.5);
+  --t4-list-item-footer-text-color: rgba(0, 0, 0, 0.6);
+  --t4-list-button-hover-bg-color: rgba(0, 0, 0, 0.03);
+  --t4-list-item-divider-text-color: rgba(0, 0, 0, 0.6);
+  --t4-list-group-title-text-color: rgba(0, 0, 0, 0.6);
+}
+.aurora .dark,
+.aurora.dark {
+  --t4-list-item-text-text-color: rgba(255, 255, 255, 0.54);
+  --t4-list-item-after-text-color: rgba(255, 255, 255, 0.54);
+  --t4-list-item-footer-text-color: rgba(255, 255, 255, 0.54);
+  --t4-list-item-divider-text-color: rgba(255, 255, 255, 0.6);
+  --t4-list-group-title-text-color: rgba(255, 255, 255, 0.6);
+  --t4-list-link-pressed-bg-color: rgba(255, 255, 255, 0.05);
+  --t4-list-link-hover-bg-color: rgba(255, 255, 255, 0.03);
+  --t4-list-button-hover-bg-color: rgba(255, 255, 255, 0.03);
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;List View&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Simple List&lt;/div&gt;
+      &lt;div class=&quot;list simple-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Item 1&lt;/li&gt;
+          &lt;li&gt;Item 2&lt;/li&gt;
+          &lt;li&gt;Item 3&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Links List&lt;/div&gt;
+      &lt;div class=&quot;list links-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Link 3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;List With Icons&lt;/div&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ivan Petrov&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;CEO&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;John Doe&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt; &lt;span class=&quot;badge&quot;&gt;5&lt;/span&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Jenna Smith&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Links&lt;/div&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ivan Petrov&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;CEO&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;John Doe&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;Cleaner&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Jenna Smith&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Links, Header, Footer&lt;/div&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;
+                  &lt;div class=&quot;item-header&quot;&gt;Name&lt;/div&gt;John Doe
+                &lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;Edit&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;
+                  &lt;div class=&quot;item-header&quot;&gt;Phone&lt;/div&gt;+7 90 111-22-3344
+                &lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;Edit&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;
+                  &lt;div class=&quot;item-header&quot;&gt;Email&lt;/div&gt;john@doe&lt;div class=&quot;item-footer&quot;&gt;Home&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;Edit&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;
+                  &lt;div class=&quot;item-header&quot;&gt;Email&lt;/div&gt;john@techno4&lt;div class=&quot;item-footer&quot;&gt;Work&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;Edit&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Links Without Icons&lt;/div&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ivan Petrov&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;John Doe&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-divider&quot;&gt;Divider Here&lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ivan Petrov&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Jenna Smith&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Grouped with sticky titles&lt;/div&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;div class=&quot;list-group&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;list-group-title&quot;&gt;A&lt;/li&gt;
+            &lt;li&gt;
+              &lt;div class=&quot;item-content&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Aaron &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;div class=&quot;item-content&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Abbie&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;div class=&quot;item-content&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Adam&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;list-group&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;list-group-title&quot;&gt;B&lt;/li&gt;
+            &lt;li&gt;
+              &lt;div class=&quot;item-content&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Bailey&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;div class=&quot;item-content&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Barclay&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;div class=&quot;item-content&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Bartolo&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;list-group&quot;&gt;
+          &lt;ul&gt;
+            &lt;li class=&quot;list-group-title&quot;&gt;C&lt;/li&gt;
+            &lt;li&gt;
+              &lt;div class=&quot;item-content&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Caiden&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;div class=&quot;item-content&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Calvin&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;div class=&quot;item-content&quot;&gt;
+                &lt;div class=&quot;item-inner&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Candy&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Mixed and nested&lt;/div&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ivan Petrov&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;CEO&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Two icons here&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;No icons here&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;ul&gt;
+              &lt;li&gt;
+                &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+                  &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                  &lt;div class=&quot;item-inner&quot;&gt;
+                    &lt;div class=&quot;item-title&quot;&gt;Ivan Petrov&lt;/div&gt;
+                    &lt;div class=&quot;item-after&quot;&gt;CEO&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+                  &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                  &lt;div class=&quot;item-inner&quot;&gt;
+                    &lt;div class=&quot;item-title&quot;&gt;Two icons here&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;div class=&quot;item-content&quot;&gt;
+                  &lt;div class=&quot;item-inner&quot;&gt;
+                    &lt;div class=&quot;item-title&quot;&gt;No icons here&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+                  &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                  &lt;div class=&quot;item-inner&quot;&gt;
+                    &lt;div class=&quot;item-title&quot;&gt;Ultra long text goes here, no, it is really really long&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;div class=&quot;item-content&quot;&gt;
+                  &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                  &lt;div class=&quot;item-inner&quot;&gt;
+                    &lt;div class=&quot;item-title&quot;&gt;With toggle&lt;/div&gt;
+                    &lt;div class=&quot;item-after&quot;&gt;
+                      &lt;label class=&quot;toggle toggle-init&quot;&gt;
+                        &lt;input type=&quot;checkbox&quot; /&gt;
+                        &lt;span class=&quot;toggle-icon&quot;&gt;&lt;/span&gt;
+                      &lt;/label&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ultra long text goes here, no, it is really really long&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;With toggle&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;
+                  &lt;label class=&quot;toggle toggle-init&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; /&gt;
+                    &lt;span class=&quot;toggle-icon&quot;&gt;&lt;/span&gt;
+                  &lt;/label&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Mixed, inset&lt;/div&gt;
+      &lt;div class=&quot;list inset&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ivan Petrov&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;CEO&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Two icons here&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ultra long text goes here, no, it is really really long&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;With toggle&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;
+                  &lt;label class=&quot;toggle toggle-init&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; /&gt;
+                    &lt;span class=&quot;toggle-icon&quot;&gt;&lt;/span&gt;
+                  &lt;/label&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class=&quot;block-footer&quot;&gt;
+          &lt;p&gt;Here comes some useful information about list above&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Tablet inset&lt;/div&gt;
+      &lt;div class=&quot;list medium-inset&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ivan Petrov&lt;/div&gt;
+                &lt;div class=&quot;item-after&quot;&gt;CEO&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Two icons here&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title&quot;&gt;Ultra long text goes here, no, it is really really long&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class=&quot;block-footer&quot;&gt;
+          &lt;p&gt;This list block will look like &quot;inset&quot; only on tablets (iPad)&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Media Lists&lt;/div&gt;
+      &lt;div class=&quot;block&quot;&gt;
+        &lt;p&gt;Media Lists are almost the same as Data Lists, but with a more flexible layout for visualization of more
+          complex data, like products, services, users, etc.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Songs&lt;/div&gt;
+      &lt;div class=&quot;list media-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/people-160x160-1.jpg&quot;
+                  width=&quot;80&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Yellow Submarine&lt;/div&gt;
+                  &lt;div class=&quot;item-after&quot;&gt;$15&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Beatles&lt;/div&gt;
+                &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis
+                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum
+                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec
+                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/people-160x160-2.jpg&quot;
+                  width=&quot;80&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Don't Stop Me Now&lt;/div&gt;
+                  &lt;div class=&quot;item-after&quot;&gt;$22&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Queen&lt;/div&gt;
+                &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis
+                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum
+                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec
+                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/people-160x160-3.jpg&quot;
+                  width=&quot;80&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Billie Jean&lt;/div&gt;
+                  &lt;div class=&quot;item-after&quot;&gt;$16&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Michael Jackson&lt;/div&gt;
+                &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis
+                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum
+                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec
+                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Mail App&lt;/div&gt;
+      &lt;div class=&quot;list media-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Facebook&lt;/div&gt;
+                  &lt;div class=&quot;item-after&quot;&gt;17:14&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;New messages from John Doe&lt;/div&gt;
+                &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis
+                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum
+                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec
+                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;John Doe (via Twitter)&lt;/div&gt;
+                  &lt;div class=&quot;item-after&quot;&gt;17:11&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;John Doe (@_johndoe) mentioned you on Twitter!&lt;/div&gt;
+                &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis
+                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum
+                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec
+                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Facebook&lt;/div&gt;
+                  &lt;div class=&quot;item-after&quot;&gt;16:48&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;New messages from John Doe&lt;/div&gt;
+                &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis
+                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum
+                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec
+                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;John Doe (via Twitter)&lt;/div&gt;
+                  &lt;div class=&quot;item-after&quot;&gt;15:32&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;John Doe (@_johndoe) mentioned you on Twitter!&lt;/div&gt;
+                &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis
+                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum
+                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec
+                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;With centered chevron icon&lt;/div&gt;
+      &lt;div class=&quot;list media-list chevron-center&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Facebook&lt;/div&gt;
+                  &lt;div class=&quot;item-after&quot;&gt;17:14&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;New messages from John Doe&lt;/div&gt;
+                &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis
+                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum
+                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec
+                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;John Doe (via Twitter)&lt;/div&gt;
+                  &lt;div class=&quot;item-after&quot;&gt;17:11&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;John Doe (@_johndoe) mentioned you on Twitter!&lt;/div&gt;
+                &lt;div class=&quot;item-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis
+                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum
+                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec
+                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Something more simple&lt;/div&gt;
+      &lt;div class=&quot;list media-list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/fashion-88x88-1.jpg&quot;
+                  width=&quot;44&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Yellow Submarine&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Beatles&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/fashion-88x88-2.jpg&quot;
+                  width=&quot;44&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Don't Stop Me Now&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Queen&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/fashion-88x88-3.jpg&quot;
+                  width=&quot;44&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Billie Jean&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Michael Jackson&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Inset&lt;/div&gt;
+      &lt;div class=&quot;list media-list inset&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/fashion-88x88-4.jpg&quot;
+                  width=&quot;44&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Yellow Submarine&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Beatles&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/fashion-88x88-5.jpg&quot;
+                  width=&quot;44&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Don't Stop Me Now&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Queen&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-media&quot;&gt;&lt;img src=&quot;https://cdn.techno4.io/placeholder/fashion-88x88-6.jpg&quot;
+                  width=&quot;44&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-title-row&quot;&gt;
+                  &lt;div class=&quot;item-title&quot;&gt;Billie Jean&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-subtitle&quot;&gt;Michael Jackson&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;List Buttons&lt;/div&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a class=&quot;list-button&quot;&gt;Button 1&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a class=&quot;list-button&quot;&gt;Button 2&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a class=&quot;list-button&quot;&gt;Button 3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Inset List Buttons&lt;/div&gt;
+      &lt;div class=&quot;list inset&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a class=&quot;list-button&quot;&gt;Button 1&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a class=&quot;list-button&quot;&gt;Button 2&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a class=&quot;list-button&quot;&gt;Button 3&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Custom Table-like Layout&lt;/div&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner item-cell&quot;&gt;
+                &lt;div class=&quot;item-row&quot;&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 1-1&lt;/div&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 1-2&lt;/div&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 1-3&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-row&quot;&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 2-1&lt;/div&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 2-2&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-row&quot;&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 3-1&lt;/div&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;
+                    &lt;div class=&quot;item-row&quot;&gt;Cell 3-2&lt;/div&gt;
+                    &lt;div class=&quot;item-row&quot;&gt;Cell 3-3&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;item-link item-content&quot;&gt;
+              &lt;div class=&quot;item-inner item-cell&quot;&gt;
+                &lt;div class=&quot;item-row&quot;&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 1-1&lt;/div&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 1-2&lt;/div&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 1-3&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-row&quot;&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 2-1&lt;/div&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 2-2&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;item-row&quot;&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;Cell 3-1&lt;/div&gt;
+                  &lt;div class=&quot;item-cell&quot;&gt;
+                    &lt;div class=&quot;item-row&quot;&gt;Cell 3-2&lt;/div&gt;
+                    &lt;div class=&quot;item-row&quot;&gt;Cell 3-3&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;style&gt;
+  .icon-t4 {
+    background: #EE350F;
+    color: #fff !important;
+    border-radius: 50%;
+    text-align: center;
+  }
+
+  .icon-t4:before {
+    content: '7';
+  }
+
+  .ios .icon-t4 {
+    width: 29px;
+    height: 29px;
+    line-height: 29px;
+  }
+
+  .md .icon-t4 {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+  }
+&lt;/style&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0441\u043f\u0438\u0441\u043a\u0443 (\u0412\u0438\u0433\u043b\u044f\u0434 \u0442\u0430\u0431\u043b\u0438\u0446\u0456)","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0441\u043f\u0438\u0441\u043a\u0443 (\u0412\u0438\u0433\u043b\u044f\u0434 \u0442\u0430\u0431\u043b\u0438\u0446\u0456)"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u0411\u043b\u043e\u043a \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u0438\u0441\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u0412\u0435\u0440\u0445\u043d\u0456\u0439\/\u043d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u041f\u0443\u043d\u043a\u0442 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f"}},{"type":"nav_item","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0441\u043f\u0438\u0441\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u0420\u043e\u0437\u0434\u0456\u043b\u044c\u043d\u0438\u043a \u0441\u043f\u0438\u0441\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u0417\u0433\u0440\u0443\u043f\u043e\u0432\u0430\u043d\u0456 \u0441\u043f\u0438\u0441\u043a\u0438"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u043e\u0441\u0442\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a"}},{"type":"nav_item","props":{"content":"\u0421\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c"}},{"type":"nav_item","props":{"content":"\u0421\u043f\u0438\u0441\u043e\u043a \u043d\u043e\u0441\u0456\u0457\u0432"}},{"type":"nav_item","props":{"content":"\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u043b\u044c\u043d\u0438\u0446\u044c\u043a\u0456 \u0442\u0430\u0431\u043b\u0438\u0447\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0441\u043f\u0438\u0441\u043a\u0443 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0441\u043f\u0438\u0441\u043a\u0443 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0438 \u0441\u043f\u0438\u0441\u043a\u0456\u0432 \u2014 \u0446\u0435 \u0443\u043d\u0456\u0432\u0435\u0440\u0441\u0430\u043b\u044c\u043d\u0456 \u0442\u0430 \u043f\u043e\u0442\u0443\u0436\u043d\u0456 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0438 \u0456\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0443 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u044f\u043a\u0456 \u0447\u0430\u0441\u0442\u043e \u0437\u0443\u0441\u0442\u0440\u0456\u0447\u0430\u044e\u0442\u044c\u0441\u044f \u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0430\u0445. \u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0441\u043f\u0438\u0441\u043a\u0443 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0454 \u0434\u0430\u043d\u0456 \u0443 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043e\u043c\u0443 \u0441\u043f\u0438\u0441\u043a\u0443 \u0437 \u043a\u0456\u043b\u044c\u043a\u043e\u0445 \u0440\u044f\u0434\u043a\u0456\u0432, \u044f\u043a\u0456 \u043c\u043e\u0436\u043d\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0438\u0442\u0438 \u043d\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0438\/\u0433\u0440\u0443\u043f\u0438.\n\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0438 \u0441\u043f\u0438\u0441\u043a\u0443 \u043c\u0430\u044e\u0442\u044c \u0431\u0430\u0433\u0430\u0442\u043e \u0446\u0456\u043b\u0435\u0439:\n\n<p>\u25cf\t\u0429\u043e\u0431 \u0434\u043e\u0437\u0432\u043e\u043b\u0438\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430\u043c \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0430\u0442\u0438\u0441\u044f \u043c\u0456\u0436 \u0456\u0454\u0440\u0430\u0440\u0445\u0456\u0447\u043d\u043e \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u043e\u0432\u0430\u043d\u0438\u043c\u0438 \u0434\u0430\u043d\u0438\u043c\u0438<\/p>\n<p>\u25cf\t\u0429\u043e\u0431 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0438 \u043f\u0440\u043e\u0456\u043d\u0434\u0435\u043a\u0441\u043e\u0432\u0430\u043d\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432<\/p>\n<p>\u25cf\t\u0414\u043b\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0434\u0435\u0442\u0430\u043b\u044c\u043d\u043e\u0457 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0457 \u0442\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0443 \u0432\u0456\u0437\u0443\u0430\u043b\u044c\u043d\u043e \u0447\u0456\u0442\u043a\u0438\u0445 \u0433\u0440\u0443\u043f\u0430\u0445<\/p>\n<p>\u25cf\t\u0429\u043e\u0431 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0438 \u0441\u043f\u0438\u0441\u043e\u043a \u043e\u043f\u0446\u0456\u0439 \u0434\u043b\u044f \u0432\u0438\u0431\u043e\u0440\u0443<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0411\u043b\u043e\u043a \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0411\u043b\u043e\u043a \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0411\u043b\u043e\u043a \u0441\u043f\u0438\u0441\u043a\u0443 \u2014 \u0446\u0435 \u043e\u0431\u0433\u043e\u0440\u0442\u043a\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443.\n\u041e\u0442\u0436\u0435, \u043f\u0435\u0440\u0448 \u0437\u0430 \u0432\u0441\u0435, \u0443\u0441\u0456 \u0432\u0430\u0448\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0441\u043f\u0438\u0441\u043a\u0443 \u043c\u0430\u044e\u0442\u044c \u0431\u0443\u0442\u0438 \u043e\u0431\u0433\u043e\u0440\u043d\u0443\u0442\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c <code>&lt;div class=\"list\"&gt;<\/code>:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list\">\n    <ul>\n        ... \u0415\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0441\u043f\u0438\u0441\u043a\u0443 \u0442\u0443\u0442 ...\n    <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0442\u043e\u043d\u043a\u0456 \u043b\u0456\u043d\u0456\u0457 (\u0442\u043e\u043d\u043a\u0456 \u0440\u0430\u043c\u043a\u0438) \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u0431\u043b\u043e\u043a\u0443 \u0441\u043f\u0438\u0441\u043a\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>no-hairlines<\/code> \u043b\u0456\u043d\u0456\u0439:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list no-hairlines\">\n    <ul>\n        ... \u0415\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0441\u043f\u0438\u0441\u043a\u0443 \u0442\u0443\u0442...\n    <\/ul>\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0442\u043e\u043d\u043a\u0456 \u043b\u0456\u043d\u0456\u0457 (\u0442\u043e\u043d\u043a\u0456 \u043c\u0435\u0436\u0456) \u043c\u0456\u0436 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430\u043c\u0438 \u0441\u043f\u0438\u0441\u043a\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>no-hairline-between<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list no-hairlines-between\">\n    <ul>\n        ... \u0415\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0441\u043f\u0438\u0441\u043a\u0443 \u0442\u0443\u0442...\n    <\/ul>\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0432\u0441\u0442\u0430\u0432\u043a\u0443 \u0431\u043b\u043e\u043a\u0443 \u0441\u043f\u0438\u0441\u043a\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0432\u0441\u0442\u0430\u0432\u043a\u0438 <code>inset<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list inset\">\n    <ul>\n        ... \u0415\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0441\u043f\u0438\u0441\u043a\u0443 \u0442\u0443\u0442...\n    <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0431\u043b\u043e\u0447\u043d\u0443 \u0432\u0441\u0442\u0430\u0432\u043a\u0443 \u043b\u0438\u0448\u0435 \u043d\u0430 \u0432\u0435\u043b\u0438\u043a\u0438\u0445 \u0435\u043a\u0440\u0430\u043d\u0430\u0445, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u0446\u044c\u043e\u0433\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>medium-inset (>= 768px)<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list medium-inset\">\n    <ul>\n        ... \u0415\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0441\u043f\u0438\u0441\u043a\u0443 \u0442\u0443\u0442...\n    <\/ul>\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u043f\u043e\u0432\u043d\u0438\u0439 \u043d\u0430\u0431\u0456\u0440 \u0442\u0430\u043a\u0438\u0445 \u0430\u0434\u0430\u043f\u0442\u0438\u0432\u043d\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432, \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u044c\u0442\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438 <a href =\"https:\/\/techno4.online\/administrator\/index.php?option=com_content&task=article.edit&id=71\">\u0440\u043e\u0437\u0434\u0456\u043b\u0443 Grid Layout.<\/a> \u0412\u043e\u043d\u0438 \u0431\u0443\u0432\u0430\u044e\u0442\u044c <code>xsmall-inset, small-inset, medium-inset, large-inset, xlarge-inset.<\/code>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u0438\u0441\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u0438\u0441\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0434\u0438\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u0438\u0441\u043a\u0443 \u043c\u0430\u0454 \u0434\u043e\u0441\u0438\u0442\u044c \u0441\u043a\u043b\u0430\u0434\u043d\u0438\u0439, \u0430\u043b\u0435 \u0433\u043d\u0443\u0447\u043a\u0438\u0439 \u043c\u0430\u043a\u0435\u0442:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<li>\n    <div class=\"item-content\">\n        <div class=\"item-media\">\n            <i class=\"icon my-icon\"><\/i>\n        <\/div>\n        <div class=\"item-inner\">\n            <div class=\"item-title\">\n\t\t\t\t\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0443 \u0441\u043f\u0438\u0441\u043a\u0443\n            <\/div>\n            <div class=\"item-after\">\n                \u042f\u043a\u0440\u043b\u0438\u043a \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0443 \u0441\u043f\u0438\u0441\u043a\u0443\n            <\/div>\n        <\/div>\n    <\/div>\n<\/li>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>item-content  <\/code> - \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0433\u043d\u0443\u0447\u043a\u0430 \u043e\u0431\u043e\u043b\u043e\u043d\u043a\u0430 \u0434\u043b\u044f <code>item-media<\/code> \u0442\u0430 <code>item-inner<\/code>. \u041e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.<\/p>\n<p>\t\u25cb<code>\titem-media <\/code> - \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440  \u0434\u043b\u044f \u043c\u0435\u0434\u0456\u0430-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u043f\u0456\u043a\u0442\u043e\u0433\u0440\u0430\u043c\u0438, \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0442\u043e\u0449\u043e. \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442<\/p>\n<p>\u25cb\t<code>item-inner  <\/code> - \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0433\u043d\u0443\u0447\u043a\u0430 \u043e\u0431\u043e\u043b\u043e\u043d\u043a\u0430 \u0434\u043b\u044f <code>item-title<\/code> \u0442\u0430 <code>item-after<\/code>. \u041e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.<\/p>\n<p>\u25a0\t\t<code>item-title  <\/code> - \u043e\u0434\u043d\u043e\u0440\u044f\u0434\u043a\u043e\u0432\u0430 \u043d\u0430\u0437\u0432\u0430 \u043f\u0443\u043d\u043a\u0442\u0443 \u0441\u043f\u0438\u0441\u043a\u0443. \u041e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442<\/p>\n<p>\u25a0\t\t<code>item-after  <\/code> -  \u043c\u0456\u0442\u043a\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443. \u041c\u043e\u0436\u0435 \u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0431\u0443\u0434\u044c-\u044f\u043a\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 HTML, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u0442\u0435\u043a\u0441\u0442 \u043c\u0456\u0442\u043a\u0438, \u0437\u043d\u0430\u0447\u043e\u043a, \u043f\u0435\u0440\u0435\u043c\u0438\u043a\u0430\u0447\/\u043f\u0435\u0440\u0435\u043c\u0438\u043a\u0430\u0447, \u043a\u043d\u043e\u043f\u043a\u0443 \u0442\u043e\u0449\u043e. \u041d\u0435\u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"text","props":{"column_breakpoint":"m","content":"\u25cf\t\u041e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 <code>.item-content<\/code> \u043d\u0430\u0441\u043f\u0440\u0430\u0432\u0434\u0456 \u0454 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c CSS flex-box, \u0437\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e <code>item-media<\/code> \u0442\u0430 <code>item-inner<\/code> \u043c\u0430\u044e\u0442\u044c \u0431\u0443\u0442\u0438 \u043f\u0440\u044f\u043c\u0438\u043c\u0438 \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430\u043c\u0438 <code>item-content<\/code>!\n<p>\u25cf\t\u0417 \u0442\u0456\u0454\u0457 \u0436 \u043f\u0440\u0438\u0447\u0438\u043d\u0438 <code>item-title<\/code> \u0456 <code>item-after<\/code> \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0431\u0443\u0442\u0438 \u043f\u0440\u044f\u043c\u0438\u043c\u0438 \u043d\u0430\u0449\u0430\u0434\u043a\u0430\u043c\u0438 <code>item-inner<\/code>!\n","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u043a\u043e\u0436 \u0437\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u044f\u043a\u0449\u043e \u0432\u0430\u0448 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u0438\u0441\u043a\u0443 \u043d\u0435 \u043c\u0430\u0454 \u043d\u0456\u0447\u043e\u0433\u043e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u0433\u043e, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>item-content<\/code> \u0434\u043b\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 <code>&lt;li&gt;<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<li class=\"item-content\">\n    <div class=\"item-media\">\n        <i class=\"icon my-icon\"><\/i>\n    <\/div>\n    <div class=\"item-inner\">\n        <div class=\"item-title\">\n            List element title\n        <\/div>\n        <div class=\"item-after\">\n            List element label\n        <\/div>\n    <\/div>\n<\/li>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0435\u0440\u0445\u043d\u0456\u0439\/\u043d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0435\u0440\u0445\u043d\u0456\u0439\/\u043d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0442\u0435\u043a\u0441\u0442 \u0432\u0435\u0440\u0445\u043d\u044c\u043e\u0433\u043e\/\u043d\u0438\u0436\u043d\u044c\u043e\u0433\u043e \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443 \u043d\u0430 \u0434\u043e\u0434\u0430\u0442\u043e\u043a \u0434\u043e \u043d\u0430\u0437\u0432\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 <code>item-header<\/code> \u0456 <code>item-footer<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<li>\n  <div class=\"item-content\">\n    <div class=\"item-media\">\n      <i class=\"icon my-icon\"><\/i>\n    <\/div>\n    <div class=\"item-inner\">\n      <div class=\"item-title\">\n        <!-- Item header, must be first child of item-title -->\n        <div class=\"item-header\">Item header text<\/div>\n        List element title\n        <!-- Item footer, must be last child of item-title -->\n        <div class=\"item-footer\">Item footer text<\/div>\n      <\/div>\n      <div class=\"item-after\">...<\/div>\n    <\/div>\n  <\/div>\n<\/li>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0443\u043d\u043a\u0442 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0443\u043d\u043a\u0442 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0432\u0438\u0447\u0430\u0439\u043d\u043e, \u0443 \u0431\u0456\u043b\u044c\u0448\u043e\u0441\u0442\u0456 \u0432\u0438\u043f\u0430\u0434\u043a\u0456\u0432 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0441\u043f\u0438\u0441\u043a\u0443 \u044f\u043a \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f (<code>&lt;a&gt;<\/code>) \u043d\u0430 \u0456\u043d\u0448\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0447\u0438 \u0434\u0430\u043d\u0456. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043e\u0431\u0435\u0440\u043d\u0443\u0442\u0438 <code>item-content<\/code> \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c <code>&lt;a class=\"item-link\"&gt;<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<li>\n  <a href=\"#\" class=\"item-link\">\n    <div class=\"item-content\">\n      <div class=\"item-media\">...<\/div>\n      <div class=\"item-inner\">...<\/div>\n    <\/div>\n  <\/a>\n<\/li>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0443 \u0432\u0430\u0448\u0438\u0445 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u0445 \u043d\u0435\u043c\u0430\u0454 \u043d\u0456\u0447\u043e\u0433\u043e, \u043a\u0440\u0456\u043c <code>\u00abitem-content\u00bb<\/code>, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u043f\u0440\u043e\u0441\u0442\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u044f\u043a <code>\u00abitem-content\u00bb<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<li>\n  <a href=\"#\" class=\"item-link item-content\">\n    <div class=\"item-media\">...<\/div>\n    <div class=\"item-inner\">...<\/div>\n  <\/a>\n<\/li>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e <code>item-inner<\/code> \u043c\u0430\u0454 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043f\u0440\u0430\u0432\u0438\u0439 \u0432\u0456\u0434\u0441\u0442\u0443\u043f \u0456 \u0437\u043d\u0430\u0447\u043e\u043a \u0448\u0435\u0432\u0440\u043e\u043d\u0430, \u043a\u043e\u043b\u0438 \u0432\u0456\u043d \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432 <code>item-link<\/code>.\n\u0429\u043e\u0431 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0446\u044e \u043f\u0456\u043a\u0442\u043e\u0433\u0440\u0430\u043c\u0443 \u0448\u0435\u0432\u0440\u043e\u043d\u0430 \u0442\u0430 \u0437\u0430\u0439\u0432\u0456 \u0432\u0456\u0434\u0441\u0442\u0443\u043f\u0438, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>no-chevron<\/code> \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0430\u0431\u043e \u0434\u043e \u0441\u043f\u0438\u0441\u043a\u0443 \u0432\u043c\u0456\u0441\u0442\u0443\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u0441\u043f\u0438\u0441\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043d\u043e\u043f\u043a\u0430 \u0441\u043f\u0438\u0441\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u043d\u043e\u043f\u043a\u0430 \u00ab\u0421\u043f\u0438\u0441\u043e\u043a\u00bb \u2014 \u0446\u0435 \u0441\u043f\u0440\u043e\u0449\u0435\u043d\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0441\u043f\u0438\u0441\u043e\u043a, \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u0439 \u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443, \u044f\u043a\u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043f\u0440\u043e\u0441\u0442\u0456 \u0434\u0456\u0457, \u044f\u043a\u0456 \u0441\u0430\u043c\u043e\u0441\u0442\u0456\u0439\u043d\u043e \u043f\u043e\u044f\u0441\u043d\u044e\u044e\u0442\u044c\u0441\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<li>\n  <a class=\"list-button\">List Button 1<\/a>\n<\/li>\n<li>\n  <a class=\"list-button\">List Button 2<\/a>\n<\/li>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0420\u043e\u0437\u0434\u0456\u043b\u044c\u043d\u0438\u043a \u0441\u043f\u0438\u0441\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0420\u043e\u0437\u0434\u0456\u043b\u044c\u043d\u0438\u043a \u0441\u043f\u0438\u0441\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0420\u043e\u0437\u0434\u0456\u043b\u044c\u043d\u0438\u043a \u0441\u043f\u0438\u0441\u043a\u0443 \u2014 \u0446\u0435 \u043f\u0440\u043e\u0441\u0442\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u0438\u0441\u043a\u0443 \u0456\u0437 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u043e\u043c, \u044f\u043a\u0438\u0439 \u0432\u0456\u0437\u0443\u0430\u043b\u044c\u043d\u043e \u0432\u0456\u0434\u043e\u043a\u0440\u0435\u043c\u043b\u044e\u0454 \u043e\u0434\u0438\u043d \u043f\u0443\u043d\u043a\u0442 \u0441\u043f\u0438\u0441\u043a\u0443 \u0432\u0456\u0434 \u0456\u043d\u0448\u043e\u0433\u043e:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<li class=\"item-divider\">Divider title here<\/li>\n\n<div class=\"list\">\n  <ul>\n    <!-- List items -->\n    <li class=\"item-content\">...<\/li>\n    <li class=\"item-content\">...<\/li>\n\n    <!-- Divider -->\n    <li class=\"item-divider\">Divider title here<\/li>\n\n    <!-- Another list items -->\n    <li class=\"item-content\">...<\/li>\n    <li class=\"item-content\">...<\/li>\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0417\u0433\u0440\u0443\u043f\u043e\u0432\u0430\u043d\u0456 \u0441\u043f\u0438\u0441\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u0433\u0440\u0443\u043f\u043e\u0432\u0430\u043d\u0456 \u0441\u043f\u0438\u0441\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0406\u043d\u043e\u0434\u0456 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0433\u0440\u0443\u043f\u0443\u0432\u0430\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u043e\u0434\u043d\u043e\u0433\u043e \u0431\u043b\u043e\u043a\u0443 \u0441\u043f\u0438\u0441\u043a\u0443. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0441\u043f\u0438\u0441\u043a\u0443<code>list-group<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list\">\n  <!-- First group-->\n  <div class=\"list-group\">\n    <ul>\n      <li class=\"list-group-title\">First group<\/li>\n      <li class=\"item-content\">...<\/li>\n      <li class=\"item-content\">...<\/li>\n      ...\n    <\/ul>\n  <\/div>\n\n  <!-- Second group-->\n  <div class=\"list-group\">\n    <ul>\n      <li class=\"list-group-title\">Second Group<\/li>\n      <li class=\"item-content\">...<\/li>\n      <li class=\"item-content\">...<\/li>\n      ...\n    <\/ul>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u043f\u0438\u0442\u0430\u0442\u0438, \u0447\u0438\u043c \u0432\u0456\u0434\u0440\u0456\u0437\u043d\u044f\u044e\u0442\u044c\u0441\u044f \u0432\u0456\u0434 \u043f\u0440\u043e\u0441\u0442\u0438\u0445 \u0440\u043e\u0437\u0434\u0456\u043b\u044c\u043d\u0438\u043a\u0456\u0432?<i><b>\u0423 \u0433\u0440\u0443\u043f\u0430\u0445 \u0441\u043f\u0438\u0441\u043a\u0456\u0432 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0438 \u0433\u0440\u0443\u043f \u043c\u0430\u044e\u0442\u044c \u0437\u0430\u043a\u0440\u0456\u043f\u043b\u0435\u043d\u0435 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u043e\u0434\u043d\u0456\u0439 \u0433\u0440\u0443\u043f\u0456.<\/b><\/i>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u0440\u043e\u0441\u0442\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u043e\u0441\u0442\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0441\u043f\u0438\u0441\u043e\u043a \u0456\u0437 \u043f\u0440\u043e\u0441\u0442\u043e\u044e \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u043e\u044e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432, \u044f\u043a\u0438\u0439 \u043c\u0430\u0454 \u043b\u0438\u0448\u0435 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0438, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0446\u0456\u044e <code>Simple List<\/code>. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u043f\u0440\u043e\u0441\u0442\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a <code>simple-list<\/code> \u0443 \u0431\u043b\u043e\u0446\u0456 \u0441\u043f\u0438\u0441\u043a\u0443 \u0437\u0456 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u043c \u043c\u0430\u043a\u0435\u0442\u043e\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 <code>&lt;li&gt;<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list simple-list\">\n  <ul>\n    <li>Item 1<\/li>\n    <li>Item 2<\/li>\n    <li>Item 3<\/li>\n    <li>Item 4<\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0421\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0421\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0441\u043f\u0438\u0441\u043e\u043a \u0456\u0437 \u043f\u0440\u043e\u0441\u0442\u043e\u044e \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u043e\u044e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c, \u044f\u043a\u0456 \u043c\u0430\u044e\u0442\u044c \u043b\u0438\u0448\u0435 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0438, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438 \u043c\u043e\u0434\u0438\u0444\u0456\u043a\u0430\u0446\u0456\u044e \u0441\u043f\u0438\u0441\u043a\u0443 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c <code>links-list<\/code>  \u043d\u0430 \u043a\u043b\u0430\u0441\u0443 \u0431\u043b\u043e\u0446\u0456 \u0441\u043f\u0438\u0441\u043a\u0443 \u0437\u0456 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u043c \u043c\u0430\u043a\u0435\u0442\u043e\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 <code>&lt;li&gt;&lt;a&gt;...&lt;\/a&gt;&lt;\/li&gt;<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list links-list\">\n  <ul>\n    <li>\n      <a href=\"#\">Link Item 1<\/a>\n    <\/li>\n    <li>\n      <a href=\"#\">Link Item 2<\/a>\n    <\/li>\n    <li>\n      <a href=\"#\">Link Item 3<\/a>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0421\u043f\u0438\u0441\u043e\u043a \u043c\u0435\u0434\u0456\u0430\u0444\u0430\u0439\u043b\u0456\u0432","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0421\u043f\u0438\u0441\u043e\u043a \u043c\u0435\u0434\u0456\u0430\u0444\u0430\u0439\u043b\u0456\u0432"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0441\u043f\u0438\u0441\u043a\u0443 \u043c\u0435\u0434\u0456\u0430 \u2014 \u0446\u0435 \u0440\u043e\u0437\u0448\u0438\u0440\u0435\u043d\u0438\u0439 \u0432\u0438\u043f\u0430\u0434\u043e\u043a \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443, \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u0434\u043b\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0441\u043a\u043b\u0430\u0434\u043d\u0456\u0448\u0438\u0445 \u0434\u0430\u043d\u0438\u0445, \u0442\u0430\u043a\u0438\u0445 \u044f\u043a \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438, \u043f\u043e\u0441\u043b\u0443\u0433\u0438, \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456 \u0442\u043e\u0449\u043e. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u043c\u0435\u0434\u0456\u0430-\u0441\u043f\u0438\u0441\u043a\u0443 <code>media-list<\/code> \u0432 \u0431\u043b\u043e\u0446\u0456 \u0441\u043f\u0438\u0441\u043a\u0443.\n<p>\u0406, \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e, \u0432\u0456\u043d \u043c\u0430\u0454 \u0442\u0440\u043e\u0445\u0438 \u0441\u043a\u043b\u0430\u0434\u043d\u0456\u0448\u0438\u0439 \u043c\u0430\u043a\u0435\u0442:<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- Media list block has additional \"media-list\" class -->\n<div class=\"list media-list\">\n  <ul>\n    <li>\n      <div class=\"item-content\">\n        <div class=\"item-media\">\n          <img src=\"path\/to\/img.jpg\" \/>\n        <\/div>\n        <div class=\"item-inner\">\n          <div class=\"item-title-row\">\n            <div class=\"item-title\">Element title<\/div>\n            <div class=\"item-after\">Element label<\/div>\n          <\/div>\n          <div class=\"item-subtitle\">Subtitle<\/div>\n          <div class=\"item-text\">Additional description text<\/div>\n        <\/div>\n      <\/div>\n    <\/li>\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>item-content  <\/code> - \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0433\u043d\u0443\u0447\u043a\u0430 \u043e\u0431\u043e\u043b\u043e\u043d\u043a\u0430 \u0434\u043b\u044f <code>item-media<\/code> \u0442\u0430 <code>item-inner<\/code>. \u041e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.<\/p>\n<p>\t\u25cb<code>\titem-media <\/code> - \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440  \u0434\u043b\u044f \u043c\u0435\u0434\u0456\u0430-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u043f\u0456\u043a\u0442\u043e\u0433\u0440\u0430\u043c\u0438, \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0442\u043e\u0449\u043e. \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442<\/p>\n<p>\u25cb\t<code>item-inner  <\/code> - \u041e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.<\/p>\n<p>\u25a0\t\t<code>item-title-row   <\/code> - \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0433\u043d\u0443\u0447\u043a\u0430 \u043e\u0431\u043e\u043b\u043e\u043d\u043a\u0430 \u0434\u043b\u044f \u0434\u043b\u044f item-title \u0456 item-after. \u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442<\/p>\n<p>\u25a0\t\t<code>item-title<\/code> -  \u043e\u0434\u043d\u043e\u0440\u044f\u0434\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443. \u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442<\/p>\n<p>\u25a0\t\t<code>item-after<\/code> -  \u043c\u0456\u0442\u043a\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443. \u041c\u043e\u0436\u0435 \u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0431\u0443\u0434\u044c-\u044f\u043a\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 HTML, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 \u0442\u0435\u043a\u0441\u0442 \u043c\u0456\u0442\u043a\u0438, \u0437\u043d\u0430\u0447\u043e\u043a, \u043f\u0435\u0440\u0435\u043c\u0438\u043a\u0430\u0447\/\u043f\u0435\u0440\u0435\u043c\u0438\u043a\u0430\u0447, \u043a\u043d\u043e\u043f\u043a\u0443 \u0442\u043e\u0449\u043e. \u041d\u0435\u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.<\/p>\n<p>\u25a0\t\t<code>item-subtitle <\/code> -  \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043e\u0434\u043d\u043e\u0440\u044f\u0434\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a. \u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.<\/p>\n<p>\u25a0\t\t<code>item-text <\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0434\u0432\u043e\u0440\u044f\u0434\u043a\u043e\u0432\u0438\u0439 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 \u0434\u043b\u044f \u0434\u0435\u0442\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043e\u043f\u0438\u0441\u0443. \u041d\u0435\u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 (\u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442) \u0443 \u0441\u043f\u0438\u0441\u043a\u0443 \u043c\u0435\u0434\u0456\u0430\u0444\u0430\u0439\u043b\u0456\u0432, \u0437\u043d\u0430\u0447\u043e\u043a \u0448\u0435\u0432\u0440\u043e\u043d\u0430 (>) \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043e \u043d\u0430 \u0440\u0456\u0432\u043d\u0456 \u043d\u0430\u0437\u0432\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 <code>item-title<\/code>. \u042f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0446\u0435\u0439 \u0448\u0435\u0432\u0440\u043e\u043d \u0443 \u0446\u0435\u043d\u0442\u0440 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>chevron-center<\/code> \u0434\u043e \u0446\u044c\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0430\u0431\u043e \u0434\u043e \u0441\u043f\u0438\u0441\u043a\u0443 \u0432\u043c\u0456\u0441\u0442\u0443:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u043b\u044c\u043d\u0438\u0446\u044c\u043a\u0456 \u0442\u0430\u0431\u043b\u0438\u0447\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u043b\u044c\u043d\u0438\u0446\u044c\u043a\u0456 \u0442\u0430\u0431\u043b\u0438\u0447\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u043d\u0430\u0441\u0442\u0440\u043e\u044e\u0432\u0430\u043d\u0438\u0439 \u043c\u0430\u043a\u0435\u0442 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u0441\u043f\u0438\u0441\u043a\u0443 \u0437 \u0442\u0430\u0431\u043b\u0438\u0447\u043d\u043e\u044e \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u043e\u044e, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0441\u043f\u0438\u0441\u043a\u0443 <code>item-row<\/code> \u0456 <code>item-cell<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<li class=\"item-content\">\n  <div class=\"item-inner item-cell\">\n    <div class=\"item-row\">\n      <div class=\"item-cell\">Cell 1-1<\/div>\n      <div class=\"item-cell\">Cell 1-2<\/div>\n      <div class=\"item-cell\">Cell 1-3<\/div>\n    <\/div>\n    <div class=\"item-row\">\n      <div class=\"item-cell\">Cell 2-1<\/div>\n      <div class=\"item-cell\">Cell 2-2<\/div>\n    <\/div>\n    <div class=\"item-row\">\n      <div class=\"item-cell\">Cell 3-1<\/div>\n      <div class=\"item-cell\">\n        <div class=\"item-row\">\n          Cell 3-2\n        <\/div>\n        <div class=\"item-row\">\n          Cell 3-3\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/li>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456  CSS ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456  CSS "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-list-inset-side-margin: 16px;\n  --t4-list-item-cell-margin: 16px;\n  --t4-list-item-padding-horizontal: 16px;\n  --t4-list-item-padding-vertical: 8px;\n  --t4-list-media-item-padding-horizontal: 16px;\n  --t4-list-item-text-max-lines: 2;\n  --t4-list-chevron-icon-font-size: 20px;\n  --t4-list-item-media-margin: 16px;\n  --t4-list-item-title-font-size: inherit;\n  --t4-list-item-title-font-weight: 400;\n  --t4-list-item-title-text-color: inherit;\n  --t4-list-item-title-line-height: inherit;\n  --t4-list-item-title-white-space: nowrap;\n  --t4-list-item-subtitle-font-weight: 400;\n  --t4-list-item-subtitle-text-color: inherit;\n  --t4-list-item-subtitle-line-height: inherit;\n  --t4-list-item-text-font-weight: 400;\n  --t4-list-item-after-font-weight: 400;\n  --t4-list-item-after-line-height: inherit;\n  --t4-list-item-header-text-color: inherit;\n  --t4-list-item-header-font-size: 12px;\n  --t4-list-item-header-font-weight: 400;\n  --t4-list-item-header-line-height: 1.2;\n  --t4-list-item-footer-font-size: 12px;\n  --t4-list-item-footer-font-weight: 400;\n  --t4-list-item-footer-line-height: 1.2;\n  \/*\n  --t4-list-button-text-color: var(--t4-theme-color);\n  --t4-list-button-pressed-bg-color: rgba(var(--t4-theme-color-rgb), .15);\n  *\/\n  --t4-list-button-font-size: inherit;\n  --t4-list-button-font-weight: 400;\n  --t4-list-button-text-align: center;\n  --t4-list-item-divider-line-height: inherit;\n  --t4-list-item-divider-font-weight: 400;\n  --t4-list-group-title-line-height: inherit;\n  --t4-menu-list-offset: 8px;\n  --t4-menu-list-border-radius: 8px;\n  --t4-menu-list-font-size: 14px;\n  --t4-menu-list-item-title-font-size: 14px;\n  --t4-menu-list-item-title-font-weight: 500;\n  --t4-menu-list-item-subtitle-font-size: 14px;\n  --t4-menu-list-item-text-font-size: 14px;\n  --t4-menu-list-item-after-font-size: 14px;\n  --t4-list-bg-color: #fff;\n  --t4-list-chevron-icon-color: rgba(0, 0, 0, 0.2);\n  --t4-menu-list-selected-text-color: var(--t4-theme-color);\n  --t4-menu-list-selected-bg-color: rgba(var(--t4-theme-color-rgb), 0.15);\n}\n:root .dark,\n:root.dark {\n  --t4-list-button-border-color: rgba(255, 255, 255, 0.15);\n  --t4-list-bg-color: #1c1c1d;\n  --t4-list-border-color: rgba(255, 255, 255, 0.15);\n  --t4-list-item-border-color: rgba(255, 255, 255, 0.15);\n  --t4-list-item-divider-border-color: rgba(255, 255, 255, 0.15);\n  --t4-list-item-divider-bg-color: #232323;\n  --t4-list-group-title-bg-color: #232323;\n  --t4-list-chevron-icon-color: rgba(255, 255, 255, 0.3);\n  --t4-menu-list-selected-text-color: inherit;\n  --t4-menu-list-selected-bg-color: var(--t4-theme-color);\n}\n.ios {\n  --t4-list-in-list-padding-left: 30px;\n  --t4-list-inset-border-radius: 8px;\n  --t4-list-margin-vertical: 35px;\n  --t4-list-font-size: 17px;\n  --t4-list-chevron-icon-area: 20px;\n  --t4-list-border-color: rgba(0, 0, 0, 0.22);\n  --t4-list-item-border-color: rgba(0, 0, 0, 0.22);\n  --t4-list-link-pressed-bg-color: rgba(0, 0, 0, 0.15);\n  --t4-list-item-subtitle-font-size: 15px;\n  --t4-list-item-text-font-size: 15px;\n  --t4-list-item-text-line-height: 21px;\n  --t4-list-item-after-font-size: inherit;\n  --t4-list-item-after-padding: 5px;\n  --t4-list-item-min-height: 44px;\n  --t4-list-item-media-icons-margin: 5px;\n  --t4-list-media-item-padding-vertical: 10px;\n  --t4-list-media-item-title-font-weight: 600;\n  --t4-list-button-border-color: rgba(0, 0, 0, 0.22);\n  --t4-list-item-divider-height: 31px;\n  --t4-list-item-divider-font-size: inherit;\n  --t4-list-item-divider-bg-color: rgba(0, 0, 0, 0.03);\n  --t4-list-item-divider-border-color: rgba(0, 0, 0, 0.22);\n  --t4-list-group-title-height: 31px;\n  --t4-list-group-title-font-size: inherit;\n  --t4-list-group-title-font-weight: 400;\n  --t4-list-group-title-bg-color: #f7f7f7;\n  --t4-list-item-after-text-color: rgba(0, 0, 0, 0.45);\n  --t4-list-item-footer-text-color: rgba(0, 0, 0, 0.45);\n  --t4-list-item-text-text-color: rgba(0, 0, 0, 0.45);\n  --t4-list-item-divider-text-color: rgba(0, 0, 0, 0.45);\n  --t4-list-group-title-text-color: rgba(0, 0, 0, 0.45);\n}\n.ios .dark,\n.ios.dark {\n  --t4-list-item-after-text-color: rgba(255, 255, 255, 0.55);\n  --t4-list-item-header-text-color: rgba(255, 255, 255, 0.55);\n  --t4-list-item-footer-text-color: rgba(255, 255, 255, 0.55);\n  --t4-list-item-text-text-color: rgba(255, 255, 255, 0.55);\n  --t4-list-item-divider-text-color: rgba(255, 255, 255, 0.55);\n  --t4-list-group-title-text-color: rgba(255, 255, 255, 0.55);\n  --t4-list-link-pressed-bg-color: rgba(255, 255, 255, 0.08);\n}\n.md {\n  --t4-list-in-list-padding-left: 40px;\n  --t4-list-inset-border-radius: 4px;\n  --t4-list-margin-vertical: 32px;\n  --t4-list-font-size: 16px;\n  --t4-list-chevron-icon-area: 26px;\n  --t4-list-border-color: rgba(0, 0, 0, 0.12);\n  --t4-list-item-border-color: rgba(0, 0, 0, 0.12);\n  --t4-list-item-subtitle-font-size: 14px;\n  --t4-list-item-text-font-size: 14px;\n  --t4-list-item-text-line-height: 20px;\n  --t4-list-item-after-font-size: 14px;\n  --t4-list-item-after-padding: 8px;\n  --t4-list-item-min-height: 48px;\n  --t4-list-item-media-icons-margin: 8px;\n  --t4-list-media-item-padding-vertical: 14px;\n  \/*\n  --t4-list-media-item-title-font-weight: var(--t4-list-item-title-font-weight);\n  *\/\n  --t4-list-button-border-color: transparent;\n  --t4-list-item-divider-height: 48px;\n  --t4-list-item-divider-font-size: 14px;\n  --t4-list-item-divider-bg-color: #f4f4f4;\n  --t4-list-item-divider-border-color: transparent;\n  --t4-list-group-title-height: 48px;\n  --t4-list-group-title-font-size: 14px;\n  --t4-list-group-title-font-weight: 400;\n  --t4-list-group-title-bg-color: #f4f4f4;\n  --t4-menu-list-border-radius: 4px;\n  --t4-list-link-pressed-bg-color: rgba(0, 0, 0, 0.1);\n  --t4-list-item-text-text-color: rgba(0, 0, 0, 0.54);\n  --t4-list-item-after-text-color: rgba(0, 0, 0, 0.54);\n  --t4-list-item-footer-text-color: rgba(0, 0, 0, 0.5);\n  --t4-list-item-divider-text-color: rgba(0, 0, 0, 0.54);\n  --t4-list-group-title-text-color: rgba(0, 0, 0, 0.54);\n}\n.md .dark,\n.md.dark {\n  --t4-list-item-divider-text-color: #fff;\n  --t4-list-group-title-text-color: #fff;\n  --t4-list-link-pressed-bg-color: rgba(255, 255, 255, 0.05);\n  --t4-list-item-text-text-color: rgba(255, 255, 255, 0.54);\n  --t4-list-item-after-text-color: rgba(255, 255, 255, 0.54);\n  --t4-list-item-footer-text-color: rgba(255, 255, 255, 0.54);\n}\n.aurora {\n  --t4-list-in-list-padding-left: 16px;\n  --t4-list-inset-border-radius: 8px;\n  --t4-list-margin-vertical: 32px;\n  --t4-list-font-size: 16px;\n  --t4-list-chevron-icon-area: 20px;\n  --t4-list-border-color: rgba(0, 0, 0, 0.12);\n  --t4-list-item-border-color: rgba(0, 0, 0, 0.12);\n  --t4-list-item-subtitle-font-size: 14px;\n  --t4-list-item-text-font-size: 14px;\n  --t4-list-item-text-line-height: 20px;\n  --t4-list-item-after-font-size: 14px;\n  --t4-list-item-after-padding: 8px;\n  --t4-list-item-min-height: 48px;\n  --t4-list-item-media-icons-margin: 8px;\n  --t4-list-media-item-padding-vertical: 16px;\n  --t4-list-media-item-title-font-weight: 600;\n  --t4-list-button-border-color: rgba(0, 0, 0, 0.12);\n  --t4-list-button-font-weight: 500;\n  --t4-list-item-divider-height: 32px;\n  --t4-list-item-divider-font-size: 14px;\n  --t4-list-item-divider-bg-color: rgba(0, 0, 0, 0.03);\n  --t4-list-item-divider-border-color: transparent;\n  --t4-list-group-title-height: 32px;\n  --t4-list-group-title-font-size: 14px;\n  --t4-list-group-title-font-weight: 500;\n  --t4-list-group-title-bg-color: #f7f7f7;\n  --t4-list-link-pressed-bg-color: rgba(0, 0, 0, 0.1);\n  --t4-list-link-hover-bg-color: rgba(0, 0, 0, 0.03);\n  --t4-list-item-text-text-color: rgba(0, 0, 0, 0.6);\n  --t4-list-item-after-text-color: rgba(0, 0, 0, 0.5);\n  --t4-list-item-footer-text-color: rgba(0, 0, 0, 0.6);\n  --t4-list-button-hover-bg-color: rgba(0, 0, 0, 0.03);\n  --t4-list-item-divider-text-color: rgba(0, 0, 0, 0.6);\n  --t4-list-group-title-text-color: rgba(0, 0, 0, 0.6);\n}\n.aurora .dark,\n.aurora.dark {\n  --t4-list-item-text-text-color: rgba(255, 255, 255, 0.54);\n  --t4-list-item-after-text-color: rgba(255, 255, 255, 0.54);\n  --t4-list-item-footer-text-color: rgba(255, 255, 255, 0.54);\n  --t4-list-item-divider-text-color: rgba(255, 255, 255, 0.6);\n  --t4-list-group-title-text-color: rgba(255, 255, 255, 0.6);\n  --t4-list-link-pressed-bg-color: rgba(255, 255, 255, 0.05);\n  --t4-list-link-hover-bg-color: rgba(255, 255, 255, 0.03);\n  --t4-list-button-hover-bg-color: rgba(255, 255, 255, 0.03);\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner\">\n        <div class=\"title\">List View<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block-title\">Simple List<\/div>\n      <div class=\"list simple-list\">\n        <ul>\n          <li>Item 1<\/li>\n          <li>Item 2<\/li>\n          <li>Item 3<\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Links List<\/div>\n      <div class=\"list links-list\">\n        <ul>\n          <li><a href=\"#\">Link 1<\/a><\/li>\n          <li><a href=\"#\">Link 2<\/a><\/li>\n          <li><a href=\"#\">Link 3<\/a><\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">List With Icons<\/div>\n      <div class=\"list\">\n        <ul>\n          <li>\n            <div class=\"item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ivan Petrov<\/div>\n                <div class=\"item-after\">CEO<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li>\n            <div class=\"item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">John Doe<\/div>\n                <div class=\"item-after\"> <span class=\"badge\">5<\/span><\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li>\n            <div class=\"item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Jenna Smith<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Links<\/div>\n      <div class=\"list\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ivan Petrov<\/div>\n                <div class=\"item-after\">CEO<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">John Doe<\/div>\n                <div class=\"item-after\">Cleaner<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Jenna Smith<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Links, Header, Footer<\/div>\n      <div class=\"list\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">\n                  <div class=\"item-header\">Name<\/div>John Doe\n                <\/div>\n                <div class=\"item-after\">Edit<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">\n                  <div class=\"item-header\">Phone<\/div>+7 90 111-22-3344\n                <\/div>\n                <div class=\"item-after\">Edit<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">\n                  <div class=\"item-header\">Email<\/div>john@doe<div class=\"item-footer\">Home<\/div>\n                <\/div>\n                <div class=\"item-after\">Edit<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">\n                  <div class=\"item-header\">Email<\/div>john@techno4<div class=\"item-footer\">Work<\/div>\n                <\/div>\n                <div class=\"item-after\">Edit<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Links Without Icons<\/div>\n      <div class=\"list\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ivan Petrov<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title\">John Doe<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li class=\"item-divider\">Divider Here<\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ivan Petrov<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Jenna Smith<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Grouped with sticky titles<\/div>\n      <div class=\"list\">\n        <div class=\"list-group\">\n          <ul>\n            <li class=\"list-group-title\">A<\/li>\n            <li>\n              <div class=\"item-content\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title\">Aaron <\/div>\n                <\/div>\n              <\/div>\n            <\/li>\n            <li>\n              <div class=\"item-content\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title\">Abbie<\/div>\n                <\/div>\n              <\/div>\n            <\/li>\n            <li>\n              <div class=\"item-content\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title\">Adam<\/div>\n                <\/div>\n              <\/div>\n            <\/li>\n          <\/ul>\n        <\/div>\n        <div class=\"list-group\">\n          <ul>\n            <li class=\"list-group-title\">B<\/li>\n            <li>\n              <div class=\"item-content\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title\">Bailey<\/div>\n                <\/div>\n              <\/div>\n            <\/li>\n            <li>\n              <div class=\"item-content\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title\">Barclay<\/div>\n                <\/div>\n              <\/div>\n            <\/li>\n            <li>\n              <div class=\"item-content\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title\">Bartolo<\/div>\n                <\/div>\n              <\/div>\n            <\/li>\n          <\/ul>\n        <\/div>\n        <div class=\"list-group\">\n          <ul>\n            <li class=\"list-group-title\">C<\/li>\n            <li>\n              <div class=\"item-content\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title\">Caiden<\/div>\n                <\/div>\n              <\/div>\n            <\/li>\n            <li>\n              <div class=\"item-content\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title\">Calvin<\/div>\n                <\/div>\n              <\/div>\n            <\/li>\n            <li>\n              <div class=\"item-content\">\n                <div class=\"item-inner\">\n                  <div class=\"item-title\">Candy<\/div>\n                <\/div>\n              <\/div>\n            <\/li>\n          <\/ul>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Mixed and nested<\/div>\n      <div class=\"list\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ivan Petrov<\/div>\n                <div class=\"item-after\">CEO<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Two icons here<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <div class=\"item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title\">No icons here<\/div>\n              <\/div>\n            <\/div>\n            <ul>\n              <li>\n                <a href=\"#\" class=\"item-link item-content\">\n                  <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n                  <div class=\"item-inner\">\n                    <div class=\"item-title\">Ivan Petrov<\/div>\n                    <div class=\"item-after\">CEO<\/div>\n                  <\/div>\n                <\/a>\n              <\/li>\n              <li>\n                <a href=\"#\" class=\"item-link item-content\">\n                  <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><i class=\"icon icon-t4\"><\/i><\/div>\n                  <div class=\"item-inner\">\n                    <div class=\"item-title\">Two icons here<\/div>\n                  <\/div>\n                <\/a>\n              <\/li>\n              <li>\n                <div class=\"item-content\">\n                  <div class=\"item-inner\">\n                    <div class=\"item-title\">No icons here<\/div>\n                  <\/div>\n                <\/div>\n              <\/li>\n              <li>\n                <a href=\"#\" class=\"item-link item-content\">\n                  <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n                  <div class=\"item-inner\">\n                    <div class=\"item-title\">Ultra long text goes here, no, it is really really long<\/div>\n                  <\/div>\n                <\/a>\n              <\/li>\n              <li>\n                <div class=\"item-content\">\n                  <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n                  <div class=\"item-inner\">\n                    <div class=\"item-title\">With toggle<\/div>\n                    <div class=\"item-after\">\n                      <label class=\"toggle toggle-init\">\n                        <input type=\"checkbox\" \/>\n                        <span class=\"toggle-icon\"><\/span>\n                      <\/label>\n                    <\/div>\n                  <\/div>\n                <\/div>\n              <\/li>\n            <\/ul>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ultra long text goes here, no, it is really really long<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <div class=\"item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">With toggle<\/div>\n                <div class=\"item-after\">\n                  <label class=\"toggle toggle-init\">\n                    <input type=\"checkbox\" \/>\n                    <span class=\"toggle-icon\"><\/span>\n                  <\/label>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Mixed, inset<\/div>\n      <div class=\"list inset\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ivan Petrov<\/div>\n                <div class=\"item-after\">CEO<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Two icons here<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ultra long text goes here, no, it is really really long<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <div class=\"item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">With toggle<\/div>\n                <div class=\"item-after\">\n                  <label class=\"toggle toggle-init\">\n                    <input type=\"checkbox\" \/>\n                    <span class=\"toggle-icon\"><\/span>\n                  <\/label>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n        <div class=\"block-footer\">\n          <p>Here comes some useful information about list above<\/p>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Tablet inset<\/div>\n      <div class=\"list medium-inset\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ivan Petrov<\/div>\n                <div class=\"item-after\">CEO<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Two icons here<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><i class=\"icon icon-t4\"><\/i><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title\">Ultra long text goes here, no, it is really really long<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n        <div class=\"block-footer\">\n          <p>This list block will look like \"inset\" only on tablets (iPad)<\/p>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Media Lists<\/div>\n      <div class=\"block\">\n        <p>Media Lists are almost the same as Data Lists, but with a more flexible layout for visualization of more\n          complex data, like products, services, users, etc.<\/p>\n      <\/div>\n      <div class=\"block-title\">Songs<\/div>\n      <div class=\"list media-list\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/people-160x160-1.jpg\"\n                  width=\"80\" \/><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Yellow Submarine<\/div>\n                  <div class=\"item-after\">$15<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Beatles<\/div>\n                <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis\n                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum\n                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec\n                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n              <\/div>\n            <\/a><\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/people-160x160-2.jpg\"\n                  width=\"80\" \/><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Don't Stop Me Now<\/div>\n                  <div class=\"item-after\">$22<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Queen<\/div>\n                <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis\n                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum\n                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec\n                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/people-160x160-3.jpg\"\n                  width=\"80\" \/><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Billie Jean<\/div>\n                  <div class=\"item-after\">$16<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Michael Jackson<\/div>\n                <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis\n                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum\n                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec\n                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Mail App<\/div>\n      <div class=\"list media-list\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Facebook<\/div>\n                  <div class=\"item-after\">17:14<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">New messages from John Doe<\/div>\n                <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis\n                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum\n                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec\n                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">John Doe (via Twitter)<\/div>\n                  <div class=\"item-after\">17:11<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">John Doe (@_johndoe) mentioned you on Twitter!<\/div>\n                <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis\n                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum\n                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec\n                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Facebook<\/div>\n                  <div class=\"item-after\">16:48<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">New messages from John Doe<\/div>\n                <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis\n                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum\n                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec\n                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">John Doe (via Twitter)<\/div>\n                  <div class=\"item-after\">15:32<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">John Doe (@_johndoe) mentioned you on Twitter!<\/div>\n                <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis\n                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum\n                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec\n                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">With centered chevron icon<\/div>\n      <div class=\"list media-list chevron-center\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Facebook<\/div>\n                  <div class=\"item-after\">17:14<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">New messages from John Doe<\/div>\n                <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis\n                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum\n                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec\n                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">John Doe (via Twitter)<\/div>\n                  <div class=\"item-after\">17:11<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">John Doe (@_johndoe) mentioned you on Twitter!<\/div>\n                <div class=\"item-text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis\n                  tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum\n                  sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec\n                  dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Something more simple<\/div>\n      <div class=\"list media-list\">\n        <ul>\n          <li>\n            <div class=\"item-content\">\n              <div class=\"item-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/fashion-88x88-1.jpg\"\n                  width=\"44\" \/><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Yellow Submarine<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Beatles<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/fashion-88x88-2.jpg\"\n                  width=\"44\" \/><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Don't Stop Me Now<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Queen<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <div class=\"item-content\">\n              <div class=\"item-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/fashion-88x88-3.jpg\"\n                  width=\"44\" \/><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Billie Jean<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Michael Jackson<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Inset<\/div>\n      <div class=\"list media-list inset\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/fashion-88x88-4.jpg\"\n                  width=\"44\" \/><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Yellow Submarine<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Beatles<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/fashion-88x88-5.jpg\"\n                  width=\"44\" \/><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Don't Stop Me Now<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Queen<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-media\"><img src=\"https:\/\/cdn.techno4.io\/placeholder\/fashion-88x88-6.jpg\"\n                  width=\"44\" \/><\/div>\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\">\n                  <div class=\"item-title\">Billie Jean<\/div>\n                <\/div>\n                <div class=\"item-subtitle\">Michael Jackson<\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">List Buttons<\/div>\n      <div class=\"list\">\n        <ul>\n          <li><a class=\"list-button\">Button 1<\/a><\/li>\n          <li><a class=\"list-button\">Button 2<\/a><\/li>\n          <li><a class=\"list-button\">Button 3<\/a><\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Inset List Buttons<\/div>\n      <div class=\"list inset\">\n        <ul>\n          <li><a class=\"list-button\">Button 1<\/a><\/li>\n          <li><a class=\"list-button\">Button 2<\/a><\/li>\n          <li><a class=\"list-button\">Button 3<\/a><\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Custom Table-like Layout<\/div>\n      <div class=\"list\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner item-cell\">\n                <div class=\"item-row\">\n                  <div class=\"item-cell\">Cell 1-1<\/div>\n                  <div class=\"item-cell\">Cell 1-2<\/div>\n                  <div class=\"item-cell\">Cell 1-3<\/div>\n                <\/div>\n                <div class=\"item-row\">\n                  <div class=\"item-cell\">Cell 2-1<\/div>\n                  <div class=\"item-cell\">Cell 2-2<\/div>\n                <\/div>\n                <div class=\"item-row\">\n                  <div class=\"item-cell\">Cell 3-1<\/div>\n                  <div class=\"item-cell\">\n                    <div class=\"item-row\">Cell 3-2<\/div>\n                    <div class=\"item-row\">Cell 3-3<\/div>\n                  <\/div>\n                <\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner item-cell\">\n                <div class=\"item-row\">\n                  <div class=\"item-cell\">Cell 1-1<\/div>\n                  <div class=\"item-cell\">Cell 1-2<\/div>\n                  <div class=\"item-cell\">Cell 1-3<\/div>\n                <\/div>\n                <div class=\"item-row\">\n                  <div class=\"item-cell\">Cell 2-1<\/div>\n                  <div class=\"item-cell\">Cell 2-2<\/div>\n                <\/div>\n                <div class=\"item-row\">\n                  <div class=\"item-cell\">Cell 3-1<\/div>\n                  <div class=\"item-cell\">\n                    <div class=\"item-row\">Cell 3-2<\/div>\n                    <div class=\"item-row\">Cell 3-3<\/div>\n                  <\/div>\n                <\/div>\n              <\/div>\n            <\/a>\n          <\/li>\n        <\/ul>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<style>\n  .icon-t4 {\n    background: #EE350F;\n    color: #fff !important;\n    border-radius: 50%;\n    text-align: center;\n  }\n\n  .icon-t4:before {\n    content: '7';\n  }\n\n  .ios .icon-t4 {\n    width: 29px;\n    height: 29px;\n    line-height: 29px;\n  }\n\n  .md .icon-t4 {\n    width: 24px;\n    height: 24px;\n    line-height: 24px;\n  }\n<\/style>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

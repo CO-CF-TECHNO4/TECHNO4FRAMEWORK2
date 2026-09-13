@@ -1,0 +1,66 @@
+{
+  "type": "articles",
+  "id": "72",
+  "attributes": {
+    "id": 72,
+    "asset_id": 224,
+    "title": "Link",
+    "alias": "link",
+    "state": 1,
+    "access": 1,
+    "created": "2023-06-10 20:43:28",
+    "created_by": 1049,
+    "created_by_alias": "",
+    "modified": "2023-11-19 03:55:45",
+    "featured": 0,
+    "language": "*",
+    "hits": 732,
+    "publish_up": "2023-06-10 20:43:28",
+    "publish_down": null,
+    "note": "",
+    "images": {
+      "image_intro": "",
+      "image_intro_alt": "",
+      "float_intro": "",
+      "image_intro_caption": "",
+      "image_fulltext": "",
+      "image_fulltext_alt": "",
+      "float_fulltext": "",
+      "image_fulltext_caption": ""
+    },
+    "metakey": "",
+    "metadesc": "",
+    "metadata": {
+      "robots": "",
+      "author": "",
+      "rights": ""
+    },
+    "version": 24,
+    "featured_up": null,
+    "featured_down": null,
+    "typeAlias": "com_content.article",
+    "text": "<h2>Посилання</h2>\r\n<h1>Навігація</h1>\r\n<ul>\r\n        <li>\r\n        \r\n<a href=\"https://techno4.online/фреймворк/#general\">Макет посилання</a>\r\n\r\n    </li>\r\n        <li>\r\n        \r\n<div>Обійти обробник посилань</div>\r\n\r\n    </li>\r\n        <li>\r\n        \r\n<div>Змінні CSS</div>\r\n\r\n    </li>\r\n    </ul>\r\n<h3>Посилання</h3>\r\n<div>Елемент посилання використовується для виклику дій застосунку та для навігації між сторінками (маршрути)</div>\r\n<h3>Макет посилання</h3>\r\n<pre><code>&lt;a class=&quot;link&quot; href=&quot;path/to/somewhere&quot;&gt;Текст посилання&lt;/a&gt;</code></pre>\r\n<div>Якщо ви використовуєте посилання з піктограмою та текстом, то рекомендований такий макет:\r\n</div>\r\n<pre><code>&lt;a class=&quot;link&quot; href=&quot;path/to/somewhere&quot;&gt;\r\n  &lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;\r\n  &lt;span&gt;Текст посилання&lt;/span&gt;\r\n&lt;/a&gt;\r\n</code></pre>\r\n<div>Якщо ви використовуєте посилання лише з піктограмою, тоді:</div>\r\n<pre><code>&lt;a class=&quot;link icon-only&quot; href=&quot;path/to/somewhere&quot;&gt;\r\n  &lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;\r\n&lt;/a&gt;\r\n</code></pre>\r\n<h3>Обійти обробник посилань</h3>\r\n<div>Можна обійти обробник посилань T4 (якщо ви хочете додати спеціальну логіку до посилання або хочете, щоб воно спрямовувало на зовнішній вебсайт). У цьому випадку нам потрібен додатковий зовнішній клас:\r\n</div>\r\n<pre><code>&lt;a class=&quot;link external&quot; href=&quot;http://google.com&quot;&gt;відкрити Google&lt;/a&gt;\r\n</code></pre>\r\n<h3>Змінні CSS \r\n</h3>\r\n<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).\r\n</div>\r\n<pre><code>:root {\r\n  --t4-link-highlight-black: rgba(0, 0, 0, 0.1);\r\n  --t4-link-highlight-white: rgba(255, 255, 255, 0.15);\r\n  --t4-link-highlight-color: rgba(var(--t4-theme-color-rgb), 0.15);\r\n}\r\n.ios {\r\n  --t4-link-pressed-opacity: 0.3;\r\n}\r\n.aurora {\r\n  --t4-link-pressed-opacity: 0.3;\r\n  --t4-link-hover-opacity: 0.65;\r\n}\r\n</code></pre>\r\n <!-- {\"type\":\"layout\",\"children\":[{\"type\":\"section\",\"props\":{\"id\":\"general\",\"image_position\":\"center-center\",\"style\":\"primary\",\"title_breakpoint\":\"xl\",\"title_position\":\"top-left\",\"title_rotation\":\"left\",\"vertical_align\":\"middle\",\"width\":\"large\"},\"children\":[{\"type\":\"row\",\"children\":[{\"type\":\"column\",\"props\":{\"image_position\":\"center-center\",\"position_sticky_breakpoint\":\"m\",\"preserve_color\":true,\"style\":\"tile-muted\"},\"children\":[{\"type\":\"headline\",\"props\":{\"content\":\"\\u041f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f\",\"title_element\":\"h2\",\"title_style\":\"heading-small\"},\"name\":\"\\u0417\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a - \\u041f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f\"},{\"type\":\"headline\",\"props\":{\"content\":\"\\u041d\\u0430\\u0432\\u0456\\u0433\\u0430\\u0446\\u0456\\u044f\",\"title_decoration\":\"line\",\"title_element\":\"h1\",\"title_style\":\"h4\"},\"name\":\"\\u041f\\u0456\\u0434\\u0437\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a \\u041d\\u0410\\u0412\\u0406\\u0413\\u0410\\u0426\\u0406\\u042f\"},{\"type\":\"nav\",\"props\":{\"grid\":\"1\",\"image_vertical_align\":true,\"nav_style\":\"secondary\",\"show_image\":true,\"show_meta\":true},\"children\":[{\"type\":\"nav_item\",\"props\":{\"content\":\"\\u041c\\u0430\\u043a\\u0435\\u0442 \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f\",\"link\":\"https:\\/\\/techno4.online\\/\\u0444\\u0440\\u0435\\u0439\\u043c\\u0432\\u043e\\u0440\\u043a\\/#general\"}},{\"type\":\"nav_item\",\"props\":{\"content\":\"\\u041e\\u0431\\u0456\\u0439\\u0442\\u0438 \\u043e\\u0431\\u0440\\u043e\\u0431\\u043d\\u0438\\u043a \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u044c\"}},{\"type\":\"nav_item\",\"props\":{\"content\":\"\\u0417\\u043c\\u0456\\u043d\\u043d\\u0456 CSS\"}}],\"name\":\"\\u041d\\u0430\\u0432\\u0456\\u0433\\u0430\\u0446\\u0456\\u044f\"}]}]},{\"type\":\"row\",\"children\":[{\"type\":\"column\",\"props\":{\"image_position\":\"center-center\",\"position_sticky_breakpoint\":\"m\",\"style\":\"tile-default\",\"width_medium\":\"3-4\"},\"children\":[{\"type\":\"headline\",\"props\":{\"content\":\"\\u041f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f\",\"title_element\":\"h3\",\"title_style\":\"h3\"},\"name\":\"\\u041d\\u0430\\u0437\\u0432\\u0430 \\u0440\\u043e\\u0437\\u0434\\u0456\\u043b\\u0443\"},{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"\\u0415\\u043b\\u0435\\u043c\\u0435\\u043d\\u0442 \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f \\u0432\\u0438\\u043a\\u043e\\u0440\\u0438\\u0441\\u0442\\u043e\\u0432\\u0443\\u0454\\u0442\\u044c\\u0441\\u044f \\u0434\\u043b\\u044f \\u0432\\u0438\\u043a\\u043b\\u0438\\u043a\\u0443 \\u0434\\u0456\\u0439 \\u0437\\u0430\\u0441\\u0442\\u043e\\u0441\\u0443\\u043d\\u043a\\u0443 \\u0442\\u0430 \\u0434\\u043b\\u044f \\u043d\\u0430\\u0432\\u0456\\u0433\\u0430\\u0446\\u0456\\u0457 \\u043c\\u0456\\u0436 \\u0441\\u0442\\u043e\\u0440\\u0456\\u043d\\u043a\\u0430\\u043c\\u0438 (\\u043c\\u0430\\u0440\\u0448\\u0440\\u0443\\u0442\\u0438)\",\"margin\":\"default\",\"text_style\":\"large\"},\"name\":\"\\u041e\\u043f\\u0438\\u0441\"},{\"type\":\"headline\",\"props\":{\"content\":\"\\u041c\\u0430\\u043a\\u0435\\u0442 \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f\",\"title_element\":\"h3\",\"title_style\":\"h3\"},\"name\":\"\\u041d\\u0430\\u0437\\u0432\\u0430 \\u0440\\u043e\\u0437\\u0434\\u0456\\u043b\\u0443 - \\u041c\\u0430\\u043a\\u0435\\u0442 \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f\"},{\"type\":\"code\",\"props\":{\"content\":\"<a class=\\\"link\\\" href=\\\"path\\/to\\/somewhere\\\">\\u0422\\u0435\\u043a\\u0441\\u0442 \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f<\\/a>\"},\"name\":\"\\u041a\\u043e\\u0434\"},{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"\\u042f\\u043a\\u0449\\u043e \\u0432\\u0438 \\u0432\\u0438\\u043a\\u043e\\u0440\\u0438\\u0441\\u0442\\u043e\\u0432\\u0443\\u0454\\u0442\\u0435 \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f \\u0437 \\u043f\\u0456\\u043a\\u0442\\u043e\\u0433\\u0440\\u0430\\u043c\\u043e\\u044e \\u0442\\u0430 \\u0442\\u0435\\u043a\\u0441\\u0442\\u043e\\u043c, \\u0442\\u043e \\u0440\\u0435\\u043a\\u043e\\u043c\\u0435\\u043d\\u0434\\u043e\\u0432\\u0430\\u043d\\u0438\\u0439 \\u0442\\u0430\\u043a\\u0438\\u0439 \\u043c\\u0430\\u043a\\u0435\\u0442:\\n\",\"margin\":\"default\",\"text_style\":\"large\"},\"name\":\"\\u041e\\u043f\\u0438\\u0441\"},{\"type\":\"code\",\"props\":{\"content\":\"<a class=\\\"link\\\" href=\\\"path\\/to\\/somewhere\\\">\\n  <i class=\\\"icon\\\"><\\/i>\\n  <span>\\u0422\\u0435\\u043a\\u0441\\u0442 \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f<\\/span>\\n<\\/a>\\n\"},\"name\":\"\\u041a\\u043e\\u0434\"},{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"\\u042f\\u043a\\u0449\\u043e \\u0432\\u0438 \\u0432\\u0438\\u043a\\u043e\\u0440\\u0438\\u0441\\u0442\\u043e\\u0432\\u0443\\u0454\\u0442\\u0435 \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f \\u043b\\u0438\\u0448\\u0435 \\u0437 \\u043f\\u0456\\u043a\\u0442\\u043e\\u0433\\u0440\\u0430\\u043c\\u043e\\u044e, \\u0442\\u043e\\u0434\\u0456:\",\"margin\":\"default\",\"text_style\":\"large\"},\"name\":\"\\u041e\\u043f\\u0438\\u0441\"},{\"type\":\"code\",\"props\":{\"content\":\"<a class=\\\"link icon-only\\\" href=\\\"path\\/to\\/somewhere\\\">\\n  <i class=\\\"icon\\\"><\\/i>\\n<\\/a>\\n\"},\"name\":\"\\u041a\\u043e\\u0434\"},{\"type\":\"headline\",\"props\":{\"content\":\"\\u041e\\u0431\\u0456\\u0439\\u0442\\u0438 \\u043e\\u0431\\u0440\\u043e\\u0431\\u043d\\u0438\\u043a \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u044c\",\"title_element\":\"h3\",\"title_style\":\"h3\"},\"name\":\"\\u041d\\u0430\\u0437\\u0432\\u0430 \\u0440\\u043e\\u0437\\u0434\\u0456\\u043b\\u0443 - \\u041e\\u0431\\u0456\\u0439\\u0442\\u0438 \\u043e\\u0431\\u0440\\u043e\\u0431\\u043d\\u0438\\u043a \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u044c \"},{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"\\u041c\\u043e\\u0436\\u043d\\u0430 \\u043e\\u0431\\u0456\\u0439\\u0442\\u0438 \\u043e\\u0431\\u0440\\u043e\\u0431\\u043d\\u0438\\u043a \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u044c T4 (\\u044f\\u043a\\u0449\\u043e \\u0432\\u0438 \\u0445\\u043e\\u0447\\u0435\\u0442\\u0435 \\u0434\\u043e\\u0434\\u0430\\u0442\\u0438 \\u0441\\u043f\\u0435\\u0446\\u0456\\u0430\\u043b\\u044c\\u043d\\u0443 \\u043b\\u043e\\u0433\\u0456\\u043a\\u0443 \\u0434\\u043e \\u043f\\u043e\\u0441\\u0438\\u043b\\u0430\\u043d\\u043d\\u044f \\u0430\\u0431\\u043e \\u0445\\u043e\\u0447\\u0435\\u0442\\u0435, \\u0449\\u043e\\u0431 \\u0432\\u043e\\u043d\\u043e \\u0441\\u043f\\u0440\\u044f\\u043c\\u043e\\u0432\\u0443\\u0432\\u0430\\u043b\\u043e \\u043d\\u0430 \\u0437\\u043e\\u0432\\u043d\\u0456\\u0448\\u043d\\u0456\\u0439 \\u0432\\u0435\\u0431\\u0441\\u0430\\u0439\\u0442). \\u0423 \\u0446\\u044c\\u043e\\u043c\\u0443 \\u0432\\u0438\\u043f\\u0430\\u0434\\u043a\\u0443 \\u043d\\u0430\\u043c \\u043f\\u043e\\u0442\\u0440\\u0456\\u0431\\u0435\\u043d \\u0434\\u043e\\u0434\\u0430\\u0442\\u043a\\u043e\\u0432\\u0438\\u0439 \\u0437\\u043e\\u0432\\u043d\\u0456\\u0448\\u043d\\u0456\\u0439 \\u043a\\u043b\\u0430\\u0441:\\n\",\"margin\":\"default\",\"text_style\":\"large\"},\"name\":\"\\u041e\\u043f\\u0438\\u0441\"},{\"type\":\"code\",\"props\":{\"content\":\"<a class=\\\"link external\\\" href=\\\"http:\\/\\/google.com\\\">\\u0432\\u0456\\u0434\\u043a\\u0440\\u0438\\u0442\\u0438 Google<\\/a>\\n\"},\"name\":\"\\u041a\\u043e\\u0434\"},{\"type\":\"headline\",\"props\":{\"content\":\"\\u0417\\u043c\\u0456\\u043d\\u043d\\u0456 CSS \\n\",\"title_element\":\"h3\",\"title_style\":\"h3\"},\"name\":\"\\u041d\\u0430\\u0437\\u0432\\u0430 \\u0440\\u043e\\u0437\\u0434\\u0456\\u043b\\u0443 - \\u0417\\u043c\\u0456\\u043d\\u043d\\u0456 CSS \"},{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"\\u041d\\u0438\\u0436\\u0447\\u0435 \\u043d\\u0430\\u0432\\u0435\\u0434\\u0435\\u043d\\u043e \\u0441\\u043f\\u0438\\u0441\\u043e\\u043a \\u043f\\u043e\\u0432\\u2019\\u044f\\u0437\\u0430\\u043d\\u0438\\u0445 \\u0437\\u043c\\u0456\\u043d\\u043d\\u0438\\u0445 CSS (\\u0441\\u043f\\u0435\\u0446\\u0456\\u0430\\u043b\\u044c\\u043d\\u0456 \\u0432\\u043b\\u0430\\u0441\\u0442\\u0438\\u0432\\u043e\\u0441\\u0442\\u0456 CSS).\\n\",\"margin\":\"default\",\"text_style\":\"large\"},\"name\":\"\\u041e\\u043f\\u0438\\u0441\"},{\"type\":\"code\",\"props\":{\"content\":\":root {\\n  --t4-link-highlight-black: rgba(0, 0, 0, 0.1);\\n  --t4-link-highlight-white: rgba(255, 255, 255, 0.15);\\n  --t4-link-highlight-color: rgba(var(--t4-theme-color-rgb), 0.15);\\n}\\n.ios {\\n  --t4-link-pressed-opacity: 0.3;\\n}\\n.aurora {\\n  --t4-link-pressed-opacity: 0.3;\\n  --t4-link-hover-opacity: 0.65;\\n}\\n\"},\"name\":\"\\u041a\\u043e\\u0434\"}]},{\"type\":\"column\",\"props\":{\"image_position\":\"center-center\",\"position_sticky_breakpoint\":\"m\",\"width_medium\":\"1-4\"},\"children\":[{\"type\":\"module\",\"props\":{\"menu_image_align\":\"center\",\"menu_image_margin\":true,\"menu_style\":\"default\",\"menu_type\":\"nav\",\"module\":\"123\",\"type\":\"mod_menu\"}}]}],\"props\":{\"layout\":\"3-4,1-4\"}}],\"name\":\"\\u041f\\u0440\\u0438\\u043a\\u043b\\u0430\\u0434 \\u0434\\u043e\\u043a\\u0443\\u043c\\u0435\\u043d\\u0442\\u0430\\u0446\\u0456\\u0457 0\"}],\"version\":\"4.0.3\",\"yooessentialsVersion\":\"2.0.6\"} -->",
+    "артикул": "",
+    "автор": "",
+    "description": "",
+    "projectkeyword": "",
+    "tags": []
+  },
+  "relationships": {
+    "category": {
+      "data": {
+        "type": "categories",
+        "id": "11"
+      }
+    },
+    "created_by": {
+      "data": {
+        "type": "users",
+        "id": "1049"
+      }
+    },
+    "tags": {
+      "data": []
+    }
+  }
+}

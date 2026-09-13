@@ -1,0 +1,66 @@
+{
+  "type": "articles",
+  "id": "22",
+  "attributes": {
+    "id": 22,
+    "asset_id": 154,
+    "title": "Introduction",
+    "alias": "introduction",
+    "state": 0,
+    "access": 1,
+    "created": "2023-02-23 21:04:48",
+    "created_by": 1050,
+    "created_by_alias": "",
+    "modified": "2023-11-19 03:55:45",
+    "featured": 0,
+    "language": "*",
+    "hits": 979,
+    "publish_up": "2023-02-23 21:04:48",
+    "publish_down": null,
+    "note": "",
+    "images": {
+      "image_intro": "",
+      "image_intro_alt": "",
+      "float_intro": "",
+      "image_intro_caption": "",
+      "image_fulltext": "",
+      "image_fulltext_alt": "",
+      "float_fulltext": "",
+      "image_fulltext_caption": ""
+    },
+    "metakey": "",
+    "metadesc": "",
+    "metadata": {
+      "robots": "",
+      "author": "",
+      "rights": ""
+    },
+    "version": 19,
+    "featured_up": null,
+    "featured_down": null,
+    "typeAlias": "com_content.article",
+    "text": " ",
+    "артикул": "",
+    "автор": "",
+    "description": "",
+    "projectkeyword": "",
+    "tags": []
+  },
+  "relationships": {
+    "category": {
+      "data": {
+        "type": "categories",
+        "id": "11"
+      }
+    },
+    "created_by": {
+      "data": {
+        "type": "users",
+        "id": "1050"
+      }
+    },
+    "tags": {
+      "data": []
+    }
+  }
+}

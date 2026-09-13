@@ -1,0 +1,840 @@
+<h2>Вспливаюче вікно (Popover)</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет Вспливаючого вікна</a>
+
+    </li>
+        <li>
+        
+<div>Методи застосунку Вспливаюче вікно </div>
+
+    </li>
+        <li>
+        
+<div>Параметри Вспливаючого вікна </div>
+
+    </li>
+        <li>
+        
+<div>Методи та властивості Вспливаючого вікна</div>
+
+    </li>
+        <li>
+        
+<div>Керування спливаючим вікном за допомогою посилань </div>
+
+    </li>
+        <li>
+        
+<div>Події Вспливаючого вікна </div>
+
+<p>Події DOM <p>Події екземплярів застосунку та вспливаючого вікна</p>
+    </li>
+        <li>
+        
+<div>Змінні CSS </div>
+
+    </li>
+        <li>
+        
+<div>Приклади </div>
+
+    </li>
+    </ul>
+<h3>Вспливаюче вікно (Popover)</h3>
+<div>Компонент Popover використовується для керування представленням вмісту у спливаючому вікні. Ви використовуєте спливні елементи для тимчасового представлення інформації. Спливаюче вікно залишається видимим, доки користувач не торкнеться за межами спливаючого вікна або ви явно його не закриєте.</div>
+<div>Зауважте, що не рекомендується використовувати Popover на маленьких екранах (iPhone). На маленьких екранах замість цього слід використовувати Аркуш дій .</div>
+<h3>Макет Спливаючого вікна </h3>
+<div>Перш за все, давайте розглянемо макет Popover, він досить простий:</div>
+<pre><code>&lt;body&gt;
+    ...
+    &lt;div class=&quot;popover&quot;&gt;
+        &lt;!-- Popover's arrow --&gt;
+        &lt;div class=&quot;popover-arrow&quot;&gt;&lt;/div&gt;
+
+        &lt;!-- Popover content --&gt;
+        &lt;div class=&quot;popover-inner&quot;&gt;
+            &lt;!-- Any HTML content here --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+<div>Popover — це елемент, який можна налаштувати, і ви можете помістити всередину що завгодно, навіть інший перегляд із навігацією.</div>
+<h3>Методи застосунку Popover</h3>
+<div>Давайте розглянемо пов’язані методи роботи з застосунком Popover:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app.popover.create(<code>parameters</code>)</td>
+
+<td>створити екземпляр Popover
+<p>●	<code>parameters - object.</code> Об'єкт з параметрами popover
+<p><i>Метод повертає створений екземпляр popover</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.popover.destroy(<code>el</code>)</td>
+
+<td>знищити екземпляр Popover
+<p>●	<code>el - HTMLElement or string</code> (with CSS Selector) or <code>object</code>. Елемент Popover або екземпляр Popover для знищення</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.popover.get(<code>el</code>)</td>
+
+<td>отримати екземпляр Popover за елементом HTML
+<p>●	<code>el - HTMLElement or string</code> (with CSS Selector). Popover елемент.
+<p><i>Метод повертає екземпляр Popover</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.popover.open(<code>el, targetEl, animate</code>)</td>
+
+<td>відкрити Popover
+<p>●	<code>el  - HTMLElement or string</code> (with CSS Selector)  Popover елемент для відкриття.</p>
+<p>●	<code>targetEl - HTMLElement or string</code> (with CSS Selector) ). Цільовий елемент для встановлення позиції спливаючого вікна навколо цього елемента</p>
+<p>	<code>animate - boolean.</code> Відкрити Popover з анімацією </p>
+<p><i>Метод повертає екземпляр Popover</i></p></td>
+
+</tr>
+                <tr>
+
+<td>app.popover.close(<code>el, animate</code>)</td>
+
+<td>закриває Popover
+<p>●	<code>el - HTMLElement or string</code> (with CSS Selector)  Popover елемент для закриття. </p>
+<p>●	<code>animate - boolean</code>.  Закривати з анімацією чи ні</p>
+<p><i>Метод повертає екземпляр Popover</i></p>
+</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Параметри Popover</h3>
+<div>Тепер давайте розглянемо список доступних параметрів, необхідних для створення Popover:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>el</td>
+
+<td>Popover елемент. Може бути корисним, якщо у вас уже є елемент Popover у вашому HTML і ви хочете створити новий екземпляр за допомогою цього елемента</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement </a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>arrow</td>
+
+<td>Вмикає стрілку/куточок Popover</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>content</td>
+
+<td>Повний рядок макета HTML Popover. Може бути корисним, якщо ви хочете створити елемент Popover динамічно</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>auto</td>
+
+<td>verticalPosition</td>
+
+<td>Примусове вертикальне положення Popover, може бути <code>auto</code> або <code>top</code> чи<code>bottom</code>)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>backdrop</td>
+
+<td>Вмикає фон Popover (темний напівпрозорий шар ззаду)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>backdropUnique</td>
+
+<td>Якщо ввімкнено, він створює унікальний елемент фону виключно для цього модалу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>backdropEl</td>
+
+<td>HTML-елемент або рядковий CSS-селектор спеціального елемента фону</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p> string</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>closeByBackdropClick</td>
+
+<td>Якщо ввімкнено, спливаюче вікно закриватиметься після натискання на фоні</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>closeByOutsideClick</td>
+
+<td>Якщо ввімкнено, спливаюче вікно закриватиметься, коли клацніть поза ним</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>closeOnEscape</td>
+
+<td>Якщо ввімкнено, спливаюче вікно закриватиметься після натискання клавіші ESC</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>animate</td>
+
+<td>Чи відкривати/закривати Popover з анімацією чи ні. Можна перезаписати в методи <code>.open()</code>і <code>.close()</code> </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>targetEl</td>
+
+<td>HTML-елемент або рядковий CSS-селектор цільового елемента</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>targetX</td>
+
+<td>Горизонтальне зміщення віртуального цільового елемента від лівої сторони екрана. Необхідно без використання реального цільового елемента ( <code>targetEl</code>)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>targetY</td>
+
+<td>Вертикальне зміщення віртуального цільового елемента від верхньої частини екрана. Необхідно без використання реального цільового елемента ( <code>targetEl</code>)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>0</td>
+
+<td>targetWidth</td>
+
+<td>Ширина віртуального цільового елемента (у пікселях). Необхідно без використання реального цільового елемента ( <code>targetEl</code>)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>0</td>
+
+<td>targetHeight</td>
+
+<td>Висота віртуального цільового елемента (у пікселях). Необхідно без використання реального цільового елемента (<code>targetEl</code>)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>containerEl</td>
+
+<td>Елемент для модального монтування (за замовчуванням кореневий елемент застосунку)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>on</td>
+
+<td>Об'єкт з обробниками подій. Наприклад:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var popover = app.popover.create({
+  content: '&lt;div class=&quot;popover&quot;&gt;...&lt;/div&gt;',
+  on: {
+    opened: function () {
+      console.log('Popover opened')
+    }
+  }
+})
+</code></pre>
+<div>Зауважте, що всі наведені нижче параметри можна використовувати в глобальних параметрах застосунку у <code>popover</code> властивості, щоб установити значення за замовчуванням для всіх поповерів. Наприклад:</div>
+<pre><code>var app = new Techno4({
+  popover: {
+    closeByBackdropClick: false,
+  }
+});
+</code></pre>
+<div>Якщо ви використовуєте автоматично ініціалізовані спливаючі вікна (наприклад, ви не створюєте їх через <code>app.popover.create</code>), можна передати всі доступні параметри спливаючих вікон за допомогою <code>data-</code>атрибутів. Наприклад:</div>
+<pre><code>&lt;!-- Pass parameters as kebab-case data attributes --&gt;
+&lt;div class=&quot;popover&quot; data-close-on-escape=&quot;true&quot; data-backdrop=&quot;false&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+<h3>Методи та властивості Popover</h3>
+<div>Отже, щоб створити Popover, ми повинні викликати:</div>
+<pre><code>var popover = app.popover.create({ /* parameters */ })</code></pre>
+<div>Після цього у нас є його ініціалізований екземпляр (як <code>popover</code> змінна у прикладі вище) з корисними методами та властивостями:</div>
+<h5>Властивості</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>popover.app</td>
+
+<td>Посилання на глобальний екземпляр застосунку</td>
+
+</tr>
+                <tr>
+
+<td>popover.el</td>
+
+<td>Popover HTML елемент</td>
+
+</tr>
+                <tr>
+
+<td>popover.$el</td>
+
+<td>Екземпляр Dom64 зі спливаючим елементом HTML</td>
+
+</tr>
+                <tr>
+
+<td>popover.backdropEl</td>
+
+<td>Елемент HTML фону</td>
+
+</tr>
+                <tr>
+
+<td>popover.$backdropEl</td>
+
+<td>Екземпляр Dom64 із фоновим елементом HTML</td>
+
+</tr>
+                <tr>
+
+<td>popover.targetEl</td>
+
+<td>Спливаючий цільовий елемент HTML</td>
+
+</tr>
+                <tr>
+
+<td>popover.$targetEl</td>
+
+<td>Екземпляр Dom64 із спливаючим цільовим елементом HTML</td>
+
+</tr>
+                <tr>
+
+<td>popover.params</td>
+
+<td>Параметри Popover</td>
+
+</tr>
+                <tr>
+
+<td>popover.opened</td>
+
+<td>Логічна властивість, яка вказує, відкрито спливне вікно чи ні</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h5>Методи</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>popover.open(<code>targetEl, animate</code>)</td>
+
+<td>Відкрити спливаюче вікно навколо цільового елемента, Де
+<p>●	<code>targetEl - HTMLElement or string</code> - цільовий елемент для встановлення позиції спливаючого вікна навколо цього елемента</p>
+<p>●	<code>animate - boolean</code> (за замовчуванням <code>true</code>) - визначає, чи відкривати його з анімацією чи ні</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>popover.open(<code>animate</code>)</td>
+
+<td>Відкрити спливаюче вікно навколо цільового елемента, переданого під час створення спливного вікна. Де
+<p>●	<code>animate - boolean</code> (за замовчуванням<code> true</code>) - визначає, чи слід відкривати його з анімацією</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>popover.close(<code>animate</code>)</td>
+
+<td>Закрити спливаюче вікно. Де
+<p>●	<code>animate - boolean</code> (за замовчуванням <code>true</code>) - визначає, чи потрібно закривати його анімацією</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>popover.destroy()</td>
+
+<td>Знищити поповер</td>
+
+</tr>
+                <tr>
+
+<td>popover.on(<code>event, handler</code>)</td>
+
+<td>Додати обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>popover.once(<code>event, handler</code>)</td>
+
+<td>Додати обробник подій, який буде видалено після запуску</td>
+
+</tr>
+                <tr>
+
+<td>popover.off(<code>event, handler</code>)</td>
+
+<td>Видалити обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>popover.off(<code>event</code>)</td>
+
+<td>Видалити всі обробники для вказаної події</td>
+
+</tr>
+                <tr>
+
+<td>popover.emit(<code>event, ...args</code>)</td>
+
+<td>Запустити подію на єкзепмлярі </td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Керування спливаючим вікном за допомогою посилань</h3>
+<div>Відкривати та закривати потрібні спливаючі повідомлення (якщо вони є в DOM) можна за допомогою спеціальних класів і атрибутів даних у посиланнях:
+<p>●	Щоб відкрити спливаюче вікно, нам потрібно додати клас <code>« popover-open »</code> до будь-якого елемента HTML (бажано для посилання)</p>
+<p>●	Щоб закрити спливаюче вікно, нам потрібно додати клас <code>« popover-close »</code> до будь-якого елемента HTML (бажано для посилання)</p>
+<p>●	Якщо у вас є більше ніж одне спливаюче вікно в DOM, вам потрібно вказати відповідне спливаюче вікно за допомогою додаткового атрибута <code>data-popover=".my-popover"</code> у цьому елементі HTML</p>
+Відповідно до примітки вище:</div>
+<pre><code>&lt;!-- В атрибуті data-popover ми вказуємо CSS-селектор спливаючого повідомлення, яке потрібно відкрити --&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot; data-popover=&quot;.my-popover&quot; class=&quot;popover-open&quot;&gt;Open Popover&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- А також в DOM --&gt;
+&lt;div class=&quot;popover my-popover&quot;&gt;
+  &lt;div class=&quot;popover-inner&quot;&gt;
+    &lt;!-- посилання щоб закрити popover --&gt;
+    &lt;a class=&quot;link popover-close&quot;&gt;Close Popover&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3>Події Popover </h3>
+<div>Popover запускатиме наступні події DOM на елементі popover і події в застосунку та екземплярі popover:</div>
+<h4>Події DOM</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Елемент Popover <p> <code>&lt;div class="popover"&gt;</code></td>
+
+<td>popover:open</td>
+
+<td>Подія буде ініційована, коли Popover запустить початкову анімацію</td>
+
+</tr>
+                <tr>
+<td>Елемент Popover <p> <code>&lt;div class="popover"&gt;</code></td>
+
+<td>popover:opened</td>
+
+<td>Подію буде запущено після того, як Popover завершить свою початкову анімацію</td>
+
+</tr>
+                <tr>
+<td>Елемент Popover <p> <code>&lt;div class="popover"&gt;</code></td>
+
+<td>popover:close</td>
+
+<td>Подія буде ініційована, коли Popover почне завершувати анімацію</td>
+
+</tr>
+                <tr>
+<td>Елемент Popover <p> <code>&lt;div class="popover"&gt;</code></td>
+
+<td>popover:closed</td>
+
+<td>Подію буде запущено після завершення анімації Popover</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h4>Події екземплярів застосунку та Popover</h4>
+<div>Екземпляр Popover запускає події як у себе, так і в екземплярі застосунку. Події екземплярів застосунку мають ті самі назви з префіксом <code>popover</code>.</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th>Об'єкт</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>popover</td>
+
+<td>open</td>
+
+<td>Подія буде ініційована, коли Popover запустить початкову анімацію. В якості аргументу обробник події отримує екземпляр popover</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">popover</a>
+    </td>
+</tr>
+                <tr>
+<td>popover</td>
+
+<td>popoverOpen</td>
+
+<td>Подія буде ініційована, коли Popover запустить початкову анімацію. В якості аргументу обробник події отримує екземпляр popover</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>popover</td>
+
+<td>opened</td>
+
+<td>Подію буде запущено після того, як Popover завершить свою початкову анімацію. В якості аргументу обробник події отримує екземпляр Popover </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">popover</a>
+    </td>
+</tr>
+                <tr>
+<td>popover</td>
+
+<td>popoverOpened</td>
+
+<td>Подію буде запущено після того, як Popover завершить свою початкову анімацію. В якості аргументу обробник події отримує екземпляр Popover </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>popover</td>
+
+<td>close</td>
+
+<td>Подія буде ініційована, коли Popover почне завершувати анімацію. В якості аргументу обробник події отримує спливаючий екземпляр</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">popover</a>
+    </td>
+</tr>
+                <tr>
+<td>popover</td>
+
+<td>popoverClose</td>
+
+<td>Подія буде ініційована, коли Popover почне завершувати анімацію. В якості аргументу обробник події отримує спливаючий екземпляр</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>popover</td>
+
+<td>closed</td>
+
+<td>Подію буде запущено після завершення анімації Popover. В якості аргументу обробник події отримує спливаючий екземпляр</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">popover</a>
+    </td>
+</tr>
+                <tr>
+<td>popover</td>
+
+<td>popoverClosed</td>
+
+<td>Подію буде запущено після завершення анімації Popover. В якості аргументу обробник події отримує спливаючий екземпляр</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>popover</td>
+
+<td>beforeDestroy</td>
+
+<td>Подія буде запущена безпосередньо перед знищенням екземпляра Popover. В якості аргументу обробник події отримує спливаючий екземпляр</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">popover</a>
+    </td>
+</tr>
+                <tr>
+<td>popover</td>
+
+<td>popoverBeforeDestroy</td>
+
+<td>Подія буде запущена безпосередньо перед знищенням екземпляра Popover. В якості аргументу обробник події отримує спливаючий екземпляр</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Змінні CSS</h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<pre><code>:root {
+  --t4-popover-width: 260px;
+}
+.ios {
+  --t4-popover-border-radius: 13px;
+  --t4-popover-actions-icon-size: 28px;
+  --t4-popover-transition-timing-function: initial;
+  --t4-popover-bg-color: rgba(255, 255, 255, 0.95);
+  --t4-popover-actions-label-text-color: rgba(0, 0, 0, 0.45);
+}
+.ios .dark,
+.ios.dark {
+  --t4-popover-bg-color: rgba(30, 30, 30, 0.95);
+  --t4-popover-actions-label-text-color: rgba(255, 255, 255, 0.55);
+}
+.md {
+  --t4-popover-transition-timing-function: cubic-bezier(0, 0.8, 0.34, 1);
+  --t4-popover-border-radius: 28px;
+  --t4-popover-actions-icon-size: 24px;
+}
+.md,
+.md .dark,
+.md [class*='color-'] {
+  --t4-popover-bg-color: var(--t4-md-surface-3);
+  --t4-popover-actions-label-text-color: var(--t4-md-on-surface-variant);
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+      &lt;div class=&quot;title&quot;&gt;Popover&lt;/div&gt;
+      &lt;div class=&quot;right&quot;&gt;
+        &lt;a class=&quot;link popover-open&quot; data-popover=&quot;.popover-menu&quot;&gt;Popover&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;toolbar toolbar-bottom&quot;&gt;
+    &lt;div class=&quot;toolbar-inner&quot;&gt;
+      &lt;a href=&quot;&quot; class=&quot;link popover-open&quot; data-popover=&quot;.popover-menu&quot;&gt;Dummy Link&lt;/a&gt;
+      &lt;a href=&quot;&quot; class=&quot;link popover-open&quot; data-popover=&quot;.popover-menu&quot;&gt;Open Popover&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;div class=&quot;block&quot;&gt;
+      &lt;p&gt;&lt;a data-popover=&quot;.popover-menu&quot; class=&quot;button button-fill popover-open&quot;&gt;Open popover on me&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Mauris fermentum neque et luctus venenatis. Vivamus a sem rhoncus, ornare tellus eu, euismod mauris. In porta
+        turpis at semper convallis. Duis adipiscing leo eu nulla lacinia, quis rhoncus metus condimentum. Etiam nec
+        malesuada nibh. Maecenas quis lacinia nisl, vel posuere dolor. Vestibulum condimentum, nisl ac vulputate
+        egestas, neque enim dignissim elit, rhoncus volutpat magna enim a est. Aenean sit amet ligula neque. Cras
+        suscipit rutrum enim. Nam a odio facilisis, elementum tellus non, &lt;a class=&quot;popover-open&quot;
+          data-popover=&quot;.popover-menu&quot;&gt;popover&lt;/a&gt; tortor. Pellentesque felis eros, dictum vitae lacinia quis, lobortis
+        vitae ipsum. Cras vehicula bibendum lorem quis imperdiet.&lt;/p&gt;
+      &lt;p&gt;In hac habitasse platea dictumst. Etiam varius, ante vel ornare facilisis, velit massa rutrum dolor, ac porta
+        magna magna lacinia nunc. Curabitur &lt;a class=&quot;popover-open&quot; data-popover=&quot;.popover-menu&quot;&gt;popover!&lt;/a&gt; cursus
+        laoreet. Aenean vel tempus augue. Pellentesque in imperdiet nibh. Mauris rhoncus nulla id sem suscipit volutpat.
+        Pellentesque ac arcu in nisi viverra pulvinar. Nullam nulla orci, bibendum sed ligula non, ullamcorper iaculis
+        mi. In hac habitasse platea dictumst. Praesent varius at nisl eu luctus. Cras aliquet porta est. Quisque
+        elementum quis dui et consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+        ridiculus mus. Sed sed laoreet purus. Pellentesque eget ante ante.&lt;/p&gt;
+      &lt;p&gt;Duis et ultricies nibh. Sed facilisis turpis urna, ac imperdiet erat venenatis eu. Proin sit amet faucibus
+        tortor, et varius sem. Etiam vitae lacinia neque. Aliquam nisi purus, interdum in arcu sed, ultrices rutrum
+        arcu. Nulla mi turpis, consectetur vel enim quis, facilisis viverra dui. Aliquam quis convallis tortor, quis
+        semper ligula. Morbi ullamcorper &lt;a class=&quot;popover-open&quot; data-popover=&quot;.popover-menu&quot;&gt;one more popover&lt;/a&gt; massa
+        at accumsan. Etiam purus odio, posuere in ligula vitae, viverra ultricies justo. Vestibulum nec interdum nisi.
+        Aenean ac consectetur velit, non malesuada magna. Sed pharetra vehicula augue, vel venenatis lectus gravida
+        eget. Curabitur lacus tellus, venenatis eu arcu in, interdum auctor nunc. Nunc non metus neque. Suspendisse
+        viverra lectus sed risus aliquet, vel accumsan dolor feugiat.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;popover popover-menu&quot;&gt;
+    &lt;div class=&quot;popover-angle&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;popover-inner&quot;&gt;
+      &lt;div class=&quot;list&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;/dialog/&quot; class=&quot;list-button popover-close&quot;&gt;Dialog&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/tabs/&quot; class=&quot;list-button popover-close&quot;&gt;Tabs&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/panel/&quot; class=&quot;list-button popover-close&quot;&gt;Side Panels&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/list/&quot; class=&quot;list-button popover-close&quot;&gt;List View&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/inputs/&quot; class=&quot;list-button popover-close&quot;&gt;Form Inputs&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0412\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e (Popover)","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u0412\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e (Popover)"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0412\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0412\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e "}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0412\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430 "}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0412\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430"}},{"type":"nav_item","props":{"content":"\u041a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u043c \u0432\u0456\u043a\u043d\u043e\u043c \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c "}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0412\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430 ","meta":"\u041f\u043e\u0434\u0456\u0457 DOM <p>\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0432\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS "}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 "}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0412\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e (Popover)","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e (Popover)"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 Popover \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0434\u043b\u044f \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f\u043c \u0432\u043c\u0456\u0441\u0442\u0443 \u0443 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u043c\u0443 \u0432\u0456\u043a\u043d\u0456. \u0412\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u0441\u043f\u043b\u0438\u0432\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0434\u043b\u044f \u0442\u0438\u043c\u0447\u0430\u0441\u043e\u0432\u043e\u0433\u043e \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0457. \u0421\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e \u0437\u0430\u043b\u0438\u0448\u0430\u0454\u0442\u044c\u0441\u044f \u0432\u0438\u0434\u0438\u043c\u0438\u043c, \u0434\u043e\u043a\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043d\u0435 \u0442\u043e\u0440\u043a\u043d\u0435\u0442\u044c\u0441\u044f \u0437\u0430 \u043c\u0435\u0436\u0430\u043c\u0438 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430 \u0430\u0431\u043e \u0432\u0438 \u044f\u0432\u043d\u043e \u0439\u043e\u0433\u043e \u043d\u0435 \u0437\u0430\u043a\u0440\u0438\u0454\u0442\u0435.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043d\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u0442\u044c\u0441\u044f \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 Popover \u043d\u0430 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0438\u0445 \u0435\u043a\u0440\u0430\u043d\u0430\u0445 (iPhone). \u041d\u0430 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u0438\u0445 \u0435\u043a\u0440\u0430\u043d\u0430\u0445 \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u0446\u044c\u043e\u0433\u043e \u0441\u043b\u0456\u0434 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0410\u0440\u043a\u0443\u0448 \u0434\u0456\u0439 .","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0421\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u0421\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0435\u0440\u0448 \u0437\u0430 \u0432\u0441\u0435, \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u043c\u0430\u043a\u0435\u0442 Popover, \u0432\u0456\u043d \u0434\u043e\u0441\u0438\u0442\u044c \u043f\u0440\u043e\u0441\u0442\u0438\u0439:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<body>\n    ...\n    <div class=\"popover\">\n        <!-- Popover's arrow -->\n        <div class=\"popover-arrow\"><\/div>\n\n        <!-- Popover content -->\n        <div class=\"popover-inner\">\n            <!-- Any HTML content here -->\n        <\/div>\n    <\/div>\n<\/body>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"Popover \u2014 \u0446\u0435 \u0435\u043b\u0435\u043c\u0435\u043d\u0442, \u044f\u043a\u0438\u0439 \u043c\u043e\u0436\u043d\u0430 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u0442\u0438, \u0456 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0443 \u0449\u043e \u0437\u0430\u0432\u0433\u043e\u0434\u043d\u043e, \u043d\u0430\u0432\u0456\u0442\u044c \u0456\u043d\u0448\u0438\u0439 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0456\u0437 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0454\u044e.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Popover","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Popover"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0440\u043e\u0431\u043e\u0442\u0438 \u0437 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u043e\u043c Popover:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover\n<p>\u25cf\t<code>parameters - object.<\/code> \u041e\u0431'\u0454\u043a\u0442 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 popover\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 popover<\/i><\/p>\n","link_text":"string","meta":"app.popover.create(<code>parameters<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0437\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover\n<p>\u25cf\t<code>el - HTMLElement or string<\/code> (with CSS Selector) or <code>object<\/code>. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 Popover \u0430\u0431\u043e \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover \u0434\u043b\u044f \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f<\/p>\n","link_text":"string","meta":"app.popover.destroy(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover \u0437\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML\n<p>\u25cf\t<code>el - HTMLElement or string<\/code> (with CSS Selector). Popover \u0435\u043b\u0435\u043c\u0435\u043d\u0442.\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover<\/i><\/p>\n","meta":"app.popover.get(<code>el<\/code>)"}},{"type":"table_item","props":{"content":"\u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438 Popover\n<p>\u25cf\t<code>el  - HTMLElement or string<\/code> (with CSS Selector)  Popover \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0434\u043b\u044f \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0442\u044f.<\/p>\n<p>\u25cf\t<code>targetEl - HTMLElement or string<\/code> (with CSS Selector) ). \u0426\u0456\u043b\u044c\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f \u043f\u043e\u0437\u0438\u0446\u0456\u0457 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430 \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u0446\u044c\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430<\/p>\n<p>\t<code>animate - boolean.<\/code> \u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 Popover \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e <\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover<\/i><\/p>","meta":"app.popover.open(<code>el, targetEl, animate<\/code>)"}},{"type":"table_item","props":{"content":"\u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0454 Popover\n<p>\u25cf\t<code>el - HTMLElement or string<\/code> (with CSS Selector)  Popover \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0434\u043b\u044f \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f. <\/p>\n<p>\u25cf\t<code>animate - boolean<\/code>.  \u0417\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e \u0447\u0438 \u043d\u0456<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover<\/i><\/p>\n","meta":"app.popover.close(<code>el, animate<\/code>)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 Popover","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 Popover"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u043b\u044f \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f Popover:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"Popover \u0435\u043b\u0435\u043c\u0435\u043d\u0442. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c, \u044f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u0443\u0436\u0435 \u0454 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 Popover \u0443 \u0432\u0430\u0448\u043e\u043c\u0443 HTML \u0456 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043d\u043e\u0432\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0446\u044c\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement ","meta":"el","title":""}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0441\u0442\u0440\u0456\u043b\u043a\u0443\/\u043a\u0443\u0442\u043e\u0447\u043e\u043a Popover","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"arrow","title":"true"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0432\u043d\u0438\u0439 \u0440\u044f\u0434\u043e\u043a \u043c\u0430\u043a\u0435\u0442\u0430 HTML Popover. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c, \u044f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 Popover \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"content"}},{"type":"table_item","props":{"content":"\u041f\u0440\u0438\u043c\u0443\u0441\u043e\u0432\u0435 \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u0435 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u044f Popover, \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 <code>auto<\/code> \u0430\u0431\u043e <code>top<\/code> \u0447\u0438<code>bottom<\/code>)","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"verticalPosition","title":"auto"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0444\u043e\u043d Popover (\u0442\u0435\u043c\u043d\u0438\u0439 \u043d\u0430\u043f\u0456\u0432\u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 \u0448\u0430\u0440 \u0437\u0437\u0430\u0434\u0443)","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"backdrop","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0432\u0456\u043d \u0441\u0442\u0432\u043e\u0440\u044e\u0454 \u0443\u043d\u0456\u043a\u0430\u043b\u044c\u043d\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0444\u043e\u043d\u0443 \u0432\u0438\u043a\u043b\u044e\u0447\u043d\u043e \u0434\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u043c\u043e\u0434\u0430\u043b\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"backdropUnique","title":"false"}},{"type":"table_item","props":{"content":"HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0430\u0431\u043e \u0440\u044f\u0434\u043a\u043e\u0432\u0438\u0439 CSS-\u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0444\u043e\u043d\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p> string","meta":"backdropEl","title":""}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0441\u043b\u044f \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f \u043d\u0430 \u0444\u043e\u043d\u0456","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"closeByBackdropClick","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f, \u043a\u043e\u043b\u0438 \u043a\u043b\u0430\u0446\u043d\u0456\u0442\u044c \u043f\u043e\u0437\u0430 \u043d\u0438\u043c","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"closeByOutsideClick","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0441\u043b\u044f \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f \u043a\u043b\u0430\u0432\u0456\u0448\u0456 ESC","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"closeOnEscape","title":"false"}},{"type":"table_item","props":{"content":"\u0427\u0438 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438\/\u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438 Popover \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e \u0447\u0438 \u043d\u0456. \u041c\u043e\u0436\u043d\u0430 \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0438\u0441\u0430\u0442\u0438 \u0432 \u043c\u0435\u0442\u043e\u0434\u0438 <code>.open()<\/code>\u0456 <code>.close()<\/code> ","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"animate","title":"true"}},{"type":"table_item","props":{"content":"HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0430\u0431\u043e \u0440\u044f\u0434\u043a\u043e\u0432\u0438\u0439 CSS-\u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"targetEl"}},{"type":"table_item","props":{"content":"\u0413\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u0435 \u0437\u043c\u0456\u0449\u0435\u043d\u043d\u044f \u0432\u0456\u0440\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0456\u0434 \u043b\u0456\u0432\u043e\u0457 \u0441\u0442\u043e\u0440\u043e\u043d\u0438 \u0435\u043a\u0440\u0430\u043d\u0430. \u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0431\u0435\u0437 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 ( <code>targetEl<\/code>)","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"targetX"}},{"type":"table_item","props":{"content":"\u0412\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u0435 \u0437\u043c\u0456\u0449\u0435\u043d\u043d\u044f \u0432\u0456\u0440\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0456\u0434 \u0432\u0435\u0440\u0445\u043d\u044c\u043e\u0457 \u0447\u0430\u0441\u0442\u0438\u043d\u0438 \u0435\u043a\u0440\u0430\u043d\u0430. \u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0431\u0435\u0437 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 ( <code>targetEl<\/code>)","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"targetY"}},{"type":"table_item","props":{"content":"\u0428\u0438\u0440\u0438\u043d\u0430 \u0432\u0456\u0440\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 (\u0443 \u043f\u0456\u043a\u0441\u0435\u043b\u044f\u0445). \u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0431\u0435\u0437 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 ( <code>targetEl<\/code>)","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"targetWidth","title":"0"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0441\u043e\u0442\u0430 \u0432\u0456\u0440\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 (\u0443 \u043f\u0456\u043a\u0441\u0435\u043b\u044f\u0445). \u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0431\u0435\u0437 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 (<code>targetEl<\/code>)","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"targetHeight","title":"0"}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0434\u043b\u044f \u043c\u043e\u0434\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043c\u043e\u043d\u0442\u0443\u0432\u0430\u043d\u043d\u044f (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u043a\u043e\u0440\u0435\u043d\u0435\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443)","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"containerEl"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"},"name":"\u0420\u043e\u0437\u0434\u0456\u043b\u044c\u043d\u0438\u043a - \u0406\u043a\u043e\u043d\u043a\u0430"},{"type":"fragment","props":{"margin":"default"},"children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c\u0438 \u043f\u043e\u0434\u0456\u0439. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"on","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var popover = app.popover.create({\n  content: '<div class=\"popover\">...<\/div>',\n  on: {\n    opened: function () {\n      console.log('Popover opened')\n    }\n  }\n})\n"}}]}]}]},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u0432\u0441\u0456 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0456 \u043d\u0438\u0436\u0447\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0432 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0443 <code>popover<\/code> \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456, \u0449\u043e\u0431 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u043f\u043e\u043f\u043e\u0432\u0435\u0440\u0456\u0432. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  popover: {\n    closeByBackdropClick: false,\n  }\n});\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0456 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0456 \u0432\u0456\u043a\u043d\u0430 (\u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0432\u0438 \u043d\u0435 \u0441\u0442\u0432\u043e\u0440\u044e\u0454\u0442\u0435 \u0457\u0445 \u0447\u0435\u0440\u0435\u0437 <code>app.popover.create<\/code>), \u043c\u043e\u0436\u043d\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0432\u0441\u0456 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0445 \u0432\u0456\u043a\u043e\u043d \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e <code>data-<\/code>\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456\u0432. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- Pass parameters as kebab-case data attributes -->\n<div class=\"popover\" data-close-on-escape=\"true\" data-backdrop=\"false\">\n  ...\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 Popover","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 Popover"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0442\u0436\u0435, \u0449\u043e\u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 Popover, \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var popover = app.popover.create({ \/* parameters *\/ })"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0441\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0443 \u043d\u0430\u0441 \u0454 \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 (\u044f\u043a <code>popover<\/code> \u0437\u043c\u0456\u043d\u043d\u0430 \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u0432\u0438\u0449\u0435) \u0437 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c\u0438 \u043c\u0435\u0442\u043e\u0434\u0430\u043c\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456","title_element":"h5","title_style":"h5"},"name":"\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","meta":"popover.app"}},{"type":"table_item","props":{"content":"Popover HTML \u0435\u043b\u0435\u043c\u0435\u043d\u0442","meta":"popover.el"}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom64 \u0437\u0456 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML","meta":"popover.$el"}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u0444\u043e\u043d\u0443","meta":"popover.backdropEl"}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom64 \u0456\u0437 \u0444\u043e\u043d\u043e\u0432\u0438\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML","meta":"popover.$backdropEl"}},{"type":"table_item","props":{"content":"\u0421\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0439 \u0446\u0456\u043b\u044c\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 HTML","meta":"popover.targetEl"}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom64 \u0456\u0437 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u043c \u0446\u0456\u043b\u044c\u043e\u0432\u0438\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML","meta":"popover.$targetEl"}},{"type":"table_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 Popover","meta":"popover.params"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c, \u044f\u043a\u0430 \u0432\u043a\u0430\u0437\u0443\u0454, \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e \u0441\u043f\u043b\u0438\u0432\u043d\u0435 \u0432\u0456\u043a\u043d\u043e \u0447\u0438 \u043d\u0456","meta":"popover.opened"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438","title_element":"h5","title_style":"h5"},"name":"\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u0414\u0435\n<p>\u25cf\t<code>targetEl - HTMLElement or string<\/code> - \u0446\u0456\u043b\u044c\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f \u043f\u043e\u0437\u0438\u0446\u0456\u0457 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430 \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u0446\u044c\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430<\/p>\n<p>\u25cf\t<code>animate - boolean<\/code> (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c <code>true<\/code>) - \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0454, \u0447\u0438 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e \u0447\u0438 \u043d\u0456<\/p>\n","link_text":"string","meta":"popover.open(<code>targetEl, animate<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u043e\u0433\u043e \u043f\u0456\u0434 \u0447\u0430\u0441 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0441\u043f\u043b\u0438\u0432\u043d\u043e\u0433\u043e \u0432\u0456\u043a\u043d\u0430. \u0414\u0435\n<p>\u25cf\t<code>animate - boolean<\/code> (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c<code> true<\/code>) - \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0454, \u0447\u0438 \u0441\u043b\u0456\u0434 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e<\/p>\n","meta":"popover.open(<code>animate<\/code>)"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e. \u0414\u0435\n<p>\u25cf\t<code>animate - boolean<\/code> (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c <code>true<\/code>) - \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0454, \u0447\u0438 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e<\/p>\n","meta":"popover.close(<code>animate<\/code>)"}},{"type":"table_item","props":{"content":"\u0417\u043d\u0438\u0449\u0438\u0442\u0438 \u043f\u043e\u043f\u043e\u0432\u0435\u0440","meta":"popover.destroy()"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"popover.on(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0443","meta":"popover.once(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"popover.off(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043f\u043e\u0434\u0456\u0457","meta":"popover.off(<code>event<\/code>)"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u043d\u0430 \u0454\u043a\u0437\u0435\u043f\u043c\u043b\u044f\u0440\u0456 ","meta":"popover.emit(<code>event, ...args<\/code>)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u043c \u0432\u0456\u043a\u043d\u043e\u043c \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u0435\u0440\u0443\u0439\u0442\u0435 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u043c \u0432\u0456\u043a\u043d\u043e\u043c \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0412\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0442\u0430 \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0456 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f (\u044f\u043a\u0449\u043e \u0432\u043e\u043d\u0438 \u0454 \u0432 DOM) \u043c\u043e\u0436\u043d\u0430 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u0445 \u043a\u043b\u0430\u0441\u0456\u0432 \u0456 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456\u0432 \u0434\u0430\u043d\u0438\u0445 \u0443 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u0445:\n<p>\u25cf\t\u0429\u043e\u0431 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>\u00ab popover-open \u00bb<\/code> \u0434\u043e \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 HTML (\u0431\u0430\u0436\u0430\u043d\u043e \u0434\u043b\u044f \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f)<\/p>\n<p>\u25cf\t\u0429\u043e\u0431 \u0437\u0430\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>\u00ab popover-close \u00bb<\/code> \u0434\u043e \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 HTML (\u0431\u0430\u0436\u0430\u043d\u043e \u0434\u043b\u044f \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f)<\/p>\n<p>\u25cf\t\u042f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u0454 \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0456\u0436 \u043e\u0434\u043d\u0435 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e \u0432 DOM, \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0435 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u0433\u043e \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430 <code>data-popover=\".my-popover\"<\/code> \u0443 \u0446\u044c\u043e\u043c\u0443 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 HTML<\/p>\n\u0412\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u043e \u0434\u043e \u043f\u0440\u0438\u043c\u0456\u0442\u043a\u0438 \u0432\u0438\u0449\u0435:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0412 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456 data-popover \u043c\u0438 \u0432\u043a\u0430\u0437\u0443\u0454\u043c\u043e CSS-\u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u044f\u043a\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438 -->\n<p><a href=\"#\" data-popover=\".my-popover\" class=\"popover-open\">Open Popover<\/a><\/p>\n\n<!-- \u0410 \u0442\u0430\u043a\u043e\u0436 \u0432 DOM -->\n<div class=\"popover my-popover\">\n  <div class=\"popover-inner\">\n    <!-- \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0449\u043e\u0431 \u0437\u0430\u043a\u0440\u0438\u0442\u0438 popover -->\n    <a class=\"link popover-close\">Close Popover<\/a>\n  <\/div>\n<\/div>\n"}},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 Popover ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 Popover "},{"type":"text","props":{"column_breakpoint":"m","content":"Popover \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0456 \u043f\u043e\u0434\u0456\u0457 DOM \u043d\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 popover \u0456 \u043f\u043e\u0434\u0456\u0457 \u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 popover:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 DOM","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 DOM"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 Popover \u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e","meta":"popover:open","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 Popover <p> <code>&lt;div class=\"popover\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0442\u043e\u0433\u043e, \u044f\u043a Popover \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044c \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e","meta":"popover:opened","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 Popover <p> <code>&lt;div class=\"popover\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 Popover \u043f\u043e\u0447\u043d\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0432\u0430\u0442\u0438 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e","meta":"popover:close","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 Popover <p> <code>&lt;div class=\"popover\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 Popover","meta":"popover:closed","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 Popover <p> <code>&lt;div class=\"popover\"&gt;<\/code>"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 Popover","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u0456"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0454 \u043f\u043e\u0434\u0456\u0457 \u044f\u043a \u0443 \u0441\u0435\u0431\u0435, \u0442\u0430\u043a \u0456 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u043c\u0430\u044e\u0442\u044c \u0442\u0456 \u0441\u0430\u043c\u0456 \u043d\u0430\u0437\u0432\u0438 \u0437 \u043f\u0440\u0435\u0444\u0456\u043a\u0441\u043e\u043c <code>popover<\/code>.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u041e\u0431'\u0454\u043a\u0442","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 Popover \u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 popover","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"popover","meta":"open","title":"popover"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 Popover \u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 popover","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"popoverOpen","title":"popover"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0442\u043e\u0433\u043e, \u044f\u043a Popover \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044c \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover ","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"popover","meta":"opened","title":"popover"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0442\u043e\u0433\u043e, \u044f\u043a Popover \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044c \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Popover ","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"popoverOpened","title":"popover"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 Popover \u043f\u043e\u0447\u043d\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0432\u0430\u0442\u0438 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"popover","meta":"close","title":"popover"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 Popover \u043f\u043e\u0447\u043d\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0432\u0430\u0442\u0438 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"popoverClose","title":"popover"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 Popover. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"popover","meta":"closed","title":"popover"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 Popover. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"popoverClosed","title":"popover"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f\u043c \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0430 Popover. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"popover","meta":"beforeDestroy","title":"popover"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f\u043c \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0430 Popover. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"popoverBeforeDestroy","title":"popover"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(4) \u041f\u043e\u0434\u0456\u044f - \u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 - \u041e\u043f\u0438\u0441 - \u041e\u0431'\u0454\u043a\u0442"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-popover-width: 260px;\n}\n.ios {\n  --t4-popover-border-radius: 13px;\n  --t4-popover-actions-icon-size: 28px;\n  --t4-popover-transition-timing-function: initial;\n  --t4-popover-bg-color: rgba(255, 255, 255, 0.95);\n  --t4-popover-actions-label-text-color: rgba(0, 0, 0, 0.45);\n}\n.ios .dark,\n.ios.dark {\n  --t4-popover-bg-color: rgba(30, 30, 30, 0.95);\n  --t4-popover-actions-label-text-color: rgba(255, 255, 255, 0.55);\n}\n.md {\n  --t4-popover-transition-timing-function: cubic-bezier(0, 0.8, 0.34, 1);\n  --t4-popover-border-radius: 28px;\n  --t4-popover-actions-icon-size: 24px;\n}\n.md,\n.md .dark,\n.md [class*='color-'] {\n  --t4-popover-bg-color: var(--t4-md-surface-3);\n  --t4-popover-actions-label-text-color: var(--t4-md-on-surface-variant);\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner sliding\">\n      <div class=\"title\">Popover<\/div>\n      <div class=\"right\">\n        <a class=\"link popover-open\" data-popover=\".popover-menu\">Popover<\/a>\n      <\/div>\n    <\/div>\n  <\/div>\n  <div class=\"toolbar toolbar-bottom\">\n    <div class=\"toolbar-inner\">\n      <a href=\"\" class=\"link popover-open\" data-popover=\".popover-menu\">Dummy Link<\/a>\n      <a href=\"\" class=\"link popover-open\" data-popover=\".popover-menu\">Open Popover<\/a>\n    <\/div>\n  <\/div>\n  <div class=\"page-content\">\n    <div class=\"block\">\n      <p><a data-popover=\".popover-menu\" class=\"button button-fill popover-open\">Open popover on me<\/a><\/p>\n      <p>Mauris fermentum neque et luctus venenatis. Vivamus a sem rhoncus, ornare tellus eu, euismod mauris. In porta\n        turpis at semper convallis. Duis adipiscing leo eu nulla lacinia, quis rhoncus metus condimentum. Etiam nec\n        malesuada nibh. Maecenas quis lacinia nisl, vel posuere dolor. Vestibulum condimentum, nisl ac vulputate\n        egestas, neque enim dignissim elit, rhoncus volutpat magna enim a est. Aenean sit amet ligula neque. Cras\n        suscipit rutrum enim. Nam a odio facilisis, elementum tellus non, <a class=\"popover-open\"\n          data-popover=\".popover-menu\">popover<\/a> tortor. Pellentesque felis eros, dictum vitae lacinia quis, lobortis\n        vitae ipsum. Cras vehicula bibendum lorem quis imperdiet.<\/p>\n      <p>In hac habitasse platea dictumst. Etiam varius, ante vel ornare facilisis, velit massa rutrum dolor, ac porta\n        magna magna lacinia nunc. Curabitur <a class=\"popover-open\" data-popover=\".popover-menu\">popover!<\/a> cursus\n        laoreet. Aenean vel tempus augue. Pellentesque in imperdiet nibh. Mauris rhoncus nulla id sem suscipit volutpat.\n        Pellentesque ac arcu in nisi viverra pulvinar. Nullam nulla orci, bibendum sed ligula non, ullamcorper iaculis\n        mi. In hac habitasse platea dictumst. Praesent varius at nisl eu luctus. Cras aliquet porta est. Quisque\n        elementum quis dui et consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur\n        ridiculus mus. Sed sed laoreet purus. Pellentesque eget ante ante.<\/p>\n      <p>Duis et ultricies nibh. Sed facilisis turpis urna, ac imperdiet erat venenatis eu. Proin sit amet faucibus\n        tortor, et varius sem. Etiam vitae lacinia neque. Aliquam nisi purus, interdum in arcu sed, ultrices rutrum\n        arcu. Nulla mi turpis, consectetur vel enim quis, facilisis viverra dui. Aliquam quis convallis tortor, quis\n        semper ligula. Morbi ullamcorper <a class=\"popover-open\" data-popover=\".popover-menu\">one more popover<\/a> massa\n        at accumsan. Etiam purus odio, posuere in ligula vitae, viverra ultricies justo. Vestibulum nec interdum nisi.\n        Aenean ac consectetur velit, non malesuada magna. Sed pharetra vehicula augue, vel venenatis lectus gravida\n        eget. Curabitur lacus tellus, venenatis eu arcu in, interdum auctor nunc. Nunc non metus neque. Suspendisse\n        viverra lectus sed risus aliquet, vel accumsan dolor feugiat.<\/p>\n    <\/div>\n  <\/div>\n  <div class=\"popover popover-menu\">\n    <div class=\"popover-angle\"><\/div>\n    <div class=\"popover-inner\">\n      <div class=\"list\">\n        <ul>\n          <li><a href=\"\/dialog\/\" class=\"list-button popover-close\">Dialog<\/a><\/li>\n          <li><a href=\"\/tabs\/\" class=\"list-button popover-close\">Tabs<\/a><\/li>\n          <li><a href=\"\/panel\/\" class=\"list-button popover-close\">Side Panels<\/a><\/li>\n          <li><a href=\"\/list\/\" class=\"list-button popover-close\">List View<\/a><\/li>\n          <li><a href=\"\/inputs\/\" class=\"list-button popover-close\">Form Inputs<\/a><\/li>\n        <\/ul>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 \u0437 \u043c\u0435\u043d\u044e"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

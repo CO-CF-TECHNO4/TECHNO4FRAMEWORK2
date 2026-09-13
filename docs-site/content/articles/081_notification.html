@@ -1,0 +1,800 @@
+<h2>Сповіщення</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Методи застосунку сповіщень </a>
+
+    </li>
+        <li>
+        
+<div>Параметри сповіщення </div>
+
+    </li>
+        <li>
+        
+<div>Методи та властивості сповіщення </div>
+
+    </li>
+        <li>
+        
+<div>Події сповіщень </div>
+
+<p>Події DOM <p>Події екземплярів застосунку та сповіщень</p>
+    </li>
+        <li>
+        
+<div>Змінні CSS </div>
+
+    </li>
+        <li>
+        
+<div>Приклади </div>
+
+    </li>
+    </ul>
+<h3>Сповіщення</h3>
+<div>За допомогою компонента сповіщень ви можете показувати необхідні повідомлення, які виглядають як Push (або локальні) системні сповіщення.</div>
+<h3>Методи застосунку сповіщень</h3>
+<div>Розгляньмо пов’язані методи роботи застосунку сповіщення:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app.notification.create<p>(<code>parameters</code>)</td>
+
+<td>створити екземпляр Notification
+<p>●	<code>parameters - object</code>. Об'єкт з параметрами сповіщення</p>
+<p><i>Метод повертає створений екземпляр Notification</i></p></td>
+
+</tr>
+                <tr>
+
+<td>app.notification.destroy(<code>el</code>)</td>
+
+<td>знищити екземпляр Notification
+<p>●	<code>el - HTMLElement or string</code>(із CSS Selector) або <code>object</code>. Елемент сповіщення або екземпляр сповіщення для знищення.
+</td>
+
+</tr>
+                <tr>
+
+<td>app.notification.get(<code>el</code>)</td>
+
+<td>отримати екземпляр сповіщення за елементом HTML
+<p>●	<code>el - HTMLElement or string</code> (з  CSS Селектором)Елемент сповіщення.</p>
+<p><i>Метод повертає екземпляр Notification</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.notification.open<p>(<code>el, animate</code>) </td>
+
+<td>відкриває сповіщення
+<p>●	<code>el - HTMLElement or string</code> (with CSS Selector). Елемент сповіщення для відкриття.</p>
+<p>●	<code>animate - boolean</code>. Відкрити сповіщення з анімацією.</p>
+<p><i>Метод повертає екземпляр Notification</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.notification.close<p>(<code>el, animate</code)</td>
+
+<td>закриває сповіщення
+<p>●	<code>el - HTMLElement or string</code> (with CSS Selector). Елемент сповіщення для закриття.</p>
+<p>●	<code>animate - boolean</code>.Закрити сповіщення з анімацією.</p>
+<p><i>Метод повертає екземпляр Notification</i></p>
+</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Параметри сповіщення</h3>
+<div>Тепер давайте подивимося на список доступних параметрів, необхідних для створення сповіщень:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>el</td>
+
+<td>Елемент сповіщення. Може бути корисним, якщо у вас уже є елемент Notification у вашому HTML і ви хочете створити новий екземпляр за допомогою цього елемента</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>icon</td>
+
+<td>Макет HTML значка сповіщення, наприклад, 
+<code>‘&lt;i class="t4-icons"&gt;hous&lt;/i&gt;’</code> або зображення
+<code>‘&lt;img src="/path/to/icon.png" /&gt;’</code>
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>title</td>
+
+<td>Назва сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>titleRightText</td>
+
+<td>Додатковий текст праворуч від заголовка</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>subtitle</td>
+
+<td>Підзаголовок сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>text</td>
+
+<td>Внутрішній текст сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>closeButton</td>
+
+<td>Додає кнопку закриття сповіщень</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>closeTimeout</td>
+
+<td>Час очікування (у мс), щоб автоматично закрити сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>closeOnClick</td>
+
+<td>Якщо ввімкнено, сповіщення буде закрито після натискання сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>swipeToClose</td>
+
+<td>Якщо ввімкнено, сповіщення можна закрити жестом пальця</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>cssClass</td>
+
+<td>Додатковий клас css для додавання</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>render</td>
+
+<td>Спеціальна функція для відтворення сповіщень. Має повернути сповіщення html</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>on</td>
+
+<td>Об'єкт з обробниками подій. Наприклад:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var notification = app.notification.create({
+  title: 'John Doe',
+  text: 'Hello, how are you?',
+  on: {
+    opened: function () {
+      console.log('Notification opened')
+    }
+  }
+})</code></pre>
+<div>Зауважте, що всі наведені нижче параметри можна використовувати в глобальних параметрах застосунку у властивості <code>notification</code> , щоб встановити значення за замовчуванням для всіх сповіщень. Наприклад:</div>
+<pre><code>var app = new Techno4({
+  notification: {
+    title: 'My App',
+    closeTimeout: 3000,
+  }
+});</code></pre>
+<h3>Методи та властивості сповіщень</h3>
+<div>Отже, щоб створити сповіщення, ми повинні викликати:</div>
+<pre><code>var notification = app.notification.create({ /* parameters */ })</code></pre>
+<div>Після цього у нас є його ініціалізований екземпляр (як <code>notification</code> змінна у прикладі вище) з корисними методами та властивостями:</div>
+<h5>Властивості</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>notification.app</td>
+
+<td>Посилання на глобальний екземпляр застосунку</td>
+
+</tr>
+                <tr>
+
+<td>notification.el</td>
+
+<td>HTML-елемент сповіщення</td>
+
+</tr>
+                <tr>
+
+<td>notification.$el</td>
+
+<td>Екземпляр Dom64 з елементом HTML сповіщень</td>
+
+</tr>
+                <tr>
+
+<td>notification.params</td>
+
+<td>Параметри сповіщення</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h5>Методи</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>notification.open()</td>
+
+<td>Відкрити сповіщення</td>
+
+</tr>
+                <tr>
+
+<td>notification.close()</td>
+
+<td>Закрити сповіщення</td>
+
+</tr>
+                <tr>
+
+<td>notification.on(<code>event, handler</code>)</td>
+
+<td>Додати обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>notification.once(<code>event, handler</code>)</td>
+
+<td>Додати обробник подій, який буде видалено після запуску</td>
+
+</tr>
+                <tr>
+
+<td>notification.off(<code>event, handler</code>)</td>
+
+<td>Видалити обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>notification.off(<code>event</code>)</td>
+
+<td>Видалити всі обробники для вказаної події</td>
+
+</tr>
+                <tr>
+
+<td>notification.emit(<code>event, ...args</code>)</td>
+
+<td>Запустити подію на єкземплярі </td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Події сповіщень</h3>
+<div>Сповіщення запускатиме такі події DOM в елементі сповіщення та події в додатку та екземплярі сповіщення:</div>
+<h4>Події DOM</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Елемент сповіщення<p> <code>&lt;div class="notification"&gt;</code></td>
+
+<td>notification:open</td>
+
+<td>Подію буде запущено, коли сповіщення розпочне свою початкову анімацію</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сповіщення<p> <code>&lt;div class="notification"&gt;</code></td>
+
+<td>notification:opened</td>
+
+<td>Подію буде запущено після завершення анімації сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сповіщення<p> <code>&lt;div class="notification"&gt;</code></td>
+
+<td>notification:close</td>
+
+<td>Подію буде запущено, коли сповіщення розпочне свою кінцеву анімацію</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент сповіщення<p> <code>&lt;div class="notification"&gt;</code></td>
+
+<td>notification:closed</td>
+
+<td>Подію буде запущено після завершення анімації сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Події екземплярів застосунку та сповіщень</h4>
+<div>Екземпляр сповіщень заспускає події як у себе, так і в екземплярі застосунку. Події екземплярів застосунку мають ті самі назви з префіксом <code>notification</code>.</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th>Об'єкт</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>notification</td>
+
+<td>click</td>
+
+<td>Подія буде ініційована, коли користувач клацне елемент сповіщення. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">notification</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>notificationClick</td>
+
+<td>Подія буде ініційована, коли користувач клацне елемент сповіщення. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>open</td>
+
+<td>Подію буде запущено, коли сповіщення розпочне свою початкову анімацію. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">notification</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>notificationOpen</td>
+
+<td>Подію буде запущено, коли сповіщення розпочне свою початкову анімацію. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>opened</td>
+
+<td>Подію буде запущено після завершення анімації сповіщення. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">notification</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>notificationOpened</td>
+
+<td>Подію буде запущено після завершення анімації сповіщення. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>close</td>
+
+<td>Подію буде запущено, коли сповіщення розпочне свою кінцеву анімацію. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">notification</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>notificationClose</td>
+
+<td>Подію буде запущено, коли сповіщення розпочне свою кінцеву анімацію. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>closed</td>
+
+<td>Подію буде запущено після завершення анімації сповіщення. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">notification</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>notificationClosed</td>
+
+<td>Подію буде запущено після завершення анімації сповіщення. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>beforeDestroy</td>
+
+<td>Подія буде запущена безпосередньо перед тим, як екземпляр сповіщення буде знищено. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">notification</a>
+    </td>
+</tr>
+                <tr>
+<td>notification</td>
+
+<td>notificationBeforeDestroy</td>
+
+<td>Подія буде запущена безпосередньо перед тим, як екземпляр сповіщення буде знищено. Як аргумент обробник події отримує екземпляр сповіщення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Змінні CSS</h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<pre><code>:root {	
+  --t4-notification-max-width: 568px;
+  --t4-notification-subtitle-text-transform: none;
+  --t4-notification-subtitle-line-height: 1.35;
+  --t4-notification-text-text-transform: none;
+  --t4-notification-text-font-weight: 400;
+}
+.ios {
+  --t4-notification-margin: 8px;
+  --t4-notification-padding: 10px;
+  --t4-notification-border-radius: 12px;
+  --t4-notification-box-shadow: 0px 5px 25px -10px rgba(0, 0, 0, 0.7);
+  --t4-notification-icon-size: 20px;
+  --t4-notification-title-font-size: 13px;
+  --t4-notification-title-text-transform: uppercase;
+  --t4-notification-title-line-height: 1.4;
+  --t4-notification-title-font-weight: 400;
+  --t4-notification-title-letter-spacing: 0.02em;
+  --t4-notification-title-right-font-size: 13px;
+  --t4-notification-subtitle-font-size: 15px;
+  --t4-notification-subtitle-font-weight: 600;
+  --t4-notification-text-font-size: 15px;
+  --t4-notification-text-line-height: 1.2;
+  --t4-notification-bg-color: rgba(250, 250, 250, 0.95);
+  --t4-notification-bg-color-rgb: 255, 255, 255;
+  --t4-notification-title-color: #000;
+  --t4-notification-title-right-color: rgba(0, 0, 0, 0.45);
+  --t4-notification-subtitle-color: #000;
+  --t4-notification-text-color: #000;
+}
+.ios .dark,
+.ios.dark {
+  --t4-notification-bg-color: rgba(30, 30, 30, 0.95);
+  --t4-notification-bg-color-rgb: 30, 30, 30;
+  --t4-notification-title-color: #fff;
+  --t4-notification-text-color: #fff;
+  --t4-notification-subtitle-color: #fff;
+  --t4-notification-title-right-color: rgba(255, 255, 255, 0.55);
+}
+.md {
+  --t4-notification-margin: 16px;
+  --t4-notification-padding: 16px;
+  --t4-notification-border-radius: 16px;
+  --t4-notification-box-shadow: none;
+  --t4-notification-icon-size: 24px;
+  --t4-notification-title-font-size: 16px;
+  --t4-notification-title-text-transform: none;
+  --t4-notification-title-line-height: 1.35;
+  --t4-notification-title-font-weight: 500;
+  --t4-notification-title-right-font-size: 12px;
+  --t4-notification-subtitle-font-size: 14px;
+  --t4-notification-subtitle-font-weight: 400;
+  --t4-notification-text-font-size: 14px;
+  --t4-notification-text-line-height: 1.35;
+}
+.md,
+.md .dark,
+.md [class*='color-'] {
+  --t4-notification-title-color: var(--t4-md-on-surface);
+  --t4-notification-bg-color: var(--t4-md-surface-5);
+  --t4-notification-text-color: var(--t4-md-on-surface-variant);
+  --t4-notification-title-right-color: var(--t4-md-on-surface-variant);
+  --t4-notification-subtitle-color: var(--t4-md-on-surface);
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Notifications&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios&quot;&gt;
+        &lt;p&gt;Techno4 comes with simple Notifications component that allows you to show some useful messages to user and
+          request basic actions.&lt;/p&gt;
+        &lt;p&gt;&lt;a class=&quot;button button-fill&quot; @click=${showNotificationFull}&gt;Full layout notification&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a class=&quot;button button-fill&quot; @click=${showNotificationWithButton}&gt;With close button&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a class=&quot;button button-fill&quot; @click=${showNotificationCloseOnClick}&gt;Click to close&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a class=&quot;button button-fill&quot; @click=${showNotificationCallbackOnClose}&gt;Callback on close&lt;/a&gt;&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, { $t4, $el, $on }) =&gt; {
+    let notificationFull;
+    let notificationWithButton;
+    let notificationCloseOnClick;
+    let notificationCallbackOnClose;
+
+    const showNotificationFull = () =&gt; {
+      // Create notification
+      if (!notificationFull) {
+        notificationFull = $t4.notification.create({
+          icon: '&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;',
+          title: 'Techno4',
+          titleRightText: 'now',
+          subtitle: 'This is a subtitle',
+          text: 'This is a simple notification message',
+          closeTimeout: 3000,
+        });
+      }
+      // Open it
+      notificationFull.open();
+    }
+    const showNotificationWithButton = () =&gt; {
+      // Create notification
+      if (!notificationWithButton) {
+        notificationWithButton = $t4.notification.create({
+          icon: '&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;',
+          title: 'Techno4',
+          subtitle: 'Notification with close button',
+          text: 'Click (x) button to close me',
+          closeButton: true,
+        });
+      }
+      // Open it
+      notificationWithButton.open();
+    }
+    const showNotificationCloseOnClick = () =&gt; {
+      // Create notification
+      if (!notificationCloseOnClick) {
+        notificationCloseOnClick = $t4.notification.create({
+          icon: '&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;',
+          title: 'Techno4',
+          titleRightText: 'now',
+          subtitle: 'Notification with close on click',
+          text: 'Click me to close',
+          closeOnClick: true,
+        });
+      }
+      // Open it
+      notificationCloseOnClick.open();
+    }
+    const showNotificationCallbackOnClose = () =&gt; {
+      // Create notification
+      if (!notificationCallbackOnClose) {
+        notificationCallbackOnClose = $t4.notification.create({
+          icon: '&lt;i class=&quot;icon icon-t4&quot;&gt;&lt;/i&gt;',
+          title: 'Techno4',
+          titleRightText: 'now',
+          subtitle: 'Notification with close on click',
+          text: 'Click me to close',
+          closeOnClick: true,
+          on: {
+            close: function () {
+              $t4.dialog.alert('Notification closed');
+            },
+          },
+        });
+      }
+      // Open it
+      notificationCallbackOnClose.open();
+    }
+
+    $on('pageBeforeRemove', () =&gt; {
+      $t4.notification.close();
+      if (notificationFull) notificationFull.destroy();
+      if (notificationWithButton) notificationWithButton.destroy();
+      if (notificationCloseOnClick) notificationCloseOnClick.destroy();
+      if (notificationCallbackOnClose) notificationCallbackOnClose.destroy();
+    });
+
+    return $render;
+  };
+&lt;/script&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0421\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a -\u0421\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c ","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f "}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f "}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c ","meta":"\u041f\u043e\u0434\u0456\u0457 DOM <p>\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS "}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 "}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0421\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0421\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u0442\u0438 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u044f\u043a\u0456 \u0432\u0438\u0433\u043b\u044f\u0434\u0430\u044e\u0442\u044c \u044f\u043a Push (\u0430\u0431\u043e \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u0456) \u0441\u0438\u0441\u0442\u0435\u043c\u043d\u0456 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0420\u043e\u0437\u0433\u043b\u044f\u043d\u044c\u043c\u043e \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0440\u043e\u0431\u043e\u0442\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Notification\n<p>\u25cf\t<code>parameters - object<\/code>. \u041e\u0431'\u0454\u043a\u0442 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Notification<\/i><\/p>","link_text":"string","meta":"app.notification.create<p>(<code>parameters<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0437\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Notification\n<p>\u25cf\t<code>el - HTMLElement or string<\/code>(\u0456\u0437 CSS Selector) \u0430\u0431\u043e <code>object<\/code>. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0430\u0431\u043e \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0434\u043b\u044f \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f.\n","link_text":"string","meta":"app.notification.destroy(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0437\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML\n<p>\u25cf\t<code>el - HTMLElement or string<\/code> (\u0437  CSS \u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u043e\u043c)\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f.<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Notification<\/i><\/p>\n","meta":"app.notification.get(<code>el<\/code>)"}},{"type":"table_item","props":{"content":"\u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0454 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f\n<p>\u25cf\t<code>el - HTMLElement or string<\/code> (with CSS Selector). \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0434\u043b\u044f \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0442\u044f.<\/p>\n<p>\u25cf\t<code>animate - boolean<\/code>. \u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e.<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Notification<\/i><\/p>\n","meta":"app.notification.open<p>(<code>el, animate<\/code>) "}},{"type":"table_item","props":{"content":"\u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0454 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f\n<p>\u25cf\t<code>el - HTMLElement or string<\/code> (with CSS Selector). \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0434\u043b\u044f \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f.<\/p>\n<p>\u25cf\t<code>animate - boolean<\/code>.\u0417\u0430\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0437 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0454\u044e.<\/p>\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Notification<\/i><\/p>\n","meta":"app.notification.close<p>(<code>el, animate<\/code)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u043b\u044f \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c, \u044f\u043a\u0449\u043e \u0443 \u0432\u0430\u0441 \u0443\u0436\u0435 \u0454 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 Notification \u0443 \u0432\u0430\u0448\u043e\u043c\u0443 HTML \u0456 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043d\u043e\u0432\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0446\u044c\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"el","title":""}},{"type":"table_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 HTML \u0437\u043d\u0430\u0447\u043a\u0430 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \n<code>\u2018&lt;i class=\"t4-icons\"&gt;hous&lt;\/i&gt;\u2019<\/code> \u0430\u0431\u043e \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f\n<code>\u2018&lt;img src=\"path\/to\/icon.png\" \/&gt;\u2019<\/code>\n","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"icon"}},{"type":"table_item","props":{"content":"\u041d\u0430\u0437\u0432\u0430 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"title"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0442\u0435\u043a\u0441\u0442 \u043f\u0440\u0430\u0432\u043e\u0440\u0443\u0447 \u0432\u0456\u0434 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"titleRightText"}},{"type":"table_item","props":{"content":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"subtitle"}},{"type":"table_item","props":{"content":"\u0412\u043d\u0443\u0442\u0440\u0456\u0448\u043d\u0456\u0439 \u0442\u0435\u043a\u0441\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"text"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0454 \u043a\u043d\u043e\u043f\u043a\u0443 \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"closeButton","title":"false"}},{"type":"table_item","props":{"content":"\u0427\u0430\u0441 \u043e\u0447\u0456\u043a\u0443\u0432\u0430\u043d\u043d\u044f (\u0443 \u043c\u0441), \u0449\u043e\u0431 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0437\u0430\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"closeTimeout"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043a\u0440\u0438\u0442\u043e \u043f\u0456\u0441\u043b\u044f \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"closeOnClick","title":"false"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u043c\u043e\u0436\u043d\u0430 \u0437\u0430\u043a\u0440\u0438\u0442\u0438 \u0436\u0435\u0441\u0442\u043e\u043c \u043f\u0430\u043b\u044c\u0446\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"swipeToClose","title":"true"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 css \u0434\u043b\u044f \u0434\u043e\u0434\u0430\u0432\u0430\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"cssClass"}},{"type":"table_item","props":{"content":"\u0421\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0430 \u0444\u0443\u043d\u043a\u0446\u0456\u044f \u0434\u043b\u044f \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c. \u041c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f html","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function","meta":"render"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"fragment","props":{"margin":"default"},"children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c\u0438 \u043f\u043e\u0434\u0456\u0439. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"on","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var notification = app.notification.create({\n  title: 'John Doe',\n  text: 'Hello, how are you?',\n  on: {\n    opened: function () {\n      console.log('Notification opened')\n    }\n  }\n})"}}]}]}]},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u0432\u0441\u0456 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0456 \u043d\u0438\u0436\u0447\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0432 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0443 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 <code>notification<\/code> , \u0449\u043e\u0431 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  notification: {\n    title: 'My App',\n    closeTimeout: 3000,\n  }\n});"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0442\u0436\u0435, \u0449\u043e\u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f, \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var notification = app.notification.create({ \/* parameters *\/ })"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0441\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0443 \u043d\u0430\u0441 \u0454 \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 (\u044f\u043a <code>notification<\/code> \u0437\u043c\u0456\u043d\u043d\u0430 \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u0432\u0438\u0449\u0435) \u0437 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c\u0438 \u043c\u0435\u0442\u043e\u0434\u0430\u043c\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","link_text":"string","meta":"notification.app","title":""}},{"type":"table_item","props":{"content":"HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link_text":"string","meta":"notification.el","title":""}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom64 \u0437 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c","meta":"notification.$el"}},{"type":"table_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","meta":"notification.params"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link_text":"string","meta":"notification.open()","title":""}},{"type":"table_item","props":{"content":"\u0417\u0430\u043a\u0440\u0438\u0442\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link_text":"string","meta":"notification.close()","title":""}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"notification.on(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0443","meta":"notification.once(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"notification.off(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043f\u043e\u0434\u0456\u0457","meta":"notification.off(<code>event<\/code>)"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u043d\u0430 \u0454\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 ","meta":"notification.emit(<code>event, ...args<\/code>)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0421\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435 \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 DOM \u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0442\u0430 \u043f\u043e\u0434\u0456\u0457 \u0432 \u0434\u043e\u0434\u0430\u0442\u043a\u0443 \u0442\u0430 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 DOM","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 DOM"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e, \u043a\u043e\u043b\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"notification:open","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f<p> <code>&lt;div class=\"notification\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"notification:opened","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f<p> <code>&lt;div class=\"notification\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e, \u043a\u043e\u043b\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043a\u0456\u043d\u0446\u0435\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"notification:close","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f<p> <code>&lt;div class=\"notification\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"notification:closed","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f<p> <code>&lt;div class=\"notification\"&gt;<\/code>"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c \u0437\u0430\u0441\u043f\u0443\u0441\u043a\u0430\u0454 \u043f\u043e\u0434\u0456\u0457 \u044f\u043a \u0443 \u0441\u0435\u0431\u0435, \u0442\u0430\u043a \u0456 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u043c\u0430\u044e\u0442\u044c \u0442\u0456 \u0441\u0430\u043c\u0456 \u043d\u0430\u0437\u0432\u0438 \u0437 \u043f\u0440\u0435\u0444\u0456\u043a\u0441\u043e\u043c <code>notification<\/code>.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u041e\u0431'\u0454\u043a\u0442","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043a\u043b\u0430\u0446\u043d\u0435 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"notification","meta":"click","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043a\u043b\u0430\u0446\u043d\u0435 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"notificationClick","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e, \u043a\u043e\u043b\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"notification","meta":"open","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e, \u043a\u043e\u043b\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"notificationOpen","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"notification","meta":"opened","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"notificationOpened","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e, \u043a\u043e\u043b\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043a\u0456\u043d\u0446\u0435\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"notification","meta":"close","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e, \u043a\u043e\u043b\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043a\u0456\u043d\u0446\u0435\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"notificationClose","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"notification","meta":"closed","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"notificationClosed","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"notification","meta":"beforeDestroy","title":"notification"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"notificationBeforeDestroy","title":"notification"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(4) \u041f\u043e\u0434\u0456\u044f - \u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 - \u041e\u043f\u0438\u0441 - \u041e\u0431'\u0454\u043a\u0442"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\t\n  --t4-notification-max-width: 568px;\n  --t4-notification-subtitle-text-transform: none;\n  --t4-notification-subtitle-line-height: 1.35;\n  --t4-notification-text-text-transform: none;\n  --t4-notification-text-font-weight: 400;\n}\n.ios {\n  --t4-notification-margin: 8px;\n  --t4-notification-padding: 10px;\n  --t4-notification-border-radius: 12px;\n  --t4-notification-box-shadow: 0px 5px 25px -10px rgba(0, 0, 0, 0.7);\n  --t4-notification-icon-size: 20px;\n  --t4-notification-title-font-size: 13px;\n  --t4-notification-title-text-transform: uppercase;\n  --t4-notification-title-line-height: 1.4;\n  --t4-notification-title-font-weight: 400;\n  --t4-notification-title-letter-spacing: 0.02em;\n  --t4-notification-title-right-font-size: 13px;\n  --t4-notification-subtitle-font-size: 15px;\n  --t4-notification-subtitle-font-weight: 600;\n  --t4-notification-text-font-size: 15px;\n  --t4-notification-text-line-height: 1.2;\n  --t4-notification-bg-color: rgba(250, 250, 250, 0.95);\n  --t4-notification-bg-color-rgb: 255, 255, 255;\n  --t4-notification-title-color: #000;\n  --t4-notification-title-right-color: rgba(0, 0, 0, 0.45);\n  --t4-notification-subtitle-color: #000;\n  --t4-notification-text-color: #000;\n}\n.ios .dark,\n.ios.dark {\n  --t4-notification-bg-color: rgba(30, 30, 30, 0.95);\n  --t4-notification-bg-color-rgb: 30, 30, 30;\n  --t4-notification-title-color: #fff;\n  --t4-notification-text-color: #fff;\n  --t4-notification-subtitle-color: #fff;\n  --t4-notification-title-right-color: rgba(255, 255, 255, 0.55);\n}\n.md {\n  --t4-notification-margin: 16px;\n  --t4-notification-padding: 16px;\n  --t4-notification-border-radius: 16px;\n  --t4-notification-box-shadow: none;\n  --t4-notification-icon-size: 24px;\n  --t4-notification-title-font-size: 16px;\n  --t4-notification-title-text-transform: none;\n  --t4-notification-title-line-height: 1.35;\n  --t4-notification-title-font-weight: 500;\n  --t4-notification-title-right-font-size: 12px;\n  --t4-notification-subtitle-font-size: 14px;\n  --t4-notification-subtitle-font-weight: 400;\n  --t4-notification-text-font-size: 14px;\n  --t4-notification-text-line-height: 1.35;\n}\n.md,\n.md .dark,\n.md [class*='color-'] {\n  --t4-notification-title-color: var(--t4-md-on-surface);\n  --t4-notification-bg-color: var(--t4-md-surface-5);\n  --t4-notification-text-color: var(--t4-md-on-surface-variant);\n  --t4-notification-title-right-color: var(--t4-md-on-surface-variant);\n  --t4-notification-subtitle-color: var(--t4-md-on-surface);\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"title\">Notifications<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block block-strong-ios block-outline-ios\">\n        <p>Techno4 comes with simple Notifications component that allows you to show some useful messages to user and\n          request basic actions.<\/p>\n        <p><a class=\"button button-fill\" @click=${showNotificationFull}>Full layout notification<\/a><\/p>\n        <p><a class=\"button button-fill\" @click=${showNotificationWithButton}>With close button<\/a><\/p>\n        <p><a class=\"button button-fill\" @click=${showNotificationCloseOnClick}>Click to close<\/a><\/p>\n        <p><a class=\"button button-fill\" @click=${showNotificationCallbackOnClose}>Callback on close<\/a><\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, { $t4, $el, $on }) => {\n    let notificationFull;\n    let notificationWithButton;\n    let notificationCloseOnClick;\n    let notificationCallbackOnClose;\n\n    const showNotificationFull = () => {\n      \/\/ Create notification\n      if (!notificationFull) {\n        notificationFull = $t4.notification.create({\n          icon: '<i class=\"icon icon-t4\"><\/i>',\n          title: 'Techno4',\n          titleRightText: 'now',\n          subtitle: 'This is a subtitle',\n          text: 'This is a simple notification message',\n          closeTimeout: 3000,\n        });\n      }\n      \/\/ Open it\n      notificationFull.open();\n    }\n    const showNotificationWithButton = () => {\n      \/\/ Create notification\n      if (!notificationWithButton) {\n        notificationWithButton = $t4.notification.create({\n          icon: '<i class=\"icon icon-t4\"><\/i>',\n          title: 'Techno4',\n          subtitle: 'Notification with close button',\n          text: 'Click (x) button to close me',\n          closeButton: true,\n        });\n      }\n      \/\/ Open it\n      notificationWithButton.open();\n    }\n    const showNotificationCloseOnClick = () => {\n      \/\/ Create notification\n      if (!notificationCloseOnClick) {\n        notificationCloseOnClick = $t4.notification.create({\n          icon: '<i class=\"icon icon-t4\"><\/i>',\n          title: 'Techno4',\n          titleRightText: 'now',\n          subtitle: 'Notification with close on click',\n          text: 'Click me to close',\n          closeOnClick: true,\n        });\n      }\n      \/\/ Open it\n      notificationCloseOnClick.open();\n    }\n    const showNotificationCallbackOnClose = () => {\n      \/\/ Create notification\n      if (!notificationCallbackOnClose) {\n        notificationCallbackOnClose = $t4.notification.create({\n          icon: '<i class=\"icon icon-t4\"><\/i>',\n          title: 'Techno4',\n          titleRightText: 'now',\n          subtitle: 'Notification with close on click',\n          text: 'Click me to close',\n          closeOnClick: true,\n          on: {\n            close: function () {\n              $t4.dialog.alert('Notification closed');\n            },\n          },\n        });\n      }\n      \/\/ Open it\n      notificationCallbackOnClose.open();\n    }\n\n    $on('pageBeforeRemove', () => {\n      $t4.notification.close();\n      if (notificationFull) notificationFull.destroy();\n      if (notificationWithButton) notificationWithButton.destroy();\n      if (notificationCloseOnClick) notificationCloseOnClick.destroy();\n      if (notificationCallbackOnClose) notificationCallbackOnClose.destroy();\n    });\n\n    return $render;\n  };\n<\/script>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

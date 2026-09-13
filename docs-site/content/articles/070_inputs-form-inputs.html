@@ -1,0 +1,1402 @@
+<h2>Введення даних /Форми введення даних  </h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет ввідних форм </a>
+
+    </li>
+        <li>
+        
+<div>Складені етикетки</div>
+
+    </li>
+        <li>
+        
+<div>Вбудовані етикетки </div>
+
+    </li>
+        <li>
+        
+<div>Плаваючі етикетки</div>
+
+    </li>
+        <li>
+        
+<div>Структурні входи</div>
+
+    </li>
+        <li>
+        
+<div>Інформація про форму введення</div>
+
+    </li>
+        <li>
+        
+<div>Розкривний список введення</div>
+
+    </li>
+        <li>
+        
+<div>Підтримувані введення даних </div>
+
+    </li>
+        <li>
+        
+<div>Текстове поле зі змінним розміром</div>
+
+    </li>
+        <li>
+        
+<div>Перевірка</div>
+
+    </li>
+        <li>
+        
+<div>Класи станів введення</div>
+
+    </li>
+        <li>
+        
+<div>Параметри застосунку Введення даних</div>
+
+    </li>
+        <li>
+        
+<div>Методи застосунку Введення даних </div>
+
+    </li>
+        <li>
+        
+<div>Події</div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Введення даних /Форми введення даних  </h3>
+<div>Форми введення даних  дозволяють створювати гнучкі та красиві макети форм.</div>
+<h3>Макет ввідних форм </h3>
+<div>Рекомендовано використовувати Inputs зі <code>list View</code> :</div>
+<pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    ...
+    &lt;li class=&quot;item-content item-input&quot;&gt;
+      &lt;div class=&quot;item-media&quot;&gt;... icon/image here ...&lt;/div&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-input-wrap&quot;&gt;
+          &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;
+          &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>item-input   </code> - необхідний додатковий клас за змістом предмета. <code>item-content</code> Необхідний для правильного розташування елементів введення</p>
+<p>●	<code>●	item-label</code> -додатковий клас для назви елемента <code>item-title</code>, необхідний для правильного відображення мітки</p>
+<p>●	<code>item-input-wrap </code> -потрібна додаткова обгортка ввідних форм. Має бути прямим дочірнім елементом <code>item-inner</code></p>
+<p>●	<code>●	&lt;span class="input-clear-button"&gt; </code> - кнопка, яка очищатиме введене значення після натискання. Необов'язкова </p></div>
+<h3>Складені етикетки</h3>
+<div>За замовчуванням список вхідних даних відображається зі згрупованими мітками. Складені мітки завжди з’являються поверх введення:</div>
+<pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    ...
+    &lt;li class=&quot;item-content item-input&quot;&gt;
+      &lt;div class=&quot;item-media&quot;&gt;... icon/image here ...&lt;/div&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-title item-label&quot;&gt;Name&lt;/div&gt;
+        &lt;div class=&quot;item-input-wrap&quot;&gt;
+          &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;
+          &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>item-title item-label</code> - вхідна мітка.</div>
+<h3>Вбудовані мітки</h3>
+<div>Якщо ви хочете використовувати вбудовані мітки, ви можете додати додатковий клас вбудованих міток <code>inline-labels</code> до всього списку або клас вбудованих міток <code>inline-label</code> до окремого елемента:</div>
+<pre><code>&lt;div class=&quot;list inline-labels&quot;&gt;
+  &lt;ul&gt;
+    ...
+    &lt;li class=&quot;item-content item-input&quot;&gt;
+      &lt;div class=&quot;item-media&quot;&gt;... icon/image here ...&lt;/div&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-title item-label&quot;&gt;Name&lt;/div&gt;
+        &lt;div class=&quot;item-input-wrap&quot;&gt;
+          &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;
+          &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;!-- або лише до одного елемента --&gt;
+&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    ...
+    &lt;!-- додатковий клас &quot;inline-label&quot;. --&gt;
+    &lt;li class=&quot;item-content item-input inline-label&quot;&gt;
+      ...
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<h3>Плаваючі етикетки</h3>
+<div>Щоб додати плаваючу мітку, нам потрібно використовувати клас <code>item-floating-label</code> замість <code>item-label</code>.</div>
+<pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    ...
+    &lt;li class=&quot;item-content item-input&quot;&gt;
+      &lt;div class=&quot;item-media&quot;&gt;... icon/image here ...&lt;/div&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;!-- клас &quot;item-floating-label&quot; для назви елемента --&gt;
+        &lt;div class=&quot;item-title item-floating-label&quot;&gt;Name&lt;/div&gt;
+        &lt;div class=&quot;item-input-wrap&quot;&gt;
+          &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;
+          &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<h3>Ввідні форми, виділені контуром </h3>
+<div>Щоб зробити вхід "контуром" (з рамкою навколо введення), нам потрібно додати клас <code>item-input-outline</code> до основного вхідного елемента списку:</div>
+<pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    ...
+    &lt;!-- додатковий клас &quot;item-input-outline&quot;.--&gt;
+    &lt;li class=&quot;item-content item-input item-input-outline&quot;&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-title item-label&quot;&gt;Name&lt;/div&gt;
+        &lt;div class=&quot;item-input-wrap&quot;&gt;
+          &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;
+          &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<h3>Інформація про форму введення</h3>
+<div>Також можна отримати додаткову інформацію про введення форми:</div>
+<pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    ...
+    &lt;!-- додатковий клас &quot;item-input-with-info&quot; для елемента --&gt;
+    &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+      &lt;div class=&quot;item-media&quot;&gt;... icon/image here ...&lt;/div&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-title item-label&quot;&gt;Name&lt;/div&gt;
+        &lt;div class=&quot;item-input-wrap&quot;&gt;
+          &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;
+          &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+          &lt;!-- елемент з додатковою інформацією --&gt;
+          &lt;div class=&quot;item-input-info&quot;&gt;Some information about input field&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<div>Де
+<p>●	<code>	item-input-with-info   </code> - необхідний додатковий клас для вхідного елемента</p>
+<p>●	<code>&lt;div class="item-input-info"&gt;...&lt;/div&gt;</code> - елемент з додатковою інформацією</p></div>
+<h3>Розкривний список введення</h3>
+<div>Також можна вказати введення спадного списку (наприклад, select) за допомогою додаткового класу <code>input-dropdown-wrap</code>. Він додасть невеликий спадний значок праворуч (▼):</div>
+<pre><code>&lt;div class=&quot;list&quot;&gt;
+  &lt;ul&gt;
+    ...
+    &lt;li class=&quot;item-content item-input&quot;&gt;
+      &lt;div class=&quot;item-media&quot;&gt;... icon/image here ...&lt;/div&gt;
+      &lt;div class=&quot;item-inner&quot;&gt;
+        &lt;div class=&quot;item-title item-label&quot;&gt;Name&lt;/div&gt;
+        &lt;!-- additional &quot;input-dropdown-wrap&quot; class --&gt;
+        &lt;div class=&quot;item-input-wrap input-dropdown-wrap&quot;&gt;
+          &lt;select&gt;
+            ...
+          &lt;/select&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<h3>Підтримувані форми введення даних </h3>
+<div>Ось список елементів введення, які можна розмістити всередині <code>item-input-wrap</code>:</div>
+<h5>All text inputs</h5>
+<div>Підтримувані типи: <code>text</code>(текст), <code>password</code>,(пароль) <code>email</code>(ел. пошта ), <code>tel</code>, (телефон)  <code>url</code>, (url-адреса)  <code>date</code>, (дата)  <code>number</code>(номер), <code>datetime-local</code></div>
+<pre><code>...
+  &lt;div class=&quot;item-input-wrap&quot;&gt;
+    &lt;input type=&quot;text&quot; /&gt;
+  &lt;/div&gt;
+...
+...
+  &lt;div class=&quot;item-input-wrap&quot;&gt;
+    &lt;input type=&quot;email&quot; /&gt;
+  &lt;/div&gt;
+...</code></pre>
+<h5>Select</h5>
+<pre><code>...
+  &lt;div class=&quot;item-input-wrap&quot;&gt;
+    &lt;select&gt;...&lt;/select&gt;
+  &lt;/div&gt;
+...</code></pre>
+<h5>Textarea</h5>
+<pre><code>...
+  &lt;div class=&quot;item-input-wrap&quot;&gt;
+    &lt;textarea&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+...
+</code></pre>
+<h5>Range Slider</h5>
+<pre><code>...
+  &lt;div class=&quot;item-input-wrap&quot;&gt;
+    &lt;div class=&quot;range-slider&quot;&gt;
+      &lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;0.1&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+...</code></pre>
+<h3>Текстове поле зі змінним розміром</h3>
+<div>Щоб текстове поле автоматично змінювало розмір залежно від його вмісту, ми можемо просто додати клас змінного розміру <code>resizable</code>:</div>
+<pre><code>&lt;textarea class=&quot;resizable&quot;&gt;&lt;/textarea&gt;</code></pre>
+<h3>Перевірка</h3>
+<div>Techno4 підтримує перевірку HTML5 на основі вхідної властивості дійсності <code>validaty</code>. Якщо ввімкнено перевірку, з’являтимуться повідомлення про помилку перевірки, якщо введене значення має недійсне значення.
+<p>Щоб увімкнути перевірку, ми повинні додати атрибути: <code>required</code> і <code>validate</code> до вхідного елемента.</p>
+<p>Якщо нам потрібна перевірка вхідних даних лише на подію розмиття <code>blur</code>, тоді нам потрібно додати атрибут <code>data-validate-on-blur="true"</code>.</p>
+<p>Перевірка значення залежить від типу введення. Наприклад, тип введення = "електронна пошта" буде перевірено на відповідність шаблону електронної пошти тощо. Це типова поведінка браузера. Якщо ви хочете додати спеціальне правило для перевірки вхідного значення, це потрібно зробити за допомогою атрибута введення шаблону <code>pattern</code>:
+</div>
+<pre><code>&lt;!-- перевірка за замовчуванням, перевірка значення не порожня --&gt;
+&lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; required validate /&gt;
+
+&lt;!-- перевірка електронної пошти за замовчуванням, значенням має бути електронна адреса --&gt;
+&lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; required validate /&gt;
+
+&lt;!-- перевірка URL-адреси за замовчуванням--&gt;
+&lt;input type=&quot;url&quot; placeholder=&quot;Your URL&quot; required validate /&gt;
+
+&lt;!-- перевірка шаблону, значення має бути &quot;яблуко&quot; або &quot;банан&quot; --&gt;
+&lt;input type=&quot;text&quot; required validate pattern=&quot;apple|banana&quot; placeholder=&quot;Type 'apple' or 'banana'&quot; /&gt;
+
+&lt;!-- перевірка шаблону зі спеціальним повідомленням про помилку, значення має бути лише числом --&gt;
+&lt;input type=&quot;text&quot; placeholder=&quot;Enter number&quot; required validate pattern=&quot;[0-9]*&quot; data-error-message=&quot;Only numbers please!&quot; /&gt;
+
+&lt;!-- цей вхід буде перевірено лише на розмиття--&gt;
+&lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; required validate data-validate-on-blur=&quot;true&quot; /&gt;
+</code></pre>
+<h3>Класи станів введення</h3>
+<div>Існує кілька класів, які можна додати до вхідного елемента залежно від його стану та вмісту:
+<p>●	<code>input-with-value</code> - буде додано до вхідних даних, коли воно матиме значення</p>
+<p>●	<code>input-focused</code> - буде додано до вхідних даних, коли буде сфокусовано</p>
+<p>●	<code>input-invalid</code> - буде додано до вхідних даних, якщо його значення недійсне</p>
+<p>Ті самі стани буде додано до батьківського елемента <code>item-input</code> входу:
+<p>●	<code>item-input-with-value</code> - буде додано до вхідного елемента, коли його вхід матиме значення</p>
+<p>●	<code>item-input-focused</code> - буде додано до елемента введення, коли його введення буде сфокусовано</p>
+<p>●	<code>item-input-invalid</code> - буде додано до вхідного елемента, якщо його вхідне значення недійсне</p>
+
+</div>
+<h3>Параметри застосунку  введення даних </h3>
+<div>Можна контролювати деяку поведінку введення за замовчуванням за допомогою глобальних параметрів застосунку , де ми можемо передати параметри, пов’язані з введенням, у властивості <code>input</code>:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>scrollIntoViewOnFocus</td>
+
+<td>Якщо ввімкнути, введені дані прокручуватимуться у фокусі введення. За замовчуванням його ввімкнено лише для пристроїв Android, оскільки це допомагає вирішити проблему, коли екранна клавіатура може перекривати введення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>scrollIntoViewCentered</td>
+
+<td>Налаштовує поведінку попереднього параметра, щоб прокручувати введені дані в центрі зору при фокусі введення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>0</td>
+
+<td>scrollIntoViewDuration</td>
+
+<td>Тривалість за замовчуванням для прокручування введених даних у вікні перегляду</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>scrollIntoViewAlways</td>
+
+<td>Якщо ввімкнути, вхідні дані прокручуватимуться у вікні перегляду, незалежно від того, перебувають вони поза полем зору чи ні</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<div>Напрклад: </div>
+<pre><code>var app = new Techno4({
+  input: {
+    scrollIntoViewOnFocus: true,
+    scrollIntoViewCentered: true,
+  }
+});</code></pre>
+<h3>Методи застосунку введення даних </h3>
+<div>Ми можемо використовувати наступні методи застосунку , доступні для керування введеннями даних:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргументи</th>
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>(inputEl, duration, <p>centered, force)</td>
+
+<td>app.input.scrollIntoView</td>
+
+<td>Прокрутити  введення в поле зору
+<p>●	<code>inputEl - HTMLElement or string (за допомогою селектора CSS)</code> потрібний елемента введення, щоб отримати його в поле зору. вимагається
+<p>●	<code>duration - number</code> -тривалість прокручування в мс.</p>
+<p>●	<code>centered - boolean</code> - визначає, чи потрібно його прокручувати в центр огляду чи ні.</p>
+<p>●	<code>force - boolean</code> - прокручує вхідні дані в поле зору незалежно від того, поза полем зору це чи ні.</p>
+</td>
+
+</tr>
+                <tr>
+<td>(inputEl)</td>
+
+<td>app.input.focus</td>
+
+<td>Буде додано додаткові необхідні стилі та класи при введенні, наприклад, коли воно сфокусовано
+<p>●	<code>inputEl - HTMLElement or string (за допомогою селектора CSS) </code> необхідного елемента введення. Вимагається</td>
+
+</tr>
+                <tr>
+<td>(inputEl)</td>
+
+<td>app.input.blur</td>
+
+<td>Буде видалено додаткові необхідні стилі та класи під час введення, наприклад, коли він втрачає фокус
+<p>●	<code>inputEl - HTMLElement or string (за допомогою селектора CSS) </code> необхідного елемента введення. Вимагається</td>
+
+</tr>
+                <tr>
+<td>(textareaEl)</td>
+
+<td>app.input.resizeTextarea</td>
+
+<td>Примусово змінювати розмір текстового поля залежно від його вмісту
+<p>●	<code>textareaEl - HTMLElement or string (за допомогою селектора CSS)</code> необхідного елемента textarea. Вимагається.
+</td>
+
+</tr>
+                <tr>
+<td>(inputEl)</td>
+
+<td>app.input.checkEmptyState</td>
+
+<td>Перерахувати  необхідні додаткові стилі та класи для вхідного елемента залежно від того, має він значення чи ні
+<p>●	<code>textareaEl - HTMLElement or string (за допомогою селектора CSS)</code> необхідного елемента textarea. Вимагається.
+</td>
+
+</tr>
+                <tr>
+<td>(inputEl)</td>
+
+<td>app.input.validate</td>
+
+<td>Перевірка введених даних
+<p>●	<code>textareaEl - HTMLElement or string (за допомогою селектора CSS)</code> необхідного елемента textarea. Вимагається.
+<p><i>Метод повертає <code>true</code>, якщо введення дійсне, або <code>false</code>, якщо введення недійсне</i></p></td>
+
+</tr>
+                <tr>
+<td>(containerEl)</td>
+
+<td>app.input.validateInputs</td>
+
+<td>Перевірити всі вхідні дані в переданому контейнері
+<p>	<code>containerEl - HTMLElement or string (із селектором CSS)</code> необхідного елемента з вхідними даними для перевірки. Вимагається.</p>
+<p><i>	Метод повертає <code>true</code>, якщо всі дочірні введення дійсні, або <code>false</code>, якщо принаймні один вхід недійсний</i></p>
+	
+</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Події введення даних </h3>
+<div>Вхідні дані запускатимуть наступні елементи введення подій DOM:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Textarea Element <p>&lt;textarea class="resizable"&gt;</td>
+
+<td>textarea:resize</td>
+
+<td>Подія буде ініційована після зміни розміру текстового поля. <code>event.detail</code> міститиме об’єкт із властивостями <code>initialHeight</code>, <code>currentHeight</code> і <code>scrollHeight</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Input Element <p>&lt;input/textarea&gt;</td>
+
+<td>input:notempty</td>
+
+<td>Подія буде ініційована, коли вхідне значення стане непорожнім</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>Input Element <p>&lt;input/textarea&gt;</td>
+
+<td>input:empty</td>
+
+<td>Подія буде ініційована, коли вхідне значення стане порожнім</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>Input Element <p>&lt;input/textarea&gt;</td>
+
+<td>input:clear</td>
+
+<td>Подія буде ініційована після того, як введене значення буде очищено, натиснувши кнопку очищення введення</td>
+
+<td>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Змінні CSS</h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  --t4-input-bg-color: transparent;
+  --t4-label-font-weight: 400;
+  --t4-label-line-height: 1.3;
+  --t4-input-padding-left: 0px;
+  --t4-input-padding-right: 0px;
+  --t4-input-error-text-color: #ff3b30;
+  --t4-input-error-font-size: 12px;
+  --t4-input-error-line-height: 1.4;
+  --t4-input-error-font-weight: 400;
+  --t4-input-info-font-size: 12px;
+  --t4-input-info-line-height: 1.4;
+  --t4-input-outline-height: 40px;
+  --t4-input-outline-border-radius: 4px;
+  --t4-input-outline-padding-horizontal: 12px;
+  --t4-textarea-height: 100px;
+  /*
+  --t4-input-outline-focused-border-color: var(--t4-theme-color);
+  --t4-input-outline-invalid-border-color: var(--t4-input-error-text-color);
+  */
+  --t4-input-outline-border-color: #bbb;
+}
+:root .dark,
+:root.dark {
+  --t4-input-outline-border-color: #444;
+}
+.ios {
+  --t4-input-height: 44px;
+  --t4-input-font-size: 17px;
+  --t4-input-placeholder-color: #a9a9a9;
+  --t4-textarea-padding-vertical: 11px;
+  /*
+  --t4-input-focused-border-color: var(--t4-list-item-border-color);
+  --t4-input-invalid-border-color: var(--t4-list-item-border-color);
+  --t4-input-invalid-text-color: var(--t4-input-error-text-color);
+  */
+  --t4-label-font-size: 12px;
+  --t4-label-text-color: inherit;
+  /*
+  --t4-label-focused-text-color: var(--t4-label-text-color);
+  --t4-label-invalid-text-color: var(--t4-label-text-color);
+  */
+  --t4-floating-label-scale: calc(17 / 12);
+  --t4-inline-label-font-size: 17px;
+  --t4-inline-label-line-height: 1.4;
+  --t4-inline-label-padding-top: 3px;
+  --t4-input-clear-button-size: 14px;
+  --t4-input-text-color: #000000;
+  --t4-input-info-text-color: rgba(0, 0, 0, 0.45);
+  --t4-input-clear-button-color: rgba(0, 0, 0, 0.45);
+}
+.ios .dark,
+.ios.dark {
+  --t4-input-text-color: #fff;
+  --t4-input-info-text-color: rgba(255, 255, 255, 0.55);
+  --t4-input-clear-button-color: rgba(255, 255, 255, 0.5);
+}
+.md {
+  --t4-input-height: 36px;
+  --t4-input-font-size: 16px;
+  --t4-textarea-padding-vertical: 7px;
+  /*
+  --t4-input-focused-border-color: var(--t4-theme-color);
+  --t4-input-invalid-border-color: var(--t4-input-error-text-color);
+  --t4-input-invalid-text-color: var(--t4-input-text-color);
+  */
+  --t4-label-font-size: 12px;
+  /*
+  --t4-label-focused-text-color: var(--t4-theme-color);
+  --t4-label-invalid-text-color: var(--t4-input-error-text-color );
+  */
+  --t4-floating-label-scale: calc(16 / 12);
+  --t4-inline-label-font-size: 16px;
+  --t4-inline-label-line-height: 1.5;
+  --t4-inline-label-padding-top: 7px;
+  --t4-input-clear-button-size: 18px;
+  --t4-input-clear-button-color: #aaa;
+  --t4-input-text-color: #212121;
+  --t4-input-placeholder-color: rgba(0, 0, 0, 0.35);
+  --t4-label-text-color: rgba(0, 0, 0, 0.65);
+  --t4-input-info-text-color: rgba(0, 0, 0, 0.45);
+}
+.md .dark,
+.md.dark {
+  --t4-input-text-color: rgba(255, 255, 255, 0.87);
+  --t4-input-placeholder-color: rgba(255, 255, 255, 0.35);
+  --t4-label-text-color: rgba(255, 255, 255, 0.54);
+  --t4-input-info-text-color: rgba(255, 255, 255, 0.45);
+}
+.aurora {
+  --t4-input-height: 32px;
+  --t4-input-font-size: 16px;
+  --t4-textarea-padding-vertical: 4px;
+  /*
+  --t4-input-focused-border-color: var(--t4-theme-color);
+  --t4-input-invalid-border-color: var(--t4-input-error-text-color);
+  --t4-input-invalid-text-color: var(--t4-input-text-color);
+  */
+  --t4-label-font-size: 12px;
+  --t4-label-text-color: inherit;
+  /*
+  --t4-label-focused-text-color: var(--t4-theme-color);
+  --t4-label-invalid-text-color: var(--t4-input-error-text-color );
+  */
+  --t4-floating-label-scale: calc(16 / 12);
+  --t4-inline-label-font-size: 16px;
+  --t4-inline-label-line-height: 1.5;
+  --t4-inline-label-padding-top: 4px;
+  --t4-input-clear-button-size: 14px;
+  --t4-input-outline-border-radius: 8px;
+  --t4-input-text-color: #000000;
+  --t4-input-placeholder-color: rgba(0, 0, 0, 0.32);
+  --t4-input-clear-button-color: rgba(0, 0, 0, 0.45);
+  --t4-input-info-text-color: rgba(0, 0, 0, 0.5);
+}
+.aurora .dark,
+.aurora.dark {
+  --t4-input-text-color: #fff;
+  --t4-input-clear-button-color: rgba(255, 255, 255, 0.5);
+  --t4-input-placeholder-color: rgba(255, 255, 255, 0.35);
+  --t4-input-info-text-color: rgba(255, 255, 255, 0.45);
+}
+</code></pre>
+<h3>Приклади: </h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Form Inputs&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Full Layout / Inline Labels&lt;/div&gt;
+      &lt;div class=&quot;list inline-labels no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Name&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Password&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;E-mail&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;URL&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;URL&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Phone&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;tel&quot; placeholder=&quot;Your phone number&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Gender&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap input-dropdown-wrap&quot;&gt;
+                &lt;select placeholder=&quot;Please choose...&quot;&gt;
+                  &lt;option value=&quot;Male&quot;&gt;Male&lt;/option&gt;
+                  &lt;option value=&quot;Female&quot;&gt;Female&lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Birthday&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;date&quot; value=&quot;2014-04-30&quot; placeholder=&quot;Please choose...&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Date time&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;datetime-local&quot; placeholder=&quot;Please choose...&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Range&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;div class=&quot;range-slider range-slider-init&quot; data-label=&quot;true&quot;&gt;
+                  &lt;input type=&quot;range&quot; value=&quot;50&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Textarea&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;textarea placeholder=&quot;Bio&quot;&gt;&lt;/textarea&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Resizable&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;textarea class=&quot;resizable&quot; placeholder=&quot;Bio&quot;&gt;&lt;/textarea&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Full Layout / Stacked Labels&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Name&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Password&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;E-mail&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;URL&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;URL&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Phone&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;tel&quot; placeholder=&quot;Your phone number&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Gender&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap input-dropdown-wrap&quot;&gt;
+                &lt;select placeholder=&quot;Please choose...&quot;&gt;
+                  &lt;option value=&quot;Male&quot;&gt;Male&lt;/option&gt;
+                  &lt;option value=&quot;Female&quot;&gt;Female&lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Birthday&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;date&quot; value=&quot;2014-04-30&quot; placeholder=&quot;Please choose...&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Date time&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;datetime-local&quot; placeholder=&quot;Please choose...&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Range&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;div class=&quot;range-slider range-slider-init&quot; data-label=&quot;true&quot;&gt;
+                  &lt;input type=&quot;range&quot; value=&quot;50&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;1&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Textarea&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;textarea placeholder=&quot;Bio&quot;&gt;&lt;/textarea&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Resizable&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;textarea class=&quot;resizable&quot; placeholder=&quot;Bio&quot;&gt;&lt;/textarea&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Floating Labels&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;Name&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;Password&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;E-mail&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;URL&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;URL&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;Phone&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;tel&quot; placeholder=&quot;Your phone number&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;Bio&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;textarea class=&quot;resizable&quot; placeholder=&quot;Bio&quot;&gt;&lt;/textarea&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Floating Labels + Outline Inputs&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input item-input-outline&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;Name&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-outline&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;Password&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-outline&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;E-mail&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-outline&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;URL&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;URL&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-outline&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;Phone&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;tel&quot; placeholder=&quot;Your phone number&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-outline&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-floating-label&quot;&gt;Bio&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;textarea class=&quot;resizable&quot; placeholder=&quot;Bio&quot;&gt;&lt;/textarea&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Validation + Additional Info&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Name&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; required validate /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                &lt;div class=&quot;item-input-info&quot;&gt;Default &quot;required&quot; validation&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Fruit&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Type 'apple' or 'banana'&quot; required validate
+                  pattern=&quot;apple|banana&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                &lt;div class=&quot;item-input-info&quot;&gt;Pattern validation (&lt;b&gt;apple|banana&lt;/b&gt;)&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;E-mail&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; required validate /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                &lt;div class=&quot;item-input-info&quot;&gt;Default e-mail validation&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;URL&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;Your URL&quot; required validate /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                &lt;div class=&quot;item-input-info&quot;&gt;Default URL validation&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Number&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Enter number&quot; required validate pattern=&quot;[0-9]*&quot;
+                  data-error-message=&quot;Only numbers please!&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                &lt;div class=&quot;item-input-info&quot;&gt;With custom error message&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Icon + Input&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-media&quot;&gt;
+              &lt;i class=&quot;icon demo-list-icon&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;URL&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Label + Input&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Name&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;Password&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;E-mail&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-title item-label&quot;&gt;URL&lt;/div&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;URL&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Only Inputs&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;URL&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Inputs + Additional Info&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                &lt;div class=&quot;item-input-info&quot;&gt;Full name please&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                &lt;div class=&quot;item-input-info&quot;&gt;8 characters minimum&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                &lt;div class=&quot;item-input-info&quot;&gt;Your work e-mail address&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input item-input-with-info&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;URL&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+                &lt;div class=&quot;item-input-info&quot;&gt;Your website URL&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Only Inputs Inset&lt;/div&gt;
+      &lt;div class=&quot;list inset&quot;&gt;
+        &lt;ul&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;Your name&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;password&quot; placeholder=&quot;Your password&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;email&quot; placeholder=&quot;Your e-mail&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;item-content item-input&quot;&gt;
+            &lt;div class=&quot;item-inner&quot;&gt;
+              &lt;div class=&quot;item-input-wrap&quot;&gt;
+                &lt;input type=&quot;url&quot; placeholder=&quot;URL&quot; /&gt;
+                &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;style&gt;
+  .demo-list-icon,
+  .icon-t4 {
+    background: #ccc;
+    display: block;
+    position: relative;
+  }
+
+  .ios .demo-list-icon {
+    width: 29px;
+    height: 29px;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+
+  .md .demo-list-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+  }
+
+  .aurora .demo-list-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+  }
+&lt;/style&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0412\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \/\u0424\u043e\u0440\u043c\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445  ","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u0412\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \/\u0424\u043e\u0440\u043c\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445  "},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0432\u0432\u0456\u0434\u043d\u0438\u0445 \u0444\u043e\u0440\u043c ","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u0421\u043a\u043b\u0430\u0434\u0435\u043d\u0456 \u0435\u0442\u0438\u043a\u0435\u0442\u043a\u0438"}},{"type":"nav_item","props":{"content":"\u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0456 \u0435\u0442\u0438\u043a\u0435\u0442\u043a\u0438 "}},{"type":"nav_item","props":{"content":"\u041f\u043b\u0430\u0432\u0430\u044e\u0447\u0456 \u0435\u0442\u0438\u043a\u0435\u0442\u043a\u0438"}},{"type":"nav_item","props":{"content":"\u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u043d\u0456 \u0432\u0445\u043e\u0434\u0438"}},{"type":"nav_item","props":{"content":"\u0406\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044f \u043f\u0440\u043e \u0444\u043e\u0440\u043c\u0443 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f"}},{"type":"nav_item","props":{"content":"\u0420\u043e\u0437\u043a\u0440\u0438\u0432\u043d\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f"}},{"type":"nav_item","props":{"content":"\u041f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u043d\u0456 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 "}},{"type":"nav_item","props":{"content":"\u0422\u0435\u043a\u0441\u0442\u043e\u0432\u0435 \u043f\u043e\u043b\u0435 \u0437\u0456 \u0437\u043c\u0456\u043d\u043d\u0438\u043c \u0440\u043e\u0437\u043c\u0456\u0440\u043e\u043c"}},{"type":"nav_item","props":{"content":"\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430"}},{"type":"nav_item","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u0441\u0442\u0430\u043d\u0456\u0432 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0412\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0412\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 "}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0412\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \/\u0424\u043e\u0440\u043c\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445  ","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 \/\u0424\u043e\u0440\u043c\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445  "},{"type":"text","props":{"column_breakpoint":"m","content":"\u0424\u043e\u0440\u043c\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445  \u0434\u043e\u0437\u0432\u043e\u043b\u044f\u044e\u0442\u044c \u0441\u0442\u0432\u043e\u0440\u044e\u0432\u0430\u0442\u0438 \u0433\u043d\u0443\u0447\u043a\u0456 \u0442\u0430 \u043a\u0440\u0430\u0441\u0438\u0432\u0456 \u043c\u0430\u043a\u0435\u0442\u0438 \u0444\u043e\u0440\u043c.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u0432\u0432\u0456\u0434\u043d\u0438\u0445 \u0444\u043e\u0440\u043c ","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u0432\u0432\u0456\u0434\u043d\u0438\u0445 \u0444\u043e\u0440\u043c "},{"type":"text","props":{"column_breakpoint":"m","content":"\u0420\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u043e\u0432\u0430\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 Inputs \u0437\u0456 <code>list View<\/code> :","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list\">\n  <ul>\n    ...\n    <li class=\"item-content item-input\">\n      <div class=\"item-media\">... icon\/image here ...<\/div>\n      <div class=\"item-inner\">\n        <div class=\"item-input-wrap\">\n          <input type=\"text\" name=\"name\" \/>\n          <span class=\"input-clear-button\"><\/span>\n        <\/div>\n      <\/div>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>item-input   <\/code> - \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0437\u0430 \u0437\u043c\u0456\u0441\u0442\u043e\u043c \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u0430. <code>item-content<\/code> \u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0433\u043e \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f<\/p>\n<p>\u25cf\t<code>\u25cf\titem-label<\/code> -\u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u043d\u0430\u0437\u0432\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 <code>item-title<\/code>, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0433\u043e \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043c\u0456\u0442\u043a\u0438<\/p>\n<p>\u25cf\t<code>item-input-wrap <\/code> -\u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0430 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0430 \u043e\u0431\u0433\u043e\u0440\u0442\u043a\u0430 \u0432\u0432\u0456\u0434\u043d\u0438\u0445 \u0444\u043e\u0440\u043c. \u041c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0440\u044f\u043c\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c <code>item-inner<\/code><\/p>\n<p>\u25cf\t<code>\u25cf\t&lt;span class=\"input-clear-button\"&gt; <\/code> - \u043a\u043d\u043e\u043f\u043a\u0430, \u044f\u043a\u0430 \u043e\u0447\u0438\u0449\u0430\u0442\u0438\u043c\u0435 \u0432\u0432\u0435\u0434\u0435\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u0456\u0441\u043b\u044f \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f. \u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0430 <\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"headline","props":{"content":"\u0421\u043a\u043b\u0430\u0434\u0435\u043d\u0456 \u0435\u0442\u0438\u043a\u0435\u0442\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0421\u043a\u043b\u0430\u0434\u0435\u043d\u0456 \u0435\u0442\u0438\u043a\u0435\u0442\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0441\u043f\u0438\u0441\u043e\u043a \u0432\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f \u0437\u0456 \u0437\u0433\u0440\u0443\u043f\u043e\u0432\u0430\u043d\u0438\u043c\u0438 \u043c\u0456\u0442\u043a\u0430\u043c\u0438. \u0421\u043a\u043b\u0430\u0434\u0435\u043d\u0456 \u043c\u0456\u0442\u043a\u0438 \u0437\u0430\u0432\u0436\u0434\u0438 \u0437\u2019\u044f\u0432\u043b\u044f\u044e\u0442\u044c\u0441\u044f \u043f\u043e\u0432\u0435\u0440\u0445 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list\">\n  <ul>\n    ...\n    <li class=\"item-content item-input\">\n      <div class=\"item-media\">... icon\/image here ...<\/div>\n      <div class=\"item-inner\">\n        <div class=\"item-title item-label\">Name<\/div>\n        <div class=\"item-input-wrap\">\n          <input type=\"text\" name=\"name\" \/>\n          <span class=\"input-clear-button\"><\/span>\n        <\/div>\n      <\/div>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>item-title item-label<\/code> - \u0432\u0445\u0456\u0434\u043d\u0430 \u043c\u0456\u0442\u043a\u0430.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"headline","props":{"content":"\u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0456 \u043c\u0456\u0442\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0456 \u043c\u0456\u0442\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0456 \u043c\u0456\u0442\u043a\u0438, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0445 \u043c\u0456\u0442\u043e\u043a <code>inline-labels<\/code> \u0434\u043e \u0432\u0441\u044c\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0443 \u0430\u0431\u043e \u043a\u043b\u0430\u0441 \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0445 \u043c\u0456\u0442\u043e\u043a <code>inline-label<\/code> \u0434\u043e \u043e\u043a\u0440\u0435\u043c\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list inline-labels\">\n  <ul>\n    ...\n    <li class=\"item-content item-input\">\n      <div class=\"item-media\">... icon\/image here ...<\/div>\n      <div class=\"item-inner\">\n        <div class=\"item-title item-label\">Name<\/div>\n        <div class=\"item-input-wrap\">\n          <input type=\"text\" name=\"name\" \/>\n          <span class=\"input-clear-button\"><\/span>\n        <\/div>\n      <\/div>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>\n<!-- \u0430\u0431\u043e \u043b\u0438\u0448\u0435 \u0434\u043e \u043e\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 -->\n<div class=\"list\">\n  <ul>\n    ...\n    <!-- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \"inline-label\". -->\n    <li class=\"item-content item-input inline-label\">\n      ...\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u043b\u0430\u0432\u0430\u044e\u0447\u0456 \u0435\u0442\u0438\u043a\u0435\u0442\u043a\u0438","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043b\u0430\u0432\u0430\u044e\u0447\u0456 \u0435\u0442\u0438\u043a\u0435\u0442\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u0438 \u043f\u043b\u0430\u0432\u0430\u044e\u0447\u0443 \u043c\u0456\u0442\u043a\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>item-floating-label<\/code> \u0437\u0430\u043c\u0456\u0441\u0442\u044c <code>item-label<\/code>.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list\">\n  <ul>\n    ...\n    <li class=\"item-content item-input\">\n      <div class=\"item-media\">... icon\/image here ...<\/div>\n      <div class=\"item-inner\">\n        <!-- \u043a\u043b\u0430\u0441 \"item-floating-label\" \u0434\u043b\u044f \u043d\u0430\u0437\u0432\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 -->\n        <div class=\"item-title item-floating-label\">Name<\/div>\n        <div class=\"item-input-wrap\">\n          <input type=\"text\" name=\"name\" \/>\n          <span class=\"input-clear-button\"><\/span>\n        <\/div>\n      <\/div>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0432\u0456\u0434\u043d\u0456 \u0444\u043e\u0440\u043c\u0438, \u0432\u0438\u0434\u0456\u043b\u0435\u043d\u0456 \u043a\u043e\u043d\u0442\u0443\u0440\u043e\u043c ","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u0432\u0456\u0434\u043d\u0456 \u0444\u043e\u0440\u043c\u0438, \u0432\u0438\u0434\u0456\u043b\u0435\u043d\u0456 \u043a\u043e\u043d\u0442\u0443\u0440\u043e\u043c "},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0432\u0445\u0456\u0434 \"\u043a\u043e\u043d\u0442\u0443\u0440\u043e\u043c\" (\u0437 \u0440\u0430\u043c\u043a\u043e\u044e \u043d\u0430\u0432\u043a\u043e\u043b\u043e \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f), \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 <code>item-input-outline<\/code> \u0434\u043e \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0433\u043e \u0432\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0441\u043f\u0438\u0441\u043a\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list\">\n  <ul>\n    ...\n    <!-- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \"item-input-outline\".-->\n    <li class=\"item-content item-input item-input-outline\">\n      <div class=\"item-inner\">\n        <div class=\"item-title item-label\">Name<\/div>\n        <div class=\"item-input-wrap\">\n          <input type=\"text\" name=\"name\" \/>\n          <span class=\"input-clear-button\"><\/span>\n        <\/div>\n      <\/div>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0406\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044f \u043f\u0440\u043e \u0444\u043e\u0440\u043c\u0443 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0406\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044f \u043f\u0440\u043e \u0444\u043e\u0440\u043c\u0443 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0443 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044e \u043f\u0440\u043e \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0444\u043e\u0440\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list\">\n  <ul>\n    ...\n    <!-- \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \"item-input-with-info\" \u0434\u043b\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 -->\n    <li class=\"item-content item-input item-input-with-info\">\n      <div class=\"item-media\">... icon\/image here ...<\/div>\n      <div class=\"item-inner\">\n        <div class=\"item-title item-label\">Name<\/div>\n        <div class=\"item-input-wrap\">\n          <input type=\"text\" name=\"name\" \/>\n          <span class=\"input-clear-button\"><\/span>\n          <!-- \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0437 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u044e \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0454\u044e -->\n          <div class=\"item-input-info\">Some information about input field<\/div>\n        <\/div>\n      <\/div>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\n<p>\u25cf\t<code>\titem-input-with-info   <\/code> - \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430<\/p>\n<p>\u25cf\t<code>&lt;div class=\"item-input-info\"&gt;...&lt;\/div&gt;<\/code> - \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0437 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u044e \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0454\u044e<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441 \u043a\u043e\u0434\u0443 \"\u0414\u0415. \u0437\u043c\u0456\u043d\u0430  - \""},{"type":"headline","props":{"content":"\u0420\u043e\u0437\u043a\u0440\u0438\u0432\u043d\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0420\u043e\u0437\u043a\u0440\u0438\u0432\u043d\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0441\u043f\u0430\u0434\u043d\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0443 (\u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, select) \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u0433\u043e \u043a\u043b\u0430\u0441\u0443 <code>input-dropdown-wrap<\/code>. \u0412\u0456\u043d \u0434\u043e\u0434\u0430\u0441\u0442\u044c \u043d\u0435\u0432\u0435\u043b\u0438\u043a\u0438\u0439 \u0441\u043f\u0430\u0434\u043d\u0438\u0439 \u0437\u043d\u0430\u0447\u043e\u043a \u043f\u0440\u0430\u0432\u043e\u0440\u0443\u0447 (\u25bc):","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"list\">\n  <ul>\n    ...\n    <li class=\"item-content item-input\">\n      <div class=\"item-media\">... icon\/image here ...<\/div>\n      <div class=\"item-inner\">\n        <div class=\"item-title item-label\">Name<\/div>\n        <!-- additional \"input-dropdown-wrap\" class -->\n        <div class=\"item-input-wrap input-dropdown-wrap\">\n          <select>\n            ...\n          <\/select>\n        <\/div>\n      <\/div>\n    <\/li>\n    ...\n  <\/ul>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u043d\u0456 \u0444\u043e\u0440\u043c\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 ","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u043d\u0456 \u0444\u043e\u0440\u043c\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0441\u044c \u0441\u043f\u0438\u0441\u043e\u043a \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f, \u044f\u043a\u0456 \u043c\u043e\u0436\u043d\u0430 \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 <code>item-input-wrap<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"All text inputs","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442  - All text inputs"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u043d\u0456 \u0442\u0438\u043f\u0438: <code>text<\/code>(\u0442\u0435\u043a\u0441\u0442), <code>password<\/code>,(\u043f\u0430\u0440\u043e\u043b\u044c) <code>email<\/code>(\u0435\u043b. \u043f\u043e\u0448\u0442\u0430 ), <code>tel<\/code>, (\u0442\u0435\u043b\u0435\u0444\u043e\u043d)  <code>url<\/code>, (url-\u0430\u0434\u0440\u0435\u0441\u0430)  <code>date<\/code>, (\u0434\u0430\u0442\u0430)  <code>number<\/code>(\u043d\u043e\u043c\u0435\u0440), <code>datetime-local<\/code>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"...\n  <div class=\"item-input-wrap\">\n    <input type=\"text\" \/>\n  <\/div>\n...\n...\n  <div class=\"item-input-wrap\">\n    <input type=\"email\" \/>\n  <\/div>\n..."},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"Select","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442  - Select"},{"type":"code","props":{"content":"...\n  <div class=\"item-input-wrap\">\n    <select>...<\/select>\n  <\/div>\n..."},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"Textarea","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442  - Textarea"},{"type":"code","props":{"content":"...\n  <div class=\"item-input-wrap\">\n    <textarea><\/textarea>\n  <\/div>\n...\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"Range Slider","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442  - Range Slider"},{"type":"code","props":{"content":"...\n  <div class=\"item-input-wrap\">\n    <div class=\"range-slider\">\n      <input type=\"range\" min=\"0\" max=\"100\" step=\"0.1\" \/>\n    <\/div>\n  <\/div>\n..."},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0422\u0435\u043a\u0441\u0442\u043e\u0432\u0435 \u043f\u043e\u043b\u0435 \u0437\u0456 \u0437\u043c\u0456\u043d\u043d\u0438\u043c \u0440\u043e\u0437\u043c\u0456\u0440\u043e\u043c","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0422\u0435\u043a\u0441\u0442\u043e\u0432\u0435 \u043f\u043e\u043b\u0435 \u0437\u0456 \u0437\u043c\u0456\u043d\u043d\u0438\u043c \u0440\u043e\u0437\u043c\u0456\u0440\u043e\u043c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u0435 \u043f\u043e\u043b\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0437\u043c\u0456\u043d\u044e\u0432\u0430\u043b\u043e \u0440\u043e\u0437\u043c\u0456\u0440 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u0439\u043e\u0433\u043e \u0432\u043c\u0456\u0441\u0442\u0443, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u043f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0441 \u0437\u043c\u0456\u043d\u043d\u043e\u0433\u043e \u0440\u043e\u0437\u043c\u0456\u0440\u0443 <code>resizable<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<textarea class=\"resizable\"><\/textarea>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430"},{"type":"text","props":{"column_breakpoint":"m","content":"Techno4 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0443 HTML5 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u0432\u0445\u0456\u0434\u043d\u043e\u0457 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0434\u0456\u0439\u0441\u043d\u043e\u0441\u0442\u0456 <code>validaty<\/code>. \u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0443, \u0437\u2019\u044f\u0432\u043b\u044f\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043f\u0440\u043e \u043f\u043e\u043c\u0438\u043b\u043a\u0443 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0438, \u044f\u043a\u0449\u043e \u0432\u0432\u0435\u0434\u0435\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043c\u0430\u0454 \u043d\u0435\u0434\u0456\u0439\u0441\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f.\n<p>\u0429\u043e\u0431 \u0443\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0443, \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0434\u043e\u0434\u0430\u0442\u0438 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0438: <code>required<\/code> \u0456 <code>validate<\/code> \u0434\u043e \u0432\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430.<\/p>\n<p>\u042f\u043a\u0449\u043e \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0430 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0432\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445 \u043b\u0438\u0448\u0435 \u043d\u0430 \u043f\u043e\u0434\u0456\u044e \u0440\u043e\u0437\u043c\u0438\u0442\u0442\u044f <code>blur<\/code>, \u0442\u043e\u0434\u0456 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0430\u0442\u0440\u0438\u0431\u0443\u0442 <code>data-validate-on-blur=\"true\"<\/code>.<\/p>\n<p>\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0437\u0430\u043b\u0435\u0436\u0438\u0442\u044c \u0432\u0456\u0434 \u0442\u0438\u043f\u0443 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0442\u0438\u043f \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f = \"\u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430 \u043f\u043e\u0448\u0442\u0430\" \u0431\u0443\u0434\u0435 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0435\u043d\u043e \u043d\u0430 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0456\u0441\u0442\u044c \u0448\u0430\u0431\u043b\u043e\u043d\u0443 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0457 \u043f\u043e\u0448\u0442\u0438 \u0442\u043e\u0449\u043e. \u0426\u0435 \u0442\u0438\u043f\u043e\u0432\u0430 \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u0430 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430. \u042f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0434\u043e\u0434\u0430\u0442\u0438 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0438 \u0432\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f, \u0446\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0448\u0430\u0431\u043b\u043e\u043d\u0443 <code>pattern<\/code>:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043d\u0435 \u043f\u043e\u0440\u043e\u0436\u043d\u044f -->\n<input type=\"text\" placeholder=\"Your name\" required validate \/>\n\n<!-- \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0457 \u043f\u043e\u0448\u0442\u0438 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f\u043c \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430 \u0430\u0434\u0440\u0435\u0441\u0430 -->\n<input type=\"email\" placeholder=\"Your e-mail\" required validate \/>\n\n<!-- \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 URL-\u0430\u0434\u0440\u0435\u0441\u0438 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c-->\n<input type=\"url\" placeholder=\"Your URL\" required validate \/>\n\n<!-- \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0448\u0430\u0431\u043b\u043e\u043d\u0443, \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \"\u044f\u0431\u043b\u0443\u043a\u043e\" \u0430\u0431\u043e \"\u0431\u0430\u043d\u0430\u043d\" -->\n<input type=\"text\" required validate pattern=\"apple|banana\" placeholder=\"Type 'apple' or 'banana'\" \/>\n\n<!-- \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0448\u0430\u0431\u043b\u043e\u043d\u0443 \u0437\u0456 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u043c \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u043c \u043f\u0440\u043e \u043f\u043e\u043c\u0438\u043b\u043a\u0443, \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043b\u0438\u0448\u0435 \u0447\u0438\u0441\u043b\u043e\u043c -->\n<input type=\"text\" placeholder=\"Enter number\" required validate pattern=\"[0-9]*\" data-error-message=\"Only numbers please!\" \/>\n\n<!-- \u0446\u0435\u0439 \u0432\u0445\u0456\u0434 \u0431\u0443\u0434\u0435 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0435\u043d\u043e \u043b\u0438\u0448\u0435 \u043d\u0430 \u0440\u043e\u0437\u043c\u0438\u0442\u0442\u044f-->\n<input type=\"text\" placeholder=\"Your name\" required validate data-validate-on-blur=\"true\" \/>\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u0441\u0442\u0430\u043d\u0456\u0432 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043b\u0430\u0441\u0438 \u0441\u0442\u0430\u043d\u0456\u0432 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0406\u0441\u043d\u0443\u0454 \u043a\u0456\u043b\u044c\u043a\u0430 \u043a\u043b\u0430\u0441\u0456\u0432, \u044f\u043a\u0456 \u043c\u043e\u0436\u043d\u0430 \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e \u0432\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u0439\u043e\u0433\u043e \u0441\u0442\u0430\u043d\u0443 \u0442\u0430 \u0432\u043c\u0456\u0441\u0442\u0443:\n<p>\u25cf\t<code>input-with-value<\/code> - \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e \u0432\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445, \u043a\u043e\u043b\u0438 \u0432\u043e\u043d\u043e \u043c\u0430\u0442\u0438\u043c\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f<\/p>\n<p>\u25cf\t<code>input-focused<\/code> - \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e \u0432\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445, \u043a\u043e\u043b\u0438 \u0431\u0443\u0434\u0435 \u0441\u0444\u043e\u043a\u0443\u0441\u043e\u0432\u0430\u043d\u043e<\/p>\n<p>\u25cf\t<code>input-invalid<\/code> - \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e \u0432\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445, \u044f\u043a\u0449\u043e \u0439\u043e\u0433\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043d\u0435\u0434\u0456\u0439\u0441\u043d\u0435<\/p>\n<p>\u0422\u0456 \u0441\u0430\u043c\u0456 \u0441\u0442\u0430\u043d\u0438 \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e \u0431\u0430\u0442\u044c\u043a\u0456\u0432\u0441\u044c\u043a\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 <code>item-input<\/code> \u0432\u0445\u043e\u0434\u0443:\n<p>\u25cf\t<code>item-input-with-value<\/code> - \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e \u0432\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u043a\u043e\u043b\u0438 \u0439\u043e\u0433\u043e \u0432\u0445\u0456\u0434 \u043c\u0430\u0442\u0438\u043c\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f<\/p>\n<p>\u25cf\t<code>item-input-focused<\/code> - \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f, \u043a\u043e\u043b\u0438 \u0439\u043e\u0433\u043e \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0441\u0444\u043e\u043a\u0443\u0441\u043e\u0432\u0430\u043d\u043e<\/p>\n<p>\u25cf\t<code>item-input-invalid<\/code> - \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e \u0432\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430, \u044f\u043a\u0449\u043e \u0439\u043e\u0433\u043e \u0432\u0445\u0456\u0434\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043d\u0435\u0434\u0456\u0439\u0441\u043d\u0435<\/p>\n\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443  \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 ","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443  \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u043e\u0436\u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044e\u0432\u0430\u0442\u0438 \u0434\u0435\u044f\u043a\u0443 \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u0443 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 , \u0434\u0435 \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438, \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u0437 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f\u043c, \u0443 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 <code>input<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438, \u0432\u0432\u0435\u0434\u0435\u043d\u0456 \u0434\u0430\u043d\u0456 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u0443 \u0444\u043e\u043a\u0443\u0441\u0456 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f. \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0439\u043e\u0433\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u043b\u0438\u0448\u0435 \u0434\u043b\u044f \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457\u0432 Android, \u043e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 \u0446\u0435 \u0434\u043e\u043f\u043e\u043c\u0430\u0433\u0430\u0454 \u0432\u0438\u0440\u0456\u0448\u0438\u0442\u0438 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0443, \u043a\u043e\u043b\u0438 \u0435\u043a\u0440\u0430\u043d\u043d\u0430 \u043a\u043b\u0430\u0432\u0456\u0430\u0442\u0443\u0440\u0430 \u043c\u043e\u0436\u0435 \u043f\u0435\u0440\u0435\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"scrollIntoViewOnFocus"}},{"type":"table_item","props":{"content":"\u041d\u0430\u043b\u0430\u0448\u0442\u043e\u0432\u0443\u0454 \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u0443 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430, \u0449\u043e\u0431 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u0442\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u0456 \u0434\u0430\u043d\u0456 \u0432 \u0446\u0435\u043d\u0442\u0440\u0456 \u0437\u043e\u0440\u0443 \u043f\u0440\u0438 \u0444\u043e\u043a\u0443\u0441\u0456 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"scrollIntoViewCentered","title":"false"}},{"type":"table_item","props":{"content":"\u0422\u0440\u0438\u0432\u0430\u043b\u0456\u0441\u0442\u044c \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0434\u043b\u044f \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0432\u0432\u0435\u0434\u0435\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445 \u0443 \u0432\u0456\u043a\u043d\u0456 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"scrollIntoViewDuration","title":"0"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438, \u0432\u0445\u0456\u0434\u043d\u0456 \u0434\u0430\u043d\u0456 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u0443 \u0432\u0456\u043a\u043d\u0456 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443, \u043d\u0435\u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u0442\u043e\u0433\u043e, \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u044e\u0442\u044c \u0432\u043e\u043d\u0438 \u043f\u043e\u0437\u0430 \u043f\u043e\u043b\u0435\u043c \u0437\u043e\u0440\u0443 \u0447\u0438 \u043d\u0456","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"scrollIntoViewAlways","title":"false"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0430\u043f\u0440\u043a\u043b\u0430\u0434: ","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  input: {\n    scrollIntoViewOnFocus: true,\n    scrollIntoViewCentered: true,\n  }\n});"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 ","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 , \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u0434\u043b\u044f \u043a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f\u043c\u0438 \u0434\u0430\u043d\u0438\u0445:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0438","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u0440\u043e\u043a\u0440\u0443\u0442\u0438\u0442\u0438  \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0432 \u043f\u043e\u043b\u0435 \u0437\u043e\u0440\u0443\n<p>\u25cf\t<code>inputEl - HTMLElement or string (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS)<\/code> \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f, \u0449\u043e\u0431 \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u0432 \u043f\u043e\u043b\u0435 \u0437\u043e\u0440\u0443. \u0432\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f\n<p>\u25cf\t<code>duration - number<\/code> -\u0442\u0440\u0438\u0432\u0430\u043b\u0456\u0441\u0442\u044c \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u043c\u0441.<\/p>\n<p>\u25cf\t<code>centered - boolean<\/code> - \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0454, \u0447\u0438 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0439\u043e\u0433\u043e \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u0442\u0438 \u0432 \u0446\u0435\u043d\u0442\u0440 \u043e\u0433\u043b\u044f\u0434\u0443 \u0447\u0438 \u043d\u0456.<\/p>\n<p>\u25cf\t<code>force - boolean<\/code> - \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0454 \u0432\u0445\u0456\u0434\u043d\u0456 \u0434\u0430\u043d\u0456 \u0432 \u043f\u043e\u043b\u0435 \u0437\u043e\u0440\u0443 \u043d\u0435\u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u0442\u043e\u0433\u043e, \u043f\u043e\u0437\u0430 \u043f\u043e\u043b\u0435\u043c \u0437\u043e\u0440\u0443 \u0446\u0435 \u0447\u0438 \u043d\u0456.<\/p>\n","link_text":"string","meta":"app.input.scrollIntoView","title":"(inputEl, duration, <p>centered, force)"}},{"type":"table_item","props":{"content":"\u0411\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u0441\u0442\u0438\u043b\u0456 \u0442\u0430 \u043a\u043b\u0430\u0441\u0438 \u043f\u0440\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u0456, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u043a\u043e\u043b\u0438 \u0432\u043e\u043d\u043e \u0441\u0444\u043e\u043a\u0443\u0441\u043e\u0432\u0430\u043d\u043e\n<p>\u25cf\t<code>inputEl - HTMLElement or string (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS) <\/code> \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f","link_text":"string","meta":"app.input.focus","title":"(inputEl)"}},{"type":"table_item","props":{"content":"\u0411\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u0441\u0442\u0438\u043b\u0456 \u0442\u0430 \u043a\u043b\u0430\u0441\u0438 \u043f\u0456\u0434 \u0447\u0430\u0441 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u043a\u043e\u043b\u0438 \u0432\u0456\u043d \u0432\u0442\u0440\u0430\u0447\u0430\u0454 \u0444\u043e\u043a\u0443\u0441\n<p>\u25cf\t<code>inputEl - HTMLElement or string (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS) <\/code> \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f","link_text":"string","meta":"app.input.blur","title":"(inputEl)"}},{"type":"table_item","props":{"content":"\u041f\u0440\u0438\u043c\u0443\u0441\u043e\u0432\u043e \u0437\u043c\u0456\u043d\u044e\u0432\u0430\u0442\u0438 \u0440\u043e\u0437\u043c\u0456\u0440 \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u043e\u0433\u043e \u043f\u043e\u043b\u044f \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u0439\u043e\u0433\u043e \u0432\u043c\u0456\u0441\u0442\u0443\n<p>\u25cf\t<code>textareaEl - HTMLElement or string (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS)<\/code> \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 textarea. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.\n","meta":"app.input.resizeTextarea","title":"(textareaEl)"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0440\u0430\u0445\u0443\u0432\u0430\u0442\u0438  \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0441\u0442\u0438\u043b\u0456 \u0442\u0430 \u043a\u043b\u0430\u0441\u0438 \u0434\u043b\u044f \u0432\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u0442\u043e\u0433\u043e, \u043c\u0430\u0454 \u0432\u0456\u043d \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0447\u0438 \u043d\u0456\n<p>\u25cf\t<code>textareaEl - HTMLElement or string (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS)<\/code> \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 textarea. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.\n","meta":"app.input.checkEmptyState","title":"(inputEl)"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u0438\u0445 \u0434\u0430\u043d\u0438\u0445\n<p>\u25cf\t<code>textareaEl - HTMLElement or string (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS)<\/code> \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 textarea. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 <code>true<\/code>, \u044f\u043a\u0449\u043e \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0456\u0439\u0441\u043d\u0435, \u0430\u0431\u043e <code>false<\/code>, \u044f\u043a\u0449\u043e \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u043d\u0435\u0434\u0456\u0439\u0441\u043d\u0435<\/i><\/p>","meta":"app.input.validate","title":"(inputEl)"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438 \u0432\u0441\u0456 \u0432\u0445\u0456\u0434\u043d\u0456 \u0434\u0430\u043d\u0456 \u0432 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u043e\u043c\u0443 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0456\n<p>\t<code>containerEl - HTMLElement or string (\u0456\u0437 \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u043e\u043c CSS)<\/code> \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0437 \u0432\u0445\u0456\u0434\u043d\u0438\u043c\u0438 \u0434\u0430\u043d\u0438\u043c\u0438 \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0438. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/p>\n<p><i>\t\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 <code>true<\/code>, \u044f\u043a\u0449\u043e \u0432\u0441\u0456 \u0434\u043e\u0447\u0456\u0440\u043d\u0456 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0456\u0439\u0441\u043d\u0456, \u0430\u0431\u043e <code>false<\/code>, \u044f\u043a\u0449\u043e \u043f\u0440\u0438\u043d\u0430\u0439\u043c\u043d\u0456 \u043e\u0434\u0438\u043d \u0432\u0445\u0456\u0434 \u043d\u0435\u0434\u0456\u0439\u0441\u043d\u0438\u0439<\/i><\/p>\n\t\n","meta":"app.input.validateInputs","title":"(containerEl)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 3 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 ","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u0412\u0445\u0456\u0434\u043d\u0456 \u0434\u0430\u043d\u0456 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u043f\u043e\u0434\u0456\u0439 DOM:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u0437\u043c\u0456\u043d\u0438 \u0440\u043e\u0437\u043c\u0456\u0440\u0443 \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u043e\u0433\u043e \u043f\u043e\u043b\u044f. <code>event.detail<\/code> \u043c\u0456\u0441\u0442\u0438\u0442\u0438\u043c\u0435 \u043e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438 <code>initialHeight<\/code>, <code>currentHeight<\/code> \u0456 <code>scrollHeight<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"textarea:resize","title":"Textarea Element <p>&lt;textarea class=\"resizable\"&gt;"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0432\u0445\u0456\u0434\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0441\u0442\u0430\u043d\u0435 \u043d\u0435\u043f\u043e\u0440\u043e\u0436\u043d\u0456\u043c","meta":"input:notempty","title":"Input Element <p>&lt;input\/textarea&gt;"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0432\u0445\u0456\u0434\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0441\u0442\u0430\u043d\u0435 \u043f\u043e\u0440\u043e\u0436\u043d\u0456\u043c","meta":"input:empty","title":"Input Element <p>&lt;input\/textarea&gt;"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u0442\u043e\u0433\u043e, \u044f\u043a \u0432\u0432\u0435\u0434\u0435\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u043e\u0447\u0438\u0449\u0435\u043d\u043e, \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0432\u0448\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u043e\u0447\u0438\u0449\u0435\u043d\u043d\u044f \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f","meta":"input:clear","title":"Input Element <p>&lt;input\/textarea&gt;"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-input-bg-color: transparent;\n  --t4-label-font-weight: 400;\n  --t4-label-line-height: 1.3;\n  --t4-input-padding-left: 0px;\n  --t4-input-padding-right: 0px;\n  --t4-input-error-text-color: #ff3b30;\n  --t4-input-error-font-size: 12px;\n  --t4-input-error-line-height: 1.4;\n  --t4-input-error-font-weight: 400;\n  --t4-input-info-font-size: 12px;\n  --t4-input-info-line-height: 1.4;\n  --t4-input-outline-height: 40px;\n  --t4-input-outline-border-radius: 4px;\n  --t4-input-outline-padding-horizontal: 12px;\n  --t4-textarea-height: 100px;\n  \/*\n  --t4-input-outline-focused-border-color: var(--t4-theme-color);\n  --t4-input-outline-invalid-border-color: var(--t4-input-error-text-color);\n  *\/\n  --t4-input-outline-border-color: #bbb;\n}\n:root .dark,\n:root.dark {\n  --t4-input-outline-border-color: #444;\n}\n.ios {\n  --t4-input-height: 44px;\n  --t4-input-font-size: 17px;\n  --t4-input-placeholder-color: #a9a9a9;\n  --t4-textarea-padding-vertical: 11px;\n  \/*\n  --t4-input-focused-border-color: var(--t4-list-item-border-color);\n  --t4-input-invalid-border-color: var(--t4-list-item-border-color);\n  --t4-input-invalid-text-color: var(--t4-input-error-text-color);\n  *\/\n  --t4-label-font-size: 12px;\n  --t4-label-text-color: inherit;\n  \/*\n  --t4-label-focused-text-color: var(--t4-label-text-color);\n  --t4-label-invalid-text-color: var(--t4-label-text-color);\n  *\/\n  --t4-floating-label-scale: calc(17 \/ 12);\n  --t4-inline-label-font-size: 17px;\n  --t4-inline-label-line-height: 1.4;\n  --t4-inline-label-padding-top: 3px;\n  --t4-input-clear-button-size: 14px;\n  --t4-input-text-color: #000000;\n  --t4-input-info-text-color: rgba(0, 0, 0, 0.45);\n  --t4-input-clear-button-color: rgba(0, 0, 0, 0.45);\n}\n.ios .dark,\n.ios.dark {\n  --t4-input-text-color: #fff;\n  --t4-input-info-text-color: rgba(255, 255, 255, 0.55);\n  --t4-input-clear-button-color: rgba(255, 255, 255, 0.5);\n}\n.md {\n  --t4-input-height: 36px;\n  --t4-input-font-size: 16px;\n  --t4-textarea-padding-vertical: 7px;\n  \/*\n  --t4-input-focused-border-color: var(--t4-theme-color);\n  --t4-input-invalid-border-color: var(--t4-input-error-text-color);\n  --t4-input-invalid-text-color: var(--t4-input-text-color);\n  *\/\n  --t4-label-font-size: 12px;\n  \/*\n  --t4-label-focused-text-color: var(--t4-theme-color);\n  --t4-label-invalid-text-color: var(--t4-input-error-text-color );\n  *\/\n  --t4-floating-label-scale: calc(16 \/ 12);\n  --t4-inline-label-font-size: 16px;\n  --t4-inline-label-line-height: 1.5;\n  --t4-inline-label-padding-top: 7px;\n  --t4-input-clear-button-size: 18px;\n  --t4-input-clear-button-color: #aaa;\n  --t4-input-text-color: #212121;\n  --t4-input-placeholder-color: rgba(0, 0, 0, 0.35);\n  --t4-label-text-color: rgba(0, 0, 0, 0.65);\n  --t4-input-info-text-color: rgba(0, 0, 0, 0.45);\n}\n.md .dark,\n.md.dark {\n  --t4-input-text-color: rgba(255, 255, 255, 0.87);\n  --t4-input-placeholder-color: rgba(255, 255, 255, 0.35);\n  --t4-label-text-color: rgba(255, 255, 255, 0.54);\n  --t4-input-info-text-color: rgba(255, 255, 255, 0.45);\n}\n.aurora {\n  --t4-input-height: 32px;\n  --t4-input-font-size: 16px;\n  --t4-textarea-padding-vertical: 4px;\n  \/*\n  --t4-input-focused-border-color: var(--t4-theme-color);\n  --t4-input-invalid-border-color: var(--t4-input-error-text-color);\n  --t4-input-invalid-text-color: var(--t4-input-text-color);\n  *\/\n  --t4-label-font-size: 12px;\n  --t4-label-text-color: inherit;\n  \/*\n  --t4-label-focused-text-color: var(--t4-theme-color);\n  --t4-label-invalid-text-color: var(--t4-input-error-text-color );\n  *\/\n  --t4-floating-label-scale: calc(16 \/ 12);\n  --t4-inline-label-font-size: 16px;\n  --t4-inline-label-line-height: 1.5;\n  --t4-inline-label-padding-top: 4px;\n  --t4-input-clear-button-size: 14px;\n  --t4-input-outline-border-radius: 8px;\n  --t4-input-text-color: #000000;\n  --t4-input-placeholder-color: rgba(0, 0, 0, 0.32);\n  --t4-input-clear-button-color: rgba(0, 0, 0, 0.45);\n  --t4-input-info-text-color: rgba(0, 0, 0, 0.5);\n}\n.aurora .dark,\n.aurora.dark {\n  --t4-input-text-color: #fff;\n  --t4-input-clear-button-color: rgba(255, 255, 255, 0.5);\n  --t4-input-placeholder-color: rgba(255, 255, 255, 0.35);\n  --t4-input-info-text-color: rgba(255, 255, 255, 0.45);\n}\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438: ","title_element":"h3","title_style":"h3"},"name":"\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438: "},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner\">\n        <div class=\"title\">Form Inputs<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block-title\">Full Layout \/ Inline Labels<\/div>\n      <div class=\"list inline-labels no-hairlines-md\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Name<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Password<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"password\" placeholder=\"Your password\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">E-mail<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">URL<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"URL\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Phone<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"tel\" placeholder=\"Your phone number\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Gender<\/div>\n              <div class=\"item-input-wrap input-dropdown-wrap\">\n                <select placeholder=\"Please choose...\">\n                  <option value=\"Male\">Male<\/option>\n                  <option value=\"Female\">Female<\/option>\n                <\/select>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Birthday<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"date\" value=\"2014-04-30\" placeholder=\"Please choose...\" \/>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Date time<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"datetime-local\" placeholder=\"Please choose...\" \/>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Range<\/div>\n              <div class=\"item-input-wrap\">\n                <div class=\"range-slider range-slider-init\" data-label=\"true\">\n                  <input type=\"range\" value=\"50\" min=\"0\" max=\"100\" step=\"1\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Textarea<\/div>\n              <div class=\"item-input-wrap\">\n                <textarea placeholder=\"Bio\"><\/textarea>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Resizable<\/div>\n              <div class=\"item-input-wrap\">\n                <textarea class=\"resizable\" placeholder=\"Bio\"><\/textarea>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Full Layout \/ Stacked Labels<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Name<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Password<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"password\" placeholder=\"Your password\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">E-mail<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">URL<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"URL\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Phone<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"tel\" placeholder=\"Your phone number\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Gender<\/div>\n              <div class=\"item-input-wrap input-dropdown-wrap\">\n                <select placeholder=\"Please choose...\">\n                  <option value=\"Male\">Male<\/option>\n                  <option value=\"Female\">Female<\/option>\n                <\/select>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Birthday<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"date\" value=\"2014-04-30\" placeholder=\"Please choose...\" \/>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Date time<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"datetime-local\" placeholder=\"Please choose...\" \/>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Range<\/div>\n              <div class=\"item-input-wrap\">\n                <div class=\"range-slider range-slider-init\" data-label=\"true\">\n                  <input type=\"range\" value=\"50\" min=\"0\" max=\"100\" step=\"1\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Textarea<\/div>\n              <div class=\"item-input-wrap\">\n                <textarea placeholder=\"Bio\"><\/textarea>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Resizable<\/div>\n              <div class=\"item-input-wrap\">\n                <textarea class=\"resizable\" placeholder=\"Bio\"><\/textarea>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Floating Labels<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">Name<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">Password<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"password\" placeholder=\"Your password\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">E-mail<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">URL<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"URL\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">Phone<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"tel\" placeholder=\"Your phone number\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">Bio<\/div>\n              <div class=\"item-input-wrap\">\n                <textarea class=\"resizable\" placeholder=\"Bio\"><\/textarea>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Floating Labels + Outline Inputs<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li class=\"item-content item-input item-input-outline\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">Name<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-outline\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">Password<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"password\" placeholder=\"Your password\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-outline\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">E-mail<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-outline\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">URL<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"URL\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-outline\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">Phone<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"tel\" placeholder=\"Your phone number\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-outline\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">Bio<\/div>\n              <div class=\"item-input-wrap\">\n                <textarea class=\"resizable\" placeholder=\"Bio\"><\/textarea>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Validation + Additional Info<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li class=\"item-content item-input item-input-with-info\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Name<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" required validate \/>\n                <span class=\"input-clear-button\"><\/span>\n                <div class=\"item-input-info\">Default \"required\" validation<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-with-info\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Fruit<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Type 'apple' or 'banana'\" required validate\n                  pattern=\"apple|banana\" \/>\n                <span class=\"input-clear-button\"><\/span>\n                <div class=\"item-input-info\">Pattern validation (<b>apple|banana<\/b>)<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-with-info\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">E-mail<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" required validate \/>\n                <span class=\"input-clear-button\"><\/span>\n                <div class=\"item-input-info\">Default e-mail validation<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-with-info\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">URL<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"Your URL\" required validate \/>\n                <span class=\"input-clear-button\"><\/span>\n                <div class=\"item-input-info\">Default URL validation<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-with-info\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Number<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Enter number\" required validate pattern=\"[0-9]*\"\n                  data-error-message=\"Only numbers please!\" \/>\n                <span class=\"input-clear-button\"><\/span>\n                <div class=\"item-input-info\">With custom error message<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Icon + Input<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"password\" placeholder=\"Your password\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-media\">\n              <i class=\"icon demo-list-icon\"><\/i>\n            <\/div>\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"URL\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Label + Input<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Name<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">Password<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"password\" placeholder=\"Your password\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">E-mail<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">URL<\/div>\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"URL\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Only Inputs<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"password\" placeholder=\"Your password\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"URL\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Inputs + Additional Info<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li class=\"item-content item-input item-input-with-info\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" \/>\n                <span class=\"input-clear-button\"><\/span>\n                <div class=\"item-input-info\">Full name please<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-with-info\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"password\" placeholder=\"Your password\" \/>\n                <span class=\"input-clear-button\"><\/span>\n                <div class=\"item-input-info\">8 characters minimum<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-with-info\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" \/>\n                <span class=\"input-clear-button\"><\/span>\n                <div class=\"item-input-info\">Your work e-mail address<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input item-input-with-info\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"URL\" \/>\n                <span class=\"input-clear-button\"><\/span>\n                <div class=\"item-input-info\">Your website URL<\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Only Inputs Inset<\/div>\n      <div class=\"list inset\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"text\" placeholder=\"Your name\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"password\" placeholder=\"Your password\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"email\" placeholder=\"Your e-mail\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-input-wrap\">\n                <input type=\"url\" placeholder=\"URL\" \/>\n                <span class=\"input-clear-button\"><\/span>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<style>\n  .demo-list-icon,\n  .icon-t4 {\n    background: #ccc;\n    display: block;\n    position: relative;\n  }\n\n  .ios .demo-list-icon {\n    width: 29px;\n    height: 29px;\n    border-radius: 6px;\n    box-sizing: border-box;\n  }\n\n  .md .demo-list-icon {\n    width: 24px;\n    height: 24px;\n    border-radius: 4px;\n  }\n\n  .aurora .demo-list-icon {\n    width: 18px;\n    height: 18px;\n    border-radius: 4px;\n  }\n<\/style>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

@@ -1,0 +1,270 @@
+<h2>Події
+</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Обробники подій в параметрах </a>
+
+    </li>
+        <li>
+        
+<div>Методи подій</div>
+
+    </li>
+        <li>
+        
+<div>Події, що делегують</div>
+
+    </li>
+        <li>
+        
+<div>Контекст обробника подій</div>
+
+    </li>
+        <li>
+        
+<div>Шина подій</div>
+
+    </li>
+    </ul>
+<h3>Події</h3>
+<div>Більшість компонентів Techno4, які побудовані з класами/конструкторами (включаючи сам клас Techno4) мають API стоворення подій.
+Це дозволяє нам легко створювати та обробляти всі види подій, включаючи події між компонентами.
+</div>
+<pre><code>var app = new Techno4({
+  ...
+  on: {
+    // each object key means same name event handler
+    pageInit: function (page) {
+      // do something on page init
+    },
+    popupOpen: function (popup) {
+      // do something on popup open
+    },
+  },
+});
+
+var popup = app.popup.create({
+  ...
+  on: {
+    open: function (popup) {
+      // do something on popup open
+    }
+  }
+})</code></pre>
+<h3>Обробники подій в параметрах 
+</h3>
+<div>Коли ви створюєте приклад  додатків або будь-який інший компонент за допомогою API, ви можете передавати обробник подій на ініціалізацію додатків/компонентів у параметрі:</div>
+<pre><code>var app = new Techno4({
+  ...
+  on: {
+    // each object key means same name event handler
+    pageInit: function (page) {
+      // do something on page init
+    },
+    popupOpen: function (popup) {
+      // do something on popup open
+    },
+  },
+});
+
+var popup = app.popup.create({
+  ...
+  on: {
+    open: function (popup) {
+      // do something on popup open
+    }
+  }
+})</code></pre>
+<h3>Методи подій</h3>
+<div>Також можна додати/видалити обробники подій, використовуючи наступні зразки методів:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>Data4</td>
+
+<td><code>Назва маршруту, напр. HOME</code></td>
+
+</tr>
+                <tr>
+
+<td>Data4</td>
+
+<td><code>Назва маршруту, напр. HOME</code></td>
+
+</tr>
+            </tbody>
+
+</table>
+<pre><code>&lt;rz-seller-title&gt;
+    &lt;p class=&quot;product-seller__title&quot;&gt;
+        &lt;span class=&quot;product-seller__title_header&quot;&gt;Продавець:&lt;/span&gt;
+        &lt;rz-marketplace-link class=&quot;ng-star-inserted&quot;&gt;
+            &lt;a apprzroute=&quot;&quot; href=&quot;https://rozetka.com.ua/ua/seller/neo/&quot; class=&quot;ng-star-inserted&quot;&gt;
+                &lt;strong class=&quot;ng-star-inserted&quot;&gt;Neo&lt;/strong&gt;
+                &lt;!----&gt;
+                &lt;!----&gt;
+            &lt;/a&gt;
+            &lt;!----&gt;
+            &lt;!----&gt;
+            &lt;!----&gt;
+        &lt;/rz-marketplace-link&gt;
+        &lt;!----&gt;
+        &lt;!----&gt;
+    &lt;/p&gt;
+&lt;/rz-seller-title&gt;</code></pre>
+
+<table>
+    
+    <tbody>
+                <tr>
+<td>[instance].on(event, handler)</td>
+
+
+<td>Додати обробник подій</td>
+
+</tr>
+                <tr>
+<td> [instance].once(event, handler)</td>
+
+
+<td>Додати обробник подій, який буде знятий після його завершення</td>
+
+</tr>
+                <tr>
+<td> [instance].off(event, handler)</td>
+
+
+<td>Видалити  обробник подій для зазначеної події</td>
+
+</tr>
+                <tr>
+<td>[instance].off(event)</td>
+
+
+<td>Видалити усі обробники для зазначеної події</td>
+
+</tr>
+                <tr>
+<td> [instance].emit(event, ...args)</td>
+
+
+<td>Запустити подію на примірнику </td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Додати обробники подій</h3>
+<pre><code>var app = new Techno4({/*...*/});
+
+var popup = app.popup.create({/*...*/});
+
+app.on('pageInit', function (page) {
+  // do something on page init
+});
+
+app.on('popupClose', function (popup) {
+  // do something on popup close
+});
+
+popup.on('open', function (popup) {
+  // do something on popup open
+});
+
+// Once handler, will work only once
+popup.once('close', function (popup) {
+  // do something on popup close
+});
+</code></pre>
+<h3>Додати кілька обробників подій </h3>
+<div>Ми можемо додати кілька подій у перших параметрах, розділених пробілом:</div>
+<pre><code>app.on('popupOpen popupClose', function (popup) {
+  // do something on popupOpen and popupClose
+});</code></pre>
+<h3>Видалення обробників  подій</h3>
+<div>Зазначені вище обробник функції може бути видалений:</div>
+<pre><code>function onTabShow() {
+  // do something on tab show
+}
+
+// add handler
+app.on('tabShow', onTabShow);
+
+// later remove tabShow handler:
+app.off('tabShow', onTabShow);</code></pre>
+<h3>Видалення усіх обробників подій</h3>
+<div>Якщо ми не передаємо аргумент другого обробника до методу .off, тоді ми видалимо всіх обробників, призначених для цієї події:</div>
+<pre><code>// Remove all tabShow handlers
+app.off('tabShow');</code></pre>
+<h3>Створення події</h3>
+<div>І звичайно, ми можемо створити будь-які власні події, які нам можуть знадобитися:</div>
+<pre><code>app.on('myCustomEvent', function (a, b) {
+  console.log(a); // -&gt; 'foo'
+  console.log(b); // -&gt; 'bar'
+});
+
+app.emit('myCustomEvent', 'foo', 'bar');</code></pre>
+<h2>Делегування подій </h2>
+<div>Події, що накладаються на компоненти, також делегуються на екземпляр APP:</div>
+<pre><code>app.on('something', function () {/*...*/});
+
+popup.on('something', function () {/*...*/});
+
+popup.emit('something'); // will trigger &quot;something&quot; event assigned to both app and popup instances</code></pre>
+<div>Якщо це не те, що ви хочете, можна створювати так звані місцеві події на компонентах. У цьому випадку нам потрібно ставити префікси назви події з Local ::</div>
+<pre><code>app.on('something', function () {/*...*/});
+
+popup.on('something', function () {/*...*/});
+
+popup.emit('local::something'); // will only trigger &quot;something&quot; event assigned to popup instance above
+</code></pre>
+<h2>Контекст обробника подій</h2>
+<div>Контекст обробника подій (<b>'this'</b>)  завжди буде вказувати на екземпляр, де його було призначено:</div>
+<pre><code>app.on('popupOpen', function () {
+  console.log(this); // -&gt; app instance
+});
+popup.on('popupOpen', function () {
+  console.log(this); // -&gt; popup instance
+});</code></pre>
+<h2>Шина подій </h2>
+<div>API створювача поточних подій на класах Techno4 також дуже корисна для створення спеціальних подій для обміну данними  між компонентами додатків та модулями.
+І є додатковий клас помічників, який призначений для використання лише як шина, а не для затоплення основного додатка чи деяких компонентів.
+Для створення нової шини подій нам потрібно викликати <b>new Techno4.Events():</b>
+</div>
+<pre><code>// Create custom events bus
+var myEvents = new Techno4.Events();
+
+// handle event
+myEvents.on('some-event', function () {
+  // do something when 'some-event' fired
+})
+
+// emit event
+myEvents.emit('some-event');
+
+// Create another event bus
+const notificationEvents = new Techno4.Events();
+
+notificationEvents.on('notificationReceived', function (notification) {
+  // do something with notification
+})
+
+// somewhere in the app send notification
+notificationEvents.emit('notificationReceived', {
+  title: 'New message',
+  from: 'John Doe',
+});</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457\n","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u041f\u043e\u0434\u0456\u0457"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u043f\u043e\u0434\u0456\u0439 \u0432 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445 ","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u043f\u043e\u0434\u0456\u0439"}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457, \u0449\u043e \u0434\u0435\u043b\u0435\u0433\u0443\u044e\u0442\u044c"}},{"type":"nav_item","props":{"content":"\u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430 \u043f\u043e\u0434\u0456\u0439"}},{"type":"nav_item","props":{"content":"\u0428\u0438\u043d\u0430 \u043f\u043e\u0434\u0456\u0439"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457","title_element":"h3","title_style":"h3"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u041f\u043e\u0434\u0456\u0457"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0411\u0456\u043b\u044c\u0448\u0456\u0441\u0442\u044c \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432 Techno4, \u044f\u043a\u0456 \u043f\u043e\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0456 \u0437 \u043a\u043b\u0430\u0441\u0430\u043c\u0438\/\u043a\u043e\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440\u0430\u043c\u0438 (\u0432\u043a\u043b\u044e\u0447\u0430\u044e\u0447\u0438 \u0441\u0430\u043c \u043a\u043b\u0430\u0441 Techno4) \u043c\u0430\u044e\u0442\u044c API \u0441\u0442\u043e\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u043f\u043e\u0434\u0456\u0439.\n\u0426\u0435 \u0434\u043e\u0437\u0432\u043e\u043b\u044f\u0454 \u043d\u0430\u043c \u043b\u0435\u0433\u043a\u043e \u0441\u0442\u0432\u043e\u0440\u044e\u0432\u0430\u0442\u0438 \u0442\u0430 \u043e\u0431\u0440\u043e\u0431\u043b\u044f\u0442\u0438 \u0432\u0441\u0456 \u0432\u0438\u0434\u0438 \u043f\u043e\u0434\u0456\u0439, \u0432\u043a\u043b\u044e\u0447\u0430\u044e\u0447\u0438 \u043f\u043e\u0434\u0456\u0457 \u043c\u0456\u0436 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430\u043c\u0438.\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  ...\n  on: {\n    \/\/ each object key means same name event handler\n    pageInit: function (page) {\n      \/\/ do something on page init\n    },\n    popupOpen: function (popup) {\n      \/\/ do something on popup open\n    },\n  },\n});\n\nvar popup = app.popup.create({\n  ...\n  on: {\n    open: function (popup) {\n      \/\/ do something on popup open\n    }\n  }\n})"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u043f\u043e\u0434\u0456\u0439 \u0432 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445 \n","title_element":"h3","title_style":"h3"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u041e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u043f\u043e\u0434\u0456\u0439 \u0432 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u043e\u043b\u0438 \u0432\u0438 \u0441\u0442\u0432\u043e\u0440\u044e\u0454\u0442\u0435 \u043f\u0440\u0438\u043a\u043b\u0430\u0434  \u0434\u043e\u0434\u0430\u0442\u043a\u0456\u0432 \u0430\u0431\u043e \u0431\u0443\u0434\u044c-\u044f\u043a\u0438\u0439 \u0456\u043d\u0448\u0438\u0439 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e API, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u0432\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439 \u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044e \u0434\u043e\u0434\u0430\u0442\u043a\u0456\u0432\/\u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432 \u0443 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  ...\n  on: {\n    \/\/ each object key means same name event handler\n    pageInit: function (page) {\n      \/\/ do something on page init\n    },\n    popupOpen: function (popup) {\n      \/\/ do something on popup open\n    },\n  },\n});\n\nvar popup = app.popup.create({\n  ...\n  on: {\n    open: function (popup) {\n      \/\/ do something on popup open\n    }\n  }\n})"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u043f\u043e\u0434\u0456\u0439","title_element":"h3","title_style":"h3"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u041c\u0435\u0442\u043e\u0434\u0438 \u043f\u043e\u0434\u0456\u0439"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u0434\u043e\u0434\u0430\u0442\u0438\/\u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u043f\u043e\u0434\u0456\u0439, \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u044e\u0447\u0438 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0456 \u0437\u0440\u0430\u0437\u043a\u0438 \u043c\u0435\u0442\u043e\u0434\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"fragment","children":[{"type":"row","props":{"layout":"1-2,1-2"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-2"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"<code>\u041d\u0430\u0437\u0432\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443, \u043d\u0430\u043f\u0440. HOME<\/code>","link_text":"string","meta":"Data4","title":""}},{"type":"table_item","props":{"content":"<code>\u041d\u0430\u0437\u0432\u0430 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0443, \u043d\u0430\u043f\u0440. HOME<\/code>","link_text":"string","meta":"Data4","title":""}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-2"},"children":[{"type":"code","props":{"content":"<rz-seller-title>\n    <p class=\"product-seller__title\">\n        <span class=\"product-seller__title_header\">\u041f\u0440\u043e\u0434\u0430\u0432\u0435\u0446\u044c:<\/span>\n        <rz-marketplace-link class=\"ng-star-inserted\">\n            <a apprzroute=\"\" href=\"https:\/\/rozetka.com.ua\/ua\/seller\/neo\/\" class=\"ng-star-inserted\">\n                <strong class=\"ng-star-inserted\">Neo<\/strong>\n                <!---->\n                <!---->\n            <\/a>\n            <!---->\n            <!---->\n            <!---->\n        <\/rz-marketplace-link>\n        <!---->\n        <!---->\n    <\/p>\n<\/rz-seller-title>"}}]}]}],"props":{"margin":"default"}},{"type":"table","props":{"image_svg_color":"emphasis","link_style":"default","link_text":"Read more","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_order":"1","table_responsive":"overflow","table_width_meta":"shrink","table_width_title":"shrink"},"children":[{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"","title":"[instance].on(event, handler)"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0437\u043d\u044f\u0442\u0438\u0439 \u043f\u0456\u0441\u043b\u044f \u0439\u043e\u0433\u043e \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f","title":" [instance].once(event, handler)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438  \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439 \u0434\u043b\u044f \u0437\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u043e\u0457 \u043f\u043e\u0434\u0456\u0457","title":" [instance].off(event, handler)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0443\u0441\u0456 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u0434\u043b\u044f \u0437\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u043e\u0457 \u043f\u043e\u0434\u0456\u0457","title":"[instance].off(event)"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u043d\u0430 \u043f\u0440\u0438\u043c\u0456\u0440\u043d\u0438\u043a\u0443 ","title":" [instance].emit(event, ...args)"}}],"name":"\u041c\u0435\u0442\u043e\u0434\u0438 \u043f\u043e\u0434\u0456\u0439"},{"type":"headline","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u043f\u043e\u0434\u0456\u0439","title_element":"h3","title_style":"h3"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u043f\u043e\u0434\u0456\u0439"},{"type":"code","props":{"content":"var app = new Techno4({\/*...*\/});\n\nvar popup = app.popup.create({\/*...*\/});\n\napp.on('pageInit', function (page) {\n  \/\/ do something on page init\n});\n\napp.on('popupClose', function (popup) {\n  \/\/ do something on popup close\n});\n\npopup.on('open', function (popup) {\n  \/\/ do something on popup open\n});\n\n\/\/ Once handler, will work only once\npopup.once('close', function (popup) {\n  \/\/ do something on popup close\n});\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043a\u0456\u043b\u044c\u043a\u0430 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0456\u0432 \u043f\u043e\u0434\u0456\u0439 ","title_element":"h3","title_style":"h3"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u0414\u043e\u0434\u0430\u0442\u0438 \u043a\u0456\u043b\u044c\u043a\u0430 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0456\u0432 \u043f\u043e\u0434\u0456\u0439 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u0456\u043b\u044c\u043a\u0430 \u043f\u043e\u0434\u0456\u0439 \u0443 \u043f\u0435\u0440\u0448\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445, \u0440\u043e\u0437\u0434\u0456\u043b\u0435\u043d\u0438\u0445 \u043f\u0440\u043e\u0431\u0456\u043b\u043e\u043c:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"app.on('popupOpen popupClose', function (popup) {\n  \/\/ do something on popupOpen and popupClose\n});"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0456\u0432  \u043f\u043e\u0434\u0456\u0439","title_element":"h3","title_style":"h3"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u0412\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0456\u0432  \u043f\u043e\u0434\u0456\u0439"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0456 \u0432\u0438\u0449\u0435 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u0444\u0443\u043d\u043a\u0446\u0456\u0457 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u0438\u0439:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"function onTabShow() {\n  \/\/ do something on tab show\n}\n\n\/\/ add handler\napp.on('tabShow', onTabShow);\n\n\/\/ later remove tabShow handler:\napp.off('tabShow', onTabShow);"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f \u0443\u0441\u0456\u0445 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0456\u0432 \u043f\u043e\u0434\u0456\u0439","title_element":"h3","title_style":"h3"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u0412\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f \u0443\u0441\u0456\u0445 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0456\u0432 \u043f\u043e\u0434\u0456\u0439"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u043c\u0438 \u043d\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u0454\u043c\u043e \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u0434\u0440\u0443\u0433\u043e\u0433\u043e \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430 \u0434\u043e \u043c\u0435\u0442\u043e\u0434\u0443 .off, \u0442\u043e\u0434\u0456 \u043c\u0438 \u0432\u0438\u0434\u0430\u043b\u0438\u043c\u043e \u0432\u0441\u0456\u0445 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0456\u0432, \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0445 \u0434\u043b\u044f \u0446\u0456\u0454\u0457 \u043f\u043e\u0434\u0456\u0457:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"\/\/ Remove all tabShow handlers\napp.off('tabShow');"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0421\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u043f\u043e\u0434\u0456\u0457","title_element":"h3","title_style":"h3"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u0421\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u043f\u043e\u0434\u0456\u0457"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0406 \u0437\u0432\u0438\u0447\u0430\u0439\u043d\u043e, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0431\u0443\u0434\u044c-\u044f\u043a\u0456 \u0432\u043b\u0430\u0441\u043d\u0456 \u043f\u043e\u0434\u0456\u0457, \u044f\u043a\u0456 \u043d\u0430\u043c \u043c\u043e\u0436\u0443\u0442\u044c \u0437\u043d\u0430\u0434\u043e\u0431\u0438\u0442\u0438\u0441\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"app.on('myCustomEvent', function (a, b) {\n  console.log(a); \/\/ -> 'foo'\n  console.log(b); \/\/ -> 'bar'\n});\n\napp.emit('myCustomEvent', 'foo', 'bar');"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0414\u0435\u043b\u0435\u0433\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u043e\u0434\u0456\u0439 ","title_element":"h2","title_style":"h2"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u0414\u0435\u043b\u0435\u0433\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u043e\u0434\u0456\u0439 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u043e\u0434\u0456\u0457, \u0449\u043e \u043d\u0430\u043a\u043b\u0430\u0434\u0430\u044e\u0442\u044c\u0441\u044f \u043d\u0430 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0438, \u0442\u0430\u043a\u043e\u0436 \u0434\u0435\u043b\u0435\u0433\u0443\u044e\u0442\u044c\u0441\u044f \u043d\u0430 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 APP:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"app.on('something', function () {\/*...*\/});\n\npopup.on('something', function () {\/*...*\/});\n\npopup.emit('something'); \/\/ will trigger \"something\" event assigned to both app and popup instances"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0446\u0435 \u043d\u0435 \u0442\u0435, \u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435, \u043c\u043e\u0436\u043d\u0430 \u0441\u0442\u0432\u043e\u0440\u044e\u0432\u0430\u0442\u0438 \u0442\u0430\u043a \u0437\u0432\u0430\u043d\u0456 \u043c\u0456\u0441\u0446\u0435\u0432\u0456 \u043f\u043e\u0434\u0456\u0457 \u043d\u0430 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430\u0445. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0441\u0442\u0430\u0432\u0438\u0442\u0438 \u043f\u0440\u0435\u0444\u0456\u043a\u0441\u0438 \u043d\u0430\u0437\u0432\u0438 \u043f\u043e\u0434\u0456\u0457 \u0437 Local ::","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"app.on('something', function () {\/*...*\/});\n\npopup.on('something', function () {\/*...*\/});\n\npopup.emit('local::something'); \/\/ will only trigger \"something\" event assigned to popup instance above\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430 \u043f\u043e\u0434\u0456\u0439","title_element":"h2","title_style":"h2"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430 \u043f\u043e\u0434\u0456\u0439"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430 \u043f\u043e\u0434\u0456\u0439 (<b>'this'<\/b>)  \u0437\u0430\u0432\u0436\u0434\u0438 \u0431\u0443\u0434\u0435 \u0432\u043a\u0430\u0437\u0443\u0432\u0430\u0442\u0438 \u043d\u0430 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440, \u0434\u0435 \u0439\u043e\u0433\u043e \u0431\u0443\u043b\u043e \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043e:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"app.on('popupOpen', function () {\n  console.log(this); \/\/ -> app instance\n});\npopup.on('popupOpen', function () {\n  console.log(this); \/\/ -> popup instance\n});"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0428\u0438\u043d\u0430 \u043f\u043e\u0434\u0456\u0439 ","title_element":"h2","title_style":"h2"},"name":"\u0440\u043e\u0437\u0434\u0456\u043b - \u0428\u0438\u043d\u0430 \u043f\u043e\u0434\u0456\u0439 "},{"type":"text","props":{"column_breakpoint":"m","content":"API \u0441\u0442\u0432\u043e\u0440\u044e\u0432\u0430\u0447\u0430 \u043f\u043e\u0442\u043e\u0447\u043d\u0438\u0445 \u043f\u043e\u0434\u0456\u0439 \u043d\u0430 \u043a\u043b\u0430\u0441\u0430\u0445 Techno4 \u0442\u0430\u043a\u043e\u0436 \u0434\u0443\u0436\u0435 \u043a\u043e\u0440\u0438\u0441\u043d\u0430 \u0434\u043b\u044f \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u043e\u0434\u0456\u0439 \u0434\u043b\u044f \u043e\u0431\u043c\u0456\u043d\u0443 \u0434\u0430\u043d\u043d\u0438\u043c\u0438  \u043c\u0456\u0436 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430\u043c\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u0456\u0432 \u0442\u0430 \u043c\u043e\u0434\u0443\u043b\u044f\u043c\u0438.\n\u0406 \u0454 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u043f\u043e\u043c\u0456\u0447\u043d\u0438\u043a\u0456\u0432, \u044f\u043a\u0438\u0439 \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u0434\u043b\u044f \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u043b\u0438\u0448\u0435 \u044f\u043a \u0448\u0438\u043d\u0430, \u0430 \u043d\u0435 \u0434\u043b\u044f \u0437\u0430\u0442\u043e\u043f\u043b\u0435\u043d\u043d\u044f \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0433\u043e \u0434\u043e\u0434\u0430\u0442\u043a\u0430 \u0447\u0438 \u0434\u0435\u044f\u043a\u0438\u0445 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432.\n\u0414\u043b\u044f \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u043d\u043e\u0432\u043e\u0457 \u0448\u0438\u043d\u0438 \u043f\u043e\u0434\u0456\u0439 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438 <b>new Techno4.Events():<\/b>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"\/\/ Create custom events bus\nvar myEvents = new Techno4.Events();\n\n\/\/ handle event\nmyEvents.on('some-event', function () {\n  \/\/ do something when 'some-event' fired\n})\n\n\/\/ emit event\nmyEvents.emit('some-event');\n\n\/\/ Create another event bus\nconst notificationEvents = new Techno4.Events();\n\nnotificationEvents.on('notificationReceived', function (notification) {\n  \/\/ do something with notification\n})\n\n\/\/ somewhere in the app send notification\nnotificationEvents.emit('notificationReceived', {\n  title: 'New message',\n  from: 'John Doe',\n});"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

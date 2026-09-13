@@ -1,0 +1,66 @@
+{
+  "type": "articles",
+  "id": "21",
+  "attributes": {
+    "id": 21,
+    "asset_id": 153,
+    "title": "Get Started",
+    "alias": "get-started",
+    "state": 1,
+    "access": 1,
+    "created": "2023-02-23 18:28:58",
+    "created_by": 1050,
+    "created_by_alias": "",
+    "modified": "2024-03-11 23:26:05",
+    "featured": 0,
+    "language": "*",
+    "hits": 1397,
+    "publish_up": "2023-02-23 18:28:58",
+    "publish_down": null,
+    "note": "",
+    "images": {
+      "image_intro": "",
+      "image_intro_alt": "",
+      "float_intro": "",
+      "image_intro_caption": "",
+      "image_fulltext": "",
+      "image_fulltext_alt": "",
+      "float_fulltext": "",
+      "image_fulltext_caption": ""
+    },
+    "metakey": "",
+    "metadesc": "",
+    "metadata": {
+      "robots": "",
+      "author": "",
+      "rights": ""
+    },
+    "version": 99,
+    "featured_up": null,
+    "featured_down": null,
+    "typeAlias": "com_content.article",
+    "text": "<h2>Загальна інформація</h2>\n<h1>Навігація</h1>\n<p>\n    \n<a href=\"https://techno4.online/фреймворк/#general\">Вступ</a>\n\n</p>\n<h3>Вступ</h3>\n<div>Techno4 Framework – це безкоштовна платформа HTML для мобільних пристроїв із відкритим вихідним кодом для розробки гібридних мобільних додатків або веб-додатків із зовнішнім виглядом і функцією iOS і Android. Це також незамінний інструмент для створення прототипів програм, щоб якнайшвидше показати робочий прототип програми, якщо вам це знадобиться.</div>\n<div>Основний підхід Techno4 Framework полягає в тому, щоб надати вам можливість легко та зрозуміло створювати програми для iOS та Android за допомогою HTML, CSS та JavaScript.</div>\n\n<table>\n        <thead>\n        <tr>\n\n                        <th>Значення за замовчуванням</th>\n                        <th>Параметер</th>\n                        <th>Опис</th>\n                        <th>Тип</th>\n            \n        </tr>\n    </thead>\n    \n    <tbody>\n                <tr>\n<td>name</td>\n\n<td>Значення за замовчуванням</td>\n\n<td>Назва маршруту, напр. HOME</td>\n\n<td>\n        <a href=\"index.php?option=com_content&view=article&id=14&catid=14\">string</a>\n    </td>\n</tr>\n                <tr>\n<td>payload</td>\n\n<td>data</td>\n\n<td>Назва маршруту, напр. HOME</td>\n\n<td>\n        <a href=\"index.php?option=com_content&view=article&id=18&catid=14\">object</a>\n    </td>\n</tr>\n            </tbody>\n\n</table>\n<pre><code>var app = new Techno4({\n  routes: [\n    {\n      name: 'about',\n      path: '/about/',\n      url: './pages/about.html',\n    },\n    {\n      name: 'news',\n      path: '/news/',\n      url: './pages/news.html',\n      options: {\n        animate: false,\n      },\n    },\n    {\n      name: 'users',\n      path: '/users/',\n      componentUrl: './pages/users.html',\n      options: {\n        props: {\n          users: ['Techno Wizard', 'Taras Shtempo'],\n        },\n      },\n      on: {\n        pageAfterIn: function test (e, page) {\n          // do something after page gets into the view\n        },\n        pageInit: function (e, page) {\n          // do something when page initialized\n        },\n      }\n    },\n    // Default route, match to all pages (e.g. 404 page)\n    {\n      path: '(.*)',\n      url: './pages/404.html',\n    },\n  ],\n});\n</code></pre>\n <!-- {\"type\":\"layout\",\"children\":[{\"type\":\"section\",\"props\":{\"id\":\"general\",\"image_position\":\"center-center\",\"style\":\"primary\",\"title_breakpoint\":\"xl\",\"title_position\":\"top-left\",\"title_rotation\":\"left\",\"vertical_align\":\"middle\",\"width\":\"large\"},\"children\":[{\"type\":\"row\",\"children\":[{\"type\":\"column\",\"props\":{\"image_position\":\"center-center\",\"position_sticky_breakpoint\":\"m\",\"preserve_color\":true,\"style\":\"tile-muted\"},\"children\":[{\"type\":\"headline\",\"props\":{\"content\":\"\\u0417\\u0430\\u0433\\u0430\\u043b\\u044c\\u043d\\u0430 \\u0456\\u043d\\u0444\\u043e\\u0440\\u043c\\u0430\\u0446\\u0456\\u044f\",\"title_element\":\"h2\",\"title_style\":\"heading-small\"},\"name\":\"\\u0417\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a\"},{\"type\":\"headline\",\"props\":{\"content\":\"\\u041d\\u0430\\u0432\\u0456\\u0433\\u0430\\u0446\\u0456\\u044f\",\"title_decoration\":\"line\",\"title_element\":\"h1\",\"title_style\":\"h4\"},\"name\":\"\\u041f\\u0456\\u0434\\u0437\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a \\u041d\\u0410\\u0412\\u0406\\u0413\\u0410\\u0426\\u0406\\u042f\"},{\"type\":\"nav\",\"props\":{\"grid\":\"1\",\"image_vertical_align\":true,\"nav_style\":\"secondary\",\"show_image\":true,\"show_meta\":true},\"children\":[{\"type\":\"nav_item\",\"props\":{\"content\":\"\\u0412\\u0441\\u0442\\u0443\\u043f\",\"link\":\"https:\\/\\/techno4.online\\/\\u0444\\u0440\\u0435\\u0439\\u043c\\u0432\\u043e\\u0440\\u043a\\/#general\"}}],\"name\":\"\\u041d\\u0430\\u0432\\u0456\\u0433\\u0430\\u0446\\u0456\\u044f\"}]}]},{\"type\":\"row\",\"children\":[{\"type\":\"column\",\"props\":{\"image_position\":\"center-center\",\"position_sticky_breakpoint\":\"m\",\"style\":\"tile-default\",\"width_medium\":\"3-4\"},\"children\":[{\"type\":\"headline\",\"props\":{\"content\":\"\\u0412\\u0441\\u0442\\u0443\\u043f\",\"title_element\":\"h3\",\"title_style\":\"h3\"},\"name\":\"\\u041d\\u0430\\u0437\\u0432\\u0430 \\u0440\\u043e\\u0437\\u0434\\u0456\\u043b\\u0443\"},{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"Techno4 Framework \\u2013 \\u0446\\u0435 \\u0431\\u0435\\u0437\\u043a\\u043e\\u0448\\u0442\\u043e\\u0432\\u043d\\u0430 \\u043f\\u043b\\u0430\\u0442\\u0444\\u043e\\u0440\\u043c\\u0430 HTML \\u0434\\u043b\\u044f \\u043c\\u043e\\u0431\\u0456\\u043b\\u044c\\u043d\\u0438\\u0445 \\u043f\\u0440\\u0438\\u0441\\u0442\\u0440\\u043e\\u0457\\u0432 \\u0456\\u0437 \\u0432\\u0456\\u0434\\u043a\\u0440\\u0438\\u0442\\u0438\\u043c \\u0432\\u0438\\u0445\\u0456\\u0434\\u043d\\u0438\\u043c \\u043a\\u043e\\u0434\\u043e\\u043c \\u0434\\u043b\\u044f \\u0440\\u043e\\u0437\\u0440\\u043e\\u0431\\u043a\\u0438 \\u0433\\u0456\\u0431\\u0440\\u0438\\u0434\\u043d\\u0438\\u0445 \\u043c\\u043e\\u0431\\u0456\\u043b\\u044c\\u043d\\u0438\\u0445 \\u0434\\u043e\\u0434\\u0430\\u0442\\u043a\\u0456\\u0432 \\u0430\\u0431\\u043e \\u0432\\u0435\\u0431-\\u0434\\u043e\\u0434\\u0430\\u0442\\u043a\\u0456\\u0432 \\u0456\\u0437 \\u0437\\u043e\\u0432\\u043d\\u0456\\u0448\\u043d\\u0456\\u043c \\u0432\\u0438\\u0433\\u043b\\u044f\\u0434\\u043e\\u043c \\u0456 \\u0444\\u0443\\u043d\\u043a\\u0446\\u0456\\u0454\\u044e iOS \\u0456 Android. \\u0426\\u0435 \\u0442\\u0430\\u043a\\u043e\\u0436 \\u043d\\u0435\\u0437\\u0430\\u043c\\u0456\\u043d\\u043d\\u0438\\u0439 \\u0456\\u043d\\u0441\\u0442\\u0440\\u0443\\u043c\\u0435\\u043d\\u0442 \\u0434\\u043b\\u044f \\u0441\\u0442\\u0432\\u043e\\u0440\\u0435\\u043d\\u043d\\u044f \\u043f\\u0440\\u043e\\u0442\\u043e\\u0442\\u0438\\u043f\\u0456\\u0432 \\u043f\\u0440\\u043e\\u0433\\u0440\\u0430\\u043c, \\u0449\\u043e\\u0431 \\u044f\\u043a\\u043d\\u0430\\u0439\\u0448\\u0432\\u0438\\u0434\\u0448\\u0435 \\u043f\\u043e\\u043a\\u0430\\u0437\\u0430\\u0442\\u0438 \\u0440\\u043e\\u0431\\u043e\\u0447\\u0438\\u0439 \\u043f\\u0440\\u043e\\u0442\\u043e\\u0442\\u0438\\u043f \\u043f\\u0440\\u043e\\u0433\\u0440\\u0430\\u043c\\u0438, \\u044f\\u043a\\u0449\\u043e \\u0432\\u0430\\u043c \\u0446\\u0435 \\u0437\\u043d\\u0430\\u0434\\u043e\\u0431\\u0438\\u0442\\u044c\\u0441\\u044f.\",\"margin\":\"default\",\"text_style\":\"large\"},\"name\":\"\\u041e\\u043f\\u0438\\u0441\"},{\"type\":\"text\",\"props\":{\"column_breakpoint\":\"m\",\"content\":\"\\u041e\\u0441\\u043d\\u043e\\u0432\\u043d\\u0438\\u0439 \\u043f\\u0456\\u0434\\u0445\\u0456\\u0434 Techno4 Framework \\u043f\\u043e\\u043b\\u044f\\u0433\\u0430\\u0454 \\u0432 \\u0442\\u043e\\u043c\\u0443, \\u0449\\u043e\\u0431 \\u043d\\u0430\\u0434\\u0430\\u0442\\u0438 \\u0432\\u0430\\u043c \\u043c\\u043e\\u0436\\u043b\\u0438\\u0432\\u0456\\u0441\\u0442\\u044c \\u043b\\u0435\\u0433\\u043a\\u043e \\u0442\\u0430 \\u0437\\u0440\\u043e\\u0437\\u0443\\u043c\\u0456\\u043b\\u043e \\u0441\\u0442\\u0432\\u043e\\u0440\\u044e\\u0432\\u0430\\u0442\\u0438 \\u043f\\u0440\\u043e\\u0433\\u0440\\u0430\\u043c\\u0438 \\u0434\\u043b\\u044f iOS \\u0442\\u0430 Android \\u0437\\u0430 \\u0434\\u043e\\u043f\\u043e\\u043c\\u043e\\u0433\\u043e\\u044e HTML, CSS \\u0442\\u0430 JavaScript.\",\"margin\":\"default\",\"text_style\":\"large\"},\"name\":\"\\u041e\\u043f\\u0438\\u0441\"},{\"type\":\"table\",\"props\":{\"content_style\":\"text-small\",\"image_svg_color\":\"emphasis\",\"link_fullwidth\":true,\"link_size\":\"small\",\"link_style\":\"default\",\"link_text\":\"\",\"meta_style\":\"text-meta\",\"show_content\":true,\"show_image\":true,\"show_link\":true,\"show_meta\":true,\"show_title\":true,\"table_head_content\":\"\\u041e\\u043f\\u0438\\u0441\",\"table_head_image\":\"\\u0417\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u043d\\u044f\",\"table_head_link\":\"\\u0422\\u0438\\u043f\",\"table_head_meta\":\"\\u041f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u0435\\u0440\",\"table_head_title\":\"\\u0417\\u043d\\u0430\\u0447\\u0435\\u043d\\u043d\\u044f \\u0437\\u0430 \\u0437\\u0430\\u043c\\u043e\\u0432\\u0447\\u0443\\u0432\\u0430\\u043d\\u043d\\u044f\\u043c\",\"table_hover\":true,\"table_order\":\"1\",\"table_responsive\":\"overflow\",\"table_style\":\"divider\",\"table_width_meta\":\"shrink\",\"table_width_title\":\"shrink\",\"title_color\":\"primary\",\"title_style\":\"text-lead\"},\"children\":[{\"type\":\"table_item\",\"props\":{\"content\":\"\\u041d\\u0430\\u0437\\u0432\\u0430 \\u043c\\u0430\\u0440\\u0448\\u0440\\u0443\\u0442\\u0443, \\u043d\\u0430\\u043f\\u0440. HOME\",\"link\":\"index.php?option=com_content&view=article&id=14&catid=14\",\"link_text\":\"string\",\"meta\":\"\\u0417\\u043d\\u0430\\u0447\\u0435\\u043d\\u043d\\u044f \\u0437\\u0430 \\u0437\\u0430\\u043c\\u043e\\u0432\\u0447\\u0443\\u0432\\u0430\\u043d\\u043d\\u044f\\u043c\",\"title\":\"name\"}},{\"type\":\"table_item\",\"props\":{\"content\":\"\\u041d\\u0430\\u0437\\u0432\\u0430 \\u043c\\u0430\\u0440\\u0448\\u0440\\u0443\\u0442\\u0443, \\u043d\\u0430\\u043f\\u0440. HOME\",\"link\":\"index.php?option=com_content&view=article&id=18&catid=14\",\"link_text\":\"object\",\"meta\":\"data\",\"title\":\"payload\"}}],\"name\":\"\\u0422\\u0430\\u0431\\u043b\\u0438\\u0446\\u044f \\u0437\\u043d\\u0430\\u0447\\u0435\\u043d\\u044c\"},{\"type\":\"code\",\"props\":{\"content\":\"var app = new Techno4({\\n  routes: [\\n    {\\n      name: 'about',\\n      path: '\\/about\\/',\\n      url: '.\\/pages\\/about.html',\\n    },\\n    {\\n      name: 'news',\\n      path: '\\/news\\/',\\n      url: '.\\/pages\\/news.html',\\n      options: {\\n        animate: false,\\n      },\\n    },\\n    {\\n      name: 'users',\\n      path: '\\/users\\/',\\n      componentUrl: '.\\/pages\\/users.html',\\n      options: {\\n        props: {\\n          users: ['Techno Wizard', 'Taras Shtempo'],\\n        },\\n      },\\n      on: {\\n        pageAfterIn: function test (e, page) {\\n          \\/\\/ do something after page gets into the view\\n        },\\n        pageInit: function (e, page) {\\n          \\/\\/ do something when page initialized\\n        },\\n      }\\n    },\\n    \\/\\/ Default route, match to all pages (e.g. 404 page)\\n    {\\n      path: '(.*)',\\n      url: '.\\/pages\\/404.html',\\n    },\\n  ],\\n});\\n\"},\"name\":\"\\u041a\\u043e\\u0434\"}]},{\"type\":\"column\",\"props\":{\"image_position\":\"center-center\",\"position_sticky_breakpoint\":\"m\",\"style\":\"card-default\",\"width_medium\":\"1-4\"},\"children\":[{\"type\":\"module\",\"props\":{\"menu_image_align\":\"center\",\"menu_image_margin\":true,\"menu_style\":\"default\",\"menu_type\":\"nav\",\"module\":\"123\",\"type\":\"mod_menu\"}}]}],\"props\":{\"layout\":\"3-4,1-4\"}}],\"name\":\"\\u041f\\u0440\\u0438\\u043a\\u043b\\u0430\\u0434 \\u0434\\u043e\\u043a\\u0443\\u043c\\u0435\\u043d\\u0442\\u0430\\u0446\\u0456\\u0457 0\"}],\"version\":\"4.3.5\",\"yooessentialsVersion\":\"2.2.6\"} -->",
+    "артикул": "",
+    "автор": "",
+    "description": "",
+    "projectkeyword": "",
+    "tags": []
+  },
+  "relationships": {
+    "category": {
+      "data": {
+        "type": "categories",
+        "id": "11"
+      }
+    },
+    "created_by": {
+      "data": {
+        "type": "users",
+        "id": "1050"
+      }
+    },
+    "tags": {
+      "data": []
+    }
+  }
+}

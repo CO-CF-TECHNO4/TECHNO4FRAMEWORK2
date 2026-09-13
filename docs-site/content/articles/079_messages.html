@@ -1,0 +1,1194 @@
+<h2>Повідомлення</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет повідомлень</a>
+
+<p>Макет одного повідомлення</p>
+    </li>
+        <li>
+        
+<div>Методи застосунку Messages</div>
+
+    </li>
+        <li>
+        
+<div>Параметри повідомлень</div>
+
+    </li>
+        <li>
+        
+<div>Параметри одного повідомлення</div>
+
+    </li>
+        <li>
+        
+<div>Методи та властивості повідомлень</div>
+
+    </li>
+        <li>
+        
+<div>Події Повідомлення </div>
+
+<p>Події DOM<p>Події екземплярів застосунку та повідомлень</p>
+    </li>
+        <li>
+        
+<div>Автоматична ініціалізація повідомлень</div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Повідомлення</h3>
+<div>Компонент Messages допоможе вам візуалізувати коментарі та систему обміну повідомленнями у вашому додатку.</div>
+<h3>Макет повідомлень</h3>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;page-content messages-content&quot;&gt;
+    &lt;div class=&quot;messages&quot;&gt;
+      &lt;!-- Штамп дати --&gt;
+      &lt;div class=&quot;messages-title&quot;&gt;&lt;b&gt;Sunday, Feb 9&lt;/b&gt; 12:58&lt;/div&gt;
+
+      &lt;!-- Надіслане повідомлення (за умовчанням - зелений і праворуч) --&gt;
+      &lt;div class=&quot;message message-sent&quot;&gt;
+        &lt;div class=&quot;message-content&quot;&gt;
+          &lt;!-- Бульбашка з текстом --&gt;
+          &lt;div class=&quot;message-bubble&quot;&gt;
+            &lt;div class=&quot;message-text&quot;&gt;Hi, Kate&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Ще одне надіслане повідомлення--&gt;
+      &lt;div class=&quot;message message-sent&quot;&gt;
+        &lt;div class=&quot;message-content&quot;&gt;
+          &lt;div class=&quot;message-bubble&quot;&gt;
+            &lt;div class=&quot;message-text&quot;&gt;How are you?&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!--Отримане повідомлення (за умовчанням - сірий зліва) --&gt;
+      &lt;div class=&quot;message message-received&quot;&gt;
+        &lt;!-- Аватар відправника --&gt;
+        &lt;div class=&quot;message-avatar&quot; style=&quot;background-image:url(path/to/avatar.jpg)&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;message-content&quot;&gt;
+          &lt;!--Ім'я відправника--&gt;
+          &lt;div class=&quot;message-name&quot;&gt;Blue Ninja&lt;/div&gt;
+          &lt;!-- Бульбашка з текстом --&gt;
+          &lt;div class=&quot;message-bubble&quot;&gt;
+            &lt;div class=&quot;message-text&quot;&gt;Hi there, I am also fine, thanks! And how are you?&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>Макет сторінки повідомлень:
+<p>●	<code>messages-content</code> - необхідний додатковий клас для оболонки повідомлень. Слід додати до вмісту сторінки page-content</p>
+<p>●	<code>messages</code> - потрібна додаткова обгортка для бульбашок повідомлень. Обов'язковий елемент.
+<p>●	<code>messages-title</code> - заголовок повідомлень</p>
+<p>●	<code>message</code> -одне повідомлення</p>
+</div>
+<h4>Макет одного повідомлення</h4>
+<div>Ось повний макет одного повідомлення:</div>
+<pre><code>&lt;div class=&quot;message&quot;&gt;
+  &lt;div class=&quot;message-avatar&quot; style=&quot;background-image:url(path/to/avatar)&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;message-content&quot;&gt;
+    &lt;div class=&quot;message-name&quot;&gt;John Doe&lt;/div&gt;
+    &lt;div class=&quot;message-header&quot;&gt;Message header&lt;/div&gt;
+    &lt;div class=&quot;message-bubble&quot;&gt;
+      &lt;div class=&quot;message-text-header&quot;&gt;Text header&lt;/div&gt;
+      &lt;div class=&quot;message-image&quot;&gt;
+        &lt;img src=&quot;path/to/image&quot; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;message-text&quot;&gt;Hello world!&lt;/div&gt;
+      &lt;div class=&quot;message-text-footer&quot;&gt;Text footer&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;message-footer&quot;&gt;Message footer&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>●	<code>message-avatar</code> - аватар відправника, необов'язково
+<p>●	<code>message-name</code> - ім'я відправника, необов'язково</p>
+<p>●	<code>message-header</code> - єдиний заголовок повідомлення, необов'язковий</p>
+<p>●	<code>message-text-header</code> текстовий заголовок всередині бульбашки повідомлення, необов’язково</p>
+<p>●	<code>message-image</code> - зображення повідомлення, необов'язково</p>
+<p>●	<code>message-text</code> - текст повідомлення, необов'язково</p>
+<p>●	<code>message-text-footer</code> - текстовий нижній колонтитул усередині бульбашки повідомленя, необов’язково</p>
+<p>●	<code>message-footer</code> - текст нижнього колонтитула післябульбашки повідомлення, необов’язково</p>
+</div>
+<h5>Додаткові класи для одного контейнера повідомлень</h5>
+<div>●	<code>message-sent</code> - додатковий клас для одного повідомлення, який вказує, що це повідомлення було надіслано користувачем. Він залишається праворуч із зеленим кольором тла.
+<p>●	<code>message-received</code> - додатковий клас для одного повідомлення, який вказує, що це повідомлення було отримано користувачем. Він залишається ліворуч із сірим кольором тла.</p>
+<p>●	<code>message-tail</code> - додатковий клас для одного повідомлення (отриманого або надісланого), щоб додати бульбашку "хвіст"</p>
+<p>●	<code>message-same-name</code> - додатковий клас для вказівки, що повідомлення має таке саме ім’я відправника, як і попереднє повідомлення</p>
+<p>●	<code>message-same-avatar</code> - додатковий клас для вказівки, що повідомлення має той самий аватар, що й попереднє повідомлення</p>
+<p>●	<code>message-same-header</code> - додатковий клас для вказівки, що повідомлення має той самий заголовок, що й попереднє повідомлення</p>
+<p>●	<code>message-same-footer</code> - додатковий клас для вказівки, що повідомлення має той самий нижній колонтитул, що й попереднє повідомлення</p>
+<p>●	<code>message-last</code> - додатковий клас для одного повідомлення (отриманого або надісланого), щоб вказати останнє отримане або останнє надіслане повідомлення в поточній розмові одним відправником</p>
+<p>●	<code>message-first</code> - додатковий клас для одного повідомлення (отриманого або надісланого), щоб вказати перше отримане або перше надіслане повідомлення в поточній розмові одним відправником</p>
+</div>
+<h3>Методи застосунку Messages</h3>
+<div>Тепер, коли у нас є HTML Messages, нам потрібно його ініціалізувати. Нам потрібно використовувати метод пов'язаного застосунку:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app.messages.create(<code>parameters</code>)</td>
+
+<td>Ініціалізація повідомлень із параметрами
+<p>	<code>parameters - object</code> об'єкт з параметрами Messages.
+<p><i>Метод повертає ініціалізований екземпляр Messages</i></p></td>
+
+</tr>
+                <tr>
+
+<td>app.messages.destroy(<code>el</code>)</td>
+
+<td>Знищити екземпляр Messages
+<p>●	<code>el - HTMLElement or string</code> (за допомогою селектора CSS) or <code>object</code>елемент Messages або екземпляр Messages для знищення.
+</td>
+
+</tr>
+                <tr>
+
+<td>app.messages.get(<code>el</code>)</td>
+
+<td>Отримати екземпляр Messages за елементом HTML
+<p>	<code>el - HTMLElement or string</code> (за допомогою селектора CSS). Елемент повідомлень.
+	<p><i>Метод повертає екземпляр Messages</i></p>
+</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Параметри повідомлень</h3>
+<div>Давайте подивимося на список усіх доступних параметрів:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>true</td>
+
+<td>autoLayout</td>
+
+<td>Увімкніть автоматичний макет, щоб автоматично додавати всі необхідні додаткові класи на основі виконаних умов</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>newMessagesFirst</td>
+
+<td>Увімкніть, якщо ви хочете використовувати нові повідомлення зверху, а не внизу</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>scrollMessages</td>
+
+<td>Увімкнути/вимкнути автопрокрутку повідомлень при додаванні нового повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>scrollMessagesOnEdge</td>
+
+<td>Якщо ввімкнено, автоматичне прокручування повідомлень відбуватиметься лише тоді, коли користувач перебуває у верхній/нижній частині перегляду повідомлень</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>messages</td>
+
+<td>Масив із початковими повідомленнями. Кожне повідомлення в масиві має бути представлено як об’єкт з окремими параметрами повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=56&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>renderMessage</td>
+
+<td>Функція відтворення одного повідомлення. Має повертати повний рядок HTML повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function(message)</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>on</td>
+
+<td>Об'єкт з обробниками подій. Наприклад:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var messages = app.messages.create({
+  el: '.messages',
+  on: {
+    change: function () {
+      console.log('Textarea value changed')
+    }
+  }
+})</code></pre>
+<h5>Умови автоверстки</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>firstMessageRule</td>
+
+<td>Функція, яка має повертати логічне значення <code>true</code> або <code>false</code> на основі необхідної умови залежно від попереднього та наступного повідомлень. У разі збігу до повідомлення буде додано <code>message-first</code> перший клас повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function<p>(message, previousMessage, <p>nextMessage)</a>
+    </td>
+</tr>
+                <tr>
+
+<td>lastMessageRule</td>
+
+<td>Функція, яка має повертати логічне значення <code>true</code> або <code>false</code> на основі необхідної умови залежно від попереднього та наступного повідомлень. У разі збігу до повідомлення буде додано останній клас <code>message-last</code>  повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function<p>(message, previousMessage, <p>nextMessage)</a>
+    </td>
+</tr>
+                <tr>
+
+<td>tailMessageRule</td>
+
+<td>Функція, яка має повертати логічне значення <code>true</code> або <code>false</code> на основі необхідної умови залежно від попереднього та наступного повідомлень. У разі збігу до повідомлення буде додано клас хвоста повідомлення <code>message-tail</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function<p>(message, previousMessage, <p>nextMessage)</a>
+    </td>
+</tr>
+                <tr>
+
+<td>sameNameMessageRule</td>
+
+<td>Функція, яка має повертати логічне значення <code>true</code> або <code>false</code> на основі необхідної умови залежно від попереднього та наступного повідомлень. У разі збігу до повідомлення буде додано клас <code>message-same-name</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function<p>(message, previousMessage, <p>nextMessage)</a>
+    </td>
+</tr>
+                <tr>
+
+<td>sameHeaderMessageRule</td>
+
+<td>Функція, яка має повертати логічне значення <code>true</code> або <code>false</code> на основі необхідної умови залежно від попереднього та наступного повідомлень. У разі збігу до повідомлення буде додано клас <code>message-same-header</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function<p>(message, previousMessage, <p>nextMessage)</a>
+    </td>
+</tr>
+                <tr>
+
+<td>sameFooterMessageRule</td>
+
+<td>Функція, яка має повертати логічне значення <code>true</code> або <code>false</code> на основі необхідної умови залежно від попереднього та наступного повідомлень. У разі збігу до повідомлення буде додано клас <code>message-same-footer</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function<p>(message, previousMessage, <p>nextMessage)</a>
+    </td>
+</tr>
+                <tr>
+
+<td>sameAvatarMessageRule</td>
+
+<td>Функція, яка має повертати логічне значення <code>true</code> або <code>false</code> на основі необхідної умови залежно від попереднього та наступного повідомлень. У разі збігу до повідомлення буде додано клас <code>message-same-avatar</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function<p>(message, previousMessage, <p>nextMessage)</a>
+    </td>
+</tr>
+                <tr>
+
+<td>customClassMessageRule</td>
+
+<td>Функція, яка має повертати додаткові класи повідомлень у вигляді рядка на основі необхідної умови залежно від попереднього та наступного повідомлень.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function<p>(message, previousMessage, <p>nextMessage)</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Параметри одного повідомлення</h3>
+<div>Давайте подивимося на єдиний об’єкт параметрів повідомлення, який ми повинні використовувати, коли передаємо масив <code>messages</code>:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>text</td>
+
+<td>Текст повідомлення.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>header</td>
+
+<td>Один заголовок повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>footer</td>
+
+<td>Один футер повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>name</td>
+
+<td>Ім'я відправника</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>avatar</td>
+
+<td>Рядок URL-адреси аватара відправника</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>sent</td>
+
+<td>type</td>
+
+<td>Тип повідомлення - надіслане <code>sent</code> або отримане <code>received</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>textHeader</td>
+
+<td>Заголовок тексту повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>textFooter</td>
+
+<td>Нижній колонтитул тексту повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>image</td>
+
+<td>Рядок HTML зображення повідомлення, напр. <code>&lt;img src="/path/to/image" /&gt;</code>. Може використовуватися замість параметра <code>imageSrc</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>imageSrc</td>
+
+<td>Рядок URL-адреси зображення повідомлення. Може використовуватися замість параметра <code>image</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>isTitle</td>
+
+<td>Визначає, чи має відтворюватися як повідомлення чи як заголовок повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>cssClass</td>
+
+<td>Додатковий клас CSS для встановлення в елементі HTML повідомлення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>attrs</td>
+
+<td>Об’єкт із додатковими HTML-атрибутами, який буде встановлено в HTML-елементі повідомлення. Наприклад, щоб встановити додаткові атрибути даних, це має виглядати так:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var message = {
+  text: 'Hello!',
+  attrs: {
+    'data-id': 1,
+    'data-author-id': 150
+  }
+}</code></pre>
+<h3>Методи та властивості повідомлень</h3>
+<div>Отже, щоб створити повідомлення, ми повинні викликати:</div>
+<pre><code>var messages = app.messages.create({ /* parameters */ })</code></pre>
+<div>Після ініціалізації Messages у нас є його ініціалізований екземпляр у змінній (як у змінній <code>messages</code> у прикладі вище) з корисними методами та властивостями:</div>
+<h5>Властивості </h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>messages.params</td>
+
+<td>Об'єкт із переданими параметрами ініціалізації</td>
+
+</tr>
+                <tr>
+
+<td>messages.el</td>
+
+<td>Елемент HTML контейнера повідомлень (<code>&lt;div class="messages"&gt;</code>)</td>
+
+</tr>
+                <tr>
+
+<td>messages.$el</td>
+
+<td>Елемент Dom64 з елементом HTML повідомлень</td>
+
+</tr>
+                <tr>
+
+<td>messages.messages</td>
+
+<td>Масив з повідомленнями</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h5>Методи</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>messages.showTyping(<code>message</code>)</td>
+
+<td>Показати індикатор повідомлень, що вводяться
+<p>●	<code>message - object</code> - параметри повідомлення, які потрібно додати
+</td>
+
+</tr>
+                <tr>
+
+<td>messages.hideTyping()</td>
+
+<td>Приховати індикатор введеного повідомлення</td>
+
+</tr>
+                <tr>
+
+<td>messages.addMessage<p>(<code>message, method, animate</code>);</td>
+
+<td>Додайте нове повідомлення в кінець або на початок залежно від параметра методу
+<p>	<code>message - object</code> - параметри повідомлення, яке потрібно додати. Вимагається.</p>
+<p><code>method - string</code> - (<code>append</code> or <code>prepend</code>)наказує додати нове повідомлення наприкінці або на початку контейнера повідомлень. Необов’язковий, якщо не вказано, тоді буде додано повідомлення залежно від параметра <code>newMessagesFirst</code></p>
+<p><code>animate - boolean</code> - (за замовчуванням <code>true</code>) Ви можете передати тут <code>false</code>, і повідомлення буде додано негайно без будь-яких переходів і анімації прокручування. Додатково.</p>
+	
+	<p><i>Метод повертає екземпляр Messages</i></p></td>
+
+</tr>
+                <tr>
+
+<td>messages.addMessages<p>(<code>messages, method, animate</code>);</td>
+
+<td>Додайте кілька повідомлень за один раз.
+<p><code>messages - array</code> - масив із повідомленнями для додавання. Кожне повідомлення в масиві має бути представлено як об’єкт із <b>обов’язковими параметрами повідомлення</b>.
+<p><i>Метод повертає екземпляр Messages	</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>messages.removeMessage<p>(<code>message</code>);</td>
+
+<td>Видалити повідомлення
+<p>	<code>message - HTMLElement або string</code> (із CSS Selector) або <code>number</code> (з номером індексу повідомлення з масиву повідомлень) повідомлення для видалення</p>
+<p><i>	Метод повертає екземпляр Messages</i></p>	
+</td>
+
+</tr>
+                <tr>
+
+<td>messages.removeMessages<p>(<code>messages</code>);</td>
+
+<td>Видалити кілька повідомлень
+<p>	<code>messages - array </code>масив із повідомленнями для видалення</p>
+	<p><i>Метод повертає екземпляр Messages</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>messages.scroll<p>(<code>duration, position</code>);</td>
+
+<td>Прокрутити повідомлення вгору/вниз залежно від параметра <code>newMessagesFirst</code>
+<p>●	<code>duration - number</code> тривалість прокручування в мс</p>
+<p>●	<code>position - number</code> положення прокручування в px</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>messages.renderMessages()</td>
+
+<td>Виводити повідомлення HTML залежно від масиву повідомлень</td>
+
+</tr>
+                <tr>
+
+<td>messages.layout();</td>
+
+<td>Примусове автоматичне компонування повідомлень</td>
+
+</tr>
+                <tr>
+
+<td>messages.clear();</td>
+
+<td>Очистити/видалити всі повідомлення</td>
+
+</tr>
+                <tr>
+
+<td>messages.destroy();</td>
+
+<td>Знищити екземпляр повідомлень</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Події Повідомлення </h3>
+<div>Повідомлення запускатимуть такі події DOM в елементі messages і події в екземплярі застосунку та повідомлення:</div>
+<h4>Події DOM </h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Елемент повідомлень <p><code>&lt;div class="messages"&gt;</code></td>
+
+<td>messages:beforedestroy</td>
+
+<td>Подію буде запущено безпосередньо перед тим, як екземпляр Messages буде знищено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Події екземплярів застосунку та повідомлень</h4>
+<div>Екземпляр Messages заупскає події як у себе, так і в екземплярі застосунку. Події екземплярів застосунку мають однакові назви з префіксом повідомлень <code>messages</code>:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th>Об'єкт</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>(<code>messages</code>)</td>
+
+<td>beforeDestroy</td>
+
+<td>Подію буде запущено безпосередньо перед тим, як екземпляр Messages буде знищено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">messages</a>
+    </td>
+</tr>
+                <tr>
+<td>(<code>messages</code>)</td>
+
+<td>messagesBeforeDestroy</td>
+
+<td>Подію буде запущено безпосередньо перед тим, як екземпляр Messages буде знищено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Автоматична ініціалізація повідомлень</h3>
+<div>Якщо вам не потрібно використовувати Messages API, а ваші повідомлення знаходяться всередині сторінки та представлені в DOM на момент ініціалізації сторінки, тоді їх можна автоматично ініціалізувати, просто додавши додатковий клас ініціалізації повідомлень <code>message-init</code>  до елемента повідомлень, і всі необхідні параметри можна передаватися за допомогою атрибутів даних <code>data-</code>:</div>
+<pre><code>&lt;div class=&quot;messages messages-init&quot; data-new-messages-first=&quot;true&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+<div>Параметри, які використовуються в <code>camelCase</code>, наприклад <code>newMessagesFirst</code>, в атрибутах <code>data-</code> повинні використовуватися в <code>kebab-case</code> як <code>data-new-messages-first</code></div>
+<h3>Змінні CSS </h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  --t4-message-text-header-text-color: inherit;
+  --t4-message-text-header-opacity: 0.65;
+  --t4-message-text-header-font-size: 12px;
+  --t4-message-text-footer-text-color: inherit;
+  --t4-message-text-footer-opacity: 0.65;
+  --t4-message-text-footer-font-size: 12px;
+  --t4-message-bubble-line-height: 1.2;
+  --t4-message-header-font-size: 12px;
+  --t4-message-footer-font-size: 11px;
+  --t4-message-name-font-size: 12px;
+  --t4-message-name-font-weight: inherit;
+  --t4-message-avatar-border-radius: 50%;
+  --t4-messages-title-font-weight: inherit;
+  /*
+  --t4-message-sent-bg-color: var(--t4-theme-color);
+  */
+  --t4-message-sent-text-color: #fff;
+  --t4-messages-content-bg-color: #fff;
+  --t4-message-typing-indicator-bg-color: #000;
+  --t4-message-received-bg-color: #e5e5ea;
+  --t4-message-received-text-color: #000;
+}
+:root .dark,
+:root.dark {
+  --t4-messages-title-text-color: rgba(255, 255, 255, 0.54);
+  --t4-message-header-text-color: rgba(255, 255, 255, 0.54);
+  --t4-message-name-text-color: rgba(255, 255, 255, 0.54);
+  --t4-message-footer-text-color: rgba(255, 255, 255, 0.54);
+  --t4-messages-content-bg-color: transparent;
+  --t4-message-received-bg-color: #252525;
+  --t4-message-received-text-color: #fff;
+  --t4-message-typing-indicator-bg-color: #fff;
+}
+.ios {
+  --t4-messages-title-text-color: rgba(0, 0, 0, 0.45);
+  --t4-messages-title-font-size: 11px;
+  --t4-message-header-text-color: rgba(0, 0, 0, 0.45);
+  --t4-message-footer-text-color: rgba(0, 0, 0, 0.45);
+  --t4-message-name-text-color: rgba(0, 0, 0, 0.45);
+  --t4-message-avatar-size: 29px;
+  --t4-message-margin: 10px;
+  --t4-message-bubble-min-height: 32px;
+  --t4-message-bubble-font-size: 17px;
+  --t4-message-bubble-border-radius: 16px;
+  --t4-message-bubble-padding-vertical: 6px;
+  --t4-message-bubble-padding-horizontal: 16px;
+  --t4-message-typing-indicator-opacity: 0.35;
+}
+.md {
+  --t4-messages-title-font-size: 12px;
+  --t4-message-avatar-size: 32px;
+  --t4-message-margin: 16px;
+  --t4-message-bubble-min-height: 32px;
+  --t4-message-bubble-font-size: 16px;
+  --t4-message-bubble-border-radius: 4px;
+  --t4-message-bubble-padding-vertical: 6px;
+  --t4-message-bubble-padding-horizontal: 8px;
+  --t4-message-typing-indicator-opacity: 0.6;
+  --t4-messages-title-text-color: rgba(0, 0, 0, 0.51);
+  --t4-message-header-text-color: rgba(0, 0, 0, 0.51);
+  --t4-message-footer-text-color: rgba(0, 0, 0, 0.51);
+  --t4-message-name-text-color: rgba(0, 0, 0, 0.51);
+}
+.aurora {
+  --t4-messages-title-font-size: 14px;
+  --t4-message-avatar-size: 32px;
+  --t4-message-margin: 16px;
+  --t4-message-bubble-min-height: 34px;
+  --t4-message-bubble-font-size: 16px;
+  --t4-message-bubble-line-height: 1.4;
+  --t4-message-bubble-border-radius: 16px;
+  --t4-message-bubble-padding-vertical: 6px;
+  --t4-message-bubble-padding-horizontal: 10px;
+  --t4-message-typing-indicator-opacity: 0.5;
+  --t4-message-header-font-size: 14px;
+  --t4-message-footer-font-size: 12px;
+  --t4-message-name-font-size: 14px;
+  --t4-messages-title-text-color: rgba(0, 0, 0, 0.51);
+  --t4-message-header-text-color: rgba(0, 0, 0, 0.51);
+  --t4-message-footer-text-color: rgba(0, 0, 0, 0.51);
+  --t4-message-name-text-color: rgba(0, 0, 0, 0.51);
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Messages&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;toolbar messagebar&quot;&gt;
+      &lt;div class=&quot;toolbar-inner&quot;&gt;
+        &lt;div class=&quot;messagebar-area&quot;&gt;
+          &lt;textarea class=&quot;resizable&quot; placeholder=&quot;Message&quot;&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+        &lt;a class=&quot;link send-link&quot; href=&quot;#&quot; @click=${sendMessage}&gt;Send&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content messages-content&quot;&gt;
+      &lt;div class=&quot;messages&quot;&gt;
+        &lt;div class=&quot;messages-title&quot;&gt;&lt;b&gt;Sunday, Feb 9,&lt;/b&gt; 12:58&lt;/div&gt;
+        &lt;div class=&quot;message message-sent&quot;&gt;
+          &lt;div class=&quot;message-avatar&quot;
+            style=&quot;background-image:url(https://cdn.techno4.io/placeholder/people-100x100-7.jpg)&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-name&quot;&gt;John Doe&lt;/div&gt;
+            &lt;div class=&quot;message-header&quot;&gt;Message header&lt;/div&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text-header&quot;&gt;Text header&lt;/div&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&lt;/div&gt;
+              &lt;div class=&quot;message-text-footer&quot;&gt;Text footer&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;message-footer&quot;&gt;Message footer&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-received&quot;&gt;
+          &lt;div class=&quot;message-avatar&quot;
+            style=&quot;background-image:url(https://cdn.techno4.io/placeholder/people-100x100-7.jpg)&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-name&quot;&gt;John Doe&lt;/div&gt;
+            &lt;div class=&quot;message-header&quot;&gt;Message header&lt;/div&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text-header&quot;&gt;Text header&lt;/div&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&lt;/div&gt;
+              &lt;div class=&quot;message-text-footer&quot;&gt;Text footer&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;message-footer&quot;&gt;Message footer&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-sent&quot;&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Hi, Kate&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-sent&quot;&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text&quot;&gt;How are you?&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-received&quot;&gt;
+          &lt;div class=&quot;message-avatar&quot;
+            style=&quot;background-image:url(https://cdn.techno4.io/placeholder/people-100x100-9.jpg)&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-name&quot;&gt;Kate&lt;/div&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Hi, I am good!&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-received&quot;&gt;
+          &lt;div class=&quot;message-avatar&quot;
+            style=&quot;background-image:url(https://cdn.techno4.io/placeholder/people-100x100-7.jpg)&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-name&quot;&gt;Blue Ninja&lt;/div&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Hi there, I am also fine, thanks! And how are you?&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-sent&quot;&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Hey, Blue Ninja! Glad to see you ;)&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-sent&quot;&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Hey, look, cutest kitten ever!&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-sent&quot;&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-image&quot;&gt;
+                &lt;img src=&quot;https://cdn.techno4.io/placeholder/cats-200x260-4.jpg&quot;
+                  style=&quot;width:200px; height: 260px&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-received&quot;&gt;
+          &lt;div class=&quot;message-avatar&quot;
+            style=&quot;background-image:url(https://cdn.techno4.io/placeholder/people-100x100-9.jpg)&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-name&quot;&gt;Kate&lt;/div&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Nice!&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-received&quot;&gt;
+          &lt;div class=&quot;message-avatar&quot;
+            style=&quot;background-image:url(https://cdn.techno4.io/placeholder/people-100x100-9.jpg)&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-name&quot;&gt;Kate&lt;/div&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Like it very much!&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;message message-received&quot;&gt;
+          &lt;div class=&quot;message-avatar&quot;
+            style=&quot;background-image:url(https://cdn.techno4.io/placeholder/people-100x100-7.jpg)&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;message-content&quot;&gt;
+            &lt;div class=&quot;message-name&quot;&gt;Blue Ninja&lt;/div&gt;
+            &lt;div class=&quot;message-bubble&quot;&gt;
+              &lt;div class=&quot;message-text&quot;&gt;Awesome!&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, { $t4, $, $on }) =&gt; {
+    let messages;
+    let messagebar;
+
+    // Response flag
+    var responseInProgress = false;
+
+    // Dummy response
+    var answers = [
+      'Yes!',
+      'No',
+      'Hm...',
+      'I am not sure',
+      'And what about you?',
+      'May be ;)',
+      'Lorem ipsum dolor sit amet, consectetur',
+      'What?',
+      'Are you sure?',
+      'Of course',
+      'Need to think about it',
+      'Amazing!!!'
+    ]
+    var people = [
+      {
+        name: 'Kate Johnson',
+        avatar: 'https://cdn.techno4.io/placeholder/people-100x100-9.jpg'
+      },
+      {
+        name: 'Blue Ninja',
+        avatar: 'https://cdn.techno4.io/placeholder/people-100x100-7.jpg'
+      }
+    ];
+
+    // Отримати повідомлення
+    const receiveMessage = () =&gt; {
+      responseInProgress = true;
+      setTimeout(function () {
+        // Отримайте випадкову відповідь і випадкову особу
+        var answer = answers[Math.floor(Math.random() * answers.length)];
+        var person = people[Math.floor(Math.random() * people.length)];
+
+        // Показати індикатор набору тексту
+        messages.showTyping({
+          header: person.name + ' is typing',
+          avatar: person.avatar
+        });
+
+        setTimeout(function () {
+          // Додати отримане фіктивне повідомлення
+          messages.addMessage({
+            text: answer,
+            type: 'received',
+            name: person.name,
+            avatar: person.avatar
+          });
+          // Приховати індикатор набору тексту
+          messages.hideTyping();
+          responseInProgress = false;
+        }, 4000);
+      }, 1000);
+    }
+
+    // Відправити повідомлення
+    const sendMessage = () =&gt; {
+      var text = messagebar.getValue().replace(/\n/g, '&lt;br&gt;').trim();
+      // повернути, якщо повідомлення пусте
+      if (!text.length) return;
+
+      // Очистити зону
+      messagebar.clear();
+
+      // Повернути фокус до області
+      messagebar.focus();
+
+      // Додати повідомлення до повідомлень
+      messages.addMessage({
+        text: text,
+      });
+
+      if (responseInProgress) return;
+      // Отримати фіктивне повідомлення
+      receiveMessage();
+    }
+
+    $on('pageInit', () =&gt; {
+      // ініціалізація Повідомлення 
+      messages = app.messages.create({
+        el: '.messages',
+
+        // Правило першого повідомлення
+        firstMessageRule: function (message, previousMessage, nextMessage) {
+          // Пропустити заголовок
+          if (message.isTitle) return false;
+          /* якщо:
+             - попереднього повідомлення немає
+             - або інший тип попереднього повідомлення (надіслано/отримано).
+             - або ім'я відправника попереднього повідомлення інше
+
+          */
+          if (!previousMessage || previousMessage.type !== message.type || previousMessage.name !== message.name) return true;
+          return false;
+        },
+        // Правило останнього повідомлення
+        lastMessageRule: function (message, previousMessage, nextMessage) {
+          // Пропустити заголовок
+          if (message.isTitle) return false;
+          /* якщо:
+             - наступного повідомлення немає
+             - або тип наступного повідомлення (відправлено/отримано) інший
+             - або ім'я відправника наступного повідомлення інше
+
+          */
+          if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) return true;
+          return false;
+        },
+        // Правило останнього повідомлення
+        tailMessageRule: function (message, previousMessage, nextMessage) {
+          // Пропустити якщо це  заголовок
+          if (message.isTitle) return false;
+          /* if (загалом те саме, що lastMessageRule):
+           - наступного повідомлення немає
+           - або тип наступного повідомлення (відправлено/отримано) інший
+           - або ім'я відправника наступного повідомлення інше
+        */
+          if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) return true;
+          return false;
+        }
+      });
+
+      // Init Messagebar
+      messagebar = app.messagebar.create({
+        el: '.messagebar'
+      });
+    });
+
+    return $render;
+  }
+
+
+
+&lt;/script&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a- \u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general","meta":"\u041c\u0430\u043a\u0435\u0442 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Messages"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f ","meta":"\u041f\u043e\u0434\u0456\u0457 DOM<p>\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"}},{"type":"nav_item","props":{"content":"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 Messages \u0434\u043e\u043f\u043e\u043c\u043e\u0436\u0435 \u0432\u0430\u043c \u0432\u0456\u0437\u0443\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438 \u043a\u043e\u043c\u0435\u043d\u0442\u0430\u0440\u0456 \u0442\u0430 \u0441\u0438\u0441\u0442\u0435\u043c\u0443 \u043e\u0431\u043c\u0456\u043d\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u043c\u0438 \u0443 \u0432\u0430\u0448\u043e\u043c\u0443 \u0434\u043e\u0434\u0430\u0442\u043a\u0443.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"page-content messages-content\">\n    <div class=\"messages\">\n      <!-- \u0428\u0442\u0430\u043c\u043f \u0434\u0430\u0442\u0438 -->\n      <div class=\"messages-title\"><b>Sunday, Feb 9<\/b> 12:58<\/div>\n\n      <!-- \u041d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f (\u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c - \u0437\u0435\u043b\u0435\u043d\u0438\u0439 \u0456 \u043f\u0440\u0430\u0432\u043e\u0440\u0443\u0447) -->\n      <div class=\"message message-sent\">\n        <div class=\"message-content\">\n          <!-- \u0411\u0443\u043b\u044c\u0431\u0430\u0448\u043a\u0430 \u0437 \u0442\u0435\u043a\u0441\u0442\u043e\u043c -->\n          <div class=\"message-bubble\">\n            <div class=\"message-text\">Hi, Kate<\/div>\n          <\/div>\n        <\/div>\n      <\/div>\n\n      <!-- \u0429\u0435 \u043e\u0434\u043d\u0435 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f-->\n      <div class=\"message message-sent\">\n        <div class=\"message-content\">\n          <div class=\"message-bubble\">\n            <div class=\"message-text\">How are you?<\/div>\n          <\/div>\n        <\/div>\n      <\/div>\n\n      <!--\u041e\u0442\u0440\u0438\u043c\u0430\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f (\u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c - \u0441\u0456\u0440\u0438\u0439 \u0437\u043b\u0456\u0432\u0430) -->\n      <div class=\"message message-received\">\n        <!-- \u0410\u0432\u0430\u0442\u0430\u0440 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430 -->\n        <div class=\"message-avatar\" style=\"background-image:url(path\/to\/avatar.jpg)\"><\/div>\n        <div class=\"message-content\">\n          <!--\u0406\u043c'\u044f \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430-->\n          <div class=\"message-name\">Blue Ninja<\/div>\n          <!-- \u0411\u0443\u043b\u044c\u0431\u0430\u0448\u043a\u0430 \u0437 \u0442\u0435\u043a\u0441\u0442\u043e\u043c -->\n          <div class=\"message-bubble\">\n            <div class=\"message-text\">Hi there, I am also fine, thanks! And how are you?<\/div>\n          <\/div>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u043a\u0435\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c:\n<p>\u25cf\t<code>messages-content<\/code> - \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u043e\u0431\u043e\u043b\u043e\u043d\u043a\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u0421\u043b\u0456\u0434 \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e \u0432\u043c\u0456\u0441\u0442\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 page-content<\/p>\n<p>\u25cf\t<code>messages<\/code> - \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0430 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0430 \u043e\u0431\u0433\u043e\u0440\u0442\u043a\u0430 \u0434\u043b\u044f \u0431\u0443\u043b\u044c\u0431\u0430\u0448\u043e\u043a \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u041e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.\n<p>\u25cf\t<code>messages-title<\/code> - \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c<\/p>\n<p>\u25cf\t<code>message<\/code> -\u043e\u0434\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","title_element":"h4","title_style":"h4"},"name":"\u043f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0441\u044c \u043f\u043e\u0432\u043d\u0438\u0439 \u043c\u0430\u043a\u0435\u0442 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"message\">\n  <div class=\"message-avatar\" style=\"background-image:url(path\/to\/avatar)\"><\/div>\n  <div class=\"message-content\">\n    <div class=\"message-name\">John Doe<\/div>\n    <div class=\"message-header\">Message header<\/div>\n    <div class=\"message-bubble\">\n      <div class=\"message-text-header\">Text header<\/div>\n      <div class=\"message-image\">\n        <img src=\"path\/to\/image\" \/>\n      <\/div>\n      <div class=\"message-text\">Hello world!<\/div>\n      <div class=\"message-text-footer\">Text footer<\/div>\n    <\/div>\n    <div class=\"message-footer\">Message footer<\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u25cf\t<code>message-avatar<\/code> - \u0430\u0432\u0430\u0442\u0430\u0440 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430, \u043d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u043e\n<p>\u25cf\t<code>message-name<\/code> - \u0456\u043c'\u044f \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430, \u043d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u043e<\/p>\n<p>\u25cf\t<code>message-header<\/code> - \u0454\u0434\u0438\u043d\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u043d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439<\/p>\n<p>\u25cf\t<code>message-text-header<\/code> \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0431\u0443\u043b\u044c\u0431\u0430\u0448\u043a\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u043d\u0435\u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u043e<\/p>\n<p>\u25cf\t<code>message-image<\/code> - \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u043d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u043e<\/p>\n<p>\u25cf\t<code>message-text<\/code> - \u0442\u0435\u043a\u0441\u0442 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u043d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u043e<\/p>\n<p>\u25cf\t<code>message-text-footer<\/code> - \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u0438\u0439 \u043d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b \u0443\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0431\u0443\u043b\u044c\u0431\u0430\u0448\u043a\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044f, \u043d\u0435\u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u043e<\/p>\n<p>\u25cf\t<code>message-footer<\/code> - \u0442\u0435\u043a\u0441\u0442 \u043d\u0438\u0436\u043d\u044c\u043e\u0433\u043e \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b\u0430 \u043f\u0456\u0441\u043b\u044f\u0431\u0443\u043b\u044c\u0431\u0430\u0448\u043a\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u043d\u0435\u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u043e<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043a\u043b\u0430\u0441\u0438 \u0434\u043b\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043a\u043b\u0430\u0441\u0438 \u0434\u043b\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u25cf\t<code>message-sent<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u044f\u043a\u0438\u0439 \u0432\u043a\u0430\u0437\u0443\u0454, \u0449\u043e \u0446\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u043b\u043e \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0435\u043c. \u0412\u0456\u043d \u0437\u0430\u043b\u0438\u0448\u0430\u0454\u0442\u044c\u0441\u044f \u043f\u0440\u0430\u0432\u043e\u0440\u0443\u0447 \u0456\u0437 \u0437\u0435\u043b\u0435\u043d\u0438\u043c \u043a\u043e\u043b\u044c\u043e\u0440\u043e\u043c \u0442\u043b\u0430.\n<p>\u25cf\t<code>message-received<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u044f\u043a\u0438\u0439 \u0432\u043a\u0430\u0437\u0443\u0454, \u0449\u043e \u0446\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u043b\u043e \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0435\u043c. \u0412\u0456\u043d \u0437\u0430\u043b\u0438\u0448\u0430\u0454\u0442\u044c\u0441\u044f \u043b\u0456\u0432\u043e\u0440\u0443\u0447 \u0456\u0437 \u0441\u0456\u0440\u0438\u043c \u043a\u043e\u043b\u044c\u043e\u0440\u043e\u043c \u0442\u043b\u0430.<\/p>\n<p>\u25cf\t<code>message-tail<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f (\u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e\u0433\u043e \u0430\u0431\u043e \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e\u0433\u043e), \u0449\u043e\u0431 \u0434\u043e\u0434\u0430\u0442\u0438 \u0431\u0443\u043b\u044c\u0431\u0430\u0448\u043a\u0443 \"\u0445\u0432\u0456\u0441\u0442\"<\/p>\n<p>\u25cf\t<code>message-same-name<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0456\u0432\u043a\u0438, \u0449\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043c\u0430\u0454 \u0442\u0430\u043a\u0435 \u0441\u0430\u043c\u0435 \u0456\u043c\u2019\u044f \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430, \u044f\u043a \u0456 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0454 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f<\/p>\n<p>\u25cf\t<code>message-same-avatar<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0456\u0432\u043a\u0438, \u0449\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043c\u0430\u0454 \u0442\u043e\u0439 \u0441\u0430\u043c\u0438\u0439 \u0430\u0432\u0430\u0442\u0430\u0440, \u0449\u043e \u0439 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0454 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f<\/p>\n<p>\u25cf\t<code>message-same-header<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0456\u0432\u043a\u0438, \u0449\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043c\u0430\u0454 \u0442\u043e\u0439 \u0441\u0430\u043c\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a, \u0449\u043e \u0439 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0454 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f<\/p>\n<p>\u25cf\t<code>message-same-footer<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0456\u0432\u043a\u0438, \u0449\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043c\u0430\u0454 \u0442\u043e\u0439 \u0441\u0430\u043c\u0438\u0439 \u043d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b, \u0449\u043e \u0439 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0454 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f<\/p>\n<p>\u25cf\t<code>message-last<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f (\u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e\u0433\u043e \u0430\u0431\u043e \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e\u0433\u043e), \u0449\u043e\u0431 \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u043e\u0441\u0442\u0430\u043d\u043d\u0454 \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u0435 \u0430\u0431\u043e \u043e\u0441\u0442\u0430\u043d\u043d\u0454 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u043f\u043e\u0442\u043e\u0447\u043d\u0456\u0439 \u0440\u043e\u0437\u043c\u043e\u0432\u0456 \u043e\u0434\u043d\u0438\u043c \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u043e\u043c<\/p>\n<p>\u25cf\t<code>message-first<\/code> - \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0434\u043b\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f (\u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e\u0433\u043e \u0430\u0431\u043e \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e\u0433\u043e), \u0449\u043e\u0431 \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u043f\u0435\u0440\u0448\u0435 \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u0435 \u0430\u0431\u043e \u043f\u0435\u0440\u0448\u0435 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u043f\u043e\u0442\u043e\u0447\u043d\u0456\u0439 \u0440\u043e\u0437\u043c\u043e\u0432\u0456 \u043e\u0434\u043d\u0438\u043c \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u043e\u043c<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Messages","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Messages"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440, \u043a\u043e\u043b\u0438 \u0443 \u043d\u0430\u0441 \u0454 HTML Messages, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438. \u041d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432'\u044f\u0437\u0430\u043d\u043e\u0433\u043e \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0406\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c \u0456\u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438\n<p>\t<code>parameters - object<\/code> \u043e\u0431'\u0454\u043a\u0442 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 Messages.\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages<\/i><\/p>","link_text":"string","meta":"app.messages.create(<code>parameters<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0417\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages\n<p>\u25cf\t<code>el - HTMLElement or string<\/code> (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS) or <code>object<\/code>\u0435\u043b\u0435\u043c\u0435\u043d\u0442 Messages \u0430\u0431\u043e \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages \u0434\u043b\u044f \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f.\n","link_text":"string","meta":"app.messages.destroy(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u041e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages \u0437\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML\n<p>\t<code>el - HTMLElement or string<\/code> (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS). \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c.\n\t<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages<\/i><\/p>\n","meta":"app.messages.get(<code>el<\/code>)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u0441\u043f\u0438\u0441\u043e\u043a \u0443\u0441\u0456\u0445 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0456\u0442\u044c \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0439 \u043c\u0430\u043a\u0435\u0442, \u0449\u043e\u0431 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0434\u043e\u0434\u0430\u0432\u0430\u0442\u0438 \u0432\u0441\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043a\u043b\u0430\u0441\u0438 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u0438\u0445 \u0443\u043c\u043e\u0432","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"autoLayout","title":"true"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0456\u0442\u044c, \u044f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043d\u043e\u0432\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0437\u0432\u0435\u0440\u0445\u0443, \u0430 \u043d\u0435 \u0432\u043d\u0438\u0437\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"newMessagesFirst","title":"false"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438\/\u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0430\u0432\u0442\u043e\u043f\u0440\u043e\u043a\u0440\u0443\u0442\u043a\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c \u043f\u0440\u0438 \u0434\u043e\u0434\u0430\u0432\u0430\u043d\u043d\u0456 \u043d\u043e\u0432\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"scrollMessages","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0435 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c \u0432\u0456\u0434\u0431\u0443\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043b\u0438\u0448\u0435 \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u0454 \u0443 \u0432\u0435\u0440\u0445\u043d\u0456\u0439\/\u043d\u0438\u0436\u043d\u0456\u0439 \u0447\u0430\u0441\u0442\u0438\u043d\u0456 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"scrollMessagesOnEdge","title":"true"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0438\u043c\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u043c\u0438. \u041a\u043e\u0436\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u043c\u0430\u0441\u0438\u0432\u0456 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043e \u044f\u043a \u043e\u0431\u2019\u0454\u043a\u0442 \u0437 \u043e\u043a\u0440\u0435\u043c\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=56&catid=14","link_text":"array","meta":"messages"}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f. \u041c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043f\u043e\u0432\u043d\u0438\u0439 \u0440\u044f\u0434\u043e\u043a HTML \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function(message)","meta":"renderMessage"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"fragment","props":{"margin":"default"},"children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c\u0438 \u043f\u043e\u0434\u0456\u0439. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"on","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var messages = app.messages.create({\n  el: '.messages',\n  on: {\n    change: function () {\n      console.log('Textarea value changed')\n    }\n  }\n})"}}]}]}]},{"type":"headline","props":{"content":"\u0423\u043c\u043e\u0432\u0438 \u0430\u0432\u0442\u043e\u0432\u0435\u0440\u0441\u0442\u043a\u0438","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0423\u043c\u043e\u0432\u0438 \u0430\u0432\u0442\u043e\u0432\u0435\u0440\u0441\u0442\u043a\u0438"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f, \u044f\u043a\u0430 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>true<\/code> \u0430\u0431\u043e <code>false<\/code> \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0443\u043c\u043e\u0432\u0438 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0442\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u0423 \u0440\u0430\u0437\u0456 \u0437\u0431\u0456\u0433\u0443 \u0434\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e <code>message-first<\/code> \u043f\u0435\u0440\u0448\u0438\u0439 \u043a\u043b\u0430\u0441 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function<p>(message, previousMessage, <p>nextMessage)","meta":"firstMessageRule","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f, \u044f\u043a\u0430 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>true<\/code> \u0430\u0431\u043e <code>false<\/code> \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0443\u043c\u043e\u0432\u0438 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0442\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u0423 \u0440\u0430\u0437\u0456 \u0437\u0431\u0456\u0433\u0443 \u0434\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043e\u0441\u0442\u0430\u043d\u043d\u0456\u0439 \u043a\u043b\u0430\u0441 <code>message-last<\/code>  \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function<p>(message, previousMessage, <p>nextMessage)","meta":"lastMessageRule","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f, \u044f\u043a\u0430 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>true<\/code> \u0430\u0431\u043e <code>false<\/code> \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0443\u043c\u043e\u0432\u0438 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0442\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u0423 \u0440\u0430\u0437\u0456 \u0437\u0431\u0456\u0433\u0443 \u0434\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043a\u043b\u0430\u0441 \u0445\u0432\u043e\u0441\u0442\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f <code>message-tail<\/code>","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function<p>(message, previousMessage, <p>nextMessage)","meta":"tailMessageRule","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f, \u044f\u043a\u0430 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>true<\/code> \u0430\u0431\u043e <code>false<\/code> \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0443\u043c\u043e\u0432\u0438 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0442\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u0423 \u0440\u0430\u0437\u0456 \u0437\u0431\u0456\u0433\u0443 \u0434\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043a\u043b\u0430\u0441 <code>message-same-name<\/code>","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function<p>(message, previousMessage, <p>nextMessage)","meta":"sameNameMessageRule","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f, \u044f\u043a\u0430 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>true<\/code> \u0430\u0431\u043e <code>false<\/code> \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0443\u043c\u043e\u0432\u0438 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0442\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u0423 \u0440\u0430\u0437\u0456 \u0437\u0431\u0456\u0433\u0443 \u0434\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043a\u043b\u0430\u0441 <code>message-same-header<\/code>","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function<p>(message, previousMessage, <p>nextMessage)","meta":"sameHeaderMessageRule","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f, \u044f\u043a\u0430 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>true<\/code> \u0430\u0431\u043e <code>false<\/code> \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0443\u043c\u043e\u0432\u0438 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0442\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u0423 \u0440\u0430\u0437\u0456 \u0437\u0431\u0456\u0433\u0443 \u0434\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043a\u043b\u0430\u0441 <code>message-same-footer<\/code>","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function<p>(message, previousMessage, <p>nextMessage)","meta":"sameFooterMessageRule","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f, \u044f\u043a\u0430 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>true<\/code> \u0430\u0431\u043e <code>false<\/code> \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0443\u043c\u043e\u0432\u0438 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0442\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u0423 \u0440\u0430\u0437\u0456 \u0437\u0431\u0456\u0433\u0443 \u0434\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043a\u043b\u0430\u0441 <code>message-same-avatar<\/code>","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function<p>(message, previousMessage, <p>nextMessage)","meta":"sameAvatarMessageRule","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f, \u044f\u043a\u0430 \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043a\u043b\u0430\u0441\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c \u0443 \u0432\u0438\u0433\u043b\u044f\u0434\u0456 \u0440\u044f\u0434\u043a\u0430 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e\u0457 \u0443\u043c\u043e\u0432\u0438 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0442\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c.","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function<p>(message, previousMessage, <p>nextMessage)","meta":"customClassMessageRule","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043e\u0434\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u0454\u0434\u0438\u043d\u0438\u0439 \u043e\u0431\u2019\u0454\u043a\u0442 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u044f\u043a\u0438\u0439 \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438, \u043a\u043e\u043b\u0438 \u043f\u0435\u0440\u0435\u0434\u0430\u0454\u043c\u043e \u043c\u0430\u0441\u0438\u0432 <code>messages<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0422\u0435\u043a\u0441\u0442 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"text","title":""}},{"type":"table_item","props":{"content":"\u041e\u0434\u0438\u043d \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"header","title":""}},{"type":"table_item","props":{"content":"\u041e\u0434\u0438\u043d \u0444\u0443\u0442\u0435\u0440 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"footer","title":""}},{"type":"table_item","props":{"content":"\u0406\u043c'\u044f \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"name","title":""}},{"type":"table_item","props":{"content":"\u0420\u044f\u0434\u043e\u043a URL-\u0430\u0434\u0440\u0435\u0441\u0438 \u0430\u0432\u0430\u0442\u0430\u0440\u0430 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"avatar","title":""}},{"type":"table_item","props":{"content":"\u0422\u0438\u043f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f - \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u0435 <code>sent<\/code> \u0430\u0431\u043e \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u0435 <code>received<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"type","title":"sent"}},{"type":"table_item","props":{"content":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0435\u043a\u0441\u0442\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"textHeader","title":""}},{"type":"table_item","props":{"content":"\u041d\u0438\u0436\u043d\u0456\u0439 \u043a\u043e\u043b\u043e\u043d\u0442\u0438\u0442\u0443\u043b \u0442\u0435\u043a\u0441\u0442\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"textFooter","title":""}},{"type":"table_item","props":{"content":"\u0420\u044f\u0434\u043e\u043a HTML \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u043d\u0430\u043f\u0440. <code>&lt;img src=\"path\/to\/image\" \/&gt;<\/code>. \u041c\u043e\u0436\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 <code>imageSrc<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"image","title":""}},{"type":"table_item","props":{"content":"\u0420\u044f\u0434\u043e\u043a URL-\u0430\u0434\u0440\u0435\u0441\u0438 \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f. \u041c\u043e\u0436\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 <code>image<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"imageSrc","title":""}},{"type":"table_item","props":{"content":"\u0412\u0438\u0437\u043d\u0430\u0447\u0430\u0454, \u0447\u0438 \u043c\u0430\u0454 \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u044e\u0432\u0430\u0442\u0438\u0441\u044f \u044f\u043a \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0447\u0438 \u044f\u043a \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"isTitle"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 CSS \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f \u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 HTML \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"cssClass"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"fragment","props":{"margin":"default"},"children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u043c\u0438 HTML-\u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430\u043c\u0438, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e \u0432 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0449\u043e\u0431 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0438 \u0434\u0430\u043d\u0438\u0445, \u0446\u0435 \u043c\u0430\u0454 \u0432\u0438\u0433\u043b\u044f\u0434\u0430\u0442\u0438 \u0442\u0430\u043a:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"attrs","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var message = {\n  text: 'Hello!',\n  attrs: {\n    'data-id': 1,\n    'data-author-id': 150\n  }\n}"}}]}]}]},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041e\u0442\u0436\u0435, \u0449\u043e\u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var messages = app.messages.create({ \/* parameters *\/ })"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0441\u043b\u044f \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 Messages \u0443 \u043d\u0430\u0441 \u0454 \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0443 \u0437\u043c\u0456\u043d\u043d\u0456\u0439 (\u044f\u043a \u0443 \u0437\u043c\u0456\u043d\u043d\u0456\u0439 <code>messages<\/code> \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u0432\u0438\u0449\u0435) \u0437 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c\u0438 \u043c\u0435\u0442\u043e\u0434\u0430\u043c\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 ","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0456\u0437 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457","link_text":"string","meta":"messages.params","title":""}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c (<code>&lt;div class=\"messages\"&gt;<\/code>)","link_text":"string","meta":"messages.el","title":""}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 Dom64 \u0437 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","meta":"messages.$el"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0437 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u043c\u0438","meta":"messages.messages"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438","title_element":"h5","title_style":"h5"},"name":"\u043f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u0456\u043d\u0434\u0438\u043a\u0430\u0442\u043e\u0440 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c, \u0449\u043e \u0432\u0432\u043e\u0434\u044f\u0442\u044c\u0441\u044f\n<p>\u25cf\t<code>message - object<\/code> - \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u044f\u043a\u0456 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438\n","link_text":"string","meta":"messages.showTyping(<code>message<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u041f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u0456\u043d\u0434\u0438\u043a\u0430\u0442\u043e\u0440 \u0432\u0432\u0435\u0434\u0435\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","link_text":"string","meta":"messages.hideTyping()","title":""}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0439\u0442\u0435 \u043d\u043e\u0432\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u043a\u0456\u043d\u0435\u0446\u044c \u0430\u0431\u043e \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043e\u043a \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 \u043c\u0435\u0442\u043e\u0434\u0443\n<p>\t<code>message - object<\/code> - \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u044f\u043a\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438. \u0412\u0438\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f.<\/p>\n<p><code>method - string<\/code> - (<code>append<\/code> or <code>prepend<\/code>)\u043d\u0430\u043a\u0430\u0437\u0443\u0454 \u0434\u043e\u0434\u0430\u0442\u0438 \u043d\u043e\u0432\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043d\u0430\u043f\u0440\u0438\u043a\u0456\u043d\u0446\u0456 \u0430\u0431\u043e \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c. \u041d\u0435\u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u0438\u0439, \u044f\u043a\u0449\u043e \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e, \u0442\u043e\u0434\u0456 \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 <code>newMessagesFirst<\/code><\/p>\n<p><code>animate - boolean<\/code> - (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c <code>true<\/code>) \u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0442\u0443\u0442 <code>false<\/code>, \u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043d\u0435\u0433\u0430\u0439\u043d\u043e \u0431\u0435\u0437 \u0431\u0443\u0434\u044c-\u044f\u043a\u0438\u0445 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0456\u0432 \u0456 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f. \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e.<\/p>\n\t\n\t<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages<\/i><\/p>","meta":"messages.addMessage<p>(<code>message, method, animate<\/code>);"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0439\u0442\u0435 \u043a\u0456\u043b\u044c\u043a\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c \u0437\u0430 \u043e\u0434\u0438\u043d \u0440\u0430\u0437.\n<p><code>messages - array<\/code> - \u043c\u0430\u0441\u0438\u0432 \u0456\u0437 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u043c\u0438 \u0434\u043b\u044f \u0434\u043e\u0434\u0430\u0432\u0430\u043d\u043d\u044f. \u041a\u043e\u0436\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u043c\u0430\u0441\u0438\u0432\u0456 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043e \u044f\u043a \u043e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 <b>\u043e\u0431\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f<\/b>.\n<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages\t<\/i><\/p>\n","meta":"messages.addMessages<p>(<code>messages, method, animate<\/code>);"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\n<p>\t<code>message - HTMLElement \u0430\u0431\u043e string<\/code> (\u0456\u0437 CSS Selector) \u0430\u0431\u043e <code>number<\/code> (\u0437 \u043d\u043e\u043c\u0435\u0440\u043e\u043c \u0456\u043d\u0434\u0435\u043a\u0441\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0437 \u043c\u0430\u0441\u0438\u0432\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c) \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0434\u043b\u044f \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f<\/p>\n<p><i>\t\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages<\/i><\/p>\t\n","meta":"messages.removeMessage<p>(<code>message<\/code>);"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043a\u0456\u043b\u044c\u043a\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c\n<p>\t<code>messages - array <\/code>\u043c\u0430\u0441\u0438\u0432 \u0456\u0437 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u043c\u0438 \u0434\u043b\u044f \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f<\/p>\n\t<p><i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages<\/i><\/p>\n","meta":"messages.removeMessages<p>(<code>messages<\/code>);"}},{"type":"table_item","props":{"content":"\u041f\u0440\u043e\u043a\u0440\u0443\u0442\u0438\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432\u0433\u043e\u0440\u0443\/\u0432\u043d\u0438\u0437 \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 <code>newMessagesFirst<\/code>\n<p>\u25cf\t<code>duration - number<\/code> \u0442\u0440\u0438\u0432\u0430\u043b\u0456\u0441\u0442\u044c \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u043c\u0441<\/p>\n<p>\u25cf\t<code>position - number<\/code> \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u044f \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0432 px<\/p>\n","meta":"messages.scroll<p>(<code>duration, position<\/code>);"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0432\u043e\u0434\u0438\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f HTML \u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043c\u0430\u0441\u0438\u0432\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","meta":"messages.renderMessages()"}},{"type":"table_item","props":{"content":"\u041f\u0440\u0438\u043c\u0443\u0441\u043e\u0432\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0435 \u043a\u043e\u043c\u043f\u043e\u043d\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","meta":"messages.layout();"}},{"type":"table_item","props":{"content":"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438\/\u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f","meta":"messages.clear();"}},{"type":"table_item","props":{"content":"\u0417\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","meta":"messages.destroy();"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 DOM \u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 messages \u0456 \u043f\u043e\u0434\u0456\u0457 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 DOM ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 DOM  "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"messages:beforedestroy","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c <p><code>&lt;div class=\"messages\"&gt;<\/code>"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages \u0437\u0430\u0443\u043f\u0441\u043a\u0430\u0454 \u043f\u043e\u0434\u0456\u0457 \u044f\u043a \u0443 \u0441\u0435\u0431\u0435, \u0442\u0430\u043a \u0456 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u043c\u0430\u044e\u0442\u044c \u043e\u0434\u043d\u0430\u043a\u043e\u0432\u0456 \u043d\u0430\u0437\u0432\u0438 \u0437 \u043f\u0440\u0435\u0444\u0456\u043a\u0441\u043e\u043c \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c <code>messages<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u041e\u0431'\u0454\u043a\u0442","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"messages","meta":"beforeDestroy","title":"(<code>messages<\/code>)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Messages \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"messagesBeforeDestroy","title":"(<code>messages<\/code>)"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(4) \u041f\u043e\u0434\u0456\u044f - \u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 - \u041e\u043f\u0438\u0441 - \u041e\u0431'\u0454\u043a\u0442"},{"type":"headline","props":{"content":"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0432\u0430\u043c \u043d\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 Messages API, \u0430 \u0432\u0430\u0448\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0437\u043d\u0430\u0445\u043e\u0434\u044f\u0442\u044c\u0441\u044f \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0430 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0456 \u0432 DOM \u043d\u0430 \u043c\u043e\u043c\u0435\u043d\u0442 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0442\u043e\u0434\u0456 \u0457\u0445 \u043c\u043e\u0436\u043d\u0430 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438, \u043f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0432\u0448\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c <code>message-init<\/code>  \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c, \u0456 \u0432\u0441\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u043e\u0436\u043d\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u0432\u0430\u0442\u0438\u0441\u044f \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456\u0432 \u0434\u0430\u043d\u0438\u0445 <code>data-<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"messages messages-init\" data-new-messages-first=\"true\">\n  ...\n<\/div>\n"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438, \u044f\u043a\u0456 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u044e\u0442\u044c\u0441\u044f \u0432 <code>camelCase<\/code>, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 <code>newMessagesFirst<\/code>, \u0432 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430\u0445 <code>data-<\/code> \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0432 <code>kebab-case<\/code> \u044f\u043a <code>data-new-messages-first<\/code>","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-message-text-header-text-color: inherit;\n  --t4-message-text-header-opacity: 0.65;\n  --t4-message-text-header-font-size: 12px;\n  --t4-message-text-footer-text-color: inherit;\n  --t4-message-text-footer-opacity: 0.65;\n  --t4-message-text-footer-font-size: 12px;\n  --t4-message-bubble-line-height: 1.2;\n  --t4-message-header-font-size: 12px;\n  --t4-message-footer-font-size: 11px;\n  --t4-message-name-font-size: 12px;\n  --t4-message-name-font-weight: inherit;\n  --t4-message-avatar-border-radius: 50%;\n  --t4-messages-title-font-weight: inherit;\n  \/*\n  --t4-message-sent-bg-color: var(--t4-theme-color);\n  *\/\n  --t4-message-sent-text-color: #fff;\n  --t4-messages-content-bg-color: #fff;\n  --t4-message-typing-indicator-bg-color: #000;\n  --t4-message-received-bg-color: #e5e5ea;\n  --t4-message-received-text-color: #000;\n}\n:root .dark,\n:root.dark {\n  --t4-messages-title-text-color: rgba(255, 255, 255, 0.54);\n  --t4-message-header-text-color: rgba(255, 255, 255, 0.54);\n  --t4-message-name-text-color: rgba(255, 255, 255, 0.54);\n  --t4-message-footer-text-color: rgba(255, 255, 255, 0.54);\n  --t4-messages-content-bg-color: transparent;\n  --t4-message-received-bg-color: #252525;\n  --t4-message-received-text-color: #fff;\n  --t4-message-typing-indicator-bg-color: #fff;\n}\n.ios {\n  --t4-messages-title-text-color: rgba(0, 0, 0, 0.45);\n  --t4-messages-title-font-size: 11px;\n  --t4-message-header-text-color: rgba(0, 0, 0, 0.45);\n  --t4-message-footer-text-color: rgba(0, 0, 0, 0.45);\n  --t4-message-name-text-color: rgba(0, 0, 0, 0.45);\n  --t4-message-avatar-size: 29px;\n  --t4-message-margin: 10px;\n  --t4-message-bubble-min-height: 32px;\n  --t4-message-bubble-font-size: 17px;\n  --t4-message-bubble-border-radius: 16px;\n  --t4-message-bubble-padding-vertical: 6px;\n  --t4-message-bubble-padding-horizontal: 16px;\n  --t4-message-typing-indicator-opacity: 0.35;\n}\n.md {\n  --t4-messages-title-font-size: 12px;\n  --t4-message-avatar-size: 32px;\n  --t4-message-margin: 16px;\n  --t4-message-bubble-min-height: 32px;\n  --t4-message-bubble-font-size: 16px;\n  --t4-message-bubble-border-radius: 4px;\n  --t4-message-bubble-padding-vertical: 6px;\n  --t4-message-bubble-padding-horizontal: 8px;\n  --t4-message-typing-indicator-opacity: 0.6;\n  --t4-messages-title-text-color: rgba(0, 0, 0, 0.51);\n  --t4-message-header-text-color: rgba(0, 0, 0, 0.51);\n  --t4-message-footer-text-color: rgba(0, 0, 0, 0.51);\n  --t4-message-name-text-color: rgba(0, 0, 0, 0.51);\n}\n.aurora {\n  --t4-messages-title-font-size: 14px;\n  --t4-message-avatar-size: 32px;\n  --t4-message-margin: 16px;\n  --t4-message-bubble-min-height: 34px;\n  --t4-message-bubble-font-size: 16px;\n  --t4-message-bubble-line-height: 1.4;\n  --t4-message-bubble-border-radius: 16px;\n  --t4-message-bubble-padding-vertical: 6px;\n  --t4-message-bubble-padding-horizontal: 10px;\n  --t4-message-typing-indicator-opacity: 0.5;\n  --t4-message-header-font-size: 14px;\n  --t4-message-footer-font-size: 12px;\n  --t4-message-name-font-size: 14px;\n  --t4-messages-title-text-color: rgba(0, 0, 0, 0.51);\n  --t4-message-header-text-color: rgba(0, 0, 0, 0.51);\n  --t4-message-footer-text-color: rgba(0, 0, 0, 0.51);\n  --t4-message-name-text-color: rgba(0, 0, 0, 0.51);\n}"}},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner\">\n        <div class=\"title\">Messages<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"toolbar messagebar\">\n      <div class=\"toolbar-inner\">\n        <div class=\"messagebar-area\">\n          <textarea class=\"resizable\" placeholder=\"Message\"><\/textarea>\n        <\/div>\n        <a class=\"link send-link\" href=\"#\" @click=${sendMessage}>Send<\/a>\n      <\/div>\n    <\/div>\n    <div class=\"page-content messages-content\">\n      <div class=\"messages\">\n        <div class=\"messages-title\"><b>Sunday, Feb 9,<\/b> 12:58<\/div>\n        <div class=\"message message-sent\">\n          <div class=\"message-avatar\"\n            style=\"background-image:url(https:\/\/cdn.techno4.io\/placeholder\/people-100x100-7.jpg)\"><\/div>\n          <div class=\"message-content\">\n            <div class=\"message-name\">John Doe<\/div>\n            <div class=\"message-header\">Message header<\/div>\n            <div class=\"message-bubble\">\n              <div class=\"message-text-header\">Text header<\/div>\n              <div class=\"message-text\">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<\/div>\n              <div class=\"message-text-footer\">Text footer<\/div>\n            <\/div>\n            <div class=\"message-footer\">Message footer<\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-received\">\n          <div class=\"message-avatar\"\n            style=\"background-image:url(https:\/\/cdn.techno4.io\/placeholder\/people-100x100-7.jpg)\"><\/div>\n          <div class=\"message-content\">\n            <div class=\"message-name\">John Doe<\/div>\n            <div class=\"message-header\">Message header<\/div>\n            <div class=\"message-bubble\">\n              <div class=\"message-text-header\">Text header<\/div>\n              <div class=\"message-text\">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<\/div>\n              <div class=\"message-text-footer\">Text footer<\/div>\n            <\/div>\n            <div class=\"message-footer\">Message footer<\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-sent\">\n          <div class=\"message-content\">\n            <div class=\"message-bubble\">\n              <div class=\"message-text\">Hi, Kate<\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-sent\">\n          <div class=\"message-content\">\n            <div class=\"message-bubble\">\n              <div class=\"message-text\">How are you?<\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-received\">\n          <div class=\"message-avatar\"\n            style=\"background-image:url(https:\/\/cdn.techno4.io\/placeholder\/people-100x100-9.jpg)\"><\/div>\n          <div class=\"message-content\">\n            <div class=\"message-name\">Kate<\/div>\n            <div class=\"message-bubble\">\n              <div class=\"message-text\">Hi, I am good!<\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-received\">\n          <div class=\"message-avatar\"\n            style=\"background-image:url(https:\/\/cdn.techno4.io\/placeholder\/people-100x100-7.jpg)\"><\/div>\n          <div class=\"message-content\">\n            <div class=\"message-name\">Blue Ninja<\/div>\n            <div class=\"message-bubble\">\n              <div class=\"message-text\">Hi there, I am also fine, thanks! And how are you?<\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-sent\">\n          <div class=\"message-content\">\n            <div class=\"message-bubble\">\n              <div class=\"message-text\">Hey, Blue Ninja! Glad to see you ;)<\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-sent\">\n          <div class=\"message-content\">\n            <div class=\"message-bubble\">\n              <div class=\"message-text\">Hey, look, cutest kitten ever!<\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-sent\">\n          <div class=\"message-content\">\n            <div class=\"message-bubble\">\n              <div class=\"message-image\">\n                <img src=\"https:\/\/cdn.techno4.io\/placeholder\/cats-200x260-4.jpg\"\n                  style=\"width:200px; height: 260px\" \/>\n              <\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-received\">\n          <div class=\"message-avatar\"\n            style=\"background-image:url(https:\/\/cdn.techno4.io\/placeholder\/people-100x100-9.jpg)\"><\/div>\n          <div class=\"message-content\">\n            <div class=\"message-name\">Kate<\/div>\n            <div class=\"message-bubble\">\n              <div class=\"message-text\">Nice!<\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-received\">\n          <div class=\"message-avatar\"\n            style=\"background-image:url(https:\/\/cdn.techno4.io\/placeholder\/people-100x100-9.jpg)\"><\/div>\n          <div class=\"message-content\">\n            <div class=\"message-name\">Kate<\/div>\n            <div class=\"message-bubble\">\n              <div class=\"message-text\">Like it very much!<\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n        <div class=\"message message-received\">\n          <div class=\"message-avatar\"\n            style=\"background-image:url(https:\/\/cdn.techno4.io\/placeholder\/people-100x100-7.jpg)\"><\/div>\n          <div class=\"message-content\">\n            <div class=\"message-name\">Blue Ninja<\/div>\n            <div class=\"message-bubble\">\n              <div class=\"message-text\">Awesome!<\/div>\n            <\/div>\n          <\/div>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, { $t4, $, $on }) => {\n    let messages;\n    let messagebar;\n\n    \/\/ Response flag\n    var responseInProgress = false;\n\n    \/\/ Dummy response\n    var answers = [\n      'Yes!',\n      'No',\n      'Hm...',\n      'I am not sure',\n      'And what about you?',\n      'May be ;)',\n      'Lorem ipsum dolor sit amet, consectetur',\n      'What?',\n      'Are you sure?',\n      'Of course',\n      'Need to think about it',\n      'Amazing!!!'\n    ]\n    var people = [\n      {\n        name: 'Kate Johnson',\n        avatar: 'https:\/\/cdn.techno4.io\/placeholder\/people-100x100-9.jpg'\n      },\n      {\n        name: 'Blue Ninja',\n        avatar: 'https:\/\/cdn.techno4.io\/placeholder\/people-100x100-7.jpg'\n      }\n    ];\n\n    \/\/ \u041e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\n    const receiveMessage = () => {\n      responseInProgress = true;\n      setTimeout(function () {\n        \/\/ \u041e\u0442\u0440\u0438\u043c\u0430\u0439\u0442\u0435 \u0432\u0438\u043f\u0430\u0434\u043a\u043e\u0432\u0443 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u044c \u0456 \u0432\u0438\u043f\u0430\u0434\u043a\u043e\u0432\u0443 \u043e\u0441\u043e\u0431\u0443\n        var answer = answers[Math.floor(Math.random() * answers.length)];\n        var person = people[Math.floor(Math.random() * people.length)];\n\n        \/\/ \u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u0456\u043d\u0434\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430\u0431\u043e\u0440\u0443 \u0442\u0435\u043a\u0441\u0442\u0443\n        messages.showTyping({\n          header: person.name + ' is typing',\n          avatar: person.avatar\n        });\n\n        setTimeout(function () {\n          \/\/ \u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u0435 \u0444\u0456\u043a\u0442\u0438\u0432\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\n          messages.addMessage({\n            text: answer,\n            type: 'received',\n            name: person.name,\n            avatar: person.avatar\n          });\n          \/\/ \u041f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u0456\u043d\u0434\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430\u0431\u043e\u0440\u0443 \u0442\u0435\u043a\u0441\u0442\u0443\n          messages.hideTyping();\n          responseInProgress = false;\n        }, 4000);\n      }, 1000);\n    }\n\n    \/\/ \u0412\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\n    const sendMessage = () => {\n      var text = messagebar.getValue().replace(\/\\n\/g, '<br>').trim();\n      \/\/ \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438, \u044f\u043a\u0449\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043f\u0443\u0441\u0442\u0435\n      if (!text.length) return;\n\n      \/\/ \u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0437\u043e\u043d\u0443\n      messagebar.clear();\n\n      \/\/ \u041f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438 \u0444\u043e\u043a\u0443\u0441 \u0434\u043e \u043e\u0431\u043b\u0430\u0441\u0442\u0456\n      messagebar.focus();\n\n      \/\/ \u0414\u043e\u0434\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0434\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c\n      messages.addMessage({\n        text: text,\n      });\n\n      if (responseInProgress) return;\n      \/\/ \u041e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0444\u0456\u043a\u0442\u0438\u0432\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\n      receiveMessage();\n    }\n\n    $on('pageInit', () => {\n      \/\/ \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \n      messages = app.messages.create({\n        el: '.messages',\n\n        \/\/ \u041f\u0440\u0430\u0432\u0438\u043b\u043e \u043f\u0435\u0440\u0448\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\n        firstMessageRule: function (message, previousMessage, nextMessage) {\n          \/\/ \u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a\n          if (message.isTitle) return false;\n          \/* \u044f\u043a\u0449\u043e:\n             - \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043d\u0435\u043c\u0430\u0454\n             - \u0430\u0431\u043e \u0456\u043d\u0448\u0438\u0439 \u0442\u0438\u043f \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f (\u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e\/\u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e).\n             - \u0430\u0431\u043e \u0456\u043c'\u044f \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0456\u043d\u0448\u0435\n\n          *\/\n          if (!previousMessage || previousMessage.type !== message.type || previousMessage.name !== message.name) return true;\n          return false;\n        },\n        \/\/ \u041f\u0440\u0430\u0432\u0438\u043b\u043e \u043e\u0441\u0442\u0430\u043d\u043d\u044c\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\n        lastMessageRule: function (message, previousMessage, nextMessage) {\n          \/\/ \u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a\n          if (message.isTitle) return false;\n          \/* \u044f\u043a\u0449\u043e:\n             - \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043d\u0435\u043c\u0430\u0454\n             - \u0430\u0431\u043e \u0442\u0438\u043f \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f (\u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e\/\u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e) \u0456\u043d\u0448\u0438\u0439\n             - \u0430\u0431\u043e \u0456\u043c'\u044f \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0456\u043d\u0448\u0435\n\n          *\/\n          if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) return true;\n          return false;\n        },\n        \/\/ \u041f\u0440\u0430\u0432\u0438\u043b\u043e \u043e\u0441\u0442\u0430\u043d\u043d\u044c\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\n        tailMessageRule: function (message, previousMessage, nextMessage) {\n          \/\/ \u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u044f\u043a\u0449\u043e \u0446\u0435  \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a\n          if (message.isTitle) return false;\n          \/* if (\u0437\u0430\u0433\u0430\u043b\u043e\u043c \u0442\u0435 \u0441\u0430\u043c\u0435, \u0449\u043e lastMessageRule):\n           - \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043d\u0435\u043c\u0430\u0454\n           - \u0430\u0431\u043e \u0442\u0438\u043f \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f (\u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e\/\u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e) \u0456\u043d\u0448\u0438\u0439\n           - \u0430\u0431\u043e \u0456\u043c'\u044f \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0456\u043d\u0448\u0435\n        *\/\n          if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) return true;\n          return false;\n        }\n      });\n\n      \/\/ Init Messagebar\n      messagebar = app.messagebar.create({\n        el: '.messagebar'\n      });\n    });\n\n    return $render;\n  }\n\n\n\n<\/script>"}}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

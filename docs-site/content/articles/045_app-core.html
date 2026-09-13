@@ -1,0 +1,1242 @@
+<h2>Застосунок/ ядро</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Параметри застосунку </a>
+
+    </li>
+        <li>
+        
+<div>Методи та властивості застосунку</div>
+
+    </li>
+        <li>
+        
+<div>Події застосунку</div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+    </ul>
+<h3>Застосунок</h3>
+<div>Коли ми запускаємо застосунок, ми можемо використовувати новий конструктор Techno4 і передати об’єкт із основними параметрами застосунку:</div>
+<pre><code>var app = new Techno4({
+  // App id
+  id: 'com.myapp.test',
+  // Enable swipe panel
+  panel: {
+    swipe: true,
+  },
+  // ... other parameters
+});</code></pre>
+<div>Цей конструктор повертає основний екземпляр застосунку Techno4.</div>
+<h3>Параметри застосунку</h3>
+<div>Давайте подивимося на список доступних параметрів:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>body</td>
+
+<td>el</td>
+
+<td>Кореневий елемент застосунку. Якщо основний макет застосунку не є прямим дочірнім елементом <code>&lt;body&gt;</code>, тут потрібно вказати кореневий елемент</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>component</td>
+
+<td>Завантажити макет застосунку з переданого <b>main app component</b>. </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">Router Component</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>componentUrl</td>
+
+<td>Шлях до <b>main app component</b> з одним файлом, який буде завантажено через XHR. </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string Component</a>
+    </td>
+</tr>
+                <tr>
+<td>io.Techno4.testapp</td>
+
+<td>id</td>
+
+<td>Ідентифікатор набору застосунків</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Techno4</td>
+
+<td>name</td>
+
+<td>Назва застосунку. Може використовуватися іншими компонентами, напр. як назву за замовчуванням для компонента <b>Dialog</b>.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>1.0.0</td>
+
+<td>version</td>
+
+<td>Версія застосунку. Може використовуватися іншими компонентами.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>auto</td>
+
+<td>theme</td>
+
+<td>Тема застосунку. Може бути <b>ios, md, aurora</b> або<b> auto</b>. У разі  auto режиму він використовуватиме тему iOS для пристроїв iOS, тему Aurora для настільного пристрою, що працює в середовищі Electron, і тему MD для всіх інших пристроїв.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>language</td>
+
+<td>Мова застосунку. Може використовуватися іншими компонентами. За замовчуванням дорівнює поточній мові вебпереглядача/вебперегляду (тобто <b>avigator.language</b>).</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">String</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>userAgent</td>
+
+<td>Рядок агента користувача. Потрібний у разі використання на стороні сервера для правильного виявлення пристрою.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">String</a>
+    </td>
+</tr>
+                <tr>
+<td>[]</td>
+
+<td>routes</td>
+
+<td>Масив із стандартними маршрутами до всіх представлень</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>lazyModulesPath</td>
+
+<td>Шлях до відкладених компонентів Techno4. Необхідно використовувати <b>Lazy Modules</b> із модулями браузера.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>autoDarkMode</td>
+
+<td>Автоматично вмикає темну тему на основі налаштувань системи кольорів системи користувача. Підтримка цієї функції базується на підтримці <b>медіа-запитів (prefers-color-scheme)</b>.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>init</td>
+
+<td>За замовчуванням Techno4 буде ініціалізовано автоматично, коли ви викликаєте <code>new Techno4()</code>. Якщо ви хочете запобігти такій поведінці, ви можете вимкнути його за допомогою цього параметра, а потім ініціалізувати вручну за допомогою <code>app.init()</code>, коли вам це потрібно.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>initOnDeviceReady</td>
+
+<td>Якщо автоматичну ініціалізацію ввімкнено за допомогою параметра <code>init: true</code> і застосунок працює в середовищі cordova, тоді її буде ініціалізовано за подією <b>deviceready.</b></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">Boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>iosTranslucentBars</td>
+
+<td>Увімкнути напівпрозорий ефект (розмиття фону) на панелях навігації для теми iOS (на пристроях iOS)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">Boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>iosTranslucentModals</td>
+
+<td>Увімкнути напівпрозорий ефект (розмиття фону) у режимах (діалогове вікно, спливаюче вікно, дії) для теми iOS (на пристроях iOS)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">Boolean</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>{}</td>
+
+<td>on</td>
+
+<td>Об'єкт з обробниками подій. Наприклад:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var app = new Techno4({
+  on: {
+    init: function () {
+      console.log('App initialized');
+    },
+    pageInit: function () {
+      console.log('Page initialized');
+    },
+  }
+})</code></pre>
+<h4>Clicks Module параметри </h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>clicks</td>
+
+<td>Об’єкт із параметрами, пов’язаними з модулем кліків:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var app = new Techno4({
+  clicks: {
+    externalLinks: '.external',
+  }
+})</code></pre>
+<hr>
+<h5>{</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>'.external'</td>
+
+<td>externalLinks</td>
+
+<td>Селектор CSS для посилань, які слід розглядати як зовнішні та не повинні оброблятися Techno4. Наприклад, таке значення '.external' відповідатиме таким посиланням, як &lt;a href="somepage.html" class="external"&gt; (з класом "external")</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h5>}</h5>
+<h4>Touch Module параметри </h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>touch</td>
+
+<td>Об'єкт з параметрами сенсорного модуля:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var app = new Techno4({
+  touch: {
+    tapHold: true,
+  }
+})</code></pre>
+<h5>{</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>5</td>
+
+<td>touchClicksDistanceThreshold</td>
+
+<td>Порогове значення відстані (у пікселях), щоб запобігти (випадковим) коротким свайпам. Отже, якщо відстань торкання/переміщення більша за це значення, «клацання» не буде активовано.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>disableContextMenu</td>
+
+<td>Установіть значення <code>true</code>, щоб вимкнути контекстне меню (клацніть правою кнопкою миші або натисніть і утримуйте)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">Boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>tapHold</td>
+
+<td>Вмикає утримання натискання</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>750</td>
+
+<td>tapHoldDelay</td>
+
+<td>Визначає, як довго (у мс) користувач повинен утримувати натискання, перш ніж подія <b>taphold</b> буде запущена на цільовому елементі</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>tapHoldPreventClicks</td>
+
+<td>Якщо ввімкнено (за замовчуванням), подія “клік” не запускатиметься після події “утримання дотику” <b>taphold</b></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>activeState</td>
+
+<td>Якщо ввімкнено, застосунок додасть клас <b>activestate</b>  до поточного елемента (:active).</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>a, button, label, <p>span, .actions-button,<p> .stepper-button, <p>.stepper-button-plus,<p> .stepper-button-minus,<p> .card-expandable,<p> .menu-item, <p>.link, .item-link,<p> .accordion-item-toggle</td>
+
+<td>activeStateElements</td>
+
+<td>Селектор CSS елементів, де ввімкнено activeState, додасть відповідний активний клас</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>activeStateOnMouseMove</td>
+
+<td>Коли ввімкнено, він зберігає «активний стан» під час руху миші</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>iosTouchRipple</td>
+
+<td>Вмикає ефект “хвилі дотику” для теми iOS</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>mdTouchRipple</td>
+
+<td>Вмикає ефект “хвилі дотику” для теми MD</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>auroraTouchRipple</td>
+
+<td>Вмикає ефект хвилі дотику для теми Aurora.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>.ripple, .link,<p> .item-link, .list-button,<p> .links-list a, .button,<p> button, .input-clear-button,<p> .dialog-button, .tab-link,<p> .item-radio, .item-checkbox,<p> .actions-button, <p>.searchbar-disable-button,<p> .fab a, .checkbox, .radio,<p> .data-table <p>.sortable-cell:not(.input-cell),<p> .notification-close-button,<p> .stepper-button, <p>.stepper-button-minus,<p> .stepper-button-plus, <p>.menu-item-content,<p> .list.accordion-list <p>.accordion-item-toggle</td>
+
+<td>touchRippleElements</td>
+
+<td>CSS-селектор елементів для застосування ефекту хвилі дотику під час натискання</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>.ripple-inset, <p>.icon-only,<p> .searchbar-disable-button, <p>.input-clear-button, <p>.notification-close-button,<p> .md .navbar .link.back</td>
+
+<td>touchRippleInsetElements</td>
+
+<td>CSS-селектор елементів для застосування ефекту хвилі дотику під час натискання</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h5>}</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>serviceWorker</td>
+
+<td>Об'єкт з параметрами модуля service worker:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var app = new Techno4({
+  serviceWorker: {
+    path: './service-worker.js',
+    scope: '/',
+  }
+})</code></pre>
+<h5>{</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>path</td>
+
+<td>Шлях до файлу <b>service worker</b></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>scope</td>
+
+<td>Шлях до сфери обслуговування Worker</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h5>}</h5>
+<div>Це параметри застосунку за замовчуванням для основного модуля застосунку.
+<p>Більшість компонентів, які мають JavaScript API, можуть розширити цей список параметрів за допомогою властивості, названої як компонент.</p> 
+Наприклад, компонент Panel розширює параметри застосунку за допомогою властивості  <code>‘panel’</code>, яка приймає спеціальні параметри Panel.
+<p>Приклад:</p>
+</div>
+<pre><code>var app = new Techno4({
+  id: 'com.myapp.test',
+  // Extended by Panel component:
+  panel: {
+    swipe: true,
+    visibleBreakpoint: 1024,
+  },
+  // Extended by Dialog component:
+  dialog: {
+    title: 'My App',
+  },
+  // Extended by Statusbar component:
+  statusbar: {
+    iosOverlaysWebview: true,
+  },
+});</code></pre>
+<h3>Методи та властивості застосунку</h3>
+<div>Повернений екземпляр застосунку Techno4 містить багато корисних властивостей і методів:</div>
+<h4>Властивості </h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app.id</td>
+
+<td>Ідентифікатор застосунку, переданий у параметрах</td>
+
+</tr>
+                <tr>
+
+<td>app.name</td>
+
+<td>Назва застосунку передана в параметрах</td>
+
+</tr>
+                <tr>
+
+<td>app.version</td>
+
+<td>Версія застосунку</td>
+
+</tr>
+                <tr>
+
+<td>app.routes</td>
+
+<td>Маршрути застосунку </td>
+
+</tr>
+                <tr>
+
+<td>app.language</td>
+
+<td>Мова застосунку </td>
+
+</tr>
+                <tr>
+
+<td>app.el</td>
+
+<td>Кореневий HTML-елемент застосунку</td>
+
+</tr>
+                <tr>
+
+<td>app.$el</td>
+
+<td>Екземпляр Dom7 з кореневим елементом HTML застосунку</td>
+
+</tr>
+                <tr>
+
+<td>app.rtl</td>
+
+<td>Логічна властивість, яка вказує на те, що застосунок має макет RTL чи ні</td>
+
+</tr>
+                <tr>
+
+<td>app.theme</td>
+
+<td>Рядок із поточною темою застосунку. Може бути <b>md, ios або aurora</b></td>
+
+</tr>
+                <tr>
+
+<td>app.darkMode</td>
+
+<td>Логічна властивість, яка вказує, чи активна темна тема. Ця властивість діє лише тоді, коли ввімкнено <b>autoDarkMode</b></td>
+
+</tr>
+                <tr>
+
+<td>app.width</td>
+
+<td>Ширина застосунку в пікселях</td>
+
+</tr>
+                <tr>
+
+<td>app.height</td>
+
+<td>Висота застосунку в пікселях</td>
+
+</tr>
+                <tr>
+
+<td>app.left</td>
+
+<td>Зміщення додатка вліво в пікселях</td>
+
+</tr>
+                <tr>
+
+<td>app.top</td>
+
+<td>Верхнє зміщення застосунку в пікселях</td>
+
+</tr>
+                <tr>
+
+<td>app.initialized</td>
+
+<td>Логічна властивість, яка вказує, що застосунок ініціалізований чи ні</td>
+
+</tr>
+                <tr>
+
+<td>app.$</td>
+
+<td>Псевдонім Dom7</td>
+
+</tr>
+                <tr>
+
+<td>app.params</td>
+
+<td>Параметри застосунку</td>
+
+</tr>
+                <tr>
+
+<td>app.support</td>
+
+<td>Об’єкт із властивостями щодо підтримуваних функцій. Перевірте розділ <b>Службові застосунки підтримки</b></td>
+
+</tr>
+                <tr>
+
+<td>app.device</td>
+
+<td>Об'єкт із властивостями про пристрій. Перевірте розділ <b>«Утиліти пристрою»<b>.</td>
+
+</tr>
+                <tr>
+
+<td>app.utils</td>
+
+<td>Об'єкт з деякими корисними утилітами. Перевірте розділ <b>"Утиліти"</b></td>
+
+</tr>
+                <tr>
+
+<td>app.request</td>
+
+<td>Містить методи роботи із запитами XHR. Перевірте розділ <b>«Запит утиліт»</b>.</td>
+
+</tr>
+                <tr>
+
+<td>app.serviceWorker.container</td>
+
+<td>Контейнер Service Worker (navigator.serviceWorker)</td>
+
+</tr>
+                <tr>
+
+<td>app.serviceWorker.registrations</td>
+
+<td>Масив із зареєстрованими  Service Worker</td>
+
+</tr>
+                <tr>
+
+<td>app.online</td>
+
+<td>Логічна властивість індикації стану підключення застосунку. (<b>true</b>, якщо онлайн)</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h4>Методи</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app.enableAutoDarkMode()</td>
+
+<td>Вмикає автоматичне визначення темної теми</td>
+
+</tr>
+                <tr>
+
+<td>app.disableAutoDarkMode()</td>
+
+<td>Вимикає автоматичне визначення темної теми</td>
+
+</tr>
+                <tr>
+
+<td>app.on(event, handler)</td>
+
+<td>Додати обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>app.once(event, handler)</td>
+
+<td>Додати обробник подій, який буде видалено після запуску</td>
+
+</tr>
+                <tr>
+
+<td>app.off(event, handler)</td>
+
+<td>Видалити обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>app.off(event)</td>
+
+<td>Видалити всі обробники для вказаної події</td>
+
+</tr>
+                <tr>
+
+<td>app.emit(event, ...args)</td>
+
+<td>Запуск події за певних умов</td>
+
+</tr>
+                <tr>
+
+<td>app.init()</td>
+
+<td>ініціалізувати застосунок. Якщо ви вимкнули автоматичну ініціалізацію за допомогою параметра <b>init: false</b></td>
+
+</tr>
+                <tr>
+
+<td>app.serviceWorker.register(path, scope)</td>
+
+<td>Реєстрація service worker. Він повертає promise, яка буде вирішена за допомогою <b>ServiceWorkerRegistration</b></td>
+
+</tr>
+                <tr>
+
+<td>app.serviceWorker.unregister(registration)</td>
+
+<td>Скасувати реєстрацію service worker. Він повертає promise, яка буде вирішена, коли Service Worker скасує реєстрацію.</td>
+
+</tr>
+            </tbody>
+
+</table>
+<div> Так само як і з параметрами застосунку, більшість компонентів, які мають JavaScript API, можуть розширювати цей список властивостей за допомогою властивості, названої як компонент. Наприклад, компонент <b>Panel</b> розширює властивості екземпляра застосунку властивістю panel, яка приймає специфічні властивості та методи <b>Panel</b>.
+<p> Приклад:</p></div>
+<pre><code>// Open panel
+app.panel.open('left');
+
+// Hide statusbar
+app.statusbar.hide();</code></pre>
+<h3>Події застосунку</h3>
+<div>Екземпляр застосунку видає такі основні події:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>init</td>
+
+<td>Подія буде запущена під час ініціалізації застосунку. Автоматично після <code>new Techno4()</code> або після <code>app.init()</code>, якщо ви вимкнули автоматичну ініціалізацію.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>resize</td>
+
+<td>Подія буде запущена при зміні розміру застосунку (розмір вікна).</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>orientationchange</td>
+
+<td>Подія буде запущена при зміні орієнтації застосунку (зміна орієнтації вікна).</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(event)</td>
+
+<td>click</td>
+
+<td>Подія запускається після кліку в програмі</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(event)</td>
+
+<td>touchstart:active</td>
+
+<td>Подія запускатиметься під час запуску дотиком (mousedown). Подія додана як активний слухач (можна запобігти за замовчуванням)</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(event)</td>
+
+<td>touchmove:active</td>
+
+<td>Подія запускатиметься під час переміщення дотиком (mousemove) подія, додана як активний слухач (можна запобігти за умовчанням)</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(event)</td>
+
+<td>touchend:active</td>
+
+<td>Подія запускатиметься під час торкання (mouseup), доданого як активного слухача (можна запобігти за умовчанням)</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(event)</td>
+
+<td>touchstart:passive</td>
+
+<td>Подія запускатиметься під час дотику (mousedown). Подія додана як пасивний слухач (неможливо запобігти за умовчанням)</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(event)</td>
+
+<td>touchmove:passive</td>
+
+<td>Подія запускатиметься під час переміщення дотиком (mousemove). Подія додана як пасивний слухач (неможливо запобігти за умовчанням)</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(event)</td>
+
+<td>touchend:passive</td>
+
+<td>Подія запускатиметься під час торкання (mouseup). Подія додана як пасивний слухач (неможливо запобігти за умовчанням)</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(registration)</td>
+
+<td>serviceWorkerRegisterSuccess</td>
+
+<td>Подія буде ініційована після успішної реєстрації Service Worker</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(error)</td>
+
+<td>serviceWorkerRegisterError</td>
+
+<td>Подія буде ініційована, коли не вдасться зареєструвати Service Worker</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(registration)</td>
+
+<td>serviceWorkerUnregisterSuccess</td>
+
+<td>Подія буде ініційована, коли Service Worker успішно скасує реєстрацію.</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(registration, error)</td>
+
+<td>serviceWorkerUnregisterError</td>
+
+<td>Подія буде ініційована, коли не вдалося скасувати реєстрацію Service Worker</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>online</td>
+
+<td>Подія буде запущена, коли застосунок підключиться до мережі</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>offline</td>
+
+<td>Подія буде запущена, коли застосунок перейде в автономний режим</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(isOnline)</td>
+
+<td>connection</td>
+
+<td>Подія буде запущена при зміні стану мережі</td>
+
+<td>
+    </td>
+</tr>
+                <tr>
+<td>(isDarkTheme)</td>
+
+<td>darkModeChange</td>
+
+<td>Подію буде запущено після зміни бажаної колірної схеми пристрою. Він діє лише тоді, коли ввімкнено <b>autoDarkMode</b></td>
+
+<td>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<div>І знову ж таки, більшість компонентів, які мають JavaScript API, можуть розширювати цей список подій, як-от компонент Panel також запускатиме додаткові події в екземплярі застосунку.
+<p>Приклади:</p>
+</div>
+<pre><code>app.on('panelOpen', function (panel) {
+  console.log('Panel ' + panel.side + ' opened');
+});
+
+app.on('connection', function (isOnline) {
+  if (isOnline) {
+    console.log('app is online now')
+  } else {
+    console.log('app is offline now')
+  }
+});
+
+app.on('darkModeChange', function (isDark) {
+  if (isDark) {
+    console.log('color scheme changed to Dark')
+  } else {
+    console.log('color scheme changed to Light')
+  }
+});</code></pre>
+<h3>Змінні CSS</h3>
+<pre><code>:root {
+  --t4-theme-color: #007aff;
+  --t4-theme-color-rgb: 0, 122, 255;
+  --t4-theme-color-shade: #0066d6;
+  --t4-theme-color-tint: #298fff;
+  --t4-safe-area-left: 0px;
+  --t4-safe-area-right: 0px;
+  --t4-safe-area-top: 0px;
+  --t4-safe-area-bottom: 0px;
+  --t4-safe-area-outer-left: 0px;
+  --t4-safe-area-outer-right: 0px;
+  --t4-device-pixel-ratio: 1;
+}
+@supports (left: env(safe-area-inset-left)) {
+  :root {
+    --t4-safe-area-top: env(safe-area-inset-top);
+    --t4-safe-area-bottom: env(safe-area-inset-bottom);
+  }
+  :root .ios-left-edge,
+  :root .ios-edges,
+  :root .safe-area-left,
+  :root .safe-areas,
+  :root .popup,
+  :root .sheet-modal,
+  :root .panel-left {
+    --t4-safe-area-left: env(safe-area-inset-left);
+    --t4-safe-area-outer-left: env(safe-area-inset-left);
+  }
+  :root .ios-right-edge,
+  :root .ios-edges,
+  :root .safe-area-right,
+  :root .safe-areas,
+  :root .popup,
+  :root .sheet-modal,
+  :root .panel-right {
+    --t4-safe-area-right: env(safe-area-inset-right);
+    --t4-safe-area-outer-right: env(safe-area-inset-right);
+  }
+  :root .no-safe-areas,
+  :root .no-safe-area-left,
+  :root .no-ios-edges,
+  :root .no-ios-left-edge {
+    --t4-safe-area-left: 0px;
+    --t4-safe-area-outer-left: 0px;
+  }
+  :root .no-safe-areas,
+  :root .no-safe-area-right,
+  :root .no-ios-edges,
+  :root .no-ios-right-edge {
+    --t4-safe-area-right: 0px;
+    --t4-safe-area-outer-right: 0px;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  :root {
+    --t4-device-pixel-ratio: 2;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+  :root {
+    --t4-device-pixel-ratio: 3;
+  }
+}
+/*====================
+  Fonts &amp; Bars
+  ==================== */
+:root {
+  --t4-font-size: 14px;
+  /*
+  --t4-bars-link-color: var(--t4-theme-color);
+  */
+  --t4-bars-bg-image: none;
+  --t4-bars-translucent-opacity: 0.8;
+  --t4-bars-translucent-blur: 20px;
+  --t4-bars-shadow-bottom-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.04) 50%, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 0) 100%);
+  --t4-bars-shadow-top-image: linear-gradient(to top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.04) 50%, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 0) 100%);
+  --t4-bars-text-color: #000;
+  --t4-bars-bg-color: #t4t4f8;
+  --t4-bars-bg-color-rgb: 247, 247, 248;
+}
+:root .dark,
+:root.dark {
+  --t4-bars-text-color: #fff;
+}
+.ios {
+  --t4-font-family: -apple-system, SF Pro Text, SF UI Text, system-ui, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --t4-line-height: 1.4;
+  --t4-text-color: #000;
+  --t4-bars-border-color: rgba(0, 0, 0, 0.25);
+}
+.ios .dark,
+.ios.dark {
+  --t4-text-color: #fff;
+  --t4-bars-bg-color: #121212;
+  --t4-bars-bg-color-rgb: 19, 19, 19;
+  --t4-bars-border-color: rgba(255, 255, 255, 0.1);
+}
+.md {
+  --t4-font-family: Roboto, system-ui, Noto, Helvetica, Arial, sans-serif;
+  --t4-line-height: 1.5;
+  --t4-bars-border-color: transparent;
+  --t4-text-color: #212121;
+}
+.md .dark,
+.md.dark {
+  --t4-text-color: rgba(255, 255, 255, 0.87);
+  --t4-bars-bg-color: #202020;
+}
+.aurora {
+  --t4-font-family: -apple-system, system-ui, Helvetica, Arial, sans-serif;
+  --t4-line-height: 1.5;
+  --t4-text-color: #000;
+  --t4-bars-border-color: rgba(0, 0, 0, 0.2);
+}
+.aurora .dark,
+.aurora.dark {
+  --t4-text-color: #fff;
+  --t4-bars-bg-color: #202020;
+  --t4-bars-border-color: rgba(255, 255, 255, 0.1);
+}</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u0417\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a\/ \u044f\u0434\u0440\u043e","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a\/ \u044f\u0434\u0440\u043e"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 ","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u0417\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u043e\u043b\u0438 \u043c\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0454\u043c\u043e \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a, \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043d\u043e\u0432\u0438\u0439 \u043a\u043e\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440 Techno4 \u0456 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u043e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u043e\u0441\u043d\u043e\u0432\u043d\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  \/\/ App id\n  id: 'com.myapp.test',\n  \/\/ Enable swipe panel\n  panel: {\n    swipe: true,\n  },\n  \/\/ ... other parameters\n});"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0426\u0435\u0439 \u043a\u043e\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u043e\u0441\u043d\u043e\u0432\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Techno4.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u0441\u043f\u0438\u0441\u043e\u043a \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041a\u043e\u0440\u0435\u043d\u0435\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u042f\u043a\u0449\u043e \u043e\u0441\u043d\u043e\u0432\u043d\u0438\u0439 \u043c\u0430\u043a\u0435\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u043d\u0435 \u0454 \u043f\u0440\u044f\u043c\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c <code>&lt;body&gt;<\/code>, \u0442\u0443\u0442 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u043a\u043e\u0440\u0435\u043d\u0435\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"el","title":"body"}},{"type":"table_item","props":{"content":"\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u043c\u0430\u043a\u0435\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0437 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u043e\u0433\u043e <b>main app component<\/b>. ","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"Router Component","meta":"component","title":""}},{"type":"table_item","props":{"content":"\u0428\u043b\u044f\u0445 \u0434\u043e <b>main app component<\/b> \u0437 \u043e\u0434\u043d\u0438\u043c \u0444\u0430\u0439\u043b\u043e\u043c, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043e \u0447\u0435\u0440\u0435\u0437 XHR. ","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string Component","meta":"componentUrl"}},{"type":"table_item","props":{"content":"\u0406\u0434\u0435\u043d\u0442\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440 \u043d\u0430\u0431\u043e\u0440\u0443 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0456\u0432","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"id","title":"io.Techno4.testapp"}},{"type":"table_item","props":{"content":"\u041d\u0430\u0437\u0432\u0430 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041c\u043e\u0436\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0456\u043d\u0448\u0438\u043c\u0438 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430\u043c\u0438, \u043d\u0430\u043f\u0440. \u044f\u043a \u043d\u0430\u0437\u0432\u0443 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0434\u043b\u044f \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 <b>Dialog<\/b>.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"name","title":"Techno4"}},{"type":"table_item","props":{"content":"\u0412\u0435\u0440\u0441\u0456\u044f \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041c\u043e\u0436\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0456\u043d\u0448\u0438\u043c\u0438 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430\u043c\u0438.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"version","title":"1.0.0"}},{"type":"table_item","props":{"content":"\u0422\u0435\u043c\u0430 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 <b>ios, md, aurora<\/b> \u0430\u0431\u043e<b> auto<\/b>. \u0423 \u0440\u0430\u0437\u0456  auto \u0440\u0435\u0436\u0438\u043c\u0443 \u0432\u0456\u043d \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0442\u0435\u043c\u0443 iOS \u0434\u043b\u044f \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457\u0432 iOS, \u0442\u0435\u043c\u0443 Aurora \u0434\u043b\u044f \u043d\u0430\u0441\u0442\u0456\u043b\u044c\u043d\u043e\u0433\u043e \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044e, \u0449\u043e \u043f\u0440\u0430\u0446\u044e\u0454 \u0432 \u0441\u0435\u0440\u0435\u0434\u043e\u0432\u0438\u0449\u0456 Electron, \u0456 \u0442\u0435\u043c\u0443 MD \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0456\u043d\u0448\u0438\u0445 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457\u0432.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"theme","title":"auto"}},{"type":"table_item","props":{"content":"\u041c\u043e\u0432\u0430 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041c\u043e\u0436\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0456\u043d\u0448\u0438\u043c\u0438 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430\u043c\u0438. \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0434\u043e\u0440\u0456\u0432\u043d\u044e\u0454 \u043f\u043e\u0442\u043e\u0447\u043d\u0456\u0439 \u043c\u043e\u0432\u0456 \u0432\u0435\u0431\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0447\u0430\/\u0432\u0435\u0431\u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 (\u0442\u043e\u0431\u0442\u043e <b>avigator.language<\/b>).","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"String","meta":"language"}},{"type":"table_item","props":{"content":"\u0420\u044f\u0434\u043e\u043a \u0430\u0433\u0435\u043d\u0442\u0430 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430. \u041f\u043e\u0442\u0440\u0456\u0431\u043d\u0438\u0439 \u0443 \u0440\u0430\u0437\u0456 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u043d\u0430 \u0441\u0442\u043e\u0440\u043e\u043d\u0456 \u0441\u0435\u0440\u0432\u0435\u0440\u0430 \u0434\u043b\u044f \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0433\u043e \u0432\u0438\u044f\u0432\u043b\u0435\u043d\u043d\u044f \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044e.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"String","meta":"userAgent"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u0438\u043c\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0430\u043c\u0438 \u0434\u043e \u0432\u0441\u0456\u0445 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044c","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"array","meta":"routes","title":"[]"}},{"type":"table_item","props":{"content":"\u0428\u043b\u044f\u0445 \u0434\u043e \u0432\u0456\u0434\u043a\u043b\u0430\u0434\u0435\u043d\u0438\u0445 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432 Techno4. \u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 <b>Lazy Modules<\/b> \u0456\u0437 \u043c\u043e\u0434\u0443\u043b\u044f\u043c\u0438 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"lazyModulesPath"}},{"type":"table_item","props":{"content":"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0432\u043c\u0438\u043a\u0430\u0454 \u0442\u0435\u043c\u043d\u0443 \u0442\u0435\u043c\u0443 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u044c \u0441\u0438\u0441\u0442\u0435\u043c\u0438 \u043a\u043e\u043b\u044c\u043e\u0440\u0456\u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430. \u041f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0430 \u0446\u0456\u0454\u0457 \u0444\u0443\u043d\u043a\u0446\u0456\u0457 \u0431\u0430\u0437\u0443\u0454\u0442\u044c\u0441\u044f \u043d\u0430 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0446\u0456 <b>\u043c\u0435\u0434\u0456\u0430-\u0437\u0430\u043f\u0438\u0442\u0456\u0432 (prefers-color-scheme)<\/b>.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"autoDarkMode","title":"false"}},{"type":"table_item","props":{"content":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c Techno4 \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e, \u043a\u043e\u043b\u0438 \u0432\u0438 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0454\u0442\u0435 <code>new Techno4()<\/code>. \u042f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 \u0442\u0430\u043a\u0456\u0439 \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u0446\u0456, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0439\u043e\u0433\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0446\u044c\u043e\u0433\u043e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430, \u0430 \u043f\u043e\u0442\u0456\u043c \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438 \u0432\u0440\u0443\u0447\u043d\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e <code>app.init()<\/code>, \u043a\u043e\u043b\u0438 \u0432\u0430\u043c \u0446\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"init","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0443 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 <code>init: true<\/code> \u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a \u043f\u0440\u0430\u0446\u044e\u0454 \u0432 \u0441\u0435\u0440\u0435\u0434\u043e\u0432\u0438\u0449\u0456 cordova, \u0442\u043e\u0434\u0456 \u0457\u0457 \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u043e \u0437\u0430 \u043f\u043e\u0434\u0456\u0454\u044e <b>deviceready.<\/b>","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"Boolean","meta":"initOnDeviceReady","title":"true"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043d\u0430\u043f\u0456\u0432\u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 \u0435\u0444\u0435\u043a\u0442 (\u0440\u043e\u0437\u043c\u0438\u0442\u0442\u044f \u0444\u043e\u043d\u0443) \u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044f\u0445 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0434\u043b\u044f \u0442\u0435\u043c\u0438 iOS (\u043d\u0430 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044f\u0445 iOS)","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"Boolean","meta":"iosTranslucentBars","title":"true"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043d\u0430\u043f\u0456\u0432\u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 \u0435\u0444\u0435\u043a\u0442 (\u0440\u043e\u0437\u043c\u0438\u0442\u0442\u044f \u0444\u043e\u043d\u0443) \u0443 \u0440\u0435\u0436\u0438\u043c\u0430\u0445 (\u0434\u0456\u0430\u043b\u043e\u0433\u043e\u0432\u0435 \u0432\u0456\u043a\u043d\u043e, \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0435 \u0432\u0456\u043a\u043d\u043e, \u0434\u0456\u0457) \u0434\u043b\u044f \u0442\u0435\u043c\u0438 iOS (\u043d\u0430 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044f\u0445 iOS)","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"Boolean","meta":"iosTranslucentModals","title":"true"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c"},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"fragment","children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c\u0438 \u043f\u043e\u0434\u0456\u0439. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"on","title":"{}"}}],"name":"T4 Docs \u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var app = new Techno4({\n  on: {\n    init: function () {\n      console.log('App initialized');\n    },\n    pageInit: function () {\n      console.log('Page initialized');\n    },\n  }\n})"}}]}]}],"props":{"margin":"default"}},{"type":"headline","props":{"content":"Clicks Module \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - Clicks Module \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 "},{"type":"fragment","children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438, \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u043c\u0438 \u0437 \u043c\u043e\u0434\u0443\u043b\u0435\u043c \u043a\u043b\u0456\u043a\u0456\u0432:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"clicks","title":""}}],"name":"T4 Docs \u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var app = new Techno4({\n  clicks: {\n    externalLinks: '.external',\n  }\n})"}}]}]}],"props":{"margin":"default"}},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"headline","props":{"content":"{","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - {"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0434\u043b\u044f \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u044c, \u044f\u043a\u0456 \u0441\u043b\u0456\u0434 \u0440\u043e\u0437\u0433\u043b\u044f\u0434\u0430\u0442\u0438 \u044f\u043a \u0437\u043e\u0432\u043d\u0456\u0448\u043d\u0456 \u0442\u0430 \u043d\u0435 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u043e\u0431\u0440\u043e\u0431\u043b\u044f\u0442\u0438\u0441\u044f Techno4. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0442\u0430\u043a\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f '.external' \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0442\u0438\u043c\u0435 \u0442\u0430\u043a\u0438\u043c \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c, \u044f\u043a &lt;a href=\"somepage.html\" class=\"external\"&gt; (\u0437 \u043a\u043b\u0430\u0441\u043e\u043c \"external\")","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"externalLinks","title":"'.external'"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c"},{"type":"headline","props":{"content":"}","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - }"},{"type":"headline","props":{"content":"Touch Module \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - Touch Module \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 "},{"type":"fragment","children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0441\u0435\u043d\u0441\u043e\u0440\u043d\u043e\u0433\u043e \u043c\u043e\u0434\u0443\u043b\u044f:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"touch","title":""}}],"name":"T4 Docs \u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var app = new Techno4({\n  touch: {\n    tapHold: true,\n  }\n})"}}]}]}],"props":{"margin":"default"}},{"type":"headline","props":{"content":"{","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - {"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0440\u043e\u0433\u043e\u0432\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0432\u0456\u0434\u0441\u0442\u0430\u043d\u0456 (\u0443 \u043f\u0456\u043a\u0441\u0435\u043b\u044f\u0445), \u0449\u043e\u0431 \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 (\u0432\u0438\u043f\u0430\u0434\u043a\u043e\u0432\u0438\u043c) \u043a\u043e\u0440\u043e\u0442\u043a\u0438\u043c \u0441\u0432\u0430\u0439\u043f\u0430\u043c. \u041e\u0442\u0436\u0435, \u044f\u043a\u0449\u043e \u0432\u0456\u0434\u0441\u0442\u0430\u043d\u044c \u0442\u043e\u0440\u043a\u0430\u043d\u043d\u044f\/\u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0435\u043d\u043d\u044f \u0431\u0456\u043b\u044c\u0448\u0430 \u0437\u0430 \u0446\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f, \u00ab\u043a\u043b\u0430\u0446\u0430\u043d\u043d\u044f\u00bb \u043d\u0435 \u0431\u0443\u0434\u0435 \u0430\u043a\u0442\u0438\u0432\u043e\u0432\u0430\u043d\u043e.","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"touchClicksDistanceThreshold","title":"5"}},{"type":"table_item","props":{"content":"\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>true<\/code>, \u0449\u043e\u0431 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442\u043d\u0435 \u043c\u0435\u043d\u044e (\u043a\u043b\u0430\u0446\u043d\u0456\u0442\u044c \u043f\u0440\u0430\u0432\u043e\u044e \u043a\u043d\u043e\u043f\u043a\u043e\u044e \u043c\u0438\u0448\u0456 \u0430\u0431\u043e \u043d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0456 \u0443\u0442\u0440\u0438\u043c\u0443\u0439\u0442\u0435)","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"Boolean","meta":"disableContextMenu","title":"false"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0443\u0442\u0440\u0438\u043c\u0430\u043d\u043d\u044f \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"tapHold","title":"false"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0437\u043d\u0430\u0447\u0430\u0454, \u044f\u043a \u0434\u043e\u0432\u0433\u043e (\u0443 \u043c\u0441) \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043f\u043e\u0432\u0438\u043d\u0435\u043d \u0443\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u0442\u0438 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f, \u043f\u0435\u0440\u0448 \u043d\u0456\u0436 \u043f\u043e\u0434\u0456\u044f <b>taphold<\/b> \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043d\u0430 \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u043c\u0443 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"tapHoldDelay","title":"750"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c), \u043f\u043e\u0434\u0456\u044f \u201c\u043a\u043b\u0456\u043a\u201d \u043d\u0435 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0441\u043b\u044f \u043f\u043e\u0434\u0456\u0457 \u201c\u0443\u0442\u0440\u0438\u043c\u0430\u043d\u043d\u044f \u0434\u043e\u0442\u0438\u043a\u0443\u201d <b>taphold<\/b>","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"tapHoldPreventClicks","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a \u0434\u043e\u0434\u0430\u0441\u0442\u044c \u043a\u043b\u0430\u0441 <b>activestate<\/b>  \u0434\u043e \u043f\u043e\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 (:active).","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"activeState","title":"true"}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432, \u0434\u0435 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e activeState, \u0434\u043e\u0434\u0430\u0441\u0442\u044c \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0438\u0439 \u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u043a\u043b\u0430\u0441","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"activeStateElements","title":"a, button, label, <p>span, .actions-button,<p> .stepper-button, <p>.stepper-button-plus,<p> .stepper-button-minus,<p> .card-expandable,<p> .menu-item, <p>.link, .item-link,<p> .accordion-item-toggle"}},{"type":"table_item","props":{"content":"\u041a\u043e\u043b\u0438 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0432\u0456\u043d \u0437\u0431\u0435\u0440\u0456\u0433\u0430\u0454 \u00ab\u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u0441\u0442\u0430\u043d\u00bb \u043f\u0456\u0434 \u0447\u0430\u0441 \u0440\u0443\u0445\u0443 \u043c\u0438\u0448\u0456","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"activeStateOnMouseMove","title":"false"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0435\u0444\u0435\u043a\u0442 \u201c\u0445\u0432\u0438\u043b\u0456 \u0434\u043e\u0442\u0438\u043a\u0443\u201d \u0434\u043b\u044f \u0442\u0435\u043c\u0438 iOS","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"iosTouchRipple","title":"false"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0435\u0444\u0435\u043a\u0442 \u201c\u0445\u0432\u0438\u043b\u0456 \u0434\u043e\u0442\u0438\u043a\u0443\u201d \u0434\u043b\u044f \u0442\u0435\u043c\u0438 MD","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"mdTouchRipple","title":"true"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0435\u0444\u0435\u043a\u0442 \u0445\u0432\u0438\u043b\u0456 \u0434\u043e\u0442\u0438\u043a\u0443 \u0434\u043b\u044f \u0442\u0435\u043c\u0438 Aurora.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"auroraTouchRipple","title":"false"}},{"type":"table_item","props":{"content":"CSS-\u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u0434\u043b\u044f \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u0432\u0430\u043d\u043d\u044f \u0435\u0444\u0435\u043a\u0442\u0443 \u0445\u0432\u0438\u043b\u0456 \u0434\u043e\u0442\u0438\u043a\u0443 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"touchRippleElements","title":".ripple, .link,<p> .item-link, .list-button,<p> .links-list a, .button,<p> button, .input-clear-button,<p> .dialog-button, .tab-link,<p> .item-radio, .item-checkbox,<p> .actions-button, <p>.searchbar-disable-button,<p> .fab a, .checkbox, .radio,<p> .data-table <p>.sortable-cell:not(.input-cell),<p> .notification-close-button,<p> .stepper-button, <p>.stepper-button-minus,<p> .stepper-button-plus, <p>.menu-item-content,<p> .list.accordion-list <p>.accordion-item-toggle"}},{"type":"table_item","props":{"content":"CSS-\u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u0434\u043b\u044f \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u0432\u0430\u043d\u043d\u044f \u0435\u0444\u0435\u043a\u0442\u0443 \u0445\u0432\u0438\u043b\u0456 \u0434\u043e\u0442\u0438\u043a\u0443 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"touchRippleInsetElements","title":".ripple-inset, <p>.icon-only,<p> .searchbar-disable-button, <p>.input-clear-button, <p>.notification-close-button,<p> .md .navbar .link.back"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c"},{"type":"headline","props":{"content":"}","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - }"},{"type":"fragment","children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u043c\u043e\u0434\u0443\u043b\u044f service worker:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"serviceWorker","title":""}}],"name":"T4 Docs \u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var app = new Techno4({\n  serviceWorker: {\n    path: '.\/service-worker.js',\n    scope: '\/',\n  }\n})"}}]}]}],"props":{"margin":"default"}},{"type":"headline","props":{"content":"{","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - {"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0428\u043b\u044f\u0445 \u0434\u043e \u0444\u0430\u0439\u043b\u0443 <b>service worker<\/b>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"path","title":""}},{"type":"table_item","props":{"content":"\u0428\u043b\u044f\u0445 \u0434\u043e \u0441\u0444\u0435\u0440\u0438 \u043e\u0431\u0441\u043b\u0443\u0433\u043e\u0432\u0443\u0432\u0430\u043d\u043d\u044f Worker","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"scope","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c"},{"type":"headline","props":{"content":"}","title_element":"h5","title_style":"h5"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - }"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0426\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0434\u043b\u044f \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0433\u043e \u043c\u043e\u0434\u0443\u043b\u044f \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443.\n<p>\u0411\u0456\u043b\u044c\u0448\u0456\u0441\u0442\u044c \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432, \u044f\u043a\u0456 \u043c\u0430\u044e\u0442\u044c JavaScript API, \u043c\u043e\u0436\u0443\u0442\u044c \u0440\u043e\u0437\u0448\u0438\u0440\u0438\u0442\u0438 \u0446\u0435\u0439 \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456, \u043d\u0430\u0437\u0432\u0430\u043d\u043e\u0457 \u044f\u043a \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442.<\/p> \n\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 Panel \u0440\u043e\u0437\u0448\u0438\u0440\u044e\u0454 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456  <code>\u2018panel\u2019<\/code>, \u044f\u043a\u0430 \u043f\u0440\u0438\u0439\u043c\u0430\u0454 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 Panel.\n<p>\u041f\u0440\u0438\u043a\u043b\u0430\u0434:<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  id: 'com.myapp.test',\n  \/\/ Extended by Panel component:\n  panel: {\n    swipe: true,\n    visibleBreakpoint: 1024,\n  },\n  \/\/ Extended by Dialog component:\n  dialog: {\n    title: 'My App',\n  },\n  \/\/ Extended by Statusbar component:\n  statusbar: {\n    iosOverlaysWebview: true,\n  },\n});"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u043e\u0432\u0435\u0440\u043d\u0435\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Techno4 \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u0431\u0430\u0433\u0430\u0442\u043e \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u0445 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0435\u0439 \u0456 \u043c\u0435\u0442\u043e\u0434\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0406\u0434\u0435\u043d\u0442\u0438\u0444\u0456\u043a\u0430\u0442\u043e\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443, \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0438\u0439 \u0443 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445","link_text":"string","meta":"app.id","title":""}},{"type":"table_item","props":{"content":"\u041d\u0430\u0437\u0432\u0430 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0430 \u0432 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445","link_text":"string","meta":"app.name","title":""}},{"type":"table_item","props":{"content":"\u0412\u0435\u0440\u0441\u0456\u044f \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","meta":"app.version"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 ","meta":"app.routes"}},{"type":"table_item","props":{"content":"\u041c\u043e\u0432\u0430 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 ","meta":"app.language"}},{"type":"table_item","props":{"content":"\u041a\u043e\u0440\u0435\u043d\u0435\u0432\u0438\u0439 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","meta":"app.el"}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom7 \u0437 \u043a\u043e\u0440\u0435\u043d\u0435\u0432\u0438\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","meta":"app.$el"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c, \u044f\u043a\u0430 \u0432\u043a\u0430\u0437\u0443\u0454 \u043d\u0430 \u0442\u0435, \u0449\u043e \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a \u043c\u0430\u0454 \u043c\u0430\u043a\u0435\u0442 RTL \u0447\u0438 \u043d\u0456","meta":"app.rtl"}},{"type":"table_item","props":{"content":"\u0420\u044f\u0434\u043e\u043a \u0456\u0437 \u043f\u043e\u0442\u043e\u0447\u043d\u043e\u044e \u0442\u0435\u043c\u043e\u044e \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 <b>md, ios \u0430\u0431\u043e aurora<\/b>","meta":"app.theme"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c, \u044f\u043a\u0430 \u0432\u043a\u0430\u0437\u0443\u0454, \u0447\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u0430 \u0442\u0435\u043c\u043d\u0430 \u0442\u0435\u043c\u0430. \u0426\u044f \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c \u0434\u0456\u0454 \u043b\u0438\u0448\u0435 \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e <b>autoDarkMode<\/b>","meta":"app.darkMode"}},{"type":"table_item","props":{"content":"\u0428\u0438\u0440\u0438\u043d\u0430 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0432 \u043f\u0456\u043a\u0441\u0435\u043b\u044f\u0445","meta":"app.width"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0441\u043e\u0442\u0430 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0432 \u043f\u0456\u043a\u0441\u0435\u043b\u044f\u0445","meta":"app.height"}},{"type":"table_item","props":{"content":"\u0417\u043c\u0456\u0449\u0435\u043d\u043d\u044f \u0434\u043e\u0434\u0430\u0442\u043a\u0430 \u0432\u043b\u0456\u0432\u043e \u0432 \u043f\u0456\u043a\u0441\u0435\u043b\u044f\u0445","meta":"app.left"}},{"type":"table_item","props":{"content":"\u0412\u0435\u0440\u0445\u043d\u0454 \u0437\u043c\u0456\u0449\u0435\u043d\u043d\u044f \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0432 \u043f\u0456\u043a\u0441\u0435\u043b\u044f\u0445","meta":"app.top"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c, \u044f\u043a\u0430 \u0432\u043a\u0430\u0437\u0443\u0454, \u0449\u043e \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0447\u0438 \u043d\u0456","meta":"app.initialized"}},{"type":"table_item","props":{"content":"\u041f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c Dom7","meta":"app.$"}},{"type":"table_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","meta":"app.params"}},{"type":"table_item","props":{"content":"\u041e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438 \u0449\u043e\u0434\u043e \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u043d\u0438\u0445 \u0444\u0443\u043d\u043a\u0446\u0456\u0439. \u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0440\u043e\u0437\u0434\u0456\u043b <b>\u0421\u043b\u0443\u0436\u0431\u043e\u0432\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0438 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0438<\/b>","meta":"app.support"}},{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0456\u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438 \u043f\u0440\u043e \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439. \u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0440\u043e\u0437\u0434\u0456\u043b <b>\u00ab\u0423\u0442\u0438\u043b\u0456\u0442\u0438 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044e\u00bb<b>.","meta":"app.device"}},{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u0434\u0435\u044f\u043a\u0438\u043c\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c\u0438 \u0443\u0442\u0438\u043b\u0456\u0442\u0430\u043c\u0438. \u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0440\u043e\u0437\u0434\u0456\u043b <b>\"\u0423\u0442\u0438\u043b\u0456\u0442\u0438\"<\/b>","meta":"app.utils"}},{"type":"table_item","props":{"content":"\u041c\u0456\u0441\u0442\u0438\u0442\u044c \u043c\u0435\u0442\u043e\u0434\u0438 \u0440\u043e\u0431\u043e\u0442\u0438 \u0456\u0437 \u0437\u0430\u043f\u0438\u0442\u0430\u043c\u0438 XHR. \u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0440\u043e\u0437\u0434\u0456\u043b <b>\u00ab\u0417\u0430\u043f\u0438\u0442 \u0443\u0442\u0438\u043b\u0456\u0442\u00bb<\/b>.","meta":"app.request"}},{"type":"table_item","props":{"content":"\u041a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 Service Worker (navigator.serviceWorker)","meta":"app.serviceWorker.container"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u0437\u0430\u0440\u0435\u0454\u0441\u0442\u0440\u043e\u0432\u0430\u043d\u0438\u043c\u0438  Service Worker","meta":"app.serviceWorker.registrations"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c \u0456\u043d\u0434\u0438\u043a\u0430\u0446\u0456\u0457 \u0441\u0442\u0430\u043d\u0443 \u043f\u0456\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u044f \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. (<b>true<\/b>, \u044f\u043a\u0449\u043e \u043e\u043d\u043b\u0430\u0439\u043d)","meta":"app.online"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0435 \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0442\u0435\u043c\u043d\u043e\u0457 \u0442\u0435\u043c\u0438","link_text":"string","meta":"app.enableAutoDarkMode()","title":""}},{"type":"table_item","props":{"content":"\u0412\u0438\u043c\u0438\u043a\u0430\u0454 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0435 \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0442\u0435\u043c\u043d\u043e\u0457 \u0442\u0435\u043c\u0438","link_text":"string","meta":"app.disableAutoDarkMode()","title":""}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"app.on(event, handler)"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0443","meta":"app.once(event, handler)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"app.off(event, handler)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043f\u043e\u0434\u0456\u0457","meta":"app.off(event)"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0443\u0441\u043a \u043f\u043e\u0434\u0456\u0457 \u0437\u0430 \u043f\u0435\u0432\u043d\u0438\u0445 \u0443\u043c\u043e\u0432","meta":"app.emit(event, ...args)"}},{"type":"table_item","props":{"content":"\u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a. \u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043c\u043a\u043d\u0443\u043b\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0443 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 <b>init: false<\/b>","meta":"app.init()"}},{"type":"table_item","props":{"content":"\u0420\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044f service worker. \u0412\u0456\u043d \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 promise, \u044f\u043a\u0430 \u0431\u0443\u0434\u0435 \u0432\u0438\u0440\u0456\u0448\u0435\u043d\u0430 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e <b>ServiceWorkerRegistration<\/b>","meta":"app.serviceWorker.register(path, scope)"}},{"type":"table_item","props":{"content":"\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044e service worker. \u0412\u0456\u043d \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 promise, \u044f\u043a\u0430 \u0431\u0443\u0434\u0435 \u0432\u0438\u0440\u0456\u0448\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 Service Worker \u0441\u043a\u0430\u0441\u0443\u0454 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044e.","meta":"app.serviceWorker.unregister(registration)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":" \u0422\u0430\u043a \u0441\u0430\u043c\u043e \u044f\u043a \u0456 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443, \u0431\u0456\u043b\u044c\u0448\u0456\u0441\u0442\u044c \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432, \u044f\u043a\u0456 \u043c\u0430\u044e\u0442\u044c JavaScript API, \u043c\u043e\u0436\u0443\u0442\u044c \u0440\u043e\u0437\u0448\u0438\u0440\u044e\u0432\u0430\u0442\u0438 \u0446\u0435\u0439 \u0441\u043f\u0438\u0441\u043e\u043a \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0435\u0439 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456, \u043d\u0430\u0437\u0432\u0430\u043d\u043e\u0457 \u044f\u043a \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 <b>Panel<\/b> \u0440\u043e\u0437\u0448\u0438\u0440\u044e\u0454 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0430 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044e panel, \u044f\u043a\u0430 \u043f\u0440\u0438\u0439\u043c\u0430\u0454 \u0441\u043f\u0435\u0446\u0438\u0444\u0456\u0447\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0442\u0430 \u043c\u0435\u0442\u043e\u0434\u0438 <b>Panel<\/b>.\n<p> \u041f\u0440\u0438\u043a\u043b\u0430\u0434:<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"\/\/ Open panel\napp.panel.open('left');\n\n\/\/ Hide statusbar\napp.statusbar.hide();"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0432\u0438\u0434\u0430\u0454 \u0442\u0430\u043a\u0456 \u043e\u0441\u043d\u043e\u0432\u043d\u0456 \u043f\u043e\u0434\u0456\u0457:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u043f\u0456\u0441\u043b\u044f <code>new Techno4()<\/code> \u0430\u0431\u043e \u043f\u0456\u0441\u043b\u044f <code>app.init()<\/code>, \u044f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u043c\u043a\u043d\u0443\u043b\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0443 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044e.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"init","title":""}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043f\u0440\u0438 \u0437\u043c\u0456\u043d\u0456 \u0440\u043e\u0437\u043c\u0456\u0440\u0443 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 (\u0440\u043e\u0437\u043c\u0456\u0440 \u0432\u0456\u043a\u043d\u0430).","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"resize","title":""}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043f\u0440\u0438 \u0437\u043c\u0456\u043d\u0456 \u043e\u0440\u0456\u0454\u043d\u0442\u0430\u0446\u0456\u0457 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 (\u0437\u043c\u0456\u043d\u0430 \u043e\u0440\u0456\u0454\u043d\u0442\u0430\u0446\u0456\u0457 \u0432\u0456\u043a\u043d\u0430).","meta":"orientationchange"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0454\u0442\u044c\u0441\u044f \u043f\u0456\u0441\u043b\u044f \u043a\u043b\u0456\u043a\u0443 \u0432 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0456","meta":"click","title":"(event)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u0437\u0430\u043f\u0443\u0441\u043a\u0443 \u0434\u043e\u0442\u0438\u043a\u043e\u043c (mousedown). \u041f\u043e\u0434\u0456\u044f \u0434\u043e\u0434\u0430\u043d\u0430 \u044f\u043a \u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u0441\u043b\u0443\u0445\u0430\u0447 (\u043c\u043e\u0436\u043d\u0430 \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c)","meta":"touchstart:active","title":"(event)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0435\u043d\u043d\u044f \u0434\u043e\u0442\u0438\u043a\u043e\u043c (mousemove) \u043f\u043e\u0434\u0456\u044f, \u0434\u043e\u0434\u0430\u043d\u0430 \u044f\u043a \u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u0441\u043b\u0443\u0445\u0430\u0447 (\u043c\u043e\u0436\u043d\u0430 \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 \u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c)","meta":"touchmove:active","title":"(event)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u0442\u043e\u0440\u043a\u0430\u043d\u043d\u044f (mouseup), \u0434\u043e\u0434\u0430\u043d\u043e\u0433\u043e \u044f\u043a \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0433\u043e \u0441\u043b\u0443\u0445\u0430\u0447\u0430 (\u043c\u043e\u0436\u043d\u0430 \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 \u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c)","meta":"touchend:active","title":"(event)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u0434\u043e\u0442\u0438\u043a\u0443 (mousedown). \u041f\u043e\u0434\u0456\u044f \u0434\u043e\u0434\u0430\u043d\u0430 \u044f\u043a \u043f\u0430\u0441\u0438\u0432\u043d\u0438\u0439 \u0441\u043b\u0443\u0445\u0430\u0447 (\u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 \u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c)","meta":"touchstart:passive","title":"(event)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0435\u043d\u043d\u044f \u0434\u043e\u0442\u0438\u043a\u043e\u043c (mousemove). \u041f\u043e\u0434\u0456\u044f \u0434\u043e\u0434\u0430\u043d\u0430 \u044f\u043a \u043f\u0430\u0441\u0438\u0432\u043d\u0438\u0439 \u0441\u043b\u0443\u0445\u0430\u0447 (\u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 \u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c)","meta":"touchmove:passive","title":"(event)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0434 \u0447\u0430\u0441 \u0442\u043e\u0440\u043a\u0430\u043d\u043d\u044f (mouseup). \u041f\u043e\u0434\u0456\u044f \u0434\u043e\u0434\u0430\u043d\u0430 \u044f\u043a \u043f\u0430\u0441\u0438\u0432\u043d\u0438\u0439 \u0441\u043b\u0443\u0445\u0430\u0447 (\u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 \u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c)","meta":"touchend:passive","title":"(event)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u0443\u0441\u043f\u0456\u0448\u043d\u043e\u0457 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u0457 Service Worker","meta":"serviceWorkerRegisterSuccess","title":"(registration)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0435 \u0432\u0434\u0430\u0441\u0442\u044c\u0441\u044f \u0437\u0430\u0440\u0435\u0454\u0441\u0442\u0440\u0443\u0432\u0430\u0442\u0438 Service Worker","meta":"serviceWorkerRegisterError","title":"(error)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 Service Worker \u0443\u0441\u043f\u0456\u0448\u043d\u043e \u0441\u043a\u0430\u0441\u0443\u0454 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044e.","meta":"serviceWorkerUnregisterSuccess","title":"(registration)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u0441\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438 \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u044e Service Worker","meta":"serviceWorkerUnregisterError","title":"(registration, error)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a \u043f\u0456\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u044c\u0441\u044f \u0434\u043e \u043c\u0435\u0440\u0435\u0436\u0456","meta":"online"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a \u043f\u0435\u0440\u0435\u0439\u0434\u0435 \u0432 \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u0438\u0439 \u0440\u0435\u0436\u0438\u043c","meta":"offline"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043f\u0440\u0438 \u0437\u043c\u0456\u043d\u0456 \u0441\u0442\u0430\u043d\u0443 \u043c\u0435\u0440\u0435\u0436\u0456","meta":"connection","title":"(isOnline)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u043c\u0456\u043d\u0438 \u0431\u0430\u0436\u0430\u043d\u043e\u0457 \u043a\u043e\u043b\u0456\u0440\u043d\u043e\u0457 \u0441\u0445\u0435\u043c\u0438 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044e. \u0412\u0456\u043d \u0434\u0456\u0454 \u043b\u0438\u0448\u0435 \u0442\u043e\u0434\u0456, \u043a\u043e\u043b\u0438 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e <b>autoDarkMode<\/b>","meta":"darkModeChange","title":"(isDarkTheme)"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u041f\u043e\u0434\u0456\u044f - \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 -\u043e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0406 \u0437\u043d\u043e\u0432\u0443 \u0436 \u0442\u0430\u043a\u0438, \u0431\u0456\u043b\u044c\u0448\u0456\u0441\u0442\u044c \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432, \u044f\u043a\u0456 \u043c\u0430\u044e\u0442\u044c JavaScript API, \u043c\u043e\u0436\u0443\u0442\u044c \u0440\u043e\u0437\u0448\u0438\u0440\u044e\u0432\u0430\u0442\u0438 \u0446\u0435\u0439 \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0434\u0456\u0439, \u044f\u043a-\u043e\u0442 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 Panel \u0442\u0430\u043a\u043e\u0436 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u043f\u043e\u0434\u0456\u0457 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443.\n<p>\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438:<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"app.on('panelOpen', function (panel) {\n  console.log('Panel ' + panel.side + ' opened');\n});\n\napp.on('connection', function (isOnline) {\n  if (isOnline) {\n    console.log('app is online now')\n  } else {\n    console.log('app is offline now')\n  }\n});\n\napp.on('darkModeChange', function (isDark) {\n  if (isDark) {\n    console.log('color scheme changed to Dark')\n  } else {\n    console.log('color scheme changed to Light')\n  }\n});"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"code","props":{"content":":root {\n  --t4-theme-color: #007aff;\n  --t4-theme-color-rgb: 0, 122, 255;\n  --t4-theme-color-shade: #0066d6;\n  --t4-theme-color-tint: #298fff;\n  --t4-safe-area-left: 0px;\n  --t4-safe-area-right: 0px;\n  --t4-safe-area-top: 0px;\n  --t4-safe-area-bottom: 0px;\n  --t4-safe-area-outer-left: 0px;\n  --t4-safe-area-outer-right: 0px;\n  --t4-device-pixel-ratio: 1;\n}\n@supports (left: env(safe-area-inset-left)) {\n  :root {\n    --t4-safe-area-top: env(safe-area-inset-top);\n    --t4-safe-area-bottom: env(safe-area-inset-bottom);\n  }\n  :root .ios-left-edge,\n  :root .ios-edges,\n  :root .safe-area-left,\n  :root .safe-areas,\n  :root .popup,\n  :root .sheet-modal,\n  :root .panel-left {\n    --t4-safe-area-left: env(safe-area-inset-left);\n    --t4-safe-area-outer-left: env(safe-area-inset-left);\n  }\n  :root .ios-right-edge,\n  :root .ios-edges,\n  :root .safe-area-right,\n  :root .safe-areas,\n  :root .popup,\n  :root .sheet-modal,\n  :root .panel-right {\n    --t4-safe-area-right: env(safe-area-inset-right);\n    --t4-safe-area-outer-right: env(safe-area-inset-right);\n  }\n  :root .no-safe-areas,\n  :root .no-safe-area-left,\n  :root .no-ios-edges,\n  :root .no-ios-left-edge {\n    --t4-safe-area-left: 0px;\n    --t4-safe-area-outer-left: 0px;\n  }\n  :root .no-safe-areas,\n  :root .no-safe-area-right,\n  :root .no-ios-edges,\n  :root .no-ios-right-edge {\n    --t4-safe-area-right: 0px;\n    --t4-safe-area-outer-right: 0px;\n  }\n}\n@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {\n  :root {\n    --t4-device-pixel-ratio: 2;\n  }\n}\n@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {\n  :root {\n    --t4-device-pixel-ratio: 3;\n  }\n}\n\/*====================\n  Fonts & Bars\n  ==================== *\/\n:root {\n  --t4-font-size: 14px;\n  \/*\n  --t4-bars-link-color: var(--t4-theme-color);\n  *\/\n  --t4-bars-bg-image: none;\n  --t4-bars-translucent-opacity: 0.8;\n  --t4-bars-translucent-blur: 20px;\n  --t4-bars-shadow-bottom-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.04) 50%, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 0) 100%);\n  --t4-bars-shadow-top-image: linear-gradient(to top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.04) 50%, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 0) 100%);\n  --t4-bars-text-color: #000;\n  --t4-bars-bg-color: #t4t4f8;\n  --t4-bars-bg-color-rgb: 247, 247, 248;\n}\n:root .dark,\n:root.dark {\n  --t4-bars-text-color: #fff;\n}\n.ios {\n  --t4-font-family: -apple-system, SF Pro Text, SF UI Text, system-ui, Helvetica Neue, Helvetica, Arial, sans-serif;\n  --t4-line-height: 1.4;\n  --t4-text-color: #000;\n  --t4-bars-border-color: rgba(0, 0, 0, 0.25);\n}\n.ios .dark,\n.ios.dark {\n  --t4-text-color: #fff;\n  --t4-bars-bg-color: #121212;\n  --t4-bars-bg-color-rgb: 19, 19, 19;\n  --t4-bars-border-color: rgba(255, 255, 255, 0.1);\n}\n.md {\n  --t4-font-family: Roboto, system-ui, Noto, Helvetica, Arial, sans-serif;\n  --t4-line-height: 1.5;\n  --t4-bars-border-color: transparent;\n  --t4-text-color: #212121;\n}\n.md .dark,\n.md.dark {\n  --t4-text-color: rgba(255, 255, 255, 0.87);\n  --t4-bars-bg-color: #202020;\n}\n.aurora {\n  --t4-font-family: -apple-system, system-ui, Helvetica, Arial, sans-serif;\n  --t4-line-height: 1.5;\n  --t4-text-color: #000;\n  --t4-bars-border-color: rgba(0, 0, 0, 0.2);\n}\n.aurora .dark,\n.aurora.dark {\n  --t4-text-color: #fff;\n  --t4-bars-bg-color: #202020;\n  --t4-bars-border-color: rgba(255, 255, 255, 0.1);\n}"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

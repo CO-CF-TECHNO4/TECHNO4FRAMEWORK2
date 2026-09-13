@@ -1,0 +1,1568 @@
+<h2>Панель пошуку</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет панелі пошуку </a>
+
+    </li>
+        <li>
+        
+<div>Тип панелі пошуку </div>
+
+<p>Фіксована панель пошуку <p>Статична панель пошуку <p>Панель пошуку, що розгортається<p>Вбудована панель пошуку </p>
+    </li>
+        <li>
+        
+<div>Класи поведінки панелі пошуку</div>
+
+    </li>
+        <li>
+        
+<div>Методи панелі пошуку </div>
+
+    </li>
+        <li>
+        
+<div>Параметри панелі пошуку </div>
+
+    </li>
+        <li>
+        
+<div>Методи та властивості панелі пошуку </div>
+
+    </li>
+        <li>
+        
+<div>Події панелі пошуку </div>
+
+<p>Події DOM<p>Події екземплярів застосунку та панелі пошуку </p>
+    </li>
+        <li>
+        
+<div>Автоматична ініціалізація панелі пошуку </div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS </div>
+
+    </li>
+        <li>
+        
+<div>Приклади </div>
+
+    </li>
+    </ul>
+<h3>Панель пошуку</h3>
+<div>Панель пошуку дозволяє користувачу шукати в елементах List View . Або його можна використовувати як візуальний компонент інтерфейсу користувача для реалізації власного пошуку.</div>
+<h3>Макет панелі пошуку</h3>
+<pre><code>&lt;div class=&quot;searchbar-backdrop&quot;&gt;&lt;/div&gt;
+&lt;form class=&quot;searchbar&quot;&gt;
+  &lt;div class=&quot;searchbar-inner&quot;&gt;
+    &lt;div class=&quot;searchbar-input-wrap&quot;&gt;
+      &lt;input type=&quot;search&quot; placeholder=&quot;Search&quot; /&gt;
+      &lt;i class=&quot;searchbar-icon&quot;&gt;&lt;/i&gt;
+      &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;searchbar-disable-button&quot;&gt;Cancel&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+<div>Де::
+<p>●	<code>&lt;div class="searchbar-input-wrap"&gt;</code> - оболонка для поля пошуку та кнопки очищення.</p>
+<p>○	<code>&lt;input type="search" /&gt;</code> -  поле пошуку.</p>
+<p>○	<code>&lt;i class="searchbar-icon"&gt;</code> - значок пошуку.</p>
+<p>○	<code>&lt;span class="input-clear-button"&gt;</code> - кнопка для очищення значення поля та скидання результатів пошуку. Неоов’язковий елемент.</p>
+<p>●	<code>&lt;span class="searchbar-disable-button"&gt;</code> - Кнопка <b>"Скасувати"</b> на панелі пошуку, яка дезактивує панель пошуку, скине результати пошуку та очистить поле пошуку. Необов'язковий елемент.</p>
+<p>●	<code>&lt;div class="searchbar-backdrop"&gt;</code> -  напівпрозорий фон панелі пошуку, який стає видимим, коли ми вмикаємо панель пошуку. Рекомендується розміщувати цей елемент всередині <code>page-content</code> сторінок, що прокручуються. 
+</div>
+<h3>Тип панелі пошуку</h3>
+<div>Тепер давайте подивимося, де ми можемо розмістити панель пошуку в структурі сторінки. Є кілька варіантів:</div>
+<h4>Фіксована панель пошуку</h4>
+<div>Фіксована  панель пошуку завжди відображається на екрані незалежно від прокручування сторінки. У цьому випадку його необхідно розмістити відповідно до одного з наступних правил:
+<p>●	Це може бути прямий дочірній елемент сторінки, і якщо сторінка також має фіксовані панель навігації та/або панель інструментів, тоді вона має бути <b>ПІСЛЯ</b> панелі навігації та панелі інструментів:
+</div>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;toolbar toolbar-bottom&quot;&gt;...&lt;/div&gt;
+  &lt;!-- Панель пошуку йде після панелі навігації та панелі інструментів --&gt;
+  &lt;form class=&quot;searchbar&quot;&gt;...&lt;/form&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;!--Фоновий шар панелі пошуку --&gt;
+    &lt;div class=&quot;searchbar-backdrop&quot;&gt;&lt;/div&gt;
+    &lt;!-- Вміст сторінки тут --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<div>●	Його можна розмістити всередині <code>Subnavbar</code>, яка знаходиться всередині Navbar (рекомендований спосіб):</div>
+<pre><code>&lt;div class=&quot;page page-with-subnavbar&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+      ...
+      &lt;div class=&quot;subnavbar&quot;&gt;
+        &lt;!--Панель пошуку всередині Subnavbar --&gt;
+        &lt;form class=&quot;searchbar&quot;&gt;...&lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;!--Фоновий шар панелі пошуку --&gt;
+    &lt;div class=&quot;searchbar-backdrop&quot;&gt;&lt;/div&gt;
+    &lt;!-- Вміст сторінки тут --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h4>Статична панель пошуку</h4>
+<div>У цьому випадку панель пошуку є лише частиною вмісту сторінки, яку можна прокручувати:</div>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;!-- Фоновий шар панелі пошуку --&gt;
+    &lt;div class=&quot;searchbar-backdrop&quot;&gt;&lt;/div&gt;
+    &lt;!-- Панель пошуку є частиною вмісту сторінки, яку можна прокручувати --&gt;
+    &lt;form class=&quot;searchbar&quot;&gt;...&lt;/form&gt;
+    &lt;!-- Вміст сторінки тут--&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h4>Панель пошуку, що розгортається</h4>
+<div>Панель пошуку, що розгортається, прихована, коли вимкнена, і стає видимою, коли ми її вмикаємо. Його компонування досить суворе, його потрібно розмістити всередині Navbar:</div>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+      &lt;div class=&quot;left&quot;&gt;...&lt;/div&gt;
+      &lt;div class=&quot;title&quot;&gt;...&lt;/div&gt;
+      &lt;div class=&quot;right&quot;&gt;
+        &lt;!-- Посилання для ввімкнення панелі пошуку --&gt;
+        &lt;a class=&quot;link icon-only searchbar-enable&quot; data-searchbar=&quot;.searchbar&quot;&gt;
+          &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;search&lt;/i&gt;
+          &lt;i class=&quot;icon material-icons md-only&quot;&gt;search&lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+      &lt;!-- Панель пошуку є прямим дочірнім елементом &quot;navbar-inner&quot;--&gt;
+      &lt;form class=&quot;searchbar searchbar-expandable&quot;&gt;
+        &lt;div class=&quot;searchbar-inner&quot;&gt;
+          &lt;div class=&quot;searchbar-input-wrap&quot;&gt;
+            &lt;input type=&quot;search&quot; placeholder=&quot;Search&quot; /&gt;
+            &lt;i class=&quot;searchbar-icon&quot;&gt;&lt;/i&gt;
+            &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;span class=&quot;searchbar-disable-button&quot;&gt;Cancel&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Прокручуваний вміст сторінки--&gt;
+  &lt;div class=&quot;page-content&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<div>Де:
+<p>●	<code>&lt;a class="link icon-only searchbar-enable" data-searchbar=".searchbar"&gt;</code>- посилання для ввімкнення/розгортання панелі пошуку. За бажанням або можна розмістити в будь-якому іншому місці.  Атрибут <code>data-searchbar</code> містить селектор CSS панелі пошуку для ввімкнення.</p>
+<p>●	Панель пошуку має додатковий <code>searchbar-expandable</code>клас. Це необхідно для роботи панелі пошуку, що розширюється.
+</div>
+<h4>Вбудована панель пошуку</h4>
+<div>Вбудована панель пошуку призначена для використання всередині інших компонентів. Має спрощену розкладку - без <code>.searchbar-inner</code>, і рекомендується використовувати без кнопки відключення.
+<p>Нам просто потрібно додати <code>searchbar-inline</code>клас до Searchbar, щоб зробити його вбудованим
+</div>
+<pre><code>&lt;!-- Додатковий клас &quot;searchbar-inline&quot;. --&gt;
+&lt;div class=&quot;searchbar searchbar-inline&quot;&gt;
+  &lt;div class=&quot;searchbar-input-wrap&quot;&gt;
+    &lt;input type=&quot;search&quot; placeholder=&quot;Search&quot; /&gt;
+    &lt;i class=&quot;searchbar-icon&quot;&gt;&lt;/i&gt;
+    &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h3>Класи поведінки панелі пошуку</h3>
+<div>Існує також кілька класів CSS, які можна додати до елементів, які визначатимуть їх поведінку, коли панель пошуку активна:
+<p>●	<code>searchbar-hide-on-enable</code>- елементи з таким класом на сторінці будуть приховані, коли панель пошуку включена</p>
+<p>●	<code>searchbar-hide-on-search</code>- елементи з таким класом на сторінці будуть приховані під час пошуку</p>
+<p>●	<code>searchbar-not-found</code>- елементи з таким класом приховані за замовчуванням і стають видимими, коли немає результатів пошуку</p>
+<p>●	<code>searchbar-found</code>- елементи з таким класом видимі за замовчуванням і стають прихованими, коли немає результатів пошуку</p>
+<p>●	<code>searchbar-ignore</code>- панель пошуку не враховуватиме ці елементи в результатах пошуку</p>
+Наприклад:
+</div>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;div class=&quot;searchbar-backdrop&quot;&gt;&lt;/div&gt;
+    &lt;form class=&quot;searchbar&quot;&gt;...&lt;/form&gt;
+
+    &lt;!-- Наступний заголовок блоку та блок будуть приховані під час пошуку --&gt;
+    &lt;div class=&quot;block-title searchbar-hide-on-search&quot;&gt;Some block title&lt;/div&gt;
+    &lt;div class=&quot;block&quot;&gt;Lorem ipsum dolor sit amet...&lt;/div&gt;
+
+    &lt;!-- Ми виконуємо пошук у списку супергероїв, тому наступна назва та список мають бути видимими під час пошуку --&gt;
+    &lt;div class=&quot;block-title searchbar-found&quot;&gt;Super Heroes&lt;/div&gt;
+    &lt;div class=&quot;list simple-list searchbar-found&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Hulk&lt;/li&gt;
+        &lt;li&gt;Batman&lt;/li&gt;
+        &lt;li&gt;Superman&lt;/li&gt;
+        ...
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Цей список буде видимим, якщо в ньому немає результатів пошуку --&gt;
+    &lt;div class=&quot;list simple-list searchbar-not-found&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Nothing found&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h3>Методи застоснку панелі пошуку</h3>
+<div>Тепер, коли у нас є HTML панелі пошуку, нам потрібно його ініціалізувати. Нам потрібно використовувати методи пов’язаного застосунку:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app.searchbar.create(<code>parameters</code>)</td>
+
+<td>Ініціалізація панелі пошуку з параметрами
+<p><code>parameters - object</code> -об'єкт з параметрами панелі пошуку</p>
+<p>	<i>Метод повертає ініціалізований екземпляр Searchbar</i></p></td>
+
+</tr>
+                <tr>
+
+<td>app.searchbar.destroy(<code>el</code>)</td>
+
+<td>Знищити екземпляр Searchbar
+<p>●	<code>el - HTMLElement or string </code>(with CSS Selector) or object. Елемент Searchbar або екземпляр Searchbar для знищення.</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.searchbar.get(<code>el</code>)</td>
+
+<td>Отримати екземпляр панелі пошуку за елементом HTML
+<p>●	<code>el - HTMLElement or string </code>(with CSS Selector) or object. Елемент панелі пошуку.</p>
+<p><i>	Метод повертає екземпляр Searchbar</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.searchbar.clear(<code>el</code>)</td>
+
+<td>Очистити введення тексту на панелі пошуку
+<p>●	<code>el - HTMLElement or string </code>(with CSS Selector) or object. Елемент панелі пошуку.</p>
+<p><i>	Метод повертає екземпляр Searchbar</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.searchbar.enable(<code>el</code>)</td>
+
+<td>Увімкнути панель пошуку
+<p>●	<code>el - HTMLElement or string </code>(with CSS Selector) or object. Елемент панелі пошуку.</p>
+<p><i>	Метод повертає екземпляр Searchbar</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.searchbar.disable(<code>el</code>)</td>
+
+<td>Вимкнути панель пошуку
+<p>●	<code>el - HTMLElement or string </code>(with CSS Selector) or object. Елемент панелі пошуку.</p>
+<p><i>	Метод повертає екземпляр Searchbar</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.searchbar.toggle(<code>el</code>)</td>
+
+<td>Перемкнути панель пошуку: увімкнути, якщо вона була вимкнена, або вимкнути, якщо вона була ввімкнена
+<p>●	<code>el - HTMLElement or string </code>(with CSS Selector) or object. Елемент панелі пошуку.</p>
+<p><i>	Метод повертає екземпляр Searchbar</i></p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.searchbar.search(<code>el, query</code>)</td>
+
+<td>Запустити панель пошуку для пошуку <code>query</code>
+<p>●	<code>el - HTMLElement or string </code>(with CSS Selector) or object. Елемент панелі пошуку.</p>
+<p>	<code>query - string</code>Пошуковий запит</p>
+<p><i>	Метод повертає екземпляр Searchbar</i></p>
+</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Параметри панелі пошуку</h3>
+<div>Давайте подивимося на список усіх доступних параметрів, необхідних для створення/ініціалізації панелі пошуку:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>el</td>
+
+<td>Селектор CSS або елемент HTML елемента панелі пошуку (<code>form class="searchbar"</code>)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>inputEl</td>
+
+<td>Селектор CSS або елемент HTML елемента введення панелі пошуку. За замовчуванням (якщо не прийнято) спробує шукати <code>input type="search"</code>всередині панелі пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>disableButton</td>
+
+<td>Вмикає кнопку вимкнення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>disableButtonEl</td>
+
+<td>Селектор CSS або елемент HTML кнопки вимкнення панелі пошуку. За замовчуванням (якщо не передано) намагатиметься шукати елемент із <code>search-disable-button</code> класом усередині панелі пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>searchContainer</td>
+
+<td>Селектор CSS або елемент HTML блоку списку для пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">HTMLElement <p>string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>searchIn</td>
+
+<td>Селектор CSS поля елемента List View, де нам потрібно шукати. Зазвичай ми шукаємо за назвами елементів, у цьому випадку нам потрібно передати <code>.item-title</code>. Також можна передати кілька елементів для пошуку типу<code>.item-title</code>, <code>.item-text</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>li</td>
+
+<td>searchItem</td>
+
+<td>Селектор CSS окремого елемента пошуку. Якщо ми виконуємо пошук у режимі List View, це має бути один елемент списку <code>li</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>.list-group</td>
+
+<td>searchGroup</td>
+
+<td>Селектор CSS елемента групи. Використовується, якщо <code>hideGroups</code> ввімкнено, щоб приховати групи. Якщо ми виконуємо пошук у режимі перегляду списку, то зазвичай це група списку.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>.list-group-title</td>
+
+<td>searchGroupTitle</td>
+
+<td>CSS селектор назв груп. Використовується, якщо <code>hideGroupTitles</code> ввімкнено, щоб приховати назви груп. Якщо ми виконуємо пошук у режимі перегляду списку, то зазвичай це заголовок групи списку.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>.searchbar-found</td>
+
+<td>foundEl</td>
+
+<td>Селектор CSS або HTMLElement елемента "знайдено" панелі пошуку, щоб зробити його прихованим, коли немає результатів пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string<p>HTMLElement</a>
+    </td>
+</tr>
+                <tr>
+<td>.searchbar-not-found</td>
+
+<td>notFoundEl</td>
+
+<td>Селектор CSS або HTMLElement елемента "not-found" панелі пошуку, щоб зробити його видимим, коли немає результатів пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string<p>HTMLElement</a>
+    </td>
+</tr>
+                <tr>
+<td>.searchbar-hide-on-enable</td>
+
+<td>hideOnEnableEl</td>
+
+<td>Селектор CSS або HTMLElement елементів, які будуть приховані, коли панель пошуку ввімкнено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string<p>HTMLElement</a>
+    </td>
+</tr>
+                <tr>
+<td>.searchbar-hide-on-search</td>
+
+<td>hideOnSearchEl</td>
+
+<td>Селектор CSS або HTMLElement елементів, які будуть приховані під час пошуку на панелі пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string<p>HTMLElement</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>backdrop</td>
+
+<td>Вмикає елемент тла панелі пошуку. За замовчуванням вимкнено для вбудованої панелі пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>backdropEl</td>
+
+<td>Селектор CSS або HTMLElement елемента тла панелі пошуку. Якщо не передано, а <code>backdrop</code> параметр є <code>true</code>, шукатиметься <code>.searchbar-backdrop</code>елемент. Якщо нічого не знайдено, він створить його автоматично</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string<p>HTMLElement</a>
+    </td>
+</tr>
+                <tr>
+<td>.searchbar-ignore</td>
+
+<td>ignore</td>
+
+<td>Селектор CSS для елементів, які ігноруються панеллю пошуку та завжди присутні в результатах пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>customSearch</td>
+
+<td>Якщо ввімкнути пошукову панель, пошук не здійснюватиметься в жодному з блоків списку, указаних у , <code>searchContainer</code> і ви зможете використовувати функцію спеціального пошуку, наприклад, для виклику зовнішніх API із результатами пошуку та для їх відображення вручну</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>removeDiacritics</td>
+
+<td>Увімкнути видалення/заміну діакритики (á, í, ó тощо) під час пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>hideGroupTitles</td>
+
+<td>Якщо ввімкнено, пошук враховуватиме заголовки груп і приховуватиме їх, якщо одразу після них не знайдено жодного елемента</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>hideGroups</td>
+
+<td>Якщо ввімкнено, пошук розглядатиме групи перегляду списку та приховуватиме їх, якщо всередині цих груп немає знайдених елементів</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>on</td>
+
+<td>Об'єкт з обробниками подій. Наприклад</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var searchbar = app.searchbar.create({
+  el: '.searchbar',
+  on: {
+    enable: function () {
+      console.log('Searchbar enabled')
+    }
+  }
+})
+</code></pre>
+<h3>Методи та властивості панелі пошуку</h3>
+<div>Щоб створити панель пошуку, ми повинні викликати:</div>
+<pre><code>var searchbar = app.searchbar.create({ /* parameters */ })</code></pre>
+<div>Після ініціалізації панелі пошуку ми маємо її ініціалізований екземпляр у змінній (як <code>searchbar</code> у прикладі вище) з корисними методами та властивостями:</div>
+<h5>Властивості</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>searchbar.params</td>
+
+<td>Об'єкт із переданими параметрами ініціалізації</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.query</td>
+
+<td>Поточний пошуковий запит (пошукове значення)</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.previousQuery</td>
+
+<td>Попередній пошуковий запит (пошукове значення)</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.searchContainer</td>
+
+<td>Пошуковий контейнер панелі пошуку</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.$searchContainer</td>
+
+<td>Елемент Dom64 із пошуковим контейнером панелі пошуку</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.el</td>
+
+<td>HTML-елемент панелі пошуку.</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.$el</td>
+
+<td>Елемент Dom64 з елементом HTML панелі пошуку.</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.inputEl</td>
+
+<td>HTML-елемент введення панелі пошуку</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.$inputEl</td>
+
+<td>Елемент Dom64 із HTML-елементом для введення в панель пошуку</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.enabled</td>
+
+<td>Логічне значення, яке представляє, увімкнено чи вимкнено панель пошуку</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.expandable</td>
+
+<td>Логічне значення, яке представляє, розгортається панель пошуку чи ні</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h5>Методи</h5>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>searchbar.search(<code>query</code>);</td>
+
+<td>Примусово шукати панель пошуку за переданим запитом</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.enable();</td>
+
+<td>Увімкнути/активувати панель пошуку</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.disable();</td>
+
+<td>Вимкнути/вимкнути панель пошуку</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.toggle();</td>
+
+<td>Перемкнути панель пошуку</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.clear();</td>
+
+<td>Очистити пошуковий запит і оновити результати</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.destroy();</td>
+
+<td>Знищити екземпляр панелі пошук</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.on(<code>event, handler</code>)</td>
+
+<td>Додати обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.once(<code>event, handler</code>)</td>
+
+<td>Додайте обробник подій, який буде видалено після запуску</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.off(<code>event, handler</code>)</td>
+
+<td>Видалити обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.off(<code>event</code>)</td>
+
+<td>Видалити всі обробники для вказаної події</td>
+
+</tr>
+                <tr>
+
+<td>searchbar.emit(<code>event, ...args</code>)</td>
+
+<td>Запустити подію на примірнику </td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Події панелі пошуку </h3>
+<div>Панель пошуку запускатиме такі події DOM в елементі панелі пошуку та події в екземплярі застосунку та панелі пошуку:</div>
+<h4>Події DOM</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Елемент панелі пошуку <p> <code>&lt;form class="searchbar"&gt;</code></td>
+
+<td>searchbar:search</td>
+
+<td>Подія буде ініційована під час пошуку (зміна поля пошуку). Деталь події ( <code>e.detail</code>) містить об’єкт із властивостями <code>query</code> і <code>previousQuery</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент панелі пошуку <p> <code>&lt;form class="searchbar"&gt;</code></td>
+
+<td>searchbar:clear</td>
+
+<td>Подія буде ініційована, коли користувач клацне елемент «очистити» панелі пошуку (<code>a href="#" class="searchbar-clear"</code>). Деталі події (<code>e.detail</code>) містять попередній пошуковий запит (до очищення).</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент панелі пошуку <p> <code>&lt;form class="searchbar"&gt;</code></td>
+
+<td>searchbar:enable</td>
+
+<td>Подія буде запущена, коли панель пошуку стане активною/увімкненою</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент панелі пошуку <p> <code>&lt;form class="searchbar"&gt;</code></td>
+
+<td>searchbar:disable</td>
+
+<td>Подія буде ініційована, коли панель пошуку стає вимкненою/неактивною – коли користувач натискає кнопку «Скасувати» (<code>a href="searchbar-cancel"</code>) або елемент <code>"searchbar-overlay"</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Елемент панелі пошуку <p> <code>&lt;form class="searchbar"&gt;</code></td>
+
+<td>searchbar:beforedestroy</td>
+
+<td>Подія буде запущена безпосередньо перед тим, як екземпляр Searchbar буде знищено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Події екземплярів застосунку та панелі пошуку</h4>
+<div>Екземпляр панелі пошуку запускає події як у себе, так і в екземплярі застосунку. Події екземплярів застосунку мають ті самі назви з префіксом <code>searchbar</code>.</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th>Об'єкт</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>(searchbar, query, previousQuery)</td>
+
+<td>search</td>
+
+<td>Подія буде ініційована під час пошуку (зміна поля пошуку). Як аргумент обробник події отримує екземпляр панелі пошуку, поточний запит і попередній запит</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">searchbar</a>
+    </td>
+</tr>
+                <tr>
+<td>(searchbar, query, previousQuery)</td>
+
+<td>searchbarSearch</td>
+
+<td>Подія буде ініційована під час пошуку (зміна поля пошуку). Як аргумент обробник події отримує екземпляр панелі пошуку, поточний запит і попередній запит</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(searchbar, previousQuery)</td>
+
+<td>clear</td>
+
+<td>Подія буде ініційована, коли користувач клацне елемент «очистити» панелі пошуку. Як аргумент обробник події отримує екземпляр панелі пошуку та попередній (до очищення) запит</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">searchbar</a>
+    </td>
+</tr>
+                <tr>
+<td>(searchbar, previousQuery)</td>
+
+<td>searchbarClear</td>
+
+<td>Подія буде ініційована, коли користувач клацне елемент «очистити» панелі пошуку. Як аргумент обробник події отримує екземпляр панелі пошуку та попередній (до очищення) запит</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(searchbar)</td>
+
+<td>enable</td>
+
+<td>Подія буде запущена, коли панель пошуку стане активною/увімкненою. Як аргумент обробник події отримує екземпляр панелі пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">searchbar</a>
+    </td>
+</tr>
+                <tr>
+<td>(searchbar)</td>
+
+<td>searchbarEnable</td>
+
+<td>Подія буде запущена, коли панель пошуку стане активною/увімкненою. Як аргумент обробник події отримує екземпляр панелі пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(searchbar)</td>
+
+<td>disable</td>
+
+<td>Подія буде запущена, коли панель пошуку стане неактивною/вимкненою. Як аргумент обробник події отримує екземпляр панелі пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">searchbar</a>
+    </td>
+</tr>
+                <tr>
+<td>(searchbar)</td>
+
+<td>searchbarDisable</td>
+
+<td>Подія буде запущена, коли панель пошуку стане неактивною/вимкненою. Як аргумент обробник події отримує екземпляр панелі пошуку</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(searchbar)</td>
+
+<td>beforeDestroy</td>
+
+<td>Подія буде запущена безпосередньо перед тим, як екземпляр Searchbar буде знищено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">searchbar</a>
+    </td>
+</tr>
+                <tr>
+<td>(searchbar)</td>
+
+<td>searchbarBeforeDestroy</td>
+
+<td>Подія буде запущена безпосередньо перед тим, як екземпляр Searchbar буде знищено</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=11&catid=14">app</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Автоматична ініціалізація панелі пошуку</h3>
+<div>Якщо вам не потрібно використовувати API панелі пошуку, а панель пошуку знаходиться всередині сторінки та представлена в DOM на момент ініціалізації сторінки, тоді її можна автоматично ініціалізувати, просто додавши додатковий клас <code>searchbar-init</code> до елемента панелі пошуку, і всі необхідні параметри можна передати за допомогою <code>data-</code> атрибутів:</div>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;div class=&quot;searchbar-backdrop&quot;&gt;&lt;/div&gt;
+
+    &lt;!-- Панель пошуку з класом &quot;searchbar-init&quot; для автоматичної ініціалізації та параметрами searchContainer, searchIn, переданими в атрибутах data-  --&gt;
+    &lt;form class=&quot;searchbar searchbar-init&quot; data-search-container=&quot;.search-here&quot;&gt;
+      ...
+    &lt;/form&gt;
+
+    &lt;div class=&quot;list simple-list search-list searchbar-found&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Hulk&lt;/li&gt;
+        &lt;li&gt;Batman&lt;/li&gt;
+        &lt;li&gt;Superman&lt;/li&gt;
+        ...
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<div>
+
+    
+        <div>Параметри, які використовуються в <code>camelCase</code>, наприклад <code>searchContainer</code> , в атрибутах <code>data</code>, повинні використовуватися в <code>kebab-case</code> як <code>data-search-container</code></div>
+    
+</div>
+<h3>Змінні CSS</h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  /*
+  --t4-searchbar-link-color: var(--t4-bars-link-color);
+  --t4-searchbar-inline-input-font-size: var(--t4-searchbar-input-font-size);
+  */
+  --t4-searchbar-input-border-width: 0px;
+  --t4-searchbar-input-border-color: transparent;
+}
+.ios {
+  /*
+  --t4-searchbar-bg-color: var(--t4-bars-bg-color);
+  --t4-searchbar-bg-color-rgb: var(--t4-bars-bg-color-rgb);
+  --t4-searchbar-border-color: var(--t4-bars-border-color);
+  */
+  --t4-searchbar-height: 44px;
+  --t4-searchbar-inner-padding-left: 8px;
+  --t4-searchbar-inner-padding-right: 8px;
+  /*
+  --t4-searchbar-link-color: var(--t4-bars-link-color, var(--t4-theme-color));
+  */
+  --t4-searchbar-input-font-size: 17px;
+  --t4-searchbar-input-border-radius: 8px;
+  --t4-searchbar-input-height: 32px;
+  --t4-searchbar-inline-input-height: 32px;
+  /*
+  --t4-searchbar-inline-input-border-radius: var(--t4-searchbar-input-border-radius);
+  */
+  --t4-searchbar-input-padding-horizontal: 28px;
+  /*
+  --t4-searchbar-inline-input-padding-horizontal: var(--t4-searchbar-input-padding-horizontal);
+  --t4-searchbar-input-clear-button-color: var(--t4-input-clear-button-color);
+  */
+  --t4-searchbar-backdrop-bg-color: rgba(0, 0, 0, 0.4);
+  --t4-searchbar-in-page-content-margin: 0px;
+  --t4-searchbar-in-page-content-box-shadow: none;
+  --t4-searchbar-in-page-content-border-radius: 0;
+  --t4-searchbar-in-page-content-input-border-radius: 0;
+  --t4-searchbar-placeholder-color: rgba(0, 0, 0, 0.4);
+  --t4-searchbar-input-text-color: #000;
+  --t4-searchbar-search-icon-color: rgba(0, 0, 0, 0.4);
+  --t4-searchbar-input-bg-color: #e4e4e4;
+}
+.ios .dark,
+.ios.dark {
+  --t4-searchbar-placeholder-color: rgba(255, 255, 255, 0.4);
+  --t4-searchbar-input-text-color: #fff;
+  --t4-searchbar-search-icon-color: rgba(255, 255, 255, 0.4);
+  --t4-searchbar-input-bg-color: #2a2a2a;
+}
+.md {
+  --t4-searchbar-border-color: transparent;
+  --t4-searchbar-height: 48px;
+  --t4-searchbar-inner-padding-left: 8px;
+  --t4-searchbar-inner-padding-right: 8px;
+  --t4-searchbar-input-font-size: 16px;
+  --t4-searchbar-input-border-radius: 24px;
+  --t4-searchbar-input-height: 48px;
+  --t4-searchbar-inline-input-height: 48px;
+  --t4-searchbar-inline-input-border-radius: 24px;
+  --t4-searchbar-input-padding-horizontal: 16px;
+  --t4-searchbar-inline-input-padding-horizontal: 16px;
+  --t4-searchbar-backdrop-bg-color: rgba(0, 0, 0, 0.25);
+  --t4-searchbar-in-page-content-margin: 16px 0;
+  --t4-searchbar-in-page-content-box-shadow: none;
+  --t4-searchbar-in-page-content-border-radius: 24px;
+  --t4-searchbar-in-page-content-input-border-radius: 24px;
+  --t4-searchbar-bg-color: transparent;
+}
+.md,
+.md .dark,
+.md [class*='color-'] {
+  --t4-searchbar-link-color: var(--t4-md-on-surface);
+  --t4-searchbar-search-icon-color: var(--t4-md-on-surface);
+  --t4-searchbar-input-clear-button-color: var(--t4-md-on-surface);
+  --t4-searchbar-placeholder-color: var(--t4-md-on-surface-variant);
+  --t4-searchbar-input-bg-color: var(--t4-md-secondary-container);
+  --t4-searchbar-input-text-color: var(--t4-md-on-surface);
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+      &lt;div class=&quot;title&quot;&gt;Searchbar&lt;/div&gt;
+      &lt;div class=&quot;subnavbar&quot;&gt;
+        &lt;form data-search-container=&quot;.search-list&quot; data-search-in=&quot;.item-title&quot; class=&quot;searchbar searchbar-init&quot;&gt;
+          &lt;div class=&quot;searchbar-inner&quot;&gt;
+            &lt;div class=&quot;searchbar-input-wrap&quot;&gt;
+              &lt;input type=&quot;search&quot; placeholder=&quot;Search&quot; /&gt;
+              &lt;i class=&quot;searchbar-icon&quot;&gt;&lt;/i&gt;
+              &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;span class=&quot;searchbar-disable-button&quot;&gt;Cancel&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;div class=&quot;searchbar-backdrop&quot;&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;list list-strong-ios list-outline-ios list-dividers-ios simple-list searchbar-not-found&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Nothing found&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;list list-strong-ios list-outline-ios list-dividers-ios search-list searchbar-found&quot;&gt;
+      &lt;ul&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Acura&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Audi&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;BMW&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Cadillac &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Chevrolet &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Chrysler &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Dodge &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Ferrari &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Ford &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;GMC &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Honda&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Hummer&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Hyundai&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Infiniti &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Isuzu &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Jaguar &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Jeep &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Kia&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Lamborghini &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Land Rover&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Lexus &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Lincoln &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Lotus &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Mazda&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Mercedes-Benz&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Mercury &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Mitsubishi&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Nissan &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Oldsmobile &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Peugeot &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Pontiac &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Porsche&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Regal&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Saab &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Saturn &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Subaru &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Suzuki &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Toyota&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Volkswagen&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Volvo&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h5>Панель пошуку, що розгортається</h5>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+      &lt;div class=&quot;left sliding&quot;&gt;
+        &lt;a class=&quot;link back&quot;&gt;
+          &lt;i class=&quot;icon icon-back&quot;&gt;&lt;/i&gt;
+          &lt;span class=&quot;if-not-md&quot;&gt;Back&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;title sliding&quot;&gt;Searchbar&lt;/div&gt;
+      &lt;div class=&quot;right&quot;&gt;
+        &lt;a class=&quot;link icon-only searchbar-enable&quot; data-searchbar=&quot;.searchbar-demo&quot;&gt;
+          &lt;i class=&quot;icon t4-icons if-not-md&quot;&gt;search&lt;/i&gt;
+          &lt;i class=&quot;icon material-icons md-only&quot;&gt;search&lt;/i&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+      &lt;form data-search-container=&quot;.search-list&quot; data-search-in=&quot;.item-title&quot;
+        class=&quot;searchbar searchbar-expandable searchbar-demo searchbar-init&quot;&gt;
+        &lt;div class=&quot;searchbar-inner&quot;&gt;
+          &lt;div class=&quot;searchbar-input-wrap&quot;&gt;
+            &lt;input type=&quot;search&quot; placeholder=&quot;Search&quot; /&gt;
+            &lt;i class=&quot;searchbar-icon&quot;&gt;&lt;/i&gt;
+            &lt;span class=&quot;input-clear-button&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;span class=&quot;searchbar-disable-button&quot;&gt;Cancel&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;page-content&quot;&gt;
+    &lt;div class=&quot;searchbar-backdrop&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;list list-strong-ios list-outline-ios list-dividers-ios simple-list searchbar-not-found&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Nothing found&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;list list-strong-ios list-outline-ios list-dividers-ios search-list searchbar-found&quot;&gt;
+      &lt;ul&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Acura&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Audi&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;BMW&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Cadillac &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Chevrolet &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Chrysler &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Dodge &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Ferrari &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Ford &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;GMC &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Honda&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Hummer&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Hyundai&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Infiniti &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Isuzu &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Jaguar &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Jeep &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Kia&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Lamborghini &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Land Rover&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Lexus &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Lincoln &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Lotus &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Mazda&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Mercedes-Benz&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Mercury &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Mitsubishi&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Nissan &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Oldsmobile &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Peugeot &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Pontiac &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Porsche&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Regal&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Saab &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Saturn &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Subaru &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Suzuki &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Toyota&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Volkswagen&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;item-content&quot;&gt;
+          &lt;div class=&quot;item-inner&quot;&gt;
+            &lt;div class=&quot;item-title&quot;&gt;Volvo&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 ","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u0422\u0438\u043f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 ","meta":"\u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 <p>\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 <p>\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f<p>\u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 "}},{"type":"nav_item","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 "}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 "}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 "}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 ","meta":"\u041f\u043e\u0434\u0456\u0457 DOM<p>\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 "}},{"type":"nav_item","props":{"content":"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 "}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS "}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 "}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0434\u043e\u0437\u0432\u043e\u043b\u044f\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0443 \u0448\u0443\u043a\u0430\u0442\u0438 \u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430\u0445 List View . \u0410\u0431\u043e \u0439\u043e\u0433\u043e \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u044f\u043a \u0432\u0456\u0437\u0443\u0430\u043b\u044c\u043d\u0438\u0439 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 \u0456\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0443 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0434\u043b\u044f \u0440\u0435\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0432\u043b\u0430\u0441\u043d\u043e\u0433\u043e \u043f\u043e\u0448\u0443\u043a\u0443.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"code","props":{"content":"<div class=\"searchbar-backdrop\"><\/div>\n<form class=\"searchbar\">\n  <div class=\"searchbar-inner\">\n    <div class=\"searchbar-input-wrap\">\n      <input type=\"search\" placeholder=\"Search\" \/>\n      <i class=\"searchbar-icon\"><\/i>\n      <span class=\"input-clear-button\"><\/span>\n    <\/div>\n    <span class=\"searchbar-disable-button\">Cancel<\/span>\n  <\/div>\n<\/form>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435::\n<p>\u25cf\t<code>&lt;div class=\"searchbar-input-wrap\"&gt;<\/code> - \u043e\u0431\u043e\u043b\u043e\u043d\u043a\u0430 \u0434\u043b\u044f \u043f\u043e\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443 \u0442\u0430 \u043a\u043d\u043e\u043f\u043a\u0438 \u043e\u0447\u0438\u0449\u0435\u043d\u043d\u044f.<\/p>\n<p>\u25cb\t<code>&lt;input type=\"search\" \/&gt;<\/code> -  \u043f\u043e\u043b\u0435 \u043f\u043e\u0448\u0443\u043a\u0443.<\/p>\n<p>\u25cb\t<code>&lt;i class=\"searchbar-icon\"&gt;<\/code> - \u0437\u043d\u0430\u0447\u043e\u043a \u043f\u043e\u0448\u0443\u043a\u0443.<\/p>\n<p>\u25cb\t<code>&lt;span class=\"input-clear-button\"&gt;<\/code> - \u043a\u043d\u043e\u043f\u043a\u0430 \u0434\u043b\u044f \u043e\u0447\u0438\u0449\u0435\u043d\u043d\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u043b\u044f \u0442\u0430 \u0441\u043a\u0438\u0434\u0430\u043d\u043d\u044f \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0456\u0432 \u043f\u043e\u0448\u0443\u043a\u0443. \u041d\u0435\u043e\u043e\u0432\u2019\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.<\/p>\n<p>\u25cf\t<code>&lt;span class=\"searchbar-disable-button\"&gt;<\/code> - \u041a\u043d\u043e\u043f\u043a\u0430 <b>\"\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438\"<\/b> \u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u044f\u043a\u0430 \u0434\u0435\u0437\u0430\u043a\u0442\u0438\u0432\u0443\u0454 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443, \u0441\u043a\u0438\u043d\u0435 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0438 \u043f\u043e\u0448\u0443\u043a\u0443 \u0442\u0430 \u043e\u0447\u0438\u0441\u0442\u0438\u0442\u044c \u043f\u043e\u043b\u0435 \u043f\u043e\u0448\u0443\u043a\u0443. \u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442.<\/p>\n<p>\u25cf\t<code>&lt;div class=\"searchbar-backdrop\"&gt;<\/code> -  \u043d\u0430\u043f\u0456\u0432\u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 \u0444\u043e\u043d \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u044f\u043a\u0438\u0439 \u0441\u0442\u0430\u0454 \u0432\u0438\u0434\u0438\u043c\u0438\u043c, \u043a\u043e\u043b\u0438 \u043c\u0438 \u0432\u043c\u0438\u043a\u0430\u0454\u043c\u043e \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443. \u0420\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u0442\u044c\u0441\u044f \u0440\u043e\u0437\u043c\u0456\u0449\u0443\u0432\u0430\u0442\u0438 \u0446\u0435\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 <code>page-content<\/code> \u0441\u0442\u043e\u0440\u0456\u043d\u043e\u043a, \u0449\u043e \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u044e\u0442\u044c\u0441\u044f. \n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0422\u0438\u043f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0422\u0438\u043f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f, \u0434\u0435 \u043c\u0438 \u043c\u043e\u0436\u0435\u043c\u043e \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0432 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438. \u0404 \u043a\u0456\u043b\u044c\u043a\u0430 \u0432\u0430\u0440\u0456\u0430\u043d\u0442\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0424\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0430  \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0437\u0430\u0432\u0436\u0434\u0438 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f \u043d\u0430 \u0435\u043a\u0440\u0430\u043d\u0456 \u043d\u0435\u0437\u0430\u043b\u0435\u0436\u043d\u043e \u0432\u0456\u0434 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0439\u043e\u0433\u043e \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u043e \u0434\u043e \u043e\u0434\u043d\u043e\u0433\u043e \u0437 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0440\u0430\u0432\u0438\u043b:\n<p>\u25cf\t\u0426\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043f\u0440\u044f\u043c\u0438\u0439 \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0456 \u044f\u043a\u0449\u043e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u0442\u0430\u043a\u043e\u0436 \u043c\u0430\u0454 \u0444\u0456\u043a\u0441\u043e\u0432\u0430\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u044c \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0442\u0430\/\u0430\u0431\u043e \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432, \u0442\u043e\u0434\u0456 \u0432\u043e\u043d\u0430 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 <b>\u041f\u0406\u0421\u041b\u042f<\/b> \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">...<\/div>\n  <div class=\"toolbar toolbar-bottom\">...<\/div>\n  <!-- \u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0439\u0434\u0435 \u043f\u0456\u0441\u043b\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u0457 \u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432 -->\n  <form class=\"searchbar\">...<\/form>\n  <div class=\"page-content\">\n    <!--\u0424\u043e\u043d\u043e\u0432\u0438\u0439 \u0448\u0430\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 -->\n    <div class=\"searchbar-backdrop\"><\/div>\n    <!-- \u0412\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0443\u0442 -->\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u25cf\t\u0419\u043e\u0433\u043e \u043c\u043e\u0436\u043d\u0430 \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 <code>Subnavbar<\/code>, \u044f\u043a\u0430 \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 Navbar (\u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u043e\u0432\u0430\u043d\u0438\u0439 \u0441\u043f\u043e\u0441\u0456\u0431):","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page page-with-subnavbar\">\n  <div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n      ...\n      <div class=\"subnavbar\">\n        <!--\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 Subnavbar -->\n        <form class=\"searchbar\">...<\/form>\n      <\/div>\n    <\/div>\n  <\/div>\n  <div class=\"page-content\">\n    <!--\u0424\u043e\u043d\u043e\u0432\u0438\u0439 \u0448\u0430\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 -->\n    <div class=\"searchbar-backdrop\"><\/div>\n    <!-- \u0412\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0443\u0442 -->\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0421\u0442\u0430\u0442\u0438\u0447\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0454 \u043b\u0438\u0448\u0435 \u0447\u0430\u0441\u0442\u0438\u043d\u043e\u044e \u0432\u043c\u0456\u0441\u0442\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u044f\u043a\u0443 \u043c\u043e\u0436\u043d\u0430 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u0442\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">...<\/div>\n  <div class=\"page-content\">\n    <!-- \u0424\u043e\u043d\u043e\u0432\u0438\u0439 \u0448\u0430\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 -->\n    <div class=\"searchbar-backdrop\"><\/div>\n    <!-- \u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0454 \u0447\u0430\u0441\u0442\u0438\u043d\u043e\u044e \u0432\u043c\u0456\u0441\u0442\u0443 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u044f\u043a\u0443 \u043c\u043e\u0436\u043d\u0430 \u043f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u0442\u0438 -->\n    <form class=\"searchbar\">...<\/form>\n    <!-- \u0412\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0443\u0442-->\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f, \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u0430, \u0456 \u0441\u0442\u0430\u0454 \u0432\u0438\u0434\u0438\u043c\u043e\u044e, \u043a\u043e\u043b\u0438 \u043c\u0438 \u0457\u0457 \u0432\u043c\u0438\u043a\u0430\u0454\u043c\u043e. \u0419\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0443\u0432\u0430\u043d\u043d\u044f \u0434\u043e\u0441\u0438\u0442\u044c \u0441\u0443\u0432\u043e\u0440\u0435, \u0439\u043e\u0433\u043e \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 Navbar:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n      <div class=\"left\">...<\/div>\n      <div class=\"title\">...<\/div>\n      <div class=\"right\">\n        <!-- \u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0434\u043b\u044f \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043d\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 -->\n        <a class=\"link icon-only searchbar-enable\" data-searchbar=\".searchbar\">\n          <i class=\"icon t4-icons if-not-md\">search<\/i>\n          <i class=\"icon material-icons md-only\">search<\/i>\n        <\/a>\n      <\/div>\n      <!-- \u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0454 \u043f\u0440\u044f\u043c\u0438\u043c \u0434\u043e\u0447\u0456\u0440\u043d\u0456\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \"navbar-inner\"-->\n      <form class=\"searchbar searchbar-expandable\">\n        <div class=\"searchbar-inner\">\n          <div class=\"searchbar-input-wrap\">\n            <input type=\"search\" placeholder=\"Search\" \/>\n            <i class=\"searchbar-icon\"><\/i>\n            <span class=\"input-clear-button\"><\/span>\n          <\/div>\n          <span class=\"searchbar-disable-button\">Cancel<\/span>\n        <\/div>\n      <\/form>\n    <\/div>\n  <\/div>\n  <!-- \u041f\u0440\u043e\u043a\u0440\u0443\u0447\u0443\u0432\u0430\u043d\u0438\u0439 \u0432\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438-->\n  <div class=\"page-content\">...<\/div>\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435:\n<p>\u25cf\t<code>&lt;a class=\"link icon-only searchbar-enable\" data-searchbar=\".searchbar\"&gt;<\/code>- \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0434\u043b\u044f \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043d\u044f\/\u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u043d\u043d\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443. \u0417\u0430 \u0431\u0430\u0436\u0430\u043d\u043d\u044f\u043c \u0430\u0431\u043e \u043c\u043e\u0436\u043d\u0430 \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0432 \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u043c\u0443 \u0456\u043d\u0448\u043e\u043c\u0443 \u043c\u0456\u0441\u0446\u0456.  \u0410\u0442\u0440\u0438\u0431\u0443\u0442 <code>data-searchbar<\/code> \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 \u0434\u043b\u044f \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043d\u044f.<\/p>\n<p>\u25cf\t\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u043c\u0430\u0454 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 <code>searchbar-expandable<\/code>\u043a\u043b\u0430\u0441. \u0426\u0435 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u0434\u043b\u044f \u0440\u043e\u0431\u043e\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e \u0440\u043e\u0437\u0448\u0438\u0440\u044e\u0454\u0442\u044c\u0441\u044f.\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0412\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0434\u043b\u044f \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0456\u043d\u0448\u0438\u0445 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0456\u0432. \u041c\u0430\u0454 \u0441\u043f\u0440\u043e\u0449\u0435\u043d\u0443 \u0440\u043e\u0437\u043a\u043b\u0430\u0434\u043a\u0443 - \u0431\u0435\u0437 <code>.searchbar-inner<\/code>, \u0456 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u0442\u044c\u0441\u044f \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0431\u0435\u0437 \u043a\u043d\u043e\u043f\u043a\u0438 \u0432\u0456\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u044f.\n<p>\u041d\u0430\u043c \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 <code>searchbar-inline<\/code>\u043a\u043b\u0430\u0441 \u0434\u043e Searchbar, \u0449\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u043c\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 \"searchbar-inline\". -->\n<div class=\"searchbar searchbar-inline\">\n  <div class=\"searchbar-input-wrap\">\n    <input type=\"search\" placeholder=\"Search\" \/>\n    <i class=\"searchbar-icon\"><\/i>\n    <span class=\"input-clear-button\"><\/span>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043b\u0430\u0441\u0438 \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0406\u0441\u043d\u0443\u0454 \u0442\u0430\u043a\u043e\u0436 \u043a\u0456\u043b\u044c\u043a\u0430 \u043a\u043b\u0430\u0441\u0456\u0432 CSS, \u044f\u043a\u0456 \u043c\u043e\u0436\u043d\u0430 \u0434\u043e\u0434\u0430\u0442\u0438 \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432, \u044f\u043a\u0456 \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0442\u0438\u043c\u0443\u0442\u044c \u0457\u0445 \u043f\u043e\u0432\u0435\u0434\u0456\u043d\u043a\u0443, \u043a\u043e\u043b\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0430\u043a\u0442\u0438\u0432\u043d\u0430:\n<p>\u25cf\t<code>searchbar-hide-on-enable<\/code>- \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0437 \u0442\u0430\u043a\u0438\u043c \u043a\u043b\u0430\u0441\u043e\u043c \u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456, \u043a\u043e\u043b\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0430<\/p>\n<p>\u25cf\t<code>searchbar-hide-on-search<\/code>- \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0437 \u0442\u0430\u043a\u0438\u043c \u043a\u043b\u0430\u0441\u043e\u043c \u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u043e\u0448\u0443\u043a\u0443<\/p>\n<p>\u25cf\t<code>searchbar-not-found<\/code>- \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0437 \u0442\u0430\u043a\u0438\u043c \u043a\u043b\u0430\u0441\u043e\u043c \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0456 \u0441\u0442\u0430\u044e\u0442\u044c \u0432\u0438\u0434\u0438\u043c\u0438\u043c\u0438, \u043a\u043e\u043b\u0438 \u043d\u0435\u043c\u0430\u0454 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0456\u0432 \u043f\u043e\u0448\u0443\u043a\u0443<\/p>\n<p>\u25cf\t<code>searchbar-found<\/code>- \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0437 \u0442\u0430\u043a\u0438\u043c \u043a\u043b\u0430\u0441\u043e\u043c \u0432\u0438\u0434\u0438\u043c\u0456 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0456 \u0441\u0442\u0430\u044e\u0442\u044c \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0438\u043c\u0438, \u043a\u043e\u043b\u0438 \u043d\u0435\u043c\u0430\u0454 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0456\u0432 \u043f\u043e\u0448\u0443\u043a\u0443<\/p>\n<p>\u25cf\t<code>searchbar-ignore<\/code>- \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u043d\u0435 \u0432\u0440\u0430\u0445\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0446\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 \u0432 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430\u0445 \u043f\u043e\u0448\u0443\u043a\u0443<\/p>\n\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">...<\/div>\n  <div class=\"page-content\">\n    <div class=\"searchbar-backdrop\"><\/div>\n    <form class=\"searchbar\">...<\/form>\n\n    <!-- \u041d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0431\u043b\u043e\u043a\u0443 \u0442\u0430 \u0431\u043b\u043e\u043a \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u043e\u0448\u0443\u043a\u0443 -->\n    <div class=\"block-title searchbar-hide-on-search\">Some block title<\/div>\n    <div class=\"block\">Lorem ipsum dolor sit amet...<\/div>\n\n    <!-- \u041c\u0438 \u0432\u0438\u043a\u043e\u043d\u0443\u0454\u043c\u043e \u043f\u043e\u0448\u0443\u043a \u0443 \u0441\u043f\u0438\u0441\u043a\u0443 \u0441\u0443\u043f\u0435\u0440\u0433\u0435\u0440\u043e\u0457\u0432, \u0442\u043e\u043c\u0443 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0430 \u043d\u0430\u0437\u0432\u0430 \u0442\u0430 \u0441\u043f\u0438\u0441\u043e\u043a \u043c\u0430\u044e\u0442\u044c \u0431\u0443\u0442\u0438 \u0432\u0438\u0434\u0438\u043c\u0438\u043c\u0438 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u043e\u0448\u0443\u043a\u0443 -->\n    <div class=\"block-title searchbar-found\">Super Heroes<\/div>\n    <div class=\"list simple-list searchbar-found\">\n      <ul>\n        <li>Hulk<\/li>\n        <li>Batman<\/li>\n        <li>Superman<\/li>\n        ...\n      <\/ul>\n    <\/div>\n\n    <!-- \u0426\u0435\u0439 \u0441\u043f\u0438\u0441\u043e\u043a \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0438\u043c\u0438\u043c, \u044f\u043a\u0449\u043e \u0432 \u043d\u044c\u043e\u043c\u0443 \u043d\u0435\u043c\u0430\u0454 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0456\u0432 \u043f\u043e\u0448\u0443\u043a\u0443 -->\n    <div class=\"list simple-list searchbar-not-found\">\n      <ul>\n        <li>Nothing found<\/li>\n      <\/ul>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u043d\u043a\u0443 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u043d\u043a\u0443 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0435\u043f\u0435\u0440, \u043a\u043e\u043b\u0438 \u0443 \u043d\u0430\u0441 \u0454 HTML \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438. \u041d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u043c\u0435\u0442\u043e\u0434\u0438 \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u043e\u0433\u043e \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0406\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438\n<p><code>parameters - object<\/code> -\u043e\u0431'\u0454\u043a\u0442 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443<\/p>\n<p>\t<i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar<\/i><\/p>","link_text":"string","meta":"app.searchbar.create(<code>parameters<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0417\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar\n<p>\u25cf\t<code>el - HTMLElement or string <\/code>(with CSS Selector) or object. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 Searchbar \u0430\u0431\u043e \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar \u0434\u043b\u044f \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f.<\/p>\n","link_text":"string","meta":"app.searchbar.destroy(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u041e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 \u0437\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML\n<p>\u25cf\t<code>el - HTMLElement or string <\/code>(with CSS Selector) or object. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443.<\/p>\n<p><i>\t\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar<\/i><\/p>\n","link_text":"string","meta":"app.searchbar.get(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0442\u0435\u043a\u0441\u0442\u0443 \u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443\n<p>\u25cf\t<code>el - HTMLElement or string <\/code>(with CSS Selector) or object. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443.<\/p>\n<p><i>\t\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar<\/i><\/p>\n","link_text":"string","meta":"app.searchbar.clear(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443\n<p>\u25cf\t<code>el - HTMLElement or string <\/code>(with CSS Selector) or object. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443.<\/p>\n<p><i>\t\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar<\/i><\/p>\n","link_text":"string","meta":"app.searchbar.enable(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0412\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443\n<p>\u25cf\t<code>el - HTMLElement or string <\/code>(with CSS Selector) or object. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443.<\/p>\n<p><i>\t\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar<\/i><\/p>\n","link_text":"string","meta":"app.searchbar.disable(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443: \u0443\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438, \u044f\u043a\u0449\u043e \u0432\u043e\u043d\u0430 \u0431\u0443\u043b\u0430 \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u0430, \u0430\u0431\u043e \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438, \u044f\u043a\u0449\u043e \u0432\u043e\u043d\u0430 \u0431\u0443\u043b\u0430 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u0430\n<p>\u25cf\t<code>el - HTMLElement or string <\/code>(with CSS Selector) or object. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443.<\/p>\n<p><i>\t\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar<\/i><\/p>\n","link_text":"string","meta":"app.searchbar.toggle(<code>el<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443 <code>query<\/code>\n<p>\u25cf\t<code>el - HTMLElement or string <\/code>(with CSS Selector) or object. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443.<\/p>\n<p>\t<code>query - string<\/code>\u041f\u043e\u0448\u0443\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0442<\/p>\n<p><i>\t\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar<\/i><\/p>\n","link_text":"string","meta":"app.searchbar.search(<code>el, query<\/code>)","title":""}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u0441\u043f\u0438\u0441\u043e\u043a \u0443\u0441\u0456\u0445 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432, \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u043b\u044f \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f\/\u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0430\u0431\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 (<code>form class=\"searchbar\"<\/code>)","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"el","title":""}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0430\u0431\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443. \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c (\u044f\u043a\u0449\u043e \u043d\u0435 \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u043e) \u0441\u043f\u0440\u043e\u0431\u0443\u0454 \u0448\u0443\u043a\u0430\u0442\u0438 <code>input type=\"search\"<\/code>\u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"inputEl","title":""}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u043a\u043d\u043e\u043f\u043a\u0443 \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"disableButton","title":"true"}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0430\u0431\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u043a\u043d\u043e\u043f\u043a\u0438 \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043d\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443. \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c (\u044f\u043a\u0449\u043e \u043d\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u043e) \u043d\u0430\u043c\u0430\u0433\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0448\u0443\u043a\u0430\u0442\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0456\u0437 <code>search-disable-button<\/code> \u043a\u043b\u0430\u0441\u043e\u043c \u0443\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"disableButtonEl","title":""}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0430\u0431\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u0431\u043b\u043e\u043a\u0443 \u0441\u043f\u0438\u0441\u043a\u0443 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"HTMLElement <p>string","meta":"searchContainer","title":""}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u043f\u043e\u043b\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 List View, \u0434\u0435 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0448\u0443\u043a\u0430\u0442\u0438. \u0417\u0430\u0437\u0432\u0438\u0447\u0430\u0439 \u043c\u0438 \u0448\u0443\u043a\u0430\u0454\u043c\u043e \u0437\u0430 \u043d\u0430\u0437\u0432\u0430\u043c\u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432, \u0443 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u043d\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 <code>.item-title<\/code>. \u0422\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u043a\u0456\u043b\u044c\u043a\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443 \u0442\u0438\u043f\u0443<code>.item-title<\/code>, <code>.item-text<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"searchIn","title":""}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u043e\u043a\u0440\u0435\u043c\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u043e\u0448\u0443\u043a\u0443. \u042f\u043a\u0449\u043e \u043c\u0438 \u0432\u0438\u043a\u043e\u043d\u0443\u0454\u043c\u043e \u043f\u043e\u0448\u0443\u043a \u0443 \u0440\u0435\u0436\u0438\u043c\u0456 List View, \u0446\u0435 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043e\u0434\u0438\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0441\u043f\u0438\u0441\u043a\u0443 <code>li<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"searchItem","title":"li"}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0433\u0440\u0443\u043f\u0438. \u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f, \u044f\u043a\u0449\u043e <code>hideGroups<\/code> \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0449\u043e\u0431 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u0433\u0440\u0443\u043f\u0438. \u042f\u043a\u0449\u043e \u043c\u0438 \u0432\u0438\u043a\u043e\u043d\u0443\u0454\u043c\u043e \u043f\u043e\u0448\u0443\u043a \u0443 \u0440\u0435\u0436\u0438\u043c\u0456 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443, \u0442\u043e \u0437\u0430\u0437\u0432\u0438\u0447\u0430\u0439 \u0446\u0435 \u0433\u0440\u0443\u043f\u0430 \u0441\u043f\u0438\u0441\u043a\u0443.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"searchGroup","title":".list-group"}},{"type":"table_item","props":{"content":"CSS \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 \u043d\u0430\u0437\u0432 \u0433\u0440\u0443\u043f. \u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f, \u044f\u043a\u0449\u043e <code>hideGroupTitles<\/code> \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0449\u043e\u0431 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u043d\u0430\u0437\u0432\u0438 \u0433\u0440\u0443\u043f. \u042f\u043a\u0449\u043e \u043c\u0438 \u0432\u0438\u043a\u043e\u043d\u0443\u0454\u043c\u043e \u043f\u043e\u0448\u0443\u043a \u0443 \u0440\u0435\u0436\u0438\u043c\u0456 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443, \u0442\u043e \u0437\u0430\u0437\u0432\u0438\u0447\u0430\u0439 \u0446\u0435 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0433\u0440\u0443\u043f\u0438 \u0441\u043f\u0438\u0441\u043a\u0443.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"searchGroupTitle","title":".list-group-title"}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0430\u0431\u043e HTMLElement \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \"\u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e\" \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0438\u043c, \u043a\u043e\u043b\u0438 \u043d\u0435\u043c\u0430\u0454 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0456\u0432 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string<p>HTMLElement","meta":"foundEl","title":".searchbar-found"}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0430\u0431\u043e HTMLElement \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \"not-found\" \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u0432\u0438\u0434\u0438\u043c\u0438\u043c, \u043a\u043e\u043b\u0438 \u043d\u0435\u043c\u0430\u0454 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0456\u0432 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string<p>HTMLElement","meta":"notFoundEl","title":".searchbar-not-found"}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0430\u0431\u043e HTMLElement \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432, \u044f\u043a\u0456 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456, \u043a\u043e\u043b\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string<p>HTMLElement","meta":"hideOnEnableEl","title":".searchbar-hide-on-enable"}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0430\u0431\u043e HTMLElement \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432, \u044f\u043a\u0456 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u043e\u0448\u0443\u043a\u0443 \u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string<p>HTMLElement","meta":"hideOnSearchEl","title":".searchbar-hide-on-search"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0442\u043b\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443. \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043e \u0434\u043b\u044f \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u043e\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"backdrop"}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0430\u0431\u043e HTMLElement \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0442\u043b\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443. \u042f\u043a\u0449\u043e \u043d\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u043e, \u0430 <code>backdrop<\/code> \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u0454 <code>true<\/code>, \u0448\u0443\u043a\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f <code>.searchbar-backdrop<\/code>\u0435\u043b\u0435\u043c\u0435\u043d\u0442. \u042f\u043a\u0449\u043e \u043d\u0456\u0447\u043e\u0433\u043e \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e, \u0432\u0456\u043d \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u044c \u0439\u043e\u0433\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string<p>HTMLElement","meta":"backdropEl","title":""}},{"type":"table_item","props":{"content":"\u0421\u0435\u043b\u0435\u043a\u0442\u043e\u0440 CSS \u0434\u043b\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432, \u044f\u043a\u0456 \u0456\u0433\u043d\u043e\u0440\u0443\u044e\u0442\u044c\u0441\u044f \u043f\u0430\u043d\u0435\u043b\u043b\u044e \u043f\u043e\u0448\u0443\u043a\u0443 \u0442\u0430 \u0437\u0430\u0432\u0436\u0434\u0438 \u043f\u0440\u0438\u0441\u0443\u0442\u043d\u0456 \u0432 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430\u0445 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"ignore","title":".searchbar-ignore"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u043e\u0448\u0443\u043a\u043e\u0432\u0443 \u043f\u0430\u043d\u0435\u043b\u044c, \u043f\u043e\u0448\u0443\u043a \u043d\u0435 \u0437\u0434\u0456\u0439\u0441\u043d\u044e\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u0432 \u0436\u043e\u0434\u043d\u043e\u043c\u0443 \u0437 \u0431\u043b\u043e\u043a\u0456\u0432 \u0441\u043f\u0438\u0441\u043a\u0443, \u0443\u043a\u0430\u0437\u0430\u043d\u0438\u0445 \u0443 , <code>searchContainer<\/code> \u0456 \u0432\u0438 \u0437\u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0444\u0443\u043d\u043a\u0446\u0456\u044e \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043f\u043e\u0448\u0443\u043a\u0443, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0434\u043b\u044f \u0432\u0438\u043a\u043b\u0438\u043a\u0443 \u0437\u043e\u0432\u043d\u0456\u0448\u043d\u0456\u0445 API \u0456\u0437 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430\u043c\u0438 \u043f\u043e\u0448\u0443\u043a\u0443 \u0442\u0430 \u0434\u043b\u044f \u0457\u0445 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0432\u0440\u0443\u0447\u043d\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"customSearch","title":"false"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f\/\u0437\u0430\u043c\u0456\u043d\u0443 \u0434\u0456\u0430\u043a\u0440\u0438\u0442\u0438\u043a\u0438 (\u00e1, \u00ed, \u00f3 \u0442\u043e\u0449\u043e) \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"removeDiacritics","title":"false"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u043f\u043e\u0448\u0443\u043a \u0432\u0440\u0430\u0445\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0438 \u0433\u0440\u0443\u043f \u0456 \u043f\u0440\u0438\u0445\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0457\u0445, \u044f\u043a\u0449\u043e \u043e\u0434\u0440\u0430\u0437\u0443 \u043f\u0456\u0441\u043b\u044f \u043d\u0438\u0445 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0436\u043e\u0434\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"hideGroupTitles","title":"true"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u043f\u043e\u0448\u0443\u043a \u0440\u043e\u0437\u0433\u043b\u044f\u0434\u0430\u0442\u0438\u043c\u0435 \u0433\u0440\u0443\u043f\u0438 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0441\u043f\u0438\u0441\u043a\u0443 \u0442\u0430 \u043f\u0440\u0438\u0445\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0457\u0445, \u044f\u043a\u0449\u043e \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0446\u0438\u0445 \u0433\u0440\u0443\u043f \u043d\u0435\u043c\u0430\u0454 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u0438\u0445 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\u0432","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"hideGroups","title":"true"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"},"name":"\u0420\u043e\u0437\u0434\u0456\u043b\u044c\u043d\u0438\u043a - \u0406\u043a\u043e\u043d\u043a\u0430"},{"type":"fragment","props":{"margin":"default"},"children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c\u0438 \u043f\u043e\u0434\u0456\u0439. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"on","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var searchbar = app.searchbar.create({\n  el: '.searchbar',\n  on: {\n    enable: function () {\n      console.log('Searchbar enabled')\n    }\n  }\n})\n"}}]}]}]},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0429\u043e\u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443, \u043c\u0438 \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var searchbar = app.searchbar.create({ \/* parameters *\/ })"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0441\u043b\u044f \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 \u043c\u0438 \u043c\u0430\u0454\u043c\u043e \u0457\u0457 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0443 \u0437\u043c\u0456\u043d\u043d\u0456\u0439 (\u044f\u043a <code>searchbar<\/code> \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u0432\u0438\u0449\u0435) \u0437 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c\u0438 \u043c\u0435\u0442\u043e\u0434\u0430\u043c\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456","title_element":"h5","title_style":"h5"},"name":"\u041f\u0443\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0456\u0437 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457","link_text":"string","meta":"searchbar.params","title":""}},{"type":"table_item","props":{"content":"\u041f\u043e\u0442\u043e\u0447\u043d\u0438\u0439 \u043f\u043e\u0448\u0443\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0442 (\u043f\u043e\u0448\u0443\u043a\u043e\u0432\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f)","link_text":"string","meta":"searchbar.query","title":""}},{"type":"table_item","props":{"content":"\u041f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u043f\u043e\u0448\u0443\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0442 (\u043f\u043e\u0448\u0443\u043a\u043e\u0432\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f)","meta":"searchbar.previousQuery"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0448\u0443\u043a\u043e\u0432\u0438\u0439 \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","meta":"searchbar.searchContainer"}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 Dom64 \u0456\u0437 \u043f\u043e\u0448\u0443\u043a\u043e\u0432\u0438\u043c \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u043e\u043c \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","meta":"searchbar.$searchContainer"}},{"type":"table_item","props":{"content":"HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443.","meta":"searchbar.el"}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 Dom64 \u0437 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443.","meta":"searchbar.$el"}},{"type":"table_item","props":{"content":"HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","meta":"searchbar.inputEl"}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 Dom64 \u0456\u0437 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0434\u043b\u044f \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0432 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","meta":"searchbar.$inputEl"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f, \u044f\u043a\u0435 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0454, \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u0447\u0438 \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043e \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","meta":"searchbar.enabled"}},{"type":"table_item","props":{"content":"\u041b\u043e\u0433\u0456\u0447\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f, \u044f\u043a\u0435 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0454, \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0447\u0438 \u043d\u0456","meta":"searchbar.expandable"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438","title_element":"h5","title_style":"h5"},"name":"\u041f\u0443\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u0440\u0438\u043c\u0443\u0441\u043e\u0432\u043e \u0448\u0443\u043a\u0430\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0437\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0438\u043c \u0437\u0430\u043f\u0438\u0442\u043e\u043c","meta":"searchbar.search(<code>query<\/code>);"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438\/\u0430\u043a\u0442\u0438\u0432\u0443\u0432\u0430\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","meta":"searchbar.enable();"}},{"type":"table_item","props":{"content":"\u0412\u0438\u043c\u043a\u043d\u0443\u0442\u0438\/\u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","meta":"searchbar.disable();"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443","meta":"searchbar.toggle();"}},{"type":"table_item","props":{"content":"\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u043f\u043e\u0448\u0443\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0442 \u0456 \u043e\u043d\u043e\u0432\u0438\u0442\u0438 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0438","meta":"searchbar.clear();"}},{"type":"table_item","props":{"content":"\u0417\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a","meta":"searchbar.destroy();"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"searchbar.on(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0439\u0442\u0435 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0443","meta":"searchbar.once(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"searchbar.off(<code>event, handler<\/code>)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043f\u043e\u0434\u0456\u0457","meta":"searchbar.off(<code>event<\/code>)"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u043d\u0430 \u043f\u0440\u0438\u043c\u0456\u0440\u043d\u0438\u043a\u0443 ","meta":"searchbar.emit(<code>event, ...args<\/code>)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 ","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 "},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435 \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 DOM \u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 \u0442\u0430 \u043f\u043e\u0434\u0456\u0457 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 DOM","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u041f\u043e\u0434\u0456\u0457 DOM"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u043e\u0448\u0443\u043a\u0443 (\u0437\u043c\u0456\u043d\u0430 \u043f\u043e\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443). \u0414\u0435\u0442\u0430\u043b\u044c \u043f\u043e\u0434\u0456\u0457 ( <code>e.detail<\/code>) \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u043e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438 <code>query<\/code> \u0456 <code>previousQuery<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"searchbar:search","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 <p> <code>&lt;form class=\"searchbar\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043a\u043b\u0430\u0446\u043d\u0435 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u00ab\u043e\u0447\u0438\u0441\u0442\u0438\u0442\u0438\u00bb \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 (<code>a href=\"#\" class=\"searchbar-clear\"<\/code>). \u0414\u0435\u0442\u0430\u043b\u0456 \u043f\u043e\u0434\u0456\u0457 (<code>e.detail<\/code>) \u043c\u0456\u0441\u0442\u044f\u0442\u044c \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u043f\u043e\u0448\u0443\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0442 (\u0434\u043e \u043e\u0447\u0438\u0449\u0435\u043d\u043d\u044f).","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"searchbar:clear","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 <p> <code>&lt;form class=\"searchbar\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0441\u0442\u0430\u043d\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u044e\/\u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"searchbar:enable","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 <p> <code>&lt;form class=\"searchbar\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0441\u0442\u0430\u0454 \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043e\u044e\/\u043d\u0435\u0430\u043a\u0442\u0438\u0432\u043d\u043e\u044e \u2013 \u043a\u043e\u043b\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u0454 \u043a\u043d\u043e\u043f\u043a\u0443 \u00ab\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438\u00bb (<code>a href=\"searchbar-cancel\"<\/code>) \u0430\u0431\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442 <code>\"searchbar-overlay\"<\/code>","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"searchbar:disable","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 <p> <code>&lt;form class=\"searchbar\"&gt;<\/code>"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"searchbar:beforedestroy","title":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 <p> <code>&lt;form class=\"searchbar\"&gt;<\/code>"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0454 \u043f\u043e\u0434\u0456\u0457 \u044f\u043a \u0443 \u0441\u0435\u0431\u0435, \u0442\u0430\u043a \u0456 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u043c\u0430\u044e\u0442\u044c \u0442\u0456 \u0441\u0430\u043c\u0456 \u043d\u0430\u0437\u0432\u0438 \u0437 \u043f\u0440\u0435\u0444\u0456\u043a\u0441\u043e\u043c <code>searchbar<\/code>.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u041e\u0431'\u0454\u043a\u0442","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u043e\u0448\u0443\u043a\u0443 (\u0437\u043c\u0456\u043d\u0430 \u043f\u043e\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443). \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u043f\u043e\u0442\u043e\u0447\u043d\u0438\u0439 \u0437\u0430\u043f\u0438\u0442 \u0456 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u043f\u0438\u0442","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"searchbar","meta":"search","title":"(searchbar, query, previousQuery)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u043e\u0448\u0443\u043a\u0443 (\u0437\u043c\u0456\u043d\u0430 \u043f\u043e\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443). \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u043f\u043e\u0442\u043e\u0447\u043d\u0438\u0439 \u0437\u0430\u043f\u0438\u0442 \u0456 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u043f\u0438\u0442","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"searchbarSearch","title":"(searchbar, query, previousQuery)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043a\u043b\u0430\u0446\u043d\u0435 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u00ab\u043e\u0447\u0438\u0441\u0442\u0438\u0442\u0438\u00bb \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 \u0442\u0430 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 (\u0434\u043e \u043e\u0447\u0438\u0449\u0435\u043d\u043d\u044f) \u0437\u0430\u043f\u0438\u0442","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"searchbar","meta":"clear","title":"(searchbar, previousQuery)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043a\u043b\u0430\u0446\u043d\u0435 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u00ab\u043e\u0447\u0438\u0441\u0442\u0438\u0442\u0438\u00bb \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443 \u0442\u0430 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 (\u0434\u043e \u043e\u0447\u0438\u0449\u0435\u043d\u043d\u044f) \u0437\u0430\u043f\u0438\u0442","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"searchbarClear","title":"(searchbar, previousQuery)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0441\u0442\u0430\u043d\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u044e\/\u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e\u044e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"searchbar","meta":"enable","title":"(searchbar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0441\u0442\u0430\u043d\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u044e\/\u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e\u044e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"searchbarEnable","title":"(searchbar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0441\u0442\u0430\u043d\u0435 \u043d\u0435\u0430\u043a\u0442\u0438\u0432\u043d\u043e\u044e\/\u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043e\u044e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"searchbar","meta":"disable","title":"(searchbar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430, \u043a\u043e\u043b\u0438 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0441\u0442\u0430\u043d\u0435 \u043d\u0435\u0430\u043a\u0442\u0438\u0432\u043d\u043e\u044e\/\u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043e\u044e. \u042f\u043a \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"searchbarDisable","title":"(searchbar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"searchbar","meta":"beforeDestroy","title":"(searchbar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c, \u044f\u043a \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Searchbar \u0431\u0443\u0434\u0435 \u0437\u043d\u0438\u0449\u0435\u043d\u043e","link":"index.php?option=com_content&view=article&id=11&catid=14","link_text":"app","meta":"searchbarBeforeDestroy","title":"(searchbar)"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(4) \u041f\u043e\u0434\u0456\u044f - \u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 - \u041e\u043f\u0438\u0441 - \u041e\u0431'\u0454\u043a\u0442"},{"type":"headline","props":{"content":"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u044f \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u042f\u043a\u0449\u043e \u0432\u0430\u043c \u043d\u0435 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 API \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u0430 \u043f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c\u0441\u044f \u0432\u0441\u0435\u0440\u0435\u0434\u0438\u043d\u0456 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 \u0442\u0430 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0430 \u0432 DOM \u043d\u0430 \u043c\u043e\u043c\u0435\u043d\u0442 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438, \u0442\u043e\u0434\u0456 \u0457\u0457 \u043c\u043e\u0436\u043d\u0430 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u0442\u0438, \u043f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0432\u0448\u0438 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u043a\u043b\u0430\u0441 <code>searchbar-init<\/code> \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u043f\u043e\u0448\u0443\u043a\u0443, \u0456 \u0432\u0441\u0456 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u043e\u0436\u043d\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e <code>data-<\/code> \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0456\u0432:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">...<\/div>\n  <div class=\"page-content\">\n    <div class=\"searchbar-backdrop\"><\/div>\n\n    <!-- \u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443 \u0437 \u043a\u043b\u0430\u0441\u043e\u043c \"searchbar-init\" \u0434\u043b\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e\u0457 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0442\u0430 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 searchContainer, searchIn, \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0438\u043c\u0438 \u0432 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430\u0445 data-  -->\n    <form class=\"searchbar searchbar-init\" data-search-container=\".search-here\">\n      ...\n    <\/form>\n\n    <div class=\"list simple-list search-list searchbar-found\">\n      <ul>\n        <li>Hulk<\/li>\n        <li>Batman<\/li>\n        <li>Superman<\/li>\n        ...\n      <\/ul>\n    <\/div>\n\n    ...\n  <\/div>\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"alert","props":{"alert_style":"warning","content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438, \u044f\u043a\u0456 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u044e\u0442\u044c\u0441\u044f \u0432 <code>camelCase<\/code>, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 <code>searchContainer<\/code> , \u0432 \u0430\u0442\u0440\u0438\u0431\u0443\u0442\u0430\u0445 <code>data<\/code>, \u043f\u043e\u0432\u0438\u043d\u043d\u0456 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0432 <code>kebab-case<\/code> \u044f\u043a <code>data-search-container<\/code>","title_element":"h3"}},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  \/*\n  --t4-searchbar-link-color: var(--t4-bars-link-color);\n  --t4-searchbar-inline-input-font-size: var(--t4-searchbar-input-font-size);\n  *\/\n  --t4-searchbar-input-border-width: 0px;\n  --t4-searchbar-input-border-color: transparent;\n}\n.ios {\n  \/*\n  --t4-searchbar-bg-color: var(--t4-bars-bg-color);\n  --t4-searchbar-bg-color-rgb: var(--t4-bars-bg-color-rgb);\n  --t4-searchbar-border-color: var(--t4-bars-border-color);\n  *\/\n  --t4-searchbar-height: 44px;\n  --t4-searchbar-inner-padding-left: 8px;\n  --t4-searchbar-inner-padding-right: 8px;\n  \/*\n  --t4-searchbar-link-color: var(--t4-bars-link-color, var(--t4-theme-color));\n  *\/\n  --t4-searchbar-input-font-size: 17px;\n  --t4-searchbar-input-border-radius: 8px;\n  --t4-searchbar-input-height: 32px;\n  --t4-searchbar-inline-input-height: 32px;\n  \/*\n  --t4-searchbar-inline-input-border-radius: var(--t4-searchbar-input-border-radius);\n  *\/\n  --t4-searchbar-input-padding-horizontal: 28px;\n  \/*\n  --t4-searchbar-inline-input-padding-horizontal: var(--t4-searchbar-input-padding-horizontal);\n  --t4-searchbar-input-clear-button-color: var(--t4-input-clear-button-color);\n  *\/\n  --t4-searchbar-backdrop-bg-color: rgba(0, 0, 0, 0.4);\n  --t4-searchbar-in-page-content-margin: 0px;\n  --t4-searchbar-in-page-content-box-shadow: none;\n  --t4-searchbar-in-page-content-border-radius: 0;\n  --t4-searchbar-in-page-content-input-border-radius: 0;\n  --t4-searchbar-placeholder-color: rgba(0, 0, 0, 0.4);\n  --t4-searchbar-input-text-color: #000;\n  --t4-searchbar-search-icon-color: rgba(0, 0, 0, 0.4);\n  --t4-searchbar-input-bg-color: #e4e4e4;\n}\n.ios .dark,\n.ios.dark {\n  --t4-searchbar-placeholder-color: rgba(255, 255, 255, 0.4);\n  --t4-searchbar-input-text-color: #fff;\n  --t4-searchbar-search-icon-color: rgba(255, 255, 255, 0.4);\n  --t4-searchbar-input-bg-color: #2a2a2a;\n}\n.md {\n  --t4-searchbar-border-color: transparent;\n  --t4-searchbar-height: 48px;\n  --t4-searchbar-inner-padding-left: 8px;\n  --t4-searchbar-inner-padding-right: 8px;\n  --t4-searchbar-input-font-size: 16px;\n  --t4-searchbar-input-border-radius: 24px;\n  --t4-searchbar-input-height: 48px;\n  --t4-searchbar-inline-input-height: 48px;\n  --t4-searchbar-inline-input-border-radius: 24px;\n  --t4-searchbar-input-padding-horizontal: 16px;\n  --t4-searchbar-inline-input-padding-horizontal: 16px;\n  --t4-searchbar-backdrop-bg-color: rgba(0, 0, 0, 0.25);\n  --t4-searchbar-in-page-content-margin: 16px 0;\n  --t4-searchbar-in-page-content-box-shadow: none;\n  --t4-searchbar-in-page-content-border-radius: 24px;\n  --t4-searchbar-in-page-content-input-border-radius: 24px;\n  --t4-searchbar-bg-color: transparent;\n}\n.md,\n.md .dark,\n.md [class*='color-'] {\n  --t4-searchbar-link-color: var(--t4-md-on-surface);\n  --t4-searchbar-search-icon-color: var(--t4-md-on-surface);\n  --t4-searchbar-input-clear-button-color: var(--t4-md-on-surface);\n  --t4-searchbar-placeholder-color: var(--t4-md-on-surface-variant);\n  --t4-searchbar-input-bg-color: var(--t4-md-secondary-container);\n  --t4-searchbar-input-text-color: var(--t4-md-on-surface);\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 -\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner sliding\">\n      <div class=\"title\">Searchbar<\/div>\n      <div class=\"subnavbar\">\n        <form data-search-container=\".search-list\" data-search-in=\".item-title\" class=\"searchbar searchbar-init\">\n          <div class=\"searchbar-inner\">\n            <div class=\"searchbar-input-wrap\">\n              <input type=\"search\" placeholder=\"Search\" \/>\n              <i class=\"searchbar-icon\"><\/i>\n              <span class=\"input-clear-button\"><\/span>\n            <\/div>\n            <span class=\"searchbar-disable-button\">Cancel<\/span>\n          <\/div>\n        <\/form>\n      <\/div>\n    <\/div>\n  <\/div>\n  <div class=\"page-content\">\n    <div class=\"searchbar-backdrop\"><\/div>\n\n    <div class=\"list list-strong-ios list-outline-ios list-dividers-ios simple-list searchbar-not-found\">\n      <ul>\n        <li>Nothing found<\/li>\n      <\/ul>\n    <\/div>\n    <div class=\"list list-strong-ios list-outline-ios list-dividers-ios search-list searchbar-found\">\n      <ul>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Acura<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Audi<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">BMW<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Cadillac <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Chevrolet <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Chrysler <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Dodge <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Ferrari <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Ford <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">GMC <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Honda<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Hummer<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Hyundai<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Infiniti <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Isuzu <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Jaguar <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Jeep <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Kia<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Lamborghini <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Land Rover<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Lexus <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Lincoln <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Lotus <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Mazda<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Mercedes-Benz<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Mercury <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Mitsubishi<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Nissan <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Oldsmobile <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Peugeot <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Pontiac <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Porsche<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Regal<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Saab <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Saturn <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Subaru <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Suzuki <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Toyota<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Volkswagen<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Volvo<\/div>\n          <\/div>\n        <\/li>\n      <\/ul>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f","title_element":"h5","title_style":"h5"},"name":"\u041f\u0443\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u043d\u0435\u043b\u044c \u043f\u043e\u0448\u0443\u043a\u0443, \u0449\u043e \u0440\u043e\u0437\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f"},{"type":"code","props":{"content":"<div class=\"page\">\n  <div class=\"navbar\">\n    <div class=\"navbar-bg\"><\/div>\n    <div class=\"navbar-inner\">\n      <div class=\"left sliding\">\n        <a class=\"link back\">\n          <i class=\"icon icon-back\"><\/i>\n          <span class=\"if-not-md\">Back<\/span>\n        <\/a>\n      <\/div>\n      <div class=\"title sliding\">Searchbar<\/div>\n      <div class=\"right\">\n        <a class=\"link icon-only searchbar-enable\" data-searchbar=\".searchbar-demo\">\n          <i class=\"icon t4-icons if-not-md\">search<\/i>\n          <i class=\"icon material-icons md-only\">search<\/i>\n        <\/a>\n      <\/div>\n      <form data-search-container=\".search-list\" data-search-in=\".item-title\"\n        class=\"searchbar searchbar-expandable searchbar-demo searchbar-init\">\n        <div class=\"searchbar-inner\">\n          <div class=\"searchbar-input-wrap\">\n            <input type=\"search\" placeholder=\"Search\" \/>\n            <i class=\"searchbar-icon\"><\/i>\n            <span class=\"input-clear-button\"><\/span>\n          <\/div>\n          <span class=\"searchbar-disable-button\">Cancel<\/span>\n        <\/div>\n      <\/form>\n    <\/div>\n  <\/div>\n  <div class=\"page-content\">\n    <div class=\"searchbar-backdrop\"><\/div>\n    <div class=\"list list-strong-ios list-outline-ios list-dividers-ios simple-list searchbar-not-found\">\n      <ul>\n        <li>Nothing found<\/li>\n      <\/ul>\n    <\/div>\n    <div class=\"list list-strong-ios list-outline-ios list-dividers-ios search-list searchbar-found\">\n      <ul>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Acura<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Audi<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">BMW<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Cadillac <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Chevrolet <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Chrysler <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Dodge <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Ferrari <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Ford <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">GMC <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Honda<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Hummer<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Hyundai<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Infiniti <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Isuzu <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Jaguar <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Jeep <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Kia<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Lamborghini <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Land Rover<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Lexus <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Lincoln <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Lotus <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Mazda<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Mercedes-Benz<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Mercury <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Mitsubishi<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Nissan <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Oldsmobile <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Peugeot <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Pontiac <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Porsche<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Regal<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Saab <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Saturn <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Subaru <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Suzuki <\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Toyota<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Volkswagen<\/div>\n          <\/div>\n        <\/li>\n        <li class=\"item-content\">\n          <div class=\"item-inner\">\n            <div class=\"item-title\">Volvo<\/div>\n          <\/div>\n        <\/li>\n      <\/ul>\n    <\/div>\n  <\/div>\n<\/div>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.7","yooessentialsVersion":"2.0.11"} -->

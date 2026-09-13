@@ -1,0 +1,265 @@
+<h2>Попередній завантажувач</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Макет попереднього завантажувача</a>
+
+    </li>
+        <li>
+        
+<div>Кольори попреднього завантажувача</div>
+
+    </li>
+        <li>
+        
+<div>Накладання попереднього завантажувача/ API </div>
+
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Попередній завантажувач</h3>
+<div>У Techno4 є гарний індикатор попереднього завантаження. Попереднє завантаження створено за допомогою SVG і анімовано за допомогою CSS, тому його можна легко змінювати.</div>
+<h3>Макет попереднього завантажувача</h3>
+<div>Макет досить простий:</div>
+<pre><code>&lt;div class=&quot;preloader&quot;&gt;&lt;/div&gt;</code></pre>
+<div>Цей макет працюватиме, якщо ви розмістите попередній завантажувач на сторінці перед її ініціалізацією. Якщо вам потрібно додати його сторінку пізніше або використовувати в власних макетах, скористайтеся повним макетом попереднього завантаження. Для кожної теми він різний:</div>
+<h5>Макет попереднього завантажувача теми iOS</h5>
+<pre><code>&lt;div class=&quot;preloader&quot;&gt;
+  &lt;span class=&quot;preloader-inner&quot;&gt;
+    &lt;span class=&quot;preloader-inner-line&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;preloader-inner-line&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;preloader-inner-line&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;preloader-inner-line&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;preloader-inner-line&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;preloader-inner-line&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;preloader-inner-line&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;preloader-inner-line&quot;&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<h5>Макет попереднього завантажувача теми MD</h5>
+<pre><code>&lt;div class=&quot;preloader&quot;&gt;
+  &lt;span class=&quot;preloader-inner&quot;&gt;
+    &lt;svg viewBox=&quot;0 0 36 36&quot;&gt;
+      &lt;circle cx=&quot;18&quot; cy=&quot;18&quot; r=&quot;16&quot;&gt;&lt;/circle&gt;
+    &lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+<h3>Кольори попереднього завантажувача</h3>
+<div>Попередній завантажувач підтримує всі кольори за замовчуванням . Отже, щоб змінити його колір, просто додайте <code>color-[color]</code>клас до елемента попереднього завантаження.
+Тема MD також підтримує спеціальні <code>color-multi</code> кольори, щоб зробити попередній завантажувач різноколірним.
+</div>
+<pre><code>&lt;!-- Червоний preloader --&gt;
+&lt;div class=&quot;preloader color-red&quot;&gt;&lt;/div&gt;
+
+&lt;!-- Зелений preloader --&gt;
+&lt;div class=&quot;preloader color-green&quot;&gt;&lt;/div&gt;
+
+&lt;!-- Різнокольоровий preloader --&gt;
+&lt;div class=&quot;preloader color-multi&quot;&gt;&lt;/div&gt;
+</code></pre>
+<h3>Накладання попоредньго завантажувача / API</h3>
+<div>Також можна викликати спеціальне накладення(overlay) Preloader, яке корисно, якщо вам потрібно заблокувати дії користувача, поки щось не завантажиться. Цей вид попереднього завантажувача з’являтиметься перед додатком і блокуватиме будь-які дії користувача за ним.
+<p>Давайте розглянемо пов’язані методи роботи  з накладанням Preloader:</p>
+</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>app.preloader.show(<code>color</code>)</td>
+
+<td>показати накладення Preloader
+<p>●	<code>color - string.</code> Колір попереднього завантажувача, один із кольорів за замовчуванням
+</td>
+
+</tr>
+                <tr>
+
+<td>app.preloader.hide()</td>
+
+<td>приховати оверлей Preloader</td>
+
+</tr>
+                <tr>
+
+<td>app.preloader.showIn(<code>el, color</code>)</td>
+
+<td>показати накладення Preloader у вказаному елементі
+<p>●	<code>el - HTMLElement or string</code> (with CSS Selector). Елемент, до якого буде додано накладення попереднього завантажувача</p>
+<p>●	<code>color - string.</code>Колір попереднього завантажувача, один із кольорів за замовчуванням</p>
+</td>
+
+</tr>
+                <tr>
+
+<td>app.preloader.hideIn(<code>el</code>)</td>
+
+<td>приховати оверлей Preloader у вказаному елементі
+<p>●	<code>el - HTMLElement or string</code> (with CSS Selector). Елемент, з якого слід видалити накладання попереднього завантажувача</p>
+</td>
+
+</tr>
+            </tbody>
+
+</table>
+<div>Наприклад:</div>
+<pre><code>var app = new Techno4();
+
+// Показати preloader перед запитом Ajax 
+app.preloader.show();
+
+// Виконати запит Ajax 
+fetch('someurl.html').then(() =&gt; {
+  // приховати preloader коли запит Ajax виконано
+  app.preloader.hide();
+}); 
+</code></pre>
+<div>Відкриття накладення Preloader також додасть <code>with-modal-preloader</code> клас до елемента.</div>
+<h3>Змінні CSS</h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<pre><code>:root {
+  --t4-preloader-modal-padding: 8px;
+  --t4-preloader-modal-bg-color: rgba(0, 0, 0, 0.8);
+}
+.ios {
+  --t4-preloader-color: #6c6c6c;
+  --t4-preloader-size: 20px;
+  --t4-preloader-modal-preloader-size: 34px;
+  --t4-preloader-modal-border-radius: 5px;
+}
+.md {
+  --t4-preloader-color: #757575;
+  --t4-preloader-size: 32px;
+  --t4-preloader-modal-preloader-size: 32px;
+  --t4-preloader-modal-border-radius: 4px;
+}</code></pre>
+<h3>Приклади</h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner sliding&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Preloader&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block&quot;&gt;
+        &lt;p&gt;How about an activity indicator? Techno4 has a nice one. The t4 Preloader is made with SVG and animated
+          with CSS so it can be easily resized.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Default&lt;/div&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios demo-preloaders align-items-stretch text-align-center&quot;&gt;
+        &lt;div class=&quot;grid grid-cols-4 grid-gap&quot;&gt;
+          &lt;div&gt;
+            &lt;div class=&quot;preloader&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;demo-black-col&quot;&gt;
+            &lt;div class=&quot;preloader color-white&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div class=&quot;preloader preloader-large&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;demo-black-col&quot;&gt;
+            &lt;div class=&quot;preloader preloader-large color-white&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Color Preloaders&lt;/div&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios text-align-center&quot;&gt;
+        &lt;div class=&quot;grid grid-cols-4 grid-gap&quot;&gt;
+          &lt;div&gt;
+            &lt;div class=&quot;preloader text-color-red&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div class=&quot;preloader text-color-green&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div class=&quot;preloader text-color-orange&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div class=&quot;preloader text-color-blue&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Multi-color&lt;/div&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios text-align-center&quot;&gt;
+        &lt;div class=&quot;preloader color-multi&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Preloader Modals&lt;/div&gt;
+      &lt;div class=&quot;block block-strong-ios block-outline-ios&quot;&gt;
+        &lt;p&gt;With &lt;b&gt;app.preloader.show()&lt;/b&gt; you can show small overlay with preloader indicator.&lt;/p&gt;
+        &lt;p&gt;
+          &lt;a class=&quot;button button-fill&quot; @click=${openIndicator}&gt;Open Small Indicator&lt;/a&gt;
+        &lt;/p&gt;
+        &lt;p&gt;With &lt;b&gt;app.dialog.preloader()&lt;/b&gt; you can show dialog modal with preloader indicator.&lt;/p&gt;
+        &lt;p&gt;
+          &lt;a class=&quot;button button-fill&quot; @click=${openDialog}&gt;Open Dialog Preloader&lt;/a&gt;
+        &lt;/p&gt;
+        &lt;p&gt;With &lt;b&gt;app.dialog.preloader('My text...')&lt;/b&gt; you can show dialog preloader modal with custom title.&lt;/p&gt;
+        &lt;p&gt;
+          &lt;a class=&quot;button button-fill&quot; @click=${openCustomDialog}&gt;Open Dialog Preloader&lt;/a&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;style&gt;
+  .preloader-large {
+    width: 42px;
+    height: 42px;
+  }
+
+  .demo-preloaders .grid&gt;div {
+    padding: 5px;
+    line-height: 42px;
+  }
+
+  .demo-black-col {
+    background: #000;
+  }
+&lt;/style&gt;
+&lt;script&gt;
+  export default (props, { $t4 }) =&gt; {
+    const openIndicator = () =&gt; {
+      $t4.preloader.show();
+      setTimeout(function () {
+        $t4.preloader.hide();
+      }, 2000);
+    }
+    const openDialog = () =&gt; {
+      $t4.dialog.preloader();
+      setTimeout(function () {
+        $t4.dialog.close();
+      }, 2000);
+    }
+    const openCustomDialog = () =&gt; {
+      $t4.dialog.preloader('My text...');
+      setTimeout(function () {
+        $t4.dialog.close();
+      }, 2000);
+    }
+
+    return $render;
+  };
+&lt;/script&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041a\u043e\u043b\u044c\u043e\u0440\u0438 \u043f\u043e\u043f\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430"}},{"type":"nav_item","props":{"content":"\u041d\u0430\u043a\u043b\u0430\u0434\u0430\u043d\u043d\u044f \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430\/ API "}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0423 Techno4 \u0454 \u0433\u0430\u0440\u043d\u0438\u0439 \u0456\u043d\u0434\u0438\u043a\u0430\u0442\u043e\u0440 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f. \u041f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0454 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e SVG \u0456 \u0430\u043d\u0456\u043c\u043e\u0432\u0430\u043d\u043e \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e CSS, \u0442\u043e\u043c\u0443 \u0439\u043e\u0433\u043e \u043c\u043e\u0436\u043d\u0430 \u043b\u0435\u0433\u043a\u043e \u0437\u043c\u0456\u043d\u044e\u0432\u0430\u0442\u0438.","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041c\u0430\u043a\u0435\u0442 \u0434\u043e\u0441\u0438\u0442\u044c \u043f\u0440\u043e\u0441\u0442\u0438\u0439:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<div class=\"preloader\"><\/div>"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0426\u0435\u0439 \u043c\u0430\u043a\u0435\u0442 \u043f\u0440\u0430\u0446\u044e\u0432\u0430\u0442\u0438\u043c\u0435, \u044f\u043a\u0449\u043e \u0432\u0438 \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0435 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447 \u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456 \u043f\u0435\u0440\u0435\u0434 \u0457\u0457 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0454\u044e. \u042f\u043a\u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0439\u043e\u0433\u043e \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u043f\u0456\u0437\u043d\u0456\u0448\u0435 \u0430\u0431\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0432 \u0432\u043b\u0430\u0441\u043d\u0438\u0445 \u043c\u0430\u043a\u0435\u0442\u0430\u0445, \u0441\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u0439\u0442\u0435\u0441\u044f \u043f\u043e\u0432\u043d\u0438\u043c \u043c\u0430\u043a\u0435\u0442\u043e\u043c \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f. \u0414\u043b\u044f \u043a\u043e\u0436\u043d\u043e\u0457 \u0442\u0435\u043c\u0438 \u0432\u0456\u043d \u0440\u0456\u0437\u043d\u0438\u0439:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430 \u0442\u0435\u043c\u0438 iOS","title_element":"h5","title_style":"h5"},"name":"\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430 \u0442\u0435\u043c\u0438 iOS"},{"type":"code","props":{"content":"<div class=\"preloader\">\n  <span class=\"preloader-inner\">\n    <span class=\"preloader-inner-line\"><\/span>\n    <span class=\"preloader-inner-line\"><\/span>\n    <span class=\"preloader-inner-line\"><\/span>\n    <span class=\"preloader-inner-line\"><\/span>\n    <span class=\"preloader-inner-line\"><\/span>\n    <span class=\"preloader-inner-line\"><\/span>\n    <span class=\"preloader-inner-line\"><\/span>\n    <span class=\"preloader-inner-line\"><\/span>\n  <\/span>\n<\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430 \u0442\u0435\u043c\u0438 MD","title_element":"h5","title_style":"h5"},"name":"\u043f\u0443\u043d\u043a\u0442 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0430\u043a\u0435\u0442 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430 \u0442\u0435\u043c\u0438 MD"},{"type":"code","props":{"content":"<div class=\"preloader\">\n  <span class=\"preloader-inner\">\n    <svg viewBox=\"0 0 36 36\">\n      <circle cx=\"18\" cy=\"18\" r=\"16\"><\/circle>\n    <\/svg>\n  <\/span>\n<\/div>"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041a\u043e\u043b\u044c\u043e\u0440\u0438 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043e\u043b\u044c\u043e\u0440\u0438 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u0432\u0441\u0456 \u043a\u043e\u043b\u044c\u043e\u0440\u0438 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c . \u041e\u0442\u0436\u0435, \u0449\u043e\u0431 \u0437\u043c\u0456\u043d\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u043a\u043e\u043b\u0456\u0440, \u043f\u0440\u043e\u0441\u0442\u043e \u0434\u043e\u0434\u0430\u0439\u0442\u0435 <code>color-[color]<\/code>\u043a\u043b\u0430\u0441 \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f.\n\u0422\u0435\u043c\u0430 MD \u0442\u0430\u043a\u043e\u0436 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 <code>color-multi<\/code> \u043a\u043e\u043b\u044c\u043e\u0440\u0438, \u0449\u043e\u0431 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447 \u0440\u0456\u0437\u043d\u043e\u043a\u043e\u043b\u0456\u0440\u043d\u0438\u043c.\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"<!-- \u0427\u0435\u0440\u0432\u043e\u043d\u0438\u0439 preloader -->\n<div class=\"preloader color-red\"><\/div>\n\n<!-- \u0417\u0435\u043b\u0435\u043d\u0438\u0439 preloader -->\n<div class=\"preloader color-green\"><\/div>\n\n<!-- \u0420\u0456\u0437\u043d\u043e\u043a\u043e\u043b\u044c\u043e\u0440\u043e\u0432\u0438\u0439 preloader -->\n<div class=\"preloader color-multi\"><\/div>\n"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041d\u0430\u043a\u043b\u0430\u0434\u0430\u043d\u043d\u044f \u043f\u043e\u043f\u043e\u0440\u0435\u0434\u043d\u044c\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430 \/ API","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041d\u0430\u043a\u043b\u0430\u0434\u0430\u043d\u043d\u044f \u043f\u043e\u043f\u043e\u0440\u0435\u0434\u043d\u044c\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430 \/ API"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0422\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043b\u0438\u043a\u0430\u0442\u0438 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0435 \u043d\u0430\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u044f(overlay) Preloader, \u044f\u043a\u0435 \u043a\u043e\u0440\u0438\u0441\u043d\u043e, \u044f\u043a\u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0437\u0430\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u0434\u0456\u0457 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u043f\u043e\u043a\u0438 \u0449\u043e\u0441\u044c \u043d\u0435 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u044c\u0441\u044f. \u0426\u0435\u0439 \u0432\u0438\u0434 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430 \u0437\u2019\u044f\u0432\u043b\u044f\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0435\u0440\u0435\u0434 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u043c \u0456 \u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0431\u0443\u0434\u044c-\u044f\u043a\u0456 \u0434\u0456\u0457 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0437\u0430 \u043d\u0438\u043c.\n<p>\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0440\u043e\u0431\u043e\u0442\u0438  \u0437 \u043d\u0430\u043a\u043b\u0430\u0434\u0430\u043d\u043d\u044f\u043c Preloader:<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u043d\u0430\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u044f Preloader\n<p>\u25cf\t<code>color - string.<\/code> \u041a\u043e\u043b\u0456\u0440 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430, \u043e\u0434\u0438\u043d \u0456\u0437 \u043a\u043e\u043b\u044c\u043e\u0440\u0456\u0432 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c\n","link_text":"string","meta":"app.preloader.show(<code>color<\/code>)","title":""}},{"type":"table_item","props":{"content":"\u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u043e\u0432\u0435\u0440\u043b\u0435\u0439 Preloader","link_text":"string","meta":"app.preloader.hide()","title":""}},{"type":"table_item","props":{"content":"\u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u043d\u0430\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u044f Preloader \u0443 \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u043c\u0443 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\n<p>\u25cf\t<code>el - HTMLElement or string<\/code> (with CSS Selector). \u0415\u043b\u0435\u043c\u0435\u043d\u0442, \u0434\u043e \u044f\u043a\u043e\u0433\u043e \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043d\u0430\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u044f \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430<\/p>\n<p>\u25cf\t<code>color - string.<\/code>\u041a\u043e\u043b\u0456\u0440 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430, \u043e\u0434\u0438\u043d \u0456\u0437 \u043a\u043e\u043b\u044c\u043e\u0440\u0456\u0432 \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c<\/p>\n","meta":"app.preloader.showIn(<code>el, color<\/code>)"}},{"type":"table_item","props":{"content":"\u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 \u043e\u0432\u0435\u0440\u043b\u0435\u0439 Preloader \u0443 \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u043c\u0443 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456\n<p>\u25cf\t<code>el - HTMLElement or string<\/code> (with CSS Selector). \u0415\u043b\u0435\u043c\u0435\u043d\u0442, \u0437 \u044f\u043a\u043e\u0433\u043e \u0441\u043b\u0456\u0434 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043d\u0430\u043a\u043b\u0430\u0434\u0430\u043d\u043d\u044f \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0432\u0430\u0447\u0430<\/p>\n","meta":"app.preloader.hideIn(<code>el<\/code>)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4();\n\n\/\/ \u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 preloader \u043f\u0435\u0440\u0435\u0434 \u0437\u0430\u043f\u0438\u0442\u043e\u043c Ajax \napp.preloader.show();\n\n\/\/ \u0412\u0438\u043a\u043e\u043d\u0430\u0442\u0438 \u0437\u0430\u043f\u0438\u0442 Ajax \nfetch('someurl.html').then(() => {\n  \/\/ \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u0442\u0438 preloader \u043a\u043e\u043b\u0438 \u0437\u0430\u043f\u0438\u0442 Ajax \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043e\n  app.preloader.hide();\n}); \n"},"name":"\u041a\u043e\u0434"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0442\u044f \u043d\u0430\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u044f Preloader \u0442\u0430\u043a\u043e\u0436 \u0434\u043e\u0434\u0430\u0441\u0442\u044c <code>with-modal-preloader<\/code> \u043a\u043b\u0430\u0441 \u0434\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-preloader-modal-padding: 8px;\n  --t4-preloader-modal-bg-color: rgba(0, 0, 0, 0.8);\n}\n.ios {\n  --t4-preloader-color: #6c6c6c;\n  --t4-preloader-size: 20px;\n  --t4-preloader-modal-preloader-size: 34px;\n  --t4-preloader-modal-border-radius: 5px;\n}\n.md {\n  --t4-preloader-color: #757575;\n  --t4-preloader-size: 32px;\n  --t4-preloader-modal-preloader-size: 32px;\n  --t4-preloader-modal-border-radius: 4px;\n}"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner sliding\">\n        <div class=\"title\">Preloader<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <p>How about an activity indicator? Techno4 has a nice one. The t4 Preloader is made with SVG and animated\n          with CSS so it can be easily resized.<\/p>\n      <\/div>\n      <div class=\"block-title\">Default<\/div>\n      <div class=\"block block-strong-ios block-outline-ios demo-preloaders align-items-stretch text-align-center\">\n        <div class=\"grid grid-cols-4 grid-gap\">\n          <div>\n            <div class=\"preloader\"><\/div>\n          <\/div>\n          <div class=\"demo-black-col\">\n            <div class=\"preloader color-white\"><\/div>\n          <\/div>\n          <div>\n            <div class=\"preloader preloader-large\"><\/div>\n          <\/div>\n          <div class=\"demo-black-col\">\n            <div class=\"preloader preloader-large color-white\"><\/div>\n          <\/div>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Color Preloaders<\/div>\n      <div class=\"block block-strong-ios block-outline-ios text-align-center\">\n        <div class=\"grid grid-cols-4 grid-gap\">\n          <div>\n            <div class=\"preloader text-color-red\"><\/div>\n          <\/div>\n          <div>\n            <div class=\"preloader text-color-green\"><\/div>\n          <\/div>\n          <div>\n            <div class=\"preloader text-color-orange\"><\/div>\n          <\/div>\n          <div>\n            <div class=\"preloader text-color-blue\"><\/div>\n          <\/div>\n        <\/div>\n      <\/div>\n      <div class=\"block-title\">Multi-color<\/div>\n      <div class=\"block block-strong-ios block-outline-ios text-align-center\">\n        <div class=\"preloader color-multi\"><\/div>\n      <\/div>\n      <div class=\"block-title\">Preloader Modals<\/div>\n      <div class=\"block block-strong-ios block-outline-ios\">\n        <p>With <b>app.preloader.show()<\/b> you can show small overlay with preloader indicator.<\/p>\n        <p>\n          <a class=\"button button-fill\" @click=${openIndicator}>Open Small Indicator<\/a>\n        <\/p>\n        <p>With <b>app.dialog.preloader()<\/b> you can show dialog modal with preloader indicator.<\/p>\n        <p>\n          <a class=\"button button-fill\" @click=${openDialog}>Open Dialog Preloader<\/a>\n        <\/p>\n        <p>With <b>app.dialog.preloader('My text...')<\/b> you can show dialog preloader modal with custom title.<\/p>\n        <p>\n          <a class=\"button button-fill\" @click=${openCustomDialog}>Open Dialog Preloader<\/a>\n        <\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<style>\n  .preloader-large {\n    width: 42px;\n    height: 42px;\n  }\n\n  .demo-preloaders .grid>div {\n    padding: 5px;\n    line-height: 42px;\n  }\n\n  .demo-black-col {\n    background: #000;\n  }\n<\/style>\n<script>\n  export default (props, { $t4 }) => {\n    const openIndicator = () => {\n      $t4.preloader.show();\n      setTimeout(function () {\n        $t4.preloader.hide();\n      }, 2000);\n    }\n    const openDialog = () => {\n      $t4.dialog.preloader();\n      setTimeout(function () {\n        $t4.dialog.close();\n      }, 2000);\n    }\n    const openCustomDialog = () => {\n      $t4.dialog.preloader('My text...');\n      setTimeout(function () {\n        $t4.dialog.close();\n      }, 2000);\n    }\n\n    return $render;\n  };\n<\/script>"},"name":"\u041a\u043e\u0434"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

@@ -1,0 +1,2068 @@
+{
+  "meta": {
+    "title": "Techno4 Framework 2 UI Components API Audit - Part 2",
+    "version": "2.0.0",
+    "part": 2,
+    "componentsCount": 12,
+    "generatedAt": "2026-09-12T23:34:21.197Z",
+    "componentsList": [
+      "contacts-list",
+      "data-table",
+      "fab",
+      "form",
+      "gauge",
+      "grid",
+      "icon",
+      "infinite-scroll",
+      "input",
+      "link",
+      "list",
+      "list-index"
+    ],
+    "framework": "Techno4 Framework 2",
+    "standards": {
+      "templateEngine": "$h VDOM templates (${$h`...`})",
+      "domLibrary": "Dom64 ($)",
+      "iconNamespace": "t4-icons (strictly zero f7-icons)",
+      "layoutGrid": "Native CSS Grid (.grid, .grid-cols-X, zero legacy row/col-*)",
+      "typeSystem": "Strict TypeScript definitions (/techno4-framework2/types#[anchor])"
+    }
+  },
+  "components": [
+    {
+      "name": "contacts-list",
+      "title": "Contacts List",
+      "description": "Contacts List is a specialized variation of List View tailored for alphabetically organized contacts, phone directories, or member rosters. Features sticky letter-heading dividers with distinct theme typography and background styling.",
+      "docLink": "/techno4-framework2/contacts-list",
+      "typesLink": "/techno4-framework2/types#contacts-list",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/contacts-list/contacts-list.d.ts",
+        "packages/techno4-framework2-core/src/components/contacts-list/contacts-list.js",
+        "packages/techno4-framework2-core/src/components/contacts-list/contacts-list.less",
+        "packages/techno4-framework2-core/src/components/contacts-list/contacts-list-vars.less",
+        "packages/techno4-framework2-core/src/components/contacts-list/contacts-list-ios.less",
+        "packages/techno4-framework2-core/src/components/contacts-list/contacts-list-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/contacts-list.html",
+        "description": "Interactive demo showing full alphabetical list of contacts grouped under sticky letter headers."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"list contacts-list\">\n  <div class=\"list-group\">\n    <ul>\n      <li class=\"list-group-title\">A</li>\n      <li>\n        <div class=\"item-content\">\n          <div class=\"item-inner\"><div class=\"item-title\">Aaron</div></div>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "contacts-list",
+            "description": "Enables contacts styling with sticky letter headers and zero vertical list margin."
+          },
+          {
+            "class": "list-group",
+            "description": "Container for each alphabetical letter grouping."
+          },
+          {
+            "class": "list-group-title",
+            "description": "Sticky letter header element for the group."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-contacts-list-title-font-size",
+          "theme": "ios",
+          "defaultValue": "inherit",
+          "description": "Letter header font size on iOS."
+        },
+        {
+          "variable": "--t4-contacts-list-title-font-weight",
+          "theme": "ios",
+          "defaultValue": "600",
+          "description": "Letter header font weight on iOS."
+        },
+        {
+          "variable": "--t4-contacts-list-title-height",
+          "theme": "ios",
+          "defaultValue": "22px",
+          "description": "Letter header height on iOS."
+        },
+        {
+          "variable": "--t4-contacts-list-title-bg-color",
+          "theme": "ios-light",
+          "defaultValue": "#f7f7f7",
+          "description": "Letter header background color on iOS light theme."
+        },
+        {
+          "variable": "--t4-contacts-list-title-bg-color",
+          "theme": "ios-dark",
+          "defaultValue": "#323234",
+          "description": "Letter header background color on iOS dark theme."
+        },
+        {
+          "variable": "--t4-contacts-list-title-font-size",
+          "theme": "md",
+          "defaultValue": "20px",
+          "description": "Letter header font size on Material Design."
+        },
+        {
+          "variable": "--t4-contacts-list-title-font-weight",
+          "theme": "md",
+          "defaultValue": "500",
+          "description": "Letter header font weight on Material Design."
+        },
+        {
+          "variable": "--t4-contacts-list-title-height",
+          "theme": "md",
+          "defaultValue": "48px",
+          "description": "Letter header height on Material Design."
+        },
+        {
+          "variable": "--t4-contacts-list-title-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-theme-color)",
+          "description": "Letter header text color on Material Design."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Audio Engineers</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"list contacts-list\">\n        <div class=\"list-group\">\n          <ul>\n            <li class=\"list-group-title\">A</li>\n            <li><div class=\"item-content\"><div class=\"item-inner\"><div class=\"item-title\">Alan Wilder</div></div></div></li>\n          </ul>\n        </div>\n      </div>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "data-table",
+      "title": "Data Table",
+      "description": "Data Table displays structured sets of data across rows and columns. Supports responsive card transformations, sortable column headers, selectable checkable rows with batch actions, and inline form inputs.",
+      "docLink": "/techno4-framework2/data-table",
+      "typesLink": "/techno4-framework2/types#data-table",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/data-table/data-table.d.ts",
+        "packages/techno4-framework2-core/src/components/data-table/data-table.js",
+        "packages/techno4-framework2-core/src/components/data-table/data-table-class.js",
+        "packages/techno4-framework2-core/src/components/data-table/data-table.less",
+        "packages/techno4-framework2-core/src/components/data-table/data-table-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/data-table.html",
+        "description": "Interactive demo demonstrating default data tables, sortable tables, selectable rows with multi-check header, and collapsible card tables on small screens."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"data-table data-table-init\">\n  <div class=\"card\">\n    <div class=\"card-header\">Synthesizer Preset Library</div>\n    <div class=\"card-content\">\n      <table>\n        <thead>\n          <tr>\n            <th class=\"checkbox-cell\"><label class=\"checkbox\"><input type=\"checkbox\" /><i class=\"icon-checkbox\"></i></label></th>\n            <th class=\"label-cell sortable-cell\">Name</th>\n            <th class=\"numeric-cell sortable-cell\">Frequency (Hz)</th>\n            <th class=\"numeric-cell sortable-cell\">Polyphony</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr>\n            <td class=\"checkbox-cell\"><label class=\"checkbox\"><input type=\"checkbox\" /><i class=\"icon-checkbox\"></i></label></td>\n            <td class=\"label-cell\">Bass Lead</td>\n            <td class=\"numeric-cell\">55</td>\n            <td class=\"numeric-cell\">1</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "data-table",
+            "description": "Main Data Table container element."
+          },
+          {
+            "class": "data-table-init",
+            "description": "Enables automatic component initialization."
+          },
+          {
+            "class": "data-table-collapsible",
+            "description": "Transforms table columns into stacked card layout on narrow mobile viewports."
+          },
+          {
+            "class": "label-cell",
+            "description": "Left-aligned descriptive text column cell."
+          },
+          {
+            "class": "numeric-cell",
+            "description": "Right-aligned numeric column cell."
+          },
+          {
+            "class": "checkbox-cell",
+            "description": "Cell containing selection checkbox."
+          },
+          {
+            "class": "sortable-cell",
+            "description": "Clickable header column with sorting arrow icon."
+          },
+          {
+            "class": "data-table-row-selected",
+            "description": "State class applied to checked table rows."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "undefined",
+            "description": "Data Table container element."
+          },
+          {
+            "name": "on",
+            "type": "DataTable.Events",
+            "typeLink": "/techno4-framework2/types#data-table-events",
+            "default": "{}",
+            "description": "Event listeners object."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Data Table HTML element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping table element."
+        },
+        {
+          "name": "collapsible",
+          "type": "boolean",
+          "typeLink": "/techno4-framework2/types#boolean",
+          "description": "Whether table is configured with collapsible card mode."
+        },
+        {
+          "name": "$headerEl",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Table primary header container."
+        },
+        {
+          "name": "$headerSelectedEl",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Header alternate bar shown when rows are selected."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "destroy",
+          "signature": "dataTable.destroy(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys DataTable instance and detaches event listeners."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.dataTable.create",
+          "signature": "app.dataTable.create(parameters: DataTable.Parameters): DataTable",
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "DataTable.Parameters",
+              "typeLink": "/techno4-framework2/types#data-table-parameters",
+              "required": true,
+              "description": "Configuration parameters."
+            }
+          ],
+          "returnType": "DataTable",
+          "returnTypeLink": "/techno4-framework2/types#data-table",
+          "description": "Initializes a new DataTable instance."
+        },
+        {
+          "name": "app.dataTable.destroy",
+          "signature": "app.dataTable.destroy(el: HTMLElement | CSSSelector | DataTable): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector | DataTable",
+              "typeLink": "/techno4-framework2/types#data-table",
+              "required": true,
+              "description": "Table element or instance."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys DataTable instance."
+        },
+        {
+          "name": "app.dataTable.get",
+          "signature": "app.dataTable.get(el: HTMLElement | CSSSelector): DataTable",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Table DOM element."
+            }
+          ],
+          "returnType": "DataTable",
+          "returnTypeLink": "/techno4-framework2/types#data-table",
+          "description": "Gets DataTable instance for an element."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "datatable:sort",
+          "target": ".data-table",
+          "detail": "none",
+          "description": "Emitted when a sortable column header is clicked to toggle sort direction."
+        },
+        {
+          "event": "datatable:beforedestroy",
+          "target": ".data-table",
+          "detail": "none",
+          "description": "Emitted right before DataTable instance is destroyed."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "dataTableSort",
+          "arguments": "(dataTable: DataTable, sort: string)",
+          "description": "Emitted when table sort direction changes ('asc' or 'desc')."
+        },
+        {
+          "event": "dataTableBeforeDestroy",
+          "arguments": "(dataTable: DataTable)",
+          "description": "Emitted right before DataTable instance is destroyed."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-table-head-font-size",
+          "theme": "root",
+          "defaultValue": "12px",
+          "description": "Header typography font size."
+        },
+        {
+          "variable": "--t4-table-body-font-size",
+          "theme": "root",
+          "defaultValue": "14px",
+          "description": "Table body cell font size."
+        },
+        {
+          "variable": "--t4-table-footer-font-size",
+          "theme": "root",
+          "defaultValue": "12px",
+          "description": "Footer cell typography font size."
+        },
+        {
+          "variable": "--t4-table-head-cell-height",
+          "theme": "ios",
+          "defaultValue": "44px",
+          "description": "Header row height on iOS."
+        },
+        {
+          "variable": "--t4-table-head-cell-height",
+          "theme": "md",
+          "defaultValue": "56px",
+          "description": "Header row height on Material Design."
+        },
+        {
+          "variable": "--t4-table-body-cell-height",
+          "theme": "ios",
+          "defaultValue": "44px",
+          "description": "Body row height on iOS."
+        },
+        {
+          "variable": "--t4-table-body-cell-height",
+          "theme": "md",
+          "defaultValue": "48px",
+          "description": "Body row height on Material Design."
+        },
+        {
+          "variable": "--t4-table-selected-row-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-secondary-container)",
+          "description": "Selected row highlight background on MD."
+        },
+        {
+          "variable": "--t4-table-cell-border-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-outline)",
+          "description": "Cell dividing border color on MD."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Presets Table</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"card data-table\">\n        <table>\n          <thead>\n            <tr><th class=\"label-cell\">Patch Name</th><th class=\"numeric-cell\">Voices</th></tr>\n          </thead>\n          <tbody>\n            <tr><td class=\"label-cell\">Warm Brass</td><td class=\"numeric-cell\">8</td></tr>\n            <tr><td class=\"label-cell\">Sub Bass</td><td class=\"numeric-cell\">1</td></tr>\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $t4, $on }) => {\n  $on('pageInit', () => {\n    $t4.dataTable.create({ el: '.data-table' });\n  });\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "fab",
+      "title": "Floating Action Button (FAB)",
+      "description": "Floating Action Button (FAB) triggers the primary or most common action on a screen. Supports speed dial action buttons (.fab-buttons), text labels, extended labels (.fab-extended), and morphing into full-screen dialogs, popovers, or sheets (.fab-morph).",
+      "docLink": "/techno4-framework2/floating-action-button",
+      "typesLink": "/techno4-framework2/types#fab",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/fab/fab.d.ts",
+        "packages/techno4-framework2-core/src/components/fab/fab.js",
+        "packages/techno4-framework2-core/src/components/fab/fab.less",
+        "packages/techno4-framework2-core/src/components/fab/fab-vars.less",
+        "packages/techno4-framework2-core/src/components/fab/fab-ios.less",
+        "packages/techno4-framework2-core/src/components/fab/fab-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/fab.html & fab-morph.html",
+        "description": "Interactive demos showing bottom-right FAB, speed dial with sub-buttons and labels, extended FAB, and morphing FAB expanding into toolbar or card."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"fab fab-right-bottom\">\n  <a href=\"#\">\n    <i class=\"icon t4-icons\">plus</i>\n    <i class=\"icon t4-icons\">xmark</i>\n  </a>\n  <div class=\"fab-buttons fab-buttons-top\">\n    <a href=\"#\" class=\"fab-label-button\"><span>Synth</span><span class=\"fab-label\">Add Synthesizer</span></a>\n    <a href=\"#\" class=\"fab-label-button\"><span>FX</span><span class=\"fab-label\">Add Effect</span></a>\n  </div>\n</div>",
+        "modifiers": [
+          {
+            "class": "fab",
+            "description": "Floating Action Button base container."
+          },
+          {
+            "class": "fab-right-bottom",
+            "description": "Positions button in bottom right screen corner."
+          },
+          {
+            "class": "fab-left-bottom",
+            "description": "Positions button in bottom left screen corner."
+          },
+          {
+            "class": "fab-center-bottom",
+            "description": "Positions button in bottom center."
+          },
+          {
+            "class": "fab-right-top",
+            "description": "Positions button in top right."
+          },
+          {
+            "class": "fab-extended",
+            "description": "Enlarges button into a rounded pill containing text alongside icon."
+          },
+          {
+            "class": "fab-morph",
+            "description": "Enables morphing animation into another target element."
+          },
+          {
+            "class": "fab-opened",
+            "description": "State class applied when speed dial or morph is active."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.fab.open",
+          "signature": "app.fab.open(fabEl?: HTMLElement | CSSSelector, morphTargetEl?: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "fabEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "FAB element or selector."
+            },
+            {
+              "name": "morphTargetEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "Target element to morph into."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Opens FAB speed dial action buttons or morphs it to target element."
+        },
+        {
+          "name": "app.fab.close",
+          "signature": "app.fab.close(fabEl?: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "fabEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "FAB element or selector (defaults to .fab-opened)."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Closes FAB speed dial or morphs it back."
+        },
+        {
+          "name": "app.fab.toggle",
+          "signature": "app.fab.toggle(fabEl?: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "fabEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": false,
+              "description": "FAB element or selector."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Toggles FAB open or closed state."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "fab:open",
+          "target": ".fab",
+          "detail": "none",
+          "description": "Triggered on FAB speed dial open or when it morphs to target."
+        },
+        {
+          "event": "fab:close",
+          "target": ".fab",
+          "detail": "none",
+          "description": "Triggered on FAB speed dial close or when it morphs back."
+        }
+      ],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-fab-margin",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Offset margin from viewport edges."
+        },
+        {
+          "variable": "--t4-fab-button-size",
+          "theme": "root",
+          "defaultValue": "40px",
+          "description": "Speed dial child button dimension."
+        },
+        {
+          "variable": "--t4-fab-size",
+          "theme": "ios",
+          "defaultValue": "50px",
+          "description": "FAB button diameter on iOS."
+        },
+        {
+          "variable": "--t4-fab-size",
+          "theme": "md",
+          "defaultValue": "56px",
+          "description": "FAB button diameter on Material Design."
+        },
+        {
+          "variable": "--t4-fab-border-radius",
+          "theme": "ios",
+          "defaultValue": "50px",
+          "description": "Circular border radius on iOS."
+        },
+        {
+          "variable": "--t4-fab-border-radius",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Rounded squircle border radius on Material Design."
+        },
+        {
+          "variable": "--t4-fab-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-primary-container)",
+          "description": "FAB surface background on MD."
+        },
+        {
+          "variable": "--t4-fab-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-primary-container)",
+          "description": "FAB icon and typography color on MD."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">FAB Demo</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"fab fab-right-bottom\">\n        <a href=\"#\"><i class=\"icon t4-icons\">plus</i></a>\n      </div>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "form",
+      "title": "Form & Form Storage",
+      "description": "Form module provides powerful data serialization, form population, and automatic client persistence. Features seamless LocalStorage form data caching via .form-store-data and automatic Ajax submissions via .form-ajax-submit.",
+      "docLink": "/techno4-framework2/form-data",
+      "typesLink": "/techno4-framework2/types#form",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/form/form.d.ts",
+        "packages/techno4-framework2-core/src/components/form/form.js"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/form-storage.html",
+        "description": "Interactive demo demonstrating automatic form state persistence to LocalStorage across page reloads."
+      },
+      "htmlLayout": {
+        "structure": "<form id=\"studio-settings\" class=\"list form-store-data\">\n  <ul>\n    <li class=\"item-content item-input\">\n      <div class=\"item-inner\">\n        <div class=\"item-title item-label\">Audio Buffer Size</div>\n        <div class=\"item-input-wrap\">\n          <input type=\"number\" name=\"bufferSize\" value=\"512\" />\n        </div>\n      </div>\n    </li>\n  </ul>\n</form>",
+        "modifiers": [
+          {
+            "class": "form-store-data",
+            "description": "Enables automatic real-time saving and restoration of all form fields to LocalStorage."
+          },
+          {
+            "class": "form-ajax-submit",
+            "description": "Automatically intercepts form submission and dispatches via asynchronous Ajax request."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.form.convertToData",
+          "signature": "app.form.convertToData(form: HTMLElement | CSSSelector): object",
+          "parameters": [
+            {
+              "name": "form",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Form DOM element or CSS selector."
+            }
+          ],
+          "returnType": "object",
+          "returnTypeLink": "/techno4-framework2/types#object",
+          "description": "Serializes form input values into a key-value JavaScript object."
+        },
+        {
+          "name": "app.form.fillFromData",
+          "signature": "app.form.fillFromData(form: HTMLElement | CSSSelector, data: object): void",
+          "parameters": [
+            {
+              "name": "form",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Form DOM element or CSS selector."
+            },
+            {
+              "name": "data",
+              "type": "object",
+              "typeLink": "/techno4-framework2/types#object",
+              "required": true,
+              "description": "Key-value object with field values to set."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Populates form fields with values from passed object."
+        },
+        {
+          "name": "app.form.getFormData",
+          "signature": "app.form.getFormData(formId: string): object",
+          "parameters": [
+            {
+              "name": "formId",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "Form element id attribute."
+            }
+          ],
+          "returnType": "object",
+          "returnTypeLink": "/techno4-framework2/types#object",
+          "description": "Retrieves stored form data from LocalStorage for specified form ID."
+        },
+        {
+          "name": "app.form.storeFormData",
+          "signature": "app.form.storeFormData(formId: string, data: object): void",
+          "parameters": [
+            {
+              "name": "formId",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "Form element id attribute."
+            },
+            {
+              "name": "data",
+              "type": "object",
+              "typeLink": "/techno4-framework2/types#object",
+              "required": true,
+              "description": "Data object to store."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Saves form data object into LocalStorage under specified form ID."
+        },
+        {
+          "name": "app.form.removeFormData",
+          "signature": "app.form.removeFormData(formId: string): void",
+          "parameters": [
+            {
+              "name": "formId",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "Form element id attribute."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Removes stored form data from LocalStorage for specified form ID."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "form:todata",
+          "target": "form",
+          "detail": "none",
+          "description": "Emitted when calling app.form.convertToData."
+        },
+        {
+          "event": "form:fromdata",
+          "target": "form",
+          "detail": "none",
+          "description": "Emitted when calling app.form.fillFromData."
+        },
+        {
+          "event": "form:storedata",
+          "target": "form",
+          "detail": "none",
+          "description": "Emitted right after form data is saved."
+        },
+        {
+          "event": "formajax:beforesend",
+          "target": "form",
+          "detail": "none",
+          "description": "Emitted right before Ajax form submission."
+        },
+        {
+          "event": "formajax:success",
+          "target": "form",
+          "detail": "none",
+          "description": "Emitted on successful Ajax form response."
+        },
+        {
+          "event": "formajax:complete",
+          "target": "form",
+          "detail": "none",
+          "description": "Emitted when Ajax form request finishes."
+        },
+        {
+          "event": "formajax:error",
+          "target": "form",
+          "detail": "none",
+          "description": "Emitted on Ajax form submission error."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "formToData",
+          "arguments": "(form: HTMLElement, data: object)",
+          "description": "Emitted when form data is extracted."
+        },
+        {
+          "event": "formFromData",
+          "arguments": "(form: HTMLElement, data: object)",
+          "description": "Emitted when form fields are filled from data."
+        },
+        {
+          "event": "formStoreData",
+          "arguments": "(form: HTMLElement, data: object)",
+          "description": "Emitted right after form data is saved to LocalStorage."
+        },
+        {
+          "event": "formAjaxSuccess",
+          "arguments": "(form: HTMLElement, data: object, response: Response)",
+          "description": "Emitted after successful Ajax form submission."
+        },
+        {
+          "event": "formAjaxError",
+          "arguments": "(form: HTMLElement, data: object, error: any)",
+          "description": "Emitted on Ajax form submission failure."
+        }
+      ],
+      "cssVariables": [],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Form Storage</div></div></div>\n    <div class=\"page-content\">\n      <form id=\"midi-config\" class=\"list form-store-data\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-title item-label\">MIDI Channel</div>\n              <div class=\"item-input-wrap\"><input type=\"number\" name=\"channel\" value=\"1\" /></div>\n            </div>\n          </li>\n        </ul>\n      </form>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "gauge",
+      "title": "Gauge",
+      "description": "Gauge is a vector SVG dial component used to visualize numeric meters, audio level visualizers, percentages, or knob values. Supports complete circular (circle) or semicircular (semicircle) modes with animated transitions, center value text, and sub-labels.",
+      "docLink": "/techno4-framework2/gauge",
+      "typesLink": "/techno4-framework2/types#gauge",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/gauge/gauge.d.ts",
+        "packages/techno4-framework2-core/src/components/gauge/gauge.js",
+        "packages/techno4-framework2-core/src/components/gauge/gauge-class.js",
+        "packages/techno4-framework2-core/src/components/gauge/gauge.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/gauge.html",
+        "description": "Interactive demo demonstrating circular gauges, semicircle gauges, custom colors, dynamic value updates, and audio VU meters."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"gauge gauge-init\" data-type=\"circle\" data-value=\"0.75\" data-value-text=\"75%\" data-label-text=\"CPU LOAD\"></div>",
+        "modifiers": [
+          {
+            "class": "gauge",
+            "description": "Base gauge container element receiving generated SVG."
+          },
+          {
+            "class": "gauge-init",
+            "description": "Enables automatic component initialization reading data-* attributes."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "type",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'circle'",
+            "description": "Gauge geometry: 'circle' or 'semicircle'."
+          },
+          {
+            "name": "value",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "0",
+            "description": "Gauge percentage from 0 to 1."
+          },
+          {
+            "name": "size",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "200",
+            "description": "Rendered SVG dimension in pixels."
+          },
+          {
+            "name": "bgColor",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'transparent'",
+            "description": "Inner background fill color."
+          },
+          {
+            "name": "borderBgColor",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'#eeeeee'",
+            "description": "Track stroke background color."
+          },
+          {
+            "name": "borderColor",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'#000000'",
+            "description": "Progress stroke color."
+          },
+          {
+            "name": "borderWidth",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "10",
+            "description": "Stroke width."
+          },
+          {
+            "name": "valueText",
+            "type": "string | null",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "null",
+            "description": "Primary center value string."
+          },
+          {
+            "name": "valueTextColor",
+            "type": "string",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "'#000000'",
+            "description": "Value typography color."
+          },
+          {
+            "name": "valueFontSize",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "31",
+            "description": "Value typography font size."
+          },
+          {
+            "name": "labelText",
+            "type": "string | null",
+            "typeLink": "/techno4-framework2/types#string",
+            "default": "null",
+            "description": "Secondary subtitle label string."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "null",
+            "description": "Target element receiving generated SVG."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "typeLink": "/techno4-framework2/types#techno4",
+          "description": "App instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Gauge container DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping gauge element."
+        },
+        {
+          "name": "svgEl",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Generated SVG DOM element."
+        },
+        {
+          "name": "$svgEl",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping generated SVG."
+        },
+        {
+          "name": "params",
+          "type": "Gauge.Parameters",
+          "typeLink": "/techno4-framework2/types#gauge-parameters",
+          "description": "Gauge options."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "update",
+          "signature": "gauge.update(parameters: Omit<Gauge.Parameters, 'el'>): Gauge",
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "Omit<Gauge.Parameters, 'el'>",
+              "typeLink": "/techno4-framework2/types#gauge-parameters",
+              "required": true,
+              "description": "Updated parameters (value, valueText, etc.)."
+            }
+          ],
+          "returnType": "Gauge",
+          "returnTypeLink": "/techno4-framework2/types#gauge",
+          "description": "Rerenders gauge SVG according to updated parameters."
+        },
+        {
+          "name": "destroy",
+          "signature": "gauge.destroy(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys gauge instance and removes SVG element."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.gauge.create",
+          "signature": "app.gauge.create(parameters: Gauge.Parameters): Gauge",
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "Gauge.Parameters",
+              "typeLink": "/techno4-framework2/types#gauge-parameters",
+              "required": true,
+              "description": "Configuration parameters."
+            }
+          ],
+          "returnType": "Gauge",
+          "returnTypeLink": "/techno4-framework2/types#gauge",
+          "description": "Creates new Gauge instance."
+        },
+        {
+          "name": "app.gauge.destroy",
+          "signature": "app.gauge.destroy(el: HTMLElement | CSSSelector | Gauge): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector | Gauge",
+              "typeLink": "/techno4-framework2/types#gauge",
+              "required": true,
+              "description": "Gauge element or instance."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys Gauge instance."
+        },
+        {
+          "name": "app.gauge.get",
+          "signature": "app.gauge.get(el: HTMLElement | CSSSelector): Gauge",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Gauge DOM element."
+            }
+          ],
+          "returnType": "Gauge",
+          "returnTypeLink": "/techno4-framework2/types#gauge",
+          "description": "Retrieves Gauge instance by DOM element."
+        },
+        {
+          "name": "app.gauge.update",
+          "signature": "app.gauge.update(el: HTMLElement | CSSSelector, parameters: Omit<Gauge.Parameters, 'el'>): Gauge",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Gauge element."
+            },
+            {
+              "name": "parameters",
+              "type": "Omit<Gauge.Parameters, 'el'>",
+              "typeLink": "/techno4-framework2/types#gauge-parameters",
+              "required": true,
+              "description": "New parameters."
+            }
+          ],
+          "returnType": "Gauge",
+          "returnTypeLink": "/techno4-framework2/types#gauge",
+          "description": "Updates gauge parameters and re-renders SVG."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "gauge:beforedestroy",
+          "target": ".gauge",
+          "detail": "none",
+          "description": "Emitted right before Gauge instance is destroyed."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "gaugeBeforeDestroy",
+          "arguments": "(gauge: Gauge)",
+          "description": "Emitted right before Gauge instance is destroyed."
+        }
+      ],
+      "cssVariables": [],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Audio Gauge</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"block text-align-center\">\n        <div class=\"gauge my-gauge\"></div>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $t4, $on }) => {\n  let gaugeInstance;\n  $on('pageInit', () => {\n    gaugeInstance = $t4.gauge.create({\n      el: '.my-gauge',\n      type: 'circle',\n      value: 0.82,\n      size: 220,\n      borderColor: '#2196f3',\n      borderWidth: 12,\n      valueText: '82%',\n      labelText: 'GAIN LEVEL'\n    });\n  });\n  $on('pageBeforeRemove', () => {\n    if (gaugeInstance) gaugeInstance.destroy();\n  });\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "grid",
+      "title": "Grid / Layout Grid",
+      "description": "Modern CSS Grid layout system in Techno4 Framework 2. Replaces legacy float-based row and col-* classes with native display: grid (.grid), column tracks (.grid-cols-[1..20]), row tracks (.grid-rows-[1..20]), gap spacing (.grid-gap), and responsive screen breakpoint prefixes.",
+      "docLink": "/techno4-framework2/grid",
+      "typesLink": "/techno4-framework2/types#grid",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/grid/grid.d.ts",
+        "packages/techno4-framework2-core/src/components/grid/grid.less",
+        "packages/techno4-framework2-core/src/components/grid/grid-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/grid.html",
+        "description": "Interactive demo demonstrating multi-column grids, gap variations, and responsive layout breakpoints."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"grid grid-cols-3 grid-gap\">\n  <div>Track 1</div>\n  <div>Track 2</div>\n  <div>Track 3</div>\n</div>\n\n<div class=\"grid grid-cols-2 medium-grid-cols-4 grid-gap\">\n  <div>Ch 1</div><div>Ch 2</div><div>Ch 3</div><div>Ch 4</div>\n</div>",
+        "modifiers": [
+          {
+            "class": "grid",
+            "description": "Applies display: grid to container."
+          },
+          {
+            "class": "grid-gap",
+            "description": "Applies standard gap spacing (var(--t4-grid-gap))."
+          },
+          {
+            "class": "grid-cols-[1..20]",
+            "description": "Defines number of equal fraction column tracks (repeat(N, minmax(0, 1fr)))."
+          },
+          {
+            "class": "grid-rows-[1..20]",
+            "description": "Defines number of equal fraction row tracks."
+          },
+          {
+            "class": "xsmall-grid-cols-[1..20]",
+            "description": "Column count for viewports >= 480px."
+          },
+          {
+            "class": "small-grid-cols-[1..20]",
+            "description": "Column count for viewports >= 568px."
+          },
+          {
+            "class": "medium-grid-cols-[1..20]",
+            "description": "Column count for tablets >= 768px."
+          },
+          {
+            "class": "large-grid-cols-[1..20]",
+            "description": "Column count for desktops >= 1024px."
+          },
+          {
+            "class": "xlarge-grid-cols-[1..20]",
+            "description": "Column count for large screens >= 1200px."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-grid-gap",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Grid gap between tracks."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Audio Matrix Grid</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"block\">\n        <div class=\"grid grid-cols-2 medium-grid-cols-4 grid-gap\">\n          <div class=\"card card-content card-content-padding text-align-center\">Sine</div>\n          <div class=\"card card-content card-content-padding text-align-center\">Square</div>\n          <div class=\"card card-content card-content-padding text-align-center\">Sawtooth</div>\n          <div class=\"card card-content card-content-padding text-align-center\">Triangle</div>\n        </div>\n      </div>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "icon",
+      "title": "Icons",
+      "description": "Icons component provides visual glyphs and SVG icons across the app. In Techno4 Framework 2, all icons strictly adhere to the t4-icons namespace (strictly zero legacy f7-icons) for brand consistency and modern styling.",
+      "docLink": "/techno4-framework2/icons",
+      "typesLink": "/techno4-framework2/types#icon",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/icon/icon.d.ts",
+        "packages/techno4-framework2-core/src/components/icon/icon.js",
+        "packages/techno4-framework2-core/src/components/icon/icon.less",
+        "packages/techno4-framework2-core/src/components/icon/icon-ios.less",
+        "packages/techno4-framework2-core/src/components/icon/icon-md.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/icons.html",
+        "description": "Interactive catalog demo showing system icons, custom icons, color badges, and sizing."
+      },
+      "htmlLayout": {
+        "structure": "<i class=\"icon t4-icons\">waveform_path</i>\n<i class=\"icon t4-icons color-blue\">cpu</i>\n<i class=\"icon icon-back\"></i>",
+        "modifiers": [
+          {
+            "class": "icon",
+            "description": "Base icon container class."
+          },
+          {
+            "class": "t4-icons",
+            "description": "Standard Techno4 icon font namespace class."
+          },
+          {
+            "class": "material-icons",
+            "description": "Material Design icons class."
+          },
+          {
+            "class": "icon-back",
+            "description": "Automatic navigation chevron back icon."
+          },
+          {
+            "class": "icon-forward",
+            "description": "Automatic navigation chevron forward icon."
+          },
+          {
+            "class": "icon-close",
+            "description": "Close cross icon."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": [],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"></div>\n      <div class=\"navbar-inner\">\n        <div class=\"left\"><a href=\"#\" class=\"link back\"><i class=\"icon icon-back\"></i><span>Back</span></a></div>\n        <div class=\"title\">Icon Showcase</div>\n      </div>\n    </div>\n    <div class=\"page-content\">\n      <div class=\"block text-align-center\">\n        <i class=\"icon t4-icons color-blue\" style=\"font-size: 48px\">waveform_path</i>\n      </div>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "infinite-scroll",
+      "title": "Infinite Scroll",
+      "description": "Infinite Scroll automatically fetches and appends additional content as the user scrolls toward the bottom (or top) of a page-content container. Prevents pagination disruption and integrates cleanly with virtual lists.",
+      "docLink": "/techno4-framework2/infinite-scroll",
+      "typesLink": "/techno4-framework2/types#infinite-scroll",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/infinite-scroll/infinite-scroll.d.ts",
+        "packages/techno4-framework2-core/src/components/infinite-scroll/infinite-scroll.js"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/infinite-scroll.html",
+        "description": "Interactive demo demonstrating dynamic batch appending of list items upon scrolling near page bottom."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"page-content infinite-scroll-content\" data-infinite-distance=\"50\">\n  <div class=\"list simple-list\">\n    <ul>\n      <li>Item 1</li>\n      <li>Item 2</li>\n    </ul>\n  </div>\n  <div class=\"preloader infinite-scroll-preloader\"></div>\n</div>",
+        "modifiers": [
+          {
+            "class": "infinite-scroll-content",
+            "description": "Enables scroll listening and infinite event firing on the scrollable container."
+          },
+          {
+            "class": "infinite-scroll-top",
+            "description": "Triggers infinite event when scrolling up towards the top instead of bottom."
+          },
+          {
+            "class": "infinite-scroll-preloader",
+            "description": "Spinner preloader placed at the bottom of the content container."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": [
+          {
+            "name": "data-infinite-distance",
+            "type": "number | string",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "50",
+            "description": "Distance from bottom/top edge (in px or percentage) to trigger event."
+          }
+        ]
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.infiniteScroll.create",
+          "signature": "app.infiniteScroll.create(el: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Scrollable container element (.infinite-scroll-content)."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Attaches infinite scroll event listener to specified element."
+        },
+        {
+          "name": "app.infiniteScroll.destroy",
+          "signature": "app.infiniteScroll.destroy(el: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Scrollable container element."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Removes infinite scroll listener from element."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "infinite",
+          "target": ".infinite-scroll-content",
+          "detail": "Event",
+          "description": "Triggered when scroll position reaches distance threshold."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "infinite",
+          "arguments": "(el: HTMLElement, event: Event)",
+          "description": "Triggered when infinite scroll threshold is met."
+        }
+      ],
+      "cssVariables": [],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Infinite Presets</div></div></div>\n    <div class=\"page-content infinite-scroll-content\" data-infinite-distance=\"60\" @infinite=\"${loadMore}\">\n      <div class=\"list simple-list\">\n        <ul>\n          ${items.map(item => $h`<li>${item}</li>`)}\n        </ul>\n      </div>\n      ${hasMore && $h`<div class=\"preloader infinite-scroll-preloader\"></div>`}\n    </div>\n  </div>\n</template>\n<script>\nexport default (props, { $state }) => {\n  const state = $state({ items: [1,2,3,4,5], hasMore: true });\n  const loadMore = () => {\n    if (state.items.length >= 20) { state.hasMore = false; return; }\n    setTimeout(() => {\n      state.items.push(...[state.items.length + 1, state.items.length + 2]);\n    }, 500);\n  };\n  return $render;\n};\n</script>"
+    },
+    {
+      "name": "input",
+      "title": "Inputs / Form Inputs",
+      "description": "Inputs component provides rich interactive form controls: floating labels (.item-floating-label), auto-expanding textareas (.resizable), clearable inputs (.input-clear-button), validation styles with error tooltips, and keyboard scroll auto-focus.",
+      "docLink": "/techno4-framework2/inputs",
+      "typesLink": "/techno4-framework2/types#input",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/input/input.d.ts",
+        "packages/techno4-framework2-core/src/components/input/input.js",
+        "packages/techno4-framework2-core/src/components/input/input.less",
+        "packages/techno4-framework2-core/src/components/input/input-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/inputs.html",
+        "description": "Interactive demo demonstrating stacked inputs, floating labels, validation with errors, clearable inputs, and resizable textareas."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"list\">\n  <ul>\n    <li class=\"item-content item-input item-input-outline\">\n      <div class=\"item-inner\">\n        <div class=\"item-title item-floating-label\">Cutoff Frequency (Hz)</div>\n        <div class=\"item-input-wrap\">\n          <input type=\"number\" placeholder=\"440\" required validate />\n          <span class=\"input-clear-button\"></span>\n          <div class=\"item-input-error-message\">Must be between 20 and 20000 Hz</div>\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "item-input",
+            "description": "List item styled as a form input field."
+          },
+          {
+            "class": "item-input-outline",
+            "description": "Outlined input container variant."
+          },
+          {
+            "class": "item-floating-label",
+            "description": "Floating label animating above the input on focus or non-empty state."
+          },
+          {
+            "class": "input-clear-button",
+            "description": "Clickable cross icon clearing current input value."
+          },
+          {
+            "class": "resizable",
+            "description": "Auto-resizing textarea scaling height dynamically with content."
+          },
+          {
+            "class": "item-input-error-message",
+            "description": "Container displaying validation error text when input is invalid."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "scrollIntoViewOnFocus",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true for Android",
+            "description": "Automatically scrolls focused input into viewport."
+          },
+          {
+            "name": "scrollIntoViewCentered",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Scrolls focused input to vertical center of screen."
+          },
+          {
+            "name": "scrollIntoViewDuration",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "0",
+            "description": "Scroll duration in ms."
+          },
+          {
+            "name": "scrollIntoViewAlways",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Always scrolls input regardless of current visibility."
+          }
+        ],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [
+        {
+          "name": "app.input.scrollIntoView",
+          "signature": "app.input.scrollIntoView(inputEl: HTMLElement | CSSSelector, durationMS?: number, centered?: boolean, force?: boolean): void",
+          "parameters": [
+            {
+              "name": "inputEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Input element."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Scrolls input into screen viewport."
+        },
+        {
+          "name": "app.input.focus",
+          "signature": "app.input.focus(inputEl: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "inputEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Input element."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Applies focus classes and styles to input."
+        },
+        {
+          "name": "app.input.blur",
+          "signature": "app.input.blur(inputEl: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "inputEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Input element."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Removes focus styles from input."
+        },
+        {
+          "name": "app.input.resizeTextarea",
+          "signature": "app.input.resizeTextarea(textareaEl: HTMLElement | CSSSelector): void",
+          "parameters": [
+            {
+              "name": "textareaEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Textarea element."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Forces textarea height calculation."
+        },
+        {
+          "name": "app.input.validate",
+          "signature": "app.input.validate(inputEl: HTMLElement | CSSSelector): boolean",
+          "parameters": [
+            {
+              "name": "inputEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Input element."
+            }
+          ],
+          "returnType": "boolean",
+          "returnTypeLink": "/techno4-framework2/types#boolean",
+          "description": "Validates input against HTML5 constraints."
+        },
+        {
+          "name": "app.input.validateInputs",
+          "signature": "app.input.validateInputs(containerEl: HTMLElement | CSSSelector): boolean",
+          "parameters": [
+            {
+              "name": "containerEl",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "Parent form or container."
+            }
+          ],
+          "returnType": "boolean",
+          "returnTypeLink": "/techno4-framework2/types#boolean",
+          "description": "Validates all inputs inside container."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "textarea:resize",
+          "target": "textarea.resizable",
+          "detail": "event.detail: { initialHeight, currentHeight, scrollHeight }",
+          "description": "Emitted after auto-expanding textarea adjusts height."
+        },
+        {
+          "event": "input:notempty",
+          "target": "input, textarea",
+          "detail": "none",
+          "description": "Emitted when input value becomes non-empty."
+        },
+        {
+          "event": "input:empty",
+          "target": "input, textarea",
+          "detail": "none",
+          "description": "Emitted when input value becomes empty."
+        },
+        {
+          "event": "input:clear",
+          "target": "input, textarea",
+          "detail": "none",
+          "description": "Emitted when input value is cleared via .input-clear-button."
+        }
+      ],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-label-height",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Input label line height."
+        },
+        {
+          "variable": "--t4-label-font-size",
+          "theme": "root",
+          "defaultValue": "12px",
+          "description": "Input label font size."
+        },
+        {
+          "variable": "--t4-input-error-text-color",
+          "theme": "root",
+          "defaultValue": "#ff3b30",
+          "description": "Error text and invalid border color."
+        },
+        {
+          "variable": "--t4-input-height",
+          "theme": "ios",
+          "defaultValue": "40px",
+          "description": "Input height on iOS."
+        },
+        {
+          "variable": "--t4-input-height",
+          "theme": "md",
+          "defaultValue": "24px",
+          "description": "Input height on Material Design."
+        },
+        {
+          "variable": "--t4-input-font-size",
+          "theme": "ios",
+          "defaultValue": "16px",
+          "description": "Input font size on iOS."
+        },
+        {
+          "variable": "--t4-input-font-size",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Input font size on Material Design."
+        },
+        {
+          "variable": "--t4-input-clear-button-size",
+          "theme": "ios",
+          "defaultValue": "14px",
+          "description": "Clear button dimension on iOS."
+        },
+        {
+          "variable": "--t4-input-clear-button-size",
+          "theme": "md",
+          "defaultValue": "24px",
+          "description": "Clear button dimension on MD."
+        },
+        {
+          "variable": "--t4-input-item-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-surface-variant)",
+          "description": "Input filled container surface on MD."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Input Demo</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"list\">\n        <ul>\n          <li class=\"item-content item-input\">\n            <div class=\"item-inner\">\n              <div class=\"item-title item-floating-label\">Oscillator Name</div>\n              <div class=\"item-input-wrap\"><input type=\"text\" placeholder=\"VCO 1\" required validate /></div>\n            </div>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "link",
+      "title": "Link",
+      "description": "Link is the primary navigation and action trigger used in navbars, toolbars, subnavbars, tabbars, and page content. Supports touch ripples, active pressed states, back transitions (.back), tab links (.tab-link), and icon-only layouts (.icon-only).",
+      "docLink": "/techno4-framework2/link",
+      "typesLink": "/techno4-framework2/types#link",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/link/link.d.ts",
+        "packages/techno4-framework2-core/src/components/link/link.less",
+        "packages/techno4-framework2-core/src/components/link/link-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/home.html",
+        "description": "Standard navbar and toolbar links used universally across all application views."
+      },
+      "htmlLayout": {
+        "structure": "<a href=\"#\" class=\"link\">Standard Link</a>\n<a href=\"#\" class=\"link icon-only\"><i class=\"icon t4-icons\">gear_fill</i></a>\n<a href=\"#\" class=\"link back\"><i class=\"icon icon-back\"></i><span>Back</span></a>\n<a href=\"#tab-1\" class=\"tab-link tab-link-active\">Tab 1</a>",
+        "modifiers": [
+          {
+            "class": "link",
+            "description": "Base interactive link class."
+          },
+          {
+            "class": "back",
+            "description": "Automatically triggers router.back() on click."
+          },
+          {
+            "class": "icon-only",
+            "description": "Centers icon and optimizes touch target dimensions."
+          },
+          {
+            "class": "tab-link",
+            "description": "Associates link with tab routing."
+          },
+          {
+            "class": "tab-link-active",
+            "description": "Highlights currently active tab link."
+          },
+          {
+            "class": "external",
+            "description": "Bypasses router and performs standard browser link navigation."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [
+        {
+          "event": "click",
+          "target": ".link",
+          "detail": "MouseEvent",
+          "description": "Emitted when user activates link."
+        }
+      ],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-link-highlight-black",
+          "theme": "root",
+          "defaultValue": "rgba(0, 0, 0, 0.1)",
+          "description": "Dark pressed highlight background."
+        },
+        {
+          "variable": "--t4-link-highlight-white",
+          "theme": "root",
+          "defaultValue": "rgba(255, 255, 255, 0.15)",
+          "description": "Light pressed highlight background."
+        },
+        {
+          "variable": "--t4-link-pressed-opacity",
+          "theme": "ios",
+          "defaultValue": "0.3",
+          "description": "Opacity applied during touch press on iOS."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"navbar\">\n    <div class=\"navbar-bg\"></div>\n    <div class=\"navbar-inner\">\n      <div class=\"left\"><a href=\"#\" class=\"link back\"><i class=\"icon icon-back\"></i><span class=\"if-not-md\">Back</span></a></div>\n      <div class=\"title\">Settings</div>\n      <div class=\"right\"><a href=\"#\" class=\"link icon-only\"><i class=\"icon t4-icons\">gear_fill</i></a></div>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "list",
+      "title": "List View",
+      "description": "List View is one of the core versatile layout elements. Supports simple lists, links lists, rich media lists with avatars and multiline descriptions, inset lists (.list-inset, .list-strong-inset), menu lists with pill selection (.menu-list), and grouped dividers.",
+      "docLink": "/techno4-framework2/list-view",
+      "typesLink": "/techno4-framework2/types#list",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/list/list.d.ts",
+        "packages/techno4-framework2-core/src/components/list/list.less",
+        "packages/techno4-framework2-core/src/components/list/list-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/list.html & menu-list.html",
+        "description": "Comprehensive interactive demo showing simple lists, links lists, media lists with avatars, strong inset lists, and menu lists."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"list media-list list-strong-inset\">\n  <ul>\n    <li>\n      <a href=\"#\" class=\"item-link item-content\">\n        <div class=\"item-media\"><i class=\"icon t4-icons\">waveform_path</i></div>\n        <div class=\"item-inner\">\n          <div class=\"item-title-row\">\n            <div class=\"item-title\">Oscillator 1</div>\n            <div class=\"item-after\">Active</div>\n          </div>\n          <div class=\"item-subtitle\">Sawtooth 440 Hz</div>\n          <div class=\"item-text\">Polyphonic analog synth engine with resonance cutoff.</div>\n        </div>\n      </a>\n    </li>\n  </ul>\n</div>",
+        "modifiers": [
+          {
+            "class": "list",
+            "description": "Base list container."
+          },
+          {
+            "class": "list-strong",
+            "description": "Adds solid background fill and border hairlines."
+          },
+          {
+            "class": "list-outline",
+            "description": "Surrounds list container with border outline."
+          },
+          {
+            "class": "list-inset",
+            "description": "Adds side margins and rounded corners."
+          },
+          {
+            "class": "list-strong-inset",
+            "description": "Combines strong filled styling with rounded inset card layout."
+          },
+          {
+            "class": "media-list",
+            "description": "Enables multiline media layout (title, subtitle, text, media avatar)."
+          },
+          {
+            "class": "links-list",
+            "description": "Compact list of navigational links."
+          },
+          {
+            "class": "simple-list",
+            "description": "Minimalist list without complex item-inner wrappers."
+          },
+          {
+            "class": "menu-list",
+            "description": "Navigation menu drawer list with full-width rounded selection pill highlights."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [],
+        "instanceParams": []
+      },
+      "instanceProperties": [],
+      "instanceMethods": [],
+      "appMethods": [],
+      "domEvents": [],
+      "appEvents": [],
+      "cssVariables": [
+        {
+          "variable": "--t4-list-inset-side-margin",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Side margin for inset lists."
+        },
+        {
+          "variable": "--t4-list-item-padding-horizontal",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Horizontal padding inside item-inner."
+        },
+        {
+          "variable": "--t4-list-item-text-max-lines",
+          "theme": "root",
+          "defaultValue": "2",
+          "description": "Line clamp for item-text."
+        },
+        {
+          "variable": "--t4-list-chevron-icon-font-size",
+          "theme": "root",
+          "defaultValue": "20px",
+          "description": "Chevron disclosure arrow icon size."
+        },
+        {
+          "variable": "--t4-list-font-size",
+          "theme": "ios",
+          "defaultValue": "17px",
+          "description": "List typography font size on iOS."
+        },
+        {
+          "variable": "--t4-list-font-size",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "List typography font size on Material Design."
+        },
+        {
+          "variable": "--t4-list-item-min-height",
+          "theme": "ios",
+          "defaultValue": "52px",
+          "description": "Minimum item row height on iOS."
+        },
+        {
+          "variable": "--t4-list-item-min-height",
+          "theme": "md",
+          "defaultValue": "48px",
+          "description": "Minimum item row height on Material Design."
+        },
+        {
+          "variable": "--t4-list-inset-border-radius",
+          "theme": "ios",
+          "defaultValue": "24px",
+          "description": "Corner radius of inset list on iOS."
+        },
+        {
+          "variable": "--t4-list-inset-border-radius",
+          "theme": "md",
+          "defaultValue": "16px",
+          "description": "Corner radius of inset list on Material Design."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Audio Tracks</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"list media-list list-strong-inset\">\n        <ul>\n          <li>\n            <a href=\"#\" class=\"item-link item-content\">\n              <div class=\"item-inner\">\n                <div class=\"item-title-row\"><div class=\"item-title\">Master Track</div><div class=\"item-after\">0.0 dB</div></div>\n                <div class=\"item-subtitle\">Limiter Active</div>\n              </div>\n            </a>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</template>"
+    },
+    {
+      "name": "list-index",
+      "title": "List Index",
+      "description": "List Index (Alphabet Index) renders a vertical sidebar of letters or symbols along the screen edge of a grouped list. Enables rapid scrolling and alphabet jumping via touch and drag scrubbing gestures, with an optional magnifying bubble label.",
+      "docLink": "/techno4-framework2/list-index",
+      "typesLink": "/techno4-framework2/types#list-index",
+      "sourceFiles": [
+        "packages/techno4-framework2-core/src/components/list-index/list-index.d.ts",
+        "packages/techno4-framework2-core/src/components/list-index/list-index.js",
+        "packages/techno4-framework2-core/src/components/list-index/list-index-class.js",
+        "packages/techno4-framework2-core/src/components/list-index/list-index.less",
+        "packages/techno4-framework2-core/src/components/list-index/list-index-vars.less"
+      ],
+      "boonkerDemo": {
+        "path": "apps/techno4-framework2-boonker/pages/list-index.html",
+        "description": "Interactive demo demonstrating index scrubber sidebar, touch scrubbing, magnifying label bubble, and automatic list synchronization."
+      },
+      "htmlLayout": {
+        "structure": "<div class=\"list-index list-index-init\" data-list-el=\".contacts-list\" data-label=\"true\"></div>",
+        "modifiers": [
+          {
+            "class": "list-index",
+            "description": "Vertical index bar container."
+          },
+          {
+            "class": "list-index-init",
+            "description": "Enables automatic component initialization reading data-* attributes."
+          },
+          {
+            "class": "list-index-label",
+            "description": "Magnifying indicator bubble popup shown when scrubbing over items."
+          }
+        ]
+      },
+      "parameters": {
+        "appParams": [
+          {
+            "name": "indexes",
+            "type": "string[] | string",
+            "typeLink": "/techno4-framework2/types#array",
+            "default": "'auto'",
+            "description": "Array of letters or 'auto' to read from list-group-title elements."
+          },
+          {
+            "name": "scrollList",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "true",
+            "description": "Automatically scrolls related list to selected letter."
+          },
+          {
+            "name": "label",
+            "type": "boolean",
+            "typeLink": "/techno4-framework2/types#boolean",
+            "default": "false",
+            "description": "Enables magnifying floating bubble showing currently scrubbed letter."
+          },
+          {
+            "name": "iosItemHeight",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "14",
+            "description": "Single index item height on iOS."
+          },
+          {
+            "name": "mdItemHeight",
+            "type": "number",
+            "typeLink": "/techno4-framework2/types#number",
+            "default": "14",
+            "description": "Single index item height on Material Design."
+          }
+        ],
+        "instanceParams": [
+          {
+            "name": "el",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "null",
+            "description": "List index DOM element."
+          },
+          {
+            "name": "listEl",
+            "type": "HTMLElement | CSSSelector",
+            "typeLink": "/techno4-framework2/types#cssselector",
+            "default": "null",
+            "description": "Target grouped List View element to bind and scroll."
+          }
+        ]
+      },
+      "instanceProperties": [
+        {
+          "name": "app",
+          "type": "Techno4",
+          "typeLink": "/techno4-framework2/types#techno4",
+          "description": "App instance."
+        },
+        {
+          "name": "el",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "List index DOM element."
+        },
+        {
+          "name": "$el",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping list index."
+        },
+        {
+          "name": "ul",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Inner <ul> DOM element."
+        },
+        {
+          "name": "$ul",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping inner <ul>."
+        },
+        {
+          "name": "listEl",
+          "type": "HTMLElement",
+          "typeLink": "/techno4-framework2/types#htmlelement",
+          "description": "Target list DOM element."
+        },
+        {
+          "name": "$listEl",
+          "type": "Dom64Array",
+          "typeLink": "/techno4-framework2/types#dom64array",
+          "description": "Dom64 collection wrapping target list."
+        },
+        {
+          "name": "indexes",
+          "type": "string[]",
+          "typeLink": "/techno4-framework2/types#array",
+          "description": "Array of rendered index letters."
+        },
+        {
+          "name": "params",
+          "type": "ListIndex.Parameters",
+          "typeLink": "/techno4-framework2/types#list-index-parameters",
+          "description": "List index parameters."
+        }
+      ],
+      "instanceMethods": [
+        {
+          "name": "update",
+          "signature": "listIndex.update(): ListIndex",
+          "parameters": [],
+          "returnType": "ListIndex",
+          "returnTypeLink": "/techno4-framework2/types#list-index",
+          "description": "Recalculates sizes and re-renders letter items."
+        },
+        {
+          "name": "scrollToList",
+          "signature": "listIndex.scrollToList(itemContent: string): ListIndex",
+          "parameters": [
+            {
+              "name": "itemContent",
+              "type": "string",
+              "typeLink": "/techno4-framework2/types#string",
+              "required": true,
+              "description": "Letter content to scroll to."
+            }
+          ],
+          "returnType": "ListIndex",
+          "returnTypeLink": "/techno4-framework2/types#list-index",
+          "description": "Scrolls bound list view to matched group."
+        },
+        {
+          "name": "destroy",
+          "signature": "listIndex.destroy(): void",
+          "parameters": [],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys instance and removes gesture handlers."
+        }
+      ],
+      "appMethods": [
+        {
+          "name": "app.listIndex.create",
+          "signature": "app.listIndex.create(parameters: ListIndex.Parameters): ListIndex",
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "ListIndex.Parameters",
+              "typeLink": "/techno4-framework2/types#list-index-parameters",
+              "required": true,
+              "description": "Configuration options."
+            }
+          ],
+          "returnType": "ListIndex",
+          "returnTypeLink": "/techno4-framework2/types#list-index",
+          "description": "Initializes new ListIndex instance."
+        },
+        {
+          "name": "app.listIndex.destroy",
+          "signature": "app.listIndex.destroy(el: HTMLElement | CSSSelector | ListIndex): void",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector | ListIndex",
+              "typeLink": "/techno4-framework2/types#list-index",
+              "required": true,
+              "description": "Element or instance to destroy."
+            }
+          ],
+          "returnType": "void",
+          "returnTypeLink": "/techno4-framework2/types#void",
+          "description": "Destroys ListIndex instance."
+        },
+        {
+          "name": "app.listIndex.get",
+          "signature": "app.listIndex.get(el: HTMLElement | CSSSelector): ListIndex",
+          "parameters": [
+            {
+              "name": "el",
+              "type": "HTMLElement | CSSSelector",
+              "typeLink": "/techno4-framework2/types#cssselector",
+              "required": true,
+              "description": "DOM element."
+            }
+          ],
+          "returnType": "ListIndex",
+          "returnTypeLink": "/techno4-framework2/types#list-index",
+          "description": "Retrieves ListIndex instance by DOM element."
+        }
+      ],
+      "domEvents": [
+        {
+          "event": "listindex:select",
+          "target": ".list-index",
+          "detail": "none",
+          "description": "Emitted when a letter is selected by touch click or scrub drag."
+        },
+        {
+          "event": "listindex:click",
+          "target": ".list-index",
+          "detail": "none",
+          "description": "Emitted when a letter item is directly clicked."
+        },
+        {
+          "event": "listindex:beforedestroy",
+          "target": ".list-index",
+          "detail": "none",
+          "description": "Emitted right before ListIndex instance is destroyed."
+        }
+      ],
+      "appEvents": [
+        {
+          "event": "listIndexSelect",
+          "arguments": "(listIndex: ListIndex, itemContent: string, itemIndex: number)",
+          "description": "Emitted when letter index is selected."
+        },
+        {
+          "event": "listIndexClick",
+          "arguments": "(listIndex: ListIndex, itemContent: string, itemIndex: number)",
+          "description": "Emitted when letter index is clicked."
+        },
+        {
+          "event": "listIndexBeforeDestroy",
+          "arguments": "(listIndex: ListIndex)",
+          "description": "Emitted right before ListIndex is destroyed."
+        }
+      ],
+      "cssVariables": [
+        {
+          "variable": "--t4-list-index-width",
+          "theme": "root",
+          "defaultValue": "16px",
+          "description": "Width of sidebar index track."
+        },
+        {
+          "variable": "--t4-list-index-font-size",
+          "theme": "root",
+          "defaultValue": "11px",
+          "description": "Font size of letters."
+        },
+        {
+          "variable": "--t4-list-index-item-height",
+          "theme": "root",
+          "defaultValue": "14px",
+          "description": "Height of each letter item."
+        },
+        {
+          "variable": "--t4-list-index-label-size",
+          "theme": "ios",
+          "defaultValue": "44px",
+          "description": "Bubble label dimension on iOS."
+        },
+        {
+          "variable": "--t4-list-index-label-size",
+          "theme": "md",
+          "defaultValue": "56px",
+          "description": "Bubble label dimension on Material Design."
+        },
+        {
+          "variable": "--t4-list-index-label-bg-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-primary)",
+          "description": "Bubble label background on MD."
+        },
+        {
+          "variable": "--t4-list-index-label-text-color",
+          "theme": "md",
+          "defaultValue": "var(--t4-md-on-primary)",
+          "description": "Bubble label text color on MD."
+        }
+      ],
+      "vdomExample": "<template>\n  <div class=\"page\">\n    <div class=\"navbar\"><div class=\"navbar-bg\"></div><div class=\"navbar-inner\"><div class=\"title\">Presets Index</div></div></div>\n    <div class=\"page-content\">\n      <div class=\"list contacts-list\">\n        <div class=\"list-group\">\n          <ul><li class=\"list-group-title\">A</li><li><div class=\"item-content\"><div class=\"item-inner\"><div class=\"item-title\">Acid Bass</div></div></div></li></ul>\n        </div>\n      </div>\n      <div class=\"list-index list-index-init\" data-list-el=\".contacts-list\" data-label=\"true\"></div>\n    </div>\n  </div>\n</template>"
+    }
+  ]
+}

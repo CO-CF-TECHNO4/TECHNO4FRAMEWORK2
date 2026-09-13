@@ -1,0 +1,1956 @@
+<h2>Календар / Вибір дати</h2>
+<h1>Навігація</h1>
+<ul>
+        <li>
+        
+<a href="https://techno4.online/фреймворк/#general">Календар </a>
+
+    </li>
+        <li>
+        
+<div>Методи застосунку Календар</div>
+
+    </li>
+        <li>
+        
+<div>Параметри календаря</div>
+
+<p>Проміжок часу <p>Класи діапазонів </p>
+    </li>
+        <li>
+        
+<div>Методи та властивості календаря</div>
+
+    </li>
+        <li>
+        
+<div>Події календаря </div>
+
+<p>Події DOM<p>Події екземплярів застосунку та календаря</p>
+    </li>
+        <li>
+        
+<div>Змінні CSS</div>
+
+    </li>
+        <li>
+        
+<div>Приклади</div>
+
+    </li>
+    </ul>
+<h3>Календар</h3>
+<div>Календар — це сенсорний оптимізований компонент, який забезпечує простий спосіб обробки дат.
+Календар можна використовувати як вбудований компонент або як накладання. Накладений календар буде автоматично перетворено на <b>Popover</b> на планшетах (iPad).
+</div>
+<h3>Методи застосунку Календар</h3>
+<div>Розгляньмо пов’язані методи роботи застосунку Календар:</div>
+<div><code>app.calendar.create(parameters)</code>- створити екземпляр календаря.
+<p>●	<code>parameters - object</code>. Об'єкт з календарними параметрами</p>
+<i>Метод повертає створений екземпляр календаря</i>
+</div>
+<div><code>app.calendar.destroy(el)</code>- знищити екземпляр календаря
+<p>●	<code>el - HTMLElement or string </code>. (за допомогою селектора CSS) або об’єкта. Елемент календаря або екземпляр календаря для знищення.</p></div>
+<div><code>app.calendar.get(el)</code>- отримати екземпляр календаря за елементом HTML
+<p>●	<code>el - HTMLElement or string </code> (за допомогою селектора CSS). Елемент календаря</p>
+<i>Метод повертає екземпляр календаря</i>
+</div>
+<div><code>app.calendar.close(el)</code>- закрити Календар
+<p>●	<code>el - HTMLElement or string  </code> Елемент календаря для закриття</p>
+<i>Метод повертає екземпляр календаря</i>
+<p>Наприклад:</p></div>
+<pre><code>var calendar = app.calendar.create({
+    inputEl: '#calendar-input'
+});</code></pre>
+<h3>Параметри календаря</h3>
+<div>Давайте подивимося на список усіх доступних параметрів Календаря:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>locale</td>
+
+<td>Мова календаря. Має бути правильна мова, яку приймає <b>Intl.DateTimeFormat</b>. Якщо не вказано (за замовчуванням), використовуватиметься мова браузера.
+наприклад  <code>en-US, ru, en, en-US-u-ca-buddhist</code> тощо.
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+
+<td>value</td>
+
+<td>Масив із початковими вибраними датами. Кожен елемент масиву представляє вибрану дату</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=56&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+
+<td>disabled</td>
+
+<td>Додаткові вимкнені дати. Параметр приймає так званий діапазон дат  <code>Date Range</code> (подробиці див. нижче)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">Data range</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>events</td>
+
+<td>Дати з подіями. У календарному дні буде позначено додатковою «крапкою». Параметр приймає так званий діапазон дат Date Range (подробиці див. нижче).
+<p>Якщо ви хочете вказати, що день має кілька різних подій, це можна вказати кількома різними кольоровими крапками. У цьому випадку вам потрібно передати діапазон дат як масив, де кожен об’єкт матиме властивості дати та кольору,</p>
+Наприклад:
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">Date Range</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>[
+  {
+    date: new Date(2018, 4, 11),
+    color: '#2196f3',
+  },
+  // same date but different color, one more dot will be added to this day
+  {
+    date: new Date(2018, 4, 11),
+    color: '#4caf50',
+  },
+]</code></pre>
+<hr>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>rangesClasses</td>
+
+<td>Діапазони дат, у які потрібно додати спеціальний клас CSS для додаткового стилю. Перегляньте прийнятний формат нижче
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=56&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>formatValue</td>
+
+<td>Функція для форматування вхідного значення має повертати нове/відформатоване значення рядка. значення – це масив, де кожен елемент представляє вибрану дату. Може використовуватися замість параметра <code>dateFormat</code> для вказівки спеціального форматування</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function<p> (values)</a>
+    </td>
+</tr>
+                <tr>
+<td>auto</td>
+
+<td>monthNames</td>
+
+<td>Масив із повними назвами місяців. Якщо автоматично <code>auto</code>, відображатимуться назви місяців на основі вказаної мови <code>locale</code>(або мови браузера)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=56&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+<td>auto</td>
+
+<td>monthNamesShort</td>
+
+<td>Масив із короткими назвами місяців. Якщо автоматично, <code>auto</code> відображатимуться назви місяців на основі вказаної мови <code>locale</code>(або мови браузера)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=56&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+<td>auto</td>
+
+<td>dayNames</td>
+
+<td>Масив із назвами днів  тижня. Якщо автоматично, <code>auto</code> відображатимуться назви днів  на основі вказаної мови <code>locale</code>(або мови браузера)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=56&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+<td>auto</td>
+
+<td>dayNamesShort</td>
+
+<td>Масив із короткими назвами днів  тижня. Якщо автоматично, <code>auto</code> відображатимуться назви днів  на основі вказаної мови <code>locale</code>(або мови браузера)</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=56&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+<td>1</td>
+
+<td>firstDay</td>
+
+<td>Перший день тижня. За замовчуванням 1 - понеділок</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>[0, 6]</td>
+
+<td>weekendDays</td>
+
+<td>Масив з індексом вихідних днів, за замовчуванням це субота та неділя</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=56&catid=14">array</a>
+    </td>
+</tr>
+                <tr>
+<td>undefined</td>
+
+<td>dateFormat</td>
+
+<td>Якщо не визначено, він використовуватиме формат на основі мови <code>locale</code> (або мови браузера).
+<p>Може прийняти значення  <code>Intl.DateTimeFormat.options.</code></p>
+Наприклад<code>{ month: 'long', day: 'numeric' }</code>.
+<p>Або ви можете передати рядок зі спеціальними маркерами, доступними виразами:</p>
+<p>●	yyyy - 4 цифри року</p>
+<p>●	yy - 2 цифри року</p>
+<p>●	mm - 2 цифри номера місяця, від 01 до 12</p>
+<p>●	m - число місяця від 1 до 12</p>
+<p>●	MM - повна назва місяця</p>
+<p>●	M - коротка назва місяця</p>
+<p>●	dd - Двозначний номер дня, від 01 до 31</p>
+<p>●	d - номер дня, від 1 до 31</p>
+<p>●	DD -повна назва дня тижня</p>
+<p>●	D - коротка назва дня тижня</p>
+<p>Наступні додаткові вирази часу доступні, якщо ввімкнено <code>timePicker</code>:</p>
+<p>●	HH - 24-годинний формат 2 цифри годин (00 - 23)</p>
+<p>●	H - 24-годинний формат годин (0 - 23)</p>
+<p>●	hh - 12-годинний формат 2 цифри годин (00 - 12)</p>
+<p>●	h - 12-годинний формат годин (0 - 12)</p>
+<p>●	:mm - 2 цифри хвилин (00 - 59)</p>
+<p>●	:m - хвилин (0 - 59)</p>
+<p>●	ss - 2 цифри секунд (00 - 59)</p>
+<p>●	s -секунди (0 - 59)</p>
+<p>●	A - верхній регістр post або ante meridiem (PM або AM)</p>
+<p>●	a - нижній регістр  post or ante meridiem (pm or am)</p>
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string<p> object</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>multiple</td>
+
+<td>Увімкніть, щоб дозволити вибрати кілька дат/значень</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>rangePicker</td>
+
+<td>Щоб увімкнути засіб вибору діапазону. Несумісний з кількома датами <code>multiple</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>1</td>
+
+<td>rangePickerMinDays</td>
+
+<td>Мінімальна кількість днів, які потрібно вибрати, коли ввімкнено <code>RangPicker</code></td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>0</td>
+
+<td>rangePickerMaxDays</td>
+
+<td>Максимальна кількість днів, яку можна вибрати, коли ввімкнено <code>RangPicker</code>.
+ <p>"0" означає відсутність максимуму</p>
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>'horizontal'</td>
+
+<td>direction</td>
+
+<td>Напрямок розташування місяців, може бути «горизонтальним» або «вертикальним»</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>null</td>
+
+<td>minDate</td>
+
+<td>Мінімальна дозволена дата</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">date</a>
+    </td>
+</tr>
+                <tr>
+<td>null</td>
+
+<td>maxDate</td>
+
+<td>Максимально допустима дата</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">date</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>touchMove</td>
+
+<td>Якщо ввімкнено, слайди календарних місяців слідують за пальцем під час переміщення дотиком</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>animate</td>
+
+<td>Дозволяє переходити між місяцями</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>closeOnSelect</td>
+
+<td>Увімкніть, і календар буде закрито, коли користувач вибере дату</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>weekHeader</td>
+
+<td>Увімкнути заголовок тижня з короткою назвою днів тижня</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>monthSelector</td>
+
+<td>Увімкнути селектор місяця на панелі інструментів</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>monthPicker</td>
+
+<td>Вмикає засіб вибору місяця для вибору місяця, якщо натиснути кнопку вибору місяця на панелі інструментів</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>yearSelector</td>
+
+<td>Увімкнути засіб вибору року на панелі інструментів</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>yearPicker</td>
+
+<td>Дозволяє засобу вибору року вибирати рік, якщо натиснути кнопку вибору року на панелі інструментів</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>yearPickerMin</td>
+
+<td>Мінімальний доступний рік для вибору року, за умовчанням сьогодні мінус 100 років</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>yearPickerMax</td>
+
+<td>Максимальний доступний рік для вибору року, за умовчанням сьогодні плюс 100 років</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=13&catid=14">number</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>timePicker</td>
+
+<td>Вмикає засіб вибору часу.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>{hour: 'numeric',<p> minute: 'numeric'}</td>
+
+<td>timePickerFormat</td>
+
+<td>Формат часу, який відображається в селекторі часу. Може приймати  <code>Intl.DateTimeFormat.options</code>
+<p><code>AM/PM</code> формат залежить від вибраної зазначеної мови <code>locale</code> або від мови браузера, якщо не вказано
+</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+<td>Select time</td>
+
+<td>timePickerPlaceholder</td>
+
+<td>Текст для відображення в заповнювачі вибору часу.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Container/opener- специфічні параметри  </h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>За замовчуванням</th>
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td></td>
+
+<td>containerEl</td>
+
+<td>Рядок із селектором CSS або HTMLElement, де розмістити згенерований HTML-код календаря. Використовуйте лише для вбудованого календаря <code>inline calendar</code> </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string <p>HTMLElement</a>
+    </td>
+</tr>
+                <tr>
+<td>auto</td>
+
+<td>openIn</td>
+
+<td>Може бути <b>auto, popover</b> (для відкриття календаря у спливному вікні), <b>sheet</b> (для відкриття в режимі аркуша) або <b>customModal</b> (для відкриття в спеціальному модальному накладенні календаря). У разі автоматичного <b>auto</b>  відкривання в режимі аркуша на малих екранах і у спливному вікні на великих екранах.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>sheetPush</td>
+
+<td>Вмикає аркуш календаря, щоб відкривати перегляди позаду</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>undefined</td>
+
+<td>sheetSwipeToClose</td>
+
+<td>Дозволяє закривати аркуш календаря за допомогою пальця. Якщо не вказано, він успадковує параметр <code>Sheet swipeToClose</code> застосунку.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>inputEl</td>
+
+<td>Рядок із селектором CSS або HTMLElement із відповідним елементом введення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string or HTMLElement</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>scrollToInput</td>
+
+<td>Прокрутіть вікно перегляду (вміст сторінки <code>page content</code>), щоб ввести, коли календар відкрито</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>inputReadOnly</td>
+
+<td>Встановлює атрибут "лише для читання" для вказаного введення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>cssClass</td>
+
+<td>Додаткове ім’я класу CSS для елемента календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>closeByOutsideClick</td>
+
+<td>Якщо ввімкнено, засіб вибору буде закрито, клацнувши за межами засобу вибору або пов’язаного елемента введення</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>toolbar</td>
+
+<td>Вмикає панель інструментів календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>Done</td>
+
+<td>toolbarCloseText</td>
+
+<td>Текст для кнопки панелі інструментів «Готово/Закрити». <b>Done/Close</b> </td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>header</td>
+
+<td>Вмикає заголовок календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>Select date</td>
+
+<td>headerPlaceholder</td>
+
+<td>Текст заповнювача заголовка календаря за умовчанням</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>false</td>
+
+<td>routableModals</td>
+
+<td>Відкритий календар буде додано до історії маршрутизатора, що дає можливість закрити календар, повернувшись до історії маршрутизатора та встановити поточний маршрут у режимі календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>date/</td>
+
+<td>url</td>
+
+<td>Модальна URL-адреса календаря, яку буде встановлено як поточний маршрут</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>view</td>
+
+<td>Перегляньте, де встановити маршрутизацію, коли ввімкнено <code>routableModals</code> За замовчуванням використовується батьківський перегляд <code>inputEl</code> або головний перегляд, якщо не знайдено батьківський перегляд</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+                <tr>
+<td></td>
+
+<td>backdrop</td>
+
+<td>Вмикає фон календаря (темний напівпрозорий шар ззаду). За замовчуванням увімкнено, лише коли календар відкривається в Popover.</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+                <tr>
+<td>true</td>
+
+<td>closeByBackdropClick</td>
+
+<td>Якщо ввімкнено, календар закриватиметься після натискання на фоні</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=12&catid=14">boolean</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Функції візуалізації</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>renderWeekHeader</td>
+
+<td>Функція відтворення заголовка тижня. Має повертати HTML-рядок заголовка тижня</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function</a>
+    </td>
+</tr>
+                <tr>
+
+<td>renderMonths</td>
+
+<td>Функція відтворення обгортки місяців. Має повертати повний HTML-рядок контейнера місяців</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function(date)</a>
+    </td>
+</tr>
+                <tr>
+
+<td>renderMonth</td>
+
+<td>Функція відображення одного місяця. Має повертати рядок HTML за один місяць</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function(date, offset)</a>
+    </td>
+</tr>
+                <tr>
+
+<td>renderMonthSelector</td>
+
+<td>Функція візуалізації вибору місяця. Має повертати HTML-рядок селектора місяця</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function</a>
+    </td>
+</tr>
+                <tr>
+
+<td>renderYearSelector</td>
+
+<td>Функція візуалізації вибору року. Має повертати HTML-рядок селектора року</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function</a>
+    </td>
+</tr>
+                <tr>
+
+<td>renderHeader</td>
+
+<td>Функція для візуалізації заголовка календаря. Має повертати HTML-рядок заголовка календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function</a>
+    </td>
+</tr>
+                <tr>
+
+<td>renderToolbar</td>
+
+<td>Функція візуалізації панелі інструментів. Необхідно повернути рядок HTML панелі інструментів</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function</a>
+    </td>
+</tr>
+                <tr>
+
+<td>render</td>
+
+<td>Функція відтворення всього календаря. Має повернути повний рядок HTML календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=57&catid=14">function</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Події</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Параметр</th>
+                        <th>Опис</th>
+                        <th>Тип</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>on</td>
+
+<td>Об'єкт з обробниками подій. Наприклад:</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=18&catid=14">object</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<pre><code>var calendar = app.calendar.create({
+  ...
+  on: {
+    opened: function () {
+      console.log('Calendar opened')
+    }
+  }
+})</code></pre>
+<div>Зауважте, що всі наведені нижче параметри можна використовувати в глобальних параметрах застосунку у властивості календаря, щоб установити значення за замовчуванням для всіх календарів. Наприклад:</div>
+<pre><code>var app = new Techno4({
+  calendar: {
+    url: 'calendar/',
+    dateFormat: 'dd.mm.yyyy',
+  }
+});</code></pre>
+<h4>Проміжок часу</h4>
+<div>Деякі параметри календаря (вимкнено <code>disabled</code>, події <code>events</code> та діапазони класів <code>rangesClasses</code>) приймають так званий діапазон дат. Це простий спосіб вказати та охопити всі можливі комбінації дат.
+<p>Це може бути масив із датами, наприклад:</p>
+</div>
+<pre><code>var calendar = app.calendar.create({
+    ...
+    // Disabled 10th November 2015 and 11th November 2015:
+    disabled: [new Date(2015, 10, 10), new Date(2015, 10, 11)],
+    ...
+});</code></pre>
+<div>Це може бути спеціальна функція, де вам потрібно повернути <code>true</code> або <code>false</code>:</div>
+<pre><code>var calendar = app.calendar.create({
+    ...
+    //Disabled all dates in November 2015
+    disabled: function (date) {
+        if (date.getFullYear() === 2015 &amp;&amp; date.getMonth() === 10) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    },
+    ...
+});
+</code></pre>
+<div>Або об’єкт із властивостями <code>from</code> i <code>to</code>:</div>
+<pre><code>var calendar = app.calendar.create({
+    ...
+    //Disable all dates between 1st October 2015 and 31 December 2015
+    disabled: {
+        from: new Date(2015, 9, 1),
+        to: new Date(2015, 11, 31)
+    },
+    ...
+});</code></pre>
+<div>Або об’єкт із властивостями лише<code>from</code> або <code>to</code>:</div>
+<pre><code>var calendar = app.calendar.create({
+    ...
+    //Disable everyting since December 2015
+    disabled: {
+        from: new Date(2015, 11, 1)
+    },
+    ...
+});</code></pre>
+<div>Або об'єкт із властивістю <code>data</code>:</div>
+<pre><code>var calendar = app.calendar.create({
+    ...
+    // Disabled 1th December 2015
+    disabled: {
+        date: new Date(2015, 11, 1)
+    },
+    ...
+});
+</code></pre>
+<div>Або масив зі змішаними датами та об’єктами:</div>
+<pre><code>var calendar = app.calendar.create({
+    ...
+    events: [
+        new Date(2015, 9, 1),
+        new Date(2015, 9, 5),
+        {
+            from: new Date(2015, 9, 10),
+            to: new Date(2015, 9, 15)
+        },
+        {
+            from: new Date(2015, 9, 20),
+            to: new Date(2015, 9, 31)
+        },
+        {
+            date: new Date(2015, 11, 1),
+            color: '#ff0000'
+        },
+        // same date but one more color dot will be added
+        {
+            date: new Date(2015, 11, 1),
+            color: '#00ff00'
+        },
+    ],
+    ...
+});</code></pre>
+<h4>Класи діапазонів</h4>
+<div><code>rangesClasses</code> параметр приймає масив об’єктів із діапазоном дат і іменами класів для цього діапазону:</div>
+<pre><code>var calendar = app.calendar.create({
+    ...
+    //Add classes for november and october
+    rangesClasses: [
+        //Add &quot;day-october' class for all october dates
+        {
+            // string CSS class name for this range in &quot;cssClass&quot; property
+            cssClass: 'day-october', //string CSS class
+            // Date Range in &quot;range&quot; property
+            range: function (date) {
+                return date.getMonth() === 9
+            }
+        },
+        //Add &quot;day-holiday&quot; class for 1-10th January 2016
+        {
+            cssClass: 'day-holiday',
+            range: {
+                from: new Date(2016, 0, 1),
+                to: new Date(2016, 0, 10)
+            }
+        }
+    ],
+    ...
+});</code></pre>
+<h3>Методи та властивості календаря</h3>
+<div>Після ініціалізації Календаря ми маємо його ініціалізований екземпляр у змінній (наприклад, змінну <code>calendar</code> у прикладах вище) з корисними методами та властивостями:</div>
+<h4>Властивості </h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Властивість </th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>calendar.app</td>
+
+<td>Посилання на глобальний екземпляр застосунку </td>
+
+</tr>
+                <tr>
+
+<td>calendar.containerEl</td>
+
+<td>Елемент HTML контейнера для обгортання календаря (коли використовується вбудований <b>inline</b>  календар)</td>
+
+</tr>
+                <tr>
+
+<td>calendar.$containerEl</td>
+
+<td>Екземпляр Dom7 з HTML-елементом контейнера для упаковки календаря (коли використовується вбудований календар)</td>
+
+</tr>
+                <tr>
+
+<td>calendar.el</td>
+
+<td>Елемент HTML календаря</td>
+
+</tr>
+                <tr>
+
+<td>calendar.$el</td>
+
+<td>Екземпляр Dom7 з елементом HTML календаря</td>
+
+</tr>
+                <tr>
+
+<td>calendar.inputEl</td>
+
+<td>Вхідний елемент HTML календаря (передається в параметрі <code>inputEl</code>)</td>
+
+</tr>
+                <tr>
+
+<td>calendar.$inputEl</td>
+
+<td>Екземпляр Dom7 з HTML-елементом введення календаря (передається в параметрі <code>inputEl</code>)</td>
+
+</tr>
+                <tr>
+
+<td>calendar.value</td>
+
+<td>Масив, де кожен елемент представляє вибрану дату</td>
+
+</tr>
+                <tr>
+
+<td>calendar.currentMonth</td>
+
+<td>Перегляд календаря поточного місяця. Число від 0 до 11</td>
+
+</tr>
+                <tr>
+
+<td>calendar.currentYear</td>
+
+<td>Перегляд календаря поточного року. Число, наприклад "2023"</td>
+
+</tr>
+                <tr>
+
+<td>calendar.opened</td>
+
+<td><code>true</code> якщо Календар наразі відкрито</td>
+
+</tr>
+                <tr>
+
+<td>calendar.inline</td>
+
+<td><code>true</code> коли використовується вбудований календар</td>
+
+</tr>
+                <tr>
+
+<td>calendar.cols</td>
+
+<td>Масив із зазначеними стовпцями календаря. Кожен стовпець також має власні методи та властивості (див. нижче)</td>
+
+</tr>
+                <tr>
+
+<td>calendar.url</td>
+
+<td>URL-адреса календаря (передана в параметрі <code>url</code>)</td>
+
+</tr>
+                <tr>
+
+<td>calendar.view</td>
+
+<td>Перегляд календаря (переданий у параметрі перегляду <code>view</code>) або знайдений батьківський перегляд</td>
+
+</tr>
+                <tr>
+
+<td>calendar.params</td>
+
+<td>Об'єкт з параметрами ініціалізації</td>
+
+</tr>
+                <tr>
+
+<td>calendar.allowTouchMove</td>
+
+<td>Установіть для цього прапорця значення <code>false</code>, щоб запобігти взаємодії дотику після ініціалізації</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h4>Методи </h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Метод</th>
+                        <th>Опис</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+
+<td>calendar.setValue(values)</td>
+
+<td>Встановіть нові вибрані дати. значення <code>velues</code>— це масив, де кожен елемент представляє вибрану дату</td>
+
+</tr>
+                <tr>
+
+<td>calendar.getValue()</td>
+
+<td>Повертає поточне календарне значення</td>
+
+</tr>
+                <tr>
+
+<td>calendar.addValue()</td>
+
+<td>Додає значення до масиву значень. Корисно, якщо ввімкнено множинний вибір (з параметром <code>multiple: true</code>)</td>
+
+</tr>
+                <tr>
+
+<td>calendar.update()</td>
+
+<td>Переглядає календар. Корисно, якщо ви динамічно додавали/змінювали значення та потрібно оновити макет календаря</td>
+
+</tr>
+                <tr>
+
+<td>calendar.nextMonth(duration)</td>
+
+<td>Перехід календаря на наступний місяць на вказану тривалість <code>duration</code> у мс</td>
+
+</tr>
+                <tr>
+
+<td>calendar.prevMonth(duration)</td>
+
+<td>Перехід календаря до попереднього місяця на задану тривалість<code>duration</code>  у мс</td>
+
+</tr>
+                <tr>
+
+<td>calendar.nextYear()</td>
+
+<td>Перехід календаря на наступний рік</td>
+
+</tr>
+                <tr>
+
+<td>calendar.prevYear()</td>
+
+<td>Перехід календаря на попередній рік</td>
+
+</tr>
+                <tr>
+
+<td>calendar.setYearMonth(year, month, duration)</td>
+
+<td>Перехід календаря на вказаний рік <code>year</code>, місяць <code>month</code> на задану тривалість <code>duration</code> у мс</td>
+
+</tr>
+                <tr>
+
+<td>calendar.open()</td>
+
+<td>Відкрити календар</td>
+
+</tr>
+                <tr>
+
+<td>calendar.close()</td>
+
+<td>Закрити календар</td>
+
+</tr>
+                <tr>
+
+<td>calendar.destroy()</td>
+
+<td>Знищити екземпляр календаря та видалити всі події</td>
+
+</tr>
+                <tr>
+
+<td>calendar.on(event, handler)</td>
+
+<td>Додати обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>calendar.once(event, handler)</td>
+
+<td>Додати обробник подій, який буде видалено після запуску</td>
+
+</tr>
+                <tr>
+
+<td>calendar.off(event, handler)</td>
+
+<td>Видалити обробник подій</td>
+
+</tr>
+                <tr>
+
+<td>calendar.off(event)</td>
+
+<td>Видалити всі обробники для вказаної події</td>
+
+</tr>
+                <tr>
+
+<td>calendar.emit(event, ...args)</td>
+
+<td>Запустити подію на примірнику</td>
+
+</tr>
+            </tbody>
+
+</table>
+<h3>Події в календарі</h3>
+<div>Календар запускатиме такі події DOM в елементі календаря та події в застосунку  та екземплярі календаря:</div>
+<h4>Події DOM</h4>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Об'єкт</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th></th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>Calendar Element <p>&lt;div class="calendar"&gt;</td>
+
+<td>calendar:open</td>
+
+<td>Подію буде ініційовано, коли Календар почне свою початкову анімацію</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Calendar Element <p>&lt;div class="calendar"&gt;</td>
+
+<td>calendar:opened</td>
+
+<td>Подію буде запущено після того, як Календар завершить свою початкову анімацію</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Calendar Element <p>&lt;div class="calendar"&gt;</td>
+
+<td>calendar:close</td>
+
+<td>Подію буде ініційовано, коли Календар почне завершувати анімацію</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+                <tr>
+<td>Calendar Element <p>&lt;div class="calendar"&gt;</td>
+
+<td>calendar:closed</td>
+
+<td>Подію буде запущено після завершення анімації закриття Календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=14&catid=14">string</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h4>Події екземплярів застосунку  та календаря</h4>
+<div>Екземпляр Calendar випускає події як у себе, так і в екземплярі застосунку. Події екземпляра застосунку  мають однакові назви з префіксом календаря <code>celendar</code>:</div>
+
+<table>
+        <thead>
+        <tr>
+
+                        <th>Аргумент</th>
+                        <th>Подія</th>
+                        <th>Опис</th>
+                        <th>Об'єкт</th>
+            
+        </tr>
+    </thead>
+    
+    <tbody>
+                <tr>
+<td>(calendar, dayEl, year, month, day)</td>
+
+<td>dayClick</td>
+
+<td>Подія буде ініційована після натискання елемента календарного дня</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar, dayEl, year, month, day)</td>
+
+<td>calendarDayClick</td>
+
+<td>Подія буде ініційована після натискання елемента календарного дня</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar, value)</td>
+
+<td>change</td>
+
+<td>Подія буде ініційована, коли календарне значення зміниться</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar, value)</td>
+
+<td>calendarChange</td>
+
+<td>Подія буде ініційована, коли календарне значення зміниться</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar, monthEl)</td>
+
+<td>monthAdd</td>
+
+<td>Подія буде ініційована, коли буде додано новий макет HTML місяця. Корисно, якщо вам потрібно постобробити додані елементи html</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar, monthEl)</td>
+
+<td>calendarMonthAdd</td>
+
+<td>Подія буде ініційована, коли буде додано новий макет HTML місяця. Корисно, якщо вам потрібно постобробити додані елементи html</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar, year, month)</td>
+
+<td>monthYearChangeStart</td>
+
+<td>Подія буде запущена на початку переходу до наступного місяця</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar, year, month)</td>
+
+<td>calendarMonthYearChangeStart</td>
+
+<td>Подія буде запущена на початку переходу до наступного місяця</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar, year, month)</td>
+
+<td>monthYearChangeEnd</td>
+
+<td>Подію буде запущено після переходу на наступний місяць</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar, year, month)</td>
+
+<td>calendarMonthYearChangeEnd</td>
+
+<td>Подію буде запущено після переходу на наступний місяць</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>init</td>
+
+<td>Подія буде запущена під час ініціалізації календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>calendarInit</td>
+
+<td>Подія буде запущена під час ініціалізації календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>open</td>
+
+<td>Подію буде ініційовано, коли Календар почне свою початкову анімацію. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>calendarOpen</td>
+
+<td>Подію буде ініційовано, коли Календар почне свою початкову анімацію. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>opened</td>
+
+<td>Подію буде ініційовано, коли Календар почне свою початкову анімацію. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>calendarOpened</td>
+
+<td>Подію буде ініційовано, коли Календар почне свою початкову анімацію. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>close</td>
+
+<td>Подію буде ініційовано, коли Календар почне завершувати анімацію. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>calendarClose</td>
+
+<td>Подію буде ініційовано, коли Календар почне завершувати анімацію. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>closed</td>
+
+<td>Подію буде запущено після завершення анімації закриття Календаря. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>calendarClosed</td>
+
+<td>Подію буде запущено після завершення анімації закриття Календаря. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>beforeDestroy</td>
+
+<td>Подію буде запущено безпосередньо перед знищенням екземпляра Календаря. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">calendar</a>
+    </td>
+</tr>
+                <tr>
+<td>(calendar)</td>
+
+<td>calendarBeforeDestroy</td>
+
+<td>Подію буде запущено безпосередньо перед знищенням екземпляра Календаря. В якості аргументу обробник події отримує екземпляр календаря</td>
+
+<td>
+        <a href="index.php?option=com_content&view=article&id=17&catid=14">app</a>
+    </td>
+</tr>
+            </tbody>
+
+</table>
+<h3>Змінні CSS 	</h3>
+<div>Нижче наведено список пов’язаних змінних CSS (спеціальні властивості CSS).</div>
+<div>Зауважте, що коментовані змінні не вказано за замовчуванням, і в цьому випадку вони повертаються до їхніх значень.</div>
+<pre><code>:root {
+  --t4-calendar-height: 340px;
+  --t4-calendar-sheet-landscape-height: 220px;
+  --t4-calendar-popover-width: 320px;
+  --t4-calendar-popover-height: 320px;
+  --t4-calendar-modal-height: 420px;
+  --t4-calendar-modal-max-width: 380px;
+  --t4-calendar-modal-border-radius: 4px;
+  /*
+  --t4-calendar-header-bg-color: var(--t4-bars-bg-color);
+  --t4-calendar-header-link-color: var(--t4-bars-link-color);
+  --t4-calendar-header-text-color: var(--t4-bars-text-color);
+  --t4-calendar-footer-bg-color: var(--t4-bars-bg-color);
+  --t4-calendar-footer-border-color: var(--t4-bars-border-color);
+  --t4-calendar-footer-link-color: var(--t4-bars-link-color);
+  --t4-calendar-footer-text-color: var(--t4-bars-text-color);
+  */
+  --t4-calendar-week-header-bg-color: transparent;
+  --t4-calendar-footer-padding: 0 8px;
+  --t4-calendar-week-header-font-size: 11px;
+  --t4-calendar-selected-text-color: #fff;
+  /*
+  --t4-calendar-selected-bg-color:  var(--t4-theme-color);
+  */
+  --t4-calendar-disabled-text-color: #d4d4d4;
+  --t4-calendar-event-dot-size: 4px;
+  /*
+  --t4-calendar-event-bg-color: var(--t4-theme-color);
+  */
+  /*
+  --t4-calendar-picker-selected-text-color: var(--t4-theme-color);
+  */
+  --t4-calendar-time-selector-height: 28px;
+  --t4-calendar-week-header-text-color: #5e5e5e;
+  --t4-calendar-prev-next-text-color: #c8c8c8;
+  --t4-calendar-day-text-color: #000;
+  --t4-calendar-sheet-bg-color: #fff;
+  --t4-calendar-modal-bg-color: #fff;
+  --t4-calendar-picker-pressed-bg-color: rgba(0, 0, 0, 0.1);
+  --t4-calendar-picker-hover-bg-color: rgba(0, 0, 0, 0.03);
+  --t4-calendar-time-selector-bg-color: rgba(0, 0, 0, 0.05);
+}
+:root .dark,
+:root.dark {
+  --t4-calendar-week-header-text-color: #aaa;
+  --t4-calendar-prev-next-text-color: #5e5e5e;
+  --t4-calendar-sheet-border-color: var(--t4-bars-border-color);
+  --t4-calendar-modal-bg-color: #121212;
+  --t4-calendar-sheet-bg-color: #121212;
+  --t4-calendar-picker-pressed-bg-color: rgba(255, 255, 255, 0.08);
+  --t4-calendar-picker-hover-bg-color: rgba(255, 255, 255, 0.03);
+  --t4-calendar-time-selector-bg-color: rgba(255, 255, 255, 0.1);
+}
+.ios {
+  --t4-calendar-sheet-border-color: #929499;
+  --t4-calendar-header-height: 44px;
+  --t4-calendar-header-font-size: 17px;
+  --t4-calendar-header-font-weight: 600;
+  --t4-calendar-header-padding: 0 8px;
+  --t4-calendar-footer-height: 44px;
+  --t4-calendar-footer-font-size: 17px;
+  --t4-calendar-week-header-height: 18px;
+  --t4-calendar-day-font-size: 15px;
+  --t4-calendar-day-size: 30px;
+  --t4-calendar-picker-font-size: 17px;
+  --t4-calendar-time-selector-font-size: 17px;
+  --t4-calendar-today-text-color: #000;
+  --t4-calendar-today-bg-color: #e3e3e3;
+}
+.ios .dark,
+.ios.dark {
+  --t4-calendar-day-text-color: #fff;
+  --t4-calendar-today-text-color: #fff;
+  --t4-calendar-today-bg-color: #333;
+}
+.md {
+  --t4-calendar-sheet-border-color: #ccc;
+  --t4-calendar-header-height: 56px;
+  --t4-calendar-header-font-size: 20px;
+  --t4-calendar-header-font-weight: 400;
+  --t4-calendar-header-padding: 0 24px;
+  --t4-calendar-footer-height: 48px;
+  --t4-calendar-footer-font-size: 14px;
+  --t4-calendar-week-header-height: 24px;
+  --t4-calendar-day-font-size: 14px;
+  /*
+  --t4-calendar-today-text-color: var(--t4-theme-color);
+  */
+  --t4-calendar-today-bg-color: none;
+  --t4-calendar-day-size: 32px;
+  --t4-calendar-picker-font-size: 14px;
+  --t4-calendar-time-selector-font-size: 14px;
+}
+.md .dark,
+.md.dark {
+  --t4-calendar-day-text-color: rgba(255, 255, 255, 0.87);
+}
+.aurora {
+  --t4-calendar-sheet-border-color: #ccc;
+  --t4-calendar-header-height: 56px;
+  --t4-calendar-header-font-size: 18px;
+  --t4-calendar-header-font-weight: 600;
+  --t4-calendar-header-padding: 0 16px;
+  --t4-calendar-footer-height: 48px;
+  --t4-calendar-footer-font-size: 14px;
+  --t4-calendar-footer-padding: 0 16px;
+  --t4-calendar-week-header-height: 24px;
+  --t4-calendar-day-font-size: 14px;
+  --t4-calendar-day-size: 32px;
+  --t4-calendar-picker-font-size: 16px;
+  --t4-calendar-time-selector-font-size: 14px;
+  --t4-calendar-today-text-color: #000;
+  --t4-calendar-today-bg-color: #e3e3e3;
+}
+.aurora .dark,
+.aurora.dark {
+  --t4-calendar-day-text-color: #fff;
+  --t4-calendar-today-text-color: #fff;
+  --t4-calendar-today-bg-color: #333;
+}</code></pre>
+<h3>Приклади :</h3>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;navbar-bg&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;title&quot;&gt;Calendar&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Default setup&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;text&quot; placeholder=&quot;Your birth date&quot; readonly=&quot;readonly&quot; id=&quot;demo-calendar-default&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Custom date format&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;text&quot; placeholder=&quot;Select date&quot; readonly=&quot;readonly&quot; id=&quot;demo-calendar-date-format&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Date + Time&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;text&quot; placeholder=&quot;Select date and time&quot; readonly=&quot;readonly&quot;
+                    id=&quot;demo-calendar-date-time&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Multiple Values&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;text&quot; placeholder=&quot;Select multiple dates&quot; readonly=&quot;readonly&quot;
+                    id=&quot;demo-calendar-multiple&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Range Picker&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;text&quot; placeholder=&quot;Select date range&quot; readonly=&quot;readonly&quot; id=&quot;demo-calendar-range&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Open in Modal&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;text&quot; placeholder=&quot;Select date&quot; readonly=&quot;readonly&quot; id=&quot;demo-calendar-modal&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;With Events&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;text&quot; placeholder=&quot;Select date&quot; readonly=&quot;readonly&quot; id=&quot;demo-calendar-events&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Disabled Dates&lt;/div&gt;
+      &lt;div class=&quot;list no-hairlines-md&quot;&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;div class=&quot;item-content item-input&quot;&gt;
+              &lt;div class=&quot;item-inner&quot;&gt;
+                &lt;div class=&quot;item-input-wrap&quot;&gt;
+                  &lt;input type=&quot;text&quot; placeholder=&quot;Select date&quot; readonly=&quot;readonly&quot; id=&quot;demo-calendar-disabled&quot; /&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;block-title&quot;&gt;Inline with custom toolbar&lt;/div&gt;
+      &lt;div class=&quot;block block-strong no-padding&quot;&gt;
+        &lt;div id=&quot;demo-calendar-inline-container&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default (props, { $, $t4, $on }) =&gt; {
+    let calendarDefault;
+    let calendarDateFormat;
+    let calendarDateTime;
+    let calendarMultiple;
+    let calendarRange;
+    let calendarModal;
+    let calendarEvents;
+    let calendarDisabled;
+    let calendarInline;
+
+    $on('pageInit', () =&gt; {
+      // Default
+      calendarDefault = $t4.calendar.create({
+        inputEl: '#demo-calendar-default',
+      });
+      // With custom date format
+      calendarDateFormat = $t4.calendar.create({
+        inputEl: '#demo-calendar-date-format',
+        dateFormat: { weekday: 'long', month: 'long', day: '2-digit', year: 'numeric' },
+      });
+      // Date + Time
+      calendarDateTime = $t4.calendar.create({
+        inputEl: '#demo-calendar-date-time',
+        timePicker: true,
+        dateFormat: { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' },
+      });
+      // With multiple values
+      calendarMultiple = $t4.calendar.create({
+        inputEl: '#demo-calendar-multiple',
+        dateFormat: { month: 'short', day: 'numeric' },
+        multiple: true
+      });
+      // Range Picker
+      calendarRange = $t4.calendar.create({
+        inputEl: '#demo-calendar-range',
+        rangePicker: true
+      });
+      // Custom modal
+      calendarModal = $t4.calendar.create({
+        inputEl: '#demo-calendar-modal',
+        openIn: 'customModal',
+        header: true,
+        footer: true,
+      });
+      // With events
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      var weekLater = new Date().setDate(today.getDate() + 7);
+      calendarEvents = $t4.calendar.create({
+        inputEl: '#demo-calendar-events',
+        events: [
+          {
+            from: today,
+            to: weekLater
+          },
+          //- more events this day
+          {
+            date: today,
+            color: '#ff0000'
+          },
+          {
+            date: today,
+            color: '#00ff00'
+          },
+        ]
+      });
+      // Disabled
+      var today = new Date();
+      var weekLater = new Date().setDate(today.getDate() + 7);
+      calendarDisabled = $t4.calendar.create({
+        inputEl: '#demo-calendar-disabled',
+        disabled: {
+          from: today,
+          to: weekLater
+        }
+      });
+      // Inline with custom toolbar
+      var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      calendarInline = $t4.calendar.create({
+        containerEl: '#demo-calendar-inline-container',
+        value: [new Date()],
+        weekHeader: false,
+        renderToolbar: function () {
+          return `
+          &lt;div class=&quot;toolbar calendar-custom-toolbar no-shadow&quot;&gt;
+            &lt;div class=&quot;toolbar-inner&quot;&gt;
+              &lt;div class=&quot;left&quot;&gt;
+                &lt;a href=&quot;#&quot; class=&quot;link icon-only&quot;&gt;&lt;i class=&quot;icon icon-back ${$t4.theme === 'md' ? 'color-black' : ''}&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;center&quot;&gt;&lt;/div&gt;
+              &lt;div class=&quot;right&quot;&gt;
+                &lt;a href=&quot;#&quot; class=&quot;link icon-only&quot;&gt;&lt;i class=&quot;icon icon-forward ${$t4.theme === 'md' ? 'color-black' : ''}&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          `;
+        },
+        on: {
+          init: function (c) {
+            $('.calendar-custom-toolbar .center').text(monthNames[c.currentMonth] + ', ' + c.currentYear);
+            $('.calendar-custom-toolbar .left .link').on('click', function () {
+              calendarInline.prevMonth();
+            });
+            $('.calendar-custom-toolbar .right .link').on('click', function () {
+              calendarInline.nextMonth();
+            });
+          },
+          monthYearChangeStart: function (c) {
+            $('.calendar-custom-toolbar .center').text(monthNames[c.currentMonth] + ', ' + c.currentYear);
+          }
+        }
+      });
+    });
+
+    return $render;
+  };
+
+
+&lt;/script&gt;</code></pre>
+ <!-- {"type":"layout","children":[{"type":"section","props":{"id":"general","image_position":"center-center","style":"primary","title_breakpoint":"xl","title_position":"top-left","title_rotation":"left","vertical_align":"middle","width":"large"},"children":[{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","preserve_color":true,"style":"tile-muted"},"children":[{"type":"headline","props":{"content":"\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \/ \u0412\u0438\u0431\u0456\u0440 \u0434\u0430\u0442\u0438","title_element":"h2","title_style":"heading-small"},"name":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a - \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \/ \u0412\u0438\u0431\u0456\u0440 \u0434\u0430\u0442\u0438"},{"type":"headline","props":{"content":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f","title_decoration":"line","title_element":"h1","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u041d\u0410\u0412\u0406\u0413\u0410\u0426\u0406\u042f"},{"type":"nav","props":{"grid":"1","image_vertical_align":true,"nav_style":"secondary","show_image":true,"show_meta":true},"children":[{"type":"nav_item","props":{"content":"\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 ","link":"https:\/\/techno4.online\/\u0444\u0440\u0435\u0439\u043c\u0432\u043e\u0440\u043a\/#general"}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440"}},{"type":"nav_item","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","meta":"\u041f\u0440\u043e\u043c\u0456\u0436\u043e\u043a \u0447\u0430\u0441\u0443 <p>\u041a\u043b\u0430\u0441\u0438 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0456\u0432 "}},{"type":"nav_item","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f"}},{"type":"nav_item","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f ","meta":"\u041f\u043e\u0434\u0456\u0457 DOM<p>\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0442\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f"}},{"type":"nav_item","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS"}},{"type":"nav_item","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438"}}],"name":"\u041d\u0430\u0432\u0456\u0433\u0430\u0446\u0456\u044f"}]}]},{"type":"row","children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","style":"tile-default","width_medium":"3-4"},"children":[{"type":"headline","props":{"content":"\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u2014 \u0446\u0435 \u0441\u0435\u043d\u0441\u043e\u0440\u043d\u0438\u0439 \u043e\u043f\u0442\u0438\u043c\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442, \u044f\u043a\u0438\u0439 \u0437\u0430\u0431\u0435\u0437\u043f\u0435\u0447\u0443\u0454 \u043f\u0440\u043e\u0441\u0442\u0438\u0439 \u0441\u043f\u043e\u0441\u0456\u0431 \u043e\u0431\u0440\u043e\u0431\u043a\u0438 \u0434\u0430\u0442.\n\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u044f\u043a \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0439 \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442 \u0430\u0431\u043e \u044f\u043a \u043d\u0430\u043a\u043b\u0430\u0434\u0430\u043d\u043d\u044f. \u041d\u0430\u043a\u043b\u0430\u0434\u0435\u043d\u0438\u0439 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u0431\u0443\u0434\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u043f\u0435\u0440\u0435\u0442\u0432\u043e\u0440\u0435\u043d\u043e \u043d\u0430 <b>Popover<\/b> \u043d\u0430 \u043f\u043b\u0430\u043d\u0448\u0435\u0442\u0430\u0445 (iPad).\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 Calendar"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0420\u043e\u0437\u0433\u043b\u044f\u043d\u044c\u043c\u043e \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0440\u043e\u0431\u043e\u0442\u0438 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.calendar.create(parameters)<\/code>- \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f.\n<p>\u25cf\t<code>parameters - object<\/code>. \u041e\u0431'\u0454\u043a\u0442 \u0437 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438<\/p>\n<i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f<\/i>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.calendar.destroy(el)<\/code>- \u0437\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f\n<p>\u25cf\t<code>el - HTMLElement or string <\/code>. (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS) \u0430\u0431\u043e \u043e\u0431\u2019\u0454\u043a\u0442\u0430. \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0430\u0431\u043e \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0434\u043b\u044f \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f.<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.calendar.get(el)<\/code>- \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0437\u0430 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML\n<p>\u25cf\t<code>el - HTMLElement or string <\/code> (\u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 CSS). \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f<\/p>\n<i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f<\/i>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>app.calendar.close(el)<\/code>- \u0437\u0430\u043a\u0440\u0438\u0442\u0438 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\n<p>\u25cf\t<code>el - HTMLElement or string  <\/code> \u0415\u043b\u0435\u043c\u0435\u043d\u0442 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0434\u043b\u044f \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f<\/p>\n<i>\u041c\u0435\u0442\u043e\u0434 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f<\/i>\n<p>\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:<\/p>","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var calendar = app.calendar.create({\n    inputEl: '#calendar-input'\n});"},"name":"\u041a\u043e\u0434"},{"type":"headline","props":{"content":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u043f\u043e\u0434\u0438\u0432\u0438\u043c\u043e\u0441\u044f \u043d\u0430 \u0441\u043f\u0438\u0441\u043e\u043a \u0443\u0441\u0456\u0445 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456\u0432 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041c\u043e\u0432\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f. \u041c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0430 \u043c\u043e\u0432\u0430, \u044f\u043a\u0443 \u043f\u0440\u0438\u0439\u043c\u0430\u0454 <b>Intl.DateTimeFormat<\/b>. \u042f\u043a\u0449\u043e \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e (\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c), \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043c\u043e\u0432\u0430 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430.\n\u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434  <code>en-US, ru, en, en-US-u-ca-buddhist<\/code> \u0442\u043e\u0449\u043e.\n","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"locale","title":""}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0438\u043c\u0438 \u0432\u0438\u0431\u0440\u0430\u043d\u0438\u043c\u0438 \u0434\u0430\u0442\u0430\u043c\u0438. \u041a\u043e\u0436\u0435\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043c\u0430\u0441\u0438\u0432\u0443 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0454 \u0432\u0438\u0431\u0440\u0430\u043d\u0443 \u0434\u0430\u0442\u0443","link":"index.php?option=com_content&view=article&id=56&catid=14","link_text":"array","meta":"value"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u0456 \u0434\u0430\u0442\u0438. \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u043f\u0440\u0438\u0439\u043c\u0430\u0454 \u0442\u0430\u043a \u0437\u0432\u0430\u043d\u0438\u0439 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d \u0434\u0430\u0442  <code>Date Range<\/code> (\u043f\u043e\u0434\u0440\u043e\u0431\u0438\u0446\u0456 \u0434\u0438\u0432. \u043d\u0438\u0436\u0447\u0435)","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"Data range","meta":"disabled"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"fragment","children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0414\u0430\u0442\u0438 \u0437 \u043f\u043e\u0434\u0456\u044f\u043c\u0438. \u0423 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u043e\u043c\u0443 \u0434\u043d\u0456 \u0431\u0443\u0434\u0435 \u043f\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u044e \u00ab\u043a\u0440\u0430\u043f\u043a\u043e\u044e\u00bb. \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u043f\u0440\u0438\u0439\u043c\u0430\u0454 \u0442\u0430\u043a \u0437\u0432\u0430\u043d\u0438\u0439 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d \u0434\u0430\u0442 Date Range (\u043f\u043e\u0434\u0440\u043e\u0431\u0438\u0446\u0456 \u0434\u0438\u0432. \u043d\u0438\u0436\u0447\u0435).\n<p>\u042f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u043a\u0430\u0437\u0430\u0442\u0438, \u0449\u043e \u0434\u0435\u043d\u044c \u043c\u0430\u0454 \u043a\u0456\u043b\u044c\u043a\u0430 \u0440\u0456\u0437\u043d\u0438\u0445 \u043f\u043e\u0434\u0456\u0439, \u0446\u0435 \u043c\u043e\u0436\u043d\u0430 \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u043a\u0456\u043b\u044c\u043a\u043e\u043c\u0430 \u0440\u0456\u0437\u043d\u0438\u043c\u0438 \u043a\u043e\u043b\u044c\u043e\u0440\u043e\u0432\u0438\u043c\u0438 \u043a\u0440\u0430\u043f\u043a\u0430\u043c\u0438. \u0423 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d \u0434\u0430\u0442 \u044f\u043a \u043c\u0430\u0441\u0438\u0432, \u0434\u0435 \u043a\u043e\u0436\u0435\u043d \u043e\u0431\u2019\u0454\u043a\u0442 \u043c\u0430\u0442\u0438\u043c\u0435 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u0434\u0430\u0442\u0438 \u0442\u0430 \u043a\u043e\u043b\u044c\u043e\u0440\u0443,<\/p>\n\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:\n","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"Date Range","meta":"events","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"[\n  {\n    date: new Date(2018, 4, 11),\n    color: '#2196f3',\n  },\n  \/\/ same date but different color, one more dot will be added to this day\n  {\n    date: new Date(2018, 4, 11),\n    color: '#4caf50',\n  },\n]"}}]}]}],"props":{"margin":"default"}},{"type":"divider","props":{"divider_element":"hr","divider_style":"icon"}},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0414\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0438 \u0434\u0430\u0442, \u0443 \u044f\u043a\u0456 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u0439 \u043a\u043b\u0430\u0441 CSS \u0434\u043b\u044f \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u043e\u0433\u043e \u0441\u0442\u0438\u043b\u044e. \u041f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u044c\u0442\u0435 \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u043d\u0438\u0439 \u0444\u043e\u0440\u043c\u0430\u0442 \u043d\u0438\u0436\u0447\u0435\n","link":"index.php?option=com_content&view=article&id=56&catid=14","link_text":"array","meta":"rangesClasses","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0434\u043b\u044f \u0444\u043e\u0440\u043c\u0430\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0432\u0445\u0456\u0434\u043d\u043e\u0433\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043d\u043e\u0432\u0435\/\u0432\u0456\u0434\u0444\u043e\u0440\u043c\u0430\u0442\u043e\u0432\u0430\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0440\u044f\u0434\u043a\u0430. \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u2013 \u0446\u0435 \u043c\u0430\u0441\u0438\u0432, \u0434\u0435 \u043a\u043e\u0436\u0435\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0454 \u0432\u0438\u0431\u0440\u0430\u043d\u0443 \u0434\u0430\u0442\u0443. \u041c\u043e\u0436\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0437\u0430\u043c\u0456\u0441\u0442\u044c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430 <code>dateFormat<\/code> \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0456\u0432\u043a\u0438 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0444\u043e\u0440\u043c\u0430\u0442\u0443\u0432\u0430\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function<p> (values)","meta":"formatValue"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u043f\u043e\u0432\u043d\u0438\u043c\u0438 \u043d\u0430\u0437\u0432\u0430\u043c\u0438 \u043c\u0456\u0441\u044f\u0446\u0456\u0432. \u042f\u043a\u0449\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e <code>auto<\/code>, \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u043d\u0430\u0437\u0432\u0438 \u043c\u0456\u0441\u044f\u0446\u0456\u0432 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043c\u043e\u0432\u0438 <code>locale<\/code>(\u0430\u0431\u043e \u043c\u043e\u0432\u0438 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430)","link":"index.php?option=com_content&view=article&id=56&catid=14","link_text":"array","meta":"monthNames","title":"auto"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u043a\u043e\u0440\u043e\u0442\u043a\u0438\u043c\u0438 \u043d\u0430\u0437\u0432\u0430\u043c\u0438 \u043c\u0456\u0441\u044f\u0446\u0456\u0432. \u042f\u043a\u0449\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e, <code>auto<\/code> \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u043d\u0430\u0437\u0432\u0438 \u043c\u0456\u0441\u044f\u0446\u0456\u0432 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043c\u043e\u0432\u0438 <code>locale<\/code>(\u0430\u0431\u043e \u043c\u043e\u0432\u0438 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430)","link":"index.php?option=com_content&view=article&id=56&catid=14","link_text":"array","meta":"monthNamesShort","title":"auto"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u043d\u0430\u0437\u0432\u0430\u043c\u0438 \u0434\u043d\u0456\u0432  \u0442\u0438\u0436\u043d\u044f. \u042f\u043a\u0449\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e, <code>auto<\/code> \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u043d\u0430\u0437\u0432\u0438 \u0434\u043d\u0456\u0432  \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043c\u043e\u0432\u0438 <code>locale<\/code>(\u0430\u0431\u043e \u043c\u043e\u0432\u0438 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430)","link":"index.php?option=com_content&view=article&id=56&catid=14","link_text":"array","meta":"dayNames","title":"auto"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u043a\u043e\u0440\u043e\u0442\u043a\u0438\u043c\u0438 \u043d\u0430\u0437\u0432\u0430\u043c\u0438 \u0434\u043d\u0456\u0432  \u0442\u0438\u0436\u043d\u044f. \u042f\u043a\u0449\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e, <code>auto<\/code> \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0442\u0438\u043c\u0443\u0442\u044c\u0441\u044f \u043d\u0430\u0437\u0432\u0438 \u0434\u043d\u0456\u0432  \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043c\u043e\u0432\u0438 <code>locale<\/code>(\u0430\u0431\u043e \u043c\u043e\u0432\u0438 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430)","link":"index.php?option=com_content&view=article&id=56&catid=14","link_text":"array","meta":"dayNamesShort","title":"auto"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0448\u0438\u0439 \u0434\u0435\u043d\u044c \u0442\u0438\u0436\u043d\u044f. \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c 1 - \u043f\u043e\u043d\u0435\u0434\u0456\u043b\u043e\u043a","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"firstDay","title":"1"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0437 \u0456\u043d\u0434\u0435\u043a\u0441\u043e\u043c \u0432\u0438\u0445\u0456\u0434\u043d\u0438\u0445 \u0434\u043d\u0456\u0432, \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0446\u0435 \u0441\u0443\u0431\u043e\u0442\u0430 \u0442\u0430 \u043d\u0435\u0434\u0456\u043b\u044f","link":"index.php?option=com_content&view=article&id=56&catid=14","link_text":"array","meta":"weekendDays","title":"[0, 6]"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u043d\u0435 \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043e, \u0432\u0456\u043d \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0444\u043e\u0440\u043c\u0430\u0442 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0456 \u043c\u043e\u0432\u0438 <code>locale<\/code> (\u0430\u0431\u043e \u043c\u043e\u0432\u0438 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430).\n<p>\u041c\u043e\u0436\u0435 \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f  <code>Intl.DateTimeFormat.options.<\/code><\/p>\n\u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434<code>{ month: 'long', day: 'numeric' }<\/code>.\n<p>\u0410\u0431\u043e \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u0442\u0438 \u0440\u044f\u0434\u043e\u043a \u0437\u0456 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0438\u043c\u0438 \u043c\u0430\u0440\u043a\u0435\u0440\u0430\u043c\u0438, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u043c\u0438 \u0432\u0438\u0440\u0430\u0437\u0430\u043c\u0438:<\/p>\n<p>\u25cf\tyyyy - 4 \u0446\u0438\u0444\u0440\u0438 \u0440\u043e\u043a\u0443<\/p>\n<p>\u25cf\tyy - 2 \u0446\u0438\u0444\u0440\u0438 \u0440\u043e\u043a\u0443<\/p>\n<p>\u25cf\tmm - 2 \u0446\u0438\u0444\u0440\u0438 \u043d\u043e\u043c\u0435\u0440\u0430 \u043c\u0456\u0441\u044f\u0446\u044f, \u0432\u0456\u0434 01 \u0434\u043e 12<\/p>\n<p>\u25cf\tm - \u0447\u0438\u0441\u043b\u043e \u043c\u0456\u0441\u044f\u0446\u044f \u0432\u0456\u0434 1 \u0434\u043e 12<\/p>\n<p>\u25cf\tMM - \u043f\u043e\u0432\u043d\u0430 \u043d\u0430\u0437\u0432\u0430 \u043c\u0456\u0441\u044f\u0446\u044f<\/p>\n<p>\u25cf\tM - \u043a\u043e\u0440\u043e\u0442\u043a\u0430 \u043d\u0430\u0437\u0432\u0430 \u043c\u0456\u0441\u044f\u0446\u044f<\/p>\n<p>\u25cf\tdd - \u0414\u0432\u043e\u0437\u043d\u0430\u0447\u043d\u0438\u0439 \u043d\u043e\u043c\u0435\u0440 \u0434\u043d\u044f, \u0432\u0456\u0434 01 \u0434\u043e 31<\/p>\n<p>\u25cf\td - \u043d\u043e\u043c\u0435\u0440 \u0434\u043d\u044f, \u0432\u0456\u0434 1 \u0434\u043e 31<\/p>\n<p>\u25cf\tDD -\u043f\u043e\u0432\u043d\u0430 \u043d\u0430\u0437\u0432\u0430 \u0434\u043d\u044f \u0442\u0438\u0436\u043d\u044f<\/p>\n<p>\u25cf\tD - \u043a\u043e\u0440\u043e\u0442\u043a\u0430 \u043d\u0430\u0437\u0432\u0430 \u0434\u043d\u044f \u0442\u0438\u0436\u043d\u044f<\/p>\n<p>\u041d\u0430\u0441\u0442\u0443\u043f\u043d\u0456 \u0434\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0456 \u0432\u0438\u0440\u0430\u0437\u0438 \u0447\u0430\u0441\u0443 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456, \u044f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e <code>timePicker<\/code>:<\/p>\n<p>\u25cf\tHH - 24-\u0433\u043e\u0434\u0438\u043d\u043d\u0438\u0439 \u0444\u043e\u0440\u043c\u0430\u0442 2 \u0446\u0438\u0444\u0440\u0438 \u0433\u043e\u0434\u0438\u043d (00 - 23)<\/p>\n<p>\u25cf\tH - 24-\u0433\u043e\u0434\u0438\u043d\u043d\u0438\u0439 \u0444\u043e\u0440\u043c\u0430\u0442 \u0433\u043e\u0434\u0438\u043d (0 - 23)<\/p>\n<p>\u25cf\thh - 12-\u0433\u043e\u0434\u0438\u043d\u043d\u0438\u0439 \u0444\u043e\u0440\u043c\u0430\u0442 2 \u0446\u0438\u0444\u0440\u0438 \u0433\u043e\u0434\u0438\u043d (00 - 12)<\/p>\n<p>\u25cf\th - 12-\u0433\u043e\u0434\u0438\u043d\u043d\u0438\u0439 \u0444\u043e\u0440\u043c\u0430\u0442 \u0433\u043e\u0434\u0438\u043d (0 - 12)<\/p>\n<p>\u25cf\t:mm - 2 \u0446\u0438\u0444\u0440\u0438 \u0445\u0432\u0438\u043b\u0438\u043d (00 - 59)<\/p>\n<p>\u25cf\t:m - \u0445\u0432\u0438\u043b\u0438\u043d (0 - 59)<\/p>\n<p>\u25cf\tss - 2 \u0446\u0438\u0444\u0440\u0438 \u0441\u0435\u043a\u0443\u043d\u0434 (00 - 59)<\/p>\n<p>\u25cf\ts -\u0441\u0435\u043a\u0443\u043d\u0434\u0438 (0 - 59)<\/p>\n<p>\u25cf\tA - \u0432\u0435\u0440\u0445\u043d\u0456\u0439 \u0440\u0435\u0433\u0456\u0441\u0442\u0440 post \u0430\u0431\u043e ante meridiem (PM \u0430\u0431\u043e AM)<\/p>\n<p>\u25cf\ta - \u043d\u0438\u0436\u043d\u0456\u0439 \u0440\u0435\u0433\u0456\u0441\u0442\u0440  post or ante meridiem (pm or am)<\/p>\n","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string<p> object","meta":"dateFormat","title":"undefined"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0456\u0442\u044c, \u0449\u043e\u0431 \u0434\u043e\u0437\u0432\u043e\u043b\u0438\u0442\u0438 \u0432\u0438\u0431\u0440\u0430\u0442\u0438 \u043a\u0456\u043b\u044c\u043a\u0430 \u0434\u0430\u0442\/\u0437\u043d\u0430\u0447\u0435\u043d\u044c","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"multiple","title":"false"}},{"type":"table_item","props":{"content":"\u0429\u043e\u0431 \u0443\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0437\u0430\u0441\u0456\u0431 \u0432\u0438\u0431\u043e\u0440\u0443 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443. \u041d\u0435\u0441\u0443\u043c\u0456\u0441\u043d\u0438\u0439 \u0437 \u043a\u0456\u043b\u044c\u043a\u043e\u043c\u0430 \u0434\u0430\u0442\u0430\u043c\u0438 <code>multiple<\/code>","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"rangePicker","title":"false"}},{"type":"table_item","props":{"content":"\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u044c\u043d\u0430 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0434\u043d\u0456\u0432, \u044f\u043a\u0456 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0432\u0438\u0431\u0440\u0430\u0442\u0438, \u043a\u043e\u043b\u0438 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e <code>RangPicker<\/code>","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"rangePickerMinDays","title":"1"}},{"type":"table_item","props":{"content":"\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0430 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0434\u043d\u0456\u0432, \u044f\u043a\u0443 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u0431\u0440\u0430\u0442\u0438, \u043a\u043e\u043b\u0438 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e <code>RangPicker<\/code>.\n <p>\"0\" \u043e\u0437\u043d\u0430\u0447\u0430\u0454 \u0432\u0456\u0434\u0441\u0443\u0442\u043d\u0456\u0441\u0442\u044c \u043c\u0430\u043a\u0441\u0438\u043c\u0443\u043c\u0443<\/p>\n","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"rangePickerMaxDays","title":"0"}},{"type":"table_item","props":{"content":"\u041d\u0430\u043f\u0440\u044f\u043c\u043e\u043a \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f \u043c\u0456\u0441\u044f\u0446\u0456\u0432, \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u00ab\u0433\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u0438\u043c\u00bb \u0430\u0431\u043e \u00ab\u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u0438\u043c\u00bb","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"direction","title":"'horizontal'"}},{"type":"table_item","props":{"content":"\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u044c\u043d\u0430 \u0434\u043e\u0437\u0432\u043e\u043b\u0435\u043d\u0430 \u0434\u0430\u0442\u0430","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"date","meta":"minDate","title":"null"}},{"type":"table_item","props":{"content":"\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e \u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u0430 \u0434\u0430\u0442\u0430","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"date","meta":"maxDate","title":"null"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0441\u043b\u0430\u0439\u0434\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u0438\u0445 \u043c\u0456\u0441\u044f\u0446\u0456\u0432 \u0441\u043b\u0456\u0434\u0443\u044e\u0442\u044c \u0437\u0430 \u043f\u0430\u043b\u044c\u0446\u0435\u043c \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0435\u043d\u043d\u044f \u0434\u043e\u0442\u0438\u043a\u043e\u043c","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"touchMove","title":"true"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0437\u0432\u043e\u043b\u044f\u0454 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0438\u0442\u0438 \u043c\u0456\u0436 \u043c\u0456\u0441\u044f\u0446\u044f\u043c\u0438","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"animate","title":"true"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0456\u0442\u044c, \u0456 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u0431\u0443\u0434\u0435 \u0437\u0430\u043a\u0440\u0438\u0442\u043e, \u043a\u043e\u043b\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u0432\u0438\u0431\u0435\u0440\u0435 \u0434\u0430\u0442\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"closeOnSelect","title":"false"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0442\u0438\u0436\u043d\u044f \u0437 \u043a\u043e\u0440\u043e\u0442\u043a\u043e\u044e \u043d\u0430\u0437\u0432\u043e\u044e \u0434\u043d\u0456\u0432 \u0442\u0438\u0436\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"weekHeader","title":"true"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440 \u043c\u0456\u0441\u044f\u0446\u044f \u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"monthSelector","title":"true"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0437\u0430\u0441\u0456\u0431 \u0432\u0438\u0431\u043e\u0440\u0443 \u043c\u0456\u0441\u044f\u0446\u044f \u0434\u043b\u044f \u0432\u0438\u0431\u043e\u0440\u0443 \u043c\u0456\u0441\u044f\u0446\u044f, \u044f\u043a\u0449\u043e \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0442\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u0432\u0438\u0431\u043e\u0440\u0443 \u043c\u0456\u0441\u044f\u0446\u044f \u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"monthPicker","title":"true"}},{"type":"table_item","props":{"content":"\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0437\u0430\u0441\u0456\u0431 \u0432\u0438\u0431\u043e\u0440\u0443 \u0440\u043e\u043a\u0443 \u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"yearSelector","title":"true"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0437\u0432\u043e\u043b\u044f\u0454 \u0437\u0430\u0441\u043e\u0431\u0443 \u0432\u0438\u0431\u043e\u0440\u0443 \u0440\u043e\u043a\u0443 \u0432\u0438\u0431\u0438\u0440\u0430\u0442\u0438 \u0440\u0456\u043a, \u044f\u043a\u0449\u043e \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0442\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u0432\u0438\u0431\u043e\u0440\u0443 \u0440\u043e\u043a\u0443 \u043d\u0430 \u043f\u0430\u043d\u0435\u043b\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"yearPicker","title":"true"}},{"type":"table_item","props":{"content":"\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u044c\u043d\u0438\u0439 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u0440\u0456\u043a \u0434\u043b\u044f \u0432\u0438\u0431\u043e\u0440\u0443 \u0440\u043e\u043a\u0443, \u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c \u0441\u044c\u043e\u0433\u043e\u0434\u043d\u0456 \u043c\u0456\u043d\u0443\u0441 100 \u0440\u043e\u043a\u0456\u0432","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"yearPickerMin"}},{"type":"table_item","props":{"content":"\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0438\u0439 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u0440\u0456\u043a \u0434\u043b\u044f \u0432\u0438\u0431\u043e\u0440\u0443 \u0440\u043e\u043a\u0443, \u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c \u0441\u044c\u043e\u0433\u043e\u0434\u043d\u0456 \u043f\u043b\u044e\u0441 100 \u0440\u043e\u043a\u0456\u0432","link":"index.php?option=com_content&view=article&id=13&catid=14","link_text":"number","meta":"yearPickerMax"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0437\u0430\u0441\u0456\u0431 \u0432\u0438\u0431\u043e\u0440\u0443 \u0447\u0430\u0441\u0443.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"timePicker","title":"false"}},{"type":"table_item","props":{"content":"\u0424\u043e\u0440\u043c\u0430\u0442 \u0447\u0430\u0441\u0443, \u044f\u043a\u0438\u0439 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454\u0442\u044c\u0441\u044f \u0432 \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0456 \u0447\u0430\u0441\u0443. \u041c\u043e\u0436\u0435 \u043f\u0440\u0438\u0439\u043c\u0430\u0442\u0438  <code>Intl.DateTimeFormat.options<\/code>\n<p><code>AM\/PM<\/code> \u0444\u043e\u0440\u043c\u0430\u0442 \u0437\u0430\u043b\u0435\u0436\u0438\u0442\u044c \u0432\u0456\u0434 \u0432\u0438\u0431\u0440\u0430\u043d\u043e\u0457 \u0437\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u043e\u0457 \u043c\u043e\u0432\u0438 <code>locale<\/code> \u0430\u0431\u043e \u0432\u0456\u0434 \u043c\u043e\u0432\u0438 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0430, \u044f\u043a\u0449\u043e \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e\n","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"timePickerFormat","title":"{hour: 'numeric',<p> minute: 'numeric'}"}},{"type":"table_item","props":{"content":"\u0422\u0435\u043a\u0441\u0442 \u0434\u043b\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0432 \u0437\u0430\u043f\u043e\u0432\u043d\u044e\u0432\u0430\u0447\u0456 \u0432\u0438\u0431\u043e\u0440\u0443 \u0447\u0430\u0441\u0443.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"timePickerPlaceholder","title":"Select time"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"headline","props":{"content":"Container\/opener- \u0441\u043f\u0435\u0446\u0438\u0444\u0456\u0447\u043d\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438  ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - Container\/opener-\u0441\u043f\u0435\u0446\u0438\u0444\u0456\u0447\u043d\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0420\u044f\u0434\u043e\u043a \u0456\u0437 \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u043e\u043c CSS \u0430\u0431\u043e HTMLElement, \u0434\u0435 \u0440\u043e\u0437\u043c\u0456\u0441\u0442\u0438\u0442\u0438 \u0437\u0433\u0435\u043d\u0435\u0440\u043e\u0432\u0430\u043d\u0438\u0439 HTML-\u043a\u043e\u0434 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f. \u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0439\u0442\u0435 \u043b\u0438\u0448\u0435 \u0434\u043b\u044f \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u043e\u0433\u043e \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f <code>inline calendar<\/code> ","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string <p>HTMLElement","meta":"containerEl","title":""}},{"type":"table_item","props":{"content":"\u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 <b>auto, popover<\/b> (\u0434\u043b\u044f \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0442\u044f \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0443 \u0441\u043f\u043b\u0438\u0432\u043d\u043e\u043c\u0443 \u0432\u0456\u043a\u043d\u0456), <b>sheet<\/b> (\u0434\u043b\u044f \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0442\u044f \u0432 \u0440\u0435\u0436\u0438\u043c\u0456 \u0430\u0440\u043a\u0443\u0448\u0430) \u0430\u0431\u043e <b>customModal<\/b> (\u0434\u043b\u044f \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0442\u044f \u0432 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u043e\u043c\u0443 \u043c\u043e\u0434\u0430\u043b\u044c\u043d\u043e\u043c\u0443 \u043d\u0430\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u0456 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f). \u0423 \u0440\u0430\u0437\u0456 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e\u0433\u043e <b>auto<\/b>  \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u043d\u043d\u044f \u0432 \u0440\u0435\u0436\u0438\u043c\u0456 \u0430\u0440\u043a\u0443\u0448\u0430 \u043d\u0430 \u043c\u0430\u043b\u0438\u0445 \u0435\u043a\u0440\u0430\u043d\u0430\u0445 \u0456 \u0443 \u0441\u043f\u043b\u0438\u0432\u043d\u043e\u043c\u0443 \u0432\u0456\u043a\u043d\u0456 \u043d\u0430 \u0432\u0435\u043b\u0438\u043a\u0438\u0445 \u0435\u043a\u0440\u0430\u043d\u0430\u0445.","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"openIn","title":"auto"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0430\u0440\u043a\u0443\u0448 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f, \u0449\u043e\u0431 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0438 \u043f\u043e\u0437\u0430\u0434\u0443","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"sheetPush","title":"false"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0437\u0432\u043e\u043b\u044f\u0454 \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438 \u0430\u0440\u043a\u0443\u0448 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u0430\u043b\u044c\u0446\u044f. \u042f\u043a\u0449\u043e \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e, \u0432\u0456\u043d \u0443\u0441\u043f\u0430\u0434\u043a\u043e\u0432\u0443\u0454 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 <code>Sheet swipeToClose<\/code> \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"sheetSwipeToClose","title":"undefined"}},{"type":"table_item","props":{"content":"\u0420\u044f\u0434\u043e\u043a \u0456\u0437 \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u043e\u043c CSS \u0430\u0431\u043e HTMLElement \u0456\u0437 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u043d\u0438\u043c \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string or HTMLElement","meta":"inputEl"}},{"type":"table_item","props":{"content":"\u041f\u0440\u043e\u043a\u0440\u0443\u0442\u0456\u0442\u044c \u0432\u0456\u043a\u043d\u043e \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 (\u0432\u043c\u0456\u0441\u0442 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0438 <code>page content<\/code>), \u0449\u043e\u0431 \u0432\u0432\u0435\u0441\u0442\u0438, \u043a\u043e\u043b\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"scrollToInput","title":"true"}},{"type":"table_item","props":{"content":"\u0412\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u044e\u0454 \u0430\u0442\u0440\u0438\u0431\u0443\u0442 \"\u043b\u0438\u0448\u0435 \u0434\u043b\u044f \u0447\u0438\u0442\u0430\u043d\u043d\u044f\" \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0433\u043e \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"inputReadOnly","title":"true"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0435 \u0456\u043c\u2019\u044f \u043a\u043b\u0430\u0441\u0443 CSS \u0434\u043b\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"cssClass"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u0437\u0430\u0441\u0456\u0431 \u0432\u0438\u0431\u043e\u0440\u0443 \u0431\u0443\u0434\u0435 \u0437\u0430\u043a\u0440\u0438\u0442\u043e, \u043a\u043b\u0430\u0446\u043d\u0443\u0432\u0448\u0438 \u0437\u0430 \u043c\u0435\u0436\u0430\u043c\u0438 \u0437\u0430\u0441\u043e\u0431\u0443 \u0432\u0438\u0431\u043e\u0440\u0443 \u0430\u0431\u043e \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u043e\u0433\u043e \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"closeByOutsideClick","title":"true"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u043f\u0430\u043d\u0435\u043b\u044c \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"toolbar","title":"true"}},{"type":"table_item","props":{"content":"\u0422\u0435\u043a\u0441\u0442 \u0434\u043b\u044f \u043a\u043d\u043e\u043f\u043a\u0438 \u043f\u0430\u043d\u0435\u043b\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432 \u00ab\u0413\u043e\u0442\u043e\u0432\u043e\/\u0417\u0430\u043a\u0440\u0438\u0442\u0438\u00bb. <b>Done\/Close<\/b> ","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"toolbarCloseText","title":"Done"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"header","title":"false"}},{"type":"table_item","props":{"content":"\u0422\u0435\u043a\u0441\u0442 \u0437\u0430\u043f\u043e\u0432\u043d\u044e\u0432\u0430\u0447\u0430 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0437\u0430 \u0443\u043c\u043e\u0432\u0447\u0430\u043d\u043d\u044f\u043c","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"headerPlaceholder","title":"Select date"}},{"type":"table_item","props":{"content":"\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438\u0439 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e \u0456\u0441\u0442\u043e\u0440\u0456\u0457 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430, \u0449\u043e \u0434\u0430\u0454 \u043c\u043e\u0436\u043b\u0438\u0432\u0456\u0441\u0442\u044c \u0437\u0430\u043a\u0440\u0438\u0442\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440, \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0432\u0448\u0438\u0441\u044c \u0434\u043e \u0456\u0441\u0442\u043e\u0440\u0456\u0457 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0442\u043e\u0440\u0430 \u0442\u0430 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u043f\u043e\u0442\u043e\u0447\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u0443 \u0440\u0435\u0436\u0438\u043c\u0456 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"routableModals","title":"false"}},{"type":"table_item","props":{"content":"\u041c\u043e\u0434\u0430\u043b\u044c\u043d\u0430 URL-\u0430\u0434\u0440\u0435\u0441\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f, \u044f\u043a\u0443 \u0431\u0443\u0434\u0435 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e \u044f\u043a \u043f\u043e\u0442\u043e\u0447\u043d\u0438\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"url","title":"date\/"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u044c\u0442\u0435, \u0434\u0435 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u043c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0456\u044e, \u043a\u043e\u043b\u0438 \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e <code>routableModals<\/code> \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0431\u0430\u0442\u044c\u043a\u0456\u0432\u0441\u044c\u043a\u0438\u0439 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 <code>inputEl<\/code> \u0430\u0431\u043e \u0433\u043e\u043b\u043e\u0432\u043d\u0438\u0439 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434, \u044f\u043a\u0449\u043e \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0431\u0430\u0442\u044c\u043a\u0456\u0432\u0441\u044c\u043a\u0438\u0439 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"view"}},{"type":"table_item","props":{"content":"\u0412\u043c\u0438\u043a\u0430\u0454 \u0444\u043e\u043d \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f (\u0442\u0435\u043c\u043d\u0438\u0439 \u043d\u0430\u043f\u0456\u0432\u043f\u0440\u043e\u0437\u043e\u0440\u0438\u0439 \u0448\u0430\u0440 \u0437\u0437\u0430\u0434\u0443). \u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u043b\u0438\u0448\u0435 \u043a\u043e\u043b\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u0432\u0456\u0434\u043a\u0440\u0438\u0432\u0430\u0454\u0442\u044c\u0441\u044f \u0432 Popover.","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"backdrop"}},{"type":"table_item","props":{"content":"\u042f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e, \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u0437\u0430\u043a\u0440\u0438\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u044c\u0441\u044f \u043f\u0456\u0441\u043b\u044f \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f \u043d\u0430 \u0444\u043e\u043d\u0456","link":"index.php?option=com_content&view=article&id=12&catid=14","link_text":"boolean","meta":"closeByBackdropClick","title":"true"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"headline","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u0457 \u0432\u0456\u0437\u0443\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0424\u0443\u043d\u043a\u0446\u0456\u0457 \u0432\u0456\u0437\u0443\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u0442\u0438\u0436\u043d\u044f. \u041c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 HTML-\u0440\u044f\u0434\u043e\u043a \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u0442\u0438\u0436\u043d\u044f","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function","meta":"renderWeekHeader","title":""}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u043e\u0431\u0433\u043e\u0440\u0442\u043a\u0438 \u043c\u0456\u0441\u044f\u0446\u0456\u0432. \u041c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u043f\u043e\u0432\u043d\u0438\u0439 HTML-\u0440\u044f\u0434\u043e\u043a \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0430 \u043c\u0456\u0441\u044f\u0446\u0456\u0432","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function(date)","meta":"renderMonths"}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043e\u0434\u043d\u043e\u0433\u043e \u043c\u0456\u0441\u044f\u0446\u044f. \u041c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 \u0440\u044f\u0434\u043e\u043a HTML \u0437\u0430 \u043e\u0434\u0438\u043d \u043c\u0456\u0441\u044f\u0446\u044c","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function(date, offset)","meta":"renderMonth"}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0432\u0456\u0437\u0443\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0432\u0438\u0431\u043e\u0440\u0443 \u043c\u0456\u0441\u044f\u0446\u044f. \u041c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 HTML-\u0440\u044f\u0434\u043e\u043a \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 \u043c\u0456\u0441\u044f\u0446\u044f","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function","meta":"renderMonthSelector"}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0432\u0456\u0437\u0443\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0432\u0438\u0431\u043e\u0440\u0443 \u0440\u043e\u043a\u0443. \u041c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 HTML-\u0440\u044f\u0434\u043e\u043a \u0441\u0435\u043b\u0435\u043a\u0442\u043e\u0440\u0430 \u0440\u043e\u043a\u0443","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function","meta":"renderYearSelector"}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0434\u043b\u044f \u0432\u0456\u0437\u0443\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f. \u041c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u0442\u0438 HTML-\u0440\u044f\u0434\u043e\u043a \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function","meta":"renderHeader"}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0432\u0456\u0437\u0443\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u043f\u0430\u043d\u0435\u043b\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432. \u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u043e \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438 \u0440\u044f\u0434\u043e\u043a HTML \u043f\u0430\u043d\u0435\u043b\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function","meta":"renderToolbar"}},{"type":"table_item","props":{"content":"\u0424\u0443\u043d\u043a\u0446\u0456\u044f \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0432\u0441\u044c\u043e\u0433\u043e \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f. \u041c\u0430\u0454 \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438 \u043f\u043e\u0432\u043d\u0438\u0439 \u0440\u044f\u0434\u043e\u043a HTML \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=57&catid=14","link_text":"function","meta":"render"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457"},{"type":"fragment","children":[{"type":"row","props":{"layout":"3-4,1-4"},"children":[{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"3-4"},"children":[{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u0422\u0438\u043f","table_head_meta":"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440","table_head_title":"\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c\u0438 \u043f\u043e\u0434\u0456\u0439. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","link":"index.php?option=com_content&view=article&id=18&catid=14","link_text":"object","meta":"on","title":""}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u044c(4)- \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 -\u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c - \u043e\u043f\u0438\u0441 - \u0442\u0438\u043f"}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"code","props":{"content":"var calendar = app.calendar.create({\n  ...\n  on: {\n    opened: function () {\n      console.log('Calendar opened')\n    }\n  }\n})"}}]}]}],"props":{"margin":"default"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u0432\u0441\u0456 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0456 \u043d\u0438\u0436\u0447\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043c\u043e\u0436\u043d\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0432 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u0443 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f, \u0449\u043e\u0431 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u0456\u0432. \u041d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var app = new Techno4({\n  calendar: {\n    url: 'calendar\/',\n    dateFormat: 'dd.mm.yyyy',\n  }\n});"}},{"type":"headline","props":{"content":"\u041f\u0440\u043e\u043c\u0456\u0436\u043e\u043a \u0447\u0430\u0441\u0443","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u043e\u043c\u0456\u0436\u043e\u043a \u0447\u0430\u0441\u0443"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0414\u0435\u044f\u043a\u0456 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f (\u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043e <code>disabled<\/code>, \u043f\u043e\u0434\u0456\u0457 <code>events<\/code> \u0442\u0430 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0438 \u043a\u043b\u0430\u0441\u0456\u0432 <code>rangesClasses<\/code>) \u043f\u0440\u0438\u0439\u043c\u0430\u044e\u0442\u044c \u0442\u0430\u043a \u0437\u0432\u0430\u043d\u0438\u0439 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d \u0434\u0430\u0442. \u0426\u0435 \u043f\u0440\u043e\u0441\u0442\u0438\u0439 \u0441\u043f\u043e\u0441\u0456\u0431 \u0432\u043a\u0430\u0437\u0430\u0442\u0438 \u0442\u0430 \u043e\u0445\u043e\u043f\u0438\u0442\u0438 \u0432\u0441\u0456 \u043c\u043e\u0436\u043b\u0438\u0432\u0456 \u043a\u043e\u043c\u0431\u0456\u043d\u0430\u0446\u0456\u0457 \u0434\u0430\u0442.\n<p>\u0426\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043c\u0430\u0441\u0438\u0432 \u0456\u0437 \u0434\u0430\u0442\u0430\u043c\u0438, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434:<\/p>\n","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var calendar = app.calendar.create({\n    ...\n    \/\/ Disabled 10th November 2015 and 11th November 2015:\n    disabled: [new Date(2015, 10, 10), new Date(2015, 10, 11)],\n    ...\n});"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0426\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0430 \u0444\u0443\u043d\u043a\u0446\u0456\u044f, \u0434\u0435 \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438 <code>true<\/code> \u0430\u0431\u043e <code>false<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var calendar = app.calendar.create({\n    ...\n    \/\/Disabled all dates in November 2015\n    disabled: function (date) {\n        if (date.getFullYear() === 2015 && date.getMonth() === 10) {\n            return true;\n        }\n        else {\n            return false;\n        }\n    },\n    ...\n});\n"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0410\u0431\u043e \u043e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438 <code>from<\/code> i <code>to<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var calendar = app.calendar.create({\n    ...\n    \/\/Disable all dates between 1st October 2015 and 31 December 2015\n    disabled: {\n        from: new Date(2015, 9, 1),\n        to: new Date(2015, 11, 31)\n    },\n    ...\n});"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0410\u0431\u043e \u043e\u0431\u2019\u0454\u043a\u0442 \u0456\u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438 \u043b\u0438\u0448\u0435<code>from<\/code> \u0430\u0431\u043e <code>to<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var calendar = app.calendar.create({\n    ...\n    \/\/Disable everyting since December 2015\n    disabled: {\n        from: new Date(2015, 11, 1)\n    },\n    ...\n});"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0410\u0431\u043e \u043e\u0431'\u0454\u043a\u0442 \u0456\u0437 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044e <code>data<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var calendar = app.calendar.create({\n    ...\n    \/\/ Disabled 1th December 2015\n    disabled: {\n        date: new Date(2015, 11, 1)\n    },\n    ...\n});\n"}},{"type":"text","props":{"column_breakpoint":"m","content":"\u0410\u0431\u043e \u043c\u0430\u0441\u0438\u0432 \u0437\u0456 \u0437\u043c\u0456\u0448\u0430\u043d\u0438\u043c\u0438 \u0434\u0430\u0442\u0430\u043c\u0438 \u0442\u0430 \u043e\u0431\u2019\u0454\u043a\u0442\u0430\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var calendar = app.calendar.create({\n    ...\n    events: [\n        new Date(2015, 9, 1),\n        new Date(2015, 9, 5),\n        {\n            from: new Date(2015, 9, 10),\n            to: new Date(2015, 9, 15)\n        },\n        {\n            from: new Date(2015, 9, 20),\n            to: new Date(2015, 9, 31)\n        },\n        {\n            date: new Date(2015, 11, 1),\n            color: '#ff0000'\n        },\n        \/\/ same date but one more color dot will be added\n        {\n            date: new Date(2015, 11, 1),\n            color: '#00ff00'\n        },\n    ],\n    ...\n});"}},{"type":"headline","props":{"content":"\u041a\u043b\u0430\u0441\u0438 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0456\u0432","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041a\u043b\u0430\u0441\u0438 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0456\u0432"},{"type":"text","props":{"column_breakpoint":"m","content":"<code>rangesClasses<\/code> \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u043f\u0440\u0438\u0439\u043c\u0430\u0454 \u043c\u0430\u0441\u0438\u0432 \u043e\u0431\u2019\u0454\u043a\u0442\u0456\u0432 \u0456\u0437 \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u043e\u043c \u0434\u0430\u0442 \u0456 \u0456\u043c\u0435\u043d\u0430\u043c\u0438 \u043a\u043b\u0430\u0441\u0456\u0432 \u0434\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0434\u0456\u0430\u043f\u0430\u0437\u043e\u043d\u0443:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":"var calendar = app.calendar.create({\n    ...\n    \/\/Add classes for november and october\n    rangesClasses: [\n        \/\/Add \"day-october' class for all october dates\n        {\n            \/\/ string CSS class name for this range in \"cssClass\" property\n            cssClass: 'day-october', \/\/string CSS class\n            \/\/ Date Range in \"range\" property\n            range: function (date) {\n                return date.getMonth() === 9\n            }\n        },\n        \/\/Add \"day-holiday\" class for 1-10th January 2016\n        {\n            cssClass: 'day-holiday',\n            range: {\n                from: new Date(2016, 0, 1),\n                to: new Date(2016, 0, 10)\n            }\n        }\n    ],\n    ...\n});"}},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041f\u0456\u0441\u043b\u044f \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u043c\u0438 \u043c\u0430\u0454\u043c\u043e \u0439\u043e\u0433\u043e \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0443 \u0437\u043c\u0456\u043d\u043d\u0456\u0439 (\u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434, \u0437\u043c\u0456\u043d\u043d\u0443 <code>calendar<\/code> \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0430\u0445 \u0432\u0438\u0449\u0435) \u0437 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043c\u0438 \u043c\u0435\u0442\u043e\u0434\u0430\u043c\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u044f\u043c\u0438:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0412\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u0412\u043b\u0430\u0441\u0442\u0438\u0432\u0456\u0441\u0442\u044c ","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0439 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 ","link_text":"string","meta":"calendar.app","title":""}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u043e\u0431\u0433\u043e\u0440\u0442\u0430\u043d\u043d\u044f \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f (\u043a\u043e\u043b\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0439 <b>inline<\/b>  \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440)","link_text":"string","meta":"calendar.containerEl","title":""}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom7 \u0437 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u043a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u0430 \u0434\u043b\u044f \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f (\u043a\u043e\u043b\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0439 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440)","meta":"calendar.$containerEl"}},{"type":"table_item","props":{"content":"\u0415\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","meta":"calendar.el"}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom7 \u0437 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c HTML \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","meta":"calendar.$el"}},{"type":"table_item","props":{"content":"\u0412\u0445\u0456\u0434\u043d\u0438\u0439 \u0435\u043b\u0435\u043c\u0435\u043d\u0442 HTML \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f (\u043f\u0435\u0440\u0435\u0434\u0430\u0454\u0442\u044c\u0441\u044f \u0432 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456 <code>inputEl<\/code>)","meta":"calendar.inputEl"}},{"type":"table_item","props":{"content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Dom7 \u0437 HTML-\u0435\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u043c \u0432\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f (\u043f\u0435\u0440\u0435\u0434\u0430\u0454\u0442\u044c\u0441\u044f \u0432 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456 <code>inputEl<\/code>)","meta":"calendar.$inputEl"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432, \u0434\u0435 \u043a\u043e\u0436\u0435\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0454 \u0432\u0438\u0431\u0440\u0430\u043d\u0443 \u0434\u0430\u0442\u0443","meta":"calendar.value"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u043f\u043e\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u043c\u0456\u0441\u044f\u0446\u044f. \u0427\u0438\u0441\u043b\u043e \u0432\u0456\u0434 0 \u0434\u043e 11","meta":"calendar.currentMonth"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u043f\u043e\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u0440\u043e\u043a\u0443. \u0427\u0438\u0441\u043b\u043e, \u043d\u0430\u043f\u0440\u0438\u043a\u043b\u0430\u0434 \"2023\"","meta":"calendar.currentYear"}},{"type":"table_item","props":{"content":"<code>true<\/code> \u044f\u043a\u0449\u043e \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043d\u0430\u0440\u0430\u0437\u0456 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e","meta":"calendar.opened"}},{"type":"table_item","props":{"content":"<code>true<\/code> \u043a\u043e\u043b\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0432\u0431\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0439 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440","meta":"calendar.inline"}},{"type":"table_item","props":{"content":"\u041c\u0430\u0441\u0438\u0432 \u0456\u0437 \u0437\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u043c\u0438 \u0441\u0442\u043e\u0432\u043f\u0446\u044f\u043c\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f. \u041a\u043e\u0436\u0435\u043d \u0441\u0442\u043e\u0432\u043f\u0435\u0446\u044c \u0442\u0430\u043a\u043e\u0436 \u043c\u0430\u0454 \u0432\u043b\u0430\u0441\u043d\u0456 \u043c\u0435\u0442\u043e\u0434\u0438 \u0442\u0430 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 (\u0434\u0438\u0432. \u043d\u0438\u0436\u0447\u0435)","meta":"calendar.cols"}},{"type":"table_item","props":{"content":"URL-\u0430\u0434\u0440\u0435\u0441\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f (\u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0430 \u0432 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456 <code>url<\/code>)","meta":"calendar.url"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f (\u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0438\u0439 \u0443 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0456 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 <code>view<\/code>) \u0430\u0431\u043e \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u0438\u0439 \u0431\u0430\u0442\u044c\u043a\u0456\u0432\u0441\u044c\u043a\u0438\u0439 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434","meta":"calendar.view"}},{"type":"table_item","props":{"content":"\u041e\u0431'\u0454\u043a\u0442 \u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457","meta":"calendar.params"}},{"type":"table_item","props":{"content":"\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u0434\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u043f\u0440\u0430\u043f\u043e\u0440\u0446\u044f \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>false<\/code>, \u0449\u043e\u0431 \u0437\u0430\u043f\u043e\u0431\u0456\u0433\u0442\u0438 \u0432\u0437\u0430\u0454\u043c\u043e\u0434\u0456\u0457 \u0434\u043e\u0442\u0438\u043a\u0443 \u043f\u0456\u0441\u043b\u044f \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457","meta":"calendar.allowTouchMove"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041c\u0435\u0442\u043e\u0434\u0438 ","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u041c\u0435\u0442\u043e\u0434\u0438 "},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":true,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_meta":"\u041c\u0435\u0442\u043e\u0434","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u0412\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u043d\u043e\u0432\u0456 \u0432\u0438\u0431\u0440\u0430\u043d\u0456 \u0434\u0430\u0442\u0438. \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f <code>velues<\/code>\u2014 \u0446\u0435 \u043c\u0430\u0441\u0438\u0432, \u0434\u0435 \u043a\u043e\u0436\u0435\u043d \u0435\u043b\u0435\u043c\u0435\u043d\u0442 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u0454 \u0432\u0438\u0431\u0440\u0430\u043d\u0443 \u0434\u0430\u0442\u0443","meta":"calendar.setValue(values)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0432\u0435\u0440\u0442\u0430\u0454 \u043f\u043e\u0442\u043e\u0447\u043d\u0435 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f","meta":"calendar.getValue()"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0454 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0434\u043e \u043c\u0430\u0441\u0438\u0432\u0443 \u0437\u043d\u0430\u0447\u0435\u043d\u044c. \u041a\u043e\u0440\u0438\u0441\u043d\u043e, \u044f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u043c\u043d\u043e\u0436\u0438\u043d\u043d\u0438\u0439 \u0432\u0438\u0431\u0456\u0440 (\u0437 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u043c <code>multiple: true<\/code>)","meta":"calendar.addValue()"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0454 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440. \u041a\u043e\u0440\u0438\u0441\u043d\u043e, \u044f\u043a\u0449\u043e \u0432\u0438 \u0434\u0438\u043d\u0430\u043c\u0456\u0447\u043d\u043e \u0434\u043e\u0434\u0430\u0432\u0430\u043b\u0438\/\u0437\u043c\u0456\u043d\u044e\u0432\u0430\u043b\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0442\u0430 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043e\u043d\u043e\u0432\u0438\u0442\u0438 \u043c\u0430\u043a\u0435\u0442 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","meta":"calendar.update()"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0445\u0456\u0434 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u043d\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u043c\u0456\u0441\u044f\u0446\u044c \u043d\u0430 \u0432\u043a\u0430\u0437\u0430\u043d\u0443 \u0442\u0440\u0438\u0432\u0430\u043b\u0456\u0441\u0442\u044c <code>duration<\/code> \u0443 \u043c\u0441","meta":"calendar.nextMonth(duration)"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0445\u0456\u0434 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0434\u043e \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u044c\u043e\u0433\u043e \u043c\u0456\u0441\u044f\u0446\u044f \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0443 \u0442\u0440\u0438\u0432\u0430\u043b\u0456\u0441\u0442\u044c<code>duration<\/code>  \u0443 \u043c\u0441","meta":"calendar.prevMonth(duration)"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0445\u0456\u0434 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u043d\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u0440\u0456\u043a","meta":"calendar.nextYear()"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0445\u0456\u0434 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u043d\u0430 \u043f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0440\u0456\u043a","meta":"calendar.prevYear()"}},{"type":"table_item","props":{"content":"\u041f\u0435\u0440\u0435\u0445\u0456\u0434 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u043d\u0430 \u0432\u043a\u0430\u0437\u0430\u043d\u0438\u0439 \u0440\u0456\u043a <code>year<\/code>, \u043c\u0456\u0441\u044f\u0446\u044c <code>month<\/code> \u043d\u0430 \u0437\u0430\u0434\u0430\u043d\u0443 \u0442\u0440\u0438\u0432\u0430\u043b\u0456\u0441\u0442\u044c <code>duration<\/code> \u0443 \u043c\u0441","meta":"calendar.setYearMonth(year, month, duration)"}},{"type":"table_item","props":{"content":"\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440","meta":"calendar.open()"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043a\u0440\u0438\u0442\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440","meta":"calendar.close()"}},{"type":"table_item","props":{"content":"\u0417\u043d\u0438\u0449\u0438\u0442\u0438 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0442\u0430 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043f\u043e\u0434\u0456\u0457","meta":"calendar.destroy()"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"calendar.on(event, handler)"}},{"type":"table_item","props":{"content":"\u0414\u043e\u0434\u0430\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439, \u044f\u043a\u0438\u0439 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0443","meta":"calendar.once(event, handler)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0439","meta":"calendar.off(event, handler)"}},{"type":"table_item","props":{"content":"\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0432\u0441\u0456 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a\u0438 \u0434\u043b\u044f \u0432\u043a\u0430\u0437\u0430\u043d\u043e\u0457 \u043f\u043e\u0434\u0456\u0457","meta":"calendar.off(event)"}},{"type":"table_item","props":{"content":"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043f\u043e\u0434\u0456\u044e \u043d\u0430 \u043f\u0440\u0438\u043c\u0456\u0440\u043d\u0438\u043a\u0443","meta":"calendar.emit(event, ...args)"}}],"name":"T4 Docs \u0442\u0430\u0431\u043b\u0438\u0446\u044f 2 \u0441\u0442\u043e\u0432\u0431\u0447\u0438\u043a\u0438"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0432 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u0456","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u043e\u0434\u0456\u0457 \u0432 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u0456"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438\u043c\u0435 \u0442\u0430\u043a\u0456 \u043f\u043e\u0434\u0456\u0457 DOM \u0432 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0456 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f \u0442\u0430 \u043f\u043e\u0434\u0456\u0457 \u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443  \u0442\u0430 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 DOM","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u041f\u043e\u0434\u0456\u0457 DOM"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":false,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u041e\u0431'\u0454\u043a\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u043e, \u043a\u043e\u043b\u0438 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"calendar:open","title":"Calendar Element <p>&lt;div class=\"calendar\"&gt;"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0442\u043e\u0433\u043e, \u044f\u043a \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044c \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"calendar:opened","title":"Calendar Element <p>&lt;div class=\"calendar\"&gt;"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u043e, \u043a\u043e\u043b\u0438 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043f\u043e\u0447\u043d\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0432\u0430\u0442\u0438 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"calendar:close","title":"Calendar Element <p>&lt;div class=\"calendar\"&gt;"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=14&catid=14","link_text":"string","meta":"calendar:closed","title":"Calendar Element <p>&lt;div class=\"calendar\"&gt;"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(3) \u041f\u043e\u0434\u0456\u044f - \u041e\u0431'\u0454\u043a\u0442- \u041e\u043f\u0438\u0441"},{"type":"headline","props":{"content":"\u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443  \u0442\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","title_element":"h4","title_style":"h4"},"name":"\u041f\u0456\u0434\u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a \u0440\u043e\u0437\u0434\u0456\u043b\u0443  - \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456\u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443  \u0442\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0415\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 Calendar \u0432\u0438\u043f\u0443\u0441\u043a\u0430\u0454 \u043f\u043e\u0434\u0456\u0457 \u044f\u043a \u0443 \u0441\u0435\u0431\u0435, \u0442\u0430\u043a \u0456 \u0432 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443. \u041f\u043e\u0434\u0456\u0457 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0430 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443  \u043c\u0430\u044e\u0442\u044c \u043e\u0434\u043d\u0430\u043a\u043e\u0432\u0456 \u043d\u0430\u0437\u0432\u0438 \u0437 \u043f\u0440\u0435\u0444\u0456\u043a\u0441\u043e\u043c \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f <code>celendar<\/code>:","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"table","props":{"content_style":"text-small","image_svg_color":"emphasis","link_fullwidth":true,"link_size":"small","link_style":"default","link_text":"","meta_style":"text-meta","show_content":true,"show_image":false,"show_link":true,"show_meta":true,"show_title":true,"table_head_content":"\u041e\u043f\u0438\u0441","table_head_image":"\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f","table_head_link":"\u041e\u0431'\u0454\u043a\u0442","table_head_meta":"\u041f\u043e\u0434\u0456\u044f","table_head_title":"\u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442","table_hover":true,"table_order":"1","table_responsive":"overflow","table_style":"divider","table_width_meta":"shrink","table_width_title":"shrink","title_color":"primary","title_style":"text-lead"},"children":[{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u043e\u0433\u043e \u0434\u043d\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"dayClick","title":"(calendar, dayEl, year, month, day)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430 \u043f\u0456\u0441\u043b\u044f \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u043e\u0433\u043e \u0434\u043d\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarDayClick","title":"(calendar, dayEl, year, month, day)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0437\u043c\u0456\u043d\u0438\u0442\u044c\u0441\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"change","title":"(calendar, value)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0437\u043c\u0456\u043d\u0438\u0442\u044c\u0441\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarChange","title":"(calendar, value)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043d\u043e\u0432\u0438\u0439 \u043c\u0430\u043a\u0435\u0442 HTML \u043c\u0456\u0441\u044f\u0446\u044f. \u041a\u043e\u0440\u0438\u0441\u043d\u043e, \u044f\u043a\u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u043e\u0441\u0442\u043e\u0431\u0440\u043e\u0431\u0438\u0442\u0438 \u0434\u043e\u0434\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 html","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"monthAdd","title":"(calendar, monthEl)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u0430, \u043a\u043e\u043b\u0438 \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u043d\u043e\u0432\u0438\u0439 \u043c\u0430\u043a\u0435\u0442 HTML \u043c\u0456\u0441\u044f\u0446\u044f. \u041a\u043e\u0440\u0438\u0441\u043d\u043e, \u044f\u043a\u0449\u043e \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u043e\u0441\u0442\u043e\u0431\u0440\u043e\u0431\u0438\u0442\u0438 \u0434\u043e\u0434\u0430\u043d\u0456 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438 html","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarMonthAdd","title":"(calendar, monthEl)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0434\u043e \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043c\u0456\u0441\u044f\u0446\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"monthYearChangeStart","title":"(calendar, year, month)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043d\u0430 \u043f\u043e\u0447\u0430\u0442\u043a\u0443 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u0434\u043e \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u043c\u0456\u0441\u044f\u0446\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarMonthYearChangeStart","title":"(calendar, year, month)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u043d\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u043c\u0456\u0441\u044f\u0446\u044c","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"monthYearChangeEnd","title":"(calendar, year, month)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0443 \u043d\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u043c\u0456\u0441\u044f\u0446\u044c","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarMonthYearChangeEnd","title":"(calendar, year, month)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"init","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044f \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u0456\u043d\u0456\u0446\u0456\u0430\u043b\u0456\u0437\u0430\u0446\u0456\u0457 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarInit","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u043e, \u043a\u043e\u043b\u0438 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"open","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u043e, \u043a\u043e\u043b\u0438 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarOpen","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u043e, \u043a\u043e\u043b\u0438 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"opened","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u043e, \u043a\u043e\u043b\u0438 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043f\u043e\u0447\u043d\u0435 \u0441\u0432\u043e\u044e \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0443 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarOpened","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u043e, \u043a\u043e\u043b\u0438 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043f\u043e\u0447\u043d\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0432\u0430\u0442\u0438 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"close","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0456\u043d\u0456\u0446\u0456\u0439\u043e\u0432\u0430\u043d\u043e, \u043a\u043e\u043b\u0438 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440 \u043f\u043e\u0447\u043d\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0432\u0430\u0442\u0438 \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u044e. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarClose","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"closed","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0430\u043d\u0456\u043c\u0430\u0446\u0456\u0457 \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarClosed","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f\u043c \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0430 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"calendar","meta":"beforeDestroy","title":"(calendar)"}},{"type":"table_item","props":{"content":"\u041f\u043e\u0434\u0456\u044e \u0431\u0443\u0434\u0435 \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u043f\u0435\u0440\u0435\u0434 \u0437\u043d\u0438\u0449\u0435\u043d\u043d\u044f\u043c \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440\u0430 \u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f. \u0412 \u044f\u043a\u043e\u0441\u0442\u0456 \u0430\u0440\u0433\u0443\u043c\u0435\u043d\u0442\u0443 \u043e\u0431\u0440\u043e\u0431\u043d\u0438\u043a \u043f\u043e\u0434\u0456\u0457 \u043e\u0442\u0440\u0438\u043c\u0443\u0454 \u0435\u043a\u0437\u0435\u043c\u043f\u043b\u044f\u0440 \u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044f","link":"index.php?option=com_content&view=article&id=17&catid=14","link_text":"app","meta":"calendarBeforeDestroy","title":"(calendar)"}}],"name":"\u0422\u0430\u0431\u043b\u0438\u0446\u044f(4) \u041f\u043e\u0434\u0456\u044f - \u0410\u0440\u0433\u0443\u043c\u0435\u043d\u0442 - \u041e\u043f\u0438\u0441 - \u041e\u0431'\u0454\u043a\u0442"},{"type":"headline","props":{"content":"\u0417\u043c\u0456\u043d\u043d\u0456 CSS \t","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u0417\u043c\u0456\u043d\u043d\u0456 CSS"},{"type":"text","props":{"column_breakpoint":"m","content":"\u041d\u0438\u0436\u0447\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e \u0441\u043f\u0438\u0441\u043e\u043a \u043f\u043e\u0432\u2019\u044f\u0437\u0430\u043d\u0438\u0445 \u0437\u043c\u0456\u043d\u043d\u0438\u0445 CSS (\u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0432\u043b\u0430\u0441\u0442\u0438\u0432\u043e\u0441\u0442\u0456 CSS).","margin":"default","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"text","props":{"column_breakpoint":"m","content":"\u0417\u0430\u0443\u0432\u0430\u0436\u0442\u0435, \u0449\u043e \u043a\u043e\u043c\u0435\u043d\u0442\u043e\u0432\u0430\u043d\u0456 \u0437\u043c\u0456\u043d\u043d\u0456 \u043d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e \u0437\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c, \u0456 \u0432 \u0446\u044c\u043e\u043c\u0443 \u0432\u0438\u043f\u0430\u0434\u043a\u0443 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u0442\u0430\u044e\u0442\u044c\u0441\u044f \u0434\u043e \u0457\u0445\u043d\u0456\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u044c.","margin":"default","text_color":"warning","text_style":"large"},"name":"\u041e\u043f\u0438\u0441"},{"type":"code","props":{"content":":root {\n  --t4-calendar-height: 340px;\n  --t4-calendar-sheet-landscape-height: 220px;\n  --t4-calendar-popover-width: 320px;\n  --t4-calendar-popover-height: 320px;\n  --t4-calendar-modal-height: 420px;\n  --t4-calendar-modal-max-width: 380px;\n  --t4-calendar-modal-border-radius: 4px;\n  \/*\n  --t4-calendar-header-bg-color: var(--t4-bars-bg-color);\n  --t4-calendar-header-link-color: var(--t4-bars-link-color);\n  --t4-calendar-header-text-color: var(--t4-bars-text-color);\n  --t4-calendar-footer-bg-color: var(--t4-bars-bg-color);\n  --t4-calendar-footer-border-color: var(--t4-bars-border-color);\n  --t4-calendar-footer-link-color: var(--t4-bars-link-color);\n  --t4-calendar-footer-text-color: var(--t4-bars-text-color);\n  *\/\n  --t4-calendar-week-header-bg-color: transparent;\n  --t4-calendar-footer-padding: 0 8px;\n  --t4-calendar-week-header-font-size: 11px;\n  --t4-calendar-selected-text-color: #fff;\n  \/*\n  --t4-calendar-selected-bg-color:  var(--t4-theme-color);\n  *\/\n  --t4-calendar-disabled-text-color: #d4d4d4;\n  --t4-calendar-event-dot-size: 4px;\n  \/*\n  --t4-calendar-event-bg-color: var(--t4-theme-color);\n  *\/\n  \/*\n  --t4-calendar-picker-selected-text-color: var(--t4-theme-color);\n  *\/\n  --t4-calendar-time-selector-height: 28px;\n  --t4-calendar-week-header-text-color: #5e5e5e;\n  --t4-calendar-prev-next-text-color: #c8c8c8;\n  --t4-calendar-day-text-color: #000;\n  --t4-calendar-sheet-bg-color: #fff;\n  --t4-calendar-modal-bg-color: #fff;\n  --t4-calendar-picker-pressed-bg-color: rgba(0, 0, 0, 0.1);\n  --t4-calendar-picker-hover-bg-color: rgba(0, 0, 0, 0.03);\n  --t4-calendar-time-selector-bg-color: rgba(0, 0, 0, 0.05);\n}\n:root .dark,\n:root.dark {\n  --t4-calendar-week-header-text-color: #aaa;\n  --t4-calendar-prev-next-text-color: #5e5e5e;\n  --t4-calendar-sheet-border-color: var(--t4-bars-border-color);\n  --t4-calendar-modal-bg-color: #121212;\n  --t4-calendar-sheet-bg-color: #121212;\n  --t4-calendar-picker-pressed-bg-color: rgba(255, 255, 255, 0.08);\n  --t4-calendar-picker-hover-bg-color: rgba(255, 255, 255, 0.03);\n  --t4-calendar-time-selector-bg-color: rgba(255, 255, 255, 0.1);\n}\n.ios {\n  --t4-calendar-sheet-border-color: #929499;\n  --t4-calendar-header-height: 44px;\n  --t4-calendar-header-font-size: 17px;\n  --t4-calendar-header-font-weight: 600;\n  --t4-calendar-header-padding: 0 8px;\n  --t4-calendar-footer-height: 44px;\n  --t4-calendar-footer-font-size: 17px;\n  --t4-calendar-week-header-height: 18px;\n  --t4-calendar-day-font-size: 15px;\n  --t4-calendar-day-size: 30px;\n  --t4-calendar-picker-font-size: 17px;\n  --t4-calendar-time-selector-font-size: 17px;\n  --t4-calendar-today-text-color: #000;\n  --t4-calendar-today-bg-color: #e3e3e3;\n}\n.ios .dark,\n.ios.dark {\n  --t4-calendar-day-text-color: #fff;\n  --t4-calendar-today-text-color: #fff;\n  --t4-calendar-today-bg-color: #333;\n}\n.md {\n  --t4-calendar-sheet-border-color: #ccc;\n  --t4-calendar-header-height: 56px;\n  --t4-calendar-header-font-size: 20px;\n  --t4-calendar-header-font-weight: 400;\n  --t4-calendar-header-padding: 0 24px;\n  --t4-calendar-footer-height: 48px;\n  --t4-calendar-footer-font-size: 14px;\n  --t4-calendar-week-header-height: 24px;\n  --t4-calendar-day-font-size: 14px;\n  \/*\n  --t4-calendar-today-text-color: var(--t4-theme-color);\n  *\/\n  --t4-calendar-today-bg-color: none;\n  --t4-calendar-day-size: 32px;\n  --t4-calendar-picker-font-size: 14px;\n  --t4-calendar-time-selector-font-size: 14px;\n}\n.md .dark,\n.md.dark {\n  --t4-calendar-day-text-color: rgba(255, 255, 255, 0.87);\n}\n.aurora {\n  --t4-calendar-sheet-border-color: #ccc;\n  --t4-calendar-header-height: 56px;\n  --t4-calendar-header-font-size: 18px;\n  --t4-calendar-header-font-weight: 600;\n  --t4-calendar-header-padding: 0 16px;\n  --t4-calendar-footer-height: 48px;\n  --t4-calendar-footer-font-size: 14px;\n  --t4-calendar-footer-padding: 0 16px;\n  --t4-calendar-week-header-height: 24px;\n  --t4-calendar-day-font-size: 14px;\n  --t4-calendar-day-size: 32px;\n  --t4-calendar-picker-font-size: 16px;\n  --t4-calendar-time-selector-font-size: 14px;\n  --t4-calendar-today-text-color: #000;\n  --t4-calendar-today-bg-color: #e3e3e3;\n}\n.aurora .dark,\n.aurora.dark {\n  --t4-calendar-day-text-color: #fff;\n  --t4-calendar-today-text-color: #fff;\n  --t4-calendar-today-bg-color: #333;\n}"}},{"type":"headline","props":{"content":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 :","title_element":"h3","title_style":"h3"},"name":"\u041d\u0430\u0437\u0432\u0430 \u0440\u043e\u0437\u0434\u0456\u043b\u0443 - \u041f\u0440\u0438\u043a\u043b\u0430\u0434\u0438 "},{"type":"code","props":{"content":"<template>\n  <div class=\"page\">\n    <div class=\"navbar\">\n      <div class=\"navbar-bg\"><\/div>\n      <div class=\"navbar-inner\">\n        <div class=\"title\">Calendar<\/div>\n      <\/div>\n    <\/div>\n    <div class=\"page-content\">\n      <div class=\"block-title\">Default setup<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li>\n            <div class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-input-wrap\">\n                  <input type=\"text\" placeholder=\"Your birth date\" readonly=\"readonly\" id=\"demo-calendar-default\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Custom date format<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li>\n            <div class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-input-wrap\">\n                  <input type=\"text\" placeholder=\"Select date\" readonly=\"readonly\" id=\"demo-calendar-date-format\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Date + Time<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li>\n            <div class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-input-wrap\">\n                  <input type=\"text\" placeholder=\"Select date and time\" readonly=\"readonly\"\n                    id=\"demo-calendar-date-time\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Multiple Values<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li>\n            <div class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-input-wrap\">\n                  <input type=\"text\" placeholder=\"Select multiple dates\" readonly=\"readonly\"\n                    id=\"demo-calendar-multiple\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Range Picker<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li>\n            <div class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-input-wrap\">\n                  <input type=\"text\" placeholder=\"Select date range\" readonly=\"readonly\" id=\"demo-calendar-range\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Open in Modal<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li>\n            <div class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-input-wrap\">\n                  <input type=\"text\" placeholder=\"Select date\" readonly=\"readonly\" id=\"demo-calendar-modal\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">With Events<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li>\n            <div class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-input-wrap\">\n                  <input type=\"text\" placeholder=\"Select date\" readonly=\"readonly\" id=\"demo-calendar-events\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Disabled Dates<\/div>\n      <div class=\"list no-hairlines-md\">\n        <ul>\n          <li>\n            <div class=\"item-content item-input\">\n              <div class=\"item-inner\">\n                <div class=\"item-input-wrap\">\n                  <input type=\"text\" placeholder=\"Select date\" readonly=\"readonly\" id=\"demo-calendar-disabled\" \/>\n                <\/div>\n              <\/div>\n            <\/div>\n          <\/li>\n        <\/ul>\n      <\/div>\n      <div class=\"block-title\">Inline with custom toolbar<\/div>\n      <div class=\"block block-strong no-padding\">\n        <div id=\"demo-calendar-inline-container\"><\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/template>\n<script>\n  export default (props, { $, $t4, $on }) => {\n    let calendarDefault;\n    let calendarDateFormat;\n    let calendarDateTime;\n    let calendarMultiple;\n    let calendarRange;\n    let calendarModal;\n    let calendarEvents;\n    let calendarDisabled;\n    let calendarInline;\n\n    $on('pageInit', () => {\n      \/\/ Default\n      calendarDefault = $t4.calendar.create({\n        inputEl: '#demo-calendar-default',\n      });\n      \/\/ With custom date format\n      calendarDateFormat = $t4.calendar.create({\n        inputEl: '#demo-calendar-date-format',\n        dateFormat: { weekday: 'long', month: 'long', day: '2-digit', year: 'numeric' },\n      });\n      \/\/ Date + Time\n      calendarDateTime = $t4.calendar.create({\n        inputEl: '#demo-calendar-date-time',\n        timePicker: true,\n        dateFormat: { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' },\n      });\n      \/\/ With multiple values\n      calendarMultiple = $t4.calendar.create({\n        inputEl: '#demo-calendar-multiple',\n        dateFormat: { month: 'short', day: 'numeric' },\n        multiple: true\n      });\n      \/\/ Range Picker\n      calendarRange = $t4.calendar.create({\n        inputEl: '#demo-calendar-range',\n        rangePicker: true\n      });\n      \/\/ Custom modal\n      calendarModal = $t4.calendar.create({\n        inputEl: '#demo-calendar-modal',\n        openIn: 'customModal',\n        header: true,\n        footer: true,\n      });\n      \/\/ With events\n      var now = new Date();\n      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());\n      var weekLater = new Date().setDate(today.getDate() + 7);\n      calendarEvents = $t4.calendar.create({\n        inputEl: '#demo-calendar-events',\n        events: [\n          {\n            from: today,\n            to: weekLater\n          },\n          \/\/- more events this day\n          {\n            date: today,\n            color: '#ff0000'\n          },\n          {\n            date: today,\n            color: '#00ff00'\n          },\n        ]\n      });\n      \/\/ Disabled\n      var today = new Date();\n      var weekLater = new Date().setDate(today.getDate() + 7);\n      calendarDisabled = $t4.calendar.create({\n        inputEl: '#demo-calendar-disabled',\n        disabled: {\n          from: today,\n          to: weekLater\n        }\n      });\n      \/\/ Inline with custom toolbar\n      var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];\n      calendarInline = $t4.calendar.create({\n        containerEl: '#demo-calendar-inline-container',\n        value: [new Date()],\n        weekHeader: false,\n        renderToolbar: function () {\n          return `\n          <div class=\"toolbar calendar-custom-toolbar no-shadow\">\n            <div class=\"toolbar-inner\">\n              <div class=\"left\">\n                <a href=\"#\" class=\"link icon-only\"><i class=\"icon icon-back ${$t4.theme === 'md' ? 'color-black' : ''}\"><\/i><\/a>\n              <\/div>\n              <div class=\"center\"><\/div>\n              <div class=\"right\">\n                <a href=\"#\" class=\"link icon-only\"><i class=\"icon icon-forward ${$t4.theme === 'md' ? 'color-black' : ''}\"><\/i><\/a>\n              <\/div>\n            <\/div>\n          <\/div>\n          `;\n        },\n        on: {\n          init: function (c) {\n            $('.calendar-custom-toolbar .center').text(monthNames[c.currentMonth] + ', ' + c.currentYear);\n            $('.calendar-custom-toolbar .left .link').on('click', function () {\n              calendarInline.prevMonth();\n            });\n            $('.calendar-custom-toolbar .right .link').on('click', function () {\n              calendarInline.nextMonth();\n            });\n          },\n          monthYearChangeStart: function (c) {\n            $('.calendar-custom-toolbar .center').text(monthNames[c.currentMonth] + ', ' + c.currentYear);\n          }\n        }\n      });\n    });\n\n    return $render;\n  };\n\n\n<\/script>"}}]},{"type":"column","props":{"image_position":"center-center","position_sticky_breakpoint":"m","width_medium":"1-4"},"children":[{"type":"module","props":{"menu_image_align":"center","menu_image_margin":true,"menu_style":"default","menu_type":"nav","module":"123","type":"mod_menu"}}]}],"props":{"layout":"3-4,1-4"}}],"name":"\u041f\u0440\u0438\u043a\u043b\u0430\u0434 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0456\u0457 0"}],"version":"4.0.3","yooessentialsVersion":"2.0.6"} -->

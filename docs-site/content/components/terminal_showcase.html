@@ -1,0 +1,1009 @@
+<!-- ===========================================================================
+  TECHNO4 FRAMEWORK 2.0 — STYLIZED TERMINAL SHOWCASE COMPONENT
+  Article [24] Installation — techno4.online Documentation
+  UIkit 3 / YOOtheme Pro Compatible (<ul class="uk-subnav uk-subnav-pill" uk-switcher>)
+=========================================================================== -->
+
+<div class="t4-terminal-component uk-margin-medium-bottom">
+
+  <!-- =======================================================================
+    1. ШВИДКІ КОМАНДИ ДЛЯ ВСТАНОВЛЕННЯ ТА ЗАПУСКУ (COPYABLE COMMAND BLOCKS)
+  ======================================================================== -->
+  <div class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@s uk-margin-small-bottom" uk-grid>
+    <!-- Крок 1 -->
+    <div>
+      <div class="t4-cmd-card uk-card uk-card-secondary uk-card-body uk-card-small uk-border-rounded" onclick="t4CopyCmd(this, 'npm i -g techno4-cli cordova', event)" style="cursor: pointer;" title="Клацніть, щоб скопіювати команду">
+        <div class="uk-flex uk-flex-between uk-flex-middle">
+          <span class="uk-badge uk-badge-primary t4-step-badge">Крок 1</span>
+          <span class="t4-step-title">Глобальний CLI &amp; Cordova</span>
+        </div>
+        <div class="t4-cmd-box uk-margin-small-top uk-flex uk-flex-between uk-flex-middle">
+          <code>npm i -g techno4-cli cordova</code>
+          <button type="button" class="t4-copy-btn uk-button uk-button-link" title="Скопіювати команду">
+            <span uk-icon="icon: copy; ratio: 0.8"></span>
+          </button>
+        </div>
+        <div class="t4-card-feedback uk-margin-small-top uk-flex uk-flex-between uk-flex-middle uk-text-meta" style="font-size: 11px;">
+          <span class="t4-card-hint">Клацніть для копіювання</span>
+          <span class="t4-card-copied" style="display: none; color: #34d399; font-weight: 600;">✓ Скопійовано!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Крок 2 -->
+    <div>
+      <div class="t4-cmd-card uk-card uk-card-secondary uk-card-body uk-card-small uk-border-rounded" onclick="t4CopyCmd(this, 'techno4 create', event)" style="cursor: pointer;" title="Клацніть, щоб скопіювати команду">
+        <div class="uk-flex uk-flex-between uk-flex-middle">
+          <span class="uk-badge uk-badge-primary t4-step-badge">Крок 2</span>
+          <span class="t4-step-title">Генератор проєкту</span>
+        </div>
+        <div class="t4-cmd-box uk-margin-small-top uk-flex uk-flex-between uk-flex-middle">
+          <code>techno4 create</code>
+          <button type="button" class="t4-copy-btn uk-button uk-button-link" title="Скопіювати команду">
+            <span uk-icon="icon: copy; ratio: 0.8"></span>
+          </button>
+        </div>
+        <div class="t4-card-feedback uk-margin-small-top uk-flex uk-flex-between uk-flex-middle uk-text-meta" style="font-size: 11px;">
+          <span class="t4-card-hint">Клацніть для копіювання</span>
+          <span class="t4-card-copied" style="display: none; color: #34d399; font-weight: 600;">✓ Скопійовано!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Крок 3 -->
+    <div>
+      <div class="t4-cmd-card uk-card uk-card-secondary uk-card-body uk-card-small uk-border-rounded" onclick="t4CopyCmd(this, 'npm install', event)" style="cursor: pointer;" title="Клацніть, щоб скопіювати команду">
+        <div class="uk-flex uk-flex-between uk-flex-middle">
+          <span class="uk-badge uk-badge-primary t4-step-badge">Крок 3</span>
+          <span class="t4-step-title">Встановлення залежностей</span>
+        </div>
+        <div class="t4-cmd-box uk-margin-small-top uk-flex uk-flex-between uk-flex-middle">
+          <code>npm install</code>
+          <button type="button" class="t4-copy-btn uk-button uk-button-link" title="Скопіювати команду">
+            <span uk-icon="icon: copy; ratio: 0.8"></span>
+          </button>
+        </div>
+        <div class="t4-card-feedback uk-margin-small-top uk-flex uk-flex-between uk-flex-middle uk-text-meta" style="font-size: 11px;">
+          <span class="t4-card-hint">Клацніть для копіювання</span>
+          <span class="t4-card-copied" style="display: none; color: #34d399; font-weight: 600;">✓ Скопійовано!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Крок 4 -->
+    <div>
+      <div class="t4-cmd-card uk-card uk-card-secondary uk-card-body uk-card-small uk-border-rounded" onclick="t4CopyCmd(this, 'npm start', event)" style="cursor: pointer;" title="Клацніть, щоб скопіювати команду">
+        <div class="uk-flex uk-flex-between uk-flex-middle">
+          <span class="uk-badge uk-badge-primary t4-step-badge">Крок 4</span>
+          <span class="t4-step-title">Запуск сервера розробки</span>
+        </div>
+        <div class="t4-cmd-box uk-margin-small-top uk-flex uk-flex-between uk-flex-middle">
+          <code>npm start</code>
+          <button type="button" class="t4-copy-btn uk-button uk-button-link" title="Скопіювати команду">
+            <span uk-icon="icon: copy; ratio: 0.8"></span>
+          </button>
+        </div>
+        <div class="t4-card-feedback uk-margin-small-top uk-flex uk-flex-between uk-flex-middle uk-text-meta" style="font-size: 11px;">
+          <span class="t4-card-hint">Клацніть для копіювання</span>
+          <span class="t4-card-copied" style="display: none; color: #34d399; font-weight: 600;">✓ Скопійовано!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+    2. ЕЛЕГАНТНИЙ ТЕМНИЙ ТЕРМІНАЛ (MACOS / MODERN IDE CONSOLE WINDOW)
+  ======================================================================== -->
+  <div class="t4-terminal-window uk-card uk-card-secondary uk-border-rounded uk-box-shadow-large">
+
+    <!-- Рядок заголовка термінала (Title Bar з кнопками 🔴 🟡 🟢) -->
+    <div class="t4-terminal-header uk-flex uk-flex-between uk-flex-middle">
+      <div class="uk-flex uk-flex-middle">
+        <div class="t4-mac-dots uk-flex uk-flex-middle">
+          <button type="button" class="t4-dot t4-dot-red" title="Скинути до 1-ї вкладки" onclick="t4ResetTerminal(event)"></button>
+          <button type="button" class="t4-dot t4-dot-yellow" title="Згорнути / розгорнути консоль" onclick="t4ToggleCollapseTerminal(event)"></button>
+          <button type="button" class="t4-dot t4-dot-green" title="Збільшити висоту вікна" onclick="t4ToggleExpandTerminal(event)"></button>
+        </div>
+        <span class="t4-terminal-title uk-margin-small-left">
+          Terminal — techno4 create
+        </span>
+      </div>
+
+      <div class="uk-flex uk-flex-middle" style="gap: 12px;">
+        <div class="t4-terminal-meta uk-visible@m uk-flex uk-flex-middle">
+          <span class="t4-meta-tag">zsh</span>
+          <span class="t4-meta-separator">•</span>
+          <span class="t4-meta-tag">node v20+</span>
+          <span class="t4-meta-separator">•</span>
+          <span class="t4-meta-tag">techno4-cli v2.0.4</span>
+        </div>
+        <button type="button" class="t4-copy-log-btn uk-button uk-button-link uk-flex uk-flex-middle" onclick="t4CopyActiveLog(this, event)" title="Скопіювати весь лог поточної вкладки">
+          <span uk-icon="icon: copy; ratio: 0.75" class="uk-margin-small-right"></span>
+          <span class="t4-copy-log-text">Скопіювати лог</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Інтерактивні вкладки (UIkit Switcher Tabs) -->
+    <div class="t4-terminal-nav">
+      <ul id="t4-terminal-switcher" class="uk-subnav uk-subnav-pill uk-margin-remove" uk-switcher="connect: #t4-terminal-panes; animation: uk-animation-fade">
+        <li class="uk-active">
+          <a href="javascript:void(0)" onclick="t4SelectTab(0, event)">
+            <span uk-icon="icon: play; ratio: 0.75" class="uk-margin-small-right"></span>
+            1. Процес генерації
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" onclick="t4SelectTab(1, event)">
+            <span uk-icon="icon: folder; ratio: 0.75" class="uk-margin-small-right"></span>
+            2. Структура проєкту
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" onclick="t4SelectTab(2, event)">
+            <span uk-icon="icon: phone; ratio: 0.75" class="uk-margin-small-right"></span>
+            3. Cordova Android
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" onclick="t4SelectTab(3, event)">
+            <span uk-icon="icon: check; ratio: 0.75" class="uk-margin-small-right"></span>
+            4. Збірка у Vite
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Вміст термінала (UIkit Switcher Content) -->
+    <ul id="t4-terminal-panes" class="uk-switcher t4-terminal-body">
+
+      <!-- ===================================================================
+        ВКЛАДКА 1: ЖИВИЙ ІНТЕРАКТИВНИЙ ПРОЦЕС techno4 create
+      ==================================================================== -->
+      <li class="uk-active" style="display: block;">
+        <div class="t4-terminal-code-scroll">
+          <pre class="uk-margin-remove"><code class="language-text uk-text-small">================================================================================
+  TECHNO4 FRAMEWORK2 CLI — ПРОЦЕС ГЕНЕРАЦІЇ ПРОЄКТУ (MONOSPACE CONSOLE LOG)
+================================================================================
+
+$ techno4 --version
+2.0.0
+
+$ cd cli-demos
+$ techno4 create
+
+[?] Techno4 може згенерувати стартовий проєкт у наступних форматах:
+    [ ] Простий вебзастосунок
+    [ ] PWA (Progressive Web App)
+    [*] Cordova застосунок (цільові платформи iOS, Android, Electron для MacOS, Linux та Windows.)
+    [ ] Capacitor застосунок (цільові платформи iOS, Android, Electron для MacOS, Linux та Windows.)
+
+[?] Назва застосунку (проєкт): Techno4 Tabs Cordova Android
+[?] Ідентифікатор пакунку (Bundle ID): io.techno4.tabsandroid
+
+[?] Цільові Cordova платформи:
+    [ ] iOS
+    [*] Android
+    [ ] Electron (настільний застосунок)
+    [ ] macOS (настільний MacOS застосунок)
+
+[?] Який тип Techno4 фреймворку обрати?
+  &gt; Techno4 Core
+
+[?] Який стартовий шаблон обрати?
+    Пустий
+    Один Перегляд (View)
+  &gt; Перегляд з вкладками (Tabs)
+    Двопанельний перегляд (Split Panel)
+
+[?] Налаштувати проєкт з компілятором (Bundler)?
+  &gt; Компілятор Vite (рекомендовано)
+    Без компілятора
+
+[?] Бажаєте налаштувати препроцесор CSS Pre-Processor?
+  &gt; Ні, все чудово з CSS
+    Less
+    Stylus
+    SCSS (SASS)
+
+[?] Хочете визначити власний колір теми?
+  &gt; Ні, Залиште стандартні кольори теми.
+    Так, я хочу визначити власний колір теми.
+
+[?] Ви хочете включити Techno4 Icons та Material Icons шрифт?
+  &gt; Так.
+    Ні.
+
+--------------------------------------------------------------------------------
+  ВИКОНАННЯ ГЕНЕРАЦІЇ ТА ВСТАНОВЛЕННЯ
+--------------------------------------------------------------------------------
+
+&gt; [START] Генерація package.json.
+✔ [DONE]  Генерація package.json.
+&gt; [START] Генерація структури файлів.
+✔ [DONE]  Генерація структури файлів.
+&gt; [START] Генерація NPM залежностей. (Очікуйте, це може зайняти деякий час.)
+✔ [DONE]  Генерація NPM залежностей.
+&gt; [START] Генерація NPM залежностей розробника. (Очікуйте, це може зайняти деякий час.)
+✔ [DONE]  Додавання NPM залежностей розробника.
+&gt; [START] Генерація Cordova проекту. (Очікуйте, це може зайняти деякий час.).
+✔ [DONE]  Генерація Cordova проекту.
+&gt; [START] Генерація файлів проекту.
+✔ [DONE]  Генерація файлів проекту.
+
+√ Виконано! 💪
+
+i Подальші кроки:
+  - 😎😉 Запустіть команду "npm install" для встановлення пакетів залежностей.
+  - ✔✔ Запустіть команду "npm start" для запуску сервера розробки.
+  - ✨✨ Офіційний сайт проєкту: https://techno4.online
+  - 📖📖 Документація фреймворку: https://techno4.online/techno4-framework2
+  - 📖📖 Читайте README.md у файлах проєкту для отримання інструкцій.
+  - 🚀🚀 GitHub репозиторій: https://github.com/CO-CF-TECHNO4/TECHNO4FRAMEWORK2
+    
+
+================================================================================
+  ПІДСУМОК ГЕНЕРАЦІЇ ТА СТАТУС ПАКУНКІВ
+================================================================================
+✔ Успішно згенеровано проєкт з шаблоном Tabs (Перегляд з вкладками)
+✔ Налаштовано цільову платформу Cordova Android (io.techno4.tabsandroid)
+✔ Підключено плагіни: statusbar, keyboard, splashscreen
+✔ Підключено пакети з npm: techno4@2.0.0, dom64@0.1.1, rollup-plugin-techno4@2.0.0</code></pre>
+        </div>
+      </li>
+
+      <!-- ===================================================================
+        ВКЛАДКА 2: ДЕРЕВО СТРУКТУРИ ПРОЄКТУ (ASCII TREE)
+      ==================================================================== -->
+      <li style="display: none;">
+        <div class="t4-terminal-code-scroll">
+          <pre class="uk-margin-remove"><code class="language-text uk-text-small">================================================================================
+  СТРУКТУРА ЗГЕНЕРОВАНОГО ПРОЄКТУ: cli-demos/ (Techno4 Tabs Cordova Android)
+================================================================================
+
+cli-demos/
+├── .vscode/
+│   └── settings.json
+├── assets-src/
+│   ├── cordova-android-icon.png
+│   └── cordova-splash-screen.png
+├── build/
+│   └── build-cordova.js
+├── cordova/
+│   ├── platforms/
+│   │   └── android/
+│   │       ├── AndroidManifest.xml (generated by Cordova)
+│   │       ├── app/
+│   │       ├── cordova/
+│   │       └── platform_www/
+│   ├── plugins/
+│   │   ├── cordova-plugin-keyboard/
+│   │   │   ├── src/
+│   │   │   │   ├── android/
+│   │   │   │   │   └── Keyboard.java
+│   │   │   │   └── ios/
+│   │   │   │       ├── CDVKeyboard.h
+│   │   │   │       └── CDVKeyboard.m
+│   │   │   ├── www/
+│   │   │   │   └── keyboard.js
+│   │   │   ├── package.json
+│   │   │   ├── plugin.xml
+│   │   │   └── README.md
+│   │   ├── cordova-plugin-splashscreen/
+│   │   │   ├── src/
+│   │   │   │   ├── android/
+│   │   │   │   │   └── SplashScreen.java
+│   │   │   │   ├── browser/
+│   │   │   │   │   └── SplashScreenProxy.js
+│   │   │   │   └── windows/
+│   │   │   │       └── SplashScreenProxy.js
+│   │   │   ├── types/
+│   │   │   │   └── index.d.ts
+│   │   │   ├── www/
+│   │   │   │   └── splashscreen.js
+│   │   │   ├── CONTRIBUTING.md
+│   │   │   ├── LICENSE
+│   │   │   ├── NOTICE
+│   │   │   ├── package.json
+│   │   │   ├── plugin.xml
+│   │   │   └── README.md
+│   │   │   └── RELEASENOTES.md
+│   │   ├── cordova-plugin-statusbar/
+│   │   │   ├── src/
+│   │   │   │   ├── android/
+│   │   │   │   │   └── StatusBar.java
+│   │   │   │   ├── browser/
+│   │   │   │   │   └── StatusBarProxy.js
+│   │   │   │   └── ios/
+│   │   │   │       ├── CDVStatusBar.h
+│   │   │   │       └── CDVStatusBar.m
+│   │   │   ├── types/
+│   │   │   │   └── index.d.ts
+│   │   │   ├── www/
+│   │   │   │   └── statusbar.js
+│   │   │   ├── CONTRIBUTING.md
+│   │   │   ├── LICENSE
+│   │   │   ├── NOTICE
+│   │   │   ├── package.json
+│   │   │   ├── plugin.xml
+│   │   │   ├── README.md
+│   │   │   └── RELEASENOTES.md
+│   │   ├── android.json
+│   │   └── fetch.json
+│   ├── res/
+│   │   ├── icon/
+│   │   │   ├── android/
+│   │   │   │   ├── mipmap-hdpi/
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── mipmap-ldpi/
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── mipmap-mdpi/
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── mipmap-xhdpi/
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── mipmap-xxhdpi/
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── mipmap-xxxhdpi/
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   └── playstore-icon.png
+│   │   │   ├── electron/
+│   │   │   │   ├── app.png
+│   │   │   │   └── installer.png
+│   │   │   ├── ios/
+│   │   │   │   ├── icon-20x20@1x.png
+│   │   │   │   ├── icon-20x20@2x.png
+│   │   │   │   ├── icon-20x20@3x.png
+│   │   │   │   ├── icon-29x29@1x.png
+│   │   │   │   ├── icon-29x29@2x.png
+│   │   │   │   ├── icon-29x29@3x.png
+│   │   │   │   ├── icon-40x40@1x.png
+│   │   │   │   ├── icon-40x40@2x.png
+│   │   │   │   ├── icon-40x40@3x.png
+│   │   │   │   ├── icon-50x50@1x.png
+│   │   │   │   ├── icon-50x50@2x.png
+│   │   │   │   ├── icon-512x512@1x.png
+│   │   │   │   ├── icon-512x512@2x.png
+│   │   │   │   ├── icon-57x57@1x.png
+│   │   │   │   ├── icon-57x57@2x.png
+│   │   │   │   ├── icon-60x60@1x.png
+│   │   │   │   ├── icon-60x60@2x.png
+│   │   │   │   ├── icon-60x60@3x.png
+│   │   │   │   ├── icon-72x72@1x.png
+│   │   │   │   ├── icon-72x72@2x.png
+│   │   │   │   ├── icon-76x76@1x.png
+│   │   │   │   ├── icon-76x76@2x.png
+│   │   │   │   ├── icon-76x76@3x.png
+│   │   │   │   └── icon-83.5x83.5@2x.png
+│   │   │   └── osx/
+│   │   │       ├── icon-1024x1024.png
+│   │   │       ├── icon-128x128.png
+│   │   │       ├── icon-16x16.png
+│   │   │       ├── icon-256x256.png
+│   │   │       ├── icon-32x32.png
+│   │   │       ├── icon-512x512.png
+│   │   │       └── icon-64x64.png
+│   │   └── screen/
+│   │       ├── android/
+│   │       │   ├── drawable-hdpi/
+│   │       │   │   └── screen.png
+│   │       │   ├── drawable-ldpi/
+│   │       │   │   └── screen.png
+│   │       │   ├── drawable-mdpi/
+│   │       │   │   └── screen.png
+│   │       │   ├── drawable-xhdpi/
+│   │       │   │   └── screen.png
+│   │       │   ├── drawable-xxhdpi/
+│   │       │   │   └── screen.png
+│   │       │   └── drawable-xxxhdpi/
+│   │       │       └── screen.png
+│   │       └── ios/
+│   │           └── Default@2x~universal~anyany.png
+│   ├── www/
+│   │   ├── css/
+│   │   │   └── index.css
+│   │   ├── img/
+│   │   │   └── logo.png
+│   │   ├── js/
+│   │   │   └── index.js
+│   │   └── index.html
+│   ├── .gitignore
+│   ├── config.xml
+│   ├── package-lock.json
+│   └── package.json
+├── public/
+├── src/
+│   ├── assets/
+│   ├── css/
+│   │   ├── app.css
+│   │   └── icons.css
+│   ├── fonts/
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── cordova-app.js
+│   │   ├── routes.js
+│   │   └── store.js
+│   ├── pages/
+│   │   ├── 404.t4
+│   │   ├── about.t4
+│   │   ├── catalog.t4
+│   │   ├── dynamic-route.t4
+│   │   ├── form.t4
+│   │   ├── home.t4
+│   │   ├── product.t4
+│   │   ├── request-and-load.t4
+│   │   └── settings.t4
+│   ├── app.t4
+│   └── index.html
+├── www/
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── README.md
+├── techno4.json
+└── vite.config.js</code></pre>
+        </div>
+      </li>
+
+      <!-- ===================================================================
+        ВКЛАДКА 3: ВЕРИФІКАЦІЯ CORDOVA ANDROID (15.1.0)
+      ==================================================================== -->
+      <li style="display: none;">
+        <div class="t4-terminal-code-scroll">
+          <pre class="uk-margin-remove"><code class="language-text uk-text-small">================================================================================
+  ВЕРИФІКАЦІЯ CORDOVA ANDROID ПІДСИСТЕМИ
+================================================================================
+
+$ cd cordova
+$ cordova platform ls
+Installed platforms:
+  android 15.1.0
+Available platforms:
+  browser
+  electron
+
+$ cordova plugin ls
+cordova-plugin-keyboard 1.3.0 "Keyboard"
+cordova-plugin-splashscreen 6.0.2 "Splashscreen"
+cordova-plugin-statusbar 4.0.0 "StatusBar"
+
+--------------------------------------------------------------------------------
+  КОНФІГУРАЦІЯ cordova/config.xml
+--------------------------------------------------------------------------------
+&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;widget id="io.techno4.tabsandroid" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"&gt;
+    &lt;name&gt;Techno4 Tabs Cordova Android&lt;/name&gt;
+    &lt;description&gt;
+        A sample Apache Cordova application that responds to the deviceready event.
+    &lt;/description&gt;
+    &lt;author email="dev@cordova.apache.org" href="https://cordova.apache.org"&gt;
+        Apache Cordova Team
+    &lt;/author&gt;
+    &lt;content src="index.html" /&gt;
+    &lt;allow-intent href="http://*/*" /&gt;
+    &lt;allow-intent href="https://*/*" /&gt;
+
+    &lt;allow-navigation href="*" /&gt;
+
+    &lt;platform name="android"&gt;
+      &lt;preference name="StatusBarOverlaysWebView" value="false" /&gt;
+      &lt;preference name="android-minSdkVersion" value="22" /&gt;
+      &lt;preference name="SplashMaintainAspectRatio" value="true" /&gt;
+      &lt;splash density="land-hdpi" src="res/screen/android/drawable-hdpi/screen.png" /&gt;
+      &lt;splash density="land-mdpi" src="res/screen/android/drawable-mdpi/screen.png" /&gt;
+      &lt;splash density="land-xhdpi" src="res/screen/android/drawable-xhdpi/screen.png" /&gt;
+      &lt;splash density="land-xxhdpi" src="res/screen/android/drawable-xxhdpi/screen.png" /&gt;
+      &lt;splash density="land-xxxhdpi" src="res/screen/android/drawable-xxxhdpi/screen.png" /&gt;
+      &lt;splash density="port-hdpi" src="res/screen/android/drawable-hdpi/screen.png" /&gt;
+      &lt;splash density="port-mdpi" src="res/screen/android/drawable-mdpi/screen.png" /&gt;
+      &lt;splash density="port-xhdpi" src="res/screen/android/drawable-xhdpi/screen.png" /&gt;
+      &lt;splash density="port-xxhdpi" src="res/screen/android/drawable-xxhdpi/screen.png" /&gt;
+      &lt;splash density="port-xxxhdpi" src="res/screen/android/drawable-xxxhdpi/screen.png" /&gt;
+      &lt;icon density="ldpi" src="res/icon/android/mipmap-ldpi/ic_launcher.png" /&gt;
+      &lt;icon density="mdpi" src="res/icon/android/mipmap-mdpi/ic_launcher.png" /&gt;
+      &lt;icon density="hdpi" src="res/icon/android/mipmap-hdpi/ic_launcher.png" /&gt;
+      &lt;icon density="xhdpi" src="res/icon/android/mipmap-xhdpi/ic_launcher.png" /&gt;
+      &lt;icon density="xxhdpi" src="res/icon/android/mipmap-xxhdpi/ic_launcher.png" /&gt;
+      &lt;icon density="xxxhdpi" src="res/icon/android/mipmap-xxxhdpi/ic_launcher.png" /&gt;
+    &lt;/platform&gt;
+
+    &lt;preference name="DisallowOverscroll" value="true" /&gt;
+    &lt;preference name="BackupWebStorage" value="local" /&gt;
+    &lt;preference name="AutoHideSplashScreen" value="false" /&gt;
+    &lt;preference name="ShowSplashScreenSpinner" value="false" /&gt;
+    &lt;preference name="SplashScreenDelay" value="0" /&gt;
+    &lt;preference name="Suppresses3DTouchGesture" value="true" /&gt;
+    &lt;preference name="Allow3DTouchLinkPreview" value="false" /&gt;
+    &lt;preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" /&gt;
+    &lt;preference name="AllowInlineMediaPlayback" value="true" /&gt;
+&lt;/widget&gt;</code></pre>
+        </div>
+      </li>
+
+      <!-- ===================================================================
+        ВКЛАДКА 4: ПЕРЕВІРКА ЗБІРКИ ПРОЄКТУ (VITE BUNDLER)
+      ==================================================================== -->
+      <li style="display: none;">
+        <div class="t4-terminal-code-scroll">
+          <pre class="uk-margin-remove"><code class="language-text uk-text-small">================================================================================
+  TECHNO4 FRAMEWORK2 — ПЕРЕВІРКА ЗБІРКИ ПРОЄКТУ (BUILD VERIFICATION)
+================================================================================
+
+$ cd cli-demos
+$ npm run build
+
+&gt; techno4-tabs-cordova-android@1.0.0 build
+&gt; cross-env NODE_ENV=production vite build
+
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+computing gzip size...
+www/index.html                              1.23 kB │ gzip:   0.69 kB
+www/assets/material-icons-kAwBdRge.woff2  128.35 kB
+www/assets/material-icons-Dr0goTwe.woff   164.91 kB
+www/assets/index-DRgZnHvN.css             520.17 kB │ gzip:  75.00 kB
+www/assets/index-1z1g1sRE.js              840.63 kB │ gzip: 220.50 kB
+
+✓ built in 4.84s
+
+================================================================================
+  ВЕРИФІКАЦІЯ ВИХІДНИХ ФАЙЛІВ У www/
+================================================================================
+- www/index.html                     [OK] Головна HTML сторінка застосунку
+- www/assets/index-DRgZnHvN.css      [OK] CSS-бандл (Techno4 Core + Tabs theme)
+- www/assets/index-1z1g1sRE.js       [OK] JS-бандл (Techno4 Core + VDOM + Router)
+- www/assets/material-icons-*.woff2  [OK] Вбудовані веб-шрифти Material Icons
+- cordova/platforms/android/         [OK] Готовий Cordova Android проєкт з плагінами</code></pre>
+        </div>
+      </li>
+
+    </ul>
+
+    <!-- Рядок стану термінала (Footer Status Bar) -->
+    <div class="t4-terminal-footer uk-flex uk-flex-between uk-flex-middle">
+      <div class="uk-flex uk-flex-middle">
+        <span class="t4-pulse-dot"></span>
+        <span id="t4-footer-left" class="t4-footer-text uk-margin-small-left">Ready · Процес генерації · UTF-8</span>
+      </div>
+      <div id="t4-footer-right" class="t4-footer-text uk-visible@s">
+        Tabs Template · Cordova Android 15.1.0 · Vite Bundler
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===========================================================================
+  СТИЛІЗАЦІЯ КОМПОНЕНТА ТЕРМІНАЛА (MODERN IDE / MACOS STYLING)
+=========================================================================== -->
+<style>
+  /* Головний контейнер компонента */
+  .t4-terminal-component {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* Картки швидких команд */
+  .t4-cmd-card {
+    background: #161b22 !important;
+    border: 1px solid #30363d !important;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    user-select: none;
+  }
+  .t4-cmd-card:hover {
+    transform: translateY(-2px);
+    border-color: #38bdf8 !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+  .t4-cmd-card:active {
+    transform: scale(0.99);
+  }
+  .t4-step-badge {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .t4-step-title {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .t4-cmd-box {
+    background: #090d16;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+  .t4-cmd-box code {
+    background: transparent !important;
+    color: #38bdf8 !important;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0;
+  }
+  .t4-copy-btn {
+    color: #64748b !important;
+    transition: color 0.15s ease;
+    padding: 0;
+    line-height: 1;
+  }
+  .t4-cmd-card:hover .t4-copy-btn {
+    color: #38bdf8 !important;
+  }
+
+  /* Термінальне вікно */
+  .t4-terminal-window {
+    background: #0a0e17 !important;
+    border: 1px solid #30363d !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  /* Рядок заголовка */
+  .t4-terminal-header {
+    background: #161b22;
+    padding: 10px 16px;
+    border-bottom: 1px solid #21262d;
+    user-select: none;
+  }
+  .t4-mac-dots {
+    gap: 8px;
+  }
+  .t4-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .t4-dot:hover {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+  .t4-dot-red {
+    background: #ff5f56;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.4);
+  }
+  .t4-dot-yellow {
+    background: #ffbd2e;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.4);
+  }
+  .t4-dot-green {
+    background: #27c93f;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.4);
+  }
+  .t4-terminal-title {
+    color: #e2e8f0;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: 0.02em;
+  }
+  .t4-terminal-meta {
+    gap: 8px;
+  }
+  .t4-meta-tag {
+    color: #64748b;
+    font-size: 11px;
+    font-family: monospace;
+  }
+  .t4-meta-separator {
+    color: #334155;
+    font-size: 10px;
+  }
+  .t4-copy-log-btn {
+    color: #94a3b8 !important;
+    font-size: 11px;
+    text-decoration: none !important;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid #334155;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.15s ease;
+  }
+  .t4-copy-log-btn:hover {
+    color: #38bdf8 !important;
+    border-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.08);
+  }
+
+  /* Панель вкладок (Subnav Pill) */
+  .t4-terminal-nav {
+    background: #0d131f;
+    padding: 8px 12px;
+    border-bottom: 1px solid #1e293b;
+    overflow-x: auto;
+  }
+  .t4-terminal-nav .uk-subnav-pill > * > :first-child {
+    background: transparent;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+  }
+  .t4-terminal-nav .uk-subnav-pill > * > :first-child:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #f1f5f9;
+  }
+  .t4-terminal-nav .uk-subnav-pill > .uk-active > a {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #38bdf8 !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+  }
+
+  /* Тіло термінала */
+  .t4-terminal-body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #080c14;
+    transition: max-height 0.3s ease;
+  }
+  .t4-terminal-code-scroll {
+    max-height: 480px;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 16px 20px;
+    background: #080c14;
+    -webkit-overflow-scrolling: touch;
+    transition: max-height 0.3s ease;
+  }
+  .t4-terminal-code-scroll pre {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    line-height: 1.55;
+  }
+  .t4-terminal-code-scroll code {
+    background: transparent !important;
+    color: #e2e8f0 !important;
+    font-family: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace !important;
+    font-size: 12.5px !important;
+    white-space: pre !important;
+  }
+
+  /* Рядок стану термінала (Footer) */
+  .t4-terminal-footer {
+    background: #0e1626;
+    padding: 8px 16px;
+    border-top: 1px solid #1e293b;
+    user-select: none;
+  }
+  .t4-footer-text {
+    color: #64748b;
+    font-size: 11px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  .t4-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+    animation: t4Pulse 2s infinite ease-in-out;
+  }
+  @keyframes t4Pulse {
+    0% { opacity: 0.6; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+    100% { opacity: 0.6; transform: scale(0.9); }
+  }
+
+  /* Стилізація скролбару всередині термінала */
+  .t4-terminal-code-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .t4-terminal-code-scroll::-webkit-scrollbar-track {
+    background: #080c14;
+  }
+  .t4-terminal-code-scroll::-webkit-scrollbar-thumb {
+    background: #242e42;
+    border-radius: 4px;
+  }
+  .t4-terminal-code-scroll::-webkit-scrollbar-thumb:hover {
+    background: #384663;
+  }
+</style>
+
+<!-- ===========================================================================
+  СКРИПТ ІНТЕРАКТИВНОГО КЕРУВАННЯ ТА КОПІЮВАННЯ (STANDALONE INTERACTION HELPER)
+=========================================================================== -->
+<script>
+  // Функція безпечного копіювання тексту (Clipboard API + Fallback)
+  function t4CopyText(text, onSuccess, onError) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function() {
+        if (onSuccess) onSuccess();
+      }).catch(function() {
+        t4FallbackCopy(text, onSuccess, onError);
+      });
+    } else {
+      t4FallbackCopy(text, onSuccess, onError);
+    }
+  }
+
+  function t4FallbackCopy(text, onSuccess, onError) {
+    try {
+      var temp = document.createElement('textarea');
+      temp.value = text;
+      temp.style.position = 'fixed';
+      temp.style.left = '-9999px';
+      temp.style.top = '-9999px';
+      document.body.appendChild(temp);
+      temp.focus();
+      temp.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(temp);
+      if (ok && onSuccess) onSuccess();
+      else if (!ok && onError) onError();
+    } catch (e) {
+      if (onError) onError(e);
+    }
+  }
+
+  // Копіювання команди з картки (Крок 1, 2, 3)
+  function t4CopyCmd(cardEl, cmdText, evt) {
+    if (evt) evt.stopPropagation();
+    var indicator = cardEl.querySelector ? cardEl.querySelector('.t4-card-copied') : null;
+    var hint = cardEl.querySelector ? cardEl.querySelector('.t4-card-hint') : null;
+    var btn = cardEl.querySelector ? cardEl.querySelector('.t4-copy-btn') : null;
+
+    t4CopyText(cmdText, function() {
+      if (indicator && hint) {
+        indicator.style.display = 'inline';
+        hint.style.display = 'none';
+        setTimeout(function() {
+          indicator.style.display = 'none';
+          hint.style.display = 'inline';
+        }, 1800);
+      } else if (btn) {
+        var prev = btn.innerHTML;
+        btn.innerHTML = '<span style="color: #34d399; font-size: 11px; font-weight: bold;">✓</span>';
+        setTimeout(function() { btn.innerHTML = prev; }, 1600);
+      }
+    });
+  }
+
+  // Перемикання вкладок термінала (100% надійна робота через UIkit + прямий DOM fallback)
+  function t4SelectTab(idx, evt) {
+    if (evt) evt.preventDefault();
+
+    // 1. Спроба перемикання через нативний UIkit Switcher API
+    if (window.UIkit && window.UIkit.switcher) {
+      var sw = document.getElementById('t4-terminal-switcher');
+      if (sw && window.UIkit.switcher(sw)) {
+        try { window.UIkit.switcher(sw).show(idx); } catch (e) {}
+      }
+    }
+
+    // 2. Гарантований прямий DOM fallback
+    var nav = document.getElementById('t4-terminal-switcher');
+    var panes = document.getElementById('t4-terminal-panes');
+    if (nav && panes) {
+      var tabs = nav.querySelectorAll(':scope > li');
+      var contents = panes.querySelectorAll(':scope > li');
+      for (var i = 0; i < tabs.length; i++) {
+        if (i === idx) {
+          tabs[i].classList.add('uk-active');
+        } else {
+          tabs[i].classList.remove('uk-active');
+        }
+      }
+      for (var j = 0; j < contents.length; j++) {
+        if (j === idx) {
+          contents[j].classList.add('uk-active');
+          contents[j].style.display = 'block';
+        } else {
+          contents[j].classList.remove('uk-active');
+          contents[j].style.display = 'none';
+        }
+      }
+    }
+
+    t4UpdateTerminalFooter(idx);
+  }
+
+  // Оновлення інформаційного рядка стану (Footer) відповідно до відкритої вкладки
+  function t4UpdateTerminalFooter(idx) {
+    var leftEl = document.getElementById('t4-footer-left');
+    var rightEl = document.getElementById('t4-footer-right');
+    if (!leftEl || !rightEl) return;
+
+    var statusData = [
+      { left: 'Ready · Процес генерації · UTF-8', right: 'Tabs Template · Cordova Android 15.1.0 · Vite Bundler' },
+      { left: 'cli-demos/ · 48 files, 14 directories · ASCII Tree', right: 'Повна вихідна структура · Vite + Cordova' },
+      { left: 'Cordova platform ls · android 15.1.0', right: '3 нативні плагіни: statusbar, keyboard, splashscreen' },
+      { left: 'Vite v8.3.0 · Збірка завершена за 4.84s', right: 'Production Bundle · www/ · 100% Верифіковано' }
+    ];
+
+    if (statusData[idx]) {
+      leftEl.textContent = statusData[idx].left;
+      rightEl.textContent = statusData[idx].right;
+    }
+  }
+
+  // Скинути термінал на початок (Червона кнопка 🔴)
+  function t4ResetTerminal(evt) {
+    if (evt) evt.preventDefault();
+    t4SelectTab(0);
+    var activePane = document.querySelector('#t4-terminal-panes > li.uk-active .t4-terminal-code-scroll');
+    if (activePane) activePane.scrollTop = 0;
+  }
+
+  // Згорнути / розгорнути вікно термінала (Жовта кнопка 🟡)
+  function t4ToggleCollapseTerminal(evt) {
+    if (evt) evt.preventDefault();
+    var body = document.getElementById('t4-terminal-panes');
+    var footer = document.querySelector('.t4-terminal-footer');
+    if (!body) return;
+    if (body.style.display === 'none') {
+      body.style.display = '';
+      if (footer) footer.style.display = '';
+    } else {
+      body.style.display = 'none';
+      if (footer) footer.style.display = 'none';
+    }
+  }
+
+  // Збільшити або відновити висоту вікна (Зелена кнопка 🟢)
+  function t4ToggleExpandTerminal(evt) {
+    if (evt) evt.preventDefault();
+    var scrolls = document.querySelectorAll('.t4-terminal-code-scroll');
+    scrolls.forEach(function(sc) {
+      if (sc.style.maxHeight === '850px') {
+        sc.style.maxHeight = '480px';
+      } else {
+        sc.style.maxHeight = '850px';
+      }
+    });
+  }
+
+  // Копіювання повного тексту логу поточної активної вкладки
+  function t4CopyActiveLog(btnEl, evt) {
+    if (evt) evt.preventDefault();
+    var activeCode = document.querySelector('#t4-terminal-panes > li.uk-active code');
+    if (!activeCode) {
+      var allCodes = document.querySelectorAll('#t4-terminal-panes > li');
+      for (var i = 0; i < allCodes.length; i++) {
+        if (allCodes[i].style.display !== 'none') {
+          activeCode = allCodes[i].querySelector('code');
+          break;
+        }
+      }
+    }
+    if (!activeCode) return;
+    var text = activeCode.innerText || activeCode.textContent;
+    t4CopyText(text, function() {
+      var label = btnEl.querySelector('.t4-copy-log-text');
+      if (label) {
+        var prev = label.textContent;
+        label.innerHTML = '<span style="color: #34d399; font-weight: bold;">✓ Скопійовано!</span>';
+        setTimeout(function() { label.textContent = prev; }, 1800);
+      }
+    });
+  }
+
+  // Автоініціалізація при завантаженні сторінки
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { t4SelectTab(0); });
+  } else {
+    t4SelectTab(0);
+  }
+</script>
