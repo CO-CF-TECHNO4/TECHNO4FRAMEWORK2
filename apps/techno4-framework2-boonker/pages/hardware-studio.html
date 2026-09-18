@@ -67,12 +67,48 @@
           </div>
 
           <div class="margin-bottom">
-            <div class="display-flex justify-content-space-between margin-bottom-half">
-              <span class="font-bold">Master Volume:</span>
-              <span class="text-color-primary font-bold">${volume}%</span>
-            </div>
-            <div class="range-slider-wrap">
-              <input type="range" min="0" max="100" value=${volume} @input=${handleVolumeChange} class="custom-range-slider" />
+            <div class="item-title margin-bottom-half font-bold">Аналогові регулятори (Round Range Sliders):</div>
+            <div class="display-flex justify-content-space-around align-items-center flex-wrap" style="background: rgba(0,0,0,0.08); border-radius: 12px; padding: 12px 6px;">
+              <div
+                class="round-range-slider round-range-slider-init"
+                id="synth-volume-knob"
+                data-mode="0+"
+                data-min="0"
+                data-max="100"
+                data-value="70"
+                data-default-value="70"
+                data-title="Master Vol"
+                data-unit="%"
+                data-size="80"
+              ></div>
+
+              <div
+                class="round-range-slider round-range-slider-init"
+                id="synth-detune-knob"
+                data-mode="-0+"
+                data-min="-50"
+                data-max="50"
+                data-value="0"
+                data-default-value="0"
+                data-snap="true"
+                data-snap-values="[0]"
+                data-title="Detune"
+                data-unit="c"
+                data-size="80"
+              ></div>
+
+              <div
+                class="round-range-slider round-range-slider-init"
+                id="synth-cutoff-knob"
+                data-mode="0+"
+                data-min="100"
+                data-max="10000"
+                data-value="2500"
+                data-default-value="2500"
+                data-title="Cutoff"
+                data-unit=" Hz"
+                data-size="80"
+              ></div>
             </div>
           </div>
 
@@ -1357,6 +1393,16 @@
           })
           .catch(() => {});
       }
+
+      // Bind Round Range Knob to Synth Volume
+      $('#synth-volume-knob').on('roundrange:change change', (e) => {
+        if (e.target.f7RoundRange) {
+          volume = e.target.f7RoundRange.value;
+          if (masterGain && audioCtx) {
+            masterGain.gain.setTargetAtTime(volume / 100, audioCtx.currentTime, 0.02);
+          }
+        }
+      });
 
       rescanMidi();
     });

@@ -1,0 +1,206 @@
+<template>
+  <div class="page page-round-range">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Back</span>
+          </a>
+        </div>
+        <div class="title">Round Range Slider (Knob)</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="block-title block-title-medium">
+        <i class="icon t4-icons" style="font-size: 18px; vertical-align: middle; margin-right: 4px;">knob</i>
+        Професійні кругові регулятори для синтезаторів
+      </div>
+      <div class="block block-strong inset">
+        <p>
+          <b>Round Range Slider</b> — круговий слайдер/ручка (knob) для синтезаторів і звукових стеків:
+        </p>
+        <ul>
+          <li><b>Режими значень:</b> <code>"0+"</code> (уніполярний), <code>"-0+"</code> (біполярний з центром у 0) та <code>"-0"</code> (негативний до 0 dB).</li>
+          <li><b>Подвійний клік (dblclick):</b> миттєве скидання на <code>defaultValue</code>.</li>
+          <li><b>SNAP режим:</b> прилипання до 0 або шкали значень (наприклад, <code>[-50, 0, 50]</code>).</li>
+          <li><b>Керування:</b> перетягування вгору/вниз (DAW-стандарт), Shift для точного наведення, коліщатко миші та стрілки клавіатури.</li>
+        </ul>
+      </div>
+
+      <!-- 1. MODE 0+ -->
+      <div class="block-title">Режим "0+" (Уніполярний 0 до MAX)</div>
+      <div class="block block-strong inset text-align-center">
+        <div class="display-flex justify-content-space-around align-items-center flex-wrap">
+          <div
+            class="round-range-slider round-range-slider-init"
+            data-mode="0+"
+            data-min="40"
+            data-max="12000"
+            data-value="1500"
+            data-default-value="1500"
+            data-title="Cutoff"
+            data-unit=" Hz"
+            data-size="88"
+          ></div>
+
+          <div
+            class="round-range-slider round-range-slider-init"
+            data-mode="0+"
+            data-min="0"
+            data-max="100"
+            data-value="75"
+            data-default-value="75"
+            data-title="Volume"
+            data-unit="%"
+            data-size="88"
+          ></div>
+
+          <div
+            class="round-range-slider round-range-slider-init"
+            data-mode="0+"
+            data-min="0.5"
+            data-max="20"
+            data-step="0.5"
+            data-value="4"
+            data-default-value="4"
+            data-title="Resonance"
+            data-unit=" Q"
+            data-size="88"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 2. MODE -0+ -->
+      <div class="block-title">Режим "-0+" (Біполярний з центром у 0 + SNAP до 0)</div>
+      <div class="block block-strong inset text-align-center">
+        <div class="display-flex justify-content-space-around align-items-center flex-wrap">
+          <div
+            class="round-range-slider round-range-slider-init"
+            data-mode="-0+"
+            data-min="-50"
+            data-max="50"
+            data-value="0"
+            data-default-value="0"
+            data-snap="true"
+            data-snap-values="[0]"
+            data-title="Detune"
+            data-unit="c"
+            data-size="88"
+          ></div>
+
+          <div
+            class="round-range-slider round-range-slider-init"
+            data-mode="-0+"
+            data-min="-100"
+            data-max="100"
+            data-value="0"
+            data-default-value="0"
+            data-snap="true"
+            data-snap-values="[0]"
+            data-title="Stereo Pan"
+            data-size="88"
+          ></div>
+
+          <div
+            class="round-range-slider round-range-slider-init"
+            data-mode="-0+"
+            data-min="-12"
+            data-max="12"
+            data-step="1"
+            data-value="0"
+            data-default-value="0"
+            data-snap="true"
+            data-snap-values="[-12, -7, 0, 7, 12]"
+            data-title="Pitch Snap"
+            data-unit=" st"
+            data-size="88"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 3. MODE -0 -->
+      <div class="block-title">Режим "-0" (Негативні значення до 0 dB)</div>
+      <div class="block block-strong inset text-align-center">
+        <div class="display-flex justify-content-space-around align-items-center flex-wrap">
+          <div
+            class="round-range-slider round-range-slider-init"
+            data-mode="-0"
+            data-min="-60"
+            data-max="0"
+            data-step="1"
+            data-value="0"
+            data-default-value="0"
+            data-snap="true"
+            data-snap-values="[0]"
+            data-title="Attenuation"
+            data-unit=" dB"
+            data-size="88"
+          ></div>
+
+          <div
+            class="round-range-slider round-range-slider-init"
+            data-mode="-0"
+            data-min="-48"
+            data-max="0"
+            data-step="0.5"
+            data-value="-12"
+            data-default-value="0"
+            data-snap="true"
+            data-snap-values="[-24, -12, 0]"
+            data-title="EQ Cut"
+            data-unit=" dB"
+            data-size="88"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 4. Interactive Live Events Log -->
+      <div class="block-title">Телеметрія подій (Live Values &amp; Snap)</div>
+      <div class="block block-strong inset">
+        <div class="display-flex justify-content-space-between align-items-center">
+          <span>Останнє значення:</span>
+          <b class="text-color-primary font-monospace">${lastEventText}</b>
+        </div>
+        <div class="display-flex justify-content-space-between align-items-center margin-top-half">
+          <span>Стан прилипання (Snap):</span>
+          <span class="badge ${snappedActive ? 'color-green' : 'color-gray'}">${snappedActive ? 'SNAP ACTIVE' : 'FREE'}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+export default (props, { $, $onMounted, $update }) => {
+  let lastEventText = 'Рухайте або клікайте двічі по регулятору';
+  let snappedActive = false;
+
+  $onMounted(() => {
+    $('.round-range-slider').on('roundrange:change change', (e) => {
+      const target = e.target.f7RoundRange;
+      if (target) {
+        lastEventText = `${target.params.title || target.mode}: ${target.formatDisplayValue(target.value)}`;
+        snappedActive = target.isSnapped;
+        $update();
+      }
+    });
+
+    $('.round-range-slider').on('roundrange:snap', (e) => {
+      snappedActive = true;
+      $update();
+    });
+
+    $('.round-range-slider').on('roundrange:reset', (e) => {
+      const target = e.target.f7RoundRange;
+      if (target) {
+        lastEventText = `RESET -> ${target.params.title || target.mode}: ${target.defaultValue}`;
+        snappedActive = target.isSnapped;
+        $update();
+      }
+    });
+  });
+
+  return $render;
+};
+</script>

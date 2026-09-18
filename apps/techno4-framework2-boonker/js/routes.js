@@ -277,6 +277,10 @@ var routes = [
     componentUrl: './pages/range.html',
   },
   {
+    path: '/round-range/',
+    componentUrl: './pages/round-range.html',
+  },
+  {
     path: '/searchbar/',
     url: './pages/searchbar.html',
   },
